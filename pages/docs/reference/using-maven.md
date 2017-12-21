@@ -9,7 +9,7 @@ description: "This tutorials walks you through different scenarios when using Ma
 
 ## 插件与版本
 
-*kotlin-maven-plugin* 用于编译 Kotlin 源代码与模块，目前只支持 Marven V3。
+*kotlin-maven-plugin* 用于编译 Kotlin 源代码与模块，目前只支持 Maven V3。
 
 通过 *kotlin.version* 属性定义要使用的 Kotlin 版本：
 
