@@ -6,34 +6,36 @@ title: "Kotlin 1.2 的新特性"
 
 # Kotlin 1.2 的新特性
 
-## Table of Contents
+## 目录
 
-* [Multiplatform projects](#multiplatform-projects-experimental)
-* [Other language features](#other-language-features)
-* [Standard library](#standard-library)
-* [JVM backend](#jvm-backend)
-* [JavaScript backend](#javascript-backend)
+* [多平台项目](#多平台项目实验性的)
+* [其他语言特性](#其他语言特性)
+* [标准库](#标准库)
+* [JVM 后端](#jvm-后端)
+* [JavaScript 后端](#javascript-后端)
 
-## Multiplatform Projects (experimental)
+{:#多平台项目实验性的}
 
-Multiplatform projects are a new **experimental** feature in Kotlin 1.2, allowing you to reuse code between target platforms supported by Kotlin – JVM, JavaScript and (in the future) Native. In a multiplatform project, you have three kinds of modules:
+## 多平台项目（实验性的）
 
-* A *common* module contains code that is not specific to any platform, as well as declarations without implementation of platform-dependent APIs.
-* A *platform* module contains implementations of platform-dependent declarations in the common module for a specific platform, as well as other platform-dependent code.
-* A regular module targets a specific platform and can either be a dependency of platform modules or depend on platform modules.
+多平台项目是 Kotlin 1.2 中的一个新的**实验性的**功能，允许你在支持 Kotlin 的目标平台——JVM、JavaScript 以及（将来的）Native 之间重用代码。在多平台项目中，你有三种模块：
 
-When you compile a multiplatform project for a specific platform, the code for both the common and platform-specific parts is generated.
+* 一个*公共*模块包含平台无关代码，以及无实现的依赖平台的 API 声明。
+* *平台*模块包含通用模块中的平台相关声明在指定平台的实现，以及其他平台相关代码。
+* 常规模块针对指定的平台，既可以是平台模块的依赖，也可以依赖平台模块。
 
-A key feature of the multiplatform project support is the possibility to express dependencies of common code on platform-specific parts through **expected and actual declarations**. An expected declaration specifies an API (class, interface, annotation, top-level declaration etc.). An actual declaration is either a platform-dependent implementation of the API or a typealias referring to an existing implementation of the API in an external library. Here's an example:
+当你为指定平台编译多平台项目时，既会生成公共代码也会生成平台相关代码。
 
-In common code:
+多平台项目支持的一个主要特点是可以通过**预期声明与实际声明**来表达公共代码对平台相关部分的依赖关系。一个预期声明指定一个 API（类、接口、注解、顶层声明等）。一个实际声明要么是该 API 的平台相关实现，要么是一个引用到在一个外部库中该 API 的一个既有实现的别名。这是一个示例：
+
+在公共代码中：
 
 ```kotlin
-// expected platform-specific API:
+// 预期平台相关 API:
 expect fun hello(world: String): String
 
 fun greet() {
-    // usage of the expected API:
+    // 该预期 API 的用法：
     val greeting = hello("multi-platform world")
     println(greeting)
 }
@@ -44,36 +46,36 @@ expect class URL(spec: String) {
 }
 ```
 
-In JVM platform code:
+在 JVM 平台代码中：
 
 ```kotlin
 actual fun hello(world: String): String =
     "Hello, $world, on the JVM platform!"
 
-// using existing platform-specific implementation:
+// 使用既有平台相关实现：
 actual typealias URL = java.net.URL
 ```
 
-See the [documentation](http://kotlinlang.org/docs/reference/multiplatform.html) for details and steps to build a 
-multiplatform project.
+关于构建多平台项目的详细信息与步骤，请参见其[documentation](http://kotlinlang.org/docs/reference/multiplatform.html)<!--
+-->。
 
-## Other Language Features
+## 其他语言特性
 
-### Array literals in annotations
+### 注解中的数组字面值
 
-Starting with Kotlin 1.2, array arguments for annotations can be passed with the new array literal syntax instead 
-of the `arrayOf` function:
+自 Kotlin 1.2 起，注解的数组参数可以通过新的数组字面值语法传入，而无需<!--
+-->使用 `arrayOf` 函数：
 
 ```kotlin
 @CacheConfig(cacheNames = ["books", "default"])
 public class BookRepositoryImpl {
-    // ...
+    // ……
 }
 ```
 
-The array literal syntax is constrained to annotation arguments.
+该数组字面值语法仅限于注解参数。
 
-### Lateinit top-level properties and local variables
+### lateinit 顶层属性与局部变量
 
 The `lateinit` modifier can now be used on top-level properties and local variables. The latter can be used, 
 for example, when a lambda passed as a constructor argument to one object refers to another object 
@@ -269,7 +271,7 @@ thus have been deprecated, with a warning in Kotlin 1.2 and an error in Kotlin 1
 Mutating the backing field of a read-only property by assigning `field = ...` in the custom getter has been 
 deprecated, with a warning in Kotlin 1.2 and an error in Kotlin 1.3.
 
-## Standard Library
+## 标准库
 
 ### Kotlin standard library artifacts and split packages
 
@@ -395,7 +397,7 @@ after some other exception.
 
 To enable this behavior you need to have `kotlin-stdlib-jdk7` in your dependencies.
 
-## JVM Backend
+## JVM 后端
 
 ### Constructor calls normalization
 
@@ -441,7 +443,7 @@ if the receiver is null.
 
 To switch to the old behavior, pass the fallback flag `-Xno-receiver-assertions` to the compiler.
 
-## JavaScript Backend
+## JavaScript 后端
 
 ### TypedArrays support enabled by default
 
