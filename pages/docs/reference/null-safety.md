@@ -11,8 +11,7 @@ title: "空安全"
 
 Kotlin 的类型系统旨在消除来自代码空引用的危险，也称为[《十亿美元的错误》](http://en.wikipedia.org/wiki/Tony_Hoare#Apologies_and_retractions)。
 
-许多编程语言（包括 Java）中最常见的陷阱之一是访问空引用的成员，导致空引用异常。在 Java 中，
-这等同于 `NullPointerException` 或简称 `NPE`。
+许多编程语言（包括 Java）中最常见的陷阱之一，就是访问空引用的成员会导致空引用异常。在 Java 中，这等同于 `NullPointerException` 或简称 `NPE`。
 
 Kotlin 的类型系统旨在从我们的代码中消除 `NullPointerException`。NPE 的唯一可能的原因可能是
 

@@ -125,8 +125,8 @@ void demo(Source<String> strs) {
 为此，我们提供 **out** 修饰符：
 
 ``` kotlin
-abstract class Source<out T> {
-    abstract fun nextT(): T
+interface Source<out T> {
+    fun nextT(): T
 }
 
 fun demo(strs: Source<String>) {
@@ -145,11 +145,11 @@ fun demo(strs: Source<String>) {
 这与 Java 的**使用处型变**相反，其类型用途通配符使得类型协变。
 
 另外除了 **out**，Kotlin 又补充了一个型变注释：**in**。它使得一个类型参数**逆变**：只可以被消费而不可以<!--
--->被生产。逆变类的一个很好的例子是 `Comparable`：
+-->被生产。逆变类型的一个很好的例子是 `Comparable`：
 
 ``` kotlin
-abstract class Comparable<in T> {
-    abstract fun compareTo(other: T): Int
+interface Comparable<in T> {
+    operator fun compareTo(other: T): Int
 }
 
 fun demo(x: Comparable<Number>) {
@@ -263,6 +263,10 @@ fun <T> T.basicToString() : String {  // 扩展函数
 ``` kotlin
 val l = singletonList<Int>(1)
 ```
+Type arguments can be omitted if they can be inferred from the context, so the following example works as well:
+``` kotlin
+val l = singletonList(1)
+```
 
 ## 泛型约束
 
@@ -289,9 +293,30 @@ sort(listOf(HashMap<Int, String>())) // 错误：HashMap<Int, String> 不是 Com
 如果同一类型参数需要多个上界，我们需要一个单独的 **where**\-子句：
 
 ``` kotlin
-fun <T> cloneWhenGreater(list: List<T>, threshold: T): List<T>
-    where T : Comparable<T>,
-          T : Cloneable {
-  return list.filter { it > threshold }.map { it.clone() }
+fun <T> copyWhenGreater(list: List<T>, threshold: T): List<String>
+    where T : CharSequence,
+          T : Comparable<T> {
+    return list.filter { it > threshold }.map { it.toString() }
 }
 ```
+
+## Type erasure
+
+The type safety checks that Kotlin performs for generic declaration usages are only done at compile time.
+At runtime, the instances of generic types do not hold any information about their actual type arguments.
+The type information is said to be *erased*. For example, the instances of `Foo<Bar>` and `Foo<Baz?>` are erased to
+just `Foo<*>`.
+
+Therefore, there is no general way to check whether an instance of a generic type was created with certain type
+arguments at runtime, and the compiler [prohibits such *is*{: .keyword }-checks](typecasts.html#type-erasure-and-generic-type-checks).
+
+Type casts to generic types with concrete type arguments, e.g. `foo as List<String>`, cannot be checked at runtime.  
+These [unchecked casts](typecasts.html#unchecked-casts) can be used when type safety is implied by the high-level 
+program logic but cannot be inferred directly by the compiler. The compiler issues a warning on unchecked casts, and at 
+runtime, only the non-generic part is checked (equivalent to `foo as List<*>`).
+ 
+The type arguments of generic function calls are also only checked at compile time. Inside the function bodies, 
+the type parameters cannot be used for type checks, and type casts to type parameters (`foo as T`) are unchecked. However,
+[reified type parameters](inline-functions.html#reified-type-parameters) of inline functions are substituted by the actual 
+type arguments in the inlined function body at the call sites and thus can be used for type checks and casts,
+with the same restrictions for instances of generic types as described above.

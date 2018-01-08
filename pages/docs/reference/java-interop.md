@@ -370,6 +370,8 @@ Java 的数组按[下文](java-interop.html#java-数组)所述映射：
 | `String[]`    | `kotlin.Array<(out) String>!` |
 {:.zebra}
 
+Note: the static members of these Java types are not directly accessible on the [companion objects](object-declarations.html#companion-objects) of the Kotlin types. To call them, use the full qualified names of the Java types, e.g. `java.lang.Integer.toHexString(foo)`.
+
 ## Kotlin 中的 Java 泛型
 
 Kotlin 的泛型与 Java 有点不同（参见[泛型](generics.html)）。当将 Java 类型导入 Kotlin 时，我们会执行一些转换：
@@ -562,6 +564,8 @@ if (Character.isLetter(a)) {
     // ……
 }
 ```
+
+To access static members of a Java type that is [mapped](#mapped-types) to a Kotlin type, use the full qualified name of the Java type: `java.lang.Integer.bitCount(foo)`.
 
 ## Java 反射
 

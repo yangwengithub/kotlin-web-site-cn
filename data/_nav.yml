@@ -287,6 +287,11 @@ tutorials:
         - url: /docs/tutorials/javascript/debugging-javascript/debugging-javascript.html
           title: 在浏览器中调试 Kotlin
 
+    - title: Native
+      content:
+        - url: /docs/tutorials/native/basic-kotlin-native-app.html
+          title: Basic Kotlin/Native Application
+
     - title: 协程
       content:
         - url: /docs/tutorials/coroutines-basic-jvm.html
