@@ -99,7 +99,7 @@ var setterWithAnnotation: Any? = null
 
 ### 幕后字段
 
-Fields cannot be declared directly in Kotlin classes. However, when a property needs a backing field, Kotlin provides it automatically. This backing field can be referenced in the accessors using the `field` identifier:
+在 Kotlin 类中不能直接声明字段。然而，当一个属性需要一个幕后字段时，Kotlin 会自动提供。这个幕后字段可以使用`field`标识符在访问器中引用：
 
 ``` kotlin
 var counter = 0 // 此初始器值直接写入到幕后字段

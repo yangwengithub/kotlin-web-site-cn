@@ -208,7 +208,7 @@ inline fun <reified T> List<*>.asListOfType(): List<T>? =
         null
 ```
 
-On the JVM, the [array types](basic-types.html#arrays) (`Array<Foo>`) retain the information about the erased type of 
-their elements, and the type casts to an array type are partially checked: the 
-nullability and actual type arguments of the elements type are still erased. For example, 
-the cast `foo as Array<List<String>?>` will succeed if `foo` is an array holding any `List<*>`, nullable or not.
+在 JVM 平台中，[数组类型](basic-types.html#数组)（`Array<Foo>`）会保留关于<!--
+-->其元素被擦除类型的信息，并且类型转换为一个数组类型可以部分受检：
+元素类型的可空性与类型实参仍然会被擦除。例如，
+如果 `foo` 是一个保存了任何 `List<*>`（无论可不可空）的数组的话，类型转换 `foo as Array<List<String>?>` 都会成功。

@@ -308,15 +308,15 @@ The type information is said to be *erased*. For example, the instances of `Foo<
 just `Foo<*>`.
 
 Therefore, there is no general way to check whether an instance of a generic type was created with certain type
-arguments at runtime, and the compiler [prohibits such *is*{: .keyword }-checks](typecasts.html#type-erasure-and-generic-type-checks).
+arguments at runtime, and the compiler [prohibits such *is*{: .keyword }-checks](typecasts.html#类型擦除与泛型检测).
 
 Type casts to generic types with concrete type arguments, e.g. `foo as List<String>`, cannot be checked at runtime.  
-These [unchecked casts](typecasts.html#unchecked-casts) can be used when type safety is implied by the high-level 
+These [unchecked casts](typecasts.html#非受检类型转换) can be used when type safety is implied by the high-level 
 program logic but cannot be inferred directly by the compiler. The compiler issues a warning on unchecked casts, and at 
 runtime, only the non-generic part is checked (equivalent to `foo as List<*>`).
  
 The type arguments of generic function calls are also only checked at compile time. Inside the function bodies, 
 the type parameters cannot be used for type checks, and type casts to type parameters (`foo as T`) are unchecked. However,
-[reified type parameters](inline-functions.html#reified-type-parameters) of inline functions are substituted by the actual 
+[reified type parameters](inline-functions.html#具体化的类型参数) of inline functions are substituted by the actual 
 type arguments in the inlined function body at the call sites and thus can be used for type checks and casts,
 with the same restrictions for instances of generic types as described above.
