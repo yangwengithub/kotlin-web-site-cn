@@ -77,9 +77,9 @@ public class BookRepositoryImpl {
 
 ### lateinit 顶层属性与局部变量
 
-The `lateinit` modifier can now be used on top-level properties and local variables. The latter can be used, 
-for example, when a lambda passed as a constructor argument to one object refers to another object 
-which has to be defined later:
+`lateinit` 修饰符现在可以用于顶层属性与局部变量了。例如，后者可用于<!--
+-->当一个 lambda 表达式作为构造函数参数传给一个对象时，引用另一个<!--
+-->必须稍后定义的对象：
 
 <div class="sample" markdown="1" data-min-compiler-version="1.2">
 
@@ -103,9 +103,9 @@ fun main(args: Array<String>) {
 ```
 </div>
 
-### Checking whether a lateinit var is initialized
+### 检查 lateinit 变量是否已初始化
 
-You can now check whether a lateinit var has been initialized using `isInitialized` on the property reference:
+现在可以通过属性引用的 `isInitialized` 来检测该 lateinit var 是否已初始化：
 
 <div class="sample" markdown="1" data-min-compiler-version="1.2">
 
@@ -128,9 +128,9 @@ fun main(args: Array<String>) {
 ```
 </div>
 
-### Inline functions with default functional parameters
+### 内联函数带有默认函数式参数
 
-Inline functions are now allowed to have default values for their inlined functional parameters:
+内联函数现在允许其内联函式数参数具有默认值：
 
 <div class="sample" markdown="1" data-min-compiler-version="1.2">
 
@@ -150,20 +150,20 @@ fun main(args: Array<String>) {
 ```
 </div>
 
-### Information from explicit casts is used for type inference
+### 源自显式类型转换的信息会用于类型推断
 
-The Kotlin compiler can now use information from type casts in type inference. If you’re calling a generic method 
-that returns a type parameter `T` and casting the return value to a specific type `Foo`, the compiler now understands 
-that `T` for this call needs to be bound to the type `Foo`. 
+Kotlin 编译器现在可将类型转换信息用于类型推断。如果你调用一个<!--
+-->返回类型参数 `T` 的泛型方法并将返回值转换为指定类型 `Foo`，那么编译器现在知道<!--
+-->对于本次调用需要约束类型为 `Foo`。
 
-This is particularly important for Android developers, since the compiler can now correctly analyze generic 
-`findViewById` calls in Android API level 26:
+这对于 Android 开发者来说尤为重要，因为编译器现在可以正确分析
+Android API 级别 26 中的泛型 `findViewById` 调用：
 
 ```kotlin
 val button = findViewById(R.id.button) as Button
 ```
 
-### Smart cast improvements
+### 智能类型转换改进
 
 When a variable is assigned from a safe call expression and checked for null, the smart cast is now applied to 
 the safe call receiver as well:
