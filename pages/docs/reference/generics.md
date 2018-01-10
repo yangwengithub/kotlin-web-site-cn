@@ -300,23 +300,23 @@ fun <T> copyWhenGreater(list: List<T>, threshold: T): List<String>
 }
 ```
 
-## Type erasure
+## 类型擦除
 
-The type safety checks that Kotlin performs for generic declaration usages are only done at compile time.
-At runtime, the instances of generic types do not hold any information about their actual type arguments.
-The type information is said to be *erased*. For example, the instances of `Foo<Bar>` and `Foo<Baz?>` are erased to
-just `Foo<*>`.
+Kotlin 为泛型声明用法执行的类型安全检测仅在编译期进行。
+运行时泛型类型的实例不保留关于其类型实参的任何信息。
+其类型信息称为被*擦除*。例如，`Foo<Bar>` 与 `Foo<Baz?>` 的实例都会被擦除为
+`Foo<*>`。
 
-Therefore, there is no general way to check whether an instance of a generic type was created with certain type
-arguments at runtime, and the compiler [prohibits such *is*{: .keyword }-checks](typecasts.html#类型擦除与泛型检测).
+因此，并没有通用的方法在运行时检测一个泛型类型的实例是否通过指定类型参数所创建
+，并且编译器[禁止这种 *is*{: .keyword } 检测](typecasts.html#类型擦除与泛型检测)。
 
-Type casts to generic types with concrete type arguments, e.g. `foo as List<String>`, cannot be checked at runtime.  
-These [unchecked casts](typecasts.html#非受检类型转换) can be used when type safety is implied by the high-level 
-program logic but cannot be inferred directly by the compiler. The compiler issues a warning on unchecked casts, and at 
-runtime, only the non-generic part is checked (equivalent to `foo as List<*>`).
+类型转换为带有具体类型参数的泛型类型，如 `foo as List<String>` 无法在运行时检测。
+当高级程序逻辑隐含了类型转换的类型安全而无法直接通过编译器推断时，
+可以使用这种[非受检类型转换](typecasts.html#非受检类型转换)。编译器会对非受检类型转换发出警告，并且在<!--
+-->运行时只对非泛型部分检测（相当于 `foo as List<*>`）。
  
-The type arguments of generic function calls are also only checked at compile time. Inside the function bodies, 
-the type parameters cannot be used for type checks, and type casts to type parameters (`foo as T`) are unchecked. However,
-[reified type parameters](inline-functions.html#具体化的类型参数) of inline functions are substituted by the actual 
-type arguments in the inlined function body at the call sites and thus can be used for type checks and casts,
-with the same restrictions for instances of generic types as described above.
+泛型函数调用的类型参数也同样只在编译期检测。在函数体内部，
+类型参数不能用于类型检测，并且类型转换为类型参数（`foo as T`）也是非受检的。然而，
+内联函数的[具体化的类型参数](inline-functions.html#具体化的类型参数)会由<!--
+-->调用处内联函数体中的类型实参所代入，因此可以用于类型检测与转换，
+与上述泛型类型的实例具有相同限制。
