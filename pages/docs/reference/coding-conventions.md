@@ -259,13 +259,13 @@ class FooImpl : Foo() {
 
 ### Class header formatting
 
-Classes with a few arguments can be written in a single line:
+Classes with a few primary constructor parameters can be written in a single line:
 
 ```kotlin
 class Person(id: Int, name: String)
 ```
 
-Classes with longer headers should be formatted so that each primary constructor argument is in a separate line with indentation.
+Classes with longer headers should be formatted so that each primary constructor parameter is in a separate line with indentation.
 Also, the closing parenthesis should be on a new line. If we use inheritance, then the superclass constructor call or list of implemented interfaces
 should be located on the same line as the parenthesis:
 
@@ -645,6 +645,29 @@ println("$name has ${children.size} children")
 
 
 ## Idiomatic use of language features
+
+### Immutability
+
+Prefer using immutable data to mutable. Always declare local variables and properties as `val` rather than `var` if
+they are not modified after initialization.
+
+Always use immutable collection interfaces (`Collection`, `List`, `Set`, `Map`) to declare collections which are not
+mutated. When using factory functions to create collection instances, always use functions that return immutable
+collection types when possible:
+
+``` kotlin
+// Bad: use of mutable collection type for value which will not be mutated
+fun validateValue(actualValue: String, allowedValues: HashSet<String>) { ... }
+
+// Good: immutable collection type used instead
+fun validateValue(actualValue: String, allowedValues: Set<String>) { ... }
+
+// Bad: arrayListOf() returns ArrayList<T>, which is a mutable collection type
+val allowedValues = arrayListOf("a", "b", "c")
+
+// Good: listOf() returns List<T>
+val allowedValues = listOf("a", "b", "c")
+```
 
 ### Default parameter values
 
