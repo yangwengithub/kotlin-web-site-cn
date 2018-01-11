@@ -18,10 +18,10 @@ Kotlin 的类型系统旨在从我们的代码中消除 `NullPointerException`�
 * 显式调用 `throw NullPointerException()`；
 * 使用了下文描述的 `!!` 操作符；
 * 对于初始化，有一些数据不一致（如一个未初始化的 `this` 用于构造函数的某个地方）；
-* Java interoperation:
-  * Attempts to access a member on a `null` reference of a [platform type](java-interop.html#null-safety-and-platform-types);
-  * Generic types used for Java interoperation with incorrect nullability, e.g. a piece of Java code might add `null` into a Kotlin `MutableList<String>`, meaning that `MutableList<String?>` should be used for working with it;
-  * Other issues caused by external Java code.
+* Java 互操作：
+  * 企图访问[平台类型](java-interop.html#空安全与平台类型)的 `null` 引用的成员；
+  * 用于具有错误可空性的 Java 互操作的泛型类型，例如一段 Java 代码可能会向 Kotlin 的 `MutableList<String>` 中加入 `null`，这意味着应该使用 `MutableList<String?>` 来处理它；
+  * 由外部 Java 代码引发的其他问题。
 
 在 Kotlin 中，类型系统区分一个引用可以容纳 *null*{: .keyword } （可空引用）还是不能容纳（非空引用）。
 例如，String 类型的常规变量不能容纳 *null*{: .keyword }：
