@@ -99,8 +99,7 @@ var setterWithAnnotation: Any? = null
 
 ### 幕后字段
 
-Kotlin 中类不能有字段。然而，当使用自定义访问器时，有时有一个幕后字段（backing field）有时是必要的。为此 Kotlin 提供<!--
--->一个自动幕后字段，它可通过使用 `field` 标识符访问。
+在 Kotlin 类中不能直接声明字段。然而，当一个属性需要一个幕后字段时，Kotlin 会自动提供。这个幕后字段可以使用`field`标识符在访问器中引用：
 
 ``` kotlin
 var counter = 0 // 此初始器值直接写入到幕后字段

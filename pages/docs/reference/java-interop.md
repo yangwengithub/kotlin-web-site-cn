@@ -370,6 +370,8 @@ Java 的数组按[下文](java-interop.html#java-数组)所述映射：
 | `String[]`    | `kotlin.Array<(out) String>!` |
 {:.zebra}
 
+注意：这些 Java 类型的静态成员不能在相应 Kotlin 类型的[伴生对象](object-declarations.html#伴生对象)中直接访问。要调用它们，请使用 Java 类型的完整限定名，例如 `java.lang.Integer.toHexString(foo)`。
+
 ## Kotlin 中的 Java 泛型
 
 Kotlin 的泛型与 Java 有点不同（参见[泛型](generics.html)）。当将 Java 类型导入 Kotlin 时，我们会执行一些转换：
@@ -562,6 +564,8 @@ if (Character.isLetter(a)) {
     // ……
 }
 ```
+
+要访问[已映射](#已映射类型)到 Kotlin 类型的 Java 类型的静态成员，请使用 Java 类型的完整限定名：`java.lang.Integer.bitCount(foo)`。
 
 ## Java 反射
 

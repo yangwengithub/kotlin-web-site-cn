@@ -70,9 +70,9 @@ when (x) {
 请注意，当编译器不能保证变量在检查和使用之间不可改变时，智能转换不能用。
 更具体地，智能转换能否适用根据以下规则：
 
-  * *val*{: .keyword } 局部变量——总是可以；
+  * *val*{: .keyword } 局部变量——总是可以，[局部委托属性除外](delegated-properties.html#局部委托属性自-11-起)；
   * *val*{: .keyword } 属性——如果属性是 private 或 internal，或者该检查在声明属性的同一模块中执行。智能转换不适用于 open 的属性或者具有自定义 getter 的属性；
-  * *var*{: .keyword } 局部变量——如果变量在检查和使用之间没有修改、并且没有在会修改它的 lambda 中捕获；
+  * *var*{: .keyword } 局部变量——如果变量在检查和使用之间没有修改、没有在会修改它的 lambda 中捕获、并且不是局部委托属性；
   * *var*{: .keyword } 属性——决不可能（因为该变量可以随时被其他代码修改）。
 
 {:#不安全的转换操作符}
@@ -205,3 +205,8 @@ inline fun <reified T> List<*>.asListOfType(): List<T>? =
         this as List<T> else
         null
 ```
+
+在 JVM 平台中，[数组类型](basic-types.html#数组)（`Array<Foo>`）会保留关于<!--
+-->其元素被擦除类型的信息，并且类型转换为一个数组类型可以部分受检：
+元素类型的可空性与类型实参仍然会被擦除。例如，
+如果 `foo` 是一个保存了任何 `List<*>`（无论可不可空）的数组的话，类型转换 `foo as Array<List<String>?>` 都会成功。

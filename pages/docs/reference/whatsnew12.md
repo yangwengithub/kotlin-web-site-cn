@@ -6,34 +6,36 @@ title: "Kotlin 1.2 的新特性"
 
 # Kotlin 1.2 的新特性
 
-## Table of Contents
+## 目录
 
-* [Multiplatform projects](#multiplatform-projects-experimental)
-* [Other language features](#other-language-features)
-* [Standard library](#standard-library)
-* [JVM backend](#jvm-backend)
-* [JavaScript backend](#javascript-backend)
+* [多平台项目](#多平台项目实验性的)
+* [其他语言特性](#其他语言特性)
+* [标准库](#标准库)
+* [JVM 后端](#jvm-后端)
+* [JavaScript 后端](#javascript-后端)
 
-## Multiplatform Projects (experimental)
+{:#多平台项目实验性的}
 
-Multiplatform projects are a new **experimental** feature in Kotlin 1.2, allowing you to reuse code between target platforms supported by Kotlin – JVM, JavaScript and (in the future) Native. In a multiplatform project, you have three kinds of modules:
+## 多平台项目（实验性的）
 
-* A *common* module contains code that is not specific to any platform, as well as declarations without implementation of platform-dependent APIs.
-* A *platform* module contains implementations of platform-dependent declarations in the common module for a specific platform, as well as other platform-dependent code.
-* A regular module targets a specific platform and can either be a dependency of platform modules or depend on platform modules.
+多平台项目是 Kotlin 1.2 中的一个新的**实验性的**功能，允许你在支持 Kotlin 的目标平台——JVM、JavaScript 以及（将来的）Native 之间重用代码。在多平台项目中，你有三种模块：
 
-When you compile a multiplatform project for a specific platform, the code for both the common and platform-specific parts is generated.
+* 一个*公共*模块包含平台无关代码，以及无实现的依赖平台的 API 声明。
+* *平台*模块包含通用模块中的平台相关声明在指定平台的实现，以及其他平台相关代码。
+* 常规模块针对指定的平台，既可以是平台模块的依赖，也可以依赖平台模块。
 
-A key feature of the multiplatform project support is the possibility to express dependencies of common code on platform-specific parts through **expected and actual declarations**. An expected declaration specifies an API (class, interface, annotation, top-level declaration etc.). An actual declaration is either a platform-dependent implementation of the API or a typealias referring to an existing implementation of the API in an external library. Here's an example:
+当你为指定平台编译多平台项目时，既会生成公共代码也会生成平台相关代码。
 
-In common code:
+多平台项目支持的一个主要特点是可以通过**预期声明与实际声明**来表达公共代码对平台相关部分的依赖关系。一个预期声明指定一个 API（类、接口、注解、顶层声明等）。一个实际声明要么是该 API 的平台相关实现，要么是一个引用到在一个外部库中该 API 的一个既有实现的别名。这是一个示例：
+
+在公共代码中：
 
 ```kotlin
-// expected platform-specific API:
+// 预期平台相关 API:
 expect fun hello(world: String): String
 
 fun greet() {
-    // usage of the expected API:
+    // 该预期 API 的用法：
     val greeting = hello("multi-platform world")
     println(greeting)
 }
@@ -44,40 +46,40 @@ expect class URL(spec: String) {
 }
 ```
 
-In JVM platform code:
+在 JVM 平台代码中：
 
 ```kotlin
 actual fun hello(world: String): String =
     "Hello, $world, on the JVM platform!"
 
-// using existing platform-specific implementation:
+// 使用既有平台相关实现：
 actual typealias URL = java.net.URL
 ```
 
-See the [documentation](http://kotlinlang.org/docs/reference/multiplatform.html) for details and steps to build a 
-multiplatform project.
+关于构建多平台项目的详细信息与步骤，请参见其[documentation](http://kotlinlang.org/docs/reference/multiplatform.html)<!--
+-->。
 
-## Other Language Features
+## 其他语言特性
 
-### Array literals in annotations
+### 注解中的数组字面值
 
-Starting with Kotlin 1.2, array arguments for annotations can be passed with the new array literal syntax instead 
-of the `arrayOf` function:
+自 Kotlin 1.2 起，注解的数组参数可以通过新的数组字面值语法传入，而无需<!--
+-->使用 `arrayOf` 函数：
 
 ```kotlin
 @CacheConfig(cacheNames = ["books", "default"])
 public class BookRepositoryImpl {
-    // ...
+    // ……
 }
 ```
 
-The array literal syntax is constrained to annotation arguments.
+该数组字面值语法仅限于注解参数。
 
-### Lateinit top-level properties and local variables
+### lateinit 顶层属性与局部变量
 
-The `lateinit` modifier can now be used on top-level properties and local variables. The latter can be used, 
-for example, when a lambda passed as a constructor argument to one object refers to another object 
-which has to be defined later:
+`lateinit` 修饰符现在可以用于顶层属性与局部变量了。例如，后者可用于<!--
+-->当一个 lambda 表达式作为构造函数参数传给一个对象时，引用另一个<!--
+-->必须稍后定义的对象：
 
 
 ```kotlin
@@ -99,9 +101,9 @@ fun main(args: Array<String>) {
 }
 ```
 
-### Checking whether a lateinit var is initialized
+### 检查 lateinit 变量是否已初始化
 
-You can now check whether a lateinit var has been initialized using `isInitialized` on the property reference:
+现在可以通过属性引用的 `isInitialized` 来检测该 lateinit var 是否已初始化：
 
 
 ```kotlin
@@ -122,9 +124,9 @@ fun main(args: Array<String>) {
 }
 ```
 
-### Inline functions with default functional parameters
+### 内联函数带有默认函数式参数
 
-Inline functions are now allowed to have default values for their inlined functional parameters:
+内联函数现在允许其内联函式数参数具有默认值：
 
 
 ```kotlin
@@ -142,23 +144,23 @@ fun main(args: Array<String>) {
 }
 ```
 
-### Information from explicit casts is used for type inference
+### 源自显式类型转换的信息会用于类型推断
 
-The Kotlin compiler can now use information from type casts in type inference. If you’re calling a generic method 
-that returns a type parameter `T` and casting the return value to a specific type `Foo`, the compiler now understands 
-that `T` for this call needs to be bound to the type `Foo`. 
+Kotlin 编译器现在可将类型转换信息用于类型推断。如果你调用一个<!--
+-->返回类型参数 `T` 的泛型方法并将返回值转换为指定类型 `Foo`，那么编译器现在知道<!--
+-->对于本次调用需要绑定类型为 `Foo`。
 
-This is particularly important for Android developers, since the compiler can now correctly analyze generic 
-`findViewById` calls in Android API level 26:
+这对于 Android 开发者来说尤为重要，因为编译器现在可以正确分析
+Android API 级别 26 中的泛型 `findViewById` 调用：
 
 ```kotlin
 val button = findViewById(R.id.button) as Button
 ```
 
-### Smart cast improvements
+### 智能类型转换改进
 
-When a variable is assigned from a safe call expression and checked for null, the smart cast is now applied to 
-the safe call receiver as well:
+当一个变量有安全调用表达式与空检测赋值时，其智能转换现在也可以应用于<!--
+-->安全调用接收者：
 
 
 ```kotlin
@@ -166,11 +168,11 @@ fun countFirst(s: Any): Int {
     //sampleStart
     val firstChar = (s as? CharSequence)?.firstOrNull()
     if (firstChar != null)
-       return s.count { it == firstChar } // s: Any is smart cast to CharSequence
+       return s.count { it == firstChar } // s: Any 会智能转换为 CharSequence
     
     val firstItem = (s as? Iterable<*>)?.firstOrNull()
     if (firstItem != null)
-       return s.count { it == firstItem } // s: Any is smart cast to Iterable<*>
+       return s.count { it == firstItem } // s: Any 会智能转换为 Iterable<*>
     //sampleEnd
     
     return -1
@@ -187,7 +189,7 @@ fun main(args: Array<String>) {
 }
 ```
 
-Also, smart casts in a lambda are now allowed for local variables that are only modified before the lambda:
+智能转换现在也允许用于在 lambda 表达式中局部变量，只要这些局部变量仅在 lambda 表达式之前修改即可：
 
 
 ```kotlin
@@ -200,68 +202,68 @@ fun main(args: Array<String>) {
 
     run {
         if (x != null) {
-            println(x.length) // x is smart cast to String
+            println(x.length) // x 会智能转换为 String
         }
     }
     //sampleEnd
 }
 ```
 
-### Support for  ::foo as a shorthand for this::foo
+### 支持 ::foo 作为 this::foo 的简写
 
-A bound callable reference to a member of `this` can now be written without explicit receiver, `::foo` instead 
-of `this::foo`. This also makes callable references more convenient to use in lambdas where you refer to a member 
-of the outer receiver.
+现在写绑定到 `this` 成员的可调用引用可以无需显式接收者，即 `::foo` 取代
+`this:: foo`。这也使在引用外部接收者的成员的 lambda 表达式中使用可调用引用更加方便<!--
+-->。
 
-### Breaking change: sound smart casts after try blocks
+### 阻断性改动：try 块后可靠智能转换
 
-Earlier, Kotlin used assignments made inside a `try` block for smart casts after the block, which could break type- and null-safety 
-and lead to runtime failures. This release fixes this issue, making the smart casts more strict, but breaking some code
-that relied on such smart casts.
+Kotlin 以前将 `try` 块中的赋值语句用于块后的智能转换，这可能会破坏类型安全与空安全<!--
+-->并引发运行时故障。这个版本修复了该问题，使智能转换更加严格，但可能会破坏一些<!--
+-->依靠这种智能转换的代码。
 
-To switch to the old smart casts behavior, pass the fallback flag `-Xlegacy-smart-cast-after-try` as the compiler 
-argument. It will become deprecated in Kotlin 1.3.
+如果要切换到旧版智能转换行为，请传入回退标志 `-Xlegacy-smart-cast-after-try` 作为编译器<!--
+-->参数。该参数会在 Kotlin 1.3 中弃用。
 
-### Deprecation: data classes overriding copy
+### 弃用：数据类弃用 copy
 
-When a data class derived from a type that already had the `copy` function with the same signature, the `copy` 
-implementation generated for the data class used the defaults from the supertype, leading to counter-intuitive behavior, 
-or failed at runtime if there were no default parameters in the supertype. 
+当从已具有签名相同的 `copy` 函数的类型派生数据类时，为数据类生成的 `copy`
+实现使用超类型的默认值，这导致反直觉行为，
+或者导致运行时失败，如果超类型中没有默认参数的话。
 
-Inheritance that leads to a `copy` conflict has become deprecated with a warning in Kotlin 1.2 
-and will be an error in Kotlin 1.3.
+导致 `copy` 冲突的继承在 Kotlin 1.2 中已弃用并带有警告，
+而在 Kotlin 1.3 中将会是错误。
 
-### Deprecation: nested types in enum entries
+### 弃用：枚举条目中的嵌套类型
 
-Inside enum entries, defining a nested type that is not an `inner class` has been deprecated due to issues in the 
-initialization logic. This causes a warning in Kotlin 1.2 and will become an error in Kotlin 1.3.
+由于初始化逻辑的问题，已弃用在枚举条目内部定义一个非 `inner class`
+的嵌套类。这在 Kotlin 1.2 中会引起警告，而在 Kotlin 1.3 中会成为错误。
 
-### Deprecation: single named argument for vararg
+### 弃用：vararg 单个命名参数
 
-For consistency with array literals in annotations, passing a single item for a vararg parameter in the named 
-form (`foo(items = i)`) has been deprecated. Please use the spread operator with the corresponding 
-array factory functions:
+为了与注解中的数组字面值保持一致，向一个命名参数形式的 vararg 参数传入单个项目<!--
+-->的用法（`foo(items = i)`）已被弃用。请使用伸展操作符连同相应的<!--
+-->数组工厂函数：
 
 ```kotlin
 foo(items = *intArrayOf(1))
 ```
 
-There is an optimization that removes redundant arrays creation in such cases, which prevents performance degradation. 
-The single-argument form produces warnings in Kotlin 1.2 and is to be dropped in Kotlin 1.3.
+在这种情况下有一项防止性能下降的优化可以消除冗余的数组创建。
+单参数形式在 Kotlin 1.2 中会产生警告，而在 Kotlin 1.3 中会放弃。
 
-### Deprecation: inner classes of generic classes extending Throwable
+### 弃用：扩展 Throwable 的泛型类的内部类
 
-Inner classes of generic types that inherit from `Throwable` could violate type-safety in a throw-catch scenario and 
-thus have been deprecated, with a warning in Kotlin 1.2 and an error in Kotlin 1.3.
+继承自 `Throwable` 的泛型类的内部类可能会在 throw-catch 场景中违反类型安全性，因此<!--
+-->已弃用，在 Kotlin 1.2 中会是警告，而在 Kotlin 1.3 中会是错误。
 
-### Deprecation: mutating backing field of a read-only property
+### 弃用：修改只读属性的幕后字段
 
-Mutating the backing field of a read-only property by assigning `field = ...` in the custom getter has been 
-deprecated, with a warning in Kotlin 1.2 and an error in Kotlin 1.3.
+通过在自定义 getter 中赋值 `field = ……` 来修改只读属性的幕后字段的用法已被弃用，
+在 Kotlin 1.2 中会是警告，而在 Kotlin 1.3 中会是错误。
 
-## Standard Library
+## 标准库
 
-### Kotlin standard library artifacts and split packages
+### Kotlin 标准库构件与拆分包
 
 The Kotlin standard library is now fully compatible with the Java 9 module system, which forbids split packages 
 (multiple jar files declaring classes in the same package). In order to support that, new artifacts `kotlin-stdlib-jdk7` 
@@ -275,7 +277,7 @@ Another change made to ensure compatibility with the new module system is removi
 declarations in the `kotlin.reflect` package from the `kotlin-reflect` library. If you were using them, you need 
 to switch to using the declarations in the `kotlin.reflect.full` package, which is supported since Kotlin 1.1.
 
-### windowed, chunked, zipWithNext
+### windowed、chunked、zipWithNext
 
 New extensions for `Iterable<T>`, `Sequence<T>`, and `CharSequence` cover such use cases as buffering or 
 batch processing (`chunked`), sliding window and computing sliding average (`windowed`) , and processing pairs 
@@ -304,7 +306,7 @@ fun main(args: Array<String>) {
 }
 ```
 
-### fill, replaceAll, shuffle/shuffled
+### fill、replaceAll、shuffle/shuffled
 
 A set of extension functions was added for manipulating lists: `fill`, `replaceAll` and `shuffle` for `MutableList`, 
 and `shuffled` for read-only `List`:
@@ -327,7 +329,7 @@ fun main(args: Array<String>) {
 }
 ```
 
-### Math operations in kotlin-stdlib
+### kotlin-stdlib 中的数学操作
 
 Satisfying the longstanding request, Kotlin 1.2 adds the `kotlin.math` API for math operations that is common 
 for JVM and JS and contains the following:
@@ -352,7 +354,7 @@ for JVM and JS and contains the following:
 
 The same set of functions (but without constants) is also available for `Float` arguments.
 
-### Operators and conversions for BigInteger and BigDecimal
+### 用于 BigInteger 与 BigDecimal 的操作符与转换
 
 Kotlin 1.2 introduces a set of functions for operating with `BigInteger` and `BigDecimal` and creating them 
 from other numeric types. These are:
@@ -363,7 +365,7 @@ from other numeric types. These are:
     * Binary operators  `+`, `-`, `*`, `/`, `%` and infix functions `and`, `or`, `xor`, `shl`, `shr`;
     * Unary operators `-`, `++`, `--`, and a function `inv`.
 
-### Floating point to bits conversions
+### 浮点数到比特的转换
 
 New functions were added for converting `Double` and `Float` to and from their bit representations:
 
@@ -381,7 +383,7 @@ after some other exception.
 
 To enable this behavior you need to have `kotlin-stdlib-jdk7` in your dependencies.
 
-## JVM Backend
+## JVM 后端
 
 ### Constructor calls normalization
 
@@ -427,7 +429,7 @@ if the receiver is null.
 
 To switch to the old behavior, pass the fallback flag `-Xno-receiver-assertions` to the compiler.
 
-## JavaScript Backend
+## JavaScript 后端
 
 ### TypedArrays support enabled by default
 

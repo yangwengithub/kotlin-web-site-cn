@@ -125,8 +125,8 @@ void demo(Source<String> strs) {
 为此，我们提供 **out** 修饰符：
 
 ``` kotlin
-abstract class Source<out T> {
-    abstract fun nextT(): T
+interface Source<out T> {
+    fun nextT(): T
 }
 
 fun demo(strs: Source<String>) {
@@ -145,11 +145,11 @@ fun demo(strs: Source<String>) {
 这与 Java 的**使用处型变**相反，其类型用途通配符使得类型协变。
 
 另外除了 **out**，Kotlin 又补充了一个型变注释：**in**。它使得一个类型参数**逆变**：只可以被消费而不可以<!--
--->被生产。逆变类的一个很好的例子是 `Comparable`：
+-->被生产。逆变类型的一个很好的例子是 `Comparable`：
 
 ``` kotlin
-abstract class Comparable<in T> {
-    abstract fun compareTo(other: T): Int
+interface Comparable<in T> {
+    operator fun compareTo(other: T): Int
 }
 
 fun demo(x: Comparable<Number>) {
@@ -263,6 +263,10 @@ fun <T> T.basicToString() : String {  // 扩展函数
 ``` kotlin
 val l = singletonList<Int>(1)
 ```
+Type arguments can be omitted if they can be inferred from the context, so the following example works as well:
+``` kotlin
+val l = singletonList(1)
+```
 
 ## 泛型约束
 
@@ -289,9 +293,30 @@ sort(listOf(HashMap<Int, String>())) // 错误：HashMap<Int, String> 不是 Com
 如果同一类型参数需要多个上界，我们需要一个单独的 **where**\-子句：
 
 ``` kotlin
-fun <T> cloneWhenGreater(list: List<T>, threshold: T): List<T>
-    where T : Comparable<T>,
-          T : Cloneable {
-  return list.filter { it > threshold }.map { it.clone() }
+fun <T> copyWhenGreater(list: List<T>, threshold: T): List<String>
+    where T : CharSequence,
+          T : Comparable<T> {
+    return list.filter { it > threshold }.map { it.toString() }
 }
 ```
+
+## 类型擦除
+
+Kotlin 为泛型声明用法执行的类型安全检测仅在编译期进行。
+运行时泛型类型的实例不保留关于其类型实参的任何信息。
+其类型信息称为被*擦除*。例如，`Foo<Bar>` 与 `Foo<Baz?>` 的实例都会被擦除为
+`Foo<*>`。
+
+因此，并没有通用的方法在运行时检测一个泛型类型的实例是否通过指定类型参数所创建
+，并且编译器[禁止这种 *is*{: .keyword } 检测](typecasts.html#类型擦除与泛型检测)。
+
+类型转换为带有具体类型参数的泛型类型，如 `foo as List<String>` 无法在运行时检测。
+当高级程序逻辑隐含了类型转换的类型安全而无法直接通过编译器推断时，
+可以使用这种[非受检类型转换](typecasts.html#非受检类型转换)。编译器会对非受检类型转换发出警告，并且在<!--
+-->运行时只对非泛型部分检测（相当于 `foo as List<*>`）。
+ 
+泛型函数调用的类型参数也同样只在编译期检测。在函数体内部，
+类型参数不能用于类型检测，并且类型转换为类型参数（`foo as T`）也是非受检的。然而，
+内联函数的[具体化的类型参数](inline-functions.html#具体化的类型参数)会由<!--
+-->调用处内联函数体中的类型实参所代入，因此可以用于类型检测与转换，
+与上述泛型类型的实例具有相同限制。

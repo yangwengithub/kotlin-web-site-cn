@@ -145,6 +145,13 @@ val values = ……
 val email = values["email"] ?: throw IllegalStateException("Email is missing!")
 ```
 
+### 在可能会空的集合中取第一元素
+
+``` kotlin
+val emails = ... // 可能会是空集合
+val mainEmail = emails.firstOrNull() ?: ""
+```
+
 ### if not null 执行代码
 
 ``` kotlin

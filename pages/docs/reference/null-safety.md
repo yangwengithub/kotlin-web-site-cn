@@ -11,15 +11,17 @@ title: "空安全"
 
 Kotlin 的类型系统旨在消除来自代码空引用的危险，也称为[《十亿美元的错误》](http://en.wikipedia.org/wiki/Tony_Hoare#Apologies_and_retractions)。
 
-许多编程语言（包括 Java）中最常见的陷阱之一是访问空引用的成员，导致空引用异常。在 Java 中，
-这等同于 `NullPointerException` 或简称 `NPE`。
+许多编程语言（包括 Java）中最常见的陷阱之一，就是访问空引用的成员会导致空引用异常。在 Java 中，这等同于 `NullPointerException` 或简称 `NPE`。
 
 Kotlin 的类型系统旨在从我们的代码中消除 `NullPointerException`。NPE 的唯一可能的原因可能是
 
 * 显式调用 `throw NullPointerException()`；
 * 使用了下文描述的 `!!` 操作符；
-* 外部 Java 代码导致的；
-* 对于初始化，有一些数据不一致（如一个未初始化的 `this` 用于构造函数的某个地方）。
+* 对于初始化，有一些数据不一致（如一个未初始化的 `this` 用于构造函数的某个地方）；
+* Java 互操作：
+  * 企图访问[平台类型](java-interop.html#空安全与平台类型)的 `null` 引用的成员；
+  * 用于具有错误可空性的 Java 互操作的泛型类型，例如一段 Java 代码可能会向 Kotlin 的 `MutableList<String>` 中加入 `null`，这意味着应该使用 `MutableList<String?>` 来处理它；
+  * 由外部 Java 代码引发的其他问题。
 
 在 Kotlin 中，类型系统区分一个引用可以容纳 *null*{: .keyword } （可空引用）还是不能容纳（非空引用）。
 例如，String 类型的常规变量不能容纳 *null*{: .keyword }：
@@ -98,6 +100,13 @@ val listWithNulls: List<String?> = listOf("A", null)
 for (item in listWithNulls) {
      item?.let { println(it) } // 输出 A 并忽略 null
 }
+```
+
+安全调用也可以出现在赋值的左侧。这样，如果调用链中的任何一个接收者为空都会跳过赋值，而右侧的表达式根本不会求值：
+
+``` kotlin
+// 如果 `person` 或者 `person.department` 其中之一为空，都不会调用该函数：
+person?.department?.head = managersPool.getManager()
 ```
 
 ## Elvis 操作符
