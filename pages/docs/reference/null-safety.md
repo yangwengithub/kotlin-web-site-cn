@@ -102,6 +102,13 @@ for (item in listWithNulls) {
 }
 ```
 
+A safe call can also be placed on the left side of an assignment. Then, if one of the receivers in the safe calls chain is null, the assignment is skipped, and the expression on the right is not evaluated at all:
+
+``` kotlin
+// If either `person` or `person.department` is null, the function is not called:
+person?.department?.head = managersPool.getManager()
+```
+
 ## Elvis 操作符
 
 当我们有一个可空的引用 `r` 时，我们可以说“如果 `r` 非空，我使用它；否则使用某个非空的值 `x`”：

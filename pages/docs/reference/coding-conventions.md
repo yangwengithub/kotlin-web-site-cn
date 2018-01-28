@@ -10,7 +10,7 @@ title: "编码规范"
 此页面包含当前 Kotlin 语言的编码风格
 
 > Note: To configure the IntelliJ formatter according to this style guide, please install Kotlin plugin version
-> 1.2.20-eap-33 or newer, go to Settings | Editor | Code Style | Kotlin, click on "Set from..." link in the upper
+> 1.2.20 or newer, go to Settings | Editor | Code Style | Kotlin, click on "Set from..." link in the upper
 > right corner, and select "Predefined style / Kotlin style guide" from the menu.
 
 ## Source code organization
@@ -175,7 +175,7 @@ The names should make it clear what the purpose of the entity is, so it's best t
 (`Manager`, `Wrapper` etc.) in names.
 
 When using an acronym as part of a declaration name, capitalize it if it consists of two letters (`IOStream`);
-capitalize only the first letter if it is longer (`HttpInputStream`).
+capitalize only the first letter if it is longer (`XmlFormatter`, `HttpInputStream`).
 
 
 ## Formatting
@@ -219,6 +219,8 @@ fun bar() {
 ```
 
 Never put a space after `(`, `[`, or before `]`, `)`.
+
+Never put a space around `.` or `?.`: `foo.bar().filter { it > 2 }.joinToString()`, `foo?.bar()`
 
 Put a space after `//`: `// This is a comment`
 

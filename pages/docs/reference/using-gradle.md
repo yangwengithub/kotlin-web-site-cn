@@ -217,6 +217,20 @@ kotlin {
 archivesBaseName = 'myExampleProject_lib'
 ```
 
+## Gradle Build Cache support (since 1.2.20)
+
+The Kotlin plugin supports [Gradle Build Cache](https://guides.gradle.org/using-build-cache/) (Gradle version 4.3 and above is required; caching is disabled with lower versions).
+
+The kapt annotation processing tasks are not cached by default since annotation processors run arbitrary code that may not necessarily transform the task inputs into the outputs, might access and modify the files that are not tracked by Gradle etc. To enable caching for kapt anyway, add the following lines to the build script:
+
+``` groovy
+kapt {
+    useBuildCache = true
+}
+```
+
+To disable the caching for all Kotlin tasks, set the system property flag `kotlin.caching.enabled` to `false` (run the build with the argument `-Dkotlin.caching.enabled=false`).
+
 ## 编译器选项
 
 要指定附加的编译选项，请使用 Kotlin 编译任务的 `kotlinOptions` 属性。
@@ -254,15 +268,21 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
 
 对于 Gradle 任务的完整选项列表如下：
 
-### JVM 和 JS 的公共属性
+### JVM、JS 与 JS DCE 的公共属性
 
 | 名称 | 描述        | 可能的值        |默认值        |
 |------|-------------|-----------------|--------------|
-| `apiVersion` | 只允许使用来自捆绑库的指定版本中的声明 | "1.0"、 "1.1" | "1.1" |
-| `languageVersion` | 提供与指定语言版本源代码兼容性 | "1.0"、 "1.1" | "1.1" |
+| `allWarningsAsErrors` | Report an error if there are any warnings |  | false |
 | `suppressWarnings` | 不生成警告 |  | false |
 | `verbose` | 启用详细日志输出 |  | false |
 | `freeCompilerArgs` | 附加编译器参数的列表 |  | [] |
+
+### JVM 与 JS 的公共属性
+
+| Name | Description | Possible values |Default value |
+|------|-------------|-----------------|--------------|
+| `apiVersion` | 只允许使用来自捆绑库的指定版本中的声明 | "1.0", "1.1", "1.2", "1.3 (EXPERIMENTAL)" |  |
+| `languageVersion` | 提供与指定语言版本源代码兼容性 | "1.0", "1.1", "1.2", "1.3 (EXPERIMENTAL)" |  |
 
 ### JVM 特有的属性
 
@@ -279,16 +299,17 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
 
 | 名称 | 描述        | 可能的值        |默认值        |
 |------|-------------|-----------------|--------------|
+| `friendModulesDisabled` | Disable internal declaration export |  | false |
 | `main` | 是否要调用 main 函数 | "call"、 "noCall" | "call" |
 | `metaInfo` | 使用元数据生成 .meta.js 与 .kjsm 文件。用于创建库 |  | true |
 | `moduleKind` | 编译器生成的模块类型 | "plain"、 "amd"、 "commonjs"、 "umd" | "plain" |
 | `noStdlib` | 不使用捆绑的 Kotlin stdlib |  | true |
 | `outputFile` | 输出文件路径 |  |  |
 | `sourceMap` | 生成源代码映射（source map） |  | false |
-| `sourceMapEmbedSources` | 将源代码嵌入到源代码映射中 | "never"、 "always"、 "inlining" | "inlining" |
+| `sourceMapEmbedSources` | 将源代码嵌入到源代码映射中 | "never"、 "always"、 "inlining" | |
 | `sourceMapPrefix` | 源代码映射中路径的前缀 |  |  |
 | `target` | 生成指定 ECMA 版本的 JS 文件 | "v5" | "v5" |
-| `typedArrays` | 将原生数组转换为 JS 带类型数组 |  | false |
+| `typedArrays` | 将原生数组转换为 JS 带类型数组 |  | true |
 
 
 ## 生成文档

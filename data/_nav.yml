@@ -291,6 +291,8 @@ tutorials:
       content:
         - url: /docs/tutorials/native/basic-kotlin-native-app.html
           title: 基本 Kotlin/Native 应用程序
+        - url: /docs/tutorials/native/interop-with-c.html
+          title: 与 C 语言库互操作
 
     - title: 协程
       content:
