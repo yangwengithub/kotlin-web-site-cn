@@ -102,10 +102,10 @@ for (item in listWithNulls) {
 }
 ```
 
-A safe call can also be placed on the left side of an assignment. Then, if one of the receivers in the safe calls chain is null, the assignment is skipped, and the expression on the right is not evaluated at all:
+安全调用也可以出现在赋值的左侧。这样，如果调用链中的任何一个接收者为空都会跳过赋值，而右侧的表达式根本不会求值：
 
 ``` kotlin
-// If either `person` or `person.department` is null, the function is not called:
+// 如果 `person` 或者 `person.department` 其中之一为空，都不会调用该函数：
 person?.department?.head = managersPool.getManager()
 ```
 
