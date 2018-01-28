@@ -217,11 +217,11 @@ kotlin {
 archivesBaseName = 'myExampleProject_lib'
 ```
 
-## Gradle Build Cache support (since 1.2.20)
+## Gradle 构建缓存支持（自 1.2.20 起）
 
-The Kotlin plugin supports [Gradle Build Cache](https://guides.gradle.org/using-build-cache/) (Gradle version 4.3 and above is required; caching is disabled with lower versions).
+Kotlin 插件支持 [Gradle 构建缓存](https://guides.gradle.org/using-build-cache/)（需要 Gradle 4.3 及以上版本；低版本则禁用缓存）。
 
-The kapt annotation processing tasks are not cached by default since annotation processors run arbitrary code that may not necessarily transform the task inputs into the outputs, might access and modify the files that are not tracked by Gradle etc. To enable caching for kapt anyway, add the following lines to the build script:
+由于注解处理器运行的任意代码可能不一定会将任务输入转换为输出、可能访问与修改 Gradle 未跟踪的文件等，因此默认不缓存 kapt 注解处理任务。要启用 kapt 缓存，请将以下列几行添加到构建脚本中：
 
 ``` groovy
 kapt {
@@ -229,7 +229,7 @@ kapt {
 }
 ```
 
-To disable the caching for all Kotlin tasks, set the system property flag `kotlin.caching.enabled` to `false` (run the build with the argument `-Dkotlin.caching.enabled=false`).
+要禁用所有 Kotlin 任务的缓存，请将系统属性标志 `kotlin.caching.enabled` 设置为 `false`（运行构建带上参数 `-Dkotlin.caching.enabled=false`）。
 
 ## 编译器选项
 
@@ -272,7 +272,7 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
 
 | 名称 | 描述        | 可能的值        |默认值        |
 |------|-------------|-----------------|--------------|
-| `allWarningsAsErrors` | Report an error if there are any warnings |  | false |
+| `allWarningsAsErrors` | 任何警告都报告为错误 |  | false |
 | `suppressWarnings` | 不生成警告 |  | false |
 | `verbose` | 启用详细日志输出 |  | false |
 | `freeCompilerArgs` | 附加编译器参数的列表 |  | [] |
@@ -299,7 +299,7 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
 
 | 名称 | 描述        | 可能的值        |默认值        |
 |------|-------------|-----------------|--------------|
-| `friendModulesDisabled` | Disable internal declaration export |  | false |
+| `friendModulesDisabled` | 禁用内部声明导出 |  | false |
 | `main` | 是否要调用 main 函数 | "call"、 "noCall" | "call" |
 | `metaInfo` | 使用元数据生成 .meta.js 与 .kjsm 文件。用于创建库 |  | true |
 | `moduleKind` | 编译器生成的模块类型 | "plain"、 "amd"、 "commonjs"、 "umd" | "plain" |
