@@ -265,23 +265,23 @@ foo(items = *intArrayOf(1))
 
 ### Kotlin 标准库构件与拆分包
 
-The Kotlin standard library is now fully compatible with the Java 9 module system, which forbids split packages 
-(multiple jar files declaring classes in the same package). In order to support that, new artifacts `kotlin-stdlib-jdk7` 
-and `kotlin-stdlib-jdk8` are introduced, which replace the old `kotlin-stdlib-jre7` and `kotlin-stdlib-jre8`.
+Kotlin 标准库现在完全兼容 Java 9 的模块系统，它禁止拆分包
+（多个 jar 文件声明的类在同一包中）。为了支持这点，我们引入了新的 `kotlin-stdlib-jdk7`
+与 `kotlin-stdlib-jdk8`，它们取代了旧版的 `kotlin-stdlib-jre7` 与 `kotlin-stdlib-jre8`。
  
-The declarations in the new artifacts are visible under the same package names from the Kotlin point of view, but have 
-different package names for Java. Therefore, switching to the new artifacts will not require any changes to 
-your source code.
+在 Kotlin 看来新的构件中的声明在相同的包名内，而在
+Java 看来有不同的包名。因此，切换到新的构件无需修改任何<!--
+-->源代码。
 
-Another change made to ensure compatibility with the new module system is removing the deprecated 
-declarations in the `kotlin.reflect` package from the `kotlin-reflect` library. If you were using them, you need 
-to switch to using the declarations in the `kotlin.reflect.full` package, which is supported since Kotlin 1.1.
+确保与新的模块系统兼容的另一处变更是在 `kotlin-reflect` 库中删除了
+`kotlin.reflect` 包中弃用的声明。如果你正在使用它们，你需要<!--
+-->切换到使用 `kotlin.reflect.full` 包中的声明，自 Kotlin 1.1 起就支持这个包了。
 
 ### windowed、chunked、zipWithNext
 
-New extensions for `Iterable<T>`, `Sequence<T>`, and `CharSequence` cover such use cases as buffering or 
-batch processing (`chunked`), sliding window and computing sliding average (`windowed`) , and processing pairs 
-of subsequent items (`zipWithNext`):
+用于 `Iterable<T>`、 `Sequence<T>` 与 `CharSequence` 的新的扩展覆盖了这些应用场景：缓存或<!--
+-->批处理（`chunked`）、 滑动窗口与计算滑动均值（`windowed`）以及处理成对<!--
+-->的后续条目（`zipWithNext`）：
 
 
 ```kotlin
@@ -308,8 +308,8 @@ fun main(args: Array<String>) {
 
 ### fill、replaceAll、shuffle/shuffled
 
-A set of extension functions was added for manipulating lists: `fill`, `replaceAll` and `shuffle` for `MutableList`, 
-and `shuffled` for read-only `List`:
+添加了一些用于操作列表的扩展函数：`MutableList` 的 `fill`、`replaceAll` 与 `shuffle`，
+以及只读 `List` 的 `shuffled`：
 
 
 ```kotlin
@@ -329,59 +329,59 @@ fun main(args: Array<String>) {
 }
 ```
 
-### kotlin-stdlib 中的数学操作
+### kotlin-stdlib 中的数学运算
 
-Satisfying the longstanding request, Kotlin 1.2 adds the `kotlin.math` API for math operations that is common 
-for JVM and JS and contains the following:
+为满足由来已久的需求，Kotlin 1.2 添加了 JVM 与 JS 公用的用于数学运算的 `kotlin.math` API，
+包含以下内容：
 
-* Constants: `PI` and `E`;
-* Trigonometric: `cos`, `sin`, `tan` and inverse of them: `acos`, `asin`, `atan`, `atan2`;
-* Hyperbolic: `cosh`, `sinh`, `tanh` and their inverse: `acosh`, `asinh`, `atanh`
-* Exponentation: `pow` (an extension function), `sqrt`, `hypot`, `exp`, `expm1`;
-* Logarithms: `log`, `log2`, `log10`, `ln`, `ln1p`;
-* Rounding:
-    * `ceil`, `floor`, `truncate`, `round` (half to even) functions;
-    * `roundToInt`, `roundToLong` (half to integer) extension functions;
-* Sign and absolute value:
-    * `abs` and `sign` functions;
-    * `absoluteValue` and `sign` extension properties;
-    * `withSign` extension function;
-* `max` and `min` of two values;
-* Binary representation:
-    * `ulp` extension property;
-    * `nextUp`, `nextDown`, `nextTowards` extension functions;
-    * `toBits`, `toRawBits`, `Double.fromBits` (these are in the `kotlin` package).
+* 常量：`PI` 与 `E`；
+* 三角函数：`cos`、 `sin`、 `tan` 及其反函数：`acos`、 `asin`、 `atan`、 `atan2`；
+* 双曲函数：`cosh`、 `sinh`、 `tanh` 及其反函数：`acosh`、 `asinh`、 `atanh`
+* 指数函数：`pow`（扩展函数）、 `sqrt`、 `hypot`、 `exp`、 `expm1`；
+* 对数函数：`log`、 `log2`、 `log10`、 `ln`、 `ln1p`；
+* 取整:
+    * `ceil`、 `floor`、 `truncate`、 `round`（奇进偶舍）函数；
+    * `roundToInt`、 `roundToLong`（四舍五入）扩展函数；
+* 符号与绝对值：
+    * `abs` 与 `sign` 函数；
+    * `absoluteValue` 与 `sign` 扩展属性；
+    * `withSign` 扩展函数；
+* 两个数的最值函数：`max` 与 `min`；
+* 二进制表示：
+    * `ulp` 扩展属性；
+    * `nextUp`、 `nextDown`、 `nextTowards` 扩展函数；
+    * `toBits`、 `toRawBits`、 `Double.fromBits`（这些在 `kotlin` 包中）。
 
-The same set of functions (but without constants) is also available for `Float` arguments.
+这些函数同样也有 `Float` 参数版本（但不包括常量）。
 
 ### 用于 BigInteger 与 BigDecimal 的操作符与转换
 
-Kotlin 1.2 introduces a set of functions for operating with `BigInteger` and `BigDecimal` and creating them 
-from other numeric types. These are:
+Kotlin 1.2 引入了一些使用  `BigInteger` 与 `BigDecimal` 运算以及由其他<!--
+-->数字类型创建它们的函数。具体如下：
 
-* `toBigInteger` for `Int` and `Long`;
-* `toBigDecimal` for `Int`, `Long`, `Float`, `Double`, and `BigInteger`;
-* Arithmetic and bitwise operator functions:
-    * Binary operators  `+`, `-`, `*`, `/`, `%` and infix functions `and`, `or`, `xor`, `shl`, `shr`;
-    * Unary operators `-`, `++`, `--`, and a function `inv`.
+* `toBigInteger` 用于 `Int` 与 `Long`；
+* `toBigDecimal` 用于 `Int`、 `Long`、 `Float`、 `Double` 以及 `BigInteger`；
+* 算术与位运算操作符函数：
+    * 二元操作符  `+`、 `-`、 `*`、 `/`、 `%` 以及中缀函数 `and`、 `or`、 `xor`、 `shl`、 `shr`；
+    * 一元操作符 `-`、 `++`、 `--` 以及函数 `inv`。
 
 ### 浮点数到比特的转换
 
-New functions were added for converting `Double` and `Float` to and from their bit representations:
+添加了用于将 `Double` 及 `Float` 与其比特表示形式相互转换的函数：
 
-* `toBits` and `toRawBits` returning `Long` for `Double` and `Int` for `Float`;
-* `Double.fromBits` and `Float.fromBits` for creating floating point numbers from the bit representation.
+* `toBits` 与 `toRawBits` 对于 `Double` 返回 `Long` 而对于 `Float` 返回 `Int`；
+* `Double.fromBits` 与 `Float.fromBits` 用于有相应比特表示形式创建浮点数。
 
-### Regex is now serializable
+### 正则表达式现在可序列化
 
-The `kotlin.text.Regex` class has become `Serializable` and can now be used in serializable hierarchies.
+`kotlin.text.Regex` 类现在已经是 `Serializable` 的了并且可用在可序列化的继承结构中。
 
-### Closeable.use calls Throwable.addSuppressed if available
+### 如果可用，Closeable.use 会调用 Throwable.addSuppressed
 
-The `Closeable.use` function calls `Throwable.addSuppressed` when an exception is thrown during closing the resource 
-after some other exception. 
+当在其他异常之后关闭资源期间抛出一个异常，`Closeable.use` 函数会调用 `Throwable.addSuppressed`
+。
 
-To enable this behavior you need to have `kotlin-stdlib-jdk7` in your dependencies.
+要启用这个行为，需要依赖项中有 `kotlin-stdlib-jdk7`。
 
 ## JVM 后端
 
