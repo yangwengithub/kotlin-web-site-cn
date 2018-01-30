@@ -87,7 +87,7 @@ class Node<T>(val value: T, val next: () -> Node<T>)
 
 fun main(args: Array<String>) {
     //sampleStart
-    // A cycle of three nodes:
+    // 三个节点的环：
     lateinit var third: Node<Int>
     
     val second = Node(2, next = { third })
@@ -215,7 +215,7 @@ fun main(args: Array<String>) {
 `this:: foo`。这也使在引用外部接收者的成员的 lambda 表达式中使用可调用引用更加方便<!--
 -->。
 
-### 阻断性改动：try 块后可靠智能转换
+### 阻断性变更：try 块后可靠智能转换
 
 Kotlin 以前将 `try` 块中的赋值语句用于块后的智能转换，这可能会破坏类型安全与空安全<!--
 -->并引发运行时故障。这个版本修复了该问题，使智能转换更加严格，但可能会破坏一些<!--
@@ -385,64 +385,64 @@ Kotlin 1.2 引入了一些使用  `BigInteger` 与 `BigDecimal` 运算以及由�
 
 ## JVM 后端
 
-### Constructor calls normalization
+### 构造函数调用规范化
 
-Ever since version 1.0, Kotlin supported expressions with complex control flow, such as try-catch expressions and 
-inline function calls. Such code is valid according to the Java Virtual Machine specification. Unfortunately, some 
-bytecode processing tools do not handle such code quite well when such expressions are present in the arguments 
-of constructor calls.
+自 1.0 版起，Kotlin 就已支持带有复杂控制流的表达式，诸如 try-catch 表达式以及<!--
+-->内联函数。根据 Java 虚拟机规范这样的代码是有效的。不幸的是，
+当这样的表达式出现在构造函数调用的参数中时，一些字节码处理工具不能很好地处理这种代码
+。
 
-To mitigate this problem for the users of such bytecode processing tools, we’ve added a command-line 
-option (`-Xnormalize-constructor-calls=MODE`) that tells the compiler to generate more Java-like bytecode for such 
-constructs. Here `MODE` is one of:
+为了缓解这种字节码处理工具用户的这一问题，我们添加了一个命令行<!--
+-->选项（`-Xnormalize-constructor-calls=模式`），告诉编译器为这样的构造过程生成更接近 Java 的字节码
+。其中`模式`是下列之一：
 
-* `disable` (default) – generate bytecode in the same way as in Kotlin 1.0 and 1.1;
-* `enable` – generate Java-like bytecode for constructor calls. This can change the order in which the classes are 
- loaded and initialized;
-* `preserve-class-initialization` – generate Java-like bytecode for constructor calls, ensuring that the class 
-initialization order is preserved. This can affect overall performance of your application; use it only if you have 
-some complex state shared between multiple classes and updated on class initialization.
+* `disable`（默认）——以与 Kotlin 1.0 即 1.1 相同的方式生成字节码；
+* `enable`——为构造函数调用生成类似 Java 的字节码。 这可能会改变类加载与初始化的顺序
+；
+* `preserve-class-initialization`——为构造函数调用生成类似 Java 的字节码，并确保类<!--
+-->初始化顺序得到保留。这可能会影响应用程序的整体性能；仅用在<!--
+-->多个类之间共享一些复杂状态并在类初始化时更新的场景中。
 
-The “manual” workaround is to store the values of sub-expressions with control flow in variables, instead of 
-evaluating them directly inside the call arguments. It’s similar to `-Xnormalize-constructor-calls=enable`.
+“人工”解决办法是将具有控制流的子表达式的值存储在变量中，而不是<!--
+-->直接在调用参数内对其求值。这与 `-Xnormalize-constructor-calls=enable` 类似。
 
-### Java-default method calls 
+### Java 默认方法调用
 
-Before Kotlin 1.2, interface members overriding Java-default methods while targeting JVM 1.6 produced a warning on 
-super calls: `Super calls to Java default methods are deprecated in JVM target 1.6. Recompile with '-jvm-target 1.8'`. 
-In Kotlin 1.2, there's an **error** instead, thus requiring any such code to be compiled with JVM target 1.8.
+在 Kotlin 1.2 之前，针对 JVM 1.6 的接口成员覆盖 Java 默认方法会产生一个关于<!--
+-->超类型调用的警告：`Super calls to Java default methods are deprecated in JVM target 1.6. Recompile with '-jvm-target 1.8'`（“针对 JVM 1.6 的 Java 默认方法的超类型调用已弃用，请使用‘-jvm-target 1.8’重新编译”）。
+在 Kotlin 1.2 中，这是一个**错误 **，因此这样的代码都需要针对 JVM 1.8 编译。
 
-### Breaking change: consistent behavior of x.equals(null) for platform types
+### 阻断性变更：平台类型 x.equals(null) 的一致行为
 
-Calling `x.equals(null)` on a platform type that is mapped to a Java primitive 
-(`Int!`, `Boolean!`, `Short`!, `Long!`, `Float!`, `Double!`, `Char!`) incorrectly returned `true` when `x` was null. 
-Starting with Kotlin 1.2, calling `x.equals(...)` on a null value of a platform type **throws an NPE** 
-(but `x == ...` does not).
+在映射到 Java 原生类型
+（`Int!`、 `Boolean!`、 `Short!`、 `Long!`、 `Float!`、 `Double!`、 `Char!`）的平台类型上调用 `x.equals(null)`，当 `x` 为 `null` 时错误地返回了 `true`。
+自 Kotlin 1.2 起，在平台类型的空值上调用 `x.equals(……)` 都会**抛出 NPE**
+（但 `x == ...` 不会）。
 
-To return to the pre-1.2 behavior, pass the flag `-Xno-exception-on-explicit-equals-for-boxed-null` to the compiler.
+要返回到 1.2 之前的行为，请将标志 `-Xno-exception-on-explicit-equals-for-boxed-null` 传给编译器。
 
-### Breaking change: fix for platform null escaping through an inlined extension receiver
+### 阻断性变更：修正平台 null 透过内联扩展接收者逃逸
 
-Inline extension functions that were called on a null value of a platform type did not check the receiver for null and 
-would thus allow null to escape into the other code. Kotlin 1.2 forces this check at the call sites, throwing an exception
-if the receiver is null.
+在平台类型的空值上调用内联扩展函数并没有检测接收者是否为 null，
+因而允许 null 逃逸到其他代码中。Kotlin 1.2 在调用处强制执行这项检测，
+如果接收者为空就抛出异常。
 
-To switch to the old behavior, pass the fallback flag `-Xno-receiver-assertions` to the compiler.
+要切换到旧版行为，请将回退标志 `-Xno-receiver-assertions` 传给编译器。
 
 ## JavaScript 后端
 
-### TypedArrays support enabled by default
+### 默认启用 TypedArrays 支持
 
-The JS typed arrays support that translates Kotlin primitive arrays, such as `IntArray`, `DoubleArray`, 
-into [JavaScript typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), that was 
-previously an opt-in feature, has been enabled by default.
+将 Kotlin 原生数组（如 `IntArray`、 `DoubleArray` 等）
+翻译为 [JavaScript 有类型数组](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays)的 JS 有类型数组支持<!--
+-->之前是选择性加入的功能，现在已默认启用。
 
-## Tools
+## 工具
 
-### Warnings as errors
+### 警告作为错误
 
-The compiler now provides an option to treat all warnings as errors. Use `-Werror` on the command line, or the 
-following Gradle snippet:
+编译器现在提供一个将所有警告视为错误的选项。可在命令行中使用 `-Werror`，或者<!--
+-->在 Gradle 中使用以下代码片段：
 
 ```groovy
 compileKotlin {
