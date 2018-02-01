@@ -9,69 +9,69 @@ title: "编码规范"
 
 此页面包含当前 Kotlin 语言的编码风格
 
-> Note: To configure the IntelliJ formatter according to this style guide, please install Kotlin plugin version
-> 1.2.20 or newer, go to Settings | Editor | Code Style | Kotlin, click on "Set from..." link in the upper
-> right corner, and select "Predefined style / Kotlin style guide" from the menu.
+> 注意：如需根据本风格指南配置 IntelliJ 格式化程序，请安装 Kotlin 插件
+> 1.2.20 或者更高版本，转到“Settings | Editor | Code Style | Kotlin”，点击右<!--
+> -->上角的“Set from...”链接，并从菜单中选择“Predefined style / Kotlin style guide”。
 
-## Source code organization
+## 源代码组织
 
-### Directory structure
+### 目录结构
 
-In mixed-language projects, Kotlin source files should reside in the same source root as the Java source files,
-and follow the same directory structure (each file should be stored in the directory corresponding to each package
-statement).
+在混合语言项目中，Kotlin 源文件应当与 Java 源文件位于同一源文件根目录，
+并遵循相同的目录结构（每个文件应存储在与其 package 语句相对应的目录中
+）。
 
-In pure Kotlin projects, the recommended directory structure is to follow the package structure with
-the common root package omitted (e.g. if all the code in the project is in the "org.example.kotlin" package and its
-subpackages, files with the "org.example.kotlin" package should be placed directly under the source root, and
-files in "org.example.kotlin.foo.bar" should be in the "foo/bar" subdirectory of the source root).
+在纯 Kotlin 项目中，推荐的目录结构遵循省略了公共根包的包结构
+（例如，如果项目中的所有代码都位于“org.example.kotlin”包及其<!--
+-->子包中，那么“org.example.kotlin”包的文件应该直接放在源代码根目录下，而
+“org.example.kotlin.foo.bar”中的文件应该放在源代码根目录下的“foo/bar”子目录中）。
 
-### Source file names
+### 源文件名称
 
-If a Kotlin file contains a single class (potentially with related top-level declarations), its name should be the same
-as the name of the class, with the .kt extension appended. If a file contains multiple classes, or only top-level declarations,
-choose a name describing what the file contains, and name the file accordingly. Use camel humps with an uppercase first letter
-(e.g. `ProcessDeclarations.kt`).
+如果 Kotlin 文件包含单个类（以及可能相关的顶层声明），则文件名应与<!--
+-->该类的名称相同，并追加 .kt 扩展名。如果文件包含多个类或只包含顶层声明，
+那么选择一个描述该文件所包含内容的名称，并以此命名该文件。使用首字母大写的驼峰风格
+（例如 `ProcessDeclarations.kt`）。
 
-The name of the file should describe what the code in the file does. Therefore, you should avoid using meaningless
-words such as "Util" in file names.
+文件的名称应该描述文件中代码的作用。因此，应避免在文件名中使用<!--
+-->诸如“Util”之类的无意义词语。
 
-### Source file organization
+### 源文件组织
 
-Placing multiple declarations (classes, top-level functions or properties) in the same Kotlin source file is encouraged
-as long as these declarations are closely related to each other semantically and the file size remains reasonable
-(not exceeding a few hundred lines).
+鼓励多个声明（类、顶级函数或者属性）放在同一个 Kotlin 源文件中，
+只要这些声明在语义上彼此紧密关联并且文件保持合理大小
+（不超过几百行）。
 
-In particular, when defining extension functions for a class which are relevant for all clients of this class,
-put them in the same file where the class itself is defined. When defining extension functions that make sense 
-only for a specific client, put them next to the code of that client. Do not create files just to hold 
-"all extensions of Foo".
+特别是在为类定义与类的所有客户都相关的扩展函数时，
+请将它们放在与类自身定义相同的地方。而在定义仅对<!--
+-->指定客户有意义的扩展函数时，请将它们放在紧挨该客户代码之后。不要只是为了保存
+“Foo 的所有扩展函数”而创建文件。
 
-### Class layout
+### 类布局
 
-Generally, the contents of a class is sorted in the following order:
+通常，一个类的内容按以下顺序排列：
 
-- Property declarations and initializer blocks
-- Secondary constructors
-- Method declarations
-- Companion object
+- 属性声明与初始化块
+- 次构造函数
+- 方法声明
+- 伴生对象
 
-Do not sort the method declarations alphabetically or by visibility, and do not separate regular methods
-from extension methods. Instead, put related stuff together, so that someone reading the class from top to bottom would
-be able to follow the logic of what's happening. Choose an order (either higher-level stuff first, or vice versa)
-and stick to it.
+不要按字母顺序或者可见性对方法声明排序，也不要将常规方<!--
+-->法与扩展方法分开。而是要把相关的东西放在一起，这样从上到下<!--
+-->阅读类的人就能够跟进所发生的事情的逻辑。选择一个顺序（高级别优先，或者相反）
+并坚持下去。
 
-Put nested classes next to the code that uses those classes. If the classes are intended to be used externally and aren't
-referenced inside the class, put them in the end, after the companion object.
+将嵌套类放在紧挨使用这些类的代码之后。如果打算在外部使用嵌套类，并且类中没有<!--
+-->引用这些类，那么把它们放到末尾，在伴生对象之后。
 
-### Interface implementation layout
+### 接口实现布局
 
-When implementing an interface, keep the implementing members in the same order as members of the interface (if necessary,
-interspersed with additional private methods used for the implementation)
+在实现一个接口时，实现成员的顺序应该与该接口的成员顺序相同（如果需要，
+还要插入用于实现的额外的私有方法）
 
-### Overload layout
+### 重载布局
 
-Always put overloads next to each other in a class.
+在类中总是将重载放在一起。
 
 ## Naming rules
 
