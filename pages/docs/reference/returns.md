@@ -53,51 +53,114 @@ Kotlin 有函数字面量、局部函数和对象表达式。因此 Kotlin 的�
 标签限制的 *return*{: .keyword } 允许我们从外层函数返回。
 最重要的一个用途就是从 lambda 表达式中返回。回想一下我们这么写的时候：
 
+<div class="sample" markdown="1" data-min-compiler-version="1.2">
+
 ``` kotlin
+//sampleStart
 fun foo() {
-    ints.forEach {
-        if (it == 0) return  // nonlocal return from inside lambda directly to the caller of foo()
+    listOf(1, 2, 3, 4, 5).forEach {
+        if (it == 3) return // non-local return directly to the caller of foo()
         print(it)
     }
+    println("this point is unreachable")
+}
+//sampleEnd
+
+fun main(args: Array<String>) {
+    foo()
 }
 ```
+</div>
 
 这个 *return*{: .keyword } 表达式从最直接包围它的函数即 `foo` 中返回。
 （注意，这种非局部的返回只支持传给[内联函数](inline-functions.html)的 lambda 表达式。）
 如果我们需要从 lambda 表达式中返回，我们必须给它加标签并用以限制 *return*{: .keyword }。
 
+<div class="sample" markdown="1" data-min-compiler-version="1.2">
+
 ``` kotlin
+//sampleStart
 fun foo() {
-    ints.forEach lit@{
-        if (it == 0) return@lit
+    listOf(1, 2, 3, 4, 5).forEach lit@{
+        if (it == 3) return@lit // local return to the caller of the lambda, i.e. the forEach loop
         print(it)
     }
+    print(" done with explicit label")
+}
+//sampleEnd
+
+fun main(args: Array<String>) {
+    foo()
 }
 ```
+</div>
 
 现在，它只会从 lambda 表达式中返回。通常情况下使用隐式标签更方便。
 该标签与接受该 lambda 的函数同名。
 
+<div class="sample" markdown="1" data-min-compiler-version="1.2">
+
 ``` kotlin
+//sampleStart
 fun foo() {
-    ints.forEach {
-        if (it == 0) return@forEach
+    listOf(1, 2, 3, 4, 5).forEach {
+        if (it == 3) return@forEach // local return to the caller of the lambda, i.e. the forEach loop
         print(it)
     }
+    print(" done with implicit label")
+}
+//sampleEnd
+
+fun main(args: Array<String>) {
+    foo()
 }
 ```
+</div>
 
 或者，我们用一个[匿名函数](lambdas.html#匿名函数)替代 lambda 表达式。
 匿名函数内部的 *return*{: .keyword } 语句将从该匿名函数自身返回
 
+<div class="sample" markdown="1" data-min-compiler-version="1.2">
+
 ``` kotlin
+//sampleStart
 fun foo() {
-    ints.forEach(fun(value: Int) {
-        if (value == 0) return  // local return to the caller of the anonymous fun, i.e. the forEach loop
+    listOf(1, 2, 3, 4, 5).forEach(fun(value: Int) {
+        if (value == 3) return  // local return to the caller of the anonymous fun, i.e. the forEach loop
         print(value)
     })
+    print(" done with anonymous function")
+}
+//sampleEnd
+
+fun main(args: Array<String>) {
+    foo()
 }
 ```
+</div>
+
+Note that the use of local returns in previous three examples is similar to the use of *continue*{: .keyword } in regular loops. There is no direct equivalent for *break*{: .keyword }, but it can be simulated by adding another nesting lambda and non-locally returning from it:
+
+<div class="sample" markdown="1" data-min-compiler-version="1.2">
+
+``` kotlin
+//sampleStart
+fun foo() {
+    run loop@{
+        listOf(1, 2, 3, 4, 5).forEach {
+            if (it == 3) return@loop // non-local return from the lambda passed to run
+            print(it)
+        }
+    }
+    print(" done with nested loop")
+}
+//sampleEnd
+
+fun main(args: Array<String>) {
+    foo()
+}
+```
+</div>
 
 当要返一个回值的时候，解析器优先选用标签限制的 return，即
 

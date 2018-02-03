@@ -64,7 +64,16 @@ runDceKotlinJs.keep "kotlin-js-example_main.org.jetbrains.kotlin.examples.toKeep
 
 请注意，如果函数具有参数，它的名称会被修饰，因此在 keep 指令中应该使用修饰后的名称。
 
+### Development mode
 
+Running DCE takes a bit of extra time each build, and the output size does not matter during development. You can improve development builds time by making the DCE tool skip actual dead code elimination with the `dceOptions.devMode` flag of the DCE tasks.
+
+For example, to disable DCE based on a custom condition for the `main` source set and always for the `test` code, add the following lines to the build script:
+
+```groovy
+runDceKotlinJs.dceOptions.devMode = isDevMode
+runDceTestKotlinJs.dceOptions.devMode = true 
+```
 # 示例
 
 显示如何将 Kotlin 与 DCE 及 webpack 集成并得到一个小的捆绑的完整示例，

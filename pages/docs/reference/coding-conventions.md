@@ -9,9 +9,23 @@ title: "编码规范"
 
 本页包含当前 Kotlin 语言的编码风格
 
-> 注意：如需根据本风格指南配置 IntelliJ 格式化程序，请安装 Kotlin 插件
-> 1.2.20 或更高版本，转到“Settings | Editor | Code Style | Kotlin”，点击右<!--
-> -->上角的“Set from...”链接，并从菜单中选择“Predefined style / Kotlin style guide”。
+* [Source code organization](#source-code-organization)
+* [Naming rules](#naming-rules)
+* [Formatting](#formatting)
+* [Documentation comments](#documentation-comments)
+* [Avoiding redundant constructs](#avoiding-redundant-constructs)
+* [Idiomatic use of language features](#idiomatic-use-of-language-features)
+* [Coding conventions for libraries](#coding-conventions-for-libraries)
+
+### Applying the style guide
+
+如需根据本风格指南配置 IntelliJ 格式化程序，请安装 Kotlin 插件
+1.2.20 或更高版本，转到“Settings | Editor | Code Style | Kotlin”，点击右<!--
+-->上角的“Set from...”链接，并从菜单中选择“Predefined style / Kotlin style guide”。
+
+To verify that your code is formatted according to the style guide, go to the inspection settings and enable
+the "Kotlin | Style issues | File is not formatted according to project settings" inspection. Additional
+inspections that verify other issues described in the style guide (such as naming conventions) are enabled by default.
 
 ## 源代码组织
 
@@ -428,7 +442,7 @@ fun f(x: String) =
     x.length
 ```
 
-## Property formatting
+### Property formatting
 
 For very simple read-only properties, consider one-line formatting:
 
