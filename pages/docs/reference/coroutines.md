@@ -34,10 +34,10 @@ suspend fun doSomething(foo: Foo): Bar {
 }
 ```
 
-这样的函数称为*挂起函数*，因为调用它们可能挂起协程（如果相关调用的结果已经可用，库可以决定继续进行而不挂起）。挂起函数能够以与普通函数相同的方式获取参数和返回值，但它们只能从协程和其他挂起函数中调用。as well as function literals inlined into those.
-    
+这样的函数称为*挂起函数*，因为调用它们可能挂起协程（如果相关调用的结果已经可用，库可以决定继续进行而不挂起）。挂起函数能够以与普通函数相同的方式获取参数和返回值，但它们只能从协程、其他挂起函数以及内联到其中的函数字面值中调用。
+
 事实上，要启动协程，必须至少有一个挂起函数，它通常是匿名的（即它是一个挂起 lambda 表达式）。让我们来看一个例子，一个简化的 `async()` 函数（源自 [`kotlinx.coroutines`](#kotlincoroutines-中的生成器-api) 库）：
-    
+
 ``` kotlin
 fun <T> async(block: suspend () -> T)
 ``` 
@@ -65,7 +65,7 @@ async {
 
 更多关于 `async/await` 函数实际在 `kotlinx.coroutines` 中如何工作的信息可以在[这里](https://github.com/Kotlin/kotlinx.coroutines/blob/master/coroutines-guide.md#composing-suspending-functions)找到。
 
-Note that suspending functions `await()` and `doSomething()` cannot be called from function literals that are not inlined into a suspending function body and from regular function like `main()`:
+请注意，挂起函数 `await()` 与 `doSomething()` 不能在没有内联到挂起函数体的函数字面值以及像 `main()` 这样的普通函数中调用：
 
 ``` kotlin
 fun main(args: Array<String>) {
@@ -73,12 +73,12 @@ fun main(args: Array<String>) {
     
     async { 
         ...
-        computations.forEach { // `forEach` is an inline function, the lambda is inlined
+        computations.forEach { // `forEach` 是一个内联函数，该 lambda 表达式是内联的
             it.await() // OK
 }
             
-        thread { // `thread` is not an inline function, so the lambda is not inlined
-            doSomething() // ERROR
+        thread { // `thread` 不是内联函数，所以该 lambda 表达式并非内联的
+            doSomething() // 错误
         }
     }
 }
