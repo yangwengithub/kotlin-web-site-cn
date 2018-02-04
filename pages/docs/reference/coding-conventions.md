@@ -9,23 +9,23 @@ title: "编码规范"
 
 本页包含当前 Kotlin 语言的编码风格
 
-* [Source code organization](#source-code-organization)
-* [Naming rules](#naming-rules)
-* [Formatting](#formatting)
-* [Documentation comments](#documentation-comments)
-* [Avoiding redundant constructs](#avoiding-redundant-constructs)
-* [Idiomatic use of language features](#idiomatic-use-of-language-features)
-* [Coding conventions for libraries](#coding-conventions-for-libraries)
+* [源代码组织](#源代码组织)
+* [命名规则](#命名规则)
+* [格式化](#格式化)
+* [文档注释](#文档注释)
+* [避免重复结构](#避免重复结构)
+* [语言特性的惯用法](#语言特性的惯用法)
+* [库的编码规范](#库的编码规范)
 
-### Applying the style guide
+### 应用风格指南
 
 如需根据本风格指南配置 IntelliJ 格式化程序，请安装 Kotlin 插件
 1.2.20 或更高版本，转到“Settings | Editor | Code Style | Kotlin”，点击右<!--
 -->上角的“Set from...”链接，并从菜单中选择“Predefined style / Kotlin style guide”。
 
-To verify that your code is formatted according to the style guide, go to the inspection settings and enable
-the "Kotlin | Style issues | File is not formatted according to project settings" inspection. Additional
-inspections that verify other issues described in the style guide (such as naming conventions) are enabled by default.
+如需验证代码已按风格指南格式化，请转到探查设置并启用
+“Kotlin | Style issues | File is not formatted according to project settings”探查项。
+验证风格指南中描述的其他问题（如命名约定）的附加探查项默认已启用。
 
 ## 源代码组织
 
@@ -192,7 +192,7 @@ class C {
 而如果缩写更长一些，就只大写首首字母（`XmlFormatter`、 `HttpInputStream`）。
 
 
-## Formatting
+## 格式化
 
 In most cases, Kotlin follows the Java coding conventions.
 
@@ -591,7 +591,7 @@ foo {
 }
 ```
 
-## Documentation comments
+## 文档注释
 
 For longer documentation comments, place the opening `/**` on a separate line and begin each subsequent line
 with an asterisk:
@@ -631,7 +631,7 @@ fun abs(number: Int) = ...
 fun abs(number: Int) = ...
 ```
 
-## Avoiding redundant constructs
+## 避免重复结构
 
 In general, if a certain syntactic construction in Kotlin is optional and highlighted by the IDE
 as redundant, you should omit it in your code. Do not leave unnecessary syntactic elements in code
@@ -660,7 +660,7 @@ println("$name has ${children.size} children")
 ```
 
 
-## Idiomatic use of language features
+## 语言特性的惯用法
 
 ### Immutability
 
@@ -951,7 +951,7 @@ with(person) {
 ```
 
 
-## Coding conventions for libraries
+## 库的编码规范
 
 When writing libraries, it's recommended to follow an additional set of rules to ensure API stability:
 
