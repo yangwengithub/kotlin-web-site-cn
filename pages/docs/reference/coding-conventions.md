@@ -7,18 +7,32 @@ title: "编码规范"
 
 # 编码规范
 
-此页面包含当前 Kotlin 语言的编码风格
+本页包含当前 Kotlin 语言的编码风格
 
-> 注意：如需根据本风格指南配置 IntelliJ 格式化程序，请安装 Kotlin 插件
-> 1.2.20 或者更高版本，转到“Settings | Editor | Code Style | Kotlin”，点击右<!--
-> -->上角的“Set from...”链接，并从菜单中选择“Predefined style / Kotlin style guide”。
+* [源代码组织](#源代码组织)
+* [命名规则](#命名规则)
+* [格式化](#格式化)
+* [文档注释](#文档注释)
+* [避免重复结构](#避免重复结构)
+* [语言特性的惯用法](#语言特性的惯用法)
+* [库的编码规范](#库的编码规范)
+
+### 应用风格指南
+
+如需根据本风格指南配置 IntelliJ 格式化程序，请安装 Kotlin 插件
+1.2.20 或更高版本，转到“Settings | Editor | Code Style | Kotlin”，点击右<!--
+-->上角的“Set from...”链接，并从菜单中选择“Predefined style / Kotlin style guide”。
+
+如需验证代码已按风格指南格式化，请转到探查设置并启用
+“Kotlin | Style issues | File is not formatted according to project settings”探查项。
+验证风格指南中描述的其他问题（如命名约定）的附加探查项默认已启用。
 
 ## 源代码组织
 
 ### 目录结构
 
-在混合语言项目中，Kotlin 源文件应当与 Java 源文件位于同一源文件根目录，
-并遵循相同的目录结构（每个文件应存储在与其 package 语句相对应的目录中
+在混合语言项目中，Kotlin 源文件应当与 Java 源文件位于同一源文件根目录下，
+并遵循相同的目录结构（每个文件应存储在与其 package 语句对应的目录中
 ）。
 
 在纯 Kotlin 项目中，推荐的目录结构遵循省略了公共根包的包结构
@@ -28,7 +42,7 @@ title: "编码规范"
 
 ### 源文件名称
 
-如果 Kotlin 文件包含单个类（以及可能相关的顶层声明），则文件名应与<!--
+如果 Kotlin 文件包含单个类（以及可能相关的顶层声明），那么文件名应该与<!--
 -->该类的名称相同，并追加 .kt 扩展名。如果文件包含多个类或只包含顶层声明，
 那么选择一个描述该文件所包含内容的名称，并以此命名该文件。使用首字母大写的驼峰风格
 （例如 `ProcessDeclarations.kt`）。
@@ -58,10 +72,10 @@ title: "编码规范"
 
 不要按字母顺序或者可见性对方法声明排序，也不要将常规方<!--
 -->法与扩展方法分开。而是要把相关的东西放在一起，这样从上到下<!--
--->阅读类的人就能够跟进所发生的事情的逻辑。选择一个顺序（高级别优先，或者相反）
+-->阅读类的人就能够跟进所发生事情的逻辑。选择一个顺序（高级别优先，或者相反）
 并坚持下去。
 
-将嵌套类放在紧挨使用这些类的代码之后。如果打算在外部使用嵌套类，并且类中没有<!--
+将嵌套类放在紧挨使用这些类的代码之后。如果打算在外部使用嵌套类，而且类中并没有<!--
 -->引用这些类，那么把它们放到末尾，在伴生对象之后。
 
 ### 接口实现布局
@@ -73,46 +87,46 @@ title: "编码规范"
 
 在类中总是将重载放在一起。
 
-## Naming rules
+## 命名规则
 
-Kotlin follows the Java naming conventions. In particular:
+Kotlin 遵循 Java 命名约定。尤其是：
 
-Names of packages are always lower case and do not use underscores (`org.example.myproject`). Using multi-word
-names is generally discouraged, but if you do need to use multiple words, you can either simply concatenate them together
-or use camel humps (`org.example.myProject`).
+包的名称总是小写且不使用下划线（`org.example.myproject`）。
+通常不鼓励使用多个词的名称，但是如果确实需要使用多个词，可以将它们连接在一起<!--
+-->或使用驼峰（`org.example.myProject`）。
 
-Names of classes and objects start with an upper case letter and use camel humps:
+类和对象的名称以大写字母开头并使用驼峰：
 
 ``` kotlin
-open class DeclarationProcessor { ... }
+open class DeclarationProcessor { …… }
 
-object EmptyDeclarationProcessor : DeclarationProcessor() { ... }
+object EmptyDeclarationProcessor : DeclarationProcessor() { …… }
 ```
 
-### Function names
+### 函数名
  
-Names of functions, properties and local variables start with a lower case letter and use camel humps and no underscores:
+函数、属性与局部变量的名称以小写字母开头、使用驼峰而不使用下划线：
 
 ``` kotlin
-fun processDeclarations() { ... }
-var declarationCount = ...
+fun processDeclarations() { …… }
+var declarationCount = ……
 ``` 
 
-Exception: factory functions used to create instances of classes can have the same name as the class being created:
+例外：用于创建类实例的工厂函数可以与要创建的类具有相同的名称：
 
 ``` kotlin
-abstract class Foo { ... }
+abstract class Foo { …… }
 
-class FooImpl : Foo { ... }
+class FooImpl : Foo { …… }
 
-fun Foo(): Foo { return FooImpl(...) }
+fun Foo(): Foo { return FooImpl(……) }
 ```
 
-#### Names for test methods
+#### 测试方法的名称
 
-In tests (and only in tests), it's acceptable to use method names with spaces enclosed in backticks.
-(Note that such method names are currently not supported by the Android runtime.) Underscores in method names are
-also allowed in test code.
+当且仅当在测试中，可以使用反引号括起来的带空格的方法名。
+（请注意，Android 运行时目前不支持这样的方法名。）测试代码中<!--
+-->也允许方法名使用下划线。
 
 ``` kotlin
 class MyTestCase {
@@ -124,35 +138,35 @@ class MyTestCase {
 }
 ```
 
-### Property names
+### 属性名
 
-Names of constants (properties marked with `const`, or top-level or object `val` properties with no custom `get` function
-that hold deeply immutable data) should use uppercase underscore-separated names:
+常量名称（标有 `const` 的属性，或者保存不可变数据的没有自定义 `get` 函数<!--
+-->的顶层/对象 `val` 属性）应该使用大写、下划线分隔的名称：
 
 ``` kotlin
 const val MAX_COUNT = 8
 val USER_NAME_FIELD = "UserName"
 ``` 
 
-Names of top-level or object properties which hold objects with behavior or mutable data should use regular camel-hump names:
+保存带有行为的对象或者可变数据的顶层/对象属性的名称应该使用常规驼峰名称：
 
 ``` kotlin
 val mutableCollection: MutableSet<String> = HashSet()
 ```
 
-Names of properties holding references to singleton objects can use the same naming style as `object` declarations:
+保存单例对象引用的属性的名称可以使用与 `object` 声明相同的命名风格：
 
 ``` kotlin
 val PersonComparator: Comparator<Person> = ...
 ```
  
-For enum constants, it's OK to use either uppercase underscore-separated names
-(`enum class Color { RED, GREEN }`) or regular camel-humps names starting with an uppercase letter, depending on the usage.
+对于枚举常量，可以使用大写、下划线分隔的名称
+（`enum class Color { RED, GREEN }`）也可使用以大写字母开头的常规驼峰名称，具体取决于用途。
    
-#### Names for backing properties
+#### 幕后属性的名称
 
-If a class has two properties which are conceptually the same but one is part of a public API and another is an implementation
-detail, use an underscore as the prefix for the name of the private property:
+如果一个类有两个概念上相同的属性，一个是公共 API 的一部分，另一个是实现<!--
+-->细节，那么使用下划线作为私有属性名称的前缀：
 
 ``` kotlin
 class C {
@@ -163,22 +177,22 @@ class C {
 }
 ```
 
-### Choosing good names
+### 选择好名称
 
-The name of a class is usually a noun or a noun phrase explaining what the class _is_: `List`, `PersonReader`.
+类的名称通常是用来解释类*是*什么的名词或者名词短语：`List`、 `PersonReader`。
 
-The name of a method is usually a verb or a verb phrase saying what the method _does_: `close`, `readPersons`.
-The name should also suggest if the method is mutating the object or returning a new one. For instance `sort` is
-sorting a collection in place, while `sorted` is returning a sorted copy of the collection.
+方法的名称通常是动词或动词短语，说明该方法*做*什么：`close`、 `readPersons`。
+修改对象或者返回一个新对象的名称也应遵循建议。例如 `sort` 是<!--
+-->对一个集合就地排序，而 `sorted` 是返回一个排序后的集合副本。
 
-The names should make it clear what the purpose of the entity is, so it's best to avoid using meaningless words
-(`Manager`, `Wrapper` etc.) in names.
+名称应该表明实体的目的是什么，所以最好避免在名称中使用无意义的单词
+（`Manager`、 `Wrapper` 等）。
 
-When using an acronym as part of a declaration name, capitalize it if it consists of two letters (`IOStream`);
-capitalize only the first letter if it is longer (`XmlFormatter`, `HttpInputStream`).
+当使用首字母缩写作为名称的一部分时，如果缩写由两个字母组成，就将其大写（`IOStream`）；
+而如果缩写更长一些，就只大写首首字母（`XmlFormatter`、 `HttpInputStream`）。
 
 
-## Formatting
+## 格式化
 
 In most cases, Kotlin follows the Java coding conventions.
 
@@ -428,7 +442,7 @@ fun f(x: String) =
     x.length
 ```
 
-## Property formatting
+### Property formatting
 
 For very simple read-only properties, consider one-line formatting:
 
@@ -577,7 +591,7 @@ foo {
 }
 ```
 
-## Documentation comments
+## 文档注释
 
 For longer documentation comments, place the opening `/**` on a separate line and begin each subsequent line
 with an asterisk:
@@ -617,7 +631,7 @@ fun abs(number: Int) = ...
 fun abs(number: Int) = ...
 ```
 
-## Avoiding redundant constructs
+## 避免重复结构
 
 In general, if a certain syntactic construction in Kotlin is optional and highlighted by the IDE
 as redundant, you should omit it in your code. Do not leave unnecessary syntactic elements in code
@@ -646,7 +660,7 @@ println("$name has ${children.size} children")
 ```
 
 
-## Idiomatic use of language features
+## 语言特性的惯用法
 
 ### Immutability
 
@@ -937,7 +951,7 @@ with(person) {
 ```
 
 
-## Coding conventions for libraries
+## 库的编码规范
 
 When writing libraries, it's recommended to follow an additional set of rules to ensure API stability:
 
