@@ -194,33 +194,33 @@ class C {
 
 ## 格式化
 
-In most cases, Kotlin follows the Java coding conventions.
+在大多数情况下，Kotlin 遵循 Java 编码规范。
 
-Use 4 spaces for indentation. Do not use tabs.
+使用 4 个空格缩进。不要使用 tab。
 
-For curly braces, put the opening brace in the end of the line where the construct begins, and the closing brace
-on a separate line aligned vertically with the opening construct.
+对于大括号，将左大括号放在结构起始处的行尾，而将右大括号<!--
+-->放在与左括结构垂直对齐的单独一行。
 
 ``` kotlin
 if (elements != null) {
     for (element in elements) {
-        // ...
+        // ……
     }
 }
 ```
 
-(Note: In Kotlin, semicolons are optional, and therefore line breaks are significant. The language design assumes 
-Java-style braces, and you may encounter surprising behavior if you try to use a different formatting style.)
+（注意：在 Kotlin 中，分号是可选的，因此换行很重要。语言设计采用
+Java 风格的大括号格式，如果尝试使用不同的格式化风格，那么可能会遇到意外的行为。）
 
-### Horizontal whitespace
+### 横向空白
 
-Put spaces around binary operators (`a + b`). Exception: don't put spaces around the "range to" operator (`0..i`).
+在二元操作符左右留空格（`a + b`）。例外：不要在“range to”操作符（`0..i`）左右留空格。
 
-Do not put spaces around unary operators (`a++`)
+不要在一元运算符左右留空格（`a++`）
 
-Put spaces between control flow keywords (`if`, `when`, `for` and `while`) and the corresponding opening parenthesis.
+在控制流关键字（`if`、 `when`、 `for` 以及 `while`）与相应的左括号之间留空格。
 
-Do not put a space before an opening parenthesis in a primary constructor declaration, method declaration or method call.
+不要在主构造函数声明、方法声明或者方法调用的左括号之前留空格。
 
 ```kotlin
 class A(val x: Int)
@@ -232,32 +232,32 @@ fun bar() {
 }
 ```
 
-Never put a space after `(`, `[`, or before `]`, `)`.
+绝不在 `(`、 `[` 之后或者 `]`、 `)` 之前留空格。
 
-Never put a space around `.` or `?.`: `foo.bar().filter { it > 2 }.joinToString()`, `foo?.bar()`
+绝不在`.` 或者 `?.` 左右留空格：`foo.bar().filter { it > 2 }.joinToString()`, `foo?.bar()`
 
-Put a space after `//`: `// This is a comment`
+在 `//` 之后留一个空格：`// 这是一条注释`
 
-Do not put spaces around angle brackets used to specify type parameters: `class Map<K, V> { ... }`
+不要在用于指定类型参数的尖括号前后留空格：`class Map<K, V> { …… }`
 
-Do not put spaces around `::`: `Foo::class`, `String::length`
+不要在 `::` 前后留空格：`Foo::class`、 `String::length`
 
-Do not put a space before `?` used to mark a nullable type: `String?`
+不要在用于标记可空类型的 `?` 前留空格：`String?`
 
-As a general rule, avoid horizontal alignment of any kind. Renaming an identifier to a name with a different length
-should not affect the formatting of either the declaration or any of the usages.
+作为一般规则，避免任何类型的水平对齐。将标识符重命名为不同长度的名称<!--
+-->不应该影响声明或者任何用法的格式。
 
-### Colon
+### 冒号
 
-Put a space before `:` in the following cases:
+在以下场景中的 `:` 之前留一个空格：
 
-  * when it's used to separate a type and a supertype;
-  * when delegating to a superclass constructor or a different constructor of the same class;
-  * after the `object` keyword.
+  * 当它用于分隔类型与超类型时；
+  * 当委托给一个超类的构造函数或者同一类的另一个构造函数时；
+  * 在 `object` 关键字之后。
     
-Don't put a space before `:` when it separates a declaration and its type.
+而当分隔声明与其类型时，不要在 `:` 之前留空格。
  
-Always put a space after `:`.
+在 `:` 之后总要留一个空格。
 
 ``` kotlin
 abstract class Foo<out T : Any> : IFoo {
@@ -266,24 +266,24 @@ abstract class Foo<out T : Any> : IFoo {
 
 class FooImpl : Foo() {
     constructor(x: String) : this(x) {
-        //...
+        //……
     }
     
-    val x = object : IFoo { ... } 
+    val x = object : IFoo { …… } 
 } 
 ```
 
-### Class header formatting
+### 类头格式化
 
-Classes with a few primary constructor parameters can be written in a single line:
+具有少数主构造函数参数的类可以写成一行：
 
 ```kotlin
 class Person(id: Int, name: String)
 ```
 
-Classes with longer headers should be formatted so that each primary constructor parameter is in a separate line with indentation.
-Also, the closing parenthesis should be on a new line. If we use inheritance, then the superclass constructor call or list of implemented interfaces
-should be located on the same line as the parenthesis:
+具有较长类头的类应该格式化，以使每个主构造函数参数都在带有缩进的独立的行中。
+另外，右括号应该位于一个新行上。如果使用了继承，那么超类的构造函数调用或者所实现接口的列表<!--
+-->应该与左括号位于同一行：
 
 ```kotlin
 class Person(
@@ -292,11 +292,11 @@ class Person(
     surname: String
 ) : Human(id, name) {
 
-    // ...
+    // ……
 }
 ```
 
-For multiple interfaces, the superclass constructor call should be located first and then each interface should be located in a different line:
+对于多个接口，应该将超类构造函数调用放在首位，然后将每个接口应放在不同的行中：
 
 ```kotlin
 class Person(
@@ -306,11 +306,11 @@ class Person(
 ) : Human(id, name),
     KotlinMaker {
     
-    // ...
+    // ……
 }
 ```
 
-For classes with a long supertype list, put a line break after the colon and align all supertype names vertically:
+对于具有很长超类型列表的类，在冒号后面换行，并垂直对齐所有超类型名：
 
 ```kotlin
 class MyFavouriteVeryLongClassHolder :
@@ -322,8 +322,8 @@ class MyFavouriteVeryLongClassHolder :
 }
 ```
 
-To clearly separate the class header and body when the class header is long, either put a blank line
-following the class header (as in the example above), or put the opening curly brace on a separate line:
+为了将类头与类体分隔清楚，当类头很长时，可以在类头后放一空行
+（如上例所示）或者将左大括号放在独立行上：
 
 ```kotlin
 class MyFavouriteVeryLongClassHolder :
@@ -335,14 +335,14 @@ class MyFavouriteVeryLongClassHolder :
 }
 ```
 
-Use regular indent (4 spaces) for constructor parameters.
+构造函数参数使用常规缩进（4 个空格）。
 
-> Rationale: This ensures that properties declared in the primary constructor have the same indentation as properties
-> declared in the body of a class.
+> 理由：这确保了在主构造函数中声明的属性与
+> 在类体中声明的属性具有相同的缩进。
 
-### Modifiers
+### 修饰符
 
-If a declaration has multiple modifiers, always put them in the following order:
+如果一个声明有多个修饰符，请始终按照以下顺序安放：
 
 ``` kotlin
 public / protected / private / internal
@@ -363,105 +363,105 @@ operator
 data
 ```
 
-Place all annotations before modifiers:
+将所有注解放在修饰符前：
 
 ``` kotlin
 @Named("Foo")
 private val foo: Foo
 ```
 
-Unless you're working on a library, omit redundant modifiers (e.g. `public`).
+除非你在编写库，否则请省略多余的修饰符（例如 `public`）。
 
-### Annotation formatting
+### 注解格式化
 
-Annotations are typically placed on separate lines, before the declaration to which they are attached, and with the same indentation:
+注解通常放在单独的行上，在它们所依附的声明之前，并使用相同的缩进：
 
 ``` kotlin
 @Target(AnnotationTarget.PROPERTY)
 annotation class JsonExclude
 ```
 
-Annotations without arguments may be placed on the same line:
+无参数的注解可以放在同一行：
 
 ``` kotlin
 @JsonExclude @JvmField
 var x: String
 ```
 
-A single annotation without arguments may be placed on the same line as the corresponding declaration:
+无参数的单个注解可以与相应的声明放在同一行：
 
 ``` kotlin
-@Test fun foo() { ... }
+@Test fun foo() { …… }
 ```
 
-### File annotations
+### 文件注解
 
-File annotations are placed after the file comment (if any), before the `package` statement, and are separated from `package` with a blank line (to emphasize the fact that they target the file and not the package).
+文件注解位于文件注释（如果有的话）之后、`package` 语句之前，并且用一个空白行与 `package` 分开（为了强调其针对文件而不是包）。
 
 ``` kotlin
-/** License, copyright and whatever */
+/** 授权许可、版权以及任何其他内容 */
 @file:JvmName("FooBar")
 
 package foo.bar
 ```
 
-### Function formatting
+### 函数格式化
 
-If the function signature doesn't fit on a single line, use the following syntax:
+如果函数签名不适合单行，请使用以下语法：
 
 ``` kotlin
 fun longMethodName(
     argument: ArgumentType = defaultValue,
     argument2: AnotherArgumentType
 ): ReturnType {
-    // body
+    // 函数体
 }
 ```
 
-Use regular indent (4 spaces) for function parameters.
+函数参数使用常规缩进（4 个空格）。
 
-> Rationale: Consistency with constructor parameters
+> 理由：与构造函数参数一致
 
-Prefer using an expression body for functions with the body consisting of a single expression.
+对于由单个表达式构成的函数体，首选使用表达式形式。
 
 ``` kotlin
-fun foo(): Int {     // bad
+fun foo(): Int {     // 较差
     return 1 
 }
 
-fun foo() = 1        // good
+fun foo() = 1        // 良好
 ```
 
-### Expression body formatting
+### 表达式函数体格式化
 
-If the function has an expression body that doesn't fit in the same line as the declaration, put the `=` sign on the first line.
-Indent the expression body by 4 spaces.
+如果函数的表达式函数体与函数声明不适合放在同一行，那么将 `=` 留在第一行。
+将表达式函数体缩进 4 个空格。
 
 ``` kotlin
 fun f(x: String) =
     x.length
 ```
 
-### Property formatting
+### 属性格式化
 
-For very simple read-only properties, consider one-line formatting:
+对于非常简单的只读属性，请考虑单行格式：
 
 ```kotlin
 val isEmpty: Boolean get() = size == 0
 ```
 
-For more complex properties, always put `get` and `set` keywords on separate lines:
+对于更复杂的属性，总是将 `get` 与 `set` 关键字放在不同的行上：
 
 ```kotlin
 val foo: String
     get() {
-        // ...
+        // ……
     }
 
 ```
 
-For properties with an initializer, if the initializer is long, add a line break after the equals sign
-and indent the initializer by four spaces:
+对于具有初始化器的属性，如果初始化器很长，那么在等号后增加一个换行<!--
+-->并将初始化器缩进四个空格：
 
 ```kotlin
 private val defaultCharset: Charset? =
