@@ -49,9 +49,9 @@ Kotlin 1.2 中已弃用，并且会在 Kotlin 1.3 中禁用。
 data class User(val name: String = "", val age: Int = 0)
 ```
 
-## Properties Declared in the Class Body
+## 在类体中声明的属性
 
-Note that the compiler only uses the properties defined inside the primary constructor for the automatically generated functions. To exclude a property from the generated implementations, declare it inside the class body:
+请注意，对于那些自动生成的函数，编译器只使用在主构造函数内部定义的属性。如需在生成的实现中排出一个属性，请将其声明在类体中：
 
 ```kotlin
 data class Person(val name: String) {
@@ -59,7 +59,7 @@ data class Person(val name: String) {
 }
 ```
 
-Only the property `name` will be used inside the `toString()`, `equals()`, `hashCode()`, and `copy()` implementations, and there will only be one component function `component1()`. While two `Person` objects can have different ages, they will be treated as equal.
+在 `toString()`、 `equals()`、 `hashCode()` 以及 `copy()` 的实现中只会用到 `name` 属性，并且只有一个 component 函数 `component1()`。虽然两个 `Person` 对象可以有不同的年龄，但它们会视为相等。
 
 <div class="sample" markdown="1" data-min-compiler-version="1.2">
 
