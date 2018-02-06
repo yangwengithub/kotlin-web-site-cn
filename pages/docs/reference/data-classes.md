@@ -61,7 +61,7 @@ data class Person(val name: String) {
 
 在 `toString()`、 `equals()`、 `hashCode()` 以及 `copy()` 的实现中只会用到 `name` 属性，并且只有一个 component 函数 `component1()`。虽然两个 `Person` 对象可以有不同的年龄，但它们会视为相等。
 
-<div class="sample" markdown="1" data-min-compiler-version="1.2">
+
 
 ``` kotlin
 data class Person(val name: String) {
@@ -82,7 +82,7 @@ fun main(args: Array<String>) {
     println("person2 with age ${person2.age}: ${person2}")
 }
 ```
-</div>
+
 
 ## 复制
 
