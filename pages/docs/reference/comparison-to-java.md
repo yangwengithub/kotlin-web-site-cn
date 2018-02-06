@@ -25,6 +25,7 @@ Kotlin 通过以下措施修复了 Java 中一系列长期困扰我们的问题�
 * [静态成员](classes.html)
 * [非私有化字段](properties.html)
 * [通配符类型](generics.html)
+* [Ternary-operator `a ? b : c`](control-flow.html#if-expression)
 
 ## Kotlin 有而 Java 没有的东西
 
