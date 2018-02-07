@@ -210,7 +210,7 @@ val customer = Customer("Joe Smith")
 class Example // 从 Any 隐式继承
 ```
 
-`Any` 不是 `java.lang.Object`；尤其是，它除了 `equals()`、`hashCode()`和`toString()`外没有任何成员。
+> 注意：`Any` 并不是 `java.lang.Object`；尤其是，它除了 `equals()`、`hashCode()`和`toString()`外没有任何成员。
 更多细节请查阅[Java互操作性](java-interop.html#对象方法)部分。
 
 要声明一个显式的超类型，我们把类型放到类头的冒号之后：
@@ -221,8 +221,13 @@ open class Base(p: Int)
 class Derived(p: Int) : Base(p)
 ```
 
-如果该类有一个主构造函数，其基类型可以（并且必须）
-用（基类型的）主构造函数参数就地初始化。
+> 类上的 *open*{: .keyword} 标注与 Java 中 *final*{: .keyword} 相反，它允许其他类<!--
+-->从这个类继承。默认情况下，在 Kotlin 中所有的类都是 final，
+对应于 [Effective Java](http://www.oracle.com/technetwork/java/effectivejava-136174.html)书中的<!--
+-->第 17 条：**要么为继承而设计，并提供文档说明，要么就禁止继承**。
+
+如果派生类有一个主构造函数，其基类型可以（并且必须）
+用基类的主构造函数参数就地初始化。
 
 如果类没有主构造函数，那么每个次构造函数必须<!--
 -->使用 *super*{: .keyword} 关键字初始化其基类型，或委托给另一个构造函数做到这一点。
@@ -235,11 +240,6 @@ class MyView : View {
     constructor(ctx: Context, attrs: AttributeSet) : super(ctx, attrs)
 }
 ```
-
-类上的 *open*{: .keyword} 标注与 Java 中 *final*{: .keyword} 相反，它允许其他类<!--
--->从这个类继承。默认情况下，在 Kotlin 中所有的类都是 final，
-对应于 [Effective Java](http://www.oracle.com/technetwork/java/effectivejava-136174.html)书中的<!--
--->第 17 条：**要么为继承而设计，并提供文档说明，要么就禁止继承**。
 
 ### 覆盖方法
 
@@ -297,6 +297,43 @@ class Bar2 : Foo {
     override var count: Int = 0
 }
 ```
+
+### Derived class initialization order
+
+During construction of a new instance of a derived class, the base class initialization is done as the first step (preceded only by evaluation of the arguments for the base class constructor) and thus happens before the initialization logic of the derived class is run. 
+
+<div class="sample" markdown="1" data-min-compiler-version="1.2">
+
+``` kotlin
+//sampleStart
+open class Base(val name: String) {
+
+    init { println("Initializing Base") }
+
+    open val size: Int = 
+        name.length.also { println("Initializing size in Base: $it") }
+}
+
+class Derived(
+    name: String,
+    val lastName: String
+) : Base(name.capitalize().also { println("Argument for Base: $it") }) {
+
+    init { println("Initializing Derived") }
+
+    override val size: Int =
+        (super.size + lastName.length).also { println("Initializing size in Derived: $it") }
+}
+//sampleEnd
+
+fun main(args: Array<String>) {
+    println("Constructing Derived(\"hello\", \"world\")")
+    val d = Derived("hello", "world")
+}
+```
+</div>
+
+It means that, by the time of the base class constructor execution, the properties declared or overridden in the derived class are not yet initialized. If any of those properties are used in the base class initialization logic (either directly or indirectly, through another overridden *open*{: .keyword } member implementation), it may lead to incorrect behavior or a runtime failure. Designing a base class, you should therefore avoid using *open*{: .keyword } members in the constructors, property initializers, and *init*{: .keyword } blocks.
 
 ### 调用超类实现
 

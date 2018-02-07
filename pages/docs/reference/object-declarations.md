@@ -102,7 +102,8 @@ fun countClicks(window: JComponent) {
 
 ## 对象声明
 
-[单例模式](http://en.wikipedia.org/wiki/Singleton_pattern)是一种非常有用的模式，而 Kotlin（继 Scala 之后）使单例声明变得很容易：
+[单例模式](http://en.wikipedia.org/wiki/Singleton_pattern)在一些场景中很有用，
+而 Kotlin（继 Scala 之后）使单例声明变得很容易：
 
 ``` kotlin
 object DataProviderManager {
@@ -118,7 +119,9 @@ object DataProviderManager {
 这称为*对象声明*。并且它总是在 *object*{: .keyword } 关键字后跟一个名称。
 就像变量声明一样，对象声明不是一个表达式，不能用在赋值语句的右边。
 
-要引用该对象，我们直接使用其名称即可：
+Object declaration's initialization is thread-safe.
+
+如需引用该对象，我们直接使用其名称即可：
 
 ``` kotlin
 DataProviderManager.registerDataProvider(……)
