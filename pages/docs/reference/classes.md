@@ -298,7 +298,7 @@ class Bar2 : Foo {
 
 在构造派生类的新实例的过程中，第一步完成其基类的初始化（在之前只有对基类构造函数参数的求值），因此发生在派生类的初始化逻辑运行之前。
 
-<div class="sample" markdown="1" data-min-compiler-version="1.2">
+
 
 ``` kotlin
 //sampleStart
@@ -327,7 +327,7 @@ fun main(args: Array<String>) {
     val d = Derived("hello", "world")
 }
 ```
-</div>
+
 
 这意味着，基类构造函数执行时，派生类中声明或覆盖的属性都还没有初始化。如果在基类初始化逻辑中（直接或通过另一个覆盖的 *open*{: .keyword } 成员的实现间接）使用了任何一个这种属性，那么都可能导致不正确的行为或运行时故障。设计一个基类时，应该避免在构造函数、属性初始化器以及 *init*{: .keyword } 块中使用 *open*{: .keyword } 成员。
 
