@@ -298,9 +298,9 @@ class Bar2 : Foo {
 }
 ```
 
-### Derived class initialization order
+### 派生类初始化顺序
 
-During construction of a new instance of a derived class, the base class initialization is done as the first step (preceded only by evaluation of the arguments for the base class constructor) and thus happens before the initialization logic of the derived class is run. 
+在构造派生类的新实例的过程中，第一步完成其基类的初始化（在之前只有对基类构造函数参数的求值），因此发生在派生类的初始化逻辑运行之前。
 
 <div class="sample" markdown="1" data-min-compiler-version="1.2">
 
@@ -333,7 +333,7 @@ fun main(args: Array<String>) {
 ```
 </div>
 
-It means that, by the time of the base class constructor execution, the properties declared or overridden in the derived class are not yet initialized. If any of those properties are used in the base class initialization logic (either directly or indirectly, through another overridden *open*{: .keyword } member implementation), it may lead to incorrect behavior or a runtime failure. Designing a base class, you should therefore avoid using *open*{: .keyword } members in the constructors, property initializers, and *init*{: .keyword } blocks.
+这意味着，基类构造函数执行时，派生类中声明或覆盖的属性都还没有初始化。如果在基类初始化逻辑中（直接或通过另一个覆盖的 *open*{: .keyword } 成员的实现间接）使用了任何一个这种属性，那么都可能导致不正确的行为或运行时故障。设计一个基类时，应该避免在构造函数、属性初始化器以及 *init*{: .keyword } 块中使用 *open*{: .keyword } 成员。
 
 ### 调用超类实现
 

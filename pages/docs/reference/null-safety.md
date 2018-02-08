@@ -17,9 +17,9 @@ Kotlin 的类型系统旨在从我们的代码中消除 `NullPointerException`�
 
 * 显式调用 `throw NullPointerException()`；
 * 使用了下文描述的 `!!` 操作符；
-* Some data inconsistency with regard to initialization, such as when:
-  * An uninitialized *this*{: .keyword } available in a constructor is passed and used somewhere ("leaking *this*{: .keyword }"); 
-  * [A superclass constructor calls an open member](classes.html#derived-class-initialization-order) whose implementation in the derived class uses uninitialized state;
+* 有些数据在初始化时不一致，例如当：
+  * 传递一个在构造函数中出现的未初始化的 *this*{: .keyword } 并用于其他地方（“泄漏 *this*{: .keyword }”）；
+  * [超类的构造函数调用一个开放成员](classes.html#派生类初始化顺序)，该成员在派生中类的实现使用了未初始化的状态；
 * Java 互操作：
   * 企图访问[平台类型](java-interop.html#空安全与平台类型)的 `null` 引用的成员；
   * 用于具有错误可空性的 Java 互操作的泛型类型，例如一段 Java 代码可能会向 Kotlin 的 `MutableList<String>` 中加入 `null`，这意味着应该使用 `MutableList<String?>` 来处理它；
