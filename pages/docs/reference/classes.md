@@ -206,7 +206,7 @@ val customer = Customer("Joe Smith")
 class Example // 从 Any 隐式继承
 ```
 
-`Any` 不是 `java.lang.Object`；尤其是，它除了 `equals()`、`hashCode()`和`toString()`外没有任何成员。
+> 注意：`Any` 并不是 `java.lang.Object`；尤其是，它除了 `equals()`、`hashCode()`和`toString()`外没有任何成员。
 更多细节请查阅[Java互操作性](java-interop.html#对象方法)部分。
 
 要声明一个显式的超类型，我们把类型放到类头的冒号之后：
@@ -217,8 +217,13 @@ open class Base(p: Int)
 class Derived(p: Int) : Base(p)
 ```
 
-如果该类有一个主构造函数，其基类型可以（并且必须）
-用（基类型的）主构造函数参数就地初始化。
+> 类上的 *open*{: .keyword} 标注与 Java 中 *final*{: .keyword} 相反，它允许其他类<!--
+-->从这个类继承。默认情况下，在 Kotlin 中所有的类都是 final，
+对应于 [Effective Java](http://www.oracle.com/technetwork/java/effectivejava-136174.html)书中的<!--
+-->第 17 条：**要么为继承而设计，并提供文档说明，要么就禁止继承**。
+
+如果派生类有一个主构造函数，其基类型可以（并且必须）
+用基类的主构造函数参数就地初始化。
 
 如果类没有主构造函数，那么每个次构造函数必须<!--
 -->使用 *super*{: .keyword} 关键字初始化其基类型，或委托给另一个构造函数做到这一点。
@@ -231,11 +236,6 @@ class MyView : View {
     constructor(ctx: Context, attrs: AttributeSet) : super(ctx, attrs)
 }
 ```
-
-类上的 *open*{: .keyword} 标注与 Java 中 *final*{: .keyword} 相反，它允许其他类<!--
--->从这个类继承。默认情况下，在 Kotlin 中所有的类都是 final，
-对应于 [Effective Java](http://www.oracle.com/technetwork/java/effectivejava-136174.html)书中的<!--
--->第 17 条：**要么为继承而设计，并提供文档说明，要么就禁止继承**。
 
 ### 覆盖方法
 
@@ -293,6 +293,43 @@ class Bar2 : Foo {
     override var count: Int = 0
 }
 ```
+
+### 派生类初始化顺序
+
+在构造派生类的新实例的过程中，第一步完成其基类的初始化（在之前只有对基类构造函数参数的求值），因此发生在派生类的初始化逻辑运行之前。
+
+<div class="sample" markdown="1" data-min-compiler-version="1.2">
+
+``` kotlin
+//sampleStart
+open class Base(val name: String) {
+
+    init { println("Initializing Base") }
+
+    open val size: Int = 
+        name.length.also { println("Initializing size in Base: $it") }
+}
+
+class Derived(
+    name: String,
+    val lastName: String
+) : Base(name.capitalize().also { println("Argument for Base: $it") }) {
+
+    init { println("Initializing Derived") }
+
+    override val size: Int =
+        (super.size + lastName.length).also { println("Initializing size in Derived: $it") }
+}
+//sampleEnd
+
+fun main(args: Array<String>) {
+    println("Constructing Derived(\"hello\", \"world\")")
+    val d = Derived("hello", "world")
+}
+```
+</div>
+
+这意味着，基类构造函数执行时，派生类中声明或覆盖的属性都还没有初始化。如果在基类初始化逻辑中（直接或通过另一个覆盖的 *open*{: .keyword } 成员的实现间接）使用了任何一个这种属性，那么都可能导致不正确的行为或运行时故障。设计一个基类时，应该避免在构造函数、属性初始化器以及 *init*{: .keyword } 块中使用 *open*{: .keyword } 成员。
 
 ### 调用超类实现
 
