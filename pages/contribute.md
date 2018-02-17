@@ -33,7 +33,7 @@ Kotlin 是 Apache 2 授权的开源（OSS）项目。其源代码、工具、文
 ### Kotlin-x 项目与社区项目
 
 Kotlin 只有很小的运行时，且旨在保持如此。我们相信标准运行时库中缺少的其他功能可以
-作为 Kotlin Contributions 在 [Kotlin-X](https://github.com/kotlinx/kotlinx) 项目集下开发，或者作为社区成员的独立项目开发。如果你有一个你认为
+作为 Kotlin Contributions 在 Kotlin-X 项目集下开发，或者作为社区成员的独立项目开发。如果你有一个你认为
 其他人可能会觉得有用的库，请告诉我们。如果你想贡献任何现有的库，请检出它们。
 
 ### 翻译

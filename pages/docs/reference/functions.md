@@ -223,26 +223,53 @@ val list = asList(-1, 0, *a, 4)
 
 ### 中缀表示法
 
-函数还可以用中缀表示法调用，当
+Functions marked with the *infix*{: .keyword } keyword can also be called using the infix notation (omitting the dot and the parentheses for the call). Infix functions must satisfy the following requirements:
 
-* 他们是成员函数或[扩展函数](extensions.html)；
-* 他们只有一个参数；
-* 他们用 `infix` 关键字标注。
+* 它们必须是成员函数或[扩展函数](extensions.html)；
+* 它们必须只有一个参数；
+* The parameter must not [accept variable number of arguments](#variable-number-of-arguments-varargs) and must have no [default value](#default-arguments).
 
 ``` kotlin
-// 给 Int 定义扩展
 infix fun Int.shl(x: Int): Int {
-……
+    // ……
 }
 
-// 用中缀表示法调用扩展函数
-
+// 用中缀表示法调用该函数
 1 shl 2
 
 // 等同于这样
-
 1.shl(2)
 ```
+
+> Infix function calls have lower precedence than the arithmetic operators, type casts, and the `rangeTo` operator.
+> The following expressions are equivalent:
+> * `1 shl 2 + 3` and `1 shl (2 + 3)`
+> * `0 until n * 2` and `0 until (n * 2)`
+> * `xs union ys as Set<*>` and `xs union (ys as Set<*>)`
+>
+> On the other hand, infix function call's precedence is higher than that of the boolean operators `&&` and `||`, `is`- and `in`-checks, and some other operators. These expressions are equivalent as well:
+> * `a && b xor c` and `a && (b xor c)`
+> * `a xor b in c` and `(a xor b) in c`
+> 
+> See the [Grammar reference](grammar.html#precedence) for the complete operators precedence hierarchy.
+{:.note}
+
+Note that infix functions always require both the receiver and the parameter to be specified. When you're
+calling a method on the current receiver using the infix notation, you need to use `this` explicitly; unlike regular method calls, 
+it cannot be omitted. This is required to ensure unambiguous parsing.
+
+```kotlin
+class MyStringCollection {
+    infix fun add(s: String) { /* ... */ }
+    
+    fun build() {
+        this add "abc"   // Correct
+        add("abc")       // Correct
+        add "abc"        // Incorrect: the receiver must be specified
+    }
+}
+```
+
 
 ## 函数作用域
 
