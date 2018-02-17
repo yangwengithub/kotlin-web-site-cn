@@ -223,11 +223,11 @@ val list = asList(-1, 0, *a, 4)
 
 ### 中缀表示法
 
-Functions marked with the *infix*{: .keyword } keyword can also be called using the infix notation (omitting the dot and the parentheses for the call). Infix functions must satisfy the following requirements:
+标有 *infix*{: .keyword } 关键字的函数也可以使用中缀表示法（忽略该调用的点与圆括号）调用。中缀函数必须满足以下要求：
 
 * 它们必须是成员函数或[扩展函数](extensions.html)；
 * 它们必须只有一个参数；
-* The parameter must not [accept variable number of arguments](#variable-number-of-arguments-varargs) and must have no [default value](#default-arguments).
+* 其参数不得[接受可变数量的参数](#可变数量的参数varargs)且不能有[默认值](默认参数)。
 
 ``` kotlin
 infix fun Int.shl(x: Int): Int {
@@ -241,31 +241,31 @@ infix fun Int.shl(x: Int): Int {
 1.shl(2)
 ```
 
-> Infix function calls have lower precedence than the arithmetic operators, type casts, and the `rangeTo` operator.
-> The following expressions are equivalent:
-> * `1 shl 2 + 3` and `1 shl (2 + 3)`
-> * `0 until n * 2` and `0 until (n * 2)`
-> * `xs union ys as Set<*>` and `xs union (ys as Set<*>)`
+> 中缀函数调用的优先级低于算术操作符、类型转换以及 `rangeTo` 操作符。
+> 以下表达式是等价的：
+> * `1 shl 2 + 3` 与 `1 shl (2 + 3)`
+> * `0 until n * 2` 与 `0 until (n * 2)`
+> * `xs union ys as Set<*>` 与 `xs union (ys as Set<*>)`
 >
-> On the other hand, infix function call's precedence is higher than that of the boolean operators `&&` and `||`, `is`- and `in`-checks, and some other operators. These expressions are equivalent as well:
-> * `a && b xor c` and `a && (b xor c)`
-> * `a xor b in c` and `(a xor b) in c`
+> 另一方面，中缀函数调用的优先级高于布尔操作符 `&&` 与 `||`、`is-` 与 `in-` 检测以及其他一些操作符。这些表达式也是等价的：
+> * `a && b xor c` 与 `a && (b xor c)`
+> * `a xor b in c` 与 `(a xor b) in c`
 > 
-> See the [Grammar reference](grammar.html#precedence) for the complete operators precedence hierarchy.
+> 完整的优先级层次结构请参见其[语法参考](grammar.html#precedence)。
 {:.note}
 
-Note that infix functions always require both the receiver and the parameter to be specified. When you're
-calling a method on the current receiver using the infix notation, you need to use `this` explicitly; unlike regular method calls, 
-it cannot be omitted. This is required to ensure unambiguous parsing.
+请注意，中缀函数总是要求指定接收者与参数。当<!--
+-->使用中缀表示法在当前接收者上调用方法时，需要显式使用 `this`；不能像常规方法调用<!--
+-->那样省略。这是确保非模糊解析所必需的。
 
 ```kotlin
 class MyStringCollection {
-    infix fun add(s: String) { /* ... */ }
+    infix fun add(s: String) { /* …… */ }
     
     fun build() {
-        this add "abc"   // Correct
-        add("abc")       // Correct
-        add "abc"        // Incorrect: the receiver must be specified
+        this add "abc"   // 正确
+        add("abc")       // 正确
+        add "abc"        // 错误：必须指定接收者
     }
 }
 ```
