@@ -277,11 +277,11 @@ plugins {
 ```
 
 
-## SAM-with-receiver compiler plugin
+## 带有接收者的 SAM 编译器插件
 
-The *sam-with-receiver* compiler plugin makes the first parameter of the annotated Java "single abstract method" (SAM) interface method a receiver in Kotlin. This conversion only works when the SAM interface is passed as a Kotlin lambda, both for SAM adapters and SAM constructors (see the [documentation](https://kotlinlang.org/docs/reference/java-interop.html#sam-conversions) for more details).
+编译器插件 *sam-with-receiver* 使所注解的 Java“单抽象方法”接口方法的第一个参数成为 Kotlin 中的接收者。这一转换只适用于当 SAM 接口作为 Kotlin 的 lambda 表达式传递时，对 SAM 适配器与 SAM 构造函数均适用（详见其[文档](java-interop.html#sam-转换)）。
 
-Here is an example:
+这里有一个示例：
 
 ```java
 public @interface SamWithReceiver {}
@@ -295,7 +295,7 @@ public interface TaskRunner {
 ```kotlin
 fun test(context: TaskContext) {
     val handler = TaskHandler { 
-        // Here 'this' is an instance of 'Task'
+        // 这里的“this”是“Task”的一个实例
         
         println("$name is started")
         context.executeTask(this)
@@ -304,9 +304,9 @@ fun test(context: TaskContext) {
 }
 ```
 
-### Using in Gradle
+### 在 Gradle 中使用
 
-The usage is the same to all-open and no-arg, except the fact that sam-with-receiver does not have any built-in presets, and you need to specify your own list of special-treated annotations.
+除了 sam-with-receiver 没有任何内置预设并且需要指定自己的特殊处理注解列表这一事实之外，其用法与 all-open 及 no-arg 相同。
  
 ```groovy
 buildscript {
@@ -318,7 +318,7 @@ buildscript {
 apply plugin: "kotlin-sam-with-receiver"
 ```
 
-Then specify the list of SAM-with-receiver annotations:
+然后指定 SAM-with-receiver 的注解列表：
 
 ```groovy
 samWithReceiver {
@@ -326,7 +326,7 @@ samWithReceiver {
 }
 ```
 
-### Using in Maven
+### 在 Maven 中使用
 
 ``` xml
 <plugin>
@@ -354,9 +354,9 @@ samWithReceiver {
 </plugin>
 ```
 
-### Using in CLI
+### 在 CLI 中使用
 
-Just add the plugin JAR file to the compiler plugin classpath and specify the list of sam-with-receiver annotations:
+只需将该插件的 JAR 文件添加到编译器插件类路径中，并指定 sam-with-receiver 注解列表即可：
 
 ```bash
 -Xplugin=$KOTLIN_HOME/lib/sam-with-receiver-compiler-plugin.jar
