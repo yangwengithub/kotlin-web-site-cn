@@ -102,11 +102,10 @@ var setterWithAnnotation: Any? = null
 在 Kotlin 类中不能直接声明字段。然而，当一个属性需要一个幕后字段时，Kotlin 会自动提供。这个幕后字段可以使用`field`标识符在访问器中引用：
 
 ``` kotlin
-var counter = 0 // 此初始器值直接写入到幕后字段
-  set(value) {
-    if (value >= 0)
-      field = value
-  }
+var counter = 0 // 注意：这个初始器直接为幕后字段赋值
+    set(value) {
+        if (value >= 0) field = value
+    }
 ```
 
 `field` 标识符只能用在属性的访问器内。
