@@ -59,7 +59,7 @@ Kotlin/JVM 平台的平台模块还可以包含 Java 以及其他 JVM 语言的�
   * 将 Kotlin Gradle 插件添加到构建脚本的类路径中：`classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"`。
   * 将 `kotlin-platform-common` 插件应用到公共模块
   * 将 `kotlin-stdlib-common` 依赖添加到公共模块中
-  * 将 `kotlin-platform-jvm` 与 `kotlin-platform-js` 插件分别应用到 JVM 与 JS 平台模块
+  * 将 `kotlin-platform-jvm`、 `kotlin-platform-android` 与 `kotlin-platform-js` 插件分别应用到 JVM、Android 与 JS 平台模块
   * 将平台模块 `expectedBy` 作用域中添加到到公共模块的依赖
   
 以下示例演示了一个使用 Kotlin 1.2-Beta 的公共模块的完整的 `build.gradle` 文件：

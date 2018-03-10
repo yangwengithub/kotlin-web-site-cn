@@ -198,7 +198,7 @@ class C {
 
 使用 4 个空格缩进。不要使用 tab。
 
-对于大括号，将左大括号放在结构起始处的行尾，而将右大括号<!--
+对于花括号，将左花括号放在结构起始处的行尾，而将右花括号<!--
 -->放在与左括结构垂直对齐的单独一行。
 
 ``` kotlin
@@ -210,7 +210,7 @@ if (elements != null) {
 ```
 
 （注意：在 Kotlin 中，分号是可选的，因此换行很重要。语言设计采用
-Java 风格的大括号格式，如果尝试使用不同的格式化风格，那么可能会遇到意外的行为。）
+Java 风格的花括号格式，如果尝试使用不同的格式化风格，那么可能会遇到意外的行为。）
 
 ### 横向空白
 
@@ -323,7 +323,7 @@ class MyFavouriteVeryLongClassHolder :
 ```
 
 为了将类头与类体分隔清楚，当类头很长时，可以在类头后放一空行
-（如上例所示）或者将左大括号放在独立行上：
+（如上例所示）或者将左花括号放在独立行上：
 
 ```kotlin
 class MyFavouriteVeryLongClassHolder :
@@ -468,11 +468,11 @@ private val defaultCharset: Charset? =
     EncodingRegistry.getInstance().getDefaultCharsetForPropertiesFiles(file)
 ```
 
-### Formatting control flow statements
+### 格式化控制流语句
 
-If the condition of an `if` or `when` statement is multiline, always use curly braces around the body of the statement.
-Indent each subsequent line of the condition by 4 spaces relative to statement begin. 
-Put the closing parentheses of the condition together with the opening curly brace on a separate line:
+如果 `if` 或 `when` 语句的条件有多行，那么在语句体外边总是使用大括号。
+将该条件的每个后续行相对于条件语句起始处缩进 4 个空格。
+将该条件的右圆括号与左花括号放在单独一行：
 
 ``` kotlin
 if (!component.isSyncing &&
@@ -482,26 +482,26 @@ if (!component.isSyncing &&
 }
 ```
 
-> Rationale: Tidy alignment and clear separation of condition and statement body
+> 理由：对齐整齐并且将条件与语句体分隔清楚
 
-Put the `else`, `catch`, `finally` keywords, as well as the `while` keyword of a do/while loop, on the same line as the 
-preceding curly brace:
+将 `else`、 `catch`、 `finally` 关键字以及 do/while 循环的 `while` 关键字与<!--
+-->之前的花括号放在相同的行上：
 
 ``` kotlin
 if (condition) {
-    // body
+    // 主体
 } else {
-    // else part
+    // else 部分
 }
 
 try {
-    // body
+    // 主体
 } finally {
-    // cleanup
+    // 清理
 }
 ```
 
-In a `when` statement, if a branch is more than a single line, consider separating it from adjacent case blocks with a blank line:
+在 `when` 语句中，如果一个分支不止一行，可以考虑用空行将其与相邻的分支块分开：
 
 ``` kotlin
 private fun parsePropertyValue(propName: String, token: Token) {
@@ -509,26 +509,26 @@ private fun parsePropertyValue(propName: String, token: Token) {
         is Token.ValueToken ->
             callback.visitValue(propName, token.value)
 
-        Token.LBRACE -> { // ...
+        Token.LBRACE -> { // ……
         }
     }
 }
 ```
 
-Put short branches on the same line as the condition, without braces.
+将短分支放在与条件相同的行上，无需花括号。
 
 ``` kotlin
 when (foo) {
-    true -> bar() // good
-    false -> { baz() } // bad
+    true -> bar() // 良好
+    false -> { baz() } // 较差
 }
 ```
 
 
-### Method call formatting
+### 方法调用格式化
 
-In long argument lists, put a line break after the opening parenthesis. Indent arguments by 4 spaces. 
-Group multiple closely related arguments on the same line.
+在较长参数列表的左括号后添加一个换行符。按 4 个空格缩进参数。
+将密切相关的多个参数分在同一行。
 
 ``` kotlin
 drawSquare(
@@ -538,11 +538,11 @@ drawSquare(
 )
 ```
 
-Put spaces around the `=` sign separating the argument name and value.
+在分隔参数名与值的 `=` 左右留空格。
 
-### Chained call wrapping
+### 链式调用换行
 
-When wrapping chained calls, put the . character or the `?.` operator on the next line, with a single indent:
+当对链式调用换行时，将 . 字符或者 `?.` 操作符放在下一行，并带有单倍缩进：
 
 ``` kotlin
 val anchor = owner
@@ -551,36 +551,36 @@ val anchor = owner
     .dropWhile { it is PsiComment || it is PsiWhiteSpace }
 ```
 
-The first call in the chain usually should have a line break before it, but it's OK to omit it the code makes more sense that way.
+调用链的第一个调用通常在换行之前，当然如果能让代码更有意义也可以忽略这点。
 
-### Lambda formatting
+### Lambda 表达式格式化
 
-In lambda expressions, spaces should be used around the curly braces, as well as around the arrow which separates the parameters
-from the body. If a call takes a single lambda, it should be passed outside of parentheses whenever possible.
+在 lambda 表达式中，应该在花括号左右以及分隔参数与代码体的箭头左右留空格。
+如果一个调用接受单个 lambda 表达式，应该尽可能将其放在圆括号外边传入。
 
 ``` kotlin
 list.filter { it > 10 }
 ```
 
-If assigning a label for a lambda, do not put a space between the label and the opening curly brace:
+如果为 lambda 表达式分配一个标签，那么不要在该标签与左花括号之间留空格：
 
 ``` kotlin
 fun foo() {
     ints.forEach lit@{
-        // ...
+        // ……
     }
 }
 ```
 
-When declaring parameter names in a multiline lambda, put the names on the first line, followed by the arrow and the newline:
+在多行的 lambda 表达式中声明参数名时，将参数名放在第一行，后跟箭头与换行符：
 
 ``` kotlin
 appendCommaSeparated(properties) { prop ->
-    val propertyValue = prop.get(obj)  // ...
+    val propertyValue = prop.get(obj)  // ……
 }
 ```
 
-If the parameter list is too long to fit on a line, put the arrow on a separate line:
+如果参数列表太长而无法放在一行上，请将箭头放在单独一行：
 
 ``` kotlin
 foo {
