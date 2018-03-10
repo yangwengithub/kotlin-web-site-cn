@@ -34,7 +34,7 @@ apply plugin: "kotlin-allopen"
 
 ```groovy
 plugins {
-  id "org.jetbrains.kotlin.plugin.allopen" version "1.2.21"
+  id "org.jetbrains.kotlin.plugin.allopen" version "1.2.30"
 }
 ```
 
@@ -116,7 +116,7 @@ apply plugin: "kotlin-spring" // 取代 "kotlin-allopen"
 
 ```groovy
 plugins {
-  id "org.jetbrains.kotlin.plugin.spring" version "1.2.21"
+  id "org.jetbrains.kotlin.plugin.spring" version "1.2.30"
 }
 ```
 
@@ -181,7 +181,7 @@ apply plugin: "kotlin-noarg"
 
 ```groovy
 plugins {
-  id "org.jetbrains.kotlin.plugin.noarg" version "1.2.21"
+  id "org.jetbrains.kotlin.plugin.noarg" version "1.2.30"
 }
 ```
 
@@ -254,7 +254,7 @@ apply plugin: "kotlin-jpa"
 
 ```groovy
 plugins {
-  id "org.jetbrains.kotlin.plugin.jpa" version "1.2.21"
+  id "org.jetbrains.kotlin.plugin.jpa" version "1.2.30"
 }
 ```
 
