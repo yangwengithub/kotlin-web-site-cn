@@ -7,13 +7,13 @@ title: "类型安全的构建器"
 
 # 类型安全的构建器
 
-By using well-named functions as builders in combination with [function literals with receiver](lambdas.html#function-literals-with-receiver) it is possible to create type-safe, statically-typed builders in Kotlin.
+通过使用命名得当的函数作为构建器，结合[带接收者的函数字面值](lambdas.html#带接收者的函数字面值)，可以在 Kotlin 中创建类型安全、静态类型的构建器。
 
-Type-safe builders allow for creating Kotlin-based domain-specific languages (DSLs) suitable for building complex hierarchical data structures in a semi-declarative way. Some of the example use cases for the builders are:
+类型安全的构建器可以创建基于 Kotlin 的适用于采用半声明方式构建复杂层次数据结构领域专用语言（DSL）。以下是构建器的一些示例应用场景：
 
-* Generating markup with Kotlin code, such as [HTML](https://github.com/Kotlin/kotlinx.html) or XML;
-* Programmatically laying out UI components: [Anko](https://github.com/Kotlin/anko/wiki/Anko-Layouts)
-* Configuring routes for a web server: [Ktor](http://ktor.io/features/routing.html#routing-tree).
+* 使用 Kotlin 代码生成标记语言，例如 [HTML](https://github.com/Kotlin/kotlinx.html) 或 XML；
+* 以编程方式布局 UI 组件：[Anko](https://github.com/Kotlin/anko/wiki/Anko-Layouts)；
+* 为 Web 服务器配置路由：[Ktor](http://ktor.io/features/routing.html#routing-tree)。
 
 ## 一个类型安全的构建器示例
 
