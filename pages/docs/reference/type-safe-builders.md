@@ -2,20 +2,18 @@
 type: doc
 layout: reference
 category: "Syntax"
-title: "类型安全的 Groovy-风格构建器"
+title: "类型安全的构建器"
 ---
 
 # 类型安全的构建器
 
-[构建器（builder）](http://www.groovy-lang.org/dsls.html#_nodebuilder)的概念在 *Groovy* 社区中非常热门。
-构建器允许以半声明（semi-declarative）的方式定义数据。构建器很适合用来[生成 XML](http://www.groovy-lang.org/processing-xml.html#_creating_xml)、
-[布局 UI 组件](http://www.groovy-lang.org/swing.html)、
-[描述 3D 场景](http://www.artima.com/weblogs/viewpost.jsp?thread=296081)以及其他更多功能……
+By using well-named functions as builders in combination with [function literals with receiver](lambdas.html#function-literals-with-receiver) it is possible to create type-safe, statically-typed builders in Kotlin.
 
-对于很多情况下，Kotlin 允许*检查类型*的构建器，这使得它们比
-Groovy 自身的动态类型实现更具吸引力。
+Type-safe builders allow for creating Kotlin-based domain-specific languages (DSLs) suitable for building complex hierarchical data structures in a semi-declarative way. Some of the example use cases for the builders are:
 
-对于其余的情况，Kotlin 支持动态类型构建器。
+* Generating markup with Kotlin code, such as [HTML](https://github.com/Kotlin/kotlinx.html) or XML;
+* Programmatically laying out UI components: [Anko](https://github.com/Kotlin/anko/wiki/Anko-Layouts)
+* Configuring routes for a web server: [Ktor](http://ktor.io/features/routing.html#routing-tree).
 
 ## 一个类型安全的构建器示例
 
