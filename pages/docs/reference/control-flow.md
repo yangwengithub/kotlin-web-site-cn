@@ -149,25 +149,54 @@ for (item: Int in ints) {
 
 这三个函数都需要标记为 `operator`。
 
-对数组的 `for` 循环会被编译为并不创建迭代器的基于索引的循环。
+如需在数字区间上迭代，请使用[区间表达式](ranges.html):
+
+<div class="sample" markdown="1">
+``` kotlin
+fun main(args: Array<String>) {
+//sampleStart
+for (i in 1..3) {
+    println(i)
+}
+for (i in 6 downTo 0 step 2) {
+    println(i)
+}
+//sampleEnd
+}
+```
+</div>
+
+对区间或者数组的 `for` 循环会被编译为并不创建迭代器的基于索引的循环。
 
 如果你想要通过索引遍历一个数组或者一个 list，你可以这么做：
 
+<div class="sample" markdown="1">
 ``` kotlin
+fun main(args: Array<String>) {
+val array = arrayOf("a", "b", "c")
+//sampleStart
 for (i in array.indices) {
-    print(array[i])
+    println(array[i])
+}
+//sampleEnd
 }
 ```
-
-注意这种“在区间上遍历”会编译成优化的实现而不会创建额外对象。
+</div>
 
 或者你可以用库函数 `withIndex`：
 
+<div class="sample" markdown="1">
 ``` kotlin
+fun main(args: Array<String>) {
+val array = arrayOf("a", "b", "c")
+//sampleStart
 for ((index, value) in array.withIndex()) {
     println("the element at $index is $value")
 }
+//sampleEnd
+}
 ```
+</div>
 
 参见[*for*{: .keyword } 语法](grammar.html#for)。
 
