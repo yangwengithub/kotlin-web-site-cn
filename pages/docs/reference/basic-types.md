@@ -255,7 +255,7 @@ x[0] = x[1] + x[2]
 字符串的元素——字符可以使用索引运算符访问: `s[i]`。
 可以用 *for*{: .keyword } 循环迭代字符串:
 
-<div class="sample" markdown="1">
+
 ``` kotlin
 fun main(args: Array<String>) {
 val str = "abcd"
@@ -266,12 +266,12 @@ for (c in str) {
 //sampleEnd
 }
 ```
-</div>
+
 
 可以用 `+` 操作符连接字符串。这也适用于连接字符串与其他类型的值，
 只要表达式中的第一个元素是字符串：
 
-<div class="sample" markdown="1">
+
 ``` kotlin
 fun main(args: Array<String>) {
 //sampleStart
@@ -280,7 +280,7 @@ println(s + "def")
 //sampleEnd
 }
 ```
-</div>
+
 
 请注意，在大多数情况下，优先使用[字符串模板](字符串模板)或原始字符串而不是字符串连接。
 
@@ -321,7 +321,7 @@ val text = """
 字符串可以包含*模板表达式* ，即一些小段代码，会求值并把结果合并到字符串中。
 模板表达式以美元符（`$`）开头，由一个简单的名字构成:
 
-<div class="sample" markdown="1">
+
 ``` kotlin
 fun main(args: Array<String>) {
 //sampleStart
@@ -330,11 +330,11 @@ println("i = $i") // 输出“i = 10”
 //sampleEnd
 }
 ```
-</div>
+
 
 或者用花括号括起来的任意表达式:
 
-<div class="sample" markdown="1">
+
 ``` kotlin
 fun main(args: Array<String>) {
 //sampleStart
@@ -343,7 +343,7 @@ println("$s.length is ${s.length}") // 输出“abc.length is 3”
 //sampleEnd
 }
 ```
-</div>
+
 
 原始字符串和转义字符串内部都支持模板。
 如果你需要在原始字符串中表示字面值 `$` 字符（它不支持反斜杠转义），你可以用下列语法：

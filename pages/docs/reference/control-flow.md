@@ -151,7 +151,7 @@ for (item: Int in ints) {
 
 如需在数字区间上迭代，请使用[区间表达式](ranges.html):
 
-<div class="sample" markdown="1">
+
 ``` kotlin
 fun main(args: Array<String>) {
 //sampleStart
@@ -164,13 +164,13 @@ for (i in 6 downTo 0 step 2) {
 //sampleEnd
 }
 ```
-</div>
+
 
 对区间或者数组的 `for` 循环会被编译为并不创建迭代器的基于索引的循环。
 
 如果你想要通过索引遍历一个数组或者一个 list，你可以这么做：
 
-<div class="sample" markdown="1">
+
 ``` kotlin
 fun main(args: Array<String>) {
 val array = arrayOf("a", "b", "c")
@@ -181,11 +181,11 @@ for (i in array.indices) {
 //sampleEnd
 }
 ```
-</div>
+
 
 或者你可以用库函数 `withIndex`：
 
-<div class="sample" markdown="1">
+
 ``` kotlin
 fun main(args: Array<String>) {
 val array = arrayOf("a", "b", "c")
@@ -196,7 +196,7 @@ for ((index, value) in array.withIndex()) {
 //sampleEnd
 }
 ```
-</div>
+
 
 参见[*for*{: .keyword } 语法](grammar.html#for)。
 
