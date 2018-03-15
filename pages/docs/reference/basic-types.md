@@ -255,11 +255,34 @@ x[0] = x[1] + x[2]
 字符串的元素——字符可以使用索引运算符访问: `s[i]`。
 可以用 *for*{: .keyword } 循环迭代字符串:
 
+<div class="sample" markdown="1">
 ``` kotlin
+fun main(args: Array<String>) {
+val str = "abcd"
+//sampleStart
 for (c in str) {
     println(c)
 }
+//sampleEnd
+}
 ```
+</div>
+
+You can concatenate strings using the `+` operator. This also works for concatenating strings with values of other types, as long
+as the first element in the expression is a string:
+
+<div class="sample" markdown="1">
+``` kotlin
+fun main(args: Array<String>) {
+//sampleStart
+val s = "abc" + 1
+println(s + "def")
+//sampleEnd
+}
+```
+</div>
+
+Note that in most cases using [string templates](#string-templates) or raw strings is preferable to string concatenation.
 
 ### 字符串字面值
 
@@ -298,17 +321,29 @@ val text = """
 字符串可以包含*模板表达式* ，即一些小段代码，会求值并把结果合并到字符串中。
 模板表达式以美元符（`$`）开头，由一个简单的名字构成:
 
+<div class="sample" markdown="1">
 ``` kotlin
+fun main(args: Array<String>) {
+//sampleStart
 val i = 10
-val s = "i = $i" // 求值结果为 "i = 10"
+println("i = $i") // 输出“i = 10”
+//sampleEnd
+}
 ```
+</div>
 
 或者用花括号括起来的任意表达式:
 
+<div class="sample" markdown="1">
 ``` kotlin
+fun main(args: Array<String>) {
+//sampleStart
 val s = "abc"
-val str = "$s.length is ${s.length}" // 求值结果为 "abc.length is 3"
+println("$s.length is ${s.length}") // 输出“abc.length is 3”
+//sampleEnd
+}
 ```
+</div>
 
 原生字符串和转义字符串内部都支持模板。
 如果你需要在原生字符串中表示字面值 `$` 字符（它不支持反斜杠转义），你可以用下列语法：

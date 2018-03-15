@@ -291,14 +291,14 @@ tutorials:
       content:
         - url: /docs/tutorials/native/basic-kotlin-native-app.html
           title: 基本 Kotlin/Native 应用程序
-        - url: /docs/tutorials/native/gradle-for-kotlin-native.html
-          title: Gradle 用于 Kotlin/Native
-        - url: /docs/tutorials/native/kotlin-native-with-clion.html
-          title: Kotlin/Native 使用 CLion
         - url: /docs/tutorials/native/interop-with-c.html
           title: 与 C 语言库互操作
         - url: /docs/tutorials/native/working-with-klib.html
           title: 使用 Kotlin/Native 库
+        - url: /docs/tutorials/native/kotlin-native-with-clion.html
+          title: Kotlin/Native 使用 CLion
+        - url: /docs/tutorials/native/gradle-for-kotlin-native.html
+          title: Gradle 用于 Kotlin/Native
 
     - title: 协程
       content:
