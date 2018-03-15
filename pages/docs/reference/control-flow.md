@@ -149,7 +149,7 @@ for (item: Int in ints) {
 
 这三个函数都需要标记为 `operator`。
 
-To iterate over a range of numbers, use a [range expression](ranges.html):
+如需在数字区间上迭代，请使用[区间表达式](ranges.html):
 
 <div class="sample" markdown="1">
 ``` kotlin

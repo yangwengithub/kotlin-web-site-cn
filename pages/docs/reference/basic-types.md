@@ -268,8 +268,8 @@ for (c in str) {
 ```
 </div>
 
-You can concatenate strings using the `+` operator. This also works for concatenating strings with values of other types, as long
-as the first element in the expression is a string:
+可以用 `+` 操作符连接字符串。这也适用于连接字符串与其他类型的值，
+只要表达式中的第一个元素是字符串：
 
 <div class="sample" markdown="1">
 ``` kotlin
@@ -282,11 +282,11 @@ println(s + "def")
 ```
 </div>
 
-Note that in most cases using [string templates](#string-templates) or raw strings is preferable to string concatenation.
+请注意，在大多数情况下，优先使用[字符串模板](字符串模板)或原始字符串而不是字符串连接。
 
 ### 字符串字面值
 
-Kotlin 有两种类型的字符串字面值: 转义字符串可以有转义字符，以及原生字符串可以包含换行和任意文本。转义字符串很像 Java 字符串:
+Kotlin 有两种类型的字符串字面值: 转义字符串可以有转义字符，以及原始字符串可以包含换行和任意文本。转义字符串很像 Java 字符串:
 
 ``` kotlin
 val s = "Hello, world!\n"
@@ -294,7 +294,7 @@ val s = "Hello, world!\n"
 
 转义采用传统的反斜杠方式。参见上面的 [字符](#字符) 查看支持的转义序列。
 
-*原生字符串* 使用三个引号（`"""`）分界符括起来，内部没有转义并且可以包含换行和任何其他字符:
+*原始字符串* 使用三个引号（`"""`）分界符括起来，内部没有转义并且可以包含换行和任何其他字符:
 
 ``` kotlin
 val text = """
@@ -345,8 +345,8 @@ println("$s.length is ${s.length}") // 输出“abc.length is 3”
 ```
 </div>
 
-原生字符串和转义字符串内部都支持模板。
-如果你需要在原生字符串中表示字面值 `$` 字符（它不支持反斜杠转义），你可以用下列语法：
+原始字符串和转义字符串内部都支持模板。
+如果你需要在原始字符串中表示字面值 `$` 字符（它不支持反斜杠转义），你可以用下列语法：
 
 ``` kotlin
 val price = """
