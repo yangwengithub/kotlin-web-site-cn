@@ -168,7 +168,7 @@ html {
 该操作实际上是由一个扩展函数 `unaryPlus()` 定义的，该函数是 `TagWithText` 抽象类（`Title` 的父类）的成员：
 
 ``` kotlin
-fun String.unaryPlus() {
+operator fun String.unaryPlus() {
     children.add(TextElement(this))
 }
 ```
