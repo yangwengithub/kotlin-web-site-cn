@@ -263,7 +263,7 @@ fun <T> T.basicToString() : String {  // 扩展函数
 ``` kotlin
 val l = singletonList<Int>(1)
 ```
-Type arguments can be omitted if they can be inferred from the context, so the following example works as well:
+如果类型参数可以从上下文中推断出来，则可以省略，所以下面的例子了也可以运行：
 ``` kotlin
 val l = singletonList(1)
 ```
