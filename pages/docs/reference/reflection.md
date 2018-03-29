@@ -46,11 +46,11 @@ assert(widget is GoodWidget) { "Bad widget: ${widget::class.qualifiedName}" }
 
 ## 可调用引用
 
-References to functions, properties, and constructors, apart from introspecting the program structure, can 
-also be called or used as instances of [function types](lambdas.html#function-types).
+函数、属性以及构造函数的引用，除了作为自省程序结构外，
+还可以用于调用或者用作[函数类型](lambdas.html#函数类型)的实例。
 
-The common supertype for all callable references is [`KCallable<out R>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-callable/index.html), 
-where `R` is the return value type, which is the property type for properties, and the constructed type for constructors. 
+所有可调用引用的公共超类型是 [`KCallable<out R>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-callable/index.html)，
+其中 `R` 是返回值类型，对于属性是属性类型，对于构造函数是所构造类型。
 
 ### 函数引用
 
@@ -79,8 +79,8 @@ fun main(args: Array<String>) {
 
 这里 `::isOdd` 是函数类型 `(Int) -> Boolean` 的一个值。
 
-Function references belong to one of the [`KFunction<out R>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-function/index.html)
-subtypes, depending on the parameter count, e.g. `KFunction3<T1, T2, T3, R>`.
+函数引用属于 [`KFunction<out R>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-function/index.html)
+的子类型之一，取决于参数个数，例如 `KFunction3<T1, T2, T3, R>`。
 
 当上下文中已知函数期望的类型时，`::` 可以用于重载函数。
 例如：
@@ -108,9 +108,9 @@ val predicate: (String) -> Boolean = ::isOdd   // 引用到 isOdd(x: String)
 
 如果我们需要使用类的成员函数或扩展函数，它需要是限定的，例如 `String::toCharArray`。
 
-Note that even if you initialize a variable with a reference to an extension function, the inferred function type will
-have no receiver (it will have an additional parameter accepting a receiver object). To have a function type 
-with receiver instead, specify the type explicitly:
+请注意，即使以扩展函数的引用初始化一个变量，其推断出的函数类型也会<!--
+-->没有接收者（它会有一个接受接收者对象的额外参数）。如需改为<!--
+-->带有接收者的函数类型，请明确指定其类型：
 
 ``` kotlin
 val isEmptyStringList: List<String>.() -> Boolean = List::isEmpty 
@@ -273,9 +273,9 @@ fun function(factory: () -> Foo) {
 function(::Foo)
 ```
 
-Callable references to constructors are typed as one of the 
-[`KFunction<out R>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-function/index.html) subtypes
-, depending on the parameter count.
+构造函数的可调用引用的类型也是
+[`KFunction<out R>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-function/index.html) 的子类型之一
+，取决于其参数个数。
 
 {:#绑定的函数与属性引用自-11-起}
 ## 绑定的函数与属性引用（自 1.1 起）
@@ -338,10 +338,10 @@ fun main(args: Array<String>) {
 
 自 Kotlin 1.2 起，无需显式指定 `this` 作为接收者：`this::foo` 与 `::foo` 是等价的。
 
-### Bound constructor references
+### 绑定的构造函数引用
 
-A bound callable reference to a constructor of an [*inner*{: .keyword} class](nested-classes.html#inner-classes) can 
-be obtained by providing an instance of the outer class:
+[*inner*{: .keyword} 类](nested-classes.html#内部类)的构造函数的绑定的可调用引用可<!--
+-->通过提供外部类的实例来获得：
 
 ```kotlin
 class Outer {
