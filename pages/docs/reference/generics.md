@@ -263,7 +263,7 @@ fun <T> T.basicToString() : String {  // 扩展函数
 ``` kotlin
 val l = singletonList<Int>(1)
 ```
-如果类型参数可以从上下文中推断出来，则可以省略，所以下面的例子了也可以运行：
+可以省略能够从上下文中推断出来的类型参数，所以以下示例同样适用：
 ``` kotlin
 val l = singletonList(1)
 ```
