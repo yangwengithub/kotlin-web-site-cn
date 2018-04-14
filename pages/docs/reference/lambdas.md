@@ -5,23 +5,23 @@ category: "Syntax"
 title: "高阶函数与 lambda 表达式"
 ---
 
-# 高阶函数和 lambda 表达式
+# 高阶函数与 lambda 表达式
 
-Kotlin functions are [*first-class*](https://en.wikipedia.org/wiki/First-class_function), which means that they can 
-be stored in variables and data structures, passed as arguments to and returned from other 
-[higher-order functions](#higher-order-functions). You can operate with functions in any way that is possible for other 
-non-function values. 
+Kotlin 函数都是[*头等的*](https://zh.wikipedia.org/wiki/%E5%A4%B4%E7%AD%89%E5%87%BD%E6%95%B0)，这意味着它们可以<!--
+-->存储在变量与数据结构中、作为参数传递给其他<!--
+-->[高阶函数](#高阶函数)以及从其他高阶函数返回。可以像操作任何其他<!--
+-->非函数值一样操作函数。
 
-To facilitate this, Kotlin, as a statically typed programming language, uses a family of 
-[function types](#function-types) to represent functions and provides a set of specialized language constructs, such as [lambda expressions](#lambda-expressions-and-anonymous-functions).
+为促成这点，作为一种静态类型编程语言的 Kotlin 使用一系列<!--
+-->[函数类型](#函数类型)来表示函数并提供一组特定的语言结构，例如 [lambda 表达式](#lambda-表达式与匿名函数)。
 
 ## 高阶函数
 
 高阶函数是将函数用作参数或返回值的函数。
 
-A good example is the [functional programming idiom `fold`](https://en.wikipedia.org/wiki/Fold_(higher-order_function)) 
-for collections, which takes an initial accumulator value and a combining function and builds its return value by 
-consecutively combining current accumulator value with each collection element, replacing the accumulator:
+一个不错的示例是集合的[函数式风格的 `fold`](https://en.wikipedia.org/wiki/Fold_(higher-order_function))，
+它接受一个初始累积值与一个接合函数，并通过将当前累积值与每个集合元素连<!--
+-->续接合起来代入累积值来构建返回值：
 
 ``` kotlin
 fun <T, R> Collection<T>.fold(
