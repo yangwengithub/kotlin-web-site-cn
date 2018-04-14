@@ -12,7 +12,7 @@ Kotlin 函数都是[*头等的*](https://zh.wikipedia.org/wiki/%E5%A4%B4%E7%AD%8
 -->[高阶函数](#高阶函数)以及从其他高阶函数返回。可以像操作任何其他<!--
 -->非函数值一样操作函数。
 
-为促成这点，作为一种静态类型编程语言的 Kotlin 使用一系列<!--
+为促成这点，作为一门静态类型编程语言的 Kotlin 使用一系列<!--
 -->[函数类型](#函数类型)来表示函数并提供一组特定的语言结构，例如 [lambda 表达式](#lambda-表达式与匿名函数)。
 
 ## 高阶函数
@@ -36,13 +36,13 @@ fun <T, R> Collection<T>.fold(
 }
 ```
 
-In the code above, the parameter `combine` has a [function type](#function-types) `(R, T) -> R`, so it accepts a function that 
-takes two arguments of types `R` and `T` and returns a value of type `R`. 
-It is [invoked](#invoking-a-function-type-instance) inside the *for*{: .keyword }-loop, and the return value is 
-then assigned to `accumulator`.
+在上述代码中，参数 `combine` 具有[函数类型](#函数类型) `(R, T) -> R`，因此 `fold` 接受一个函数作为参数，
+该函数接受类型分别为 `R` 与 `T` 的两个参数并返回一个 `R` 类型的值。
+在 *for*{: .keyword }-循环内部调用该函数，然后将其返回值<!--
+-->赋值给 `accumulator`。
 
-To call `fold`, we need to pass it an [instance of the function type](#instantiating-a-function-type) as an argument, and lambda expressions ([described in more detail below](#lambda-expressions-and-anonymous-functions)) are widely used for 
-this purpose at higher-order function call sites:
+为了调用 `fold`，需要传给它一个[函数类型的实例](#函数类型实例化)作为参数，而在高阶函数调用处，（[下文详述的](#lambda-表达式与匿名函数)）lambda 表达
+式广泛用于此目的。
 
 <div class="sample" markdown="1">
 
@@ -51,21 +51,21 @@ fun main(args: Array<String>) {
     //sampleStart
     val items = listOf(1, 2, 3, 4, 5)
     
-    // Lambdas are code blocks enclosed in curly braces.
+    // Lambdas 表达式是花括号括起来的代码块。
     items.fold(0, { 
-        // When a lambda has parameters, they go first, followed by '->'
+        // 如果一个 lambda 表达式有参数，前面是参数，后跟“->”
         acc: Int, i: Int -> 
         print("acc = $acc, i = $i, ") 
         val result = acc + i
         println("result = $result")
-        // The last expression in a lambda is considered the return value:
+        // lambda 表达式中的最后一个表达式是返回值：
         result
     })
     
-    // Parameter types in a lambda are optional if they can be inferred:
+    // lambda 表达式的参数类型是可选的，如果能够推断出来的话：
     val joinedToString = items.fold("Elements:", { acc, i -> acc + " " + i })
     
-    // Function references can also be used for higher-order function calls:
+    // 函数引用也可以用于高阶函数调用：
     val product = items.fold(1, Int::times)
     //sampleEnd
     println("joinedToString = $joinedToString")
@@ -74,61 +74,61 @@ fun main(args: Array<String>) {
 ```
 </div>
 
-The following sections explain in more detail the concepts mentioned so far.
+以下各节会更详细地解释上文提到的这些概念。
 
-## Function types
+## 函数类型
 
-Kotlin uses a family of function types like `(Int) -> String` for declarations that deal with functions: `val onClick: () -> Unit = ...`.
+Kotlin 使用类似 `(Int) -> String` 的一系列函数类型来处理函数的声明： `val onClick: () -> Unit = ……`。
 
-These types have a special notation that corresponds to the signatures of the functions, i.e. their parameters and return values:
+这些类型具有与函数签名相对应的特殊表示法，即它们的参数和返回值：
 
-* All function types have a parenthesized parameter types list and a return type: `(A, B) -> C` denotes a type that
- represents functions taking two arguments of types `A` and `B` and returning a value of type `C`. 
- The parameter types list may be empty, as in `() -> A`. The [`Unit` return type](functions.html#unit-returning-functions) 
- cannot be omitted. 
+* 所有函数类型都有一个圆括号括起来的参数类型列表以及一个返回类型：`(A, B) -> C` 表示<!--
+ -->接受类型分别为 `A` 与 `B` 两个参数并返回一个 `C` 类型值的函数类型。
+ 参数类型列表可以为空，如 `() -> A`。[`Unit` 返回类型](functions.html#unit-返回类型)<!--
+ -->不可省略。
  
-* Function types can optionally have an additional *receiver* type, which is specified before a dot in the notation:
- the type `A.(B) -> C` represents functions that can be called on a receiver object of `A` with a parameter of `B` and
- return a value of `C`.
- [Function literals with receiver](#function-literals-with-receiver) are often used along with these types.
+* 函数类型可以有一个额外的*接收者*类型，它在表示法中的点之前指定：
+ 类型 `A.(B) -> C` 表示可以在 `A` 的接收者对象上以一个 `B` 类型参数来调用并返回一个
+ `C` 类型值的函数。
+ [带有接收者的函数字面值](#带有接收者的函数字面值)通常与这些类型一起使用。
  
-* [Suspending functions](coroutines.html#suspending-functions) belong to function types of a special kind, which have a *suspend*{: .keyword} modifier in the 
- notation, such as `suspend () -> Unit` or `suspend A.(B) -> C`.
+* [挂起函数](coroutines.html#挂起函数)属于特殊种类的函数类型，它的表示法中有一个 *suspend*{: .keyword} 修饰符
+ ，例如 `suspend () -> Unit` 或者 `suspend A.(B) -> C`。
  
-The function type notation can optionally include names for the function parameters: `(x: Int, y: Int) -> Point`.
-These names can be used for documenting the meaning of the parameters.
+函数类型表示法可以选择性地包含函数的参数名：`(x: Int, y: Int) -> Point`。
+这些名称可用于表明参数的含义。
 
-> To specify that a function type is [nullable](null-safety.html#nullable-types-and-non-null-types), use parentheses: `((Int, Int) -> Int)?`.
+> 如需将函数类型指定为[可空](null-safety.html#可空与非空类型)，请使用圆括号：`((Int, Int) -> Int)?`。
 > 
-> Function types can be combined using parentheses: `(Int) -> ((Int) -> Unit)`
+> 函数类型可以使用圆括号进行接合：`(Int) -> ((Int) -> Unit)`
 >
-> The arrow notation is right-associative, `(Int) -> (Int) -> Unit` is equivalent to the previous example, but not to 
-`((Int) -> (Int)) -> Unit`.
+> 箭头表示法是右结合的，`(Int) -> (Int) -> Unit` 与前述示例等价，但不等于
+`((Int) -> (Int)) -> Unit`。
 
-You can also give a function type an alternative name by using [a type alias](type-aliases.html):
+还可以通过使用[类型别名](type-aliases.html)给函数类型起一个别称：
 
 ```kotlin
 typealias ClickHandler = (Button, ClickEvent) -> Unit
 ```
  
-### Instantiating a function type
+### 函数类型实例化
 
-There are several ways to obtain an instance of a function type:
+有几种方法可以获得函数类型的实例：
 
-* Using a code block within a function literal, in one of the forms: 
-    * a [lambda expression](#lambda-expressions-and-anonymous-functions): `{ a, b -> a + b }`,
-    * an [anonymous function](#anonymous-functions): `fun(s: String): Int { return s.toIntOrNull() ?: 0 }`
+* 使用函数字面值的代码块，采用以下形式之一：
+    * [lambda 表达式](#lambda-表达式与匿名函数): `{ a, b -> a + b }`,
+    * [匿名函数](#匿名函数): `fun(s: String): Int { return s.toIntOrNull() ?: 0 }`
     
-   [Function literals with receiver](#function-literals-with-receiver) can be used as values of function types with receiver.
+    [带有接收者的函数字面值](#带有接收者的函数字面值)可用作带有接收者的函数类型的值。
    
-* Using a callable reference to an existing declaration:
-    * a top-level, local, member, or extension [function](reflection.html#function-references): `::isOdd`, `String::toInt`,
-    * a top-level, member, or extension [property](reflection.html#property-references): `List<Int>::size`,
-    * a [constructor](reflection.html#constructor-references): `::Regex`
+* 使用已有声明的可调用引用：
+    * 顶层、局部、成员、扩展[函数](reflection.html#函数引用)：`::isOdd`、 `String::toInt`，
+    * 顶层、成员、扩展[属性](reflection.html#属性引用)：`List<Int>::size`，
+    * [构造函数](reflection.html#构造函数引用)：`::Regex`
     
-   These include [bound callable references](reflection.html#bound-function-and-property-references-since-11) that point to a member of a particular instance: `foo::toString`.
+   这包括指向特定实例成员的[绑定的可调用引用](reflection.html#绑定的函数与属性引用自-11-起)：`foo::toString`。
    
-* Using instances of a custom class that implements a function type as an interface: 
+* 使用实现函数类型接口的自定义类的实例：
 
     ```kotlin
     class IntTransformer: (Int) -> Int {
@@ -138,15 +138,15 @@ There are several ways to obtain an instance of a function type:
     val intFunction: (Int) -> Int = IntTransformer() 
     ```
 
-The compiler can infer the function types for variables if there is enough information:
+如果有足够信息，编译器可以推断变量的函数类型：
 
 ```kotlin
-val a = { i: Int -> i + 1 } // The inferred type is (Int) -> Int
+val a = { i: Int -> i + 1 } // 推断出的类型是 (Int) -> Int
 ```
 
-*Non-literal* values of function types with and without receiver are interchangeable, so that the receiver can stand in 
-for the first parameter, and vice versa. For instance, a value of type `(A, B) -> C` can be passed or assigned 
- where a `A.(B) -> C` is expected and the other way around:
+带与不带接收者的函数类型*非字面*值可以互换，其中接收者可以替代<!--
+-->第一个参数，反之亦然。例如，`(A, B) -> C` 类型的值可以传给或赋值<!--
+-->给期待 `A.(B) -> C` 的地方，反之亦然：
  
 <div class="sample" markdown="1">
 
@@ -166,19 +166,19 @@ fun main(args: Array<String>) {
 ```
 </div>
 
-> Note that a function type with no receiver is inferred by default, even if a variable is initialized with a reference
-> to an extension function. 
-> To alter that, specify the variable type explicitly.
+> 请注意，默认情况下推断出的是没有接收者的函数类型，即使变量是通过<!--
+> -->扩展函数引用来初始化的。
+> 如需改变这点，请显式指定变量类型。
 
-### Invoking a function type instance  
+### 函数类型实例调用
 
-A value of a function type can be invoked by using its [`invoke(...)` operator](operator-overloading.html#invoke): `f.invoke(x)` or just `f(x)`.
+函数类型的值可以通过其 [`invoke(……)` 操作符](operator-overloading.html#invoke)调用：`f.invoke(x)` 或者直接 `f(x)`。
 
-If the value has a receiver type, the receiver object should be passed as the first argument.
-Another way to invoke a value of a function type with receiver is to prepend it with the receiver object,
-as if the value were an [extension function](extensions.html): `1.foo(2)`,
+如果该值具有接收者类型，那么应该将接收者对象作为第一个参数传递。
+调用带有接收者的函数类型值的另一个方式是在其前面加上接收者对象，
+就好比该值是一个[扩展函数](extensions.html)：`1.foo(2)`，
 
-Example:
+例如：
 
 <div class="sample" markdown="1">
 
@@ -193,13 +193,13 @@ fun main(args: Array<String>) {
     
     println(intPlus.invoke(1, 1))
     println(intPlus(1, 2))
-    println(2.intPlus(3)) // extension-like call
+    println(2.intPlus(3)) // 类扩展调用
     //sampleEnd
 }
 ```
 </div>
 
-### Inline functions
+### 内联函数
 
 Sometimes it is beneficial to use [inline functions](inline-functions.html), which provide flexible control flow,
 for higher-order functions.
@@ -239,7 +239,7 @@ lambda 表达式总是括在花括号中，
 val sum: (Int, Int) -> Int = { x, y -> x + y }
 ```
 
-### Passing a lambda to the last parameter
+### 将 lambda 表达式传给最后一个参数
 
 In Kotlin, there is a convention that if the last parameter of a function accepts a function, a lambda expression that is 
 passed as the corresponding argument can be placed outside the parentheses:
