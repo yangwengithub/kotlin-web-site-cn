@@ -201,8 +201,8 @@ fun main(args: Array<String>) {
 
 ### 内联函数
 
-Sometimes it is beneficial to use [inline functions](inline-functions.html), which provide flexible control flow,
-for higher-order functions.
+有时使用[内联函数](inline-functions.html)可以为<!--
+-->高阶函数提供灵活的控制流。
 
 ## Lambda 表达式与匿名函数
 
@@ -241,14 +241,14 @@ val sum: (Int, Int) -> Int = { x, y -> x + y }
 
 ### 将 lambda 表达式传给最后一个参数
 
-In Kotlin, there is a convention that if the last parameter of a function accepts a function, a lambda expression that is 
-passed as the corresponding argument can be placed outside the parentheses:
+在 Kotlin 中有一个约定：如果函数的最后一个参数接受函数，那么作为相应参数<!--
+-->传入的 lambda 表达式可以放在圆括号之外：
 
 ``` kotlin
 val product = items.fold(1) { acc, e -> acc * e }
 ```
 
-If the lambda is the only argument to that call, the parentheses can be omitted entirely: 
+如果该 lambda 表达式是调用时唯一的参数，那么圆括号可以完全省略：
 
 ``` kotlin
 run { println("...") }
@@ -260,14 +260,14 @@ run { println("...") }
 
 一个 lambda 表达式只有一个参数是很常见的。
 
-If the compiler can figure the signature out itself, it is allowed not to declare the only parameter and omit `->`. 
-The parameter will be implicitly declared under the name `it`:
+如果编译器自己可以识别出签名，也可以不用声明唯一的参数并忽略 `->`。
+该参数会隐式声明为 `it`：
 
 ``` kotlin
 ints.filter { it > 0 } // 这个字面值是“(it: Int) -> Boolean”类型的
 ```
 
-### Returning a value from a lambda expression
+### 从 lambda 表达式中返回一个值
 
 我们可以使用[限定的返回](returns.html#标签处返回)语法从 lambda 显式返回一个值。
 否则，将隐式返回最后一个表达式的值。
@@ -286,8 +286,8 @@ ints.filter {
 }
 ```
 
-This convention, along with [passing a lambda expression outside parentheses](#passing-a-lambda-to-the-last-parameter), allows for 
-[LINQ-style](http://msdn.microsoft.com/en-us/library/bb308959.aspx) code:
+这一约定连同[在圆括号外传递 lambda 表达式](将-lambda-表达式传给最后一个参数)一起支持
+[LINQ-风格](http://msdn.microsoft.com/en-us/library/bb308959.aspx) 的代码：
 
 ``` kotlin
 strings.filter { it.length == 5 }.sortedBy { it }.map { it.toUpperCase() }
@@ -363,20 +363,20 @@ print(sum)
 
 ### 带接收者的函数字面值
 
-[Function types](#function-types) with receiver, such as `A.(B) -> C`, can be instantiated with a special form of function literals – 
-function literals with receiver.
+带有接收者的[函数类型](#函数类型)，例如 `A.(B) -> C`，可以用特殊形式的函数字面值实例化——
+带有接收者的函数字面值。
 
-As said above, Kotlin provides the ability [to call an instance](#invoking-a-function-type-instance) of a function type with receiver providing the _receiver object_.
+如上所述，Kotlin 提供了[调用](函数类型实例调用)带有接收者（提供*接收者对象*）的函数类型实例的能力。
 
-Inside the body of the function literal, the receiver object passed to a call becomes an *implicit* *this*{: .keyword}, so that you 
-can access the members of that receiver object without any additional qualifiers, or access the receiver object 
-using a [`this` expression](this-expressions.html).
+在这样的函数字面值内部，传给调用的接收者对象成为*隐式*的*this*{: .keyword}，以便<!--
+-->访问接收者对象的成员而无需任何额外的限定符，亦可使用
+[`this` 表达式](this-expressions.html) 访问接收者对象。
  
-This behavior is similar to [extension functions](extensions.html), which also allow you to access the members of the receiver object 
-inside the body of the function.
+这种行为与[扩展函数](extensions.html)类似，扩展函数也允许在函数体内部访问接收者对象的成员<!--
+-->。
 
-Here is an example of a function literal with receiver along with its type, where `plus` is called on the 
-receiver object:
+这里有一个带有接收者的函数字面值及其类型的示例，其中在接收者对象上调用了 `plus`
+：
 
 ``` kotlin
 val sum: Int.(Int) -> Int = { other -> plus(other) } 
