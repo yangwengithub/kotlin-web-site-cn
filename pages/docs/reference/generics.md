@@ -32,7 +32,7 @@ val box = Box(1) // 1 具有类型 Int，所以编译器知道我们说的是 Bo
 Java 类型系统中最棘手的部分之一是通配符类型（参见 [Java Generics FAQ](http://www.angelikalanger.com/GenericsFAQ/JavaGenericsFAQ.html)）。
 而 Kotlin 中没有。 相反，它有两个其他的东西：声明处型变（declaration-site variance）与类型投影（type projections）。
 
-首先，让我们思考为什么 Java 需要那些神秘的通配符。在 [Effective Java](http://www.oracle.com/technetwork/java/effectivejava-136174.html) 解释了该问题——第28条：*利用有限制通配符来提升 API 的灵活性*。
+首先，让我们思考为什么 Java 需要那些神秘的通配符。在 [《Effective Java》第三版](http://www.oracle.com/technetwork/java/effectivejava-136174.html) 解释了该问题——第 31 条：*利用有限制通配符来提升 API 的灵活性*。
 首先，Java 中的泛型是**不型变的**，这意味着 `List<String>` 并**不是** `List<Object>` 的子类型。
 为什么这样？ 如果 List 不是**不型变的**，它就没<!--
 -->比 Java 的数组好到哪去，因为如下代码会通过编译然后导致运行时异常：
@@ -64,7 +64,7 @@ void copyAll(Collection<Object> to, Collection<String> from) {
 }
 ```
 
-（在 Java 中，我们艰难地学到了这个教训，参见[Effective Java](http://www.oracle.com/technetwork/java/effectivejava-136174.html)，第25条：*列表优先于数组*）
+（在 Java 中，我们艰难地学到了这个教训，参见[《Effective Java》第三版](http://www.oracle.com/technetwork/java/effectivejava-136174.html)，第 28 条：*列表优先于数组*）
 
 
 这就是为什么 `addAll()` 的实际签名是以下这样：
@@ -263,7 +263,7 @@ fun <T> T.basicToString() : String {  // 扩展函数
 ``` kotlin
 val l = singletonList<Int>(1)
 ```
-Type arguments can be omitted if they can be inferred from the context, so the following example works as well:
+可以省略能够从上下文中推断出来的类型参数，所以以下示例同样适用：
 ``` kotlin
 val l = singletonList(1)
 ```

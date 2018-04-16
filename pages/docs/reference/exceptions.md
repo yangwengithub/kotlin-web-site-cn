@@ -70,7 +70,7 @@ catch (IOException e) {
 }
 ```
 
-这并不好，参见[《Effective Java》](http://www.oracle.com/technetwork/java/effectivejava-136174.html) 第 65 条：*不要忽略异常*。
+这并不好，参见[《Effective Java》第三版](http://www.oracle.com/technetwork/java/effectivejava-136174.html) 第 77 条：*不要忽略异常*。
 
 Bruce Eckel 在[《Java 是否需要受检的异常？》（Does Java need Checked Exceptions?）](http://www.mindview.net/Etc/Discussions/CheckedExceptions) 中指出：
 

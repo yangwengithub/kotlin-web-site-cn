@@ -501,7 +501,7 @@ fun render(list: List<*>, to: Appendable) {
 
 ### wait()/notify()
 
-[Effective Java](http://www.oracle.com/technetwork/java/effectivejava-136174.html) 第 69 条善意地建议优先使用并发工具（concurrency utilities）而不是 `wait()` 和 `notify()`。
+[《Effective Java》第三版](http://www.oracle.com/technetwork/java/effectivejava-136174.html) 第 81 条善意地建议优先使用并发工具（concurrency utilities）而不是 `wait()` 和 `notify()`。
 因此，类型 `Any` 的引用不提供这两个方法。
 如果你真的需要调用它们的话，你可以将其转换为 `java.lang.Object`：
 
@@ -534,7 +534,7 @@ class Example : Cloneable {
 }
 ```
 
-不要忘记 [Effective Java](http://www.oracle.com/technetwork/java/effectivejava-136174.html) 的第 11 条: *谨慎地改写clone*。
+不要忘记[《Effective Java》第三版](http://www.oracle.com/technetwork/java/effectivejava-136174.html) 的第 13 条: *谨慎地改写clone*。
 
 ### finalize()
 
