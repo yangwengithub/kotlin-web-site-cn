@@ -63,7 +63,7 @@ fun isOdd(x: Int) = x % 2 != 0
 我们可以很容易地直接调用它（`isOdd(5)`），但是我们也可以将其作为一个函数类型的值，例如将其传给<!--
 -->另一个函数。为此，我们使用 `::` 操作符：
 
-<div class="sample" markdown="1">
+
 
 ``` kotlin
 fun isOdd(x: Int) = x % 2 != 0
@@ -75,7 +75,7 @@ fun main(args: Array<String>) {
     //sampleEnd
 }
 ```
-</div>
+
 
 这里 `::isOdd` 是函数类型 `(Int) -> Boolean` 的一个值。
 
@@ -85,7 +85,7 @@ fun main(args: Array<String>) {
 当上下文中已知函数期望的类型时，`::` 可以用于重载函数。
 例如：
 
-<div class="sample" markdown="1">
+
 
 ``` kotlin
 fun main(args: Array<String>) {
@@ -98,7 +98,7 @@ fun main(args: Array<String>) {
     //sampleEnd
 }
 ```
-</div>
+
 
 或者，你可以通过将方法引用存储在具有显式指定类型的变量中来提供必要的上下文：
 
@@ -129,7 +129,7 @@ fun <A, B, C> compose(f: (B) -> C, g: (A) -> B): (A) -> C {
 它返回一个传给它的两个函数的组合：`compose(f, g) = f(g(*))`。
 现在，你可以将其应用于可调用引用：
 
-<div class="sample" markdown="1">
+
 
 ``` kotlin
 fun <A, B, C> compose(f: (B) -> C, g: (A) -> B): (A) -> C {
@@ -149,13 +149,13 @@ fun main(args: Array<String>) {
     //sampleEnd
 }
 ```
-</div>
+
 
 ### 属性引用
 
 要把属性作为 Kotlin中 的一等对象来访问，我们也可以使用 `::` 运算符：
 
-<div class="sample" markdown="1">
+
 
 ``` kotlin
 val x = 1
@@ -165,7 +165,7 @@ fun main(args: Array<String>) {
     println(::x.name) 
 }
 ```
-</div>
+
 
 表达式 `::x` 求值为 `KProperty<Int>` 类型的属性对象，它允许我们使用
 `get()` 读取它的值，或者使用 `name` 属性来获取属性名。更多信息请参见<!--
@@ -174,7 +174,7 @@ fun main(args: Array<String>) {
 对于可变属性，例如 `var y = 1`，`::y` 返回 [`KMutableProperty<Int>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-mutable-property/index.html) 类型的一个值，
 该类型有一个 `set()` 方法。
 
-<div class="sample" markdown="1">
+
 
 ``` kotlin
 var y = 1
@@ -184,11 +184,11 @@ fun main(args: Array<String>) {
     println(y)
 }
 ```       
-</div>            
+
 
 属性引用可以用在不需要参数的函数处：
 
-<div class="sample" markdown="1">
+
 
 ``` kotlin
 fun main(args: Array<String>) {
@@ -198,11 +198,11 @@ fun main(args: Array<String>) {
     //sampleEnd
 }
 ```
-</div>
+
 
 要访问属于类的成员的属性，我们这样限定它：
 
-<div class="sample" markdown="1">
+
 
 ``` kotlin
 fun main(args: Array<String>) {
@@ -213,11 +213,11 @@ fun main(args: Array<String>) {
     //sampleEnd
 }
 ```
-</div>
+
 
 对于扩展属性：
 
-<div class="sample" markdown="1">
+
 
 ``` kotlin
 val String.lastChar: Char
@@ -227,7 +227,7 @@ fun main(args: Array<String>) {
     println(String::lastChar.get("abc"))
 }
 ```
-</div>
+
 
 ### 与 Java 反射的互操作性
 
@@ -282,7 +282,7 @@ function(::Foo)
 
 你可以引用特定对象的实例方法：
 
-<div class="sample" markdown="1">
+
 
 ``` kotlin 
 fun main(args: Array<String>) {
@@ -295,13 +295,13 @@ fun main(args: Array<String>) {
     //sampleEnd
 }
 ```
-</div>
+
 
 取代直接调用方法 `matches` 的是我们存储其引用。
 这样的引用会绑定到其接收者上。
 它可以直接调用（如上例所示）或者用于任何期待一个函数类型表达式的时候：
 
-<div class="sample" markdown="1">
+
 
 ``` kotlin 
 fun main(args: Array<String>) {
@@ -311,7 +311,7 @@ fun main(args: Array<String>) {
     //sampleEnd
 }
 ```
-</div>
+
 
 比较绑定的类型和相应的未绑定类型的引用。
 绑定的可调用引用有其接收者“附加”到其上，因此接收者的类型不再是参数：
@@ -324,7 +324,7 @@ val matches: (Regex, CharSequence) -> Boolean = Regex::matches
 
 属性引用也可以绑定：
 
-<div class="sample" markdown="1">
+
 
 ``` kotlin 
 fun main(args: Array<String>) {
@@ -334,7 +334,7 @@ fun main(args: Array<String>) {
     //sampleEnd
 }
 ```
-</div>
+
 
 自 Kotlin 1.2 起，无需显式指定 `this` 作为接收者：`this::foo` 与 `::foo` 是等价的。
 

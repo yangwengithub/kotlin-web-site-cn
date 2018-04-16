@@ -44,7 +44,7 @@ fun <T, R> Collection<T>.fold(
 为了调用 `fold`，需要传给它一个[函数类型的实例](#函数类型实例化)作为参数，而在高阶函数调用处，（[下文详述的](#lambda-表达式与匿名函数)）lambda 表达
 式广泛用于此目的。
 
-<div class="sample" markdown="1">
+
 
 ```kotlin
 fun main(args: Array<String>) {
@@ -72,7 +72,7 @@ fun main(args: Array<String>) {
     println("product = $product")
 }
 ```
-</div>
+
 
 以下各节会更详细地解释上文提到的这些概念。
 
@@ -148,7 +148,7 @@ val a = { i: Int -> i + 1 } // 推断出的类型是 (Int) -> Int
 -->第一个参数，反之亦然。例如，`(A, B) -> C` 类型的值可以传给或赋值<!--
 -->给期待 `A.(B) -> C` 的地方，反之亦然：
  
-<div class="sample" markdown="1">
+
 
 ``` kotlin
 fun main(args: Array<String>) {
@@ -164,7 +164,7 @@ fun main(args: Array<String>) {
     println("result = $result")
 }
 ```
-</div>
+
 
 > 请注意，默认情况下推断出的是没有接收者的函数类型，即使变量是通过<!--
 > -->扩展函数引用来初始化的。
@@ -180,7 +180,7 @@ fun main(args: Array<String>) {
 
 例如：
 
-<div class="sample" markdown="1">
+
 
 ``` kotlin
 fun main(args: Array<String>) {
@@ -197,7 +197,7 @@ fun main(args: Array<String>) {
     //sampleEnd
 }
 ```
-</div>
+
 
 ### 内联函数
 
