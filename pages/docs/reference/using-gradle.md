@@ -16,7 +16,7 @@ title: "使用 Gradle"
 
 ``` groovy
 buildscript {
-    ext.kotlin_version = '1.2.31'
+    ext.kotlin_version = '1.2.40'
 
     repositories {
         mavenCentral()
@@ -42,7 +42,7 @@ apply plugin: "kotlin"
 
 ```groovy
 plugins {
-    id "org.jetbrains.kotlin.jvm" version "1.2.31"
+    id "org.jetbrains.kotlin.jvm" version "1.2.40"
 }
 ```
 在这个块中的 `version` 必须是字面值，并且不能从其他构建脚本中应用。
@@ -100,7 +100,7 @@ Android 的 Gradle 模型与普通 Gradle 有点不同，所以如果我们要�
 
 ``` groovy
 buildscript {
-    ext.kotlin_version = '1.2.31'
+    ext.kotlin_version = '1.2.40'
 
     ……
 

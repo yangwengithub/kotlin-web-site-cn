@@ -66,7 +66,7 @@ Kotlin/JVM 平台的平台模块还可以包含 Java 以及其他 JVM 语言的�
 
 ``` groovy
 buildscript {
-    ext.kotlin_version = '1.2.31'
+    ext.kotlin_version = '1.2.40'
 
     repositories {
         mavenCentral()
@@ -93,7 +93,7 @@ dependencies {
 
 ``` groovy
 buildscript {
-    ext.kotlin_version = '1.2.31'
+    ext.kotlin_version = '1.2.40'
 
     repositories {
         mavenCentral()
