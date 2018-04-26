@@ -336,8 +336,9 @@ class C {
 class C {
     // 调用“provideDelegate”来创建额外的“delegate”属性
     private val prop$delegate = MyDelegate().provideDelegate(this, this::prop)
-    val prop: Type
+    var prop: Type
         get() = prop$delegate.getValue(this, this::prop)
+        set(value: Type) = prop$delegate.setValue(this, this::prop, value)
 }
 ```
 
