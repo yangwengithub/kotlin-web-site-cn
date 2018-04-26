@@ -593,67 +593,67 @@ foo {
 
 ## 文档注释
 
-For longer documentation comments, place the opening `/**` on a separate line and begin each subsequent line
-with an asterisk:
+对于较长的文档注释，将开头 `/**` 放在一个独立行中，并且每个后续行都<!--
+-->以星号开头：
 
 ``` kotlin
 /**
- * This is a documentation comment
- * on multiple lines.
+ * 这是一条多行
+ * 文档注释。
  */
 ```
 
-Short comments can be placed on a single line:
+简短注释可以放在一行内：
 
 ``` kotlin
-/** This is a short documentation comment. */
+/** 这是一条简短文档注释。 */
 ```
 
-Generally, avoid using `@param` and `@return` tags. Instead, incorporate the description of parameters and return values
-directly into the documentation comment, and add links to parameters wherever they are mentioned. Use `@param` and
-`@return` only when a lengthy description is required which doesn't fit into the flow of the main text.
+通常，避免使用 `@param` 与 `@return` 标记。而是将参数与返回值的描述<!--
+-->直接合并到文档注释中，并在提到参数的任何地方加上参数链接。
+只有当需要不适合放进主文本流程的冗长描述时才应使用 `@param` 与 `@return`。
 
 ``` kotlin
-// Avoid doing this:
+// 避免这样：
 
 /**
  * Returns the absolute value of the given number.
  * @param number The number to return the absolute value for.
  * @return The absolute value.
  */
-fun abs(number: Int) = ...
+fun abs(number: Int) = ……
 
-// Do this instead:
+// 而要这样：
 
 /**
  * Returns the absolute value of the given [number].
  */
-fun abs(number: Int) = ...
+fun abs(number: Int) = ……
 ```
 
 ## 避免重复结构
 
-In general, if a certain syntactic construction in Kotlin is optional and highlighted by the IDE
-as redundant, you should omit it in your code. Do not leave unnecessary syntactic elements in code
-just "for clarity".
+一般来说，如果 Kotlin 中的某种语法结构是可选的并且被 IDE
+高亮为冗余的，那么应该在代码中省略之。为了清楚起见，不要在代码中保留不必要的语法元素
+。
 
 ### Unit
 
-If a function returns Unit, the return type should be omitted:
+如果函数返回 Unit，那么应该省略返回类型：
 
 ``` kotlin
-fun foo() { // ": Unit" is omitted here
+fun foo() { // 这里省略了“: Unit”
 
 }
 ```
 
-### Semicolons
+### 分号
 
-Omit semicolons whenever possible.
+尽可能省略分号。
 
-### String templates
+### 字符串模版
 
-Don't use curly braces when inserting a simple variable into a string template. Use curly braces only for longer expressions.
+将简单变量传入到字符串模版中时不要使用花括号。只有用到更长表达式时才使用花括号。
 
 ``` kotlin
 println("$name has ${children.size} children")
@@ -662,7 +662,7 @@ println("$name has ${children.size} children")
 
 ## 语言特性的惯用法
 
-### Immutability
+### 不可变性
 
 Prefer using immutable data to mutable. Always declare local variables and properties as `val` rather than `var` if
 they are not modified after initialization.
@@ -685,7 +685,7 @@ val allowedValues = arrayListOf("a", "b", "c")
 val allowedValues = listOf("a", "b", "c")
 ```
 
-### Default parameter values
+### 默认参数值
 
 Prefer declaring functions with default parameter values to declaring overloaded functions.
 
@@ -698,7 +698,7 @@ fun foo(a: String) { ... }
 fun foo(a: String = "a") { ... }
 ```
 
-### Type aliases
+### 类型别名
 
 If you have a functional type or a type with type parameters which is used multiple times in a codebase, prefer defining
 a type alias for it:
@@ -708,20 +708,20 @@ typealias MouseClickHandler = (Any, MouseEvent) -> Unit
 typealias PersonIndex = Map<String, Person>
 ```
 
-### Lambda parameters
+### Lambda 表达式参数
 
 In lambdas which are short and not nested, it's recommended to use the `it` convention instead of declaring the parameter
 explicitly. In nested lambdas with parameters, parameters should be always declared explicitly.
 
 
-### Returns in a lambda
+### 在 lambda 表达式中返回
 
 Avoid using multiple labeled returns in a lambda. Consider restructuring the lambda so that it will have a single exit point.
 If that's not possible or not clear enough, consider converting the lambda into an anonymous function.
 
 Do not use a labeled return for the last statement in a lambda.
 
-### Named arguments
+### 命名参数
 
 Use the named argument syntax when a method takes multiple parameters of the same primitive type, or for parameters of `Boolean` type,
 unless the meaning of all parameters is absolutely clear from context.
@@ -730,7 +730,7 @@ unless the meaning of all parameters is absolutely clear from context.
 drawSquare(x = 10, y = 10, width = 100, height = 100, fill = true)
 ```
 
-### Using conditional statements
+### 使用条件语句
 
 Prefer using the expression form of `try`, `if` and `when`. Examples:
 
@@ -757,7 +757,7 @@ when(x) {
 }    
 ```
 
-### `if` versus `when`
+### `if` 还是 `when`
 
 Prefer using `if` for binary conditions instead of `when`. Instead of
 
@@ -776,7 +776,7 @@ Prefer using `when` if there are three or more options.
 
 If you need to use a nullable `Boolean` in a conditional statement, use `if (value == true)` or `if (value == false)` checks.
 
-### Using loops
+### 使用循环
 
 Prefer using higher-order functions (`filter`, `map` etc.) to loops. Exception: `forEach` (prefer using a regular `for` loop instead,
 unless the receiver of `forEach` is nullable or `forEach` is used as part of a longer call chain).
@@ -784,7 +784,7 @@ unless the receiver of `forEach` is nullable or `forEach` is used as part of a l
 When making a choice between a complex expression using multiple higher-order functions and a loop, understand the cost
 of the operations being performed in each case and keep performance considerations in mind. 
 
-### Loops on ranges
+### 区间上循环
 
 Use the `until` function to loop over an open range:
 
@@ -793,7 +793,7 @@ for (i in 0..n - 1) { ... }  // bad
 for (i in 0 until n) { ... }  // good
 ```
 
-### Using strings
+### 使用字符串
 
 Prefer using string templates to string concatenation.
 
@@ -811,7 +811,7 @@ val a = """if(a > 1) {
           |}""".trimMargin()
 ```
 
-### Functions vs Properties
+### 函数还是属性
 
 In some cases functions with no arguments might be interchangeable with read-only properties. 
 Although the semantics are similar, there are some stylistic conventions on when to prefer one to another.
@@ -822,21 +822,21 @@ Prefer a property over a function when the underlying algorithm:
 * is cheap to calculate (or caсhed on the first run)
 * returns the same result over invocations if the object state hasn't changed
 
-### Using extension functions
+### 使用扩展函数
 
 Use extension functions liberally. Every time you have a function that works primarily on an object, consider making it
 an extension function accepting that object as a receiver. To minimize API pollution, restrict the visibility of
 extension functions as much as it makes sense. As necessary, use local extension functions, member extension functions,
 or top-level extension functions with private visibility.
 
-### Using infix functions
+### 使用中缀函数
 
 Declare a function as infix only when it works on two objects which play a similar role. Good examples: `and`, `to`, `zip`.
 Bad example: `add`.
 
 Don't declare a method as infix if it mutates the receiver object.
 
-### Factory functions
+### 工厂函数
 
 If you declare a factory function for a class, avoid giving it the same name as the class itself. Prefer using a distinct name
 making it clear why the behavior of the factory function is special. Only if there is really no special semantics,
@@ -856,7 +856,7 @@ If you have an object with multiple overloaded constructors that don't call diff
 can't be reduced to a single constructor with default argument values, prefer to replace the overloaded constructors with
 factory functions.
 
-### Platform types
+### 平台类型
 
 A public function/method returning an expression of a platform type must declare its Kotlin type explicitly:
 
@@ -881,7 +881,7 @@ fun main(args: Array<String>) {
 }
 ```
 
-### Using scope functions apply/with/run/also/let
+### 使用作用域函数 apply/with/run/also/let
 
 Kotlin provides a variety of functions to execute a block of code in the context of a given object. To choose the correct
 function, consider the following:
