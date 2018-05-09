@@ -128,6 +128,29 @@ Kotlin 类型。编译器支持多种可空性注解，包括：
 
 你可以在 [Kotlin 编译器源代码](https://github.com/JetBrains/kotlin/blob/master/core/descriptor.loader.java/src/org/jetbrains/kotlin/load/java/JvmAnnotationNames.kt)中找到完整的列表。
 
+### Annotating type parameters
+
+It is possible to annotate type arguments of generic types to provide nullability information for them as well. For example, consider these annotations on a Java declaration:
+
+```java
+@NotNull
+Set<@NotNull String> toSet(@NotNull Collection<@NotNull String> elements) { ... }
+```
+
+It leads to the following signature seen in Kotlin:
+
+```kotlin
+fun toSet(elements: (Mutable)Collection<String>) : (Mutable)Set<String> { ... }
+```
+
+Note the `@NotNull` annotations on `String` type arguments. Without them, we get platform types in the type arguments:
+
+```kotlin
+fun toSet(elements: (Mutable)Collection<String!>) : (Mutable)Set<String!> { ... }
+```
+
+Annotating type arguments works with Java 8 target or higher and requires the nullability annotations to support the `TYPE_USE` target (`org.jetbrains.annotations` supports this in version 15 and above).
+
 ### JSR-305 支持
 
 已支持 [JSR-305](https://jcp.org/en/jsr/detail?id=305) 中定义的 [`@Nonnull`](https://aalmiray.github.io/jsr-305/apidocs/javax/annotation/Nonnull.html)

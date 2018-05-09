@@ -47,7 +47,7 @@ Kotlin/JVM 平台的平台模块还可以包含 Java 以及其他 JVM 语言的�
 ## 设置多平台项目
 
 截止到 Kotlin 1.2，多平台项目必须用 Gradle 构建；暂不支持其他构建系统<!--
--->。
+-->。If you work with a multiplatform project in IDE, make sure that `Delegate IDE build/run actions to gradle` option is enabled and `Gradle Test Runner` is set for `Run tests using` option. Both options may be found here: _Settings > Build, execution, Deployment > Build Tools > Gradle > Runner_
 
 要在 IDE 中创建一个新的多平台项目，请在“New Project”对话框中选择<!--
 -->“Kotlin”下的“Kotlin (Multiplatform)”选项。这会创建一个具有三个模块的项目，一个公共项目<!--
@@ -62,7 +62,7 @@ Kotlin/JVM 平台的平台模块还可以包含 Java 以及其他 JVM 语言的�
   * 将 `kotlin-platform-jvm`、 `kotlin-platform-android` 与 `kotlin-platform-js` 插件分别应用到 JVM、Android 与 JS 平台模块
   * 将平台模块 `expectedBy` 作用域中添加到到公共模块的依赖
   
-以下示例演示了一个使用 Kotlin 1.2-Beta 的公共模块的完整的 `build.gradle` 文件：
+以下示例演示了一个使用 Kotlin 1.2 的公共模块的完整的 `build.gradle` 文件：
 
 ``` groovy
 buildscript {
