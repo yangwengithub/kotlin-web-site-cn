@@ -20,7 +20,7 @@ Kotlin/Native 完全支持与原生代码的互操作。对于平台库，相应
 在 macOS 与 iOS 上，还支持与 Objective-C 代码互操作。
 
 Kotlin/Native 目前还在开发中；可以试用其预览版。
-Kotlin/Native 的 IDE 支持已作为 [CLion](https://www.jetbrains.com/clion/) 及 [AppCode](https://www.jetbrains.com/objc/) 的插件提供，both require the plugin to be installed via *Plugins | Install JetBrains plugin...* in the IDE preferences。
+Kotlin/Native 的 IDE 支持已作为 [CLion](https://www.jetbrains.com/clion/) 及 [AppCode](https://www.jetbrains.com/objc/) 的插件提供，都需要通过 IDE 首选项中的 *Plugins | Install JetBrains plugin...* 来安装插件。
 
 ### 目标平台
 
