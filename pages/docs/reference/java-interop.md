@@ -128,28 +128,28 @@ Kotlin 类型。编译器支持多种可空性注解，包括：
 
 你可以在 [Kotlin 编译器源代码](https://github.com/JetBrains/kotlin/blob/master/core/descriptor.loader.java/src/org/jetbrains/kotlin/load/java/JvmAnnotationNames.kt)中找到完整的列表。
 
-### Annotating type parameters
+### 注解类型参数
 
-It is possible to annotate type arguments of generic types to provide nullability information for them as well. For example, consider these annotations on a Java declaration:
+可以标注泛型类型的类型参数，以便同时为其提供可空性信息。例如，考虑这些 Java 声明的注解：
 
 ```java
 @NotNull
-Set<@NotNull String> toSet(@NotNull Collection<@NotNull String> elements) { ... }
+Set<@NotNull String> toSet(@NotNull Collection<@NotNull String> elements) { …… }
 ```
 
-It leads to the following signature seen in Kotlin:
+在 Kotlin 中可见的是以下签名：
 
 ```kotlin
-fun toSet(elements: (Mutable)Collection<String>) : (Mutable)Set<String> { ... }
+fun toSet(elements: (Mutable)Collection<String>) : (Mutable)Set<String> { …… }
 ```
 
-Note the `@NotNull` annotations on `String` type arguments. Without them, we get platform types in the type arguments:
+请注意 `String` 类型参数上的 `@NotNull` 注解。如果没有的话，类型参数会是平台类型：
 
 ```kotlin
-fun toSet(elements: (Mutable)Collection<String!>) : (Mutable)Set<String!> { ... }
+fun toSet(elements: (Mutable)Collection<String!>) : (Mutable)Set<String!> { …… }
 ```
 
-Annotating type arguments works with Java 8 target or higher and requires the nullability annotations to support the `TYPE_USE` target (`org.jetbrains.annotations` supports this in version 15 and above).
+标注类型参数适用于针对 Java 8 或更高版本环境，并且要求可空性注解支持 `TYPE_USE` 目标（`org.jetbrains.annotations` 15 或以上版本支持）。
 
 ### JSR-305 支持
 
