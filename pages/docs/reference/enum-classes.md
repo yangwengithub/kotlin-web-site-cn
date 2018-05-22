@@ -53,6 +53,39 @@ enum class ProtocolState {
 
 枚举条目不能包含内部类以外的嵌套类型（已在 Kotlin 1.2 中弃用）。
 
+## Implementing Interfaces in Enum Classes
+
+An enum class may implement an interface (but not derive from a class), providing either a single interface members implementation for all of the entries, or separate ones for each entry within its anonymous class. This is done by adding the interfaces to the enum class declaration as follows:
+
+<div class="sample" markdown="1">
+
+``` kotlin
+import java.util.function.BinaryOperator
+import java.util.function.IntBinaryOperator
+
+//sampleStart
+enum class IntArithmetics : BinaryOperator<Int>, IntBinaryOperator {
+    PLUS {
+        override fun apply(t: Int, u: Int): Int = t + u
+    },
+    TIMES {
+        override fun apply(t: Int, u: Int): Int = t * u
+    };
+    
+    override fun applyAsInt(t: Int, u: Int) = apply(t, u)
+}
+//sampleEnd
+
+fun main(args: Array<String>) {
+    val a = 13
+    val b = 31
+    for (f in IntArithmetics.values()) {
+        println("$f($a, $b) = ${f.apply(a, b)}")
+    }
+}
+```
+</div>
+
 ## 使用枚举常量
 
 就像在 Java 中一样，Kotlin 中的枚举类也有合成方法允许列出<!--

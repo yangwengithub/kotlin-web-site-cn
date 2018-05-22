@@ -91,7 +91,7 @@ print(boxedA == anotherBoxedA) // 输出“true”
 // 假想的代码，实际上并不能编译：
 val a: Int? = 1 // 一个装箱的 Int (java.lang.Integer)
 val b: Long? = a // 隐式转换产生一个装箱的 Long (java.lang.Long)
-print(a == b) // 惊！这将输出“false”鉴于 Int 的 equals() 会检测另一个是否也为 Long
+print(b == a) // 惊！这将输出“false”鉴于 Long 的 equals() 会检测另一个是否也为 Long
 ```
 
 所以相等性会在所有地方悄无声息地失去，更别说同一性了。

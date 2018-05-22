@@ -57,6 +57,30 @@ class Child : MyInterface {
 }
 ```
 
+## Interfaces Inheritance
+
+An interface can derive from other interfaces and thus both provide implementations for their members and declare new functions and properties. Quite naturally, classes implementing such an interface are only required to define the missing implementations:
+
+``` kotlin
+interface Named {
+    val name: String
+}
+
+interface Person : Named {
+    val firstName: String
+    val lastName: String
+    
+    override val name: String get() = "$firstName $lastName"
+}
+
+data class Employee(
+    // implementing 'name' is not required
+    override val firstName: String,
+    override val lastName: String,
+    val position: Position
+) : Person
+```
+
 ## 解决覆盖冲突
 
 实现多个接口时，可能会遇到同一方法继承多个实现的问题。例如
