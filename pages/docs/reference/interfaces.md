@@ -57,9 +57,9 @@ class Child : MyInterface {
 }
 ```
 
-## Interfaces Inheritance
+## 接口继承
 
-An interface can derive from other interfaces and thus both provide implementations for their members and declare new functions and properties. Quite naturally, classes implementing such an interface are only required to define the missing implementations:
+一个接口可以从其他接口派生，从而既提供基类型成员的实现也声明新的函数与属性。很自然地，实现这样接口的类只需定义所缺少的实现：
 
 ``` kotlin
 interface Named {
@@ -74,7 +74,7 @@ interface Person : Named {
 }
 
 data class Employee(
-    // implementing 'name' is not required
+    // 不必实现“name”
     override val firstName: String,
     override val lastName: String,
     val position: Position
