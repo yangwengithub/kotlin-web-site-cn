@@ -158,10 +158,10 @@ Kotlin 为 Ant 提供了三个任务：
 | `metaInfo`  | 是否要生成具有二进制描述符的元数据文件 | 否 |
 | `main`  | 编译器是否生成调用 main 函数的代码 | 否 |
 
-### Passing raw compiler arguments
+### 传递原始编译器参数
 
-To pass custom raw compiler arguments, you can use `<compilerarg>` elements with either `value` or `line` attributes.
-This can be done within the `<kotlinc>`, `<kotlin2js>`, and `<withKotlin>` task elements, as follows:
+如需传递原始编译器参数，可以使用带 `value` 或 `line` 属性的 `<compilerarg>` 元素。
+可以放在 `<kotlinc>`、 `<kotlin2js>` 与 `<withKotlin>` 任务元素内，如下所示：
 
 ``` xml
 <kotlinc src="${test.data}/hello.kt" output="${temp}/hello.jar">
