@@ -68,7 +68,7 @@ when (x) {
 
 如果其他分支都不满足条件将会求值 *else*{: .keyword } 分支。
 如果 *when*{: .keyword } 作为一个表达式使用，则必须有 *else*{: .keyword } 分支，
-除非编译器能够检测出所有的可能情况都已经覆盖了。
+除非编译器能够检测出所有的可能情况都已经覆盖了［例如，对于 [枚举（*enum*{: .keyword }）类](enum-classes.html)条目与[密封（*sealed*{: .keyword }）类](sealed-classes.html)子类型］。
 
 如果很多分支需要用相同的方式处理，则可以把多个分支条件放在一起，用逗号分隔：
 

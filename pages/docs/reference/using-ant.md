@@ -73,14 +73,10 @@ Kotlin 为 Ant 提供了三个任务：
 </project>
 ```
 
-要为 `<withKotlin>` 指定额外的命令行参数，可以使用嵌套的 `<compilerArg>` 参数。
-当运行 `kotlinc -help` 时，会显示可以使用的参数的完整列表。
 还可以将正在编译的模块的名称指定为 `moduleName` 属性：
 
 ``` xml
-<withKotlin moduleName="myModule">
-    <compilerarg value="-no-stdlib"/>
-</withKotlin>
+<withKotlin moduleName="myModule"/>
 ```
 
 
@@ -161,3 +157,18 @@ Kotlin 为 Ant 提供了三个任务：
 | `sourcemap`  | 是否要生成 sourcemap 文件 | 否 |
 | `metaInfo`  | 是否要生成具有二进制描述符的元数据文件 | 否 |
 | `main`  | 编译器是否生成调用 main 函数的代码 | 否 |
+
+### 传递原始编译器参数
+
+如需传递原始编译器参数，可以使用带 `value` 或 `line` 属性的 `<compilerarg>` 元素。
+可以放在 `<kotlinc>`、 `<kotlin2js>` 与 `<withKotlin>` 任务元素内，如下所示：
+
+``` xml
+<kotlinc src="${test.data}/hello.kt" output="${temp}/hello.jar">
+    <compilerarg value="-Xno-inline"/>
+    <compilerarg line="-Xno-call-assertions -Xno-param-assertions"/>
+    <compilerarg value="-Xno-optimize"/>
+</kotlinc>
+```
+
+当运行 `kotlinc -help` 时，会显示可以使用的参数的完整列表。

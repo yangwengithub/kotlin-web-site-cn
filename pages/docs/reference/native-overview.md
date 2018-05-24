@@ -17,10 +17,10 @@ Kotlin/Native 完全支持与原生代码的互操作。对于平台库，相应
 -->互操作库已可以开箱即用。对于其他库，我们提供了一个<!--
 -->由 C 语言头文件[生成互操作库的工具](https://github.com/JetBrains/kotlin-native/blob/master/INTEROP.md)<!--
 -->，完全支持所有 C 语言功能。
-在 macOS 与 iOS 上，还支持与 Objective/C 代码互操作。
+在 macOS 与 iOS 上，还支持与 Objective-C 代码互操作。
 
 Kotlin/Native 目前还在开发中；可以试用其预览版。
-Kotlin/Native 的 IDE 支持已作为 [CLion](https://www.jetbrains.com/clion/) 的插件提供。
+Kotlin/Native 的 IDE 支持已作为 [CLion](https://www.jetbrains.com/clion/) 及 [AppCode](https://www.jetbrains.com/objc/) 的插件提供，都需要通过 IDE 首选项中的 *Plugins | Install JetBrains plugin...* 来安装插件。
 
 ### 目标平台
 
@@ -44,7 +44,7 @@ Kotlin/Native 目前支持以下平台：
      - iOS 与 Android 移动客户端，使用 OpenGL；
      - 一个基于 WebAssembly 的浏览器前端用于查看游戏分数。
  * [KotlinConf 应用](https://github.com/JetBrains/kotlinconf-app/tree/master/ios)是一个具有<!--
-   -->基于 UIKit 的 UI 的 iOS 应用程序，展示了 Kotlin/Native 与 Objective/C 互操作的便利性。
+   -->基于 UIKit 的 UI 的 iOS 应用程序，展示了 Kotlin/Native 与 Objective-C 互操作的便利性。
 
        
 

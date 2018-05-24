@@ -57,6 +57,30 @@ class Child : MyInterface {
 }
 ```
 
+## 接口继承
+
+一个接口可以从其他接口派生，从而既提供基类型成员的实现也声明新的函数与属性。很自然地，实现这样接口的类只需定义所缺少的实现：
+
+``` kotlin
+interface Named {
+    val name: String
+}
+
+interface Person : Named {
+    val firstName: String
+    val lastName: String
+    
+    override val name: String get() = "$firstName $lastName"
+}
+
+data class Employee(
+    // 不必实现“name”
+    override val firstName: String,
+    override val lastName: String,
+    val position: Position
+) : Person
+```
+
 ## 解决覆盖冲突
 
 实现多个接口时，可能会遇到同一方法继承多个实现的问题。例如

@@ -308,8 +308,8 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 | 名称 | 属性名 | 描述 | 可能的值 | 默认值 |
 |------|---------------|-------------|-----------------|--------------|
 | nowarn | | 不生成警告 | true、 false | false |
-| languageVersion | kotlin.compiler.languageVersion | 提供与指定语言版本源代码兼容性 | "1.0"、 "1.1" | "1.1"
-| apiVersion | kotlin.compiler.apiVersion | 只允许使用来自捆绑库的指定版本中的声明 | "1.0"、 "1.1" | "1.1"
+| languageVersion | kotlin.compiler.languageVersion | 提供与指定语言版本源代码兼容性 | "1.0"、 "1.1"、 "1.2"、"1.3 (EXPERIMENTAL)" |
+| apiVersion | kotlin.compiler.apiVersion | 只允许使用来自捆绑库的指定版本中的声明 | "1.0"、 "1.1"、 "1.2"、"1.3 (EXPERIMENTAL)" |
 | sourceDirs | | 包含要编译源文件的目录 | | 该项目源代码根目录
 | compilerPlugins | | 启用[编译器插件](compiler-plugins.html)  | | []
 | pluginOptions | | 编译器插件的选项  | | []

@@ -53,6 +53,39 @@ enum class ProtocolState {
 
 枚举条目不能包含内部类以外的嵌套类型（已在 Kotlin 1.2 中弃用）。
 
+## 在枚举类中实现接口
+
+一个枚举类可以实现接口（但不能从类继承），可以为所有条目提供统一的接口成员实现，也可以在相应匿名类中为每个条目提供各自的实现。只需将接口添加到枚举类声明中即可，如下所示：
+
+<div class="sample" markdown="1">
+
+``` kotlin
+import java.util.function.BinaryOperator
+import java.util.function.IntBinaryOperator
+
+//sampleStart
+enum class IntArithmetics : BinaryOperator<Int>, IntBinaryOperator {
+    PLUS {
+        override fun apply(t: Int, u: Int): Int = t + u
+    },
+    TIMES {
+        override fun apply(t: Int, u: Int): Int = t * u
+    };
+    
+    override fun applyAsInt(t: Int, u: Int) = apply(t, u)
+}
+//sampleEnd
+
+fun main(args: Array<String>) {
+    val a = 13
+    val b = 31
+    for (f in IntArithmetics.values()) {
+        println("$f($a, $b) = ${f.apply(a, b)}")
+    }
+}
+```
+</div>
+
 ## 使用枚举常量
 
 就像在 Java 中一样，Kotlin 中的枚举类也有合成方法允许列出<!--

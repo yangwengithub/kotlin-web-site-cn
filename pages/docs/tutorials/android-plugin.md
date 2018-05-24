@@ -213,7 +213,7 @@ If your class requires more advanced serialization logic, you can write it insid
 
 ```kotlin
 @Parcelize
-data class Value(val firstName: String, val lastName: String, val age: Int) : Parcelable {
+data class User(val firstName: String, val lastName: String, val age: Int) : Parcelable {
     private companion object : Parceler<User> {
         override fun User.write(parcel: Parcel, flags: Int) {
             // Custom write implementation
@@ -264,15 +264,15 @@ External parcelers can be applied using `@TypeParceler` or `@WriteWith` annotati
 
 ```kotlin
 // Class-local parceler
-@Parcelable
+@Parcelize
 @TypeParceler<ExternalClass, ExternalClassParceler>()
 class MyClass(val external: ExternalClass)
 
 // Property-local parceler
-@Parcelable
+@Parcelize
 class MyClass(@TypeParceler<ExternalClass, ExternalClassParceler>() val external: ExternalClass)
 
 // Type-local parceler
-@Parcelable
+@Parcelize
 class MyClass(val external: @WriteWith<ExternalClassParceler>() ExternalClass)
 ```

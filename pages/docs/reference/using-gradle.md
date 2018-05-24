@@ -28,7 +28,7 @@ buildscript {
 }
 ```
 
-当通过 [Gradle 插件 DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block) 使用 Kotlin Gradle 插件 1.1.1 及以上版本时，这不是必需的。
+当通过 [Gradle 插件 DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block) 与 [Gradle Kotlin DSL](https://github.com/gradle/kotlin-dsl) 使用 Kotlin Gradle 插件 1.1.1 及以上版本时，这不是必需的。
 
 ## 针对 JVM
 
@@ -46,6 +46,14 @@ plugins {
 }
 ```
 在这个块中的 `version` 必须是字面值，并且不能从其他构建脚本中应用。
+
+对于 Gradle Kotlin DSL，请按以下方式应用插件：
+
+```kotlin
+plugins {
+    kotlin("jvm") version "{{ site.data.releases.latest.version }}"
+}
+```
 
 Kotlin 源代码可以与同一个文件夹或不同文件夹中的 Java 源代码混用。默认约定是使用不同的文件夹：
 
@@ -65,6 +73,8 @@ sourceSets {
     main.java.srcDirs += 'src/main/myJava'
 }
 ```
+
+对于 Gradle Kotlin DSL，请改用 `java.sourceSets { …… }` 配置源集。
 
 ## 针对 JavaScript
 
@@ -89,7 +99,7 @@ sourceSets {
 
 ``` groovy
 compileKotlin2Js {
-	kotlinOptions.metaInfo = true
+    kotlinOptions.metaInfo = true
 }
 ```
 
@@ -156,6 +166,17 @@ compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
 compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 ```
 
+对于 Gradle Kotlin DSL，以下表示法的依赖关系与其等价：
+
+``` kotlin
+dependencies {
+    compile(kotlin("stdlib"))
+    // 或者以下之一：
+    compile(kotlin("stdlib-jdk7"))
+    compile(kotlin("stdlib-jdk8"))
+}
+```
+
 在 Kotlin 1.1.x 中，请使用 `kotlin-stdlib-jre7` 与 `kotlin-stdlib-jre8`。
 
 如果你的项目中使用 [Kotlin 反射](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect.full/index.html)或者测试设施，你也需要添加相应的依赖：
@@ -166,9 +187,17 @@ testCompile "org.jetbrains.kotlin:kotlin-test"
 testCompile "org.jetbrains.kotlin:kotlin-test-junit"
 ```
 
+或者，对于 Gradle Kotlin DSL：
+
+``` kotlin
+compile(kotlin("reflect"))
+testCompile(kotlin("test"))
+testCompile(kotlin("test-junit"))
+```
+
 从 Kotlin 1.1.2 起，使用 `org.jetbrains.kotlin` group 的依赖项默认使用<!--
 -->从已应用的插件获得的版本来解析。你可以用完整的依赖关系符号
-（如 `compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"`）手动提供其版本。
+（如 `compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"`，或者在 Gradle Kotlin DSL 中用 `kotlin("stdlib", kotlinVersion)`）手动提供其版本。
 
 ## 注解处理
 
@@ -185,12 +214,7 @@ Kotlin 支持 Gradle 中可选的增量编译。
 
   1. 将 `kotlin.incremental=true` 或者 `kotlin.incremental=false` 行添加到一个 `gradle.properties` 或者一个 `local.properties` 文件中；
 
-  2. 将 `-Pkotlin.incremental=true` 或 `-Pkotlin.incremental=false` 添加到 gradle 命令行参数。请注意，这样用法中，该参数必须添加到后续每个子构建，并且任何具有禁用增量编译的构建将使增量缓存失效。
-
-启用增量编译时，应该会在构建日志中看到以下警告消息：
-```
-Using kotlin incremental compilation
-```
+  2. 将 `-Pkotlin.incremental=true` 或 `-Pkotlin.incremental=false` 添加到 Gradle 命令行参数。请注意，这样用法中，该参数必须添加到后续每个子构建，并且任何具有禁用增量编译的构建将使增量缓存失效。
 
 请注意，第一次构建不会是增量的。
 
@@ -207,6 +231,15 @@ kotlin {
 }
 ```
 
+或者，对于 Gradle Kotlin DSL：
+
+``` kotlin
+import org.jetbrains.kotlin.gradle.dsl.Coroutines
+// ……
+
+kotlin.experimental.coroutines = Coroutines.ENABLE
+```
+
 ## 模块名称
 
 构建生成的 Kotlin 模块会按照该项目的 `archivesBaseName` 属性命名。 如果一个项目具有宽泛的名称如 `lib` 或者 `jvm`——这在子项目中很常见，与该模块相关的 Kotlin 输出文件（`*.kotlin_module`）可能会与来自第三方的同名模块发生冲突。 当项目打包成单一归档（例如 APK）时这会出问题。
@@ -215,6 +248,12 @@ kotlin {
 
 ``` groovy
 archivesBaseName = 'myExampleProject_lib'
+```
+
+对于 Gradle Kotlin DSL，要这样：
+
+``` kotlin
+setProperty("archivesBaseName", "myExampleProject_lib")
 ```
 
 ## Gradle 构建缓存支持（自 1.2.20 起）
@@ -255,6 +294,19 @@ compileKotlin {
     }
 }
 ```
+
+对于 Gradle Kotlin DSL，首先从项目的 `tasks` 中获取任务：
+
+``` kotlin
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+// ……
+
+val kotlinCompile: KotlinCompile by tasks
+
+kotlinCompile.kotlinOptions.suppressWarnings = true
+```
+
+相应地，为 JS 与 Common 目标使用类型 `Kotlin2JsCompile` 与 `KotlinCommonCompile`。
 
 也可以在项目中配置所有 Kotlin 编译任务：
 
@@ -322,6 +374,10 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
 ## OSGi
 
 关于 OSGi 支持请参见 [Kotlin OSGi 页](kotlin-osgi.html)。
+
+## 使用 Gradle Kotlin DSL
+
+使用 [Gradle Kotlin DSL](https://github.com/gradle/kotlin-dsl) 时，请使用 `plugins { …… }` 块应用 Kotlin 插件。如果使用 `apply { plugin(……) }` 来应用的话，可能会遇到未解析的到由 Gradle Kotlin DSL 所生成扩展的引用问题。为了解决这个问题，可以注释掉出错的用法，运行 Gradle 任务 `kotlinDslAccessorsSnapshot`，然后解除该用法注释并重新运行构建或者重新将项目导入到 IDE 中。
 
 ## 示例
 
