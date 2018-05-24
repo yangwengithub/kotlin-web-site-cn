@@ -57,7 +57,6 @@ enum class ProtocolState {
 
 一个枚举类可以实现接口（但不能从类继承），可以为所有条目提供统一的接口成员实现，也可以在相应匿名类中为每个条目提供各自的实现。只需将接口添加到枚举类声明中即可，如下所示：
 
-<div class="sample" markdown="1">
 
 ``` kotlin
 import java.util.function.BinaryOperator
@@ -84,7 +83,6 @@ fun main(args: Array<String>) {
     }
 }
 ```
-</div>
 
 ## 使用枚举常量
 
