@@ -53,9 +53,9 @@ enum class ProtocolState {
 
 枚举条目不能包含内部类以外的嵌套类型（已在 Kotlin 1.2 中弃用）。
 
-## Implementing Interfaces in Enum Classes
+## 在枚举类中实现接口
 
-An enum class may implement an interface (but not derive from a class), providing either a single interface members implementation for all of the entries, or separate ones for each entry within its anonymous class. This is done by adding the interfaces to the enum class declaration as follows:
+一个枚举类可以实现接口（但不能从类继承），可以为所有条目提供统一的接口成员实现，也可以在相应匿名类中为每个条目提供各自的实现。只需将接口添加到枚举类声明中即可，如下所示：
 
 <div class="sample" markdown="1">
 
