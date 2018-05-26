@@ -26,3 +26,8 @@ title: "参考"
 
 其中 ePUB、 Mobi 以及字大版 PDF 文件都是 GitBook 上自动构建的，也可同时关注 GitBook 上的电子书：[gitbook.com/book/hltj/kotlin-reference-chinese](https://www.gitbook.com/book/hltj/kotlin-reference-chinese/details)。
 
+
+### Kotlin 培训
+从 JetBrains 和认证合作伙伴处获取 Kotlin 培训，或者为自己的 Kotlin
+培训计划申请认证。
+更多详情请查阅[由 JetBrains 认证的 Kotlin 培训](https://www.jetbrains.com/company/partners/kotlin/)
