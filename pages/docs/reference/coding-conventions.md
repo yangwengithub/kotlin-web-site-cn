@@ -283,7 +283,7 @@ class Person(id: Int, name: String)
 
 具有较长类头的类应该格式化，以使每个主构造函数参数都在带有缩进的独立的行中。
 另外，右括号应该位于一个新行上。如果使用了继承，那么超类的构造函数调用或者所实现接口的列表<!--
--->应该与左括号位于同一行：
+-->应该与右括号位于同一行：
 
 ```kotlin
 class Person(
@@ -803,8 +803,13 @@ To maintain indentation in multiline strings, use `trimIndent` when the resultin
 indentation, or `trimMargin` when internal indentation is required:
 
 ``` kotlin
-assertEquals("""Foo
-                Bar""".trimIndent(), value)
+assertEquals(
+    """
+    Foo
+    Bar
+    """.trimIndent(), 
+    value
+)
 
 val a = """if(a > 1) {
           |    return a
