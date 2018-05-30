@@ -664,44 +664,44 @@ println("$name has ${children.size} children")
 
 ### 不可变性
 
-Prefer using immutable data to mutable. Always declare local variables and properties as `val` rather than `var` if
-they are not modified after initialization.
+优先使用不可变（而不是可变）数据。初始化后未修改的局部变量与属性，总是将其声明为 `val` 而不是 `var`
+。
 
-Always use immutable collection interfaces (`Collection`, `List`, `Set`, `Map`) to declare collections which are not
-mutated. When using factory functions to create collection instances, always use functions that return immutable
-collection types when possible:
+总是使用不可变集合接口（`Collection`, `List`, `Set`, `Map`）来声明无需<!--
+-->改变的集合。使用工厂函数创建集合实例时，尽可能选用返回不可变<!--
+-->集合类型的函数：
 
 ``` kotlin
-// Bad: use of mutable collection type for value which will not be mutated
-fun validateValue(actualValue: String, allowedValues: HashSet<String>) { ... }
+// 不良：使用可变集合类型作为无需改变的值
+fun validateValue(actualValue: String, allowedValues: HashSet<String>) { …… }
 
-// Good: immutable collection type used instead
-fun validateValue(actualValue: String, allowedValues: Set<String>) { ... }
+// 良好：使用不可变集合类型
+fun validateValue(actualValue: String, allowedValues: Set<String>) { …… }
 
-// Bad: arrayListOf() returns ArrayList<T>, which is a mutable collection type
+// 不良：arrayListOf() 返回 ArrayList<T>，这是一个可变集合类型
 val allowedValues = arrayListOf("a", "b", "c")
 
-// Good: listOf() returns List<T>
+// 良好：listOf() 返回 List<T>
 val allowedValues = listOf("a", "b", "c")
 ```
 
 ### 默认参数值
 
-Prefer declaring functions with default parameter values to declaring overloaded functions.
+优先声明带有默认参数的函数而不是声明重载函数。
 
 ``` kotlin
-// Bad
+// 不良
 fun foo() = foo("a")
-fun foo(a: String) { ... }
+fun foo(a: String) { …… }
 
-// Good
-fun foo(a: String = "a") { ... }
+// 良好
+fun foo(a: String = "a") { …… }
 ```
 
 ### 类型别名
 
-If you have a functional type or a type with type parameters which is used multiple times in a codebase, prefer defining
-a type alias for it:
+如果有一个在代码库中多次用到的函数类型或者带有类型参数的类型，那么最好为它定义<!--
+-->一个类型别名：
 
 ```kotlin
 typealias MouseClickHandler = (Any, MouseEvent) -> Unit
@@ -710,21 +710,21 @@ typealias PersonIndex = Map<String, Person>
 
 ### Lambda 表达式参数
 
-In lambdas which are short and not nested, it's recommended to use the `it` convention instead of declaring the parameter
-explicitly. In nested lambdas with parameters, parameters should be always declared explicitly.
+在简短、非嵌套的 lambda 表达式中建议使用 `it` 用法而不是<!--
+-->显式声明参数。而在有参数的嵌套 lambda 表达式中，始终应该显式声明参数。
 
 
 ### 在 lambda 表达式中返回
 
-Avoid using multiple labeled returns in a lambda. Consider restructuring the lambda so that it will have a single exit point.
-If that's not possible or not clear enough, consider converting the lambda into an anonymous function.
+避免在 lambda 表达式中使用多个返回到标签。请考虑重新组织这样的 lambda 表达式使其只有单一退出点。
+如果这无法做到或者不够清晰，请考虑将 lambda 表达式转换为匿名函数。
 
-Do not use a labeled return for the last statement in a lambda.
+不要在 lambda 表达式的最后一条语句中使用返回到标签。
 
 ### 命名参数
 
-Use the named argument syntax when a method takes multiple parameters of the same primitive type, or for parameters of `Boolean` type,
-unless the meaning of all parameters is absolutely clear from context.
+当一个方法接受多个相同的原生类型参数或者多个 `Boolean` 类型参数时，请使用命名参数语法，
+除非在上下文中的所有参数的含义都已绝对清楚。
 
 ``` kotlin
 drawSquare(x = 10, y = 10, width = 100, height = 100, fill = true)
