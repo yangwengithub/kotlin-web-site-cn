@@ -10,7 +10,7 @@ title: "This 表达式"
 为了表示当前的 _接收者_ 我们使用 *this*{: .keyword } 表达式：
 
 * 在[类](classes.html#继承)的成员中，*this*{: .keyword } 指的是该类的当前对象。
-* 在[扩展函数](extensions.html)或者[带接收者的函数字面值](lambdas.html#带接收者的函数字面值)中，
+* 在[扩展函数](extensions.html)或者[带有接收者的函数字面值](lambdas.html#带有接收者的函数字面值)中，
 *this*{: .keyword } 表示在点左侧传递的 _接收者_ 参数。
 
 如果 *this*{: .keyword } 没有限定符，它指的是最内层的包含它的作用域。要引用其他作用域中的 *this*{: .keyword }，请使用 _标签限定符_：
@@ -19,7 +19,7 @@ title: "This 表达式"
 
 
 要访问来自外部作用域的*this*{: .keyword }（一个[类](classes.html) 或者[扩展函数](extensions.html)，
-或者带标签的[带接收者的函数字面值](lambdas.html#带接收者的函数字面值)）我们使用`this@label`，其中 `@label` 是一个<!--
+或者带标签的[带有接收者的函数字面值](lambdas.html#带有接收者的函数字面值)）我们使用`this@label`，其中 `@label` 是一个<!--
 -->代指 *this*{: .keyword } 来源的标签：
 
 ``` kotlin
