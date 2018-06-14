@@ -227,7 +227,7 @@ val list = asList(-1, 0, *a, 4)
 
 * 它们必须是成员函数或[扩展函数](extensions.html)；
 * 它们必须只有一个参数；
-* 其参数不得[接受可变数量的参数](#可变数量的参数varargs)且不能有[默认值](默认参数)。
+* 其参数不得[接受可变数量的参数](#可变数量的参数varargs)且不能有[默认值](#默认参数)。
 
 ``` kotlin
 infix fun Int.shl(x: Int): Int {
