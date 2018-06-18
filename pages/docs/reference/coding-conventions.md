@@ -732,7 +732,7 @@ drawSquare(x = 10, y = 10, width = 100, height = 100, fill = true)
 
 ### 使用条件语句
 
-Prefer using the expression form of `try`, `if` and `when`. Examples:
+优先使用 `try`，`if` 和 `when` 的表达形式。例如:
 
 ``` kotlin
 return if (x) foo() else bar()
@@ -743,7 +743,7 @@ return when(x) {
 }
 ```
 
-The above is preferable to:
+上面的例子是优先考虑的:
 
 ``` kotlin
 if (x)
@@ -759,7 +759,7 @@ when(x) {
 
 ### `if` 还是 `when`
 
-Prefer using `if` for binary conditions instead of `when`. Instead of
+优先使用 `if` 作为二进制条件而不是 `when'。 代替
 
 ``` kotlin
 when (x) {
@@ -768,25 +768,24 @@ when (x) {
 }
 ```
 
-use `if (x == null) ... else ...`
+使用 `if (x == null) ... else ...`
 
-Prefer using `when` if there are three or more options.
+如果有三个或多个选择 优先使用 `when` 
 
-### Using nullable `Boolean` values in conditions
+### 在条件中使用可为空的 `Boolean` 值
 
-If you need to use a nullable `Boolean` in a conditional statement, use `if (value == true)` or `if (value == false)` checks.
+
+如果你需要在条件语句中使用可为空的 `Boolean`, 使用 `if (value == true)` 或 `if (value == false)` 检查。
 
 ### 使用循环
 
-Prefer using higher-order functions (`filter`, `map` etc.) to loops. Exception: `forEach` (prefer using a regular `for` loop instead,
-unless the receiver of `forEach` is nullable or `forEach` is used as part of a longer call chain).
+优先使用高阶函数（`filter`，`map`等）来循环。例如：`forEach`（优先使用常规的 `for` 循环，除非 `forEach` 的接收者可以为空，或 `forEach` 被用做为长调用链的一部分。
 
-When making a choice between a complex expression using multiple higher-order functions and a loop, understand the cost
-of the operations being performed in each case and keep performance considerations in mind. 
+在使用多个高阶函数的复杂表达式和循环之间进行选择时，请了解成本在每种情况下执行的操作，并牢记性能考虑因素。
 
 ### 区间上循环
 
-Use the `until` function to loop over an open range:
+使用 `until` 函数在一个范围内循环:
 
 ```kotlin
 for (i in 0..n - 1) { ... }  // bad
@@ -795,12 +794,11 @@ for (i in 0 until n) { ... }  // good
 
 ### 使用字符串
 
-Prefer using string templates to string concatenation.
+优先使用字符串模板拼接字符
 
-Prefer to use multiline strings instead of embedding `\n` escape sequences into regular string literals.
+倾向于使用多行字符串而不是嵌入 `\n` 将序列转义为常规字符串文字。
 
-To maintain indentation in multiline strings, use `trimIndent` when the resulting string does not require any internal
-indentation, or `trimMargin` when internal indentation is required:
+要在多行字符串中维护缩进，当生成的字符串不需要任何内部域时，请使用 `trimIndent` 缩进或需要内部缩进时的 `trimMargin`：
 
 ``` kotlin
 assertEquals(
@@ -817,35 +815,31 @@ val a = """if(a > 1) {
 ```
 
 ### 函数还是属性
+ 
+在某些情况下，不带参数的函数可能会和只读属性互换。
 
-In some cases functions with no arguments might be interchangeable with read-only properties. 
-Although the semantics are similar, there are some stylistic conventions on when to prefer one to another.
+尽管语义是相似的，但是在某些时候更喜欢一个到另一个的风格约定。
 
-Prefer a property over a function when the underlying algorithm:
+基础算法时，首选一个属性：
 
-* does not throw
-* is cheap to calculate (or caсhed on the first run)
-* returns the same result over invocations if the object state hasn't changed
+* 不抛出
+* 计算起来很耗时较小（或者在第一次运行时发现）
+* 如果对象状态没有改变，则返回调用相同的结果
 
 ### 使用扩展函数
 
-Use extension functions liberally. Every time you have a function that works primarily on an object, consider making it
-an extension function accepting that object as a receiver. To minimize API pollution, restrict the visibility of
-extension functions as much as it makes sense. As necessary, use local extension functions, member extension functions,
-or top-level extension functions with private visibility.
+使用扩展功能。每当你有一个主要用于对象的函数时，就考虑制作它一个接受该对象作为接收者的扩展函数。为了尽量减少API污染，限制能见度扩展功能尽可能有意义。根据需要，使用本地扩展功能，成员扩展功能，或具有私密可视性的顶级扩展功能。
 
 ### 使用中缀函数
 
-Declare a function as infix only when it works on two objects which play a similar role. Good examples: `and`, `to`, `zip`.
-Bad example: `add`.
+只有当它在两个扮演类似角色的对象上工作时才声明一个函数为中缀。好例子：`and`, `to`,`zip`。
+不好的例子：`add`。
 
-Don't declare a method as infix if it mutates the receiver object.
+如果突变接收方对象，请不要将方法声明为中缀。
 
 ### 工厂函数
 
-If you declare a factory function for a class, avoid giving it the same name as the class itself. Prefer using a distinct name
-making it clear why the behavior of the factory function is special. Only if there is really no special semantics,
-you can use the same name as the class.
+如果你为一个类声明一个工厂函数，不要给它和类本身同名。更喜欢使用不同的名称明确为什么工厂职能的行为是特殊的。只有当确实没有特殊的语义时，您可以使用与班级相同的名称。
 
 Example:
 
@@ -857,19 +851,17 @@ class Point(val x: Double, val y: Double) {
 }
 ```
 
-If you have an object with multiple overloaded constructors that don't call different superclass constructors and
-can't be reduced to a single constructor with default argument values, prefer to replace the overloaded constructors with
-factory functions.
+如果你有一个对象有多个重载的构造函数，它们不会调用不同的超类构造函数和不能简化为具有默认参数值的单个构造函数，而是更换重载的构造函数工厂功能。
 
 ### 平台类型
 
-A public function/method returning an expression of a platform type must declare its Kotlin type explicitly:
+返回平台类型表达式的公共函数/方法必须显式声明它的Kotlin类型：
 
 ``` kotlin
 fun apiCall(): String = MyJavaApi.getProperty("name")
 ```
 
-Any property (package-level or class-level) initialised with an expression of a platform type must declare its Kotlin type explicitly:
+任何使用平台类型表达式初始化的属性（包级别或类级别）必须明确声明其Kotlin类型：
 
 ``` kotlin
 class Person {
@@ -877,7 +869,7 @@ class Person {
 }
 ```
 
-A local value initialised with an expression of a platform type may or may not have a type declaration:
+使用平台类型表达式初始化的本地值可能有或没有类型声明：
 
 ``` kotlin
 fun main(args: Array<String>) {
@@ -888,31 +880,28 @@ fun main(args: Array<String>) {
 
 ### 使用作用域函数 apply/with/run/also/let
 
-Kotlin provides a variety of functions to execute a block of code in the context of a given object. To choose the correct
-function, consider the following:
-
-  * Are you calling methods on multiple objects in the block, or passing the instance of the context object as an 
-    argument? If you are, use one of the functions that allows you to access the context object as `it`,
-    not `this` (`also` or `let`). Use `also` if the receiver is not used at all in the block.
+Kotlin提供了各种功能来执行给定对象上下文中的代码块。选择正确的功能，请考虑以下几点：
+    
+  * 是否在块中的多个对象上调用方法，或者将上下文对象的实例作为参数传递论据？如果是，请使用以 `it` 的形式访问上下文对象的函数之一，而不是 `this`（ `also` 或 `let` ）。如果在模块中根本没有使用接收器，则使用 `also` 。
     
 ``` kotlin
-// Context object is 'it'
+// 上下文对象是 'it'
 class Baz {
     var currentBar: Bar?
     val observable: Observable
 
     val foo = createBar().also {
-        currentBar = it                    // Accessing property of Baz
-        observable.registerCallback(it)    // Passing context object as argument
+        currentBar = it                    // 访问 Baz 属性
+        observable.registerCallback(it)    // 将上下文对象作为参数传递
     }
 }
 
-// Receiver not used in the block
+// 接收器不能在块中使用
 val foo = createBar().also {
     LOG.info("Bar created")
 }
 
-// Context object is 'this'
+// 上下文对象是 'this'
 class Baz {
     val foo: Bar = createBar().apply {
         color = RED    // Accessing only properties of Bar
@@ -921,11 +910,10 @@ class Baz {
 }
 ```    
     
-  * What should the result of the call be? If the result needs to be the context object, use `apply` or `also`.
-    If you need to return a value from the block, use `with`, `let` or `run`
+  * 调用的结果是什么？如果它的结果是需要上下文对象，则使用 `apply` 或 `also`。 如果您需要从块中返回一个值，请使用 `with`，`let` 或 `run` 
     
 ``` kotlin
-// Return value is context object
+// 回值是上下文对象
 class Baz {
     val foo: Bar = createBar().apply {
         color = RED    // Accessing only properties of Bar
@@ -934,7 +922,7 @@ class Baz {
 }
 
 
-// Return value is block result
+// 返回值是块结果
 class Baz {
     val foo: Bar = createNetworkConnection().let {
         loadBar()
@@ -942,14 +930,13 @@ class Baz {
 }
 ```    
     
-  * Is the context object nullable, or is it evaluated as a result of a call chain? If it is, use `apply`, `let` or `run`.
-    Otherwise, use `with` or `also`.
+  * 上下文对象是可以为空的，或它是作为调用链的结果进行评估？如果是，使用 `apply`，`let` 或 `run`。否则，使用 `with` 或 `also`。
      
 ``` kotlin
-// Context object is nullable
+// 上下文对象是可以为空的
 person.email?.let { sendEmail(it) }
 
-// Context object is non-null and accessible directly
+// 上下文对象非空，可直接访问
 with(person) {
     println("First name: $firstName, last name: $lastName")
 }
@@ -958,10 +945,8 @@ with(person) {
 
 ## 库的编码规范
 
-When writing libraries, it's recommended to follow an additional set of rules to ensure API stability:
+在编写库时，建议遵循一组额外的规则以确保API的稳定性：
 
- * Always explicitly specify member visibility (to avoid accidentally exposing declarations as public API)
- * Always explicitly specify function return types and property types (to avoid accidentally changing the return type
-   when the implementation changes)
- * Provide KDoc comments for all public members, with the exception of overrides that do not require any new documentation
-   (to support generating documentation for the library)
+ * 始终明确指定成员可见性（以避免意外地将声明公开为公共 API ）
+ * 总是显式指定函数返回类型和属性类型（以避免意外更改返回类型当实施改变时）
+ * 为所有公共成员提供 KDoc 评论，但不需要任何新文档的覆盖除外（支持为图书馆生成文档）
