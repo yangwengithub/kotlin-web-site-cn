@@ -306,7 +306,7 @@ val kotlinCompile: KotlinCompile by tasks
 kotlinCompile.kotlinOptions.suppressWarnings = true
 ```
 
-相应地，为 JS 与 Common 目标使用类型 `Kotlin2JsCompile` 与 `KotlinCommonCompile`。
+相应地，为 JS 与 Common 目标使用类型 `Kotlin2JsCompile` 与 `KotlinCompileCommon`。
 
 也可以在项目中配置所有 Kotlin 编译任务：
 
