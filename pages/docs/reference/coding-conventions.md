@@ -732,7 +732,7 @@ drawSquare(x = 10, y = 10, width = 100, height = 100, fill = true)
 
 ### 使用条件语句
 
-优先使用 `try`、`if` 和 `when` 的表达形式。例如：
+优先使用 `try`、`if` 与 `when` 的表达形式。例如：
 
 ``` kotlin
 return if (x) foo() else bar()
@@ -743,7 +743,7 @@ return when(x) {
 }
 ```
 
-优先考虑上面的例子：
+优先选用上述代码而不是：
 
 ``` kotlin
 if (x)
@@ -759,49 +759,48 @@ when(x) {
 
 ### `if` 还是 `when`
 
-二元条件优先使用 `if` 而不是 `when`。
+二元条件优先使用 `if` 而不是 `when`。不要使用
 
 ``` kotlin
 when (x) {
-    null -> ...
-    else -> ...
+    null -> ……
+    else -> ……
 }
 ```
 
-使用 `if (x == null) ... else ...`
+而应使用 `if (x == null) …… else ……`
 
-如果有三个或多个选择 优先使用 `when` 
+如果有三个或多个选项时优先使用 `when`。
 
 ### 在条件中使用可为空的 `Boolean` 值
 
-
-如果您需要在条件语句中用到可空的 `Boolean`, 使用 `if (value == true)` 或 `if (value == false)` 检查。
+如果需要在条件语句中用到可空的 `Boolean`, 使用 `if (value == true)` 或 `if (value == false)` 检测。
 
 ### 使用循环
 
-优先使用高阶函数（`filter`、`map` 等）来循环。例外：`forEach`（优先使用常规的 `for` 循环，<!--
--->除非 `forEach` 的接收者是可空的，或 `forEach` 被用做为长调用链的一部分。
+优先使用高阶函数（`filter`、`map` 等）而不是循环。例外：`forEach`（优先使用常规的 `for` 循环，
+除非 `forEach` 的接收者是可空的或者 `forEach` 用做长调用链的一部分。）
 
-在使用多个高阶函数的复杂表达式和循环之间进行选择时，<!--
--->了解每种情况下正在执行操作的成本考虑性能因素。
+当在使用多个高阶函数的复杂表达式与循环之间进行选择时，请了解<!--
+-->每种情况下所执行操作的开销并且记得考虑性能因素。
 
 ### 区间上循环
 
-使用 `until` 函数在一个区间内循环：
+使用 `until` 函数在一个区间上循环：
 
 ```kotlin
-for (i in 0..n - 1) { ... }  // bad
-for (i in 0 until n) { ... }  // good
+for (i in 0..n - 1) { …… }  // bad
+for (i in 0 until n) { …… }  // good
 ```
 
 ### 使用字符串
 
-优先使用字符串进行字符拼接
+优先使用字符串模板而不是字符串拼接。
 
-倾向于使用多行字符串而不是嵌入 `\n` 将序列转义为常规字面值。
+优先使用多行字符串而不是将 `\n` 转义序列嵌入到常规字符串字面值中。
 
-要在多行字符串中维护缩进，当生成的字符串不需要任何内部域时，<!--
--->请使用 `trimIndent` 缩进或需要内部缩进时的 `trimMargin`：
+如需在多行字符串中维护缩进，当生成的字符串不需要任何内部<!--
+-->缩进时使用 `trimIndent`，而需要内部缩进时使用 `trimMargin`：
 
 ``` kotlin
 assertEquals(
