@@ -863,14 +863,13 @@ class Point(val x: Double, val y: Double) {
 
 ### 平台类型
 
-返回平台类型表达式的公共函数/方法必须显式声明它的 Kotlin 类型：
+返回平台类型表达式的公有函数/方法必须显式声明其 Kotlin 类型：
 
 ``` kotlin
 fun apiCall(): String = MyJavaApi.getProperty("name")
 ```
 
-任何使用平台类型表达式初始化的属性（包级别或类级别）必须明确声明其 <!--
--->Kotlin类型：
+任何使用平台类型表达式初始化的属性（包级别或类级别）必须显式声明其 Kotlin 类型：
 
 ``` kotlin
 class Person {
@@ -878,7 +877,7 @@ class Person {
 }
 ```
 
-使用平台类型表达式初始化的本地值可能有或没有类型声明：
+使用平台类型表达式初始化的局部值可以有也可以没有类型声明：
 
 ``` kotlin
 fun main(args: Array<String>) {
@@ -889,52 +888,53 @@ fun main(args: Array<String>) {
 
 ### 使用作用域函数 apply/with/run/also/let
 
-Kotlin提供了各种功能来执行给定对象上下文中的代码块。选择正确的功能，<!--
--->请考虑以下几点：<!--
--->* 是否在块中的多个对象上调用方法，或者将上下文对象的实例作为参数传递论据？<!--
--->如果是，请使用以 `it` 的形式访问上下文对象的函数之一，<!--
--->而不是 `this`（ `also` 或 `let` ）。如果在模块中根本没有使用接收器，则使用 `also`。
+Kotlin 提供了一系列函数以在给定对象上下文中执行代码块。如需选择正确的<!--
+-->函数，请考虑以下几点：
+
+  * 是否在块中的多个对象上调用方法，或者将上下文对象的实例作为<!--
+    -->参数传递？如果是，那么使用以 `it` 而不是 `this` 形式访问上下文对象的函数之一
+    （ `also` 或 `let` ）。如果在代码块中根本没有用到接收者，那么使用 `also`。
     
 ``` kotlin
-// 上下文对象是 'it'
+// 上下文对象是“it”
 class Baz {
     var currentBar: Bar?
     val observable: Observable
 
     val foo = createBar().also {
-        currentBar = it                    // 访问 Baz 属性
+        currentBar = it                    // 访问 Baz 的属性
         observable.registerCallback(it)    // 将上下文对象作为参数传递
     }
 }
 
-// 接收器不能在块中使用
+// 代码块中未使用接收者
 val foo = createBar().also {
     LOG.info("Bar created")
 }
 
-// 上下文对象是 'this'
+// 上下文对象是“this”
 class Baz {
     val foo: Bar = createBar().apply {
-        color = RED    // Accessing only properties of Bar
+        color = RED    // 只访问 Bar 的属性
         text = "Foo"
     }
 }
 ```    
     
-  * 调用的结果是什么？如果它的结果是需要上下文对象，则使用 `apply` 或 `also`。 <!--
--->如果您需要从块中返回一个值，请使用 `with`、`let` 或 `run` 
+  * 调用的结果是什么？如果结果需是该上下文对象，那么使用 `apply` 或 `also`。
+    如果需要从代码块中返回一个值，那么使用 `with`、`let` 或者 `run`
     
 ``` kotlin
-// 回值是上下文对象
+// 返回值是上下文对象
 class Baz {
     val foo: Bar = createBar().apply {
-        color = RED    // Accessing only properties of Bar
+        color = RED    // 只访问 Bar 的属性
         text = "Foo"
     }
 }
 
 
-// 返回值是块结果
+// 返回值是代码块的结果
 class Baz {
     val foo: Bar = createNetworkConnection().let {
         loadBar()
@@ -942,14 +942,14 @@ class Baz {
 }
 ```    
     
-  * 上下文对象是可以为空的，或它是作为调用链的结果进行评估？如果是，使用 `apply`、`let` 或 `run`。<!--
--->否则，使用 `with` 或 `also`。
+  * 上下文对象是否可空，或者是否作为调用链的结果求值而来的？如果是，那么使用 `apply`、`let` 或者 `run`。
+    否则，使用 `with` 或者 `also`。
      
 ``` kotlin
-// 上下文对象是可以为空的
+// 上下文对象可空
 person.email?.let { sendEmail(it) }
 
-// 上下文对象非空，可直接访问
+// 上下文对象非空且可直接访问
 with(person) {
     println("First name: $firstName, last name: $lastName")
 }
@@ -958,10 +958,10 @@ with(person) {
 
 ## 库的编码规范
 
-在编写库时，建议遵循一组额外的规则以确保API的稳定性：
+在编写库时，建议遵循一组额外的规则以确保 API 的稳定性：
 
- * 始终明确指定成员可见性（以避免意外地将声明<!--
--->公开为公共 API ）
- * 总是显式指定函数返回类型和属性类型（以避免意外更改返回类型当实施改变时）
- * 为所有公共成员提供 KDoc 评论，但不需要任何新文档的<!--
--->覆盖除外（支持为图书馆生成文档）
+ * 总是显式指定成员的可见性（以避免将声明意外暴露为公有 API ）
+ * 总是显式指定函数返回类型以及属性类型（以避免当实现改变时<!--
+   -->意外更改返回类型）
+ * 为所有公有成员提供 KDoc 注释，不需要任何新文档的覆盖成员除外
+   （以支持为该库生成文档）
