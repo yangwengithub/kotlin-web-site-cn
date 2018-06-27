@@ -95,7 +95,7 @@ external fun sayHello(name: String)
 ### 将 `@JsModule` 应用到包
 
 一些 JavaScript 库导出包（命名空间）而不是函数和类。
-从 JavaScript 角度讲 它是一个具有一些成员的对象，这些成员*是*类、函数和属性。
+从 JavaScript 角度讲，它是一个具有一些成员的对象，这些成员*是*类、函数和属性。
 将这些包作为 Kotlin 对象导入通常看起来不自然。
 编译器允许使用以下助记符将导入的 JavaScript 包映射到 Kotlin 包：
 
