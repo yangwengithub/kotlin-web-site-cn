@@ -163,7 +163,7 @@ MyClass.foo()
 ``` kotlin
 package foo.bar
 
-fun Baz.goo() { …… } 
+fun Baz.goo() { …… }
 ``` 
 
 要使用所定义包之外的一个扩展，我们需要在调用方导入它：
@@ -186,7 +186,7 @@ fun usage(baz: Baz) {
 ## 扩展声明为成员
 
 在一个类内部你可以为另一个类声明扩展。在这样的扩展内部，有多个 _隐式接收者_ ——
-其中的对象成员可以无需通过限定符访问。扩展声明所在的类的实例称为 
+其中的对象成员可以无需通过限定符访问。扩展声明所在的类的实例称为
 _分发接收者_，扩展方法调用所在的接收者类型的实例称为 _扩展接收者_ 。
 
 ``` kotlin
@@ -258,6 +258,12 @@ C1().caller(D())  // 输出 "D.foo in C1" —— 分发接收者虚拟解析
 C().caller(D1())  // 输出 "D.foo in C" —— 扩展接收者静态解析
 ```
 
+ ## Note on visibility
+
+Extensions utilize the same [visibility of other entities](visibility-modifiers.html) as regular functions declared in the same scope would. For example:
+
+* An extension declared on top level of a file has access to the other `private` top-level declarations in the same file;
+* If an extension is declared outside its receiver type, such an extension cannot access the receiver's `private` members.
 
 ## 动机
 
