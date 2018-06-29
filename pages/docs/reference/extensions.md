@@ -258,12 +258,12 @@ C1().caller(D())  // 输出 "D.foo in C1" —— 分发接收者虚拟解析
 C().caller(D1())  // 输出 "D.foo in C" —— 扩展接收者静态解析
 ```
 
- ## Note on visibility
+## 关于可见性的说明
 
-Extensions utilize the same [visibility of other entities](visibility-modifiers.html) as regular functions declared in the same scope would. For example:
+扩展的可见性与相同作用域内声明的[其他实体的可见性]相同。例如：
 
-* An extension declared on top level of a file has access to the other `private` top-level declarations in the same file;
-* If an extension is declared outside its receiver type, such an extension cannot access the receiver's `private` members.
+* 在文件顶层声明的扩展可以访问同一文件中的其他 `private` 顶层声明；
+* 如果扩展是在其接收者类型外部声明的，那么该扩展不能访问接收者的 `private` 成员。
 
 ## 动机
 
