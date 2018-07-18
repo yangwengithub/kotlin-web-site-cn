@@ -30,7 +30,7 @@ Kotlin 非常适合开发服务器端应用程序，允许编写简明且表现�
  * [Vert.x](http://vertx.io) 是在 JVM 上构建响应式 Web 应用程序的框架，
 为 Kotlin 提供了[专门支持](https://github.com/vert-x3/vertx-lang-kotlin)，包括[完整的文档](http://vertx.io/docs/vertx-core/kotlin/)。
 
- * [Ktor](https://github.com/kotlin/ktor) 是 JetBrains 为在 Kotlin 中创建 Web 应用程序而构建的框架，利用协程实现高可伸缩性，并提供易于使用且合乎惯用法的 API。
+ * [Ktor](https://ktor.kotlincn.net) 是 JetBrains 为在 Kotlin 中创建 Web 应用程序而构建的框架，利用协程实现高可伸缩性，并提供易于使用且合乎惯用法的 API。
 
  * [kotlinx.html](https://github.com/kotlin/kotlinx.html) 是可在 Web 应用程序中用于构建 HTML 的 DSL。
 它可以作为传统模板系统（如JSP和FreeMarker）的替代品。

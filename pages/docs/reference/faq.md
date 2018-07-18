@@ -52,7 +52,7 @@ Kotlin 可用于任何类型的开发，无论是服务器端、客户端 Web �
 ### 我可以用 Kotlin 进行服务器端开发吗？
 
 可以。Kotlin 与 JVM 100％ 兼容，因此你可以使用任何现有的框架，如 Spring Boot、
-vert.x 或 JSF。另外还有一些 Kotlin 写的特定框架，例如 [Ktor](http://github.com/kotlin/ktor)。
+vert.x 或 JSF。另外还有一些 Kotlin 写的特定框架，例如 [Ktor](https://ktor.kotlincn.net)。
 更多信息请查看[服务器端开发资源](server-overview.html)。
 
 ### 我可以用 Kotlin 进行 web 开发吗？
