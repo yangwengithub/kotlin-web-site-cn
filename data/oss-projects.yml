@@ -1,269 +1,269 @@
 - name: Spek
-  description: A Specification Framework
-  type: Library
+  description: 规范框架（测试框架）
+  type: 库
   link: https://github.com/JetBrains/spek
 
 - name: Wasabi
-  description: An HTTP Framework
-  type: Framework
+  description: HTTP 框架
+  type: 框架
   link: https://github.com/hhariri/wasabi
 
 - name: Ktor
-  description: Web application framework
-  type: Framework
+  description: Web 应用框架
+  type: 框架
   link: https://github.com/Kotlin/ktor
 
 - name: Anko
-  description: Anko is a library which makes Android application development faster and easier
-  type: Library
+  description: Anko 是一个让 Android 应用程序开发更快速更容易的库
+  type: 库
   link: https://github.com/Kotlin/anko
 
 - name: Kara
-  description: An MVC Framework
-  type: Framework
+  description: MVC 框架
+  type: 框架
   link: http://www.karaframework.com
 
-- name: Humanizer for JVM
-  description: Humanizer Library
-  type: Library
+- name: Humanizer JVM
+  description: Humanizer 库（以人性化方式操作与表示字符串）
+  type: 库
   link: https://github.com/MehdiK/Humanizer.jvm
 
 - name: Kotlin-NoSQL
-  description: NoSQL MongoDB access for Kotlin
-  type: Library
+  description: Kotlin 访问 NoSQL MongoDB
+  type: 库
   link: https://github.com/cheptsov/kotlin-nosql
 
 - name: FunKtionale
-  description: Functional Helpers for Kotlin
-  type: Library
+  description: Kotlin 的函数式助手
+  type: 库
   link: https://github.com/MarioAriasC/funKTionale
 
 - name: KotlinPrimavera
-  description: Kotlin Wrapper for Spring Framework
-  type: Library
+  description: Spring 框架的 Kotlin 包装
+  type: 库
   link: https://github.com/MarioAriasC/KotlinPrimavera
 
-- name: Sublime Package
-  description: A Sublime Package for Kotlin
-  type: Tools
+- name: Sublime 包
+  description: Sublime 的 Kotlin 支持包
+  type: 工具
   link: https://github.com/vkostyukov/kotlin-sublime-package
 
 - name: Kotlin Vim
-  description: Kotlin Syntax Highlighter for Vim
-  type: Tools
+  description: Vim 的 Kotlin 语法高亮
+  type: 工具
   link: https://github.com/udalov/kotlin-vim
 
-- name: Griffon Plugin
-  description: Griffon Support
-  type: Tools
+- name: Griffon 插件
+  description: Griffon 支持
+  type: 工具
   link: https://github.com/griffon/griffon-kotlin-plugin
 
 - name: Android Rivers
-  description: RSS Readers for Android
+  description: Android 上的 RSS 阅读器
   type: Android App
   link: https://github.com/dodyg/AndroidRivers
 
 - name: Stew
-  description: A simple Android app for soup.io
+  description: soup.io 的一个简单 Android app
   type: Android App
   url: https://github.com/exviva/stew
 
 - name: RxKotlin 
-  description: Kotlin Bindings for RxJava
-  type: Library
+  description: RxJava 的 Kotlin 绑定
+  type: 库
   link: https://github.com/ReactiveX/RxKotlin
 
 - name: Solr-Undertow
-  description: Solr Standalone Tiny and High performant server
-  type: Application
+  description: 微型且高性能的 Solr 的独立服务器
+  type: 应用程序
   link: https://github.com/bremeld/solr-undertow
 
 - name: Yested
-  description: A Web Framework
-  type: Framework
+  description: Web 框架
+  type: 框架
   link: https://github.com/jean79/yested_fw
 
 - name: Kotlin-Hashids
-  description: Library that generates short, unique, non-sequential hashes from numbers.
-  type: Library
+  description: 由数字生成简短、唯一、非连续哈希的库。
+  type: 库
   link: http://hashids.org/kotlin/
   
 - name: Kotter Knife
-  description: Butter-knife view binding for Kotlin
-  type: Library
+  description: Butter-knife 视图的 Kotlin 绑定
+  type: 库
   link: https://github.com/JakeWharton/kotterknife
 
 - name: Android Kotlin Extensions
-  description: A collection of Android Kotlin extensions
-  type: Library
+  description: Android Kotlin 扩展集合
+  type: 库
   link: https://github.com/ragunathjawahar/android-kotlin-extensions
 
 - name: KAndroid
-  description: Kotlin library for Android
-  type: Library
+  description: Android 的 Kotlin 库
+  type: 库
   link: https://github.com/pawegio/KAndroid
   
 - name: Kovenant
-  description: Promises for Kotlin and Android
-  type: Library
+  description: Kotlin 与 Android 的 Promises
+  type: 库
   link: https://github.com/mplatvoet/kovenant
   
 - name: Progress
-  description: Simple Progress tracking
-  type: Library
+  description: 简单进度跟踪
+  type: 库
   link: https://github.com/mplatvoet/progress
   
 - name: Injekt
-  description: Dependency Injection / Object Factory for Kotlin
-  type: Library
+  description: Kotlin 的依赖注入/对象工厂
+  type: 库
   link: https://github.com/kohesive/injekt
   
 - name: Fuel
-  description: HTTP Client library written in Kotlin
-  type: Library
+  description: 以 Kotlin 编写的 HTTP 客户端库
+  type: 库
   link: https://github.com/kittinunf/Fuel
 
 - name: Klutter 
-  description: Small helper libraries for Kotlin, usually extensions to other libraries
-  type: Library
+  description: Kotlin 的小型助手库，通常是其他库的扩展
+  type: 库
   link: https://github.com/klutter/klutter
   
 - name: Kodein
-  description: Painless Kotlin Dependency Injection
-  type: Library
+  description: 无痛 Kotlin 依赖注射
+  type: 库
   link: https://github.com/SalomonBrys/Kodein
 
 - name: Kovert
-  description: An invisible REST framework for Kotlin
-  type: Library
+  description: Kotlin 的“看不见的”REST 框架
+  type: 库
   link: https://github.com/kohesive/kovert
 
 - name: khttp
-  description: HTTP client similar to Python's requests.
-  type: Library
+  description: 类似于 Python 的 requests 的 HTTP 客户端。
+  type: 库
   link: https://github.com/jkcclemens/khttp
 
 - name: Kobalt
-  description: A build system written in Kotlin
-  type: Build system
+  description: 以 Kotlin 编写的构建系统
+  type: 构建系统
   link: http://beust.com/kobalt
 
 - name: Klaxon
-  description: A JSON library written in Kotlin
-  type: Library
+  description: 以 Kotlin 编写的 JSON 库
+  type: 库
   link: http://beust.com/klaxon
 
 - name: Result
-  description: The modelling for success/failure of operations in Kotlin
-  type: Library
+  description: Kotlin 中操作成功/失败的建模
+  type: 库
   link: https://github.com/kittinunf/Result
 
 - name: ext4klaxon
-  description: Type Extensions (Long, Int, Enum, Date) for Klaxon
-  type: Library
+  description:  Klaxon 的类型扩展（Long、 Int、 Enum、 Date）
+  type: 库
   link: https://github.com/fboldog/ext4klaxon
   
 - name: Bubble
-  description: Library for obtaining screen orientation when orientation is blocked in AndroidManifest
-  type: Library
+  description: 用于在 AndroidManifest 中禁用屏幕旋转时获取屏幕方向的库
+  type: 库
   link: https://github.com/TouK/bubble
 
 - name: HamKrest
-  description: Self-describing matchers for testing and validation (a port of Java's Hamcrest to Kotlin)
-  type: Library
+  description: 用于测试与验证的自描述匹配器（Java 的 Hamcrest 到 Kotlin 的移植）
+  type: 库
   link: https://github.com/npryce/hamkrest
 
 - name: Kotpref
-  description: Android SharedPreference delegation for Kotlin
-  type: Library
+  description: Kotlin 的 Android SharedPreference 委托
+  type: 库
   link: https://github.com/chibatching/Kotpref
 
 - name: KotliQuery
-  description: A handy database access library in Kotlin
-  type: Library
+  description: Kotlin 中便利的数据库访问库
+  type: 库
   link: https://github.com/seratch/kotliquery
 
 - name: Kotlin Playground
-  description: Self-contained component to embed in websites for running Kotlin code
-  type: Library
+  description: 用于嵌入在网站中运行 Kotlin 代码的自包含组件
+  type: 库
   link: https://github.com/JetBrains/kotlin-playground
 
 - name: Zipangu
-  description: Easy to handle the information in the prefectures of Japan in Kotlin
-  type: Library
+  description: 易于在 Kotlin 中处理日本的府县信息
+  type: 库
   link: https://github.com/sakebook/Zipangu
 
 - name: knit
-  description: JUnit API set for Kotlin
-  type: Library
+  description: Kotlin 的 JUnit API 集
+  type: 库
   link: https://github.com/ntaro/knit
 
 - name: khronos
-  description: An intuitive Date extensions in Kotlin
-  type: Library
+  description: Kotlin 中的直观日期扩展
+  type: 库
   link: https://github.com/hotchemi/khronos
 
 - name: TornadoFX
-  description: Lightweight JavaFX Framework for Kotlin
-  type: Library
+  description: Kotlin 的轻量级 JavaFX 框架
+  type: 库
   link: https://github.com/edvin/tornadofx
 
 - name: Hexagon
-  description: A microservices framework in Kotlin
-  type: Framework
+  description: Kotlin 的微服务框架
+  type: 框架
   link: https://github.com/jamming/hexagon
 
 - name: Fuse
-  description: The simple generic LRU memory/disk cache for Android written in Kotlin
-  type: Library
+  description: 以 Kotlin 编写的用于 Android 的简单通用 LRU 内存/磁盘缓存
+  type: 库
   link: https://github.com/kittinunf/Fuse
 
 - name: Discovery
-  description: Eventually consistent service discovery server
-  type: Application
+  description: 最终一致性的服务发现服务器
+  type: 应用程序
   link: https://github.com/datawire/discovery
 
 - name: KotlinTest
-  description: Kotlin port of the famous ScalaTest
-  type: Library
+  description: 著名的 ScalaTest 的 Kotlin 移植
+  type: 库
   link: https://github.com/kotlintest/kotlintest
   
 - name: Black-and-White
-  description: A library of algorithms for the Black-and-White tree coloring
-  type: Library
+  description: 用于黑白树着色的算法库
+  type: 库
   link: https://github.com/devromik/black-and-white
 
 - name: kottpd
-  description: REST framework in pure Kotlin
-  type: Library
+  description: 纯 Kotlin 的 REST 框架
+  type: 库
   link: https://github.com/gimlet2/kottpd
 
 - name: Glimpse Framework
-  description: An OpenGL framework written in Kotlin
-  type: Framework
+  description: 以 Kotlin 编写的 OpenGL 框架
+  type: 框架
   link: https://github.com/GlimpseFramework/glimpse-framework
 
 - name: Pair Adjacent Violators
-  description: An implementation of the PAV algorithm for isotonic regression (machine learning) in Kotlin
-  type: Library
+  description: Kotlin 中保序回归（机器学习）的 PAV 算法的实现
+  type: 库
   link: https://github.com/sanity/pairAdjacentViolators
   
 - name: Async Under 8
-  description: Kotlin coroutine async implementation without java 8 requirement
-  type: Framework
+  description: 无需 java 8 的 Kotlin 协程异步实现
+  type: 框架
   link: https://github.com/fboldog/async-under8
   
 - name: Corda
-  description: distributed ledger platform
-  type: Platform
+  description: 分布式账本平台
+  type: 平台
   link: https://github.com/corda/corda
   
 - name: JAlgoArena
-  description: programming contest platform
-  type: Platform
+  description: 编程竞赛平台
+  type: 平台
   link: https://github.com/spolnik/JAlgoArena
 
 - name: units-of-measure
-  description: type-safe dimensional analysis
-  type: Library
+  description: 类型安全的量纲分析
+  type: 平台
   link: https://github.com/kunalsheth/units-of-measure
