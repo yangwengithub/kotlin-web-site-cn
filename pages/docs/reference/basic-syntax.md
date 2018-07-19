@@ -11,6 +11,7 @@ title: "基本语法"
 
 包的声明应处于源文件顶部：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 package my.demo
 
@@ -18,6 +19,7 @@ import java.util.*
 
 // ……
 ```
+</div>
 
 目录与包的结构无需匹配：源代码可以在文件系统的任意位置。
 
@@ -27,7 +29,7 @@ import java.util.*
 
 带有两个 `Int` 参数、返回 `Int` 的函数：
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 //sampleStart
@@ -45,7 +47,7 @@ fun main(args: Array<String>) {
 
 将表达式作为函数体、返回值类型自动推断的函数：
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 //sampleStart
@@ -60,7 +62,7 @@ fun main(args: Array<String>) {
 
 函数返回无意义的值：
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 //sampleStart
@@ -77,7 +79,7 @@ fun main(args: Array<String>) {
 
 `Unit` 返回类型可以省略：
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 //sampleStart
@@ -98,7 +100,7 @@ fun main(args: Array<String>) {
 
 一次赋值（只读）的局部变量:
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 fun main(args: Array<String>) {
@@ -115,7 +117,7 @@ fun main(args: Array<String>) {
 
 可变变量：
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 fun main(args: Array<String>) {
@@ -130,7 +132,7 @@ fun main(args: Array<String>) {
 
 顶层变量：
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 ``` kotlin
 //sampleStart
 val PI = 3.14
@@ -170,7 +172,7 @@ fun main(args: Array<String>) {
 
 ## 使用字符串模板
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 fun main(args: Array<String>) {
@@ -193,7 +195,7 @@ fun main(args: Array<String>) {
 ## 使用条件表达式
 
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 //sampleStart
@@ -215,7 +217,7 @@ fun main(args: Array<String>) {
 
 使用 *if*{: .keyword } 作为表达式:
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 //sampleStart
@@ -236,16 +238,18 @@ fun main(args: Array<String>) {
 
 如果 `str` 的内容不是数字返回 *null*{: .keyword }：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 fun parseInt(str: String): Int? {
     // ……
 }
 ```
+</div>
 
 使用返回可空值的函数:
 
 
-<div class="sample" markdown="1" data-min-compiler-version="1.1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 fun parseInt(str: String): Int? {
@@ -280,7 +284,7 @@ fun main(args: Array<String>) {
 或者
 
 
-<div class="sample" markdown="1" data-min-compiler-version="1.1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 fun parseInt(str: String): Int? {
@@ -323,7 +327,7 @@ fun main(args: Array<String>) {
 如果一个不可变的局部变量或属性已经判断出为某类型，那么检测后的分支中可以直接当作该类型使用，无需显式转换：
 
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 //sampleStart
@@ -352,7 +356,7 @@ fun main(args: Array<String>) {
 
 或者
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 //sampleStart
@@ -378,7 +382,7 @@ fun main(args: Array<String>) {
 
 甚至
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 //sampleStart
@@ -408,7 +412,7 @@ fun main(args: Array<String>) {
 
 ## 使用 `for` 循环
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 fun main(args: Array<String>) {
@@ -424,7 +428,7 @@ fun main(args: Array<String>) {
 
 或者
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 fun main(args: Array<String>) {
@@ -443,7 +447,7 @@ fun main(args: Array<String>) {
 
 ## 使用 `while` 循环
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 fun main(args: Array<String>) {
@@ -464,7 +468,7 @@ fun main(args: Array<String>) {
 
 ## 使用 `when` 表达式
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 //sampleStart
@@ -495,7 +499,7 @@ fun main(args: Array<String>) {
 
 使用 *in*{: .keyword } 运算符来检测某个数字是否在指定区间内：
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 fun main(args: Array<String>) {
@@ -513,7 +517,7 @@ fun main(args: Array<String>) {
 
 检测某个数字是否在指定区间外:
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 fun main(args: Array<String>) {
@@ -534,7 +538,7 @@ fun main(args: Array<String>) {
 
 区间迭代:
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 fun main(args: Array<String>) {
@@ -549,7 +553,7 @@ fun main(args: Array<String>) {
 
 或数列迭代：
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 fun main(args: Array<String>) {
@@ -572,7 +576,7 @@ fun main(args: Array<String>) {
 
 对集合进行迭代:
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 fun main(args: Array<String>) {
@@ -589,7 +593,7 @@ fun main(args: Array<String>) {
 
 使用 *in*{: .keyword } 运算符来判断集合内是否包含某实例：
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 fun main(args: Array<String>) {
@@ -608,17 +612,17 @@ fun main(args: Array<String>) {
 使用 lambda 表达式来过滤（filter）和映射（map）集合：
 
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea" auto-indent="false" indent="2">
 
 ``` kotlin
 fun main(args: Array<String>) {
-    val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
 //sampleStart
-    fruits
-        .filter { it.startsWith("a") }
-        .sortedBy { it }
-        .map { it.toUpperCase() }
-        .forEach { println(it) }
+  val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
+  fruits
+      .filter { it.startsWith("a") }
+      .sortedBy { it }
+      .map { it.toUpperCase() }
+      .forEach { println(it) }
 //sampleEnd
 }
 ```
@@ -628,7 +632,7 @@ fun main(args: Array<String>) {
 
 ## 创建基本类及其实例：
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 fun main(args: Array<String>) {

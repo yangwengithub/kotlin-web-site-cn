@@ -26,9 +26,11 @@ DCE 工具目前对 Gradle 可用。
 
 要激活 DCE 工具，请将以下这行添加到 `build.gradle` 中：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` groovy
 apply plugin: 'kotlin-dce-js'
 ```
+</div>
 
 请注意，如果你正在使用多项目构建，那么应该将插件应用在作为应用程序入口点的主项目。
 
@@ -45,9 +47,11 @@ apply plugin: 'kotlin-dce-js'
 有时你直接在 JavaScript 中使用一个 Kotlin 声明，而被 DCE 给去除掉了。
 你可能想保留这个声明。 为此，你可以在 `build.gradle` 中使用以下语法：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` groovy
 runDceKotlinJs.keep "declarationToKeep"[, "declarationToKeep", ...]
 ```
+</div>
 
 其中 `declarationToKeep` 具有以下语法：
 
@@ -58,9 +62,11 @@ moduleName.dot.separated.package.name.declarationName
 例如，考虑一个模块命名为 `kotlin-js-example`，它在 `org.jetbrains.kotlin.examples` 包中包含一个名为 `toKeep`
 的函数。使用以下这行：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` groovy
 runDceKotlinJs.keep "kotlin-js-example_main.org.jetbrains.kotlin.examples.toKeep"
 ```
+</div>
 
 请注意，如果函数具有参数，它的名称会被修饰，因此在 keep 指令中应该使用修饰后的名称。
 
@@ -70,10 +76,12 @@ runDceKotlinJs.keep "kotlin-js-example_main.org.jetbrains.kotlin.examples.toKeep
 
 例如，如需根据自定义条件禁用 `main` 源集的 DCE 并且总是禁用 `test` 代码的 DCE，请将下述几行添加到构建脚本中：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```groovy
 runDceKotlinJs.dceOptions.devMode = isDevMode
 runDceTestKotlinJs.dceOptions.devMode = true 
 ```
+</div>
 # 示例
 
 显示如何将 Kotlin 与 DCE 及 webpack 集成并得到一个小的捆绑的完整示例，

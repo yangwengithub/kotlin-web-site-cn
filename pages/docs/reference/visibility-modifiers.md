@@ -18,13 +18,15 @@ title: "可见性修饰符"
 
 函数、属性和类、对象和接口可以在顶层声明，即直接在包内：
 
+  <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 // 文件名：example.kt
 package foo
 
-fun baz() {}
-class Bar {}
+fun baz() { ... }
+class Bar { ... }
 ```
+</div>
 
 *  如果你不指定任何可见性修饰符，默认为 `public`，这意味着你的声明<!--
 -->将随处可见；
@@ -36,17 +38,19 @@ class Bar {}
 
 例如:
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 // 文件名：example.kt
 package foo
 
-private fun foo() {} // 在 example.kt 内可见
+private fun foo() { …… } // 在 example.kt 内可见
 
 public var bar: Int = 5 // 该属性随处可见
     private set         // setter 只在 example.kt 内可见
     
 internal val baz = 6    // 相同模块内可见
 ```
+</div>
 
 ## 类和接口
 
@@ -63,6 +67,7 @@ internal val baz = 6    // 相同模块内可见
 
 例子:
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 open class Outer {
     private val a = 1
@@ -89,15 +94,18 @@ class Unrelated(o: Outer) {
     // Outer.Nested 不可见，Nested::e 也不可见
 }
 ```
+</div>
 
 ### 构造函数
 
 要指定一个类的的主构造函数的可见性，使用以下语法（注意你需要添加一个<!--
 -->显式 *constructor*{:.keyword} 关键字）：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 class C private constructor(a: Int) { …… }
 ```
+</div>
 
 这里的构造函数是私有的。默认情况下，所有构造函数都是 `public`，这实际上<!--
 -->等于类可见的地方它就可见（即 一个 `internal` 类的构造函数只能<!--

@@ -17,7 +17,7 @@ title: "委托"
 而 Kotlin 可以零样板代码地原生支持它。
 `Derived` 类可以通过将其所有公有成员都委托给指定对象来实现一个接口 `Base`：
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 interface Base {
@@ -46,7 +46,7 @@ fun main(args: Array<String>) {
 覆盖的实现而不是委托对象中的。如果将 `override fun print() { print("abc") }` 添加到
 `Derived`，那么当调用 `print` 时程序会输出“abc”而不是“10”：
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 interface Base {
@@ -74,7 +74,7 @@ fun main(args: Array<String>) {
 但请注意，以这种方式重写的成员不会在委托对象的成员中调用
 ，委托对象的成员只能访问其自身对接口成员实现：
 
-<div class="sample" markdown="1">
+<div class="sample" markdown="1" theme="idea">
 
 ``` kotlin
 interface Base {
