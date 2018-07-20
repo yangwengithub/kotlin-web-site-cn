@@ -44,7 +44,7 @@ operator fun Point.unaryMinus() = Point(-x, -y)
 val point = Point(10, 20)
 
 fun main(args: Array<String>) {
-   println(-point)  // 输出“(-10, -20)”
+   println(-point)  // 输出“Point(x=-10, y=-20)”
 }
 
 ```
