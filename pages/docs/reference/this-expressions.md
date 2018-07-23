@@ -22,6 +22,7 @@ title: "This 表达式"
 或者带标签的[带有接收者的函数字面值](lambdas.html#带有接收者的函数字面值)）我们使用`this@label`，其中 `@label` 是一个<!--
 -->代指 *this*{: .keyword } 来源的标签：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
 ``` kotlin
 class A { // 隐式标签 @A
     inner class B { // 隐式标签 @B
@@ -46,3 +47,4 @@ class A { // 隐式标签 @A
     }
 }
 ```
+</div>

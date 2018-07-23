@@ -32,7 +32,8 @@ Kotlin 1.1 的关键新特性是*协程*，它带来了 `future`/`await`、 `yie
 
 我们来看看在外部库 [kotlinx.coroutines](https://github.com/kotlin/kotlinx.coroutines) 中实现的 `async`/`await`：
 
-``` kotlin
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+```kotlin
 // 在后台线程池中运行该代码
 fun asyncOverlay() = async(CommonPool) {
     // 启动两个异步操作
@@ -50,12 +51,14 @@ launch(UI) {
     showImage(image)
 }
 ```
+</div>
 
 这里，`async { …… }` 启动一个协程，当我们使用 `await()` 时，挂起协程的执行，而执行正在等待的操作，并且在等待的操作完成时恢复（可能在不同的线程上） 。
 
 标准库通过 `yield` 和 `yieldAll` 函数使用协程来支持*惰性生成序列*。
 在这样的序列中，在取回每个元素之后挂起返回序列元素的代码块，
 并在请求下一个元素时恢复。这里有一个例子：
+
 
 
 ``` kotlin
@@ -95,6 +98,7 @@ fun main(args: Array<String>) {
 类型别名允许你为现有类型定义备用名称。
 这对于泛型类型（如集合）以及函数类型最有用。
 这里有几个例子：
+
 
 
 ``` kotlin
@@ -137,6 +141,7 @@ fun main(args: Array<String>) {
 这里有一个例子：
 
 
+
 ``` kotlin
 //sampleStart
 val numberRegex = "\\d+".toRegex()
@@ -158,6 +163,7 @@ Kotlin 1.1 删除了一些对 Kotlin 1.0 中已存在的密封类和数据类的
 现在你可以在同一个文件中的任何地方定义一个密封类的子类，而不只是以作为密封类嵌套类的方式。
 数据类现在可以扩展其他类。
 这可以用来友好且清晰地定义一个表达式类的层次结构：
+
 
 
 ``` kotlin
@@ -192,17 +198,18 @@ fun main(args: Array<String>) {
 这里有一个例子：
 
 
+
 ``` kotlin
 fun main(args: Array<String>) {
 //sampleStart
-    val map = mapOf(1 to "one", 2 to "two")
-    // 之前
-    println(map.mapValues { entry ->
-        val (key, value) = entry
-        "$key -> $value!"
-    })
-    // 现在
-    println(map.mapValues { (key, value) -> "$key -> $value!" })
+  val map = mapOf(1 to "one", 2 to "two")
+  // 之前
+  println(map.mapValues { entry ->
+      val (key, value) = entry
+      "$key -> $value!"
+  })
+  // 现在
+  println(map.mapValues { (key, value) -> "$key -> $value!" })
 //sampleEnd    
 }
 ```
@@ -213,6 +220,7 @@ fun main(args: Array<String>) {
 ### 下划线用于未使用的参数
 
 对于具有多个参数的 lambda 表达式，可以使用 `_` 字符替换不使用的参数的名称：
+
 
 
 ``` kotlin
@@ -226,6 +234,7 @@ fun main(args: Array<String>) {
 ```
 
 这也适用于[解构声明](multi-declarations.html)：
+
 
 
 ``` kotlin
@@ -247,6 +256,7 @@ fun main(args: Array<String>) {
 ### 数字字面值中的下划线
 
 正如在 Java 8 中一样，Kotlin 现在允许在数字字面值中使用下划线来分隔数字分组：
+
 
 
 ``` kotlin
@@ -271,6 +281,7 @@ fun main(args: Array<String>) {
 对于没有自定义访问器、或者将 getter 定义为表达式主体的属性，现在可以省略属性的类型：
 
 
+
 ``` kotlin
 //sampleStart
 data class Person(val name: String, val age: Int) {
@@ -288,6 +299,7 @@ fun main(args: Array<String>) {
 
 如果属性没有幕后字段，现在可以使用 `inline` 修饰符来标记该属性访问器。
 这些访问器的编译方式与[内联函数](inline-functions.html)相同。
+
 
 
 ``` kotlin
@@ -312,6 +324,7 @@ fun main(args: Array<String>) {
 
 现在可以对局部变量使用[委托属性](delegated-properties.html)语法。
 一个可能的用途是定义一个延迟求值的局部变量：
+
 
 
 ``` kotlin
@@ -344,6 +357,8 @@ fun main(args: Array<String>) {
 。
 例如，如果我们想要在绑定之前检查属性名称，我们可以这样写：
 
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 class ResourceLoader<T>(id: ResourceID<T>) {
     operator fun provideDelegate(thisRef: MyUI, property: KProperty<*>): ReadOnlyProperty<MyUI, T> {
@@ -361,6 +376,7 @@ class MyUI {
     val text by bindResource(ResourceID.text_id)
 }
 ```
+</div>
 
 `provideDelegate` 方法在创建 `MyUI` 实例期间将会为每个属性调用，并且可以立即执行<!--
 -->必要的验证。
@@ -371,6 +387,7 @@ class MyUI {
 ### 泛型枚举值访问
 
 现在可以用泛型的方式来对枚举类的值进行枚举：
+
 
 
 ``` kotlin
@@ -392,13 +409,15 @@ fun main(args: Array<String>) {
 `@DslMarker` 注解允许限制来自 DSL 上下文中的外部作用域的接收者的使用。
 考虑那个典型的 [HTML 构建器示例](type-safe-builders.html)：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 table {
     tr {
-        td { +"Text" }
+        td { + "Text" }
     }
 }
 ```
+</div>
 
 在 Kotlin 1.0 中，传递给 `td` 的 lambda 表达式中的代码可以访问三个隐式接收者：传递给 `table`、`tr`
 和 `td` 的。 这允许你调用在上下文中没有意义的方法——例如在 `td` 里面调用 `tr`，从而<!--
@@ -422,9 +441,11 @@ table {
 在 String 类中有一些新的扩展，用来将它转换为数字，而不会在无效数字上抛出异常：
 `String.toIntOrNull(): Int?`、 `String.toDoubleOrNull(): Double?` 等。
 
-```
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+```kotlin
 val port = System.getenv("PORT")?.toIntOrNull() ?: 80
 ```
+</div>
 
 还有整数转换函数，如 `Int.toString()`、 `String.toInt()`、 `String.toIntOrNull()`，
 每个都有一个带有 `radix` 参数的重载，它允许指定转换的基数（2 到 36）。
@@ -436,12 +457,14 @@ val port = System.getenv("PORT")?.toIntOrNull() ?: 80
 对于迭代其行为像 `forEach` 但是也进一步返回可迭代实例。 对于序列它返回一个<!--
 -->包装序列，它在元素迭代时延迟应用给定的动作。
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
 ``` kotlin
 inputDir.walk()
         .filter { it.isFile && it.name.endsWith(".txt") }
         .onEach { println("Moving $it to $outputDir") }
         .forEach { moveFile(it, File(outputDir, it.toRelativeString(inputDir))) }
 ```
+</div>
 
 ### also()、takeIf() 和 takeUnless()
 
@@ -451,6 +474,7 @@ inputDir.walk()
 二者区别是在 `apply` 内部的代码块中接收者是 `this`，
 而在 `also` 内部的代码块中是 `it`（并且如果你想的话，你可以给它另一个名字）。
 当你不想掩盖来自外部作用域的 `this` 时这很方便：
+
 
 
 ``` kotlin
@@ -481,10 +505,13 @@ fun main(args: Array<String>) {
 -->在满足时返回该接收者否则不满足时返回 `null`。
 结合 elvis-操作符和及早返回，它允许编写如下结构：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 val outDirFile = File(outputDir.path).takeIf { it.exists() } ?: return false
 // 对现有的 outDirFile 做些事情
 ```
+</div>
+
 
 
 ``` kotlin
@@ -505,11 +532,14 @@ fun main(args: Array<String>) {
 
 `takeUnless` 与 `takeIf` 相同，只是它采用了反向谓词。当它 _不_ 满足谓词时返回接收者，否则返回 `null`。因此，上面的示例之一可以用 `takeUnless` 重写如下：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 val index = input.indexOf(keyword).takeUnless { it < 0 } ?: error("keyword not found")
 ```
+</div>
 
 当你有一个可调用的引用而不是 lambda 时，使用也很方便：
+
 
 
 ``` kotlin
@@ -533,6 +563,7 @@ fun main(args: Array<String>) {
 -->计算文本中字符的频率：
 
 
+
 ``` kotlin
 fun main(args: Array<String>) {
     val words = "one two three four five six seven eight nine ten".split(' ')
@@ -552,16 +583,19 @@ fun main(args: Array<String>) {
 
 这俩函数可以用来简易复制映射：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 class ImmutablePropertyBag(map: Map<String, Any>) {
     private val mapCopy = map.toMap()
 }
 ```
+</div>
 
 ### Map.minus(key)
 
 运算符 `plus` 提供了一种将键值对添加到只读映射中以生成新映射的方法，但是没有一种简单的方法来做相反的操作：从映射中删除一个键采用不那么直接的方式如 `Map.filter()` 或 `Map.filterKeys()`。
 现在运算符 `minus` 填补了这个空白。有 4 个可用的重载：用于删除单个键、键的集合、键的序列和键的数组。
+
 
 
 ``` kotlin
@@ -579,6 +613,7 @@ fun main(args: Array<String>) {
 ### minOf() 和 maxOf()
 
 这些函数可用于查找两个或三个给定值中的最小和最大值，其中值是原生数字或 `Comparable` 对象。每个函数还有一个重载，它接受一个额外的 `Comparator` 实例，如果你想比较自身不可比的对象的话。
+
 
 
 ``` kotlin
@@ -601,6 +636,7 @@ fun main(args: Array<String>) {
 -->调用 lambda 表达式来初始化每个元素：
 
 
+
 ``` kotlin
 fun main(args: Array<String>) {
 //sampleStart
@@ -617,6 +653,7 @@ fun main(args: Array<String>) {
 
 `Map` 上的这个扩展函数返回一个与给定键相对应的现有值，或者抛出一个异常，提示找不到该键。
 如果该映射是用 `withDefault` 生成的，这个函数将返回默认值，而不是抛异常。
+
 
 
 ``` kotlin
@@ -653,6 +690,7 @@ fun main(args: Array<String>) {
 以及转换成一个字符串（`contentToString` 和 `contentDeepToString`）。它们都支持 JVM
 （它们作为 `java.util.Arrays` 中的相应函数的别名）和 JS（在
 Kotlin 标准库中提供实现）。
+
 
 
 ``` kotlin
@@ -703,11 +741,13 @@ Kotlin 现在支持在字节码中存储参数名。这可以使用命令行选�
 Kotlin 现在与[javax.script API](https://docs.oracle.com/javase/8/docs/api/javax/script/package-summary.html)（JSR-223）集成。
 其 API 允许在运行时求值代码段：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 val engine = ScriptEngineManager().getEngineByExtension("kts")!!
 engine.eval("val x = 3")
 println(engine.eval("x + 2"))  // 输出 5
 ```
+</div>
 
 关于使用 API 的示例项目参见[这里](https://github.com/JetBrains/kotlin/tree/master/libraries/examples/kotlin-jsr223-local-example)
 。
@@ -742,6 +782,7 @@ minifiers、 optimisers、 linters 等）更加友好。
 与 JVM 目标平台不同，JS 平台允许对类和属性使用 external 修饰符。
 例如，可以按以下方式声明 DOM `Node` 类：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 external class Node {
     val firstChild: Node
@@ -753,6 +794,7 @@ external class Node {
     // 等等
 }
 ```
+</div>
 
 ### 改进的导入处理
 
@@ -765,6 +807,7 @@ external class Node {
 
 例如，以下是将 JQuery 导入 Kotlin 模块的方法：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 external interface JQuery {
     fun toggle(duration: Int = definedExternally): JQuery
@@ -776,12 +819,14 @@ external interface JQuery {
 @JsName("$")
 external fun jquery(selector: String): JQuery
 ```
+</div>
 
 在这种情况下，JQuery 将作为名为 `jquery` 的模块导入。或者，它可以用作 $-对象，
 这取决于Kotlin编译器配置使用哪个模块系统。
 
 你可以在应用程序中使用如下所示的这些声明：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 fun main(args: Array<String>) {
     jquery(".toggle-button").click {
@@ -789,3 +834,4 @@ fun main(args: Array<String>) {
     }
 }
 ```
+</div>

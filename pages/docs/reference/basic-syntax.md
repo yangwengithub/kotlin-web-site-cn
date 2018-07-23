@@ -11,6 +11,7 @@ title: "基本语法"
 
 包的声明应处于源文件顶部：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 package my.demo
 
@@ -18,6 +19,7 @@ import java.util.*
 
 // ……
 ```
+</div>
 
 目录与包的结构无需匹配：源代码可以在文件系统的任意位置。
 
@@ -216,11 +218,13 @@ fun main(args: Array<String>) {
 
 如果 `str` 的内容不是数字返回 *null*{: .keyword }：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 fun parseInt(str: String): Int? {
     // ……
 }
 ```
+</div>
 
 使用返回可空值的函数:
 
@@ -561,13 +565,13 @@ fun main(args: Array<String>) {
 
 ``` kotlin
 fun main(args: Array<String>) {
-    val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
 //sampleStart
-    fruits
-        .filter { it.startsWith("a") }
-        .sortedBy { it }
-        .map { it.toUpperCase() }
-        .forEach { println(it) }
+  val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
+  fruits
+      .filter { it.startsWith("a") }
+      .sortedBy { it }
+      .map { it.toUpperCase() }
+      .forEach { println(it) }
 //sampleEnd
 }
 ```
@@ -575,6 +579,7 @@ fun main(args: Array<String>) {
 参见[高阶函数及Lambda表达式](lambdas.html)。
 
 ## 创建基本类及其实例：
+
 
 ``` kotlin
 fun main(args: Array<String>) {

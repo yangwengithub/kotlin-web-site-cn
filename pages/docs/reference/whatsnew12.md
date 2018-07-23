@@ -30,6 +30,7 @@ title: "Kotlin 1.2 的新特性"
 
 在公共代码中：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 // 预期平台相关 API:
 expect fun hello(world: String): String
@@ -45,9 +46,11 @@ expect class URL(spec: String) {
     open fun getPath(): String
 }
 ```
+</div>
 
 在 JVM 平台代码中：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 actual fun hello(world: String): String =
     "Hello, $world, on the JVM platform!"
@@ -55,6 +58,7 @@ actual fun hello(world: String): String =
 // 使用既有平台相关实现：
 actual typealias URL = java.net.URL
 ```
+</div>
 
 关于构建多平台项目的详细信息与步骤，请参见其[documentation](http://kotlinlang.org/docs/reference/multiplatform.html)<!--
 -->。
@@ -66,12 +70,14 @@ actual typealias URL = java.net.URL
 自 Kotlin 1.2 起，注解的数组参数可以通过新的数组字面值语法传入，而无需<!--
 -->使用 `arrayOf` 函数：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 @CacheConfig(cacheNames = ["books", "default"])
 public class BookRepositoryImpl {
     // ……
 }
 ```
+</div>
 
 该数组字面值语法仅限于注解参数。
 
@@ -82,6 +88,7 @@ public class BookRepositoryImpl {
 -->必须稍后定义的对象：
 
 
+
 ```kotlin
 class Node<T>(val value: T, val next: () -> Node<T>)
 
@@ -89,13 +96,13 @@ fun main(args: Array<String>) {
     //sampleStart
     // 三个节点的环：
     lateinit var third: Node<Int>
-    
+
     val second = Node(2, next = { third })
     val first = Node(1, next = { second })
-    
+
     third = Node(3, next = { first })
     //sampleEnd
-    
+
     val nodes = generateSequence(first) { it.next() }
     println("Values in the cycle: ${nodes.take(7).joinToString { it.value.toString() }}, ...")
 }
@@ -106,15 +113,16 @@ fun main(args: Array<String>) {
 现在可以通过属性引用的 `isInitialized` 来检测该 lateinit var 是否已初始化：
 
 
+
 ```kotlin
 class Foo {
     lateinit var lateinitVar: String
-    
+
     fun initializationLogic() {
         //sampleStart
         println("isInitialized before assignment: " + this::lateinitVar.isInitialized)
         lateinitVar = "value"
-        println("isInitialized after assignment: " + this::lateinitVar.isInitialized)    
+        println("isInitialized after assignment: " + this::lateinitVar.isInitialized)
         //sampleEnd
     }
 }
@@ -129,9 +137,10 @@ fun main(args: Array<String>) {
 内联函数现在允许其内联函式数参数具有默认值：
 
 
+
 ```kotlin
 //sampleStart
-inline fun <E> Iterable<E>.strings(transform: (E) -> String = { it.toString() }) = 
+inline fun <E> Iterable<E>.strings(transform: (E) -> String = { it.toString() }) =
     map { transform(it) }
 
 val defaultStrings = listOf(1, 2, 3).strings()
@@ -146,16 +155,18 @@ fun main(args: Array<String>) {
 
 ### 源自显式类型转换的信息会用于类型推断
 
-Kotlin 编译器现在可将类型转换信息用于类型推断。如果你调用一个<!--
+ Kotlin 编译器现在可将类型转换信息用于类型推断。如果你调用一个<!--
 -->返回类型参数 `T` 的泛型方法并将返回值转换为指定类型 `Foo`，那么编译器现在知道<!--
 -->对于本次调用需要绑定类型为 `Foo`。
 
 这对于 Android 开发者来说尤为重要，因为编译器现在可以正确分析
-Android API 级别 26 中的泛型 `findViewById` 调用：
+ Android API 级别 26中的泛型 `findViewById` 调用：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 val button = findViewById(R.id.button) as Button
 ```
+</div>
 
 ### 智能类型转换改进
 
@@ -163,40 +174,40 @@ val button = findViewById(R.id.button) as Button
 -->安全调用接收者：
 
 
+
 ```kotlin
 fun countFirst(s: Any): Int {
-    //sampleStart
-    val firstChar = (s as? CharSequence)?.firstOrNull()
-    if (firstChar != null)
-       return s.count { it == firstChar } // s: Any 会智能转换为 CharSequence
+//sampleStart
+  val firstChar = (s as? CharSequence)?.firstOrNull()
+  if (firstChar != null)
+    return s.count { it == firstChar } // s: Any 会智能转换为 CharSequence
     
-    val firstItem = (s as? Iterable<*>)?.firstOrNull()
-    if (firstItem != null)
-       return s.count { it == firstItem } // s: Any 会智能转换为 Iterable<*>
-    //sampleEnd
-    
+  val firstItem = (s as? Iterable<*>)?.firstOrNull()
+  if (firstItem != null)
+    return s.count { it == firstItem } // s: Any 会智能转换为 Iterable<*>
+//sampleEnd
     return -1
 }
 
 fun main(args: Array<String>) {
-    val string = "abacaba"
-    val countInString = countFirst(string)
-    println("called on \"$string\": $countInString")
-    
-    val list = listOf(1, 2, 3, 1, 2)
-    val countInList = countFirst(list)
-    println("called on $list: $countInList")
+  val string = "abacaba"
+  val countInString = countFirst(string)
+  println("called on \"$string\": $countInString")
+
+  val list = listOf(1, 2, 3, 1, 2)
+  val countInList = countFirst(list)
+  println("called on $list: $countInList")
 }
 ```
 
 智能转换现在也允许用于在 lambda 表达式中局部变量，只要这些局部变量仅在 lambda 表达式之前修改即可：
 
 
+
 ```kotlin
 fun main(args: Array<String>) {
-    val flag = args.size == 0
-    
     //sampleStart
+    val flag = args.size == 0
     var x: String? = null
     if (flag) x = "Yahoo!"
 
@@ -212,17 +223,17 @@ fun main(args: Array<String>) {
 ### 支持 ::foo 作为 this::foo 的简写
 
 现在写绑定到 `this` 成员的可调用引用可以无需显式接收者，即 `::foo` 取代
-`this:: foo`。这也使在引用外部接收者的成员的 lambda 表达式中使用可调用引用更加方便<!--
+ `this::foo`。这也使在引用外部接收者的成员的 lambda 表达式中使用可调用引用更加方便<!--
 -->。
 
 ### 阻断性变更：try 块后可靠智能转换
 
-Kotlin 以前将 `try` 块中的赋值语句用于块后的智能转换，这可能会破坏类型安全与空安全<!--
+ Kotlin 以前将 `try` 块中的赋值语句用于块后的智能转换，这可能会破坏类型安全与空安全<!--
 -->并引发运行时故障。这个版本修复了该问题，使智能转换更加严格，但可能会破坏一些<!--
 -->依靠这种智能转换的代码。
 
 如果要切换到旧版智能转换行为，请传入回退标志 `-Xlegacy-smart-cast-after-try` 作为编译器<!--
--->参数。该参数会在 Kotlin 1.3 中弃用。
+-->参数。该参数会在 Kotlin 1.3中弃用。
 
 ### 弃用：数据类弃用 copy
 
@@ -231,12 +242,12 @@ Kotlin 以前将 `try` 块中的赋值语句用于块后的智能转换，这可
 或者导致运行时失败，如果超类型中没有默认参数的话。
 
 导致 `copy` 冲突的继承在 Kotlin 1.2 中已弃用并带有警告，
-而在 Kotlin 1.3 中将会是错误。
+而在 Kotlin 1.3中将会是错误。
 
 ### 弃用：枚举条目中的嵌套类型
 
 由于初始化逻辑的问题，已弃用在枚举条目内部定义一个非 `inner class`
-的嵌套类。这在 Kotlin 1.2 中会引起警告，而在 Kotlin 1.3 中会成为错误。
+的嵌套类。这在 Kotlin 1.2 中会引起警告，而在 Kotlin 1.3中会成为错误。
 
 ### 弃用：vararg 单个命名参数
 
@@ -244,33 +255,35 @@ Kotlin 以前将 `try` 块中的赋值语句用于块后的智能转换，这可
 -->的用法（`foo(items = i)`）已被弃用。请使用伸展操作符连同相应的<!--
 -->数组工厂函数：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 foo(items = *intArrayOf(1))
 ```
+</div>
 
 在这种情况下有一项防止性能下降的优化可以消除冗余的数组创建。
-单参数形式在 Kotlin 1.2 中会产生警告，而在 Kotlin 1.3 中会放弃。
+单参数形式在 Kotlin 1.2 中会产生警告，而在 Kotlin 1.3中会放弃。
 
 ### 弃用：扩展 Throwable 的泛型类的内部类
 
 继承自 `Throwable` 的泛型类的内部类可能会在 throw-catch 场景中违反类型安全性，因此<!--
--->已弃用，在 Kotlin 1.2 中会是警告，而在 Kotlin 1.3 中会是错误。
+-->已弃用，在 Kotlin 1.2 中会是警告，而在 Kotlin 1.3中会是错误。
 
 ### 弃用：修改只读属性的幕后字段
 
 通过在自定义 getter 中赋值 `field = ……` 来修改只读属性的幕后字段的用法已被弃用，
-在 Kotlin 1.2 中会是警告，而在 Kotlin 1.3 中会是错误。
+在 Kotlin 1.2 中会是警告，而在 Kotlin 1.3中会是错误。
 
 ## 标准库
 
 ### Kotlin 标准库构件与拆分包
 
-Kotlin 标准库现在完全兼容 Java 9 的模块系统，它禁止拆分包
+ Kotlin 标准库现在完全兼容 Java 9 的模块系统，它禁止拆分包
 （多个 jar 文件声明的类在同一包中）。为了支持这点，我们引入了新的 `kotlin-stdlib-jdk7`
-与 `kotlin-stdlib-jdk8`，它们取代了旧版的 `kotlin-stdlib-jre7` 与 `kotlin-stdlib-jre8`。
- 
+与 `kotlin-stdlib-jdk8` ，它们取代了旧版的 `kotlin-stdlib-jre7` 与 `kotlin-stdlib-jre8`。
+
 在 Kotlin 看来新的构件中的声明在相同的包名内，而在
-Java 看来有不同的包名。因此，切换到新的构件无需修改任何<!--
+ Java看来有不同的包名。因此，切换到新的构件无需修改任何<!--
 -->源代码。
 
 确保与新的模块系统兼容的另一处变更是在 `kotlin-reflect` 库中删除了
@@ -279,9 +292,10 @@ Java 看来有不同的包名。因此，切换到新的构件无需修改任何
 
 ### windowed、chunked、zipWithNext
 
-用于 `Iterable<T>`、 `Sequence<T>` 与 `CharSequence` 的新的扩展覆盖了这些应用场景：缓存或<!--
+用于 `Iterable<T>`、 `Sequence<T>`与 `CharSequence` 的新的扩展覆盖了这些应用场景：缓存或<!--
 -->批处理（`chunked`）、 滑动窗口与计算滑动均值（`windowed`）以及处理成对<!--
 -->的后续条目（`zipWithNext`）：
+
 
 
 ```kotlin
@@ -295,9 +309,9 @@ fun main(args: Array<String>) {
     val slidingAverage = items.windowed(4) { it.average() }
     val pairwiseDifferences = items.zipWithNext { a, b -> b - a }
     //sampleEnd
-    
+
     println("items: $items\n")
-    
+
     println("chunked into lists: $chunkedIntoLists")
     println("3D points: $points3d")
     println("windowed by 4: $windowed")
@@ -308,8 +322,9 @@ fun main(args: Array<String>) {
 
 ### fill、replaceAll、shuffle/shuffled
 
-添加了一些用于操作列表的扩展函数：`MutableList` 的 `fill`、`replaceAll` 与 `shuffle`，
-以及只读 `List` 的 `shuffled`：
+添加了一些用于操作列表的扩展函数：`MutableList` 的 `fill`、 `replaceAll` 与 `shuffle` ，
+以及只读 `List`的 `shuffled`：
+
 
 
 ```kotlin

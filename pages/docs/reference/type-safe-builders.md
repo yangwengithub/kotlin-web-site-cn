@@ -19,6 +19,7 @@ title: "类型安全的构建器"
 
 考虑下面的代码：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 import com.example.html.* // 参见下文声明
 
@@ -52,6 +53,7 @@ fun result(args: Array<String>) =
         }
     }
 ```
+</div>
 
 这是完全合法的 Kotlin 代码。
 你可以[在这里](http://try.kotlinlang.org/#/Examples/Longer examples/HTML Builder/HTML Builder.kt)在线运行上文代码（修改它并在浏览器中运行）。
@@ -66,15 +68,18 @@ fun result(args: Array<String>) =
 
 现在，让我们回想下为什么我们可以在代码中这样写：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 html {
  // ……
 }
 ```
+</div>
 
 `html` 实际上是一个函数调用，它接受一个 [lambda 表达式](lambdas.html) 作为参数。
 该函数定义如下：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 fun html(init: HTML.() -> Unit): HTML {
     val html = HTML()
@@ -82,6 +87,7 @@ fun html(init: HTML.() -> Unit): HTML {
     return html
 }
 ```
+</div>
 
 这个函数接受一个名为 `init` 的参数，该参数本身就是一个函数。
 该函数的类型是 `HTML.() -> Unit`，它是一个 _带接收者的函数类型_ 。
@@ -89,23 +95,27 @@ fun html(init: HTML.() -> Unit): HTML {
 并且我们可以在函数内部调用该实例的成员。
 该接收者可以通过 *this*{: .keyword } 关键字访问：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 html {
-    this.head { /* …… */ }
-    this.body { /* …… */ }
+    this.head { …… }
+    this.body { …… }
 }
 ```
+</div>
 
 （`head` 和 `body` 是 `HTML` 的成员函数。）
 
 现在，像往常一样，*this*{: .keyword } 可以省略掉了，我们得到的东西看起来已经非常像一个构建器了：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 html {
-    head { /* …… */ }
-    body { /* …… */ }
+    head { …… }
+    body { …… }
 }
 ```
+</div>
 
 那么，这个调用做什么？ 让我们看看上面定义的 `html` 函数的主体。
 它创建了一个 `HTML` 的新实例，然后通过调用作为参数传入的函数来初始化它
@@ -115,6 +125,7 @@ html {
 `HTML` 类中的 `head` 和 `body` 函数的定义与 `html` 类似。
 唯一的区别是，它们将构建的实例添加到包含 `HTML` 实例的 `children` 集合中：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 fun head(init: Head.() -> Unit) : Head {
     val head = Head()
@@ -130,9 +141,11 @@ fun body(init: Body.() -> Unit) : Body {
     return body
 }
 ```
+</div>
 
 实际上这两个函数做同样的事情，所以我们可以有一个泛型版本，`initTag`：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 protected fun <T : Element> initTag(tag: T, init: T.() -> Unit): T {
     tag.init()
@@ -140,20 +153,24 @@ protected fun <T : Element> initTag(tag: T, init: T.() -> Unit): T {
     return tag
 }
 ```
+</div>
 
 所以，现在我们的函数很简单：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 fun head(init: Head.() -> Unit) = initTag(Head(), init)
 
 fun body(init: Body.() -> Unit) = initTag(Body(), init)
 ```
+</div>
 
 并且我们可以使用它们来构建 `<head>` 和 `<body>` 标签。
 
 
 这里要讨论的另一件事是如何向标签体中添加文本。在上例中我们这样写到：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 html {
     head {
@@ -162,16 +179,19 @@ html {
     // ……
 }
 ```
+</div>
 
 所以基本上，我们只是把一个字符串放进一个标签体内部，但在它前面有一个小的 `+`，
 所以它是一个函数调用，调用一个前缀 `unaryPlus()` 操作。
 该操作实际上是由一个扩展函数 `unaryPlus()` 定义的，该函数是 `TagWithText` 抽象类（`Title` 的父类）的成员：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 operator fun String.unaryPlus() {
     children.add(TextElement(this))
 }
 ```
+</div>
 
 所以，在这里前缀 `+` 所做的事情是把一个字符串包装到一个 `TextElement` 实例中，并将其添加到 `children` 集合中，
 以使其成为标签树的一个适当的部分。
@@ -186,6 +206,7 @@ operator fun String.unaryPlus() {
 使用 DSL 时，可能会遇到上下文中可以调用太多函数的问题。
 我们可以调用 lambda 表达式内部每个可用的隐式接收者的方法，因此得到一个不一致的结果，就像在另一个 `head` 内部的 `head` 标记那样：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 html {
     head {
@@ -194,6 +215,7 @@ html {
     // ……
 }
 ```
+</div>
 
 在这个例子中，必须只有最近层的隐式接收者 `this@head` 的成员可用；`head()` 是外部接收者 `this@html` 的成员，所以调用它一定是非法的。
 
@@ -201,31 +223,38 @@ html {
 
 为了使编译器开始控制标记，我们只是必须用相同的标记注解来标注在 DSL 中使用的所有接收者的类型。
 例如，对于 HTML 构建器，我们声明一个注解 `@HTMLTagMarker`：
- 
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 @DslMarker
 annotation class HtmlTagMarker
 ```
+</div>
 
 如果一个注解类使用 `@DslMarker` 注解标注，那么该注解类称为 DSL 标记。
 
 在我们的 DSL 中，所有标签类都扩展了相同的超类 `Tag`。
 只需使用 `@HtmlTagMarker` 来标注超类就足够了，之后，Kotlin 编译器会将所有继承的类视为已标注：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 @HtmlTagMarker
 abstract class Tag(val name: String) { …… }
 ```
+</div>
 
 我们不必用 `@HtmlTagMarker` 标注 `HTML` 或 `Head` 类，因为它们的超类已标注过：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```
 class HTML() : Tag("html") { …… }
 class Head() : Tag("head") { …… }
 ```
+</div>
 
 在添加了这个注解之后，Kotlin 编译器就知道哪些隐式接收者是同一个 DSL 的一部分，并且只允许调用最近层的接收者的成员：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 html {
     head {
@@ -234,9 +263,11 @@ html {
     // ……
 }
 ```
+</div>
 
 请注意，仍然可以调用外部接收者的成员，但是要做到这一点，你必须明确指定这个接收者：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 html {
     head {
@@ -245,6 +276,7 @@ html {
     // ……
 }
 ```
+</div>
 
 ## `com.example.html` 包的完整定义
 
@@ -256,6 +288,7 @@ html {
 
 <a name='declarations'></a>
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 package com.example.html
 
@@ -353,3 +386,4 @@ fun html(init: HTML.() -> Unit): HTML {
     return html
 }
 ```
+</div>

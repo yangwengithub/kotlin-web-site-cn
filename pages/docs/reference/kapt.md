@@ -18,25 +18,31 @@ title: "使用 kapt"
 
 应用 `kotlin-kapt` Gradle 插件：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```groovy
 apply plugin: 'kotlin-kapt'
 ```
+</div>
 
 或者，你可以使用插件 DSL 应用它：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```groovy
 plugins {
     id "org.jetbrains.kotlin.kapt" version "1.2.50"
 }
 ```
+</div>
 
 然后在 `dependencies` 块中使用 `kapt` 配置添加相应的依赖项：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` groovy
 dependencies {
     kapt 'groupId:artifactId:版本'
 }
 ```
+</div>
 
 如果你以前使用 [Android 支持](https://developer.android.com/studio/build/gradle-plugin-3-0-0-migration.html#annotationProcessor_config)作为注解处理器，那么以 `kapt` 取代 `annotationProcessor` 配置的使用。如果你的项目包含 Java 类，`kapt` 也会顾全到它们。
 
@@ -46,6 +52,7 @@ dependencies {
 
 使用 `arguments {}` 块将参数传给注解处理器：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` groovy
 kapt {
     arguments {
@@ -53,12 +60,14 @@ kapt {
     }
 }
 ```
+</div>
 
 ## Java 编译器选项
 
 Kapt 使用 Java 编译器来运行注解处理器。
 以下是将任意选项传给 javac 的方式：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` groovy
 kapt {
     javacOptions {
@@ -68,16 +77,19 @@ kapt {
     }
 }
 ```
+</div>
 
 ## 非存在类型校正
 
 一些注解处理器（如 `AutoFactory`）依赖于声明签名中的精确类型。默认情况下，Kapt 将每个未知类型（包括生成的类的类型）替换为 `NonExistentClass`，但你可以更改此行为。将额外标志添加到 `build.gradle` 文件以启用在存根（stub）中推断出的错误类型：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` groovy
 kapt {
     correctErrorTypes = true
 }
 ```
+</div>
 
 ## 在 Maven 中使用
 
@@ -169,6 +181,7 @@ Kapt 可生成 Kotlin 代码。是将生成的 Kotlin 源文件写入`processing
 `apoptions` 与 `javacArguments` 命令行选项接受选项编码映射。
 这是自己编码选项的方式：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 fun encodeList(options: Map<String, String>): String {
     val os = ByteArrayOutputStream()
@@ -184,3 +197,4 @@ fun encodeList(options: Map<String, String>): String {
     return Base64.getEncoder().encodeToString(os.toByteArray())
 }
 ```
+</div>

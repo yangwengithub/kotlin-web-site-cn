@@ -28,33 +28,38 @@ title: "协程"
 
 当我们调用标记有特殊修饰符 `suspend` 的函数时，会发生挂起：
 
-``` kotlin 
-suspend fun doSomething(foo: Foo): Bar {
-    ……
-}
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+``` kotlin
+suspend fun doSomething(foo: Foo): Bar { …… }
 ```
+</div>
 
 这样的函数称为*挂起函数*，因为调用它们可能挂起协程（如果相关调用的结果已经可用，库可以决定继续进行而不挂起）。挂起函数能够以与普通函数相同的方式获取参数和返回值，但它们只能从协程、其他挂起函数以及内联到其中的函数字面值中调用。
 
 事实上，要启动协程，必须至少有一个挂起函数，它通常是匿名的（即它是一个挂起 lambda 表达式）。让我们来看一个例子，一个简化的 `async()` 函数（源自 [`kotlinx.coroutines`](#kotlincoroutines-中的生成器-api) 库）：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 fun <T> async(block: suspend () -> T)
-``` 
+```
+</div>
 
 这里的 `async()` 是一个普通函数（不是挂起函数），但是它的 `block` 参数具有一个带 `suspend` 修饰符的函数类型： `suspend () -> T`。所以，当我们将一个 lambda 表达式传给 `async()` 时，它会是*挂起 lambda 表达式*，于是我们可以从中调用挂起函数：
-   
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 async {
     doSomething(foo)
     ……
 }
 ```
+</div>
 
 > **注意：**目前挂起函数类型不能用作超类型，并且目前不支持匿名挂起函数。
 
 继续该类比，`await()` 可以是一个挂起函数（因此也可以在一个 `async {}` 块中调用），该函数挂起一个协程，直到一些计算完成并返回其结果：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 async {
     ……
@@ -62,11 +67,13 @@ async {
     ……
 }
 ```
+</div>
 
 更多关于 `async/await` 函数实际在 `kotlinx.coroutines` 中如何工作的信息可以在[这里](https://github.com/Kotlin/kotlinx.coroutines/blob/master/coroutines-guide.md#composing-suspending-functions)找到。
 
 请注意，挂起函数 `await()` 与 `doSomething()` 不能在没有内联到挂起函数体的函数字面值以及像 `main()` 这样的普通函数中调用：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 fun main(args: Array<String>) {
     doSomething() // 错误：挂起函数从非协程上下文调用
@@ -83,9 +90,11 @@ fun main(args: Array<String>) {
     }
 }
 ```
+</div>
 
 还要注意的是，挂起函数可以是虚拟的，当覆盖它们时，必须指定 `suspend` 修饰符：
- 
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 interface Base {
     suspend fun foo()
@@ -94,7 +103,8 @@ interface Base {
 class Derived: Base {
     override suspend fun foo() { …… }
 }
-``` 
+```
+</div>
 
 ### `@RestrictsSuspension` 注解
  
@@ -104,13 +114,13 @@ class Derived: Base {
 
 这在*少数*情况是需要的，当每次挂起在库中以特殊方式处理时。例如，当通过 [`buildSequence()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines.experimental/build-sequence.html) 函数实现[下文](#kotlincoroutines-中的生成器-api)所述的生成器时，我们需要确保在协程中的任何挂起调用最终调用 `yield()` 或 `yieldAll()` 而不是任何其他函数。这就是为什么 [`SequenceBuilder`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines.experimental/-sequence-builder/index.html) 用 `@RestrictsSuspension` 注解：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 @RestrictsSuspension
-public abstract class SequenceBuilder<in T> {
-    ……
-}
+public abstract class SequenceBuilder<in T> { …… }
 ```
- 
+</div>
+
 参见其 [Github 上](https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/src/kotlin/coroutines/experimental/SequenceBuilder.kt) 的源代码。
 
 ## 协程的内部机制
@@ -160,7 +170,7 @@ public abstract class SequenceBuilder<in T> {
 - [`buildIterator()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines.experimental/build-iterator.html)
 
 这些包含在 `kotlin-stdlib` 中因为他们与序列相关。这些函数（我们可以仅限于这里的 `buildSequence()`）实现了 _生成器_ ，即提供一种廉价构建惰性序列的方法：
- 
+
 
 ``` kotlin
 import kotlin.coroutines.experimental.*
@@ -192,7 +202,7 @@ fun main(args: Array<String>) {
 这通过创建一个协程生成一个惰性的、潜在无限的斐波那契数列，该协程通过调用 `yield()` 函数来产生连续的斐波纳契数。当在这样的序列的迭代器上迭代每一步，都会执行生成下一个数的协程的另一部分。因此，我们可以从该序列中取出任何有限的数字列表，例如 `fibonacciSeq.take(8).toList()` 结果是 `[1, 1, 2, 3, 5, 8, 13, 21]`。协程足够廉价使这很实用。
    
 为了演示这样一个序列的真正惰性，让我们在调用 `buildSequence()` 内部输出一些调试信息：
-  
+
 
 ``` kotlin
 import kotlin.coroutines.experimental.*
