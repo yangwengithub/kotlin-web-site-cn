@@ -161,13 +161,13 @@ val a = { i: Int -> i + 1 } // 推断出的类型是 (Int) -> Int
 ``` kotlin
 fun main(args: Array<String>) {
     //sampleStart
-    val repeat: String.(Int) -> String = { times -> repeat(times) }
-    val twoParameters: (String, Int) -> String = repeat // OK
+    val repeatFun: String.(Int) -> String = { times -> this.repeat(times) }
+    val twoParameters: (String, Int) -> String = repeatFun // OK
     
     fun runTransformation(f: (String, Int) -> String): String {
         return f("hello", 3)
     }
-    val result = runTransformation(repeat) // OK
+    val result = runTransformation(repeatFun) // OK
     //sampleEnd
     println("result = $result")
 }
