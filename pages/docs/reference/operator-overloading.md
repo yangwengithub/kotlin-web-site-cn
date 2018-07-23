@@ -35,7 +35,7 @@ Kotlin 允许我们为自己的类型提供预定义的一组操作符的实现�
 
 以下是如何重载一元减运算符的示例：
 
-<div class="sample" markdown="1" theme="idea">
+
 ``` kotlin
 data class Point(val x: Int, val y: Int)
 
@@ -48,7 +48,7 @@ fun main(args: Array<String>) {
 }
 
 ```
-</div>
+
 
 ### 递增与递减
 

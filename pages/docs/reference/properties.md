@@ -12,7 +12,7 @@ title: "属性与字段：Getters、Setters、const、lateinit"
 Kotlin的类可以有属性。
 属性可以用关键字*var*{: .keyword } 声明为可变的，否则使用只读关键字*val*{: .keyword }。
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 class Address {
     var name: String = ……
@@ -22,11 +22,11 @@ class Address {
     var zip: String = ……
 }
 ```
-</div>
+
 
 要使用一个属性，只要用名称引用它即可，就像 Java 中的字段：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 fun copyAddress(address: Address): Address {
     val result = Address() // Kotlin 中没有“new”关键字
@@ -36,53 +36,53 @@ fun copyAddress(address: Address): Address {
     return result
 }
 ```
-</div>
+
 
 ## Getters 与 Setters
 
 声明一个属性的完整语法是
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
+
 ``` kotlin
 var <propertyName>[: <PropertyType>] [= <property_initializer>]
     [<getter>]
     [<setter>]
 ```
-</div>
+
 
 其初始器（initializer）、getter 和 setter 都是可选的。属性类型如果可以从初始器
 （或者从其 getter 返回值，如下文所示）中推断出来，也可以省略。
 
 例如:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 var allByDefault: Int? // 错误：需要显式初始化器，隐含默认 getter 和 setter
 var initialized = 1 // 类型 Int、默认 getter 和 setter
 ```
-</div>
+
 
 一个只读属性的语法和一个可变的属性的语法有两方面的不同：1、只读属性的用 `val`开始代替`var` 2、只读属性不允许 setter
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val simple: Int? // 类型 Int、默认 getter、必须在构造函数中初始化
 val inferredType = 1 // 类型 Int 、默认 getter
 ```
-</div>
+
 
 我们可以编写自定义的访问器，非常像普通函数，刚好在属性声明内部。这里有一个自定义 getter 的例子:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
+
 ``` kotlin
 val isEmpty: Boolean
     get() = this.size == 0
 ```
-</div>
+
 
 一个自定义的 setter 的例子:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
+
 ``` kotlin
 var stringRepresentation: String
     get() = this.toString()
@@ -90,22 +90,22 @@ var stringRepresentation: String
         setDataFromString(value) // 解析字符串并赋值给其他属性
     }
 ```
-</div>
+
 
 按照惯例，setter 参数的名称是 `value`，但是如果你喜欢你可以选择一个不同的名称。
 
 自 Kotlin 1.1 起，如果可以从 getter 推断出属性类型，则可以省略它：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val isEmpty get() = this.size == 0  // 具有类型 Boolean
 ```
-</div>
+
 
 如果你需要改变一个访问器的可见性或者对其注解，但是不需要改变默认的实现，
 你可以定义访问器而不定义其实现:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
+
 ``` kotlin
 var setterVisibility: String = "abc"
     private set // 此 setter 是私有的并且有默认实现
@@ -113,20 +113,20 @@ var setterVisibility: String = "abc"
 var setterWithAnnotation: Any? = null
     @Inject set // 用 Inject 注解此 setter
 ```
-</div>
+
 
 ### 幕后字段
 
 在 Kotlin 类中不能直接声明字段。然而，当一个属性需要一个幕后字段时，Kotlin 会自动提供。这个幕后字段可以使用`field`标识符在访问器中引用：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
+
 ``` kotlin
 var counter = 0 // 注意：这个初始器直接为幕后字段赋值
     set(value) {
         if (value >= 0) field = value
     }
 ```
-</div>
+
 
 `field` 标识符只能用在属性的访问器内。
 
@@ -134,18 +134,18 @@ var counter = 0 // 注意：这个初始器直接为幕后字段赋值
 
 例如，下面的情况下， 就没有幕后字段：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
+
 ``` kotlin
 val isEmpty: Boolean
     get() = this.size == 0
 ```
-</div>
+
 
 ### 幕后属性
 
 如果你的需求不符合这套“隐式的幕后字段”方案，那么总可以使用 *幕后属性（backing property）*：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
+
 ``` kotlin
 private var _table: Map<String, Int>? = null
 public val table: Map<String, Int>
@@ -156,7 +156,7 @@ public val table: Map<String, Int>
         return _table ?: throw AssertionError("Set to null by another thread")
     }
 ```
-</div>
+
 
 从各方面看，这正是与 Java 相同的方式。因为通过默认 getter 和 setter 访问私有属性会被优化，所以不会引入函数调用开销。
 
@@ -172,13 +172,13 @@ public val table: Map<String, Int>
 
 这些属性可以用在注解中：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 const val SUBSYSTEM_DEPRECATED: String = "This subsystem is deprecated"
 
 @Deprecated(SUBSYSTEM_DEPRECATED) fun foo() { …… }
 ```
-</div>
+
 
 
 ## 延迟初始化属性与变量
@@ -190,7 +190,7 @@ const val SUBSYSTEM_DEPRECATED: String = "This subsystem is deprecated"
 
 为处理这种情况，你可以用 `lateinit` 修饰符标记该属性：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 public class MyTest {
     lateinit var subject: TestSubject
@@ -204,7 +204,7 @@ public class MyTest {
     }
 }
 ```
-</div>
+
 
 该修饰符只能用于在类体中的属性（不是在主构造函数中声明的 `var` 属性，并且仅<!--
 -->当该属性没有自定义 getter 或 setter 时），而自 Kotlin 1.2 起，也用于顶层属性与<!-- 
@@ -218,13 +218,13 @@ public class MyTest {
 要检测一个 `lateinit var` 是否已经初始化过，请在[该属性的引用](reflection.html#属性引用)上使用
 `.isInitialized`：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 if (foo::bar.isInitialized) {
     println(foo.bar)
 }
 ```
-</div>
+
 
 此检测仅对可词法级访问的属性可用，即声明位于同一个类型内、位于其中一个<!--
 -->外围类型中或者位于相同文件的顶层的属性。

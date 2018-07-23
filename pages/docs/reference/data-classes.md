@@ -11,11 +11,11 @@ title: "数据类"
 在这些类中，一些标准函数往往是从<!--
 -->数据机械推导而来的。在 Kotlin 中，这叫做 _数据类_ 并标记为 `data`：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 data class User(val name: String, val age: Int)
 ```
-</div>
+
 
 编译器自动从主构造函数中声明的所有属性导出以下成员：
 
@@ -48,23 +48,23 @@ Kotlin 1.2 中已弃用，并且会在 Kotlin 1.3 中禁用。
 在 JVM 中，如果生成的类需要含有一个无参的构造函数，则所有的属性必须指定默认值。
 （参见[构造函数](classes.html#构造函数)）。
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 data class User(val name: String = "", val age: Int = 0)
 ```
-</div>
+
 
 ## 在类体中声明的属性
 
 请注意，对于那些自动生成的函数，编译器只使用在主构造函数内部定义的属性。如需在生成的实现中排出一个属性，请将其声明在类体中：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 data class Person(val name: String) {
     var age: Int = 0
 }
 ```
-</div>
+
 
 在 `toString()`、 `equals()`、 `hashCode()` 以及 `copy()` 的实现中只会用到 `name` 属性，并且只有一个 component 函数 `component1()`。虽然两个 `Person` 对象可以有不同的年龄，但它们会视为相等。
 
@@ -93,32 +93,32 @@ fun main(args: Array<String>) {
 在很多情况下，我们需要复制一个对象改变它的一些属性，但其余部分保持不变。
  `copy()` 函数就是为此而生成。对于上文的 `User` 类，其实现会类似下面这样：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 fun copy(name: String = this.name, age: Int = this.age) = User(name, age)     
 ```
-</div>
+
 
 这让我们可以写：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val jack = User(name = "Jack", age = 1)
 val olderJack = jack.copy(age = 2)
 ```
-</div>
+
 
 ## 数据类和解构声明
 
 为数据类生成的 _Component 函数_ 使它们可在[解构声明](multi-declarations.html)中使用：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val jane = User("Jane", 35)
 val (name, age) = jane
 println("$name, $age years of age") // 输出 "Jane, 35 years of age"
 ```
-</div>
+
 
 ## 标准数据类
 

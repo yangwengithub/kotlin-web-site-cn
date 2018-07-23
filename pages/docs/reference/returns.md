@@ -15,11 +15,11 @@ Kotlin 有三种结构化跳转表达式：
 
 所有这些表达式都可以用作更大表达式的一部分：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val s = person.name ?: return
 ```
-</div>
+
 
 这些表达式的类型是 [Nothing 类型](exceptions.html#nothing-类型)。
 
@@ -29,17 +29,17 @@ val s = person.name ?: return
 标签的格式为标识符后跟 `@` 符号，例如：`abc@`、`fooBar@`都是有效的标签（参见[语法](grammar.html#labelReference)）。
 要为一个表达式加标签，我们只要在其前加标签即可。
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 loop@ for (i in 1..100) {
     // ……
 }
 ```
-</div>
+
 
 现在，我们可以用标签限制 *break*{: .keyword } 或者*continue*{: .keyword }：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 loop@ for (i in 1..100) {
     for (j in 1..100) {
@@ -47,7 +47,7 @@ loop@ for (i in 1..100) {
     }
 }
 ```
-</div>
+
 
 标签限制的 break 跳转到刚好位于该标签指定的循环后面的执行点。
 *continue*{: .keyword } 继续标签指定的循环的下一次迭代。
@@ -165,10 +165,10 @@ fun main(args: Array<String>) {
 
 当要返一个回值的时候，解析器优先选用标签限制的 return，即
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 return@a 1
 ```
-</div>
+
 
 意为“从标签 `@a` 返回 1”，而不是“返回一个标签标注的表达式 `(@a 1)`”。

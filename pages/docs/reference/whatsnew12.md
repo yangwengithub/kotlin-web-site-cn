@@ -30,7 +30,7 @@ title: "Kotlin 1.2 的新特性"
 
 在公共代码中：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 // 预期平台相关 API:
 expect fun hello(world: String): String
@@ -46,11 +46,11 @@ expect class URL(spec: String) {
     open fun getPath(): String
 }
 ```
-</div>
+
 
 在 JVM 平台代码中：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 actual fun hello(world: String): String =
     "Hello, $world, on the JVM platform!"
@@ -58,7 +58,7 @@ actual fun hello(world: String): String =
 // 使用既有平台相关实现：
 actual typealias URL = java.net.URL
 ```
-</div>
+
 
 关于构建多平台项目的详细信息与步骤，请参见其[documentation](http://kotlinlang.org/docs/reference/multiplatform.html)<!--
 -->。
@@ -70,14 +70,14 @@ actual typealias URL = java.net.URL
 自 Kotlin 1.2 起，注解的数组参数可以通过新的数组字面值语法传入，而无需<!--
 -->使用 `arrayOf` 函数：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 @CacheConfig(cacheNames = ["books", "default"])
 public class BookRepositoryImpl {
     // ……
 }
 ```
-</div>
+
 
 该数组字面值语法仅限于注解参数。
 
@@ -162,11 +162,11 @@ fun main(args: Array<String>) {
 这对于 Android 开发者来说尤为重要，因为编译器现在可以正确分析
  Android API 级别 26中的泛型 `findViewById` 调用：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 val button = findViewById(R.id.button) as Button
 ```
-</div>
+
 
 ### 智能类型转换改进
 
@@ -255,11 +255,11 @@ fun main(args: Array<String>) {
 -->的用法（`foo(items = i)`）已被弃用。请使用伸展操作符连同相应的<!--
 -->数组工厂函数：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 foo(items = *intArrayOf(1))
 ```
-</div>
+
 
 在这种情况下有一项防止性能下降的优化可以消除冗余的数组创建。
 单参数形式在 Kotlin 1.2 中会产生警告，而在 Kotlin 1.3中会放弃。

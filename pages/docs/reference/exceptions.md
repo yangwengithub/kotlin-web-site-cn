@@ -14,7 +14,7 @@ Kotlin 中所有异常类都是 `Throwable` 类的子孙类。
 
 使用 *throw*{: .keyword }-表达式来抛出异常：
 
-<div class="sample" markdown="1" theme="idea">
+
 ``` kotlin
 
 fun main(args: Array<String>) {
@@ -23,11 +23,11 @@ fun main(args: Array<String>) {
 //sampleEnd
 }
 ```
-</div>
+
 
 使用 *try*{: .keyword }-表达式来捕获异常：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 try {
     // 一些代码
@@ -39,7 +39,7 @@ finally {
     // 可选的 finally 块
 }
 ```
-</div>
+
 
 可以有零到多个 *catch*{: .keyword } 块。*finally*{: .keyword } 块可以省略。
 但是 *catch*{: .keyword } 和 *finally*{: .keyword } 块至少应该存在一个。
@@ -48,11 +48,11 @@ finally {
 
 *try*{: .keyword } 是一个表达式，即它可以有一个返回值：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val a: Int? = try { parseInt(input) } catch (e: NumberFormatException) { null }
 ```
-</div>
+
 
 *try*{: .keyword }-表达式的返回值是 *try*{: .keyword } 块中的<!--
 -->最后一个表达式或者是（所有）*catch*{: .keyword } 块中的最后一个表达式。
@@ -64,17 +64,17 @@ Kotlin 没有受检的异常。这其中有很多原因，但我们会提供一�
 
 以下是 JDK 中 `StringBuilder` 类实现的一个示例接口：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` java
 Appendable append(CharSequence csq) throws IOException;
 ```
-</div>
+
 
 这个签名是什么意思？ 它是说，每次我追加一个字符串到一些东西（一个 `StringBuilder`、某种日志、一个控制台等）上时<!--
 -->我就必须捕获那些 `IOException`。 为什么？因为它可能正在执行 IO 操作（`Writer` 也实现了 `Appendable`）……
 所以它导致这种代码随处可见的出现：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 try {
     log.append(message)
@@ -83,7 +83,7 @@ catch (IOException e) {
     // 必须要安全
 }
 ```
-</div>
+
 
 这并不好，参见[《Effective Java》第三版](http://www.oracle.com/technetwork/java/effectivejava-136174.html) 第 77 条：*不要忽略异常*。
 
@@ -100,44 +100,44 @@ Bruce Eckel 在[《Java 是否需要受检的异常？》（Does Java need Check
 
 在 Kotlin 中 `throw` 是表达式，所以你可以使用它（比如）作为 Elvis 表达式的一部分：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val s = person.name ?: throw IllegalArgumentException("Name required")
 ```
-</div>
+
 
 `throw` 表达式的类型是特殊类型 `Nothing`。
 该类型没有值，而是用于标记永远不能达到的代码位置。
 在你自己的代码中，你可以使用 `Nothing` 来标记一个永远不会返回的函数：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 fun fail(message: String): Nothing {
     throw IllegalArgumentException(message)
 }
 ```
-</div>
+
 
 当你调用该函数时，编译器会知道执行不会超出该调用：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val s = person.name ?: fail("Name required")
 println(s)     // 在此已知“s”已初始化
 ```
-</div>
+
 
 可能会遇到这个类型的另一种情况是类型推断。这个类型的可空变体
 `Nothing?` 有一个可能的值是 `null`。如果用 `null` 来初始化<!--
 -->一个要推断类型的值，而又没有其他信息可用于确定更<!--
 -->具体的类型时，编译器会推断出 `Nothing?` 类型：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val x = null           // “x”具有类型 `Nothing?`
 val l = listOf(null)   // “l”具有类型 `List<Nothing?>
 ```
-</div>
+
 
 ## Java 互操作性
 

@@ -47,15 +47,15 @@ title: "Kotlin 与 OSGi"
 
 将 `kotlin-osgi-bundle` 引入到 gradle 项目中：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```groovy
 compile "org.jetbrains.kotlin:kotlin-osgi-bundle:$kotlinVersion"
 ```
-</div>
+
 
 要排除作为传递依赖的默认 Kotlin 库，你可以使用以下方法：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```groovy
 dependencies {
  compile (
@@ -64,7 +64,7 @@ dependencies {
   exclude group: 'org.jetbrains.kotlin'
 }
 ```
-</div>
+
 
 ## FAQ
 

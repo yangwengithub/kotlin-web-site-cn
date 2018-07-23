@@ -10,18 +10,18 @@ title: "区间"
 区间表达式由具有操作符形式 `..` 的 `rangeTo` 函数辅以 *in*{: .keyword } 和 *!in*{: .keyword } 形成。
 区间是为任何可比较类型定义的，但对于整型原生类型，它有一个优化的实现。以下是使用区间的一些示例：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 if (i in 1..10) { // 等同于 1 <= i && i <= 10
     println(i)
 }
 ```
-</div>
+
 
 整型区间（`IntRange`、 `LongRange`、 `CharRange`）有一个额外的特性：它们可以迭代。
 编译器负责将其转换为类似 Java 的基于索引的 *for*{: .keyword }-循环而无额外开销：
 
-<div class="sample" markdown="1" theme="idea">
+
 ``` kotlin
 fun main(args: Array<String>) {
 //sampleStart
@@ -31,11 +31,11 @@ for (i in 4..1) print(i)
 //sampleEnd
 }
 ```
-</div>
+
 
 如果你想倒序迭代数字呢？也很简单。你可以使用标准库中定义的 `downTo()` 函数：
 
-<div class="sample" markdown="1" theme="idea">
+
 ``` kotlin
 fun main(args: Array<String>) {
 //sampleStart
@@ -43,11 +43,11 @@ for (i in 4 downTo 1) print(i)
 //sampleEnd
 }
 ```
-</div>
+
 
 能否以不等于 1 的任意步长迭代数字？ 当然没问题， `step()` 函数有助于此：
 
-<div class="sample" markdown="1" theme="idea">
+
 ``` kotlin
 fun main(args: Array<String>) {
 //sampleStart
@@ -57,11 +57,11 @@ for (i in 4 downTo 1 step 2) print(i)
 //sampleEnd
 }
 ```
-</div>
+
 
 要创建一个不包括其结束元素的区间，可以使用 `until` 函数：
 
-<div class="sample" markdown="1" theme="idea">
+
 ``` kotlin
 fun main(args: Array<String>) {
 //sampleStart
@@ -72,7 +72,7 @@ for (i in 1 until 10) {
 //sampleEnd
 }
 ```
-</div>
+
 
 ## 它是如何工作的
 
@@ -89,13 +89,13 @@ for (i in 1 until 10) {
 数列是 `Iterable<N>` 的子类型，其中 `N` 分别为 `Int`、 `Long` 或者 `Char`，所以它可用于 *for*{: .keyword }-循环以及像 `map`、`filter` 等函数中。
 对 `Progression` 迭代相当于 Java/JavaScript 的基于索引的 *for*{: .keyword }-循环：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```java
 for (int i = first; i != last; i += step) {
   // ……
 }
 ```
-</div>
+
 
 对于整型类型，`..` 操作符创建一个同时实现 `ClosedRange<T>` 和 `*Progression` 的对象。
 例如，`IntRange` 实现了 `ClosedRange<Int>` 并扩展自 `IntProgression`，因此为 `IntProgression` 定义的所有操作也可用于 `IntRange`。
@@ -103,11 +103,11 @@ for (int i = first; i != last; i += step) {
 
 数列由在其伴生对象中定义的 `fromClosedRange` 函数构造：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 IntProgression.fromClosedRange(start, end, step)
 ```
-</div>
+
 
 数列的 `last` 元素这样计算：对于正的 `step` 找到不大于 `end` 值的最大值、或者对于负的 `step` 找到不小于 `end` 值的最小值，使得 `(last - first) % increment == 0`。
 
@@ -119,7 +119,7 @@ IntProgression.fromClosedRange(start, end, step)
 
 整型类型的 `rangeTo()` 操作符只是调用 `*Range` 类的构造函数，例如：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class Int {
     //……
@@ -129,15 +129,15 @@ class Int {
     //……
 }
 ```
-</div>
+
 
 浮点数（`Double`、 `Float`）未定义它们的 `rangeTo` 操作符，而使用标准库提供的泛型 `Comparable` 类型的操作符：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
     public operator fun <T: Comparable<T>> T.rangeTo(that: T): ClosedRange<T>
 ```
-</div>
+
 
 该函数返回的区间不能用于迭代。
 
@@ -145,7 +145,7 @@ class Int {
 
 扩展函数 `downTo()` 是为任何整型类型对定义的，这里有两个例子：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 fun Long.downTo(other: Int): LongProgression {
     return LongProgression.fromClosedRange(this, other.toLong(), -1L)
@@ -155,19 +155,19 @@ fun Byte.downTo(other: Int): IntProgression {
     return IntProgression.fromClosedRange(this.toInt(), other, -1)
 }
 ```
-</div>
+
 
 ### `reversed()`
 
 扩展函数 `reversed()` 是为每个 `*Progression` 类定义的，并且所有这些函数返回反转后的数列：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 fun IntProgression.reversed(): IntProgression {
     return IntProgression.fromClosedRange(last, first, -step)
 }
 ```
-</div>
+
 
 ### `step()`
 
@@ -175,7 +175,7 @@ fun IntProgression.reversed(): IntProgression {
 所有这些函数都返回带有修改了 `step` 值（函数参数）的数列。
 步长（step）值必须始终为正，因此该函数不会更改迭代的方向：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 fun IntProgression.step(step: Int): IntProgression {
     if (step <= 0) throw IllegalArgumentException("Step must be positive, was: $step")
@@ -187,14 +187,14 @@ fun CharProgression.step(step: Int): CharProgression {
     return CharProgression.fromClosedRange(first, last, if (this.step > 0) step else -step)
 }
 ```
-</div>
+
 
 请注意，返回数列的 `last` 值可能与原始数列的 `last` 值不同，以便保持不变式 `(last - first) % step == 0` 成立。这里是一个例子：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 (1..12 step 2).last == 11  // 值为 [1, 3, 5, 7, 9, 11] 的数列
 (1..12 step 3).last == 10  // 值为 [1, 4, 7, 10] 的数列
 (1..12 step 4).last == 9   // 值为 [1, 5, 9] 的数列
 ```
-</div>
+

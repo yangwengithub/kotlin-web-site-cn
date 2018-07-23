@@ -15,7 +15,7 @@ Kotlin 用*对象表达式*和*对象声明*对这个概念稍微概括了下。
 
 要创建一个继承自某个（或某些）类型的匿名类的对象，我们会这么写：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 window.addMouseListener(object : MouseAdapter() {
     override fun mouseClicked(e: MouseEvent) { …… }
@@ -23,12 +23,12 @@ window.addMouseListener(object : MouseAdapter() {
     override fun mouseEntered(e: MouseEvent) { …… }
 })
 ```
-</div>
+
 
 如果超类型有一个构造函数，则必须传递适当的构造函数参数给它。
 多个超类型可以由跟在冒号后面的逗号分隔的列表指定：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 open class A(x: Int) {
     public open val y: Int = x
@@ -40,11 +40,11 @@ val ab: A = object : A(1), B {
     override val y = 15
 }
 ```
-</div>
+
 
 任何时候，如果我们只需要“一个对象而已”，并不需要特殊超类型，那么我们可以简单地写：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 fun foo() {
     val adHoc = object {
@@ -54,14 +54,14 @@ fun foo() {
     print(adHoc.x + adHoc.y)
 }
 ```
-</div>
+
 
 请注意，匿名对象可以用作只在本地和私有作用域中声明的类型。如果你使用匿名对象作为公有函数的<!--
 -->返回类型或者用作公有属性的类型，那么该函数或属性的实际类型<!--
 -->会是匿名对象声明的超类型，如果你没有声明任何超类型，就会是 `Any`。在匿名对象<!--
 -->中添加的成员将无法访问。
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 class C {
     // 私有函数，所以其返回类型是匿名对象类型
@@ -80,12 +80,12 @@ class C {
     }
 }
 ```
-</div>
+
 
 就像 Java 匿名内部类一样，对象表达式中的代码可以访问来自包含它的作用域的变量。
 （与 Java 不同的是，这不仅限于 final 变量。）
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 fun countClicks(window: JComponent) {
     var clickCount = 0
@@ -103,14 +103,14 @@ fun countClicks(window: JComponent) {
     // ……
 }
 ```
-</div>
+
 
 ## 对象声明
 
 [单例模式](http://en.wikipedia.org/wiki/Singleton_pattern)在一些场景中很有用，
 而 Kotlin（继 Scala 之后）使单例声明变得很容易：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 object DataProviderManager {
     fun registerDataProvider(provider: DataProvider) {
@@ -121,7 +121,7 @@ object DataProviderManager {
         get() = // ……
 }
 ```
-</div>
+
 
 这称为*对象声明*。并且它总是在 *object*{: .keyword } 关键字后跟一个名称。
 就像变量声明一样，对象声明不是一个表达式，不能用在赋值语句的右边。
@@ -130,15 +130,15 @@ object DataProviderManager {
 
 如需引用该对象，我们直接使用其名称即可：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 DataProviderManager.registerDataProvider(……)
 ```
-</div>
+
 
 这些对象可以有超类型：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 object DefaultListener : MouseAdapter() {
     override fun mouseClicked(e: MouseEvent) { …… }
@@ -146,7 +146,7 @@ object DefaultListener : MouseAdapter() {
     override fun mouseEntered(e: MouseEvent) { …… }
 }
 ```
-</div>
+
 
 **注意**：对象声明不能在局部作用域（即直接嵌套在函数内部），但是它们可以嵌套到其他对象声明或非内部类中。
 
@@ -155,7 +155,7 @@ object DefaultListener : MouseAdapter() {
 
 类内部的对象声明可以用 *companion*{: .keyword } 关键字标记：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 class MyClass {
     companion object Factory {
@@ -163,19 +163,19 @@ class MyClass {
     }
 }
 ```
-</div>
+
 
 该伴生对象的成员可通过只使用类名作为限定符来调用：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val instance = MyClass.create()
 ```
-</div>
+
 
 可以省略伴生对象的名称，在这种情况下将使用名称 `Companion`：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 class MyClass {
     companion object { }
@@ -183,12 +183,12 @@ class MyClass {
 
 val x = MyClass.Companion
 ```
-</div>
+
 
 请注意，即使伴生对象的成员看起来像其他语言的静态成员，在运行时他们<!--
 -->仍然是真实对象的实例成员，而且，例如还可以实现接口：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 interface Factory<T> {
     fun create(): T
@@ -200,7 +200,7 @@ class MyClass {
     }
 }
 ```
-</div>
+
 
 当然，在 JVM 平台，如果使用 `@JvmStatic` 注解，你可以将伴生对象的成员生成为真正的<!--
 -->静态方法和字段。更详细信息请参见[Java 互操作性](java-to-kotlin-interop.html#静态字段)一节

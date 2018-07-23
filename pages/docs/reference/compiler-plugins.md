@@ -20,7 +20,7 @@ Kotlin 有类及其默认为 `final` 的成员，这使得像 Spring AOP 这样�
 
 将插件构件添加到 buildscript 依赖中并应用该插件：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` groovy
 buildscript {
     dependencies {
@@ -30,34 +30,34 @@ buildscript {
 
 apply plugin: "kotlin-allopen"
 ```
-</div>
+
 
 另一种方式是使用 `plugins` 块启用之：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```groovy
 plugins {
   id "org.jetbrains.kotlin.plugin.allopen" version "1.2.50"
 }
 ```
-</div>
+
 
 然后指定会打开类的注解的列表：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```groovy
 allOpen {
     annotation("com.my.Annotation")
     // annotations("com.another.Annotation", "com.third.Annotation")
 }
 ```
-</div>
+
 
 如果类（或任何其超类）标有 `com.my.Annotation` 注解，类本身及其所有成员会变为开放。
 
 它也适用于元注解：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 @com.my.Annotation
 annotation class MyFrameworkAnnotation
@@ -65,7 +65,7 @@ annotation class MyFrameworkAnnotation
 @MyFrameworkAnnotation
 class MyClass // 将会全开放
 ```
-</div>
+
 
 `MyFrameworkAnnotation` 已由全开放元注解 `com.my.Annotation` 标注，所以它也成了一个全开放注解。
 
@@ -110,7 +110,7 @@ class MyClass // 将会全开放
 
 与全开放一样，将该插件添加到 buildscript 依赖中：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` groovy
 buildscript {
     dependencies {
@@ -120,17 +120,17 @@ buildscript {
 
 apply plugin: "kotlin-spring" // 取代 "kotlin-allopen"
 ```
-</div>
+
 
 或者使用 Gradle 插件 DSL：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```groovy
 plugins {
   id "org.jetbrains.kotlin.plugin.spring" version "1.2.50"
 }
 ```
-</div>
+
 
 在 Maven 中，则启用 `spring` 插件：
 
@@ -189,37 +189,37 @@ buildscript {
 
 apply plugin: "kotlin-noarg"
 ```
-</div>
+
 
 或者使用 Gradle 插件 DSL：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```groovy
 plugins {
   id "org.jetbrains.kotlin.plugin.noarg" version "1.2.50"
 }
 ```
-</div>
+
 
 然后指定无参注解列表：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```groovy
 noArg {
     annotation("com.my.Annotation")
 }
 ```
-</div>
+
 
 如果希望该插件在合成的构造函数中运行其初始化逻辑，请启用 `invokeInitializers` 选项。由于在未来会解决的 [`KT-18667`](https://youtrack.jetbrains.com/issue/KT-18667) 及 [`KT-18668`](https://youtrack.jetbrains.com/issue/KT-18668)，自 Kotlin 1.1.3-2 起，它被默认禁用。
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```groovy
 noArg {
     invokeInitializers = true
 }
 ```
-</div>
+
 
 ### 在 Maven 中使用
 
@@ -260,7 +260,7 @@ noArg {
 
 这是在 Gradle 中添加该插件的方法：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` groovy
 buildscript {
     dependencies {
@@ -270,17 +270,17 @@ buildscript {
 
 apply plugin: "kotlin-jpa"
 ```
-</div>
+
 
 或者使用 Gradle 插件 DSL：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```groovy
 plugins {
   id "org.jetbrains.kotlin.plugin.jpa" version "1.2.50"
 }
 ```
-</div>
+
 
 在 Maven 中，则启用 `jpa` 插件：
 
@@ -307,7 +307,7 @@ plugins {
 
 这里有一个示例：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```java
 public @interface SamWithReceiver {}
 
@@ -316,9 +316,9 @@ public interface TaskRunner {
     void run(Task task);
 }
 ```
-</div>
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+
 ```kotlin
 fun test(context: TaskContext) {
     val handler = TaskHandler { 
@@ -330,7 +330,7 @@ fun test(context: TaskContext) {
     }
 }
 ```
-</div>
+
 
 ### 在 Gradle 中使用
 
@@ -345,17 +345,17 @@ buildscript {
 
 apply plugin: "kotlin-sam-with-receiver"
 ```
-</div>
+
 
 然后指定 SAM-with-receiver 的注解列表：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```groovy
 samWithReceiver {
     annotation("com.my.Annotation")
 }
 ```
-</div>
+
 
 ### 在 Maven 中使用
 

@@ -64,7 +64,7 @@ Kotlin/JVM 平台的平台模块还可以包含 Java 以及其他 JVM 语言的�
   
 以下示例演示了一个使用 Kotlin 1.2 的公共模块的完整的 `build.gradle` 文件：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` groovy
 buildscript {
     ext.kotlin_version = '1.2.50'
@@ -88,12 +88,12 @@ dependencies {
     testCompile "org.jetbrains.kotlin:kotlin-test-common:$kotlin_version"
 }
 ```
-</div>
+
 
 而下述示例展示了一个用于 JVM 平台模块的完整的 `build.gradle`。请<!--
 -->特别注意其 `dependencies` 块中的 `expectedBy` 行：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` groovy
 buildscript {
     ext.kotlin_version = '1.2.50'
@@ -120,7 +120,7 @@ dependencies {
     testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
 }
 ```
-</div>
+
 
 
 ## 平台相关声明
@@ -138,7 +138,7 @@ Kotlin 多平台代码的关键潜能之一就是公共代码依赖平台相关�
 -->中可提供与预期声明相对应的 _实际声明_。
 为了解其工作原理，我们先看一个示例。这段代码是公共模块的一部分：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 package org.jetbrains.foo
 
@@ -150,11 +150,11 @@ fun main(args: Array<String>) {
     Foo("Hello").frob()
 }
 ```
-</div>
+
 
 而这是相应的 JVM 模块：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 package org.jetbrains.foo
 
@@ -164,7 +164,7 @@ actual class Foo actual constructor(val bar: String) {
     }
 }
 ```
-</div>
+
 
 这阐明了几个重点：
 
@@ -181,7 +181,7 @@ actual class Foo actual constructor(val bar: String) {
 也可以将 `expect` 修饰符应用于其他声明，包括顶层声明与<!--
 -->注解：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 // 公共
 expect fun formatString(source: String, vararg args: Any): String
@@ -194,7 +194,7 @@ actual fun formatString(source: String, vararg args: Any) =
     
 actual typealias Test = org.junit.Test
 ```
-</div>
+
 
 编译器确保每个预期声明在实现相应公共模块的所有平台<!--
 -->模块中都有实际声明，缺失任何实际声明都会报错。
@@ -204,7 +204,7 @@ IDE 提供了帮你创建所缺实际声明的工具。
 -->的实现，那么你可以提供一个已有类的类型别名作为实际<!--
 -->声明：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 expect class AtomicRef<V>(value: V) {
   fun get(): V
@@ -215,7 +215,7 @@ expect class AtomicRef<V>(value: V) {
 
 actual typealias AtomicRef<V> = java.util.concurrent.atomic.AtomicReference<V>
 ```
-</div>
+
 
 ## 多平台测试
 

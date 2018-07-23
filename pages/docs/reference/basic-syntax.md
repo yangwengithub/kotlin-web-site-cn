@@ -11,7 +11,7 @@ title: "基本语法"
 
 包的声明应处于源文件顶部：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 package my.demo
 
@@ -19,7 +19,7 @@ import java.util.*
 
 // ……
 ```
-</div>
+
 
 目录与包的结构无需匹配：源代码可以在文件系统的任意位置。
 
@@ -218,13 +218,13 @@ fun main(args: Array<String>) {
 
 如果 `str` 的内容不是数字返回 *null*{: .keyword }：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 fun parseInt(str: String): Int? {
     // ……
 }
 ```
-</div>
+
 
 使用返回可空值的函数:
 

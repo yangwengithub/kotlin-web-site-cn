@@ -22,11 +22,11 @@ classpath 中。
 最基本的反射功能是获取 Kotlin 类的运行时引用。要获取对<!--
 -->静态已知的 Kotlin 类的引用，可以使用 _类字面值_ 语法：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val c = MyClass::class
 ```
-</div>
+
 
 该引用是 [KClass](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html) 类型的值。
 
@@ -39,12 +39,12 @@ val c = MyClass::class
 
 通过使用对象作为接收者，可以用相同的 `::class` 语法获取指定对象的类的引用：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val widget: Widget = ……
 assert(widget is GoodWidget) { "Bad widget: ${widget::class.qualifiedName}" }
 ```
-</div>
+
 
 你可以获取对象的精确类的引用，例如 `GoodWidget` 或 `BadWidget`，尽管接收者表达式的类型是 `Widget`。
 
@@ -60,11 +60,11 @@ assert(widget is GoodWidget) { "Bad widget: ${widget::class.qualifiedName}" }
 
 当我们有一个命名函数声明如下：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 fun isOdd(x: Int) = x % 2 != 0
 ```
-</div>
+
 
 我们可以很容易地直接调用它（`isOdd(5)`），但是我们也可以将其作为一个函数类型的值，例如将其传给<!--
 -->另一个函数。为此，我们使用 `::` 操作符：
@@ -106,11 +106,11 @@ fun main(args: Array<String>) {
 
 或者，你可以通过将方法引用存储在具有显式指定类型的变量中来提供必要的上下文：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val predicate: (String) -> Boolean = ::isOdd   // 引用到 isOdd(x: String)
 ```
-</div>
+
 
 如果我们需要使用类的成员函数或扩展函数，它需要是限定的，例如 `String::toCharArray`。
 
@@ -118,23 +118,23 @@ val predicate: (String) -> Boolean = ::isOdd   // 引用到 isOdd(x: String)
 -->没有接收者（它会有一个接受接收者对象的额外参数）。如需改为<!--
 -->带有接收者的函数类型，请明确指定其类型：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val isEmptyStringList: List<String>.() -> Boolean = List::isEmpty 
 ```
-</div>
+
 
 ### 示例：函数组合
 
 考虑以下函数：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 fun <A, B, C> compose(f: (B) -> C, g: (A) -> B): (A) -> C {
     return { x -> f(g(x)) }
 }
 ```
-</div>
+
 
 它返回一个传给它的两个函数的组合：`compose(f, g) = f(g(*))`。
 现在，你可以将其应用于可调用引用：
@@ -239,7 +239,7 @@ fun main(args: Array<String>) {
 反射对象之间映射（参见 `kotlin.reflect.jvm` 包）。
 例如，要查找一个用作 Kotlin 属性 getter 的 幕后字段或 Java方法，可以这样写：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 import kotlin.reflect.jvm.*
 
@@ -250,15 +250,15 @@ fun main(args: Array<String>) {
     println(A::p.javaField)  // 输出 "private final int A.p"
 }
 ```
-</div>
+
 
 要获得对应于 Java 类的 Kotlin 类，请使用 `.kotlin` 扩展属性：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 fun getKClass(o: Any): KClass<Any> = o.javaClass.kotlin
 ```
-</div>
+
 
 ### 构造函数引用
 
@@ -267,7 +267,7 @@ fun getKClass(o: Any): KClass<Any> = o.javaClass.kotlin
 通过使用 `::` 操作符并添加类名来引用构造函数。考虑下面的函数，
 它期待一个无参并返回 `Foo` 类型的函数参数：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 class Foo
 
@@ -275,15 +275,15 @@ fun function(factory: () -> Foo) {
     val x: Foo = factory()
 }
 ```
-</div>
+
 
 使用 `::Foo`，类 Foo 的零参数构造函数，我们可以这样简单地调用它：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 function(::Foo)
 ```
-</div>
+
 
 构造函数的可调用引用的类型也是
 [`KFunction<out R>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-function/index.html) 的子类型之一
@@ -327,13 +327,13 @@ fun main(args: Array<String>) {
 比较绑定的类型和相应的未绑定类型的引用。
 绑定的可调用引用有其接收者“附加”到其上，因此接收者的类型不再是参数：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val isNumber: (CharSequence) -> Boolean = numberRegex::matches
 
 val matches: (Regex, CharSequence) -> Boolean = Regex::matches
 ```
-</div>
+
 
 属性引用也可以绑定：
 
@@ -355,7 +355,7 @@ fun main(args: Array<String>) {
 [*inner*{: .keyword} 类](nested-classes.html#内部类)的构造函数的绑定的可调用引用可<!--
 -->通过提供外部类的实例来获得：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class Outer {
     inner class Inner
@@ -364,5 +364,5 @@ class Outer {
 val o = Outer()
 val boundInnerCtor = o::Inner
 ```
-</div>
+
 

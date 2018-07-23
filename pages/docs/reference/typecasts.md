@@ -11,7 +11,7 @@ title: "类型的检查与转换：“is”与“as”"
 
 我们可以在运行时通过使用 `is` 操作符或其否定形式 `!is` 来检查对象是否符合给定类型：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 if (obj is String) {
     print(obj.length)
@@ -24,14 +24,14 @@ else {
     print(obj.length)
 }
 ```
-</div>
+
 
 ## 智能转换
 
 在许多情况下，不需要在 Kotlin 中使用显式转换操作符，因为编译器跟踪<!--
 -->不可变值的 `is`-检查以及[显式转换](#不安全的转换操作符)，并在需要时自动插入（安全的）转换：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 fun demo(x: Any) {
     if (x is String) {
@@ -39,20 +39,20 @@ fun demo(x: Any) {
     }
 }
 ```
-</div>
+
 
 编译器足够聪明，能够知道如果反向检查导致返回那么该转换是安全的：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
     if (x !is String) return
     print(x.length) // x 自动转换为字符串
 ```
-</div>
+
 
 或者在 `&&` 和 `||` 的右侧：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
     // `||` 右侧的 x 自动转换为字符串
     if (x !is String || x.length == 0) return
@@ -62,12 +62,12 @@ fun demo(x: Any) {
         print(x.length) // x 自动转换为字符串
     }
 ```
-</div>
+
 
 这些 _智能转换_ 用于 [*when*{: .keyword }-表达式](control-flow.html#when-表达式)
 和 [*while*{: .keyword }-循环 ](control-flow.html#while-循环) 也一样：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 when (x) {
     is Int -> print(x + 1)
@@ -75,7 +75,7 @@ when (x) {
     is IntArray -> print(x.sum())
 }
 ```
-</div>
+
 
 请注意，当编译器不能保证变量在检查和使用之间不可改变时，智能转换不能用。
 更具体地，智能转换能否适用根据以下规则：
@@ -92,21 +92,21 @@ when (x) {
 通常，如果转换是不可能的，转换操作符会抛出一个异常。因此，我们称之为*不安全的*。
 Kotlin 中的不安全转换由中缀操作符 *as*{: .keyword }（参见[operator precedence](grammar.html#precedence)）完成：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val x: String = y as String
 ```
-</div>
+
 
 请注意，*null*{: .keyword } 不能转换为 `String` 因该类型不是[可空的](null-safety.html)，
 即如果 `y` 为空，上面的代码会抛出一个异常。
 为了匹配 Java 转换语义，我们必须在转换右边有可空类型，就像：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val x: String? = y as String?
 ```
-</div>
+
 
 {:#安全的可空转换操作符}
 
@@ -114,11 +114,11 @@ val x: String? = y as String?
 
 为了避免抛出异常，可以使用*安全*转换操作符 *as?*{: .keyword }，它可以在失败时返回 *null*{: .keyword }：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val x: String? = y as? String
 ```
-</div>
+
 
 请注意，尽管事实上 *as?*{: .keyword } 的右边是一个非空类型的 `String`，但是其转换的结果是可空的。
 
@@ -132,19 +132,19 @@ Kotlin 在编译时确保涉及[泛型](generics.html)操作的类型安全性�
 为此，编译器会禁止由于类型擦除而无法执行的 *is*{: .keyword } 检测，例如
 `ints is List<Int>` 或者 `list is T`（类型参数）。当然，你可以对一个实例检测[星投影的类型](generics.html#星投影)：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 if (something is List<*>) {
     something.forEach { println(it) } // 这些项的类型都是 `Any?`
 }
 ```
-</div>
+
 
 类似地，当已经让一个实例的类型参数（在编译期）静态检测，
 就可以对涉及非泛型部分做 *is*{: .keyword } 检测或者类型转换。请注意，
 在这种情况下，会省略尖括号：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun handleStrings(list: List<String>) {
     if (list is ArrayList) {
@@ -152,7 +152,7 @@ fun handleStrings(list: List<String>) {
     }
 }
 ```
-</div>
+
 
 省略类型参数的这种语法可用于不考虑类型参数的类型转换：`list as ArrayList`。
 
@@ -193,7 +193,7 @@ fun main(args: Array<String>) {
 
 即便如此，有时候我们有高级的程序逻辑来暗示类型安全。例如：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun readDictionary(file: File): Map<String, *> = file.inputStream().use { 
     TODO("Read a mapping of strings to arbitrary elements.")
@@ -205,7 +205,7 @@ val intsFile = File("ints.dictionary")
 // Warning: Unchecked cast: `Map<String, *>` to `Map<String, Int>`
 val intsDictionary: Map<String, Int> = readDictionary(intsFile) as Map<String, Int>
 ```
-</div>
+
 
 编译器会对最后一行的类型转换产生一个警告。该类型转换不能在运行时完全检测，并且<!--
 -->不能保证映射中的值是“Int”。
@@ -221,7 +221,7 @@ val intsDictionary: Map<String, Int> = readDictionary(intsFile) as Map<String, I
 可以通过在产生警告的语句或声明上用注解 `@Suppress("UNCHECKED_CAST")`
 [标注](annotations.html#注解)来禁止未受检类型转换警告：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
+
 ```kotlin
 inline fun <reified T> List<*>.asListOfType(): List<T>? =
     if (all { it is T })
@@ -229,7 +229,7 @@ inline fun <reified T> List<*>.asListOfType(): List<T>? =
         this as List<T> else
         null
 ```
-</div>
+
 
 在 JVM 平台中，[数组类型](basic-types.html#数组)（`Array<Foo>`）会保留关于<!--
 -->其元素被擦除类型的信息，并且类型转换为一个数组类型可以部分受检：

@@ -16,11 +16,11 @@ Kotlin 中有两种类型的相等性：
 
 结构相等由 `==`（以及其否定形式 `!=`）操作判断。按照惯例，像 `a == b` 这样的表达式会翻译成：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 a?.equals(b) ?: (b === null)
 ```
-</div>
+
 
 也就是说如果 `a` 不是 `null` 则调用 `equals(Any?)` 函数，否则（即 `a` 是 `null`）检查 b 是否与 `null` 引用相等。
 

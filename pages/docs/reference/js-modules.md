@@ -68,11 +68,11 @@ Kotlin 允许你将 Kotlin 项目编译为热门模块系统的 JavaScript 模�
 
 要选择通过 Gradle 编译时的模块系统，你应该设置 `moduleKind` 属性，即
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` groovy
 compileKotlin2Js.kotlinOptions.moduleKind = "commonjs"
 ```
-</div>
+
 
 可用的值类似于 Maven。
 
@@ -82,20 +82,20 @@ compileKotlin2Js.kotlinOptions.moduleKind = "commonjs"
 要告诉 Kotlin 一个 `external` 类、 包、 函数或者属性是一个 JavaScript 模块，你可以使用 `@JsModule`
 注解。考虑你有以下 CommonJS 模块叫“hello”：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` javascript
 module.exports.sayHello = function(name) { alert("Hello, " + name); }
 ```
-</div>
+
 
 你应该在 Kotlin 中这样声明：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 @JsModule("hello")
 external fun sayHello(name: String)
 ```
-</div>
+
 
 
 ### 将 `@JsModule` 应用到包
@@ -105,7 +105,7 @@ external fun sayHello(name: String)
 将这些包作为 Kotlin 对象导入通常看起来不自然。
 编译器允许使用以下助记符将导入的 JavaScript 包映射到 Kotlin 包：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 @file:JsModule("extModule")
 package ext.jspackage.name
@@ -114,23 +114,23 @@ external fun foo()
 
 external class C
 ```
-</div>
+
 
 其中相应的 JavaScript 模块的声明如下：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` javascript
 module.exports = {
     foo:  { /* 此处一些代码 */ },
     C:  { /* 此处一些代码 */ }
 }
 ```
-</div>
+
 
 重要提示：标有 `@file:JsModule` 注解的文件无法声明非外部成员。
 下面的示例会产生编译期错误：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 @file:JsModule("extModule")
 package ext.jspackage.name
@@ -139,7 +139,7 @@ external fun foo()
 
 fun bar() = "!" + foo() + "!" // 此处报错
 ```
-</div>
+
 
 ### 导入更深的包层次结构
 
@@ -149,7 +149,7 @@ Kotlin 也支持这种场景，尽管你必须为每个导入的包声明一个�
 
 例如，让我们的示例更复杂一些：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` javascript
 module.exports = {
     mylib: {
@@ -163,11 +163,11 @@ module.exports = {
     }
 }
 ```
-</div>
+
 
 要在 Kotlin 中导入该模块，你必须编写两个 Kotlin 源文件：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 @file:JsModule("extModule")
 @file:JsQualifier("mylib.pkg1")
@@ -177,11 +177,11 @@ external fun foo()
 
 external fun bar()
 ```
-</div>
+
 
 以及
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 @file:JsModule("extModule")
 @file:JsQualifier("mylib.pkg2")
@@ -189,7 +189,7 @@ package extlib.pkg2
 
 external fun baz()
 ```
-</div>
+
 
 ### `@JsNonModule` 注解
 
@@ -199,25 +199,25 @@ external fun baz()
 -->在非模块环境中使用一个 `@JsModule` 声明，你应该放置 `@JsNonModule` 声明。例如，
 给定 JavaScript 代码：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` javascript
 function topLevelSayHello(name) { alert("Hello, " + name); }
 if (module && module.exports) {
     module.exports = topLevelSayHello;
 }
 ```
-</div>
+
 
 可以这样描述：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 @JsModule("hello")
 @JsNonModule
 @JsName("topLevelSayHello")
 external fun sayHello(name: String)
 ```
-</div>
+
 
 
 ### 备注

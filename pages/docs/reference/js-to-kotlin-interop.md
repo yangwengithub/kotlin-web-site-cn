@@ -16,29 +16,29 @@ Kotlin 编译器生成正常的 JavaScript 类，可以在 JavaScript 代码中�
 。所以如果你把模块命名为 `myModule`，那么所有的声明都可以<!--
 -->通过 `myModule` 对象在 JavaScript 中可用。例如：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 fun foo() = "Hello"
 ```
-</div>
+
 
 可以在 JavaScript 中这样调用：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` javascript
 alert(myModule.foo());
 ```
-</div>
+
 
 这不适用于当你将 Kotlin 模块编译为 JavaScript 模块时（关于这点的详细信息请参见 [JavaScript 模块](js-modules.html)）。
 在这种情况下，不会有一个包装对象，而是将声明作为相应类型的 JavaScript 模块对外暴露。例如，
 对于 CommonJS 的场景，你应该写：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` javascript
 alert(require('myModule').foo());
 ```
-</div>
+
 
 
 ## 包结构
@@ -46,21 +46,21 @@ alert(require('myModule').foo());
 Kotlin 将其包结构暴露给 JavaScript，因此除非你在根包中定义声明，
 否则必须在 JavaScript 中使用完整限定的名称。例如：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 package my.qualified.packagename
 
 fun foo() = "Hello"
 ```
-</div>
+
 
 可以在 JavaScript 中这样调用：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` javascript
 alert(myModule.my.qualified.packagename.foo());
 ```
-</div>
+
 
 
 ### `@JsName` 注解
@@ -68,7 +68,7 @@ alert(myModule.my.qualified.packagename.foo());
 在某些情况下（例如为了支持重载），Kotlin 编译器会修饰（mangle） JavaScript 代码中生成的函数和属性<!--
 -->的名称。要控制生成的名称，可以使用 `@JsName` 注解：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 // 模块“kjs”
 class Person(val name: String) {
@@ -82,17 +82,17 @@ class Person(val name: String) {
     }
 }
 ```
-</div>
+
 
 现在，你可以通过以下方式在 JavaScript 中使用这个类：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` javascript
 var person = new kjs.Person("Dmitry");   // 引用到模块“kjs”
 person.hello();                          // 输出“Hello Dmitry!”
 person.helloWithGreeting("Servus");      // 输出“Servus Dmitry!”
 ```
-</div>
+
 
 如果我们没有指定 `@JsName` 注解，相应函数的名称会包含<!--
 -->从函数签名计算而来的后缀，例如 `hello_61zpoe$`。
@@ -105,12 +105,12 @@ person.helloWithGreeting("Servus");      // 输出“Servus Dmitry!”
 任何尝试将非标识符字符串传递给 `@JsName` 时，编译器都会报错。
 以下示例会产生编译期错误：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 @JsName("new C()")   // 此处出错
 external fun newC()
 ```
-</div>
+
 
 
 ## 在 JavaScript 中表示 Kotlin 类型
