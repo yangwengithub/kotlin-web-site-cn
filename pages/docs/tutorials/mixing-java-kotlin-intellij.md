@@ -22,6 +22,7 @@ related:
 
 现在不需要进行其它的额外操作，就可以从 Kotlin 代码中使用新建的 Java 类，反之亦然。例如添加以下 Java 类：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` java
 public class Customer {
 
@@ -40,14 +41,17 @@ public class Customer {
     }
 }
 ```
+</div>
 
 可以像其它 Kotlin 内置类型一样，直接使用它。
 
-``` kotlin
-        val customer = Customer("Phase")
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+```kotlin
+val customer = Customer("Phase")
 
-        println(customer.getName())
+println(customer.getName())
 ```
+</div>
 
 
 ### 在已有的 Java 项目中使用 Kotlin
