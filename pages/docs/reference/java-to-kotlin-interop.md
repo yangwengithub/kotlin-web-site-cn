@@ -348,6 +348,13 @@ fun getX() = 10
 ```
 
 
+如需在没有显式实现 getter 与 setter 的情况下更改属性生成的访问器方法的名称，可以使用 `@get:JvmName` 与 `@set:JvmName`：
+
+``` kotlin
+@get:JvmName("x")
+@set:JvmName("changeX")
+var x: Int = 23
+```
 
 ## 生成重载
 

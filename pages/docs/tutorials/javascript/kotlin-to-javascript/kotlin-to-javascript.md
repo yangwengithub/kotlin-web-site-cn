@@ -27,13 +27,15 @@ showAuthorInfo: false
 
 另外, 每个文件都会生成一个 `{file}.meta.js` 文件用于对应Kotlin代码和Javascript代码的关系
 
-根据上面的描述, 我们给出下面的代码(模块名是`ConsoleOutput`)
+根据上面的描述, 我们给出下面的代码(模块名是 `ConsoleOutput`)
 
+<div class="sample" markdown="1" data-target-platform="js" theme="idea">
 ```kotlin
 fun main(args: Array<String>) {
     println("Hello JavaScript!")
 }
 ```
+</div>
 
 Kotlin编译器将会生成下面的文件
 
@@ -44,7 +46,7 @@ Kotlin编译器将会生成下面的文件
 
 我们最感兴趣的文件是`ConsoleOutput.js`
 
-
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```javascript
 if (typeof kotlin === 'undefined') {
   throw new Error("Error loading module 'ConsoleOutput'. Its dependency 'kotlin' was not found. /* ... */");
@@ -61,6 +63,7 @@ var ConsoleOutput = function (_, Kotlin) {
   return _;
 }(typeof ConsoleOutput === 'undefined' ? {} : ConsoleOutput, kotlin);
 ```
+</div>
 
 这是我们的主函数生成的输出, 我们可以看到它声明了一个函数并将其赋给一个名为`ConsoleOutput`的变量，该变量名与模块名称一致。
 接下来，它使用传入参数`Kotlin`来调用函数`defineRootPackage`。 这个函数又接受一个对应于包中声明的代码的对象。 由于我们没有声明包名，它使用默认的根包。 如果我们在一个包中声明我们的代码，那么调用将是`definePackage`。这些函数都是Kotlin标准库文件`kotlin.js`中的一部分

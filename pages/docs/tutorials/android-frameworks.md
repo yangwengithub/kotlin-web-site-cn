@@ -24,14 +24,15 @@ source:
 
 [Dagger](https://google.github.io/dagger//) 是著名的依赖注入框架。
 如果对它还不了解，可以查阅[用户手册](https://google.github.io/dagger//users-guide.html)。
-我们已经将整个[咖啡示例](https://github.com/google/dagger/tree/master/examples/simple) 
-使用 Kotlin 重写，详细代码在[这里](https://github.com/JetBrains/kotlin-examples/tree/master/gradle/kotlin-dagger)。 
+我们已经将整个[咖啡示例](https://github.com/google/dagger/tree/master/examples/simple)
+使用 Kotlin 重写，详细代码在[这里](https://github.com/JetBrains/kotlin-examples/tree/master/gradle/kotlin-dagger)。
 Kotlin 代码与 Java 非常相似；所有示例代码可在同一个[文件](https://github.com/JetBrains/kotlin-examples/tree/master/gradle/kotlin-dagger/src/main/kotlin/Coffee.kt)内查看。
 
 与 Java 一样，Dagger 通过 `@Inject` 对构造函数注解，进而创建类的实例。
 而 Kotlin 使用更简洁的语法同时声明属性和构造函数参数。
 在 Kotlin 中对构造函数进行注解，必须显式使用 `constructor` 关键字，并在关键字前声明 `@Inject`。
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 class Thermosiphon 
 @Inject constructor(
@@ -40,10 +41,12 @@ class Thermosiphon
     // ……
 }    
 ```
+</div>
 
 注解方法看上去完全相同。
 在下面的示例中，`@Binds` 决定了无论何时需要 `Pump`，使用都是 `Thermosiphon` 对象，`@Provides` 指定了 `Heater` 的构造方式，`@Singleton` 则表示 `Heater` 是全局单例：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 @Module
 abstract class PumpModule {
@@ -57,6 +60,7 @@ class DripCoffeeModule {
     fun provideHeater(): Heater = ElectricHeater()
 }
 ```
+</div>
 
 `@Module`-注解的类定义如何提供不同对象。
 需要注意的是，作为多参数传递注解参数时，需要显示的使用 `arrayOf` 进行包装，比如上文示例中的 `@Module(includes = arrayOf(PumpModule::class))`。
@@ -64,6 +68,7 @@ class DripCoffeeModule {
 使用 `@Component` 为类型生成依赖注入的实现。
 自动生成类文件的类名带有 Dagger 前缀，比如下文示例 `DaggerCoffeeShop`：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 @Singleton
 @Component(modules = arrayOf(DripCoffeeModule::class))
@@ -75,7 +80,8 @@ fun main(args: Array<String>) {
     val coffee = DaggerCoffeeShop.builder().build()
     coffee.maker().brew()
 }
-``` 
+```
+</div>
 
 Dagger 为 `CoffeeShop` 所生成的实现，允许你获得一个完全注入的 `CoffeeMaker`。
 `DaggerCoffeeShop` 的具体代码实现可在 IDE 中查看。
@@ -85,22 +91,26 @@ Dagger 为 `CoffeeShop` 所生成的实现，允许你获得一个完全注入�
 
 在 Java 中需要指定 `Dagger` 作为 `annotationProcessor`（或 `apt`）依赖：
 
-``` groovy
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+```groovy
 dependencies {
   ...
   annotationProcessor "com.google.dagger:dagger-compiler:$dagger-version"
 }
 ```
+</div>
 
 在 Kotlin 中则需要添加 `kotlin-kapt` 插件激活 `kapt`，并使用 `kapt` 替换 `annotationProcessor`：
 
-``` groovy
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+```groovy
 apply plugin: 'kotlin-kapt'
 dependencies {
     ...
     kapt "com.google.dagger:dagger-compiler:$dagger-version"
 }
 ```
+</div>
 
 就是这样。
 特别提示：`kapt` 也能够处理 Java 文件，所以不需要再保留 `annotationProcessor` 的依赖。
@@ -121,7 +131,8 @@ dependencies {
  
 在 Gradle 依赖中添加 `kotlin-kapt` 插件，并使用 `kapt` 替代 `annotationProcessor`。
 
-``` groovy
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+```groovy
 apply plugin: 'kotlin-kapt'
 
 dependencies {
@@ -130,24 +141,30 @@ dependencies {
     kapt "com.jakewharton:butterknife-compiler:$butterknife-version"
 }
 ```
+</div>
 
 我们已经将整个 ButterKnife [示例代码](https://github.com/JakeWharton/butterknife/tree/master/sample/app/src/main/java/com/example)转换为 Kotlin，
 参见[详细代码](https://github.com/JetBrains/kotlin-examples/tree/master/gradle/android-butterknife)。
 
 让我门看看发生了什么变化。
 在 Java 中使用注解对将变量与之对应的 view 进行绑定：
- 
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` java 
 @BindView(R2.id.title) TextView title;
 ```
+</div>
 
 在 Kotlin 中使用[属性](/docs/reference/properties.html)而不是直接使用变量。
 对属性使用注解:
 
-``` kotlin
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+```kotlin
 @BindView(R2.id.title)
 lateinit var title: TextView
 ```
+</div>
+
 `@BindView` 被定义为仅应用于变量字段，而将注解应用于整个属性时，Kotlin 编译器能够理解并且覆盖相应注解的字段。
 
 [lateinit 修饰符](/docs/reference/properties.html#延迟初始化属性与变量)允许声明非空类型，并在对象创建后(构造函数调用后)初始化。
@@ -155,21 +172,25 @@ lateinit var title: TextView
  
 使用 ButterKnife 注解可以将方法设置为监听器：
 
-``` java
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+```java
 @OnClick(R2.id.hello)
 internal fun sayHello() {
     Toast.makeText(this, "Hello, views!", LENGTH_SHORT).show()
 }
 ```
+</div>
 
 以上代码表示点击“hello”按钮后的事件响应。
 然而在 Kotlin 中使用 lambda 表达式会让代码更加简洁清晰：
 
-``` kotlin
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+```kotlin
 hello.setOnClickListener {
     toast("Hello, views!")
 }
 ```
+</div>
 
 [Anko](https://github.com/Kotlin/anko) 库默认提供 `toast` 函数。
 
@@ -179,7 +200,8 @@ hello.setOnClickListener {
 
 和使用 Java 一样，开发者需要在 gradle 文件中添加并激活配置。
 
-``` groovy
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+```groovy
 android {
     ...
     dataBinding {
@@ -187,15 +209,18 @@ android {
     }
 }
 ```
+</div>
 
 添加 `kapt` 的依赖后即可与 Kotlin 代码交互：
 
-``` groovy
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+```groovy
 apply plugin: 'kotlin-kapt'
 dependencies {
     kapt "com.android.databinding:compiler:$android_plugin_version"
 }  
 ```
+</div>
 
 使用 Kotlin 并不需要修改任何的 xml 文件。
 例如，在 `data` 中使用 `variable` 来描述可能在布局中使用的变量，
@@ -220,7 +245,8 @@ dependencies {
 值得一提的是，数据绑定表达式语言使用和 Kotlin 相同的语法对属性进行引用：`data.imageUrl`。
 在 Kotlin 中可以使用 `v.prop` 来替代 `v.getProp()`，尽管 `getProp()` 是Java中的方法。
 类似的，也可以直接向属性赋值，而不再需要调用setter。
-  
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 class MainActivity : AppCompatActivity() {
     // ……
@@ -235,6 +261,7 @@ class MainActivity : AppCompatActivity() {
     }
 }
 ```
+</div>
 
 在 xml 中绑定监听器，并在运行事对相应操作进行响应：
 
@@ -248,17 +275,19 @@ class MainActivity : AppCompatActivity() {
 
 例如在 `MainActivity` 中定义的 `startOtherActivity` 方法：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 class MainActivity : AppCompatActivity() {
     // ……
     fun startOtherActivity(view: View) = startActivity<OtherActivity>()
 }
 ```
+</div>
 
 本例中使用的效用函数 `startActivity` 创建一个不带任何数据参数的 intent，并启动一个新的 activity，这些方法都来自于 [Anko](https://github.com/Kotlin/anko) 库。
 若需要添加参数，则调用 `startActivity<OtherActivity>("KEY" to "VALUE")`.
 
-请注意，与其在 xml 中声明 lambda 表达式，不如直接使用代码绑定相关动作： 
+请注意，与其在 xml 中声明 lambda 表达式，不如直接使用代码绑定相关动作：
 
 ```xml
 <Button 
@@ -267,10 +296,12 @@ class MainActivity : AppCompatActivity() {
     android:onClick="@{() -> presenter.onSaveClick(task)}" />
 ```          
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 // 用 Kotlin 代码写的相同逻辑
 button.setOnClickListener { presenter.onSaveClick(task) }
 ```
+</div>
 
 最后一行中 `button` 由 `id` 使用 [Kotlin Android 扩展](https://kotlinlang.org/docs/tutorials/android-plugin.html)插件所引用。
 使用该插件作为替代方案，既允许在代码中保持绑定逻辑，同时又具有简洁的语法。
@@ -284,6 +315,7 @@ button.setOnClickListener { presenter.onSaveClick(task) }
 
 使用 `kapt` 配置 Kotlin 依赖：
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 apply plugin: 'kotlin-kapt'
 
@@ -293,6 +325,7 @@ dependencies {
     compile "com.github.raizlabs.dbflow:dbflow:$dbflow_version"
 }
 ```
+</div>
 
 查看 DBFlow [配置向导](https://agrosner.gitbooks.io/dbflow/content/including-in-project.html)。
 
@@ -300,7 +333,8 @@ dependencies {
 并且逐步地将代码转换为 Kotlin（确保每次编译通过）。
 转换后的代码与 Java 并无明显差异。
 例如，对表的声明和在 Java 中仅有小小的区别，属性声明时必须显示的指定默认值：
- 
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin 
 @Table(name="users", database = AppDatabase::class)
 class User : BaseModel() {
@@ -312,23 +346,28 @@ class User : BaseModel() {
     @Column
     var name: String? = null
 }
-``` 
+```
+</div>
 
 对于 DBFlow 而言，除了将已经有功能代码转换为 Kotlin，还能享受到 Kotlin 的特别支持。
 例如，将表声明为[数据类](/docs/reference/data-classes.html)：
 
-``` kotlin
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+```kotlin
 @Table(database = KotlinDatabase::class)
 data class User(@PrimaryKey var id: Long = 0, @Column var name: String? = null)
 ```
+</div>
 
 DBFlow 定义了一系列符合 Kotlin 语言习惯的扩展功能，这些都可以通过依赖添加：
 
-``` kotlin
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+```kotlin
 dependencies {
     compile "com.github.raizlabs.dbflow:dbflow-kotlinextensions:$dbflow_version"
 }
 ```
+</div>
 
 该扩展可以通过类似 C# 中的 LINQ 语法方式编写查询语句，使用 lambda 表达式可以编写更简单的异步计算代码。
 详见[此处](https://agrosner.gitbooks.io/dbflow/content/KotlinSupport.html)。
@@ -341,8 +380,9 @@ dependencies {
 [Auto-Parcel](https://github.com/frankiesardo/auto-parcel) 使用 `@AutoValue` 的注解为类文件自动生成 `Parcelable` 对应方法和值。
 
 同样的，gradle 文件中也需要使用 `kapt` 作为注解处理器来处理 Kotlin 文件：
- 
-``` groovy
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+```groovy
 apply plugin: 'kotlin-kapt'
 
 dependencies {
@@ -350,13 +390,15 @@ dependencies {
     kapt "frankiesardo:auto-parcel:$latest-version"
 }
 ```
+</div>
 
 点击[这里](https://github.com/JetBrains/kotlin-examples/tree/master/gradle/android-auto-parcel)查看[完整示例代码](https://github.com/frankiesardo/auto-parcel/tree/master/sample)。
 
 对 Kotlin 类文件添加 `@AutoValue` 注解。
 下方的示例展示转换后的 [`Address`](https://github.com/frankiesardo/auto-parcel/blob/master/sample/src/main/java/model2/Address.java) 类以及自动生成相应的 `Parceable` 实现：
 
-``` kotlin
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+```kotlin
 @AutoValue
 abstract class Address : Parcelable {
     abstract fun coordinates(): DoubleArray
@@ -378,6 +420,7 @@ abstract class Address : Parcelable {
     }
 }
 ```
+</div>
 
 由于 Kotlin 中没有 `static` 方法，因此相应的方法会在 [`companion object`](/docs/reference/object-declarations.html#伴生对象)中生成。
 如果仍然需要从 Java 中调用这些方法，需要添加[`@JvmStatic`](/docs/reference/java-to-kotlin-interop.html#静态方法)注解。
