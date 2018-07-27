@@ -348,7 +348,7 @@ fun getX() = 10
 ```
 </div>
 
-To change the names of generated accessor methods for properties without explicitly implemented getters and setters, you can use `@get:JvmName` and `@set:JvmName`:
+如需在没有显式实现 getter 与 setter 的情况下更改属性生成的访问器方法的名称，可以使用 `@get:JvmName` 与 `@set:JvmName`：
 
 ``` kotlin
 @get:JvmName("x")
