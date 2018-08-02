@@ -14,18 +14,22 @@ Kotlin 可以使用 JavaEE 的 Http Servlet，就像使用其他的 Java 库或�
 {{ site.text_using_gradle }}
 The main dependency required for using HTTP servlets is the JavaEE API:
 
+<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
 ``` groovy
 dependencies {
     compile group: 'javax', name: 'javaee-api', version: '7.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 ```
+</div>
 
 我们还需要 *war* 插件，帮助我们生成相应的构件运行和部署
 
+<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
 ``` groovy
 apply plugin: war
 ```
+</div>
 
 可以在Github检出项目来查看完整的Gradle脚本。
 
@@ -34,6 +38,7 @@ apply plugin: war
 
 一旦我们在构建脚本中定义了正确的依赖，现在就可以创建一个控制器
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 @WebServlet(name = "Hello", value = "/hello")
 class HomeController : HttpServlet() {
@@ -42,6 +47,7 @@ class HomeController : HttpServlet() {
     }
 }
 ```
+</div>
 
 ### 运行程序
 
