@@ -34,8 +34,3 @@ title: "参考"
 | ![wechat_qr.png](/assets/wechat_qr.png) | ![weibo_qr.png](/assets/weibo_qr.png) |
 |:------:|:----:|
 | 公众号 | 微博 |
-
-### Kotlin 培训
-从 JetBrains 和认证合作伙伴处获取 Kotlin 培训，或者为自己的 Kotlin
-培训计划申请认证。
-更多详情请查阅[由 JetBrains 认证的 Kotlin 培训](https://www.jetbrains.com/company/partners/kotlin/)。
