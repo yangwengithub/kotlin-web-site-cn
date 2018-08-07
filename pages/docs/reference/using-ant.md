@@ -32,7 +32,7 @@ Kotlin 为 Ant 提供了三个任务：
 </project>
 ```
 
-其中 ${kotlin.lib} 指向解压缩 Kotlin 独立编译器所在文件夹。
+其中 `${kotlin.lib}` 指向解压缩 Kotlin 独立编译器所在文件夹。
 
 ## 针对 JVM 只用 Kotlin 源代码且多根
 

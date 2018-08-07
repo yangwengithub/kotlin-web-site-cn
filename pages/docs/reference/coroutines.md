@@ -14,7 +14,7 @@ title: "协程"
 
 协程通过将复杂性放入库来简化异步编程。程序的逻辑可以在协程中*顺序*地表达，而底层库会为我们解决其异步性。该库可以将用户代码的相关部分包装为回调、订阅相关事件、在不同线程（甚至不同机器！）上调度执行，而代码则保持如同顺序执行一样简单。
 
-许多在其他语言中可用的异步机制可以使用 Kotlin 协程实现为库。这包括源于 C# 和 ECMAScript 的 [`async`/`await`](https://github.com/Kotlin/kotlinx.coroutines/blob/master/coroutines-guide.md#composing-suspending-functions)、源于 Go 的 [管道](https://github.com/Kotlin/kotlinx.coroutines/blob/master/coroutines-guide.md#channels) 和 [`select`](https://github.com/Kotlin/kotlinx.coroutines/blob/master/coroutines-guide.md#select-expression) 以及源于 C# 和 Python [生成器/`yield`](#kotlincoroutines-中的生成器-api)。关于提供这些结构的库请参见其[下文](coroutines.html#标准-api)描述。
+许多在其他语言中可用的异步机制可以使用 Kotlin 协程实现为库。这包括源于 C# 与 ECMAScript 的 [`async`/`await`](https://github.com/Kotlin/kotlinx.coroutines/blob/master/coroutines-guide.md#composing-suspending-functions)、源于 Go 的 [管道](https://github.com/Kotlin/kotlinx.coroutines/blob/master/coroutines-guide.md#channels) 与 [`select`](https://github.com/Kotlin/kotlinx.coroutines/blob/master/coroutines-guide.md#select-expression) 以及源于 C# 与 Python [生成器/`yield`](#kotlincoroutines-中的生成器-api)。关于提供这些结构的库请参见其[下文](coroutines.html#标准-api)描述。
 
 ## 阻塞 vs 挂起
 
@@ -34,7 +34,7 @@ suspend fun doSomething(foo: Foo): Bar { …… }
 ```
 
 
-这样的函数称为*挂起函数*，因为调用它们可能挂起协程（如果相关调用的结果已经可用，库可以决定继续进行而不挂起）。挂起函数能够以与普通函数相同的方式获取参数和返回值，但它们只能从协程、其他挂起函数以及内联到其中的函数字面值中调用。
+这样的函数称为*挂起函数*，因为调用它们可能挂起协程（如果相关调用的结果已经可用，库可以决定继续进行而不挂起）。挂起函数能够以与普通函数相同的方式获取参数与返回值，但它们只能从协程、其他挂起函数以及内联到其中的函数字面值中调用。
 
 事实上，要启动协程，必须至少有一个挂起函数，它通常是匿名的（即它是一个挂起 lambda 表达式）。让我们来看一个例子，一个简化的 `async()` 函数（源自 [`kotlinx.coroutines`](#kotlincoroutines-中的生成器-api) 库）：
 
@@ -108,7 +108,7 @@ class Derived: Base {
 
 ### `@RestrictsSuspension` 注解
  
-扩展函数（和 lambda 表达式）也可以标记为 `suspend`，就像普通的一样。这允许创建 [DSL](type-safe-builders.html) 及其他用户可扩展的 API。在某些情况下，库作者需要阻止用户添加*新方式*来挂起协程。
+扩展函数（与 lambda 表达式）也可以标记为 `suspend`，就像普通的一样。这允许创建 [DSL](type-safe-builders.html) 及其他用户可扩展的 API。在某些情况下，库作者需要阻止用户添加*新方式*来挂起协程。
 
 为了实现这一点，可以使用 [`@RestrictsSuspension`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines.experimental/-restricts-suspension/index.html) 注解。当接收者类/接口 `R` 用它标注时，所有挂起扩展都需要委托给 `R` 的成员或其它委托给它的扩展。由于扩展不能无限相互委托（程序不会终止），这保证所有挂起都通过调用 `R` 的成员发生，库的作者就可以完全控制了。
 
@@ -129,7 +129,7 @@ public abstract class SequenceBuilder<in T> { …… }
 
 协程完全通过编译技术实现（不需要来自 VM 或 OS 端的支持），挂起通过代码来生效。基本上，每个挂起函数（优化可能适用，但我们不在这里讨论）都转换为状态机，其中的状态对应于挂起调用。刚好在挂起前，下一状态与相关局部变量等一起存储在编译器生成的类的字段中。在恢复该协程时，恢复局部变量并且状态机从刚好挂起之后的状态进行。
      
-挂起的协程可以作为保持其挂起状态与局部变量的对象来存储和传递。这种对象的类型是 `Continuation`，而这里描述的整个代码转换对应于经典的[延续性传递风格（Continuation-passing style）](https://en.wikipedia.org/wiki/Continuation-passing_style)。因此，挂起函数有一个 `Continuation` 类型的额外参数作为高级选项。
+挂起的协程可以作为保持其挂起状态与局部变量的对象来存储与传递。这种对象的类型是 `Continuation`，而这里描述的整个代码转换对应于经典的[延续性传递风格（Continuation-passing style）](https://en.wikipedia.org/wiki/Continuation-passing_style)。因此，挂起函数有一个 `Continuation` 类型的额外参数作为高级选项。
 
 关于协程工作原理的更多细节可以在[这个设计文档](https://github.com/Kotlin/kotlin-coroutines/blob/master/kotlin-coroutines-informal.md)中找到。在其他语言（如 C# 或者 ECMAScript 2016）中的 async/await 的类似描述与此相关，虽然它们实现的语言功能可能不像 Kotlin 协程这样通用。
 
@@ -272,15 +272,15 @@ fun main(args: Array<String>) {
   
 ### 其他高级 API：`kotlinx.coroutines`
 
-只有与协程相关的核心 API 可以从 Kotlin 标准库获得。这主要包括所有基于协程的库可能使用的核心原语和接口。
+只有与协程相关的核心 API 可以从 Kotlin 标准库获得。这主要包括所有基于协程的库可能使用的核心原语与接口。
 
 大多数基于协程的应用程序级API都作为单独的库发布：[`kotlinx.coroutines`](https://github.com/Kotlin/kotlinx.coroutines)。这个库覆盖了
  * 使用 `kotlinx-coroutines-core` 的平台无关异步编程：
-   * 此模块包括支持 `select` 和其他便利原语的类似 Go 的管道，
+   * 此模块包括支持 `select` 以及其他便利原语的类似 Go 的管道，
    * 这个库的综合指南[在这里](https://github.com/Kotlin/kotlinx.coroutines/blob/master/coroutines-guide.md)；
  * 基于 JDK 8 中的 `CompletableFuture` 的 API：`kotlinx-coroutines-jdk8`；
  * 基于 JDK 7 及更高版本 API 的非阻塞 IO（NIO）：`kotlinx-coroutines-nio`；
- * 支持 Swing (`kotlinx-coroutines-swing`) 和 JavaFx (`kotlinx-coroutines-javafx`)；
+ * 支持 Swing (`kotlinx-coroutines-swing`) 与 JavaFx (`kotlinx-coroutines-javafx`)；
  * 支持 RxJava：`kotlinx-coroutines-rx`。
  
 这些库既作为使通用任务易用的便利的 API，也作为如何构建基于协程的库的端到端示例。

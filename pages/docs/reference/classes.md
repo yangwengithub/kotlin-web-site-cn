@@ -9,7 +9,7 @@ related:
     - interfaces.md
 ---
 
-# 类和继承
+# 类与继承
 
 ## 类
 
@@ -33,8 +33,8 @@ class Empty
 
 ### 构造函数
 
-在 Kotlin 中的一个类可以有一个**主构造函数**和一个或多个**次构造函数**。主<!--
--->构造函数是类头的一部分：它跟在类名（和可选的类型参数）后。
+在 Kotlin 中的一个类可以有一个**主构造函数**以及一个或多个**次构造函数**。主<!--
+-->构造函数是类头的一部分：它跟在类名（与可选的类型参数）后。
 
 
 ``` kotlin
@@ -199,16 +199,16 @@ val customer = Customer("Joe Smith")
 
 注意 Kotlin 并没有 *new*{: .keyword } 关键字。
 
-创建嵌套类、内部类和匿名内部类的类实例在[嵌套类](nested-classes.html)中有述。
+创建嵌套类、内部类与匿名内部类的类实例在[嵌套类](nested-classes.html)中有述。
 
 ### 类成员
 
 类可以包含：
 
-* [构造函数和初始化块](classes.html#构造函数)
+* [构造函数与初始化块](classes.html#构造函数)
 * [函数](functions.html)
 * [属性](properties.html)
-* [嵌套类和内部类](nested-classes.html)
+* [嵌套类与内部类](nested-classes.html)
 * [对象声明](object-declarations.html)
 
 
@@ -222,7 +222,7 @@ class Example // 从 Any 隐式继承
 ```
 
 
-> 注意：`Any` 并不是 `java.lang.Object`；尤其是，它除了 `equals()`、`hashCode()`和`toString()`外没有任何成员。
+> 注意：`Any` 并不是 `java.lang.Object`；尤其是，它除了 `equals()`、`hashCode()` 与 `toString()` 外没有任何成员。
 更多细节请查阅[Java互操作性](java-interop.html#对象方法)部分。
 
 要声明一个显式的超类型，我们把类型放到类头的冒号之后：
@@ -260,7 +260,7 @@ class MyView : View {
 ### 覆盖方法
 
 我们之前提到过，Kotlin 力求清晰显式。与 Java 不同，Kotlin 需要显式<!--
--->标注可覆盖的成员（我们称之为*开放*）和覆盖后的成员：
+-->标注可覆盖的成员（我们称之为*开放*）以及覆盖后的成员：
 
 
 ``` kotlin
@@ -427,13 +427,13 @@ class C() : A(), B {
 ```
 
 
-同时继承 `A` 和 `B` 没问题，并且 `a()` 和 `b()` 也没问题因为 `C` 只继承了每个函数的一个实现。
+同时继承 `A` 与 `B` 没问题，并且 `a()` 与 `b()` 也没问题因为 `C` 只继承了每个函数的一个实现。
 但是 `f()` 由 `C` 继承了两个实现，所以我们**必须**在 `C` 中覆盖 `f()`
 并且提供我们自己的实现来消除歧义。
 
 ## 抽象类
 
-类和其中的某些成员可以声明为 *abstract*{: .keyword}。
+类以及其中的某些成员可以声明为 *abstract*{: .keyword}。
 抽象成员在本类中可以不用实现。
 需要注意的是，我们并不需要用 `open` 标注一个抽象类或者函数——因为这不言而喻。
 

@@ -25,8 +25,8 @@ class Example {
 
 
 语法是： `val/var <属性名>: <类型> by <表达式>`。在 *by*{:.keyword} 后面的表达式是该 _委托_，
-因为属性对应的 `get()`（和 `set()`）会被委托给它的 `getValue()` 和 `setValue()` 方法。
-属性的委托不必实现任何的接口，但是需要提供一个 `getValue()` 函数（和 `setValue()`——对于 *var*{:.keyword} 属性）。
+因为属性对应的 `get()`（与 `set()`）会被委托给它的 `getValue()` 与 `setValue()` 方法。
+属性的委托不必实现任何的接口，但是需要提供一个 `getValue()` 函数（与 `setValue()`——对于 *var*{:.keyword} 属性）。
 例如:
 
 
@@ -107,14 +107,14 @@ fun main(args: Array<String>) {
 -->会看到相同的值。如果初始化委托的同步锁不是必需的，这样多个线程<!--
 -->可以同时执行，那么将 `LazyThreadSafetyMode.PUBLICATION` 作为参数传递给 `lazy()` 函数。
 而如果你确定初始化将总是发生在单个线程，那么你可以使用 `LazyThreadSafetyMode.NONE` 模式，
-它不会有任何线程安全的保证和相关的开销。
+它不会有任何线程安全的保证以及相关的开销。
 
 
 ### 可观察属性 Observable
 
-[`Delegates.observable()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-delegates/observable.html) 接受两个参数：初始值和修改时处理程序（handler）。
+[`Delegates.observable()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-delegates/observable.html) 接受两个参数：初始值与修改时处理程序（handler）。
 每当我们给属性赋值时会调用该处理程序（在赋值*后*执行）。它有三个<!--
--->参数：被赋值的属性、旧值和新值：
+-->参数：被赋值的属性、旧值与新值：
 
 
 ``` kotlin
@@ -234,9 +234,9 @@ fun example(computeFoo: () -> Foo) {
  
 * `thisRef` —— 同 `getValue()`；
 * `property` —— 同 `getValue()`；
-* new value —— 必须和属性同类型或者是它的超类型。
+* new value —— 必须与属性同类型或者是它的超类型。
  
-`getValue()` 或/和 `setValue()` 函数可以通过委托类的成员函数提供或者由扩展函数提供。
+`getValue()` 或/与 `setValue()` 函数可以通过委托类的成员函数提供或者由扩展函数提供。
 当你需要委托属性到原本未提供的这些函数的对象时后者会更便利。
 两函数都需要用 `operator` 关键字来进行标记。
 

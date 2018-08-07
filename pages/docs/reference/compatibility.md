@@ -11,7 +11,7 @@ title: "兼容性"
 
 ## 兼容性词汇表
 
-兼容性意味着回答这个问题：对于给定的两个版本的 Kotlin（例如，1.2 和 1.1.5），为一个版本编写的代码可以与另一个版本一起使用吗？下面的列表解释了不同版本对的兼容模式。请注意，如果版本号较小（即使发布时间晚于版本号较大的版本）那么版本较旧。对于“旧版本”我们使用 OV，对于“新版本”使用 NV。
+兼容性意味着回答这个问题：对于给定的两个版本的 Kotlin（例如，1.2 与 1.1.5），为一个版本编写的代码可以与另一个版本一起使用吗？下面的列表解释了不同版本对的兼容模式。请注意，如果版本号较小（即使发布时间晚于版本号较大的版本）那么版本较旧。对于“旧版本”我们使用 OV，对于“新版本”使用 NV。
 
 - **C**——完全兼容（Full **C**ompatibility）
   - 语言
@@ -23,7 +23,7 @@ title: "兼容性"
   - 二进制（ABI）
     - 运行时：二进制可以互换使用
     - 编译：二进制可以互换使用
-- **BCLA**——语言和 API 向后兼容（**B**ackward **C**ompatibility for the **L**anguage and **A**PI）
+- **BCLA**——语言及 API 向后兼容（**B**ackward **C**ompatibility for the **L**anguage and **A**PI）
   - 语言
     - 可能会在 NV 中删除 OV 中已弃用的语法
     - 除此之外，OV 中可编译的所有代码都可以在 NV 中编译（除去 bug*）
@@ -66,7 +66,7 @@ title: "兼容性"
 | **...**   | ... | ...   | ... | ...   | ... | ... |
 | **2.0**   | ?   | ?     | ?   | ?     | ... | - 
 
-**JS 平台的 Kotlin**：从 Kotlin 1.1 开始，补丁版本和次版本更新为语言和 API 提供向后兼容性（BCLA），但没有 BCB。
+**JS 平台的 Kotlin**：从 Kotlin 1.1 开始，补丁版本与次版本更新为语言及 API 提供向后兼容性（BCLA），但没有 BCB。
 
 | Kotlin    | 1.0.X | 1.1  | 1.1.X | ... | 2.0 |
 |----------:|:-----:|:----:|:-----:|:---:|:---:|
@@ -76,15 +76,15 @@ title: "兼容性"
 | **...**   | ...   | ...  | ...   | ... | ... |
 | **2.0**   | EXP   | ?    | ?     | ... | - 
 
-**Kotlin Scripts**：补丁版本和次版本更新为语言和 API 提供向后兼容性（BCLA），但没有 BCB。
+**Kotlin Scripts**：补丁版本与次版本更新为语言及 API 提供向后兼容性（BCLA），但没有 BCB。
 
 ## 跨平台兼容性
  
 Kotlin 可用于多个平台（JVM/Android、JavaScript 以及即将推出的本地平台）。每个平台都有自己的特殊性（例如 JavaScript 没有适当的整数），因此我们必须相应地调整语言。我们的目标是提供合理的代码可移植性，而不会牺牲太多。
   
-每个平台都可能具有特定的语言扩展（例如 JVM 的平台类型和 JavaScript 的动态类型）或限制（例如 JVM 上与重载相关的限制），但核心语言保持不变。
+每个平台都可能具有特定的语言扩展（例如 JVM 的平台类型以及 JavaScript 的动态类型）或限制（例如 JVM 上与重载相关的限制），但核心语言保持不变。
 
-标准库提供了在所有平台上可用的核心 API，我们努力使这些 API 在每个平台上以相同的方式工作。除此之外，标准库提供了平台相关的扩展（例如，JVM 的` java.io` 或 JavaScript 的 `js()`）以及一些可以统一调用但工作方式不同的 API（例如 JVM 和 JavaScript 的正则表达式）。
+标准库提供了在所有平台上可用的核心 API，我们努力使这些 API 在每个平台上以相同的方式工作。除此之外，标准库提供了平台相关的扩展（例如，JVM 的` java.io` 或 JavaScript 的 `js()`）以及一些可以统一调用但工作方式不同的 API（例如 JVM 与 JavaScript 的正则表达式）。
 
 ## 实验性的功能
 
@@ -105,7 +105,7 @@ Kotlin 可用于多个平台（JVM/Android、JavaScript 以及即将推出的本
 
 ## 兼容性模式
 
-当一个大团队迁移到一个新版本时，当一些开发人员已经更新、而其他人没有时，可能会在某个时候出现“不一致的状态”。为了防止前者编写和提交别人可能无法编译的代码，我们提供了以下命令行开关（在 IDE 以及 [Gradle](using-gradle.html#编译器选项)/[Maven](using-maven.html#指定编译器选项) 中也可用）：
+当一个大团队迁移到一个新版本时，当一些开发人员已经更新、而其他人没有时，可能会在某个时候出现“不一致的状态”。为了防止前者编写并提交别人可能无法编译的代码，我们提供了以下命令行开关（在 IDE 以及 [Gradle](using-gradle.html#编译器选项)/[Maven](using-maven.html#指定编译器选项) 中也可用）：
 
 - `-language-version X.Y`——Kotlin 语言版本 X.Y 的兼容性模式，对其后出现的所有语言功能报告错误。
 - `-api-version X.Y`——Kotlin API 版本 X.Y 的兼容性模式，对使用来自 Kotlin 标准库（包括编译器生成的代码）的新版 API 的所有代码报告错误。
@@ -127,7 +127,7 @@ available APIs to the runtime of version 1.0.
 这意味着你针对版本 1.0 的标准库或反射库使用 Kotlin 编译器 1.1。这可以通过不同的方式处理：
 * 如果你打算使用 1.1 标准库中的 API 或者依赖于这些 API 的语言特性，那么应将依赖关系升级到版本 1.1。
 * 如果你想保持你的代码与 1.0 标准库兼容，你可以传参 `-api-version 1.0`。
-* 如果你刚刚升级到 kotlin 1.1，但不能使用新的语言功能（例如，因为你的一些队友可能没有升级），你可以传参 `-language-version 1.0`，这会限制所有的 API 和语言功能到 1.0。
+* 如果你刚刚升级到 kotlin 1.1，但不能使用新的语言功能（例如，因为你的一些队友可能没有升级），你可以传参 `-language-version 1.0`，这会限制所有的 API 及语言功能到 1.0。
 
 ```
 Runtime JAR files in the classpath should have the same version. These files were found in the classpath:
@@ -137,7 +137,7 @@ Consider providing an explicit dependency on kotlin-reflect 1.1 to prevent stran
 Some runtime JAR files in the classpath have an incompatible version. Consider removing them from the classpath
 ```
 
-这意味着你对不同版本的库有依赖性，例如 1.1 标准库和 1.0 反射库。为了防止在运行时出现微妙的错误，我们建议你使用所有 Kotlin 库的相同版本。在本例中，请考虑对 1.1 反射库添加显式依赖关系。
+这意味着你对不同版本的库有依赖性，例如 1.1 标准库与 1.0 反射库。为了防止在运行时出现微妙的错误，我们建议你使用所有 Kotlin 库的相同版本。在本例中，请考虑对 1.1 反射库添加显式依赖关系。
 
 ```
 Some JAR files in the classpath have the Kotlin Runtime library bundled into them. 

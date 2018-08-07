@@ -111,7 +111,7 @@ annotation class Deprecated(
 
 如果需要将一个类指定为注解的参数，请使用 Kotlin 类
 （[KClass](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html)）。Kotlin 编译器会<!--
--->自动将其转换为 Java 类，以便 Java 代码能够正常看到该注解和参数
+-->自动将其转换为 Java 类，以便 Java 代码能够正常看到该注解及参数
 。
 
 

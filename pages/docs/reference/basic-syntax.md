@@ -138,12 +138,12 @@ fun main(args: Array<String>) {
 }
 ```
 
-参见[属性和字段](properties.html)。
+参见[属性与字段](properties.html)。
 
 
 ## 注释
 
-正如 Java 和 JavaScript，Kotlin 支持行注释及块注释。
+正如 Java 与 JavaScript，Kotlin 支持行注释及块注释。
 
 ``` kotlin
 // 这是一个行注释
@@ -242,7 +242,7 @@ fun printProduct(arg1: String, arg2: String) {
 
     // 直接使用 `x * y` 会导致编译错误，因为他们可能为 null
     if (x != null && y != null) {
-        // 在空检测后，x 和 y 会自动转换为非空值（non-nullable）
+        // 在空检测后，x 与 y 会自动转换为非空值（non-nullable）
         println(x * y)
     }
     else {
@@ -283,7 +283,7 @@ fun printProduct(arg1: String, arg2: String) {
         return
     }
 
-    // 在空检测后，x 和 y 会自动转换为非空值
+    // 在空检测后，x 与 y 会自动转换为非空值
     println(x * y)
 //sampleEnd
 }
@@ -378,7 +378,7 @@ fun main(args: Array<String>) {
 }
 ```
 
-参见[类](classes.html) 和 [类型转换](typecasts.html)。
+参见[类](classes.html)以及[类型转换](typecasts.html)。
 
 ## 使用 `for` 循环
 
@@ -559,7 +559,7 @@ fun main(args: Array<String>) {
 ```
 
 
-使用 lambda 表达式来过滤（filter）和映射（map）集合：
+使用 lambda 表达式来过滤（filter）与映射（map）集合：
 
 
 

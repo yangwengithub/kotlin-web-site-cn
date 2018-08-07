@@ -15,7 +15,7 @@ Android 平台而不会引入任何新的限制：
   * **性能**：由于非常相似的字节码结构，Kotlin 应用程序的运行速度与 Java 类似。
     随着 Kotlin 对内联函数的支持，使用 lambda 表达式的代码通常比用 Java 写的代码运行得更快。
   * **互操作性**：Kotlin 可与 Java 进行 100％ 的互操作，允许在 Kotlin 应用程序中使用所有现有的 Android 库
-    。这包括注解处理，所以数据绑定和 Dagger 也是一样。
+    。这包括注解处理，所以数据绑定与 Dagger 也是一样。
   * **占用**：Kotlin 具有非常紧凑的运行时库，可以通过使用 ProGuard 进一步减少。
     在[实际应用程序](https://blog.gouline.net/kotlin-production-tales-62b56057dc8a)中，Kotlin 运行时<!--
     -->只增加几百个方法以及 .apk 文件不到 100K 大小。
@@ -30,7 +30,7 @@ Kotlin 已被一些大公司成功采用，其中一些公司分享了他们的�
 
   * Pinterest 已经成功地[将 Kotlin 引入了他们的应用程序中](https://www.youtube.com/watch?v=mDpnc45WwlI)，每个月有 1 亿 5 千万人使用。
   * Basecamp 的 Android 应用程序是 [100％ Kotlin 代码](https://m.signalvnoise.com/how-we-made-basecamp-3s-android-app-100-kotlin-35e4e1c0ef12)，他们报告了程序员幸福的<!--
-    -->巨大差异，以及工作质量和速度的巨大改善。
+    -->巨大差异，以及工作质量与速度的巨大改善。
   * Keepsafe 的 App Lock 应用程序也[已转换为 100％ Kotlin](https://medium.com/keepsafe-engineering/lessons-from-converting-an-app-to-100-kotlin-68984a05dcb6)，
     使源代码行数减少 30％、方法数减少 10％。
 
