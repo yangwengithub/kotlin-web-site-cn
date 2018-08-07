@@ -22,7 +22,7 @@ related:
 
 现在不需要进行其它的额外操作，就可以从 Kotlin 代码中使用新建的 Java 类，反之亦然。例如添加以下 Java 类：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="java">
 ``` java
 public class Customer {
 

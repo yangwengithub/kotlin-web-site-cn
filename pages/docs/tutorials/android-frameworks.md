@@ -91,7 +91,7 @@ Dagger 为 `CoffeeShop` 所生成的实现，允许你获得一个完全注入�
 
 在 Java 中需要指定 `Dagger` 作为 `annotationProcessor`（或 `apt`）依赖：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="groovy">
 ```groovy
 dependencies {
   ...
@@ -102,7 +102,7 @@ dependencies {
 
 在 Kotlin 中则需要添加 `kotlin-kapt` 插件激活 `kapt`，并使用 `kapt` 替换 `annotationProcessor`：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="groovy">
 ```groovy
 apply plugin: 'kotlin-kapt'
 dependencies {
@@ -131,7 +131,7 @@ dependencies {
  
 在 Gradle 依赖中添加 `kotlin-kapt` 插件，并使用 `kapt` 替代 `annotationProcessor`。
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="groovy">
 ```groovy
 apply plugin: 'kotlin-kapt'
 
@@ -149,7 +149,7 @@ dependencies {
 让我门看看发生了什么变化。
 在 Java 中使用注解对将变量与之对应的 view 进行绑定：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="java">
 ``` java 
 @BindView(R2.id.title) TextView title;
 ```
@@ -172,7 +172,7 @@ lateinit var title: TextView
  
 使用 ButterKnife 注解可以将方法设置为监听器：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="java">
 ```java
 @OnClick(R2.id.hello)
 internal fun sayHello() {
@@ -200,7 +200,7 @@ hello.setOnClickListener {
 
 和使用 Java 一样，开发者需要在 gradle 文件中添加并激活配置。
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="groovy">
 ```groovy
 android {
     ...
@@ -213,7 +213,7 @@ android {
 
 添加 `kapt` 的依赖后即可与 Kotlin 代码交互：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="groovy">
 ```groovy
 apply plugin: 'kotlin-kapt'
 dependencies {
@@ -225,15 +225,18 @@ dependencies {
 使用 Kotlin 并不需要修改任何的 xml 文件。
 例如，在 `data` 中使用 `variable` 来描述可能在布局中使用的变量，
 可以使用Kotlin类型声明变量：
- 
+
+<div class="sample" markdown="1" theme="idea" mode="xml">
 ```xml
 <data>
     <variable name="data" type="org.example.kotlin.databinding.WeatherData"/>
 </data>
-``` 
+```
+</div>
 
 现在，可以使用 `@{}` 语法引用 Kotlin 的[属性](/docs/reference/properties.html)：
 
+<div class="sample" markdown="1" theme="idea" mode="xml">
 ```xml
 <ImageView
     android:layout_width="wrap_content"
@@ -241,6 +244,7 @@ dependencies {
     android:src="@{data.imageUrl}"
     android:contentDescription="@string/image" />
 ```
+</div>
 
 值得一提的是，数据绑定表达式语言使用和 Kotlin 相同的语法对属性进行引用：`data.imageUrl`。
 在 Kotlin 中可以使用 `v.prop` 来替代 `v.getProp()`，尽管 `getProp()` 是Java中的方法。
@@ -265,6 +269,7 @@ class MainActivity : AppCompatActivity() {
 
 在 xml 中绑定监听器，并在运行事对相应操作进行响应：
 
+<div class="sample" markdown="1" theme="idea" mode="xml">
 ```xml
 <Button
     android:text="@string/next"
@@ -272,6 +277,7 @@ class MainActivity : AppCompatActivity() {
     android:layout_height="wrap_content"
     android:onClick="startOtherActivity" />
 ```
+</div>
 
 例如在 `MainActivity` 中定义的 `startOtherActivity` 方法：
 
@@ -289,12 +295,14 @@ class MainActivity : AppCompatActivity() {
 
 请注意，与其在 xml 中声明 lambda 表达式，不如直接使用代码绑定相关动作：
 
+<div class="sample" markdown="1" theme="idea" mode="xml">
 ```xml
 <Button 
     android:layout_width="wrap_content" 
     android:layout_height="wrap_content"
     android:onClick="@{() -> presenter.onSaveClick(task)}" />
-```          
+```
+</div>
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
@@ -381,7 +389,7 @@ dependencies {
 
 同样的，gradle 文件中也需要使用 `kapt` 作为注解处理器来处理 Kotlin 文件：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="groovy">
 ```groovy
 apply plugin: 'kotlin-kapt'
 
