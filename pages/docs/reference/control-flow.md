@@ -66,7 +66,7 @@ when (x) {
 ```
 </div>
 
-*when*{: .keyword } 将它的参数和所有的分支条件顺序比较，直到某个分支满足条件。
+*when*{: .keyword } 将它的参数与所有的分支条件顺序比较，直到某个分支满足条件。
 *when*{: .keyword } 既可以被当做表达式使用也可以被当做语句使用。如果它被当做表达式，
 符合条件的分支的值就是整个表达式的值，如果当做语句使用，
 则忽略个别分支的值。（像 *if*{: .keyword } 一样，每一个分支可以是一个代码块，它的值<!--
@@ -112,7 +112,7 @@ when (x) {
 </div>
 
 另一种可能性是检测一个值是（*is*{: .keyword }）或者不是（*!is*{: .keyword }）一个特定类型的值。注意：
-由于[智能转换](typecasts.html#智能转换)，你可以访问该类型的方法和属性而无需<!--
+由于[智能转换](typecasts.html#智能转换)，你可以访问该类型的方法与属性而无需<!--
 -->任何额外的检测。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -222,7 +222,7 @@ for ((index, value) in array.withIndex()) {
 
 ## While 循环
 
-*while*{: .keyword } 和 *do*{: .keyword }..*while*{: .keyword } 照常使用
+*while*{: .keyword } 与 *do*{: .keyword }..*while*{: .keyword } 照常使用
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
@@ -238,7 +238,7 @@ do {
 
 参见[*while*{: .keyword } 语法](grammar.html#while).
 
-## 循环中的Break和continue
+## 循环中的 Break 与 continue
 
-在循环中 Kotlin 支持传统的 *break*{: .keyword } 和 *continue*{: .keyword } 操作符。参见[返回和跳转](returns.html)。
+在循环中 Kotlin 支持传统的 *break*{: .keyword } 与 *continue*{: .keyword } 操作符。参见[返回与跳转](returns.html)。
 

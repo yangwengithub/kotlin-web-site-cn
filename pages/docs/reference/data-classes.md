@@ -24,7 +24,7 @@ data class User(val name: String, val age: Int)
   * [`componentN()` 函数](multi-declarations.html) 按声明顺序对应于所有属性；
   * `copy()` 函数（见下文）。
 
-为了确保生成的代码的一致性和有意义的行为，数据类必须满足以下要求：
+为了确保生成的代码的一致性以及有意义的行为，数据类必须满足以下要求：
 
   * 主构造函数需要至少有一个参数；
   * 主构造函数的所有参数需要标记为 `val` 或 `var`；
@@ -108,7 +108,7 @@ val olderJack = jack.copy(age = 2)
 ```
 </div>
 
-## 数据类和解构声明
+## 数据类与解构声明
 
 为数据类生成的 _Component 函数_ 使它们可在[解构声明](multi-declarations.html)中使用：
 
@@ -122,5 +122,5 @@ println("$name, $age years of age") // 输出 "Jane, 35 years of age"
 
 ## 标准数据类
 
-标准库提供了 `Pair` 和 `Triple`。尽管在很多情况下命名数据类是更好的设计选择，
+标准库提供了 `Pair` 与 `Triple`。尽管在很多情况下命名数据类是更好的设计选择，
 因为它们通过为属性提供有意义的名称使代码更具可读性。

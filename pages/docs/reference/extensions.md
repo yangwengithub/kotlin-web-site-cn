@@ -7,8 +7,8 @@ title: "扩展"
 
 # 扩展
 
-Kotlin 同 C# 和 Gosu 类似，能够扩展一个类的新功能而无需继承该类或使用像装饰者这样的任何类型的设计模式。
-这通过叫做 _扩展_ 的特殊声明完成。Kotlin 支持 _扩展函数_ 和 _扩展属性_。
+Kotlin 同 C# 与 Gosu 类似，能够扩展一个类的新功能而无需继承该类或使用像装饰者这样的任何类型的设计模式。
+这通过叫做 _扩展_ 的特殊声明完成。Kotlin 支持 _扩展函数_ 与 _扩展属性_。
 
 ## 扩展函数
 
@@ -80,7 +80,7 @@ printFoo(D())
 这个例子会输出 "c"，因为调用的扩展函数只取决于<!--
 -->参数 `c` 的声明类型，该类型是 `C` 类。
 
-如果一个类定义有一个成员函数和一个扩展函数，而这两个函数又有相同的接收者类型、相同的名字<!--
+如果一个类定义有一个成员函数与一个扩展函数，而这两个函数又有相同的接收者类型、相同的名字<!--
 -->并且都适用给定的参数，这种情况**总是取成员函数**。
 例如：
 
@@ -130,7 +130,7 @@ fun Any?.toString(): String {
 
 ## 扩展属性
 
-和函数类似，Kotlin 支持扩展属性：
+与函数类似，Kotlin 支持扩展属性：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
 ``` kotlin
@@ -155,7 +155,7 @@ val Foo.bar = 1 // 错误：扩展属性不能有初始化器
 ## 伴生对象的扩展
 
 如果一个类定义有一个[伴生对象](object-declarations.html#伴生对象) ，你也可以为伴生对象定义<!--
--->扩展函数和属性：
+-->扩展函数与属性：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
@@ -234,7 +234,7 @@ class C {
 ```
 </div>
 
-对于分发接收者和扩展接收者的成员名字冲突的情况，扩展接收者<!--
+对于分发接收者与扩展接收者的成员名字冲突的情况，扩展接收者<!--
 -->优先。要引用分发接收者的成员你可以使用 [限定的 `this` 语法](this-expressions.html#限定的-this)。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>

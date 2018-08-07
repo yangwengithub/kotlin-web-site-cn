@@ -10,7 +10,7 @@ title: "异常：try、catch、finally、throw、Nothing"
 ## 异常类
 
 Kotlin 中所有异常类都是 `Throwable` 类的子孙类。
-每个异常都有消息、堆栈回溯信息和可选的原因。
+每个异常都有消息、堆栈回溯信息以及可选的原因。
 
 使用 *throw*{: .keyword }-表达式来抛出异常：
 
@@ -42,7 +42,7 @@ finally {
 </div>
 
 可以有零到多个 *catch*{: .keyword } 块。*finally*{: .keyword } 块可以省略。
-但是 *catch*{: .keyword } 和 *finally*{: .keyword } 块至少应该存在一个。
+但是 *catch*{: .keyword } 与 *finally*{: .keyword } 块至少应该存在一个。
 
 ### Try 是一个表达式
 
@@ -89,7 +89,7 @@ catch (IOException e) {
 
 Bruce Eckel 在[《Java 是否需要受检的异常？》（Does Java need Checked Exceptions?）](http://www.mindview.net/Etc/Discussions/CheckedExceptions) 中指出：
 
-> 通过一些小程序测试得出的结论是异常规范会同时提高开发者的生产力和代码质量，但是大型软件项目的经验表明一个不同的结论——生产力降低、代码质量很少或没有提高。
+> 通过一些小程序测试得出的结论是异常规范会同时提高开发者的生产力与代码质量，但是大型软件项目的经验表明一个不同的结论——生产力降低、代码质量很少或没有提高。
 
 其他相关引证：
 

@@ -7,8 +7,8 @@ title: "基本类型：数字、字符串、数组"
 
 # 基本类型
 
-在 Kotlin 中，所有东西都是对象，在这个意义上讲我们可以在任何变量上调用成员函数和属性。
-一些类型可以有特殊的内部表示——例如，数字、字符和布尔值可以<!--
+在 Kotlin 中，所有东西都是对象，在这个意义上讲我们可以在任何变量上调用成员函数与属性。
+一些类型可以有特殊的内部表示——例如，数字、字符以及布尔值可以<!--
 -->在运行时表示为原生类型值，但是对于用户来说，它们看起来就像普通的类。
 在本节中，我们会描述 Kotlin 中使用的基本类型：数字、字符、布尔值、数组与字符串。
 
@@ -172,7 +172,7 @@ val x = (1 shl 2) and 0x000FF000
 ```
 </div>
 
-这是完整的位运算列表（只用于 `Int` 和 `Long`）：
+这是完整的位运算列表（只用于 `Int` 与 `Long`）：
 
 * `shl(bits)` – 有符号左移 (Java 的 `<<`)
 * `shr(bits)` – 有符号右移 (Java 的 `>>`)
@@ -218,7 +218,7 @@ fun check(c: Char) {
 
 字符字面值用单引号括起来: `'1'`。
 特殊字符可以用反斜杠转义。
-支持这几个转义序列：`\t`、 `\b`、`\n`、`\r`、`\'`、`\"`、`\\` 和 `\$`。
+支持这几个转义序列：`\t`、 `\b`、`\n`、`\r`、`\'`、`\"`、`\\` 与 `\$`。
 编码其他字符要用 Unicode 转义序列语法：`'\uFF00'`。
 
 我们可以显式把字符转换为 `Int` 数字：
@@ -237,7 +237,7 @@ fun decimalDigitValue(c: Char): Int {
 
 ## 布尔
 
-布尔用 `Boolean` 类型表示，它有两个值：*true*{: .keyword } 和 *false*{: .keyword }。
+布尔用 `Boolean` 类型表示，它有两个值：*true*{: .keyword } 与 *false*{: .keyword }。
 
 若需要可空引用布尔会被装箱。
 
@@ -249,7 +249,7 @@ fun decimalDigitValue(c: Char): Int {
 
 ## 数组
 
-数组在 Kotlin 中使用 `Array` 类来表示，它定义了 `get` 和 `set` 函数（按照运算符重载约定这会转变为 `[]`）和 `size` 属性，以及一些其他有用的成员函数：
+数组在 Kotlin 中使用 `Array` 类来表示，它定义了 `get` 与 `set` 函数（按照运算符重载约定这会转变为 `[]`）以及 `size` 属性，以及一些其他有用的成员函数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
@@ -267,7 +267,7 @@ class Array<T> private constructor() {
 我们可以使用库函数 `arrayOf()` 来创建一个数组并传递元素值给它，这样 `arrayOf(1, 2, 3)` 创建了 array [1, 2, 3]。
 或者，库函数 `arrayOfNulls()` 可以用于创建一个指定大小的、所有元素都为空的数组。
 
-另一个选项是用接受数组大小和一个函数参数的 `Array` 构造函数，用作参数的函数能够返回<!--
+另一个选项是用接受数组大小以及一个函数参数的 `Array` 构造函数，用作参数的函数能够返回<!--
 -->给定索引的每个元素初始值：
 
 <div class="sample" markdown="1" theme="idea">
@@ -282,14 +282,14 @@ fun main(args: Array<String>) {
 ```
 </div>
 
-如上所述，`[]` 运算符代表调用成员函数 `get()` 和 `set()`。
+如上所述，`[]` 运算符代表调用成员函数 `get()` 与 `set()`。
 
 注意: 与 Java 不同的是，Kotlin 中数组是不型变的（invariant）。这意味着 Kotlin 不让我们把 `Array<String>`
 赋值给 `Array<Any>`，以防止可能的运行时失败（但是你可以使用 `Array<out Any>`,
 参见[类型投影](generics.html#类型投影)）。
 
 Kotlin 也有无装箱开销的专门的类来表示原生类型数组: `ByteArray`、
-`ShortArray`、`IntArray` 等等。这些类和 `Array` 并没有继承关系，但是<!--
+`ShortArray`、`IntArray` 等等。这些类与 `Array` 并没有继承关系，但是<!--
 -->它们有同样的方法属性集。它们也都有相应的工厂方法:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -336,7 +336,7 @@ println(s + "def")
 
 ### 字符串字面值
 
-Kotlin 有两种类型的字符串字面值: 转义字符串可以有转义字符，以及原始字符串可以包含换行和任意文本。转义字符串很像 Java 字符串:
+Kotlin 有两种类型的字符串字面值: 转义字符串可以有转义字符，以及原始字符串可以包含换行以及任意文本。转义字符串很像 Java 字符串:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
@@ -346,7 +346,7 @@ val s = "Hello, world!\n"
 
 转义采用传统的反斜杠方式。参见上面的 [字符](#字符) 查看支持的转义序列。
 
-*原始字符串* 使用三个引号（`"""`）分界符括起来，内部没有转义并且可以包含换行和任何其他字符:
+*原始字符串* 使用三个引号（`"""`）分界符括起来，内部没有转义并且可以包含换行以及任何其他字符:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
@@ -401,7 +401,7 @@ println("$s.length is ${s.length}") // 输出“abc.length is 3”
 ```
 </div>
 
-原始字符串和转义字符串内部都支持模板。
+原始字符串与转义字符串内部都支持模板。
 如果你需要在原始字符串中表示字面值 `$` 字符（它不支持反斜杠转义），你可以用下列语法：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
