@@ -14,7 +14,7 @@ Kotlin 可以使用 JavaEE 的 Http Servlet，就像使用其他的 Java 库或�
 {{ site.text_using_gradle }}
 The main dependency required for using HTTP servlets is the JavaEE API:
 
-<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="groovy">
 ``` groovy
 dependencies {
     compile group: 'javax', name: 'javaee-api', version: '7.0'
@@ -25,7 +25,7 @@ dependencies {
 
 我们还需要 *war* 插件，帮助我们生成相应的构件运行和部署
 
-<div class="sample" markdown="1" theme="idea" mode="groovy" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="groovy">
 ``` groovy
 apply plugin: war
 ```

@@ -49,7 +49,7 @@ class MyActivity : Activity() {
 
 开发者仅需要在模块的 `build.gradle` 文件中启用 Gradle 安卓扩展插件即可：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="groovy">
 ```groovy
 apply plugin: 'kotlin-android-extensions'
 ```
@@ -71,12 +71,14 @@ import kotlinx.android.synthetic.main.＜布局＞.*
 
 导入完成后即可调用在xml文件中以视图控件命名属性的对应扩展，比如下例:
 
+<div class="sample" markdown="1" theme="idea" mode="xml">
 ```xml
 <TextView
     android:id="@+id/hello"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"/>
 ```
+</div>
 
 将有一个名为 `hello` 的属性：
 
@@ -91,7 +93,7 @@ activity.hello.text = "Hello World!"
 
 Android Extensions plugin includes several experimental features such as `LayoutContainer` support and a `Parcelable` implementation generator. These features are not considered production ready yet, so you need to turn on the experimental mode in `build.gradle` in order to use them:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="groovy">
 ```groovy
 androidExtensions {
     experimental = true
@@ -123,7 +125,7 @@ Note that you need to turn on the [experimental flag](#experimental-mode) to use
 
 安卓扩展插件现已支持安卓多渠道。假设当前在 `build.gradle` 文件中指定一个名为 `free` 的渠道：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="groovy">
 ```groovy
 android {
     productFlavors {
@@ -185,7 +187,7 @@ You can change the caching strategy globally or per container. This also require
 
 Project-global caching strategy is set in the `build.gradle` file:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="groovy">
 ```groovy
 androidExtensions {
     defaultCacheImplementation = "HASH_MAP" // also SPARSE_ARRAY, NONE
