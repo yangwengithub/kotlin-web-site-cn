@@ -276,7 +276,7 @@ Kotlin 为此提供了所谓的**星投影**语法：
 
 ## 泛型函数
 
-不仅类可以有类型参数。函数也可以有。类型参数要放在函数名称之前：
+不仅类可以有类型参数。函数也可以有。类型参数要放在函数名称**之前**：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
