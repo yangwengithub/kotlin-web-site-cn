@@ -457,10 +457,10 @@ Kotlin 1.2 引入了一些使用  `BigInteger` 与 `BigDecimal` 运算以及由�
 编译器现在提供一个将所有警告视为错误的选项。可在命令行中使用 `-Werror`，或者<!--
 -->在 Gradle 中使用以下代码片段：
 
-<div class="sample" markdown="1" mode="groovy" theme="idea">
+
 ```groovy
 compileKotlin {
     kotlinOptions.allWarningsAsErrors = true
 }
 ```
-</div>
+
