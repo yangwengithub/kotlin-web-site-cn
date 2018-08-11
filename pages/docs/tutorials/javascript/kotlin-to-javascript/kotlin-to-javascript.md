@@ -46,7 +46,7 @@ Kotlin编译器将会生成下面的文件
 
 我们最感兴趣的文件是`ConsoleOutput.js`
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="js">
 ```javascript
 if (typeof kotlin === 'undefined') {
   throw new Error("Error loading module 'ConsoleOutput'. Its dependency 'kotlin' was not found. /* ... */");
@@ -78,20 +78,23 @@ var ConsoleOutput = function (_, Kotlin) {
 
 这段代码的目的是在控制台中写出一些文本。 为了在浏览器中使用它，我们需要从HTML页面中加载它：
 
+<div class="sample" markdown="1" theme="idea" mode="xml" auto-indent="false">
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Console Output</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Console Output</title>
+    </head>
+    <body>
 
-<script type="text/javascript" src="out/production/ConsoleOutput/lib/kotlin.js"></script>
-<script type="text/javascript" src="out/production/ConsoleOutput/ConsoleOutput.js"></script>
-</body>
+    <script type="text/javascript" src="out/production/ConsoleOutput/lib/kotlin.js"></script>
+    <script type="text/javascript" src="out/production/ConsoleOutput/ConsoleOutput.js"></script>
+    </body>
 </html>
 ```
+</div>
+
 (我们使用HTML页面所在在相对路径来加载`*.js`文件)
 
 请注意, 我们要先加载Kotlin运行时标准库`kotlin.js`, 再加载我们的业务代码文件

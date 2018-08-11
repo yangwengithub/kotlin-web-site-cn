@@ -93,7 +93,6 @@ public class BookRepositoryImpl {
 class Node<T>(val value: T, val next: () -> Node<T>)
 
 fun main(args: Array<String>) {
-    //sampleStart
     // 三个节点的环：
     lateinit var third: Node<Int>
 
@@ -101,7 +100,6 @@ fun main(args: Array<String>) {
     val first = Node(1, next = { second })
 
     third = Node(3, next = { first })
-    //sampleEnd
 
     val nodes = generateSequence(first) { it.next() }
     println("Values in the cycle: ${nodes.take(7).joinToString { it.value.toString() }}, ...")
@@ -466,8 +464,10 @@ Kotlin 1.2 引入了一些使用  `BigInteger` 与 `BigDecimal` 运算以及由�
 编译器现在提供一个将所有警告视为错误的选项。可在命令行中使用 `-Werror`，或者<!--
 -->在 Gradle 中使用以下代码片段：
 
+<div class="sample" markdown="1" mode="groovy" theme="idea">
 ```groovy
 compileKotlin {
     kotlinOptions.allWarningsAsErrors = true
 }
 ```
+</div>

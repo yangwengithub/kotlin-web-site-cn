@@ -230,7 +230,7 @@ class Tests {
 因为 Java 编写的注解没有定义参数顺序，所以不能使用常规函数调用<!--
 -->语法来传递参数。相反，你需要使用命名参数语法：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" mode="java" theme="idea">
 ``` java
 // Java
 public @interface Ann {
@@ -249,7 +249,7 @@ public @interface Ann {
 
 就像在 Java 中一样，一个特殊的情况是 `value` 参数；它的值无需显式名称指定：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="java">
 ``` java
 // Java
 public @interface AnnWithValue {
@@ -269,7 +269,7 @@ public @interface AnnWithValue {
 
 如果 Java 中的 `value` 参数具有数组类型，它会成为 Kotlin 中的一个 `vararg` 参数：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="java">
 ``` java
 // Java
 public @interface AnnWithArrayValue {
@@ -288,7 +288,7 @@ public @interface AnnWithArrayValue {
 对于具有数组类型的其他参数，你需要显式使用数组字面值语法（自 Kotlin 1.2 起）或者
 `arrayOf(……)`：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="java">
 ``` java
 // Java
 public @interface AnnWithArrayMethod {
@@ -313,7 +313,7 @@ class D
 
 注解实例的值会作为属性暴露给 Kotlin 代码：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="java">
 ``` java
 // Java
 public @interface Ann {
