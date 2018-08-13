@@ -359,7 +359,7 @@ kotlinCompile.kotlinOptions.suppressWarnings = true
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` groovy
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java).all {
     kotlinOptions { …… }
 }
 ```
