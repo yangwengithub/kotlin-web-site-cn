@@ -334,8 +334,9 @@ fun test(context: TaskContext) {
 
 ### 在 Gradle 中使用
 
-The usage is the same to all-open and no-arg, except the fact that sam-with-receiver does not have any built-in presets, and you need to specify your own list of special-treated annotations.
- 
+除了事实上 sam-with-receiver 没有任何内置预设、并且需要指定自己的特殊处理注解列表外，其用法与 all-open 及 no-arg 相同。
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```groovy
 buildscript {
     dependencies {
