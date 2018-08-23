@@ -293,6 +293,14 @@ tutorials:
           title: 基本 Kotlin/Native 应用程序
         - url: /docs/tutorials/native/interop-with-c.html
           title: 与 C 语言库互操作
+        - url: /docs/tutorials/native/mapping-primitive-data-types-from-c.html
+          title: Mapping Primitive Data Types from C
+        - url: /docs/tutorials/native/mapping-struct-union-types-from-c.html
+          title: Mapping Struct and Union Types from C
+        - url: /docs/tutorials/native/mapping-function-pointers-from-c.html
+          title: Mapping Function Pointers from C
+        - url: /docs/tutorials/native/mapping-strings-from-c.html
+          title: Mapping Strings from C
         - url: /docs/tutorials/native/working-with-klib.html
           title: 使用 Kotlin/Native 库
         - url: /docs/tutorials/native/targeting-multiple-platforms.html
