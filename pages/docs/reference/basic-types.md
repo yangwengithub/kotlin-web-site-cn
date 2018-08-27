@@ -64,7 +64,7 @@ val bytes = 0b11010010_01101001_10010100_10010010
 在 Java 平台数字是物理存储为 JVM 的原生类型，除非我们需要一个可空的引用（如 `Int?`）或泛型。
 后者情况下会把数字装箱。
 
-注意数字装箱不必保留同一性:
+注意数字装箱不一定保留同一性:
 
 <div class="sample" markdown="1" theme="idea">
 ``` kotlin
@@ -151,7 +151,7 @@ fun main(args: Array<String>) {
 * `toDouble(): Double`
 * `toChar(): Char`
 
-缺乏隐式类型转换并不显著，因为类型会从上下文推断出来，而算术运算会有重载做适当转换，例如：
+缺乏隐式类型转换很少会引起注意，因为类型会从上下文推断出来，而算术运算会有重载做适当转换，例如：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
