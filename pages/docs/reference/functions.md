@@ -311,7 +311,7 @@ class MyStringCollection {
 
 ## 函数作用域
 
-在 Kotlin 中函数可以在文件顶层声明，这意味着你不需要像一些语言如 Java、C# 或 Scala 那样创建一个类来保存一个函数。此外<!--
+在 Kotlin 中函数可以在文件顶层声明，这意味着你不需要像一些语言如 Java、C# 或 Scala 那样需要创建一个类来保存一个函数。此外<!--
 -->除了顶层函数，Kotlin 中函数也可以声明在局部作用域、作为成员函数以及扩展函数。
 
 ### 局部函数
@@ -403,21 +403,25 @@ Kotlin 支持一种称为[尾递归](https://zh.wikipedia.org/wiki/%E5%B0%BE%E8%
 
 
 ``` kotlin
+val eps = 1E-10 // "good enough", could be 10^-15
+
 tailrec fun findFixPoint(x: Double = 1.0): Double
-        = if (x == Math.cos(x)) x else findFixPoint(Math.cos(x))
+        = if (Math.abs(x - Math.cos(x)) < eps) x else findFixPoint(Math.cos(x))
 ```
 
 
-这段代码计算余弦的不动点（fixpoint of cosine），这是一个数学常数。 它只是重复地从 1.0 开始调用 Math.cos，直到结果不再改变，产生0.7390851332151607的结果。最终代码相当于这种更传统风格的代码：
+这段代码计算余弦的不动点（fixpoint of cosine），这是一个数学常数。 它只是重复地从 1.0 开始调用 Math.cos，直到结果不再改变，对于这里指定的 `eps` 精度会产生 0.7390851332151611 的结果。最终代码相当于这种更传统风格的代码：
 
 
 ``` kotlin
+val eps = 1E-10 // "good enough", could be 10^-15
+
 private fun findFixPoint(): Double {
     var x = 1.0
     while (true) {
         val y = Math.cos(x)
-        if (x == y) return x
-        x = y
+        if (Math.abs(x - y) < eps) return x
+        x = Math.cos(x)
     }
 }
 ```
