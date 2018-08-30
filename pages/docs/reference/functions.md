@@ -410,7 +410,7 @@ tailrec fun findFixPoint(x: Double = 1.0): Double
 ```
 </div>
 
-这段代码计算余弦的不动点（fixpoint of cosine），这是一个数学常数。 它只是重复地从 1.0 开始调用 Math.cos，直到结果不再改变，for the specified `eps` precision 产生 0.7390851332151611 的结果。最终代码相当于这种更传统风格的代码：
+这段代码计算余弦的不动点（fixpoint of cosine），这是一个数学常数。 它只是重复地从 1.0 开始调用 Math.cos，直到结果不再改变，对于这里指定的 `eps` 精度会产生 0.7390851332151611 的结果。最终代码相当于这种更传统风格的代码：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
