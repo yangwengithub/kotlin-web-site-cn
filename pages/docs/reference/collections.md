@@ -43,7 +43,7 @@ val items = listOf(1, 2, 3)
 
 目前 `listOf` 方法是使用 array list 实现的，但是未来可以利用它们知道自己不能变的事实，返回更节约内存的完全不可变的集合类型。
 
-注意这些类型是[协变的](generics.html#型变)。这意味着，你可以把一个 `List<Rectangle>` 赋值给 `List<Shape>` 假定 `Rectangle` 继承自 `Shape` (the collection types have the same inheritance relationship as the element types)。对于可变集合类型这是不允许的，因为这将导致运行时故障：you might add a `Circle` into the `List<Shape>`, creating a `List<Rectangle>` with a `Circle` in it somewhere else in the program.
+注意这些类型是[协变的](generics.html#型变)。这意味着，你可以把一个 `List<Rectangle>` 赋值给 `List<Shape>` 假定 `Rectangle` 继承自 `Shape`（集合类型与元素类型具有相同的继承关系）。对于可变集合类型这是不允许的，因为这将导致运行时故障：你可能向 `List<Shape>` 中添加一个 `Circle`，而在程序的其他地方创建了一个其中含有 `Circle` 的 List<Rectangle>`。
 
 有时你想给调用者返回一个集合在某个特定时间的一个快照, 一个保证不会变的：
 
