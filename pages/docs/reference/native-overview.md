@@ -29,7 +29,7 @@ Kotlin/Native 目前支持以下平台：
    * Windows（目前只支持 x86_64）
    * Linux（x86_64、 arm32、 MIPS、 MIPS little endian）
    * MacOS（x86_64）
-   * iOS（只支持 arm64）
+   * iOS（arm32 与 arm64）
    * Android（arm32 与 arm64）
    * WebAssembly（只支持 wasm32)
 
