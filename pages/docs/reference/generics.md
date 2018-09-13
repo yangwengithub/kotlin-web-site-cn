@@ -10,27 +10,33 @@ title: "泛型：in、out、where"
 与 Java 类似，Kotlin 中的类也可以有类型参数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 class Box<T>(t: T) {
     var value = t
 }
 ```
+
 </div>
 
 一般来说，要创建这样类的实例，我们需要提供类型参数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val box: Box<Int> = Box<Int>(1)
 ```
+
 </div>
 
 但是如果类型参数可以推断出来，例如从构造函数的参数或者从其他途径，允许省略类型参数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val box = Box(1) // 1 具有类型 Int，所以编译器知道我们说的是 Box<Int>。
 ```
+
 </div>
 
 ## 型变
@@ -43,7 +49,8 @@ Java 类型系统中最棘手的部分之一是通配符类型（参见 [Java Ge
 为什么这样？ 如果 List 不是**不型变的**，它就没<!--
 -->比 Java 的数组好到哪去，因为如下代码会通过编译然后导致运行时异常：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" mode="java" theme="idea">
+
 ``` java
 // Java
 List<String> strs = new ArrayList<String>();
@@ -51,23 +58,27 @@ List<Object> objs = strs; // ！！！即将来临的问题的原因就在这里
 objs.add(1); // 这里我们把一个整数放入一个字符串列表
 String s = strs.get(0); // ！！！ ClassCastException：无法将整数转换为字符串
 ```
+
 </div>
 
 因此，Java 禁止这样的事情以保证运行时的安全。但这样会有一些影响。例如，考虑 `Collection` 接口中的 `addAll()`
 方法。该方法的签名应该是什么？直觉上，我们会这样：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" mode="java" theme="idea">
+
 ``` java
 // Java
 interface Collection<E> …… {
   void addAll(Collection<E> items);
 }
 ```
+
 </div>
 
 但随后，我们将无法做到以下简单的事情（这是完全安全）：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" mode="java" theme="idea">
+
 ``` java
 // Java
 void copyAll(Collection<Object> to, Collection<String> from) {
@@ -76,6 +87,7 @@ void copyAll(Collection<Object> to, Collection<String> from) {
   // Collection<String> 不是 Collection<Object> 的子类型
 }
 ```
+
 </div>
 
 （在 Java 中，我们艰难地学到了这个教训，参见[《Effective Java》第三版](http://www.oracle.com/technetwork/java/effectivejava-136174.html)，第 28 条：*列表优先于数组*）
@@ -83,13 +95,15 @@ void copyAll(Collection<Object> to, Collection<String> from) {
 
 这就是为什么 `addAll()` 的实际签名是以下这样：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" mode="java" theme="idea">
+
 ``` java
 // Java
 interface Collection<E> …… {
   void addAll(Collection<? extends E> items);
 }
 ```
+
 </div>
 
 **通配符类型参数** `? extends E` 表示此方法接受 `E` *或者 `E` 的 一些子类型*对象的集合，而不只是 `E` 自身。
@@ -118,18 +132,21 @@ Joshua Bloch 称那些你只能从中**读取**的对象为**生产者**，并�
 
 假设有一个泛型接口 `Source<T>`，该接口中不存在任何以 `T` 作为参数的方法，只是方法返回 `T` 类型值：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" mode="java" theme="idea">
+
 ``` java
 // Java
 interface Source<T> {
   T nextT();
 }
 ```
+
 </div>
 
 那么，在 `Source <Object>` 类型的变量中存储 `Source <String>` 实例的引用是极为安全的——没有消费者-方法可以调用。但是 Java 并不知道这一点，并且仍然禁止这样操作：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" mode="java" theme="idea">
+
 ``` java
 // Java
 void demo(Source<String> strs) {
@@ -137,6 +154,7 @@ void demo(Source<String> strs) {
   // ……
 }
 ```
+
 </div>
 
 为了修正这一点，我们必须声明对象的类型为 `Source<? extends Object>`，这是毫无意义的，因为我们可以像以前一样在该对象上调用所有相同的方法，所以更复杂的类型并没有带来价值。但编译器并不知道。
@@ -145,6 +163,7 @@ void demo(Source<String> strs) {
 为此，我们提供 **out** 修饰符：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 interface Source<out T> {
     fun nextT(): T
@@ -155,6 +174,7 @@ fun demo(strs: Source<String>) {
     // ……
 }
 ```
+
 </div>
 
 一般原则是：当一个类 `C` 的类型参数 `T` 被声明为 **out** 时，它就只能出现在 `C` 的成员的**输出**\-位置，但回报是 `C<Base>` 可以安全地作为
@@ -170,6 +190,7 @@ fun demo(strs: Source<String>) {
 -->被生产。逆变类型的一个很好的例子是 `Comparable`：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 interface Comparable<in T> {
     operator fun compareTo(other: T): Int
@@ -181,6 +202,7 @@ fun demo(x: Comparable<Number>) {
     val y: Comparable<Double> = x // OK！
 }
 ```
+
 </div>
 
 我们相信 **in** 和 **out** 两词是自解释的（因为它们已经在 C# 中成功使用很长时间了），
@@ -198,17 +220,20 @@ fun demo(x: Comparable<Number>) {
 一个很好的例子是 Array：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 class Array<T>(val size: Int) {
     fun get(index: Int): T { …… }
     fun set(index: Int, value: T) { …… }
 }
 ```
+
 </div>
 
 该类在 `T` 上既不能是协变的也不能是逆变的。这造成了一些不灵活性。考虑下述函数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 fun copy(from: Array<Any>, to: Array<Any>) {
     assert(from.size == to.size)
@@ -216,16 +241,19 @@ fun copy(from: Array<Any>, to: Array<Any>) {
         to[i] = from[i]
 }
 ```
+
 </div>
 
 这个函数应该将项目从一个数组复制到另一个数组。让我们尝试在实践中应用它：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val ints: Array<Int> = arrayOf(1, 2, 3)
 val any = Array<Any>(3) { "" } 
 copy(ints, any) // 错误：期望 (Array<Any>, Array<Any>)
 ```
+
 </div>
 
 这里我们遇到同样熟悉的问题：`Array <T>` 在 `T` 上是**不型变的**，因此 `Array <Int>` 和 `Array <Any>` 都不是<!--
@@ -235,9 +263,11 @@ copy(ints, any) // 错误：期望 (Array<Any>, Array<Any>)
 那么，我们唯一要确保的是 `copy()` 不会做任何坏事。我们想阻止它**写**到 `from`，我们可以：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 fun copy(from: Array<out Any>, to: Array<Any>) { …… }
 ```
+
 </div>
 
 这里发生的事情称为**类型投影**：我们说`from`不仅仅是一个数组，而是一个受限制的（**投影的**）数组：我们只可以调用返回类型为类型参数
@@ -247,9 +277,11 @@ fun copy(from: Array<out Any>, to: Array<Any>) { …… }
 你也可以使用 **in** 投影一个类型：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 fun fill(dest: Array<in String>, value: String) { …… }
 ```
+
 </div>
 
 `Array<in String>` 对应于 Java 的 `Array<? super String>`，也就是说，你可以传递一个 `CharSequence` 数组或一个 `Object` 数组给 `fill()` 函数。
@@ -279,6 +311,7 @@ Kotlin 为此提供了所谓的**星投影**语法：
 不仅类可以有类型参数。函数也可以有。类型参数要放在函数名称**之前**：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 fun <T> singletonList(item: T): List<T> {
     // ……
@@ -288,22 +321,27 @@ fun <T> T.basicToString() : String {  // 扩展函数
     // ……
 }
 ```
+
 </div>
 
 要调用泛型函数，在调用处函数名**之后**指定类型参数即可：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val l = singletonList<Int>(1)
 ```
+
 </div>
 
 可以省略能够从上下文中推断出来的类型参数，所以以下示例同样适用：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val l = singletonList(1)
 ```
+
 </div>
 
 ## 泛型约束
@@ -315,24 +353,29 @@ val l = singletonList(1)
 最常见的约束类型是与 Java 的 *extends* 关键字对应的 **上界**：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 fun <T : Comparable<T>> sort(list: List<T>) {  …… }
 ```
+
 </div>
 
 冒号之后指定的类型是**上界**：只有 `Comparable<T>` 的子类型可以替代 `T`。 例如：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 sort(listOf(1, 2, 3)) // OK。Int 是 Comparable<Int> 的子类型
 sort(listOf(HashMap<Int, String>())) // 错误：HashMap<Int, String> 不是 Comparable<HashMap<Int, String>> 的子类型
 ```
+
 </div>
 
 默认的上界（如果没有声明）是 `Any?`。在尖括号中只能指定一个上界。
 如果同一类型参数需要多个上界，我们需要一个单独的 **where**\-子句：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
+
 ``` kotlin
 fun <T> copyWhenGreater(list: List<T>, threshold: T): List<String>
     where T : CharSequence,
@@ -340,6 +383,7 @@ fun <T> copyWhenGreater(list: List<T>, threshold: T): List<String>
     return list.filter { it > threshold }.map { it.toString() }
 }
 ```
+
 </div>
 
 ## 类型擦除
