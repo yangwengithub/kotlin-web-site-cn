@@ -252,7 +252,7 @@ fun copy(from: Array<Any>, to: Array<Any>) {
 val ints: Array<Int> = arrayOf(1, 2, 3)
 val any = Array<Any>(3) { "" } 
 copy(ints, any)
-//   ^ type is Array<Int> but Array<Any> was expected
+//   ^ 其类型为 Array<Int> 但此处期望 Array<Any>
 ```
 
 </div>
