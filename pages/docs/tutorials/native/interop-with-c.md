@@ -59,7 +59,7 @@ Once we have the definition file ready, we can invoke `cinterop` and have it gen
     cinterop -def libcurl.def -o build/c_interop/libcurl
     
 The output should be a Kotlin compiled library (extension `.klib`). We're also instructing `cinterop`
-to output the contents to the folder `build/c_interop/libcurl` which we'll later use as input by `konanc`. It's important this folder is created
+to output the contents to the folder `build/c_interop/libcurl` which we'll later use as input by `kotlinc-native`. It's important this folder is created
 beforehand as `cinterop` needs an existing folder. The *c_interop* is a convention that is followed for libraries that are for interop.
 
 
@@ -72,6 +72,7 @@ libcurl examples over to Kotlin.
 The code in question is from the [simple](https://curl.haxx.se/libcurl/c/simple.html) example (comments removed for brevity)
 
 <div class="sample" markdown="1" theme="idea" mode="c">
+
 ```c
 #include <stdio.h>
 #include <curl/curl.h>
@@ -100,8 +101,10 @@ int main(void)
 The first thing we'll need is a Kotlin file called `Main.kt` with the `main` function defined in it and then proceed to translate each line
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 import libcurl.*
+import kotlinx.cinterop.*
 
 fun main(args: Array<String>) {
     val curl = curl_easy_init()
@@ -129,7 +132,7 @@ The next step is to compile our application. We already covered the basics of co
 The only difference in this case is that we have to include the library that `cinterop` generated for us. 
 
 ```bash
-konanc Main.kt -library build/c_interop/libcurl
+kotlinc-native Main.kt -library build/c_interop/libcurl
 ```
 
 We can see that we're passing in as `library` parameter the output path of `cinterop`. 

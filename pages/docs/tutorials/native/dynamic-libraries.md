@@ -61,14 +61,14 @@ We need to have a Kotlin/Native compiler on our machines.
 You may want to have a look at the
 [A Basic Kotlin/Native Application](basic-kotlin-native-app.html#obtaining-the-compiler)
 tutorial for more information on performing this step.
-Let's assume that we have a console, where the `kotlinc` command is available. 
+Let's assume that we have a console, where the `kotlinc-native` command is available. 
 
 Now we can call the following command to compile the code into a dynamic library:
 ```bash
-kotlinc lib.kt -produce dynamic -output demo
+kotlinc-native lib.kt -produce dynamic -output demo
 ```
 
-The `kotlinc` (with v0.8.2) generates the following files, depending on the OS, 
+The `kotlinc-native` (with v0.8.2) generates the following files, depending on the OS, 
 where you run the compiler:
 - macOS: `demo_api.h` and `libdemo.dylib`
 - Linux: `demo_api.h` and `libdemo.so`
@@ -129,7 +129,7 @@ Kotlin uses the `demo_` prefix from the library name to make sure
 the symbols will not clash with other symbols in your C codebase.
 
 The definitions part shows how Kotlin primitive types map into C primitive types. 
-We discussed reverse mapping in the [C TYPES TUTORIAL] tutorial, 
+We discussed reverse mapping in the [Mapping Primitive Data Types from C](mapping-primitive-data-types-from-c.html) tutorial, 
 which you may want to check out. 
 
 The next part of the `demo_api.h` file contains definitions of types
