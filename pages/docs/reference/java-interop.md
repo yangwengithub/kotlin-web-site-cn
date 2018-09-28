@@ -568,9 +568,9 @@ fun render(list: List<*>, to: Appendable) {
 
 ### wait()/notify()
 
-[《Effective Java》第三版](http://www.oracle.com/technetwork/java/effectivejava-136174.html) 第 81 条善意地建议优先使用并发工具（concurrency utilities）而不是 `wait()` 和 `notify()`。
-因此，类型 `Any` 的引用不提供这两个方法。
-如果你真的需要调用它们的话，你可以将其转换为 `java.lang.Object`：
+Methods `wait()` and `notify()` are not available on references of type `Any`. Their usage is generally discouraged in favor of `java.utl.concurrent`.
+
+If you really need to call these methods, you can cast to `java.lang.Object`:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
