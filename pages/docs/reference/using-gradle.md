@@ -253,7 +253,7 @@ Kotlin 支持 Gradle 中可选的增量编译。
 
 ## 协程支持
 
-[协程](coroutines.html)支持是 Kotlin 1.2 中的一个实验性的功能，所以当你在项目中使用协程时，Kotlin 编译器会报告一个警告。
+[协程](coroutines.html)支持是 Kotlin 1.2 中的一个实验性的特性，所以当你在项目中使用协程时，Kotlin 编译器会报告一个警告。
 如果要关闭该警告，可以将以下块添加到你的 `build.gradle` 文件中：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>

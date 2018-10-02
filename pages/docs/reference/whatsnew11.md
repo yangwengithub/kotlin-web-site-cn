@@ -88,7 +88,7 @@ fun main(args: Array<String>) {
 
 更多信息请参见[协程文档](coroutines.html)及[教程](/docs/tutorials/coroutines-basic-jvm.html)。
 
-请注意，协程目前还是一个**实验性的功能**，这意味着 Kotlin 团队不承诺<!--
+请注意，协程目前还是一个**实验性的特性**，这意味着 Kotlin 团队不承诺<!--
 -->在最终的 1.1 版本时保持该功能的向后兼容性。
 
 

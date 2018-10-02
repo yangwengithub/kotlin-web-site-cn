@@ -135,7 +135,7 @@ public abstract class SequenceBuilder<in T> { …… }
 
 ## 协程的实验性状态
 
-协程的设计是[实验性的](compatibility.html#实验性的功能)，这意味着它会在即将发布的版本中更改。当在 Kotlin 1.1+ 中编译协程时，默认情况下会报一个警告：*“协程”功能是实验性的*。要移出该警告，你需要指定 [opt-in 标志](/docs/diagnostics/experimental-coroutines.html)。
+协程的设计是[实验性的](compatibility.html#实验性的特性)，这意味着它会在即将发布的版本中更改。当在 Kotlin 1.1+ 中编译协程时，默认情况下会报一个警告：*“协程”功能是实验性的*。要移出该警告，你需要指定 [opt-in 标志](/docs/diagnostics/experimental-coroutines.html)。
 
 由于其实验性状态，标准库中协程相关的 API 放在 `kotlin.coroutines.experimental` 包下。当设计完成并且实验性状态解除时，最终的 API 会移动到 `kotlin.coroutines`，并且实验包会被保留（可能在一个单独的构件中）以实现向后兼容。
 

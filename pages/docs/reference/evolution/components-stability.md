@@ -2,41 +2,41 @@
 type: doc
 layout: reference
 category: "Compatibility"
-title: "Stability of Different Components"
+title: "不同组件的稳定性"
 ---
 
-# Stability of Different Components
+# 不同组件的稳定性
 
-There can be different modes of stability depending of how quickly a component is evolving:
+依据组件的发展速度，可以有不同的稳定性模式：
 <a name="moving-fast"></a>
-*   **Moving fast (MF)**: no compatibility should be expected between even [incremental releases](kotlin-evolution.html#feature-releases-and-incremental-releases), any functionality can be added, removed or changed without warning.
+*   **快速流转（MF，Moving fast）**：即使在[增量版本](kotlin-evolution.html#feature-releases-and-incremental-releases)之间也不要期待任何兼容性，任何功能都可以在没有警告的情况下添加、删除或者更改。
 
-*   **Additions in Incremental Releases (AIR)**: things can be added in an incremental release, removals and changes of behavior should be avoided and announced in a previous incremental release if necessary.
+*   **有功能添加的增量版本（AIR，Additions in Incremental Releases）**：可以在增量版本中添加内容，应避免删除与更改行为，而如果必须要删改的话，应在之前的增量版本中预告。
 
-*   **Stable Incremental Releases (SIR)**: incremental releases are fully compatible, only optimizations and bug fixes happen. Any changes can be made in a [feature release](kotlin-evolution.html#feature-releases-and-incremental-releases).
+*   **稳定增量版本（SIR，Stable Incremental Releases）**：增量版本完全兼容，只会有优化与 bug 修复。可以在[特性版本](kotlin-evolution.html#feature-releases-and-incremental-releases)中进行任何更改。
 
 <a name="fully-stable"></a>
-*   **Fully Stable (FS)**: incremental releases are fully compatible, feature releases are backwards compatible.
+*   **完全稳定（FS，Fully Stable）**：增量版本完全兼容，特性版本兼容旧版。
 
-Source and binary compatibility may have different modes for the same component, e.g. the source language can reach full stability before the binary format stabilizes, or vice versa.
+对于相同的组件，源代码兼容性与二进制兼容性可以有不同的模式，例如，在二进制格式稳定之前，源代码语言可以达到完全稳定，反之亦然。
 
-The provisions of the [Kotlin evolution policy](kotlin-evolution.html) fully apply only to components that have reached Full Stability (FS). From that point on incompatible changes have to be approved by the Language Committee.
+[Kotlin 演进制度](kotlin-evolution.html)的条款只适用于已经达到完全稳定（FS）的组件。从那一刻起，不兼容的变更必须得到语言委员会的批注。
 
-|**Component**|**Status Entered at version**|**Mode for Sources**|**Mode for Binaries**|
+|**组件**|**进入该状态的版本**|**源代码兼容模式**|**二进制兼容模式**|
 | --- | --- | --- | --- |
 Kotlin/JVM|1.0|FS|FS|
-kotlin-stdlib (JVM)|1.0|FS|FS
-KDoc syntax|1.0|FS|N/A
-Coroutines|1.3|FS|FS
-kotlin-reflect (JVM)|1.0|SIR|SIR
+kotlin-stdlib（JVM）|1.0|FS|FS
+KDoc 语法|1.0|FS|N/A
+协程|1.3|FS|FS
+kotlin-reflect（JVM）|1.0|SIR|SIR
 Kotlin/JS|1.1|AIR|MF
 Kotlin/Native|1.3|AIR|MF
-Kotlin Scripts (*.kts)|1.2|AIR|MF
+Kotlin 脚本（*.kts）|1.2|AIR|MF
 dokka|0.1|MF|N/A
-Kotlin Scripting APIs|1.2|MF|MF
-Compiler Plugin API|1.0|MF|MF
-Serialization|1.3|MF|MF
-Multiplatform Projects|1.2|MF|MF
-Inline classes|1.3|MF|MF
-Unsigned arithmetics|1.3|MF|MF
-**All other experimental features, by default**|N/A|**MF**|**MF**
+Kotlin 脚本 API|1.2|MF|MF
+编译器插件 API|1.0|MF|MF
+序列化|1.3|MF|MF
+多平台项目|1.2|MF|MF
+内联类|1.3|MF|MF
+无符号算术|1.3|MF|MF
+**默认情况下，所有其他实验性特性**|N/A|**MF**|**MF**
