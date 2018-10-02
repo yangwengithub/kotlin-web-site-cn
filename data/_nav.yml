@@ -235,13 +235,13 @@ reference:
         - url: /docs/reference/compiler-plugins.html
           title: 编译器插件
 
-    - title: Evolution
-      description: Langauge evolution and compatibility
+    - title: 演进
+      description: 语言演进与兼容性
       content:
         - url: /docs/reference/evolution/kotlin-evolution.html
-          title: Kotlin Evolution
+          title: Kotlin 语言演进
         - url: /docs/reference/evolution/components-stability.html
-          title: Stability of different components
+          title: 不同组件的稳定性
 
     - title: 常见问题
       description: 你想到的问题可能会在这里得到解答。
@@ -356,10 +356,10 @@ tutorials:
 foundation:
   content:
       - url: /foundation/kotlin-foundation.html
-        title: Kotlin Foundation
+        title: Kotlin 基金会
       - url: /foundation/language-committee-guidelines.html
-        title: Language Committee Guidelines
+        title: 语言委员会指南
       - url: /foundation/submitting-incompatible-changes.html
-        title: Submitting Incompatible Changes
+        title: 提交不兼容的更改
       - url: /foundation/faq.html
         title: FAQ
