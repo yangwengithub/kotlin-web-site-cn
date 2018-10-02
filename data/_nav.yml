@@ -180,9 +180,7 @@ reference:
         - url: /docs/reference/keyword-reference.html
           title: 关键字与操作符
         - url: /docs/reference/grammar.html
-          title: 语法
-        - url: /docs/reference/compatibility.html
-          title: 兼容性
+          title: Grammar
 
 
     - title: Java 互操作
@@ -236,6 +234,14 @@ reference:
           title: Kotlin 与 OSGi
         - url: /docs/reference/compiler-plugins.html
           title: 编译器插件
+
+    - title: 演进
+      description: 语言演进与兼容性
+      content:
+        - url: /docs/reference/evolution/kotlin-evolution.html
+          title: Kotlin 语言演进
+        - url: /docs/reference/evolution/components-stability.html
+          title: 不同组件的稳定性
 
     - title: 常见问题
       description: 你想到的问题可能会在这里得到解答。
@@ -346,3 +352,14 @@ tutorials:
           title: 通过 EduTools 插件学习 Kotlin
         - url: /docs/tutorials/edu-tools-educator.html
           title: 通过 EduTools 插件讲授 Kotlin
+
+foundation:
+  content:
+      - url: /foundation/kotlin-foundation.html
+        title: Kotlin 基金会
+      - url: /foundation/language-committee-guidelines.html
+        title: 语言委员会指南
+      - url: /foundation/submitting-incompatible-changes.html
+        title: 提交不兼容的更改
+      - url: /foundation/faq.html
+        title: FAQ
