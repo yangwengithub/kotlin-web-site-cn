@@ -46,7 +46,7 @@ Kotlin 可用于任何类型的开发，无论是服务器端、客户端 Web �
 
 ### 我可以用 Kotlin 进行 Android 开发吗？
 
-可以。Kotlin 已作为 Android 平台的一等语言而支持。已经有数百种应用程序在使用 Kotlin 
+可以。Kotlin 已作为 Android 平台的一等语言而支持。已经有数百种应用程序在使用 Kotlin
 用于 Android 开发，比如 Basecamp、Pinterest 等等。更多信息请查看 [Android 开发资源](android-overview.html)。
 
 ### 我可以用 Kotlin 进行服务器端开发吗？
@@ -112,7 +112,7 @@ Kotlin 主要由 JetBrains 的一个工程师团队开发（目前团队规模�
 ### 在哪里可以了解关于 Kotlin 更多？
 
 最好的起始地方好是[本网站](https://www.kotlincn.net)（原文是[英文官网](https://kotlinlang.org)）。从那里你可以下载编译器、
-[在线尝试](https://try.kotlinlang.org)以及访问资源、[参考文档](index.html)<!--
+[在线尝试](https://play.kotlinlang.org)以及访问资源、[参考文档](index.html)<!--
 -->和[教程](/docs/tutorials/index.html)。
 
 ### 有没有关于 Kotlin 的书？

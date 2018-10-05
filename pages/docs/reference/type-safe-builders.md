@@ -56,7 +56,7 @@ fun result(args: Array<String>) =
 </div>
 
 这是完全合法的 Kotlin 代码。
-你可以[在这里](http://try.kotlinlang.org/#/Examples/Longer examples/HTML Builder/HTML Builder.kt)在线运行上文代码（修改它并在浏览器中运行）。
+你可以[在这里](https://play.kotlinlang.org/byExample/09_Kotlin_JS/06_HtmlBuilder)在线运行上文代码（修改它并在浏览器中运行）。
 
 ## 实现原理
 

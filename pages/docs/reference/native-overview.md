@@ -5,47 +5,95 @@ category: "Introduction"
 title: "Kotlin/Native"
 ---
 
-# Kotlin/Native
+# **Kotlin/Native for Native**
 
-[Kotlin/Native](https://github.com/JetBrains/kotlin-native/) 是一种将 Kotlin 编译为没有任何虚拟机的原生二进制文件的技术。
-它包含基于 LLVM 的 Kotlin 编译器后端以及 Kotlin 运行时库的原生实现<!--
--->。Kotlin/Native 主要为允许在<!--
--->不希望或不可能使用虚拟机的平台（如 iOS、嵌入式领域等）编译、
-或者开发人员需要生成不需要额外运行时的合理大小的独立程序而设计的。
+![Compiler Diagram]({{ url_for('asset', path='images/landing/native/native_overview.png')}})
 
-Kotlin/Native 完全支持与原生代码的互操作。对于平台库，相应<!--
--->互操作库已可以开箱即用。对于其他库，我们提供了一个<!--
--->由 C 语言头文件[生成互操作库的工具](https://github.com/JetBrains/kotlin-native/blob/master/INTEROP.md)<!--
--->，完全支持所有 C 语言功能。
-在 macOS 与 iOS 上，还支持与 Objective-C 代码互操作。
+Kotlin/Native is a technology for compiling Kotlin code to native binaries, which can run without a virtual machine.
+It is an [LLVM](https://llvm.org/) based backend for the Kotlin compiler and native implementation of the Kotlin standard
+library
 
-Kotlin/Native 目前还在开发中；可以试用其预览版。
-Kotlin/Native 的 IDE 支持已作为 [CLion](https://www.jetbrains.com/clion/) 及 [AppCode](https://www.jetbrains.com/objc/) 的插件提供，都需要通过 IDE 首选项中的 *Plugins | Install JetBrains plugin...* 来安装插件。
+## Why Kotlin/Native?
 
-### 目标平台
+Kotlin/Native is primarily designed to allow compilation for platforms where *virtual machines* are not
+desirable or possible, for example, embedded devices or iOS.
+It solves the situations when a developer needs to produce a
+self-contained program that does not require an additional runtime or virtual machine.
 
-Kotlin/Native 目前支持以下平台：
+## Target Platforms
 
-   * Windows（目前只支持 x86_64）
-   * Linux（x86_64、 arm32、 MIPS、 MIPS little endian）
-   * MacOS（x86_64）
-   * iOS（arm32 与 arm64）
-   * Android（arm32 与 arm64）
-   * WebAssembly（只支持 wasm32)
+Kotlin/Native supports the following platforms:
+   * iOS (arm32, arm64, emulator x86_64)
+   * MacOS (x86_64)
+   * Android (arm32, arm64)
+   * Windows (mingw x86_64)
+   * Linux (x86_64, arm32, MIPS, MIPS little endian)
+   * WebAssembly (wasm32)
 
-### 示例项目
+## Interoperability
 
-我们已经构建了一些示例项目来展示 Kotlin/Native 的可能性：
+Kotlin/Native supports two-way interoperability with the Native world.
+On the one hand, the compiler creates:
+- an executable for many [platforms](#target-platforms)
+- a static library or [dynamic](/docs/tutorials/native/dynamic-libraries.html) library with C headers for C/C++ projects
+- an [Apple framework](/docs/tutorials/native/apple-framework.html) for Swift and Objective-C projects
 
- * [Kotlin/Native GitHub 版本库](https://github.com/JetBrains/kotlin-native/tree/master/samples)包含一些示例项目；
- * [KotlinConf Spinner 应用](https://github.com/jetbrains/kotlinconf-spinner)是一个简单的跨平台<!--
-   -->移动端多人游戏，完全使用 Kotlin/Native 构建，由以下组件组成：
-     - 后端，使用 SQLite 来做数据存储并暴露一个 REST/JSON API；
-     - iOS 与 Android 移动客户端，使用 OpenGL；
-     - 一个基于 WebAssembly 的浏览器前端用于查看游戏分数。
- * [KotlinConf 应用](https://github.com/JetBrains/kotlinconf-app/tree/master/ios)是一个具有<!--
-   -->基于 UIKit 的 UI 的 iOS 应用程序，展示了 Kotlin/Native 与 Objective-C 互操作的便利性。
+On the other hand, Kotlin/Native supports interoperability to use existing libraries
+directly from Kotlin/Native:
+- static or dynamic [C Libraries](/docs/reference/native/c_interop.html)
+- C, [Swift, and Objective-C](/docs/reference/native/objc_interop.html) frameworks
 
-       
+It is easy to include a compiled Kotlin code into
+existing projects written in C, C++, Swift, Objective-C, and other languages.
+It is also easy to use existing native code,
+static or dynamic [C libraries](/docs/reference/native/c_interop.html),
+Swift/Objective-C [frameworks](/docs/reference/native/objc_interop.html),
+graphical engines, and anything else directly from Kotlin/Native.
 
+Kotlin/Native [libraries](/docs/reference/native/platform_libs.html) help to share Kotlin
+code between projects.
+POSIX, gzip, OpenGL, Metal, Foundation, and many other popular libraries and Apple frameworks
+are pre-imported and included as Kotlin/Native libraries into the compiler package
+
+## Sharing Code between Platforms
+
+[Multiplatform projects](/docs/reference/multiplatform.html) are supported between different Kotlin and
+Kotlin/Native targets.
+This is the way to share common Kotlin code between many platforms, including Android, iOS, server-side, JVM, client-side,
+JavaScript, CSS, and native.
+
+[Multiplatform libraries](/docs/reference/multiplatform.html#multiplatform-libraries)
+provide the necessary APIs for the common Kotlin code and help to develop
+shared parts of a project in Kotlin code once and share it with all of the target platforms.
+
+## How to Start
+
+<div style="display: flex; align-items: center; margin-bottom: 20px">
+    <img src="{{ url_for('asset', path='images/landing/native/book.png') }}" height="38p" width="55" style="margin-right: 10px;">
+    <b>Tutorials and Documentation</b>
+</div>
+
+New to Kotlin? Take a look at the [Getting Started](/docs/reference/basic-syntax.html) page.
+
+Suggested documentation pages:
+- [C interop](/docs/reference/native/c_interop.html)
+- [Swift/Objective-C interop](/docs/reference/native/objc_interop.html)
+
+Recommended tutorials:
+- [A basic Kotlin/Native application](/docs/tutorials/native/basic-kotlin-native-app.html)
+- [Multiplatform Project: iOS and Android](/docs/tutorials/native/mpp-ios-android.html)
+- [Types mapping between C and Kotlin/Native](/docs/tutorials/native/mapping-primitive-data-types-from-c.html)
+- [Kotlin/Native as a Dynamic Library](/docs/tutorials/native/dynamic-libraries.html)
+- [Kotlin/Native as a Apple Framework](/docs/tutorials/native/apple-framework.html)
+
+<div style="display: flex; align-items: center; margin-bottom: 10px;">
+    <img src="{{ url_for('asset', path='images/landing/native/try.png') }}" height="38p" width="55" style="margin-right: 10px;">
+    <b>Example Projects</b>
+</div>
+
+- [Kotlin/Native sources and examples](https://github.com/JetBrains/kotlin-native/tree/master/samples)
+- [KotlinConf app](https://github.com/JetBrains/kotlinconf-app/tree/master/ios)
+- [KotlinConf Spinner app](https://github.com/jetbrains/kotlinconf-spinner)
+
+Even more examples are on [GitHub](https://github.com/JetBrains/kotlin-examples)
 

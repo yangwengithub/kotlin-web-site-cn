@@ -13,6 +13,7 @@ title: "控制流：if、when、for、while"
 因此就不需要三元运算符（条件 ? 然后 : 否则），因为普通的 *if*{: .keyword } 就能胜任这个角色。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 // 传统用法
 var max = a 
@@ -29,11 +30,13 @@ if (a > b) {
 // 作为表达式
 val max = if (a > b) a else b
 ```
+
 </div>
 
 *if*{: .keyword }的分支可以是代码块，最后的表达式作为该块的值：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 val max = if (a > b) {
     print("Choose a")
@@ -43,6 +46,7 @@ val max = if (a > b) {
     b
 }
 ```
+
 </div>
 
 如果你使用 *if*{: .keyword } 作为表达式而不是语句（例如：返回它的值或者<!--
@@ -55,6 +59,7 @@ val max = if (a > b) {
 *when*{: .keyword } 取代了类 C 语言的 switch 操作符。其最简单的形式如下：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 when (x) {
     1 -> print("x == 1")
@@ -64,6 +69,7 @@ when (x) {
     }
 }
 ```
+
 </div>
 
 *when*{: .keyword } 将它的参数与所有的分支条件顺序比较，直到某个分支满足条件。
@@ -79,28 +85,33 @@ when (x) {
 如果很多分支需要用相同的方式处理，则可以把多个分支条件放在一起，用逗号分隔：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 when (x) {
     0, 1 -> print("x == 0 or x == 1")
     else -> print("otherwise")
 }
 ```
+
 </div>
 
 我们可以用任意表达式（而不只是常量）作为分支条件
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 when (x) {
     parseInt(s) -> print("s encodes x")
     else -> print("s does not encode x")
 }
 ```
+
 </div>
 
 我们也可以检测一个值在（*in*{: .keyword }）或者不在（*!in*{: .keyword }）一个[区间](ranges.html)或者集合中：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 when (x) {
     in 1..10 -> print("x is in the range")
@@ -109,6 +120,7 @@ when (x) {
     else -> print("none of the above")
 }
 ```
+
 </div>
 
 另一种可能性是检测一个值是（*is*{: .keyword }）或者不是（*!is*{: .keyword }）一个特定类型的值。注意：
@@ -116,18 +128,21 @@ when (x) {
 -->任何额外的检测。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun hasPrefix(x: Any) = when(x) {
     is String -> x.startsWith("prefix")
     else -> false
 }
 ```
+
 </div>
 
 *when*{: .keyword } 也可以用来取代 *if*{: .keyword }-*else*{: .keyword } *if*{: .keyword }链。
 如果不提供参数，所有的分支条件都是简单的布尔表达式，而当一个分支的条件为真时则执行该分支：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 when {
     x.isOdd() -> print("x is odd")
@@ -135,7 +150,24 @@ when {
     else -> print("x is funny")
 }
 ```
+
 </div>
+
+Since Kotlin 1.3, it is possible to capture *when*{: .keyword} subject in a variable using following syntax:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+``` kotlin
+fun Request.getBody() =
+        when (val response = executeRequest()) {
+            is Success -> response.body
+            is HttpError -> throw HttpException(response.status)
+        }
+```
+
+</div>
+
+Scope of variable, introduced in *when*{: .keyword} subject, is restricted to *when*{: .keyword} body.
 
 参见 [*when*{: .keyword } 语法](grammar.html#when)。
 
@@ -146,19 +178,23 @@ when {
 -->于像 C# 这样的语言中的 `foreach` 循环。语法如下：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 for (item in collection) print(item)
 ```
+
 </div>
 
 循环体可以是一个代码块。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 for (item: Int in ints) {
     // ……
 }
 ```
+
 </div>
 
 如上所述，*for*{: .keyword } 可以循环遍历任何提供了迭代器的对象。即：
@@ -172,6 +208,7 @@ for (item: Int in ints) {
 如需在数字区间上迭代，请使用[区间表达式](ranges.html):
 
 <div class="sample" markdown="1" theme="idea">
+
 ``` kotlin
 fun main(args: Array<String>) {
 //sampleStart
@@ -184,6 +221,7 @@ for (i in 6 downTo 0 step 2) {
 //sampleEnd
 }
 ```
+
 </div>
 
 对区间或者数组的 `for` 循环会被编译为并不创建迭代器的基于索引的循环。
@@ -191,6 +229,7 @@ for (i in 6 downTo 0 step 2) {
 如果你想要通过索引遍历一个数组或者一个 list，你可以这么做：
 
 <div class="sample" markdown="1" theme="idea">
+
 ``` kotlin
 fun main(args: Array<String>) {
 val array = arrayOf("a", "b", "c")
@@ -201,11 +240,13 @@ for (i in array.indices) {
 //sampleEnd
 }
 ```
+
 </div>
 
 或者你可以用库函数 `withIndex`：
 
 <div class="sample" markdown="1" theme="idea">
+
 ``` kotlin
 fun main(args: Array<String>) {
 val array = arrayOf("a", "b", "c")
@@ -216,6 +257,7 @@ for ((index, value) in array.withIndex()) {
 //sampleEnd
 }
 ```
+
 </div>
 
 参见[*for*{: .keyword } 语法](grammar.html#for)。
@@ -225,6 +267,7 @@ for ((index, value) in array.withIndex()) {
 *while*{: .keyword } 与 *do*{: .keyword }..*while*{: .keyword } 照常使用
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 while (x > 0) {
     x--
@@ -234,6 +277,7 @@ do {
   val y = retrieveData()
 } while (y != null) // y 在此处可见
 ```
+
 </div>
 
 参见[*while*{: .keyword } 语法](grammar.html#while).

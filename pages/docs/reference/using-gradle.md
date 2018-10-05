@@ -15,6 +15,7 @@ title: "使用 Gradle"
 要使用的 Kotlin 版本通常定义为 `kotlin_version` 属性：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` groovy
 buildscript {
     ext.kotlin_version = '{{ site.data.releases.latest.version }}'
@@ -31,6 +32,11 @@ buildscript {
 </div>
 
 当通过 [Gradle 插件 DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block) 与 [Gradle Kotlin DSL](https://github.com/gradle/kotlin-dsl) 使用 Kotlin Gradle 插件 1.1.1 及以上版本时，这不是必需的。
+
+## Building Kotlin Multiplatform Projects
+
+Using the `kotlin-multiplatform` plugin for building [multiplatform projects](multiplatform.html) is described in
+[Building Multiplatform Projects with Gradle](building-mpp-with-gradle.html).
 
 ## 针对 JVM
 
@@ -251,10 +257,10 @@ Kotlin 支持 Gradle 中可选的增量编译。
 
 请注意，第一次构建不会是增量的。
 
-## 协程支持
+## Coroutines support
 
-[协程](coroutines.html)支持是 Kotlin 1.2 中的一个实验性的特性，所以当你在项目中使用协程时，Kotlin 编译器会报告一个警告。
-如果要关闭该警告，可以将以下块添加到你的 `build.gradle` 文件中：
+[Coroutines](coroutines.html) support is an experimental feature in Kotlin 1.2, so the Kotlin compiler reports a warning when you use coroutines in your project.
+To turn off the warning, add the following block to your `build.gradle` file:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` groovy
@@ -266,22 +272,22 @@ kotlin {
 ```
 </div>
 
-或者，对于 Gradle Kotlin DSL：
+Or, with Gradle Kotlin DSL:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 import org.jetbrains.kotlin.gradle.dsl.Coroutines
-// ……
+// ...
 
 kotlin.experimental.coroutines = Coroutines.ENABLE
 ```
 </div>
 
-## 模块名称
+## Module names
 
-构建生成的 Kotlin 模块会按照该项目的 `archivesBaseName` 属性命名。 如果一个项目具有宽泛的名称如 `lib` 或者 `jvm`——这在子项目中很常见，与该模块相关的 Kotlin 输出文件（`*.kotlin_module`）可能会与来自第三方的同名模块发生冲突。 当项目打包成单一归档（例如 APK）时这会出问题。
+The Kotlin modules that the build produces are named accordingly to the `archivesBaseName` property of the project. If a project has a broad name like `lib` or `jvm`, which is common for subprojects, the Kotlin output files related to the module (`*.kotlin_module`) might clash with those from third-party modules with the same name. This causes problems when a project is packaged into a single archive (e.g. APK).
 
-为了避免这种情况，请考虑手动设置唯一的 `archivesBaseName`：
+To avoid this, consider setting a unique `archivesBaseName` manually:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` groovy
@@ -289,7 +295,7 @@ archivesBaseName = 'myExampleProject_lib'
 ```
 </div>
 
-对于 Gradle Kotlin DSL，要这样：
+With Gradle Kotlin DSL, it is:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
