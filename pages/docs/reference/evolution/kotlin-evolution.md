@@ -2,51 +2,51 @@
 type: doc
 layout: reference
 category: "Compatibility"
-title: "Kotlin Evolution"
+title: "Kotlin 演进"
 ---
 
 
-# Kotlin Evolution
+# Kotlin 演进
 
 
-## Principles of Pragmatic Evolution
+## 实用主义演进原则
 
 
-                        Language design is cast in stone,
-                        but this stone is reasonably soft,
-                        and with some effort we can reshape it later.
+                        语言的设计是石头铸造的（译注：原文为“cast in stone”，意为“最终定论，板上钉钉”，此处双关），
+                        但这块石头相当柔软，
+                        经过一番努力，我们可以后期重塑它。
                         
-                        Kotlin Design Team
+                        Kotlin 设计团队
 
-Kotlin is designed to be a pragmatic tool for programmers. When it comes to language evolution, its pragmatic nature is captured by the following principles:
-
-
-
-*   Keep the language modern over the years.
-*   Stay in the constant feedback loop with the users.
-*   Make updating to new versions comfortable for the users.
-
-As this is key to understanding how Kotlin is moving forward, let's expand on these principles.
-
-**Keeping the Language Modern**. We acknowledge that systems accumulate legacy over time. What had once been cutting-edge technology can be hopelessly outdated today. We have to evolve the language to keep it relevant to the needs of the users and up-to-date with their expectations. This includes not only adding new features, but also phasing out old ones that are no longer recommended for production use and have altogether become legacy.
-
-**Comfortable Updates**. Incompatible changes, such as removing things from a language, may lead to painful migration from one version to the next if carried out without proper care. We will always announce such changes well in advance, mark things as deprecated and provide automated migration tools _before the change happens_. By the time the language is changed we want most of the code in the world to be already updated and thus have no issues migrating to the new version.
-
-**Feedback Loop**. Going through deprecation cycles requires significant effort, so we want to minimize the number of incompatible changes we'll be making in the future. Apart from using our best judgement, we believe that trying things out in real life is the best way to validate a design. Before casting things in stone we want them battle-tested. This is why we use every opportunity to make early versions of our designs available in production versions of the language, but with _experimental_ status. Experimental features are not stable, they can be changed at any time, and the users that opt into using them do so explicitly to indicate that they are ready to deal with the future migration issues. These users provide invaluable feedback that we gather to iterate on the design and make it rock-solid.
-
-
-## Incompatible Changes
-
-If, upon updating from one version to another, some code that used to work doesn't work any more, it is an _incompatible change_ in the language (sometimes referred to as "breaking change"). There can be debates as to what "doesn't work any more" means precisely in some cases, but it definitely includes the following:
+Kotlin 旨在成为程序员的实用工具。在语言演进方面，它的实用主义本质遵循以下原则：
 
 
 
-*   Code that compiled and ran fine is now rejected with an error (at compile or link time). This includes removing language constructs and adding new restrictions.
-*   Code that executed normally is now throwing an exception.
+*   一直保持语言的现代性。
+*   与用户保持持续的反馈循环。
+*   使版本更新对用户来说是舒适的。
+
+由于这是理解 Kotlin 如何向前发展的关键，我们来展开来看这些原则。
+
+**保持语言现代性**。我们承认系统随着时间的推移积累了很多遗留问题。曾经是尖端技术的东西如今可能已经无可救药地过时了。我们必须改进语言，使其与用户需求保持一致、与用户期望保持同步。这不仅包括添加新特性，还包括逐步淘汰不再推荐用于生产的旧特性，并且完全成为历史特性。
+
+**舒适的更新**。如果没有适度谨慎地进行不兼容的更改（例如从语言中删除内容）可能会导致从一个版本到下一个版本的痛苦迁移过程。我们会始终提前公布这类更改，将相应内容标记为已弃用并 _在更改发生之前_ 提供自动化的迁移工具。当语言发生更改之时，我们希望世界上绝大多数代码都已经更新，这样迁移到新版本就没有问题了。
+
+**反馈循环**。 通过弃用周期需要付出很大的努力，因此我们希望最大限度地减少将来不兼容更改的数量。除了使用我们的最佳判断之外，我们相信在现实生活中试用是验证设计的最佳方法。在最终定论之前，我们希望已经实战测试过。这就是为什么我们利用每个机会在语言的生产版本中提供我们早期版设计，只是带有_实验性_ 状态。实验性特性并不稳定，可以随时更改，选择使用它们的用户明确表示已准备好了应对未来的迁移问题。这些用户提供了宝贵的反馈，而我们收集这些反馈来迭代设计并使其坚如磐石。
+
+
+## 不兼容的变更
+
+如果从一个版本更新到另一个版本时，一些以前工作的代码不再工作，那么它是语言中的 _不兼容的变更_ （有时称为“破坏性变更”）。在一些场景中“不再工作”的确切含义可能会有争议，但是它肯定包含以下内容：
+
+
+
+*   之前编译运行正常的代码现在（编译或链接）失败并报错。这包括删除语言结构以及添加新的限制。
+*   之前正常执行的代码现在抛异常了。
 
 The less obvious cases that belong to the "grey area" include handling corner cases differently, throwing an exception of a different type than before, changing behavior observable only through reflection, changes in undocumented/undefined behavior, renaming binary artifacts, etc. Sometimes such changes are very important and affect migration experience dramatically, sometimes they are insignificant.
 
-Some examples of what definitely isn't an incompatible change include
+绝对不是不兼容的变更的一些示例包括
 
 
 
