@@ -58,17 +58,17 @@ reference:
       description: Kotlin 的概述
       content:
         - url: /docs/reference/server-overview.html
-          title: Kotlin 用于服务器端
+          title: Kotlin 用于服务器端开发
         - url: /docs/reference/android-overview.html
-          title: Kotlin 用于 Android
+          title: Kotlin 用于 Android 开发
         - url: /docs/reference/js-overview.html
-          title: Kotlin 用于 JavaScript
+          title: Kotlin 用于 JavaScript 开发
         - url: /docs/reference/native-overview.html
-          title: Kotlin for Native
+          title: Kotlin 用于原生开发
         - url: /docs/reference/coroutines-overview.html
-          title: Coroutines
+          title: 协程
         - url: /docs/reference/multiplatform.html
-          title: Multiplatform
+          title: 多平台
         - url: /docs/reference/whatsnew11.html
           title: 1.1 的新特性
         - url: /docs/reference/whatsnew12.html
