@@ -51,7 +51,7 @@ AWS Labs 提供了一个[示例项目](https://github.com/awslabs/serverless-pho
 
 ## Kotlin 用于服务器端的用户
 
-[Corda](https://www.corda.net/2017/01/10/kotlin/) 是一个开源的分布式分类帐平台，由各大银行提供支持
+[Corda](https://www.corda.net/) 是一个开源的分布式分类帐平台，由各大银行提供支持
 ，完全由 Kotlin 构建。
 
 [JetBrains 账户](https://account.jetbrains.com/)，负责 JetBrains 整个许可证销售和验证<!--
