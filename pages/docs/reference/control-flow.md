@@ -155,7 +155,7 @@ when {
 
 Since Kotlin 1.3, it is possible to capture *when*{: .keyword} subject in a variable using following syntax:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ``` kotlin
 fun Request.getBody() =
@@ -165,7 +165,7 @@ fun Request.getBody() =
         }
 ```
 
-</div>
+
 
 Scope of variable, introduced in *when*{: .keyword} subject, is restricted to *when*{: .keyword} body.
 

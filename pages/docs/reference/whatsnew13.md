@@ -24,7 +24,7 @@ In 1.3, we've completely reworked the model of multiplatform projects in order t
 
 The Kotlin compiler does extensive static analysis to provide warnings and reduce boilerplate. One of the most notable features is smartcasts — with the ability to perform a cast automatically based on the performed type checks:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 fun foo(s: String?) {
@@ -32,11 +32,11 @@ fun foo(s: String?) {
 }
 ```
 
-</div>
+
 
 However, as soon as these checks are extracted in a separate function, all the smartcasts immediately disappear:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 fun String?.isNotNull(): Boolean = this != null
@@ -46,7 +46,7 @@ fun foo(s: String?) {
 }
 ```
 
-</div>
+
 
 To improve the behavior in such cases, Kotlin 1.3 introduces experimental mechanism called *contracts*.
 
@@ -54,7 +54,7 @@ To improve the behavior in such cases, Kotlin 1.3 introduces experimental mechan
 
 * Improving smartcasts analysis by declaring the relation between a function's call outcome and the passed arguments values:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 fun require(condition: Boolean) {
@@ -71,11 +71,11 @@ fun foo(s: String?) {
 }
 ```
 
-</div>
+
 
 * Improving the variable initialization analysis in the presence of high-order functions:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 fun synchronize(lock: Any?, block: () -> Unit) {
@@ -95,13 +95,13 @@ fun foo() {
 }
 ```
 
-</div>
+
 
 ### Contracts in stdlib
 
 `stdlib` already makes use of contracts, which leads to improvements in the analyses described above.  This part of contracts is **stable**, meaning that you can benefit from the improved analysis right now without any additional opt-ins:
 
-<div class="sample" data-min-compiler-version="1.3" markdown="1" theme="idea">
+
 
 ```kotlin
 //sampleStart
@@ -117,7 +117,7 @@ fun main() {
 }
 ```
 
-</div>
+
 
 ### Custom Contracts
 
@@ -125,7 +125,7 @@ It is possible to declare contracts for your own functions, but this feature is 
 
 Custom contracts are introduced by the call to `contract` stdlib function, which provides DSL scope:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 fun String?.isNullOrEmpty(): Boolean {
@@ -136,7 +136,7 @@ fun String?.isNullOrEmpty(): Boolean {
 }
 ```
 
-</div>
+
 
 See the details on the syntax as well as the compatibility notice in the [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/kotlin-contracts.md)
 
@@ -144,7 +144,7 @@ See the details on the syntax as well as the compatibility notice in the [KEEP](
 
 In Kotlin 1.3, it is now possible to capture the `when` subject into variable:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 fun Request.getBody() =
@@ -154,7 +154,7 @@ fun Request.getBody() =
         }
 ```
 
-</div>
+
 
 While it was already possible to extract this variable just before `when` , `val` in `when` has its scope properly restricted to the body of `when`, and so preventing namespace pollution. See the full documentation on `when` [here](control-flow.html#when-expression)
 
@@ -164,7 +164,7 @@ With Kotlin 1.3, it is possible to mark members of a `companion` object of inter
 
 For example, the following Kotlin code:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 interface Foo {
@@ -180,11 +180,11 @@ interface Foo {
 }
 ```
 
-</div>
+
 
 It is equivalent to this Java code:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```java
 interface Foo {
@@ -195,13 +195,13 @@ interface Foo {
 }
 ```
 
-</div>
+
 
 ## Nested declarations in annotation classes
 
 In Kotlin 1.3 it is possible for annotations to have nested classes, interfaces, objects, and companions:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 annotation class Foo {
@@ -216,7 +216,7 @@ annotation class Foo {
 }
 ```
 
-</div>
+
 
 ## Parameterless `main`
 
@@ -224,7 +224,7 @@ By convention, the entry point of a Kotlin program is a function with a signatur
 
 Kotlin 1.3 introduced a simpler form of `main` which takes no parameters. Now “Hello, World” in Kotlin is 19 characters shorter!
 
-<div class="sample" data-min-compiler-version="1.3" markdown="1" theme="idea">
+
 
 ```kotlin
 fun main() {
@@ -232,7 +232,7 @@ fun main() {
 }
 ```
 
-</div>
+
 
 ## Functions with big arity
 
@@ -240,7 +240,7 @@ In Kotlin, functional types are represented as generic classes taking a differen
 
 Kotlin 1.3 relaxes this limitation and adds support for functions with bigger arity:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 fun trueEnterpriseComesToKotlin(block: (Any, Any, ... /* 42 more */, Any) -> Any) {
@@ -248,7 +248,7 @@ fun trueEnterpriseComesToKotlin(block: (Any, Any, ... /* 42 more */, Any) -> Any
 }
 ```
 
-</div>
+
 
 ## Progressive mode
 
@@ -272,17 +272,17 @@ We expect that the progressive mode will be a nice choice for any actively maint
 
 Kotlin 1.3 introduces a new kind of declaration — `inline class`. Inline classes can be viewed as a restricted version of the usual classes, in particular, inline classes must have exactly one property:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 inline class Name(val s: String)
 ```
 
-</div>
+
 
 The Kotlin compiler will use this restriction to aggressively optimize runtime representation of inline classes and substitute their instances with the value of the underlying property where possible removing constructor calls, GC pressure, and enabling other optimizations:
 
-<div class="sample" data-min-compiler-version="1.3" markdown="1" theme="idea">
+
 
 ```kotlin
 inline class Name(val s: String)
@@ -296,7 +296,7 @@ fun main() {
 //sampleEnd
 ```
 
-</div>
+
 
 See [reference](inline-classes.html) for inline classes for details 
 
@@ -314,7 +314,7 @@ Kotlin 1.3 introduces unsigned integer types:
 
 Most of the functionality of signed types are supported for unsigned counterparts too:
 
-<div class="sample" data-min-compiler-version="1.3" markdown="1" theme="idea">
+
 
 ```kotlin
 fun main() {
@@ -340,7 +340,7 @@ println("x: $x, y: $y, z: $z, range: $range")
 }
 ```
 
-</div>
+
 
 See [reference](basic-types.html#unsigned-integers) for details.
 
@@ -354,7 +354,7 @@ Kotlin targets a wide range of the Java versions, including Java 6 and Java 7, w
 
 This could be an issue for Java-interoperability, so Kotlin 1.3 introduces the `@JvmDefault` annotation. Methods, annotated with this annotation will be generated as `default` methods for JVM:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 interface Foo {
@@ -364,7 +364,7 @@ interface Foo {
 }
 ```
 
-</div>
+
 
 > Warning! Annotating your API with `@JvmDefault` has serious implications on binary compatibility. Make sure to carefully read the [reference page](/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html) before using `@JvmDefault` in production
 {:.note}
@@ -375,7 +375,7 @@ interface Foo {
 
 Prior to Kotlin 1.3, there was no uniform way to generate random numbers on all platforms — we had to resort to platform specific solutions, like `java.util.Random` on JVM. This release fixes this issue by introducing the class `kotlin.random.Random`, which is available on all platforms:
 
-<div class="sample" data-min-compiler-version="1.3" markdown="1" theme="idea">
+
 
 ```kotlin
 import kotlin.random.Random
@@ -388,7 +388,7 @@ fun main() {
 }
 ```
 
-</div>
+
 
 ## isNullOrEmpty/orEmpty extensions
 
@@ -399,7 +399,7 @@ Kotlin 1.3 provides similar extensions on collections, maps, and arrays of objec
 
 The `array.copyInto(targetArray, targetOffset, startIndex, endIndex)` functions for the existing array types, including the unsigned arrays, make it easier to implement array-based containers in pure Kotlin.
 
-<div class="sample" data-min-compiler-version="1.3" markdown="1" theme="idea">
+
 
 ```kotlin
 fun main() {
@@ -414,13 +414,13 @@ fun main() {
 }
 ```
 
-</div>
+
 
 ## associateWith
 
 It is quite a common situation to have a list of keys and want to build a map by associating each of these keys with some value. It was possible to do it before with the `associate { it to getValue(it) }` function, but now we’re introducing a more efficient and easy to explore alternative: `keys.associateWith { getValue(it) }`
 
-<div class="sample" data-min-compiler-version="1.3" markdown="1" theme="idea">
+
 
 ```kotlin
 fun main() {
@@ -432,13 +432,13 @@ fun main() {
 }
 ```
 
-</div>
+
 
 ## ifEmpty and ifBlank functions
 
 Collections, maps, object arrays, char sequences, and sequences now have an `ifEmpty` function, which allows specifying a fallback value that will be used instead of the receiver if it is empty:
 
-<div class="sample" data-min-compiler-version="1.3" markdown="1" theme="idea">
+
 
 ```kotlin
 fun main() {
@@ -456,11 +456,11 @@ fun main() {
 }
 ```
 
-</div>
+
 
 Char sequences and strings in addition have an `ifBlank` extension that does the same thing as `ifEmpty`, but checks for a string being all whitespace instead of empty.
 
-<div class="sample" data-min-compiler-version="1.3" markdown="1" theme="idea">
+
 
 ```kotlin
 fun main() {
@@ -472,7 +472,7 @@ fun main() {
 }
 ```
 
-</div>
+
 
 ## Sealed classes in reflection
 

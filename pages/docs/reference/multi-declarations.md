@@ -18,7 +18,7 @@ val (name, age) = person
 这种语法称为 _解构声明_ 。一个解构声明同时创建多个变量。
 我们已经声明了两个新变量： `name` 和 `age`，并且可以独立使用它们：
 
- <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 println(name)
 println(age)
@@ -56,7 +56,7 @@ for ((a, b) in collection) { …… }
 让我们假设我们需要从一个函数返回两个东西。例如，一个结果对象和一个某种状态。
 在 Kotlin 中一个简洁的实现方式是声明一个[_数据类_](data-classes.html) 并返回其实例：
 
- <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 data class Result(val result: Int, val status: Status)
 fun function(……): Result {

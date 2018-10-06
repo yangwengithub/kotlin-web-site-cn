@@ -179,7 +179,7 @@ plugins {
 
 添加该插件并指定注解的列表，这些注解一定会导致被标注的类生成无参构造函数。
 
- <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```groovy
 buildscript {
     dependencies {
@@ -336,7 +336,7 @@ fun test(context: TaskContext) {
 
 除了事实上 sam-with-receiver 没有任何内置预设、并且需要指定自己的特殊处理注解列表外，其用法与 all-open 及 no-arg 相同。
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```groovy
 buildscript {
     dependencies {

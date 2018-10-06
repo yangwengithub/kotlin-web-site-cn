@@ -25,7 +25,7 @@ For example, if you choose "Kotlin (Multiplatform Library)", a library project i
 for the JVM, one for JS, and one for the Native platform that you are using. These are configured in the `build.gradle`
 script in the following way:
 
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
 
 ```groovy
 plugins {
@@ -47,14 +47,14 @@ kotlin {
 }
 ```
 
-</div>
+
 
 The three targets are created from the presets that provide some [default configuration](#default-project-layout). 
 There are presets for each of the [supported platforms](#supported-platforms).
 
 The [source sets](#configuring-source-sets) and their [dependencies](#adding-dependencies) are then configured as follows:
 
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
 
 ```groovy
 plugins { /* ... */ }
@@ -93,7 +93,7 @@ kotlin {
 }
 ```
 
-</div>
+
 
 These are the [default source set names](#default-project-layout) for the production and test sources for the targets configured above. The source 
 sets `commonMain` and `commonTest` are included into production and test compilations, respectively, of all targets. 
@@ -107,7 +107,7 @@ The details on project structure and the DSL can be found in the following secti
 To setup a multiplatform project from scratch, first, apply the `kotlin-multiplatform` plugin to the project by adding the following to the
 `build.gradle` file:
 
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
 
 ```groovy
 plugins {
@@ -115,7 +115,7 @@ plugins {
 }
 ```
 
-</div>
+
 
 This creates the `kotlin` extension at the top level. You can then access it in the build script for:
 
@@ -131,7 +131,7 @@ As the platforms are different, targets are built in different ways as well and 
 settings. The Gradle plugin bundles a number of presets for the supported platforms. A preset can be used to 
 create a target by just providing a name as follows:
 
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
 
 ``` groovy
 kotlin {
@@ -144,13 +144,13 @@ kotlin {
     }
 }
 ``` 
-</div>
+
 
 Building a target requires compiling Kotlin once or multiple times. Each Kotlin compilation of a target may serve a 
 different purpose (e.g. production code, tests) and incorporate different [source sets](#configuring-source-sets). The compilations
 of a target may be acccessed in the DSL, for example, to get the task names, dependency files and compilation outputs:
 
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
 
 ```groovy
 kotlin {
@@ -164,7 +164,7 @@ kotlin {
 }
 ```
 
-</div>
+
 
 All of the targets may share some of the sources and may have platform-specific sources in their compilations as well. 
 See [Configuring source sets](#configuring-source-sets) for details.
@@ -200,7 +200,7 @@ If you apply a target preset, some source sets are created and configured by def
 
 The source sets are configured within a `sourceSets { ... }` block of the `kotlin { ... }` extension:
 
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
 
 ```groovy
 kotlin { 
@@ -212,7 +212,7 @@ kotlin {
     }
 }
 ``` 
-</div>
+
 
 > Note: creating a source set does not link it to any target. Some source sets are [predefined](#default-project-layout) 
 and thus compiled by default. However, custom source sets always need to be explicitly directed to the compilations. 
@@ -225,7 +225,7 @@ common code shared between the platforms or platform-specific code.
 
 To add Kotlin source directories and resources to a source set, use its `kotlin` and `resources` `SourceDirectorySet`s:
 
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
 
 ```groovy
 kotlin { 
@@ -238,7 +238,7 @@ kotlin {
 }
 ``` 
 
-</div>
+
 
 ### Connecting source sets
 
@@ -260,7 +260,7 @@ Circular source set dependencies are prohibited.
 
 The source sets DSL can be used to define these connections between the source sets:
 
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
 
 ```groovy
  kotlin { 
@@ -274,12 +274,12 @@ The source sets DSL can be used to define these connections between the source s
  }
 ```
 
-</div>
+
 
 Custom source sets created in addition to the [default ones](#default-project-layout) should be explicitly included into the dependencies hierarchy to be able to use declarations from other source sets and, most importantly, to take part in compilations. 
 Most often, they need a `dependsOn commonMain` or `dependsOn commonTest` statement, and some of the default platform-specific source sets should depend on the custom ones, directly or indirectly:
 
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
 
 ```groovy
 kotlin { 
@@ -305,7 +305,7 @@ kotlin {
 }
 ```
 
-</div>
+
 
 ### Adding Dependencies
 
@@ -327,7 +327,7 @@ are supported:
 
 They are specified per source set as follows: 
 
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
 
 ```groovy
 kotlin {
@@ -346,7 +346,7 @@ kotlin {
 }
 ```
 
-</div>
+
 
 Note that for the IDE to correctly analyze the dependencies of the common sources, the common source sets need to have corresponding dependencies on the Kotlin 
 metadata packages in addition to the platform-specific artifact dependencies of the platform-specific source sets. Usually, an artifact with a suffix 
@@ -361,7 +361,7 @@ on another multiplatform project is likewise resolved to an appropriate target, 
 An alternative way to specify the dependencies is to use the Gradle built-in DSL at the top level with the configuration names following the 
 pattern `<sourceSetName><DependencyKind>`:
 
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
 
 ```groovy
 dependencies {
@@ -370,13 +370,13 @@ dependencies {
 }
 ```
 
-</div>
+
 
 ### Language settings
 
 The language settings for a source set can be specified as follows:
 
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
 
 ```groovy
 kotlin {
@@ -393,7 +393,7 @@ kotlin {
 }
 ```
 
-</div>
+
 
 Language settings of a source set affect how the sources are analyzed in the IDE. Due to the current limitations, in a Gradle build, only the language settings 
 of the compilation's default source set are used.
@@ -452,7 +452,7 @@ Kotlin/Native targets do not require additional test dependencies, and the `kotl
 
 A library built from a multiplatform project may be published to a Maven repository with the Gradle `maven-publish` plugin, which can be applied as follows:
 
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
 
 ```groovy
 plugins {
@@ -461,7 +461,7 @@ plugins {
 }
 ```
 
-</div>
+
 
 Once this plugin is applied, default publications are created for each of the targets that can be built on the current host. This requires `group` and 
 `version` to be set in the project. The default artifact IDs follow the pattern `<projectName>-<targetNameToLowerCase>`, for example `sample-lib-nodejs` for a target named `nodeJs` in a project 
@@ -474,7 +474,7 @@ of the target.
 
 The Maven coordinates can be altered and additional artifact files may be added to the publication within the `targets { ... }` block:
 
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
 
 ```groovy
 kotlin {
@@ -490,7 +490,7 @@ kotlin {
 }
 ```
 
-</div>
+
 
 ### Experimental metadata publishing mode
 
@@ -510,7 +510,7 @@ If a library is published with Gradle metadata enabled and a consumer enables th
  for each of the compilations. Consider a `sample-lib` library built for the JVM and JS and published with experimental Gradle metadata.
  Then it is enough for the consumers to add `enableFeaturePreview('GRADLE_METADATA)` and specify a single dependency:
  
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
 
 ```groovy
 kotlin {
@@ -529,7 +529,7 @@ kotlin {
 }
 ```
 
-</div>    
+
 
 ### Disambiguating Targets
 
@@ -551,7 +551,7 @@ However, dependencies on such a multiplatform library may be ambiguous and may t
      Add the following symmetrically, to both the library and the consumer projects. The consumer may only need to mark 
      a single target with the attribute:
      
-     <div class="sample" markdown="1" theme="idea" mode='groovy'>
+
      
      ```groovy
      def testFrameworkAttribte = Attribute.of('com.example.testFramework', String)
@@ -572,7 +572,7 @@ However, dependencies on such a multiplatform library may be ambiguous and may t
      }
      ```
      
-     </div>
+
 
 ## Using Kotlin/Native Targets
 
@@ -600,7 +600,7 @@ To link a binary in addition to the Kotlin/Native library, add one or more of th
 
 This can be done as follows:
 
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
 
 ```groovy
 kotlin {
@@ -612,7 +612,7 @@ kotlin {
 }
 ```
 
-</div>
+
 
 This creates additional link tasks for the debug and release binaries. The tasks can be accessed after project evaluation from the compilation as, for example, 
 `getLinkTask('executable', 'release')` or `getLinkTaskName('static', 'debug')`. To get the binary file, use `getBinary`, for example, 
@@ -626,7 +626,7 @@ there is a DSL allowing one to configure this feature for a specific compilation
 A compilation can interact with several native libraries. Interoperability with each of them can be configured in
 the `cinterops` block of the compilation:
 
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
 
 ```groovy
 // In the scope of a Kotlin/Native target's compilation:
@@ -658,16 +658,16 @@ cinterops {
     anotherInterop { /* ... */ }
 }
 ```
-</div>
+
 
 Often it's necessary to specify target-specific linker options for a binary which uses a native library. It can be
 done using the `linkerOpts` DSL method of a Kotlin/Native compilation:
 
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
 
 ```groovy
 compilations.main {
     linkerOpts '-L/lib/search/path -L/another/search/path -lmylib'
 }
 ```
-</div>
+

@@ -14,17 +14,17 @@ Sometimes it is necessary for business logic to create a wrapper around some typ
 
 To solve such kind of issues, Kotlin introduces special kind of classes called `inline classes`, which are introduced by placing modifier `inline` before the name of the class:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 inline class Password(val value: String)
 ```  
 
-</div>
+
 
 Inline class must have a single property initialized in the primary constructor. At runtime, instances of the inline class will be represented using this single property (see details about runtime representation [below](#representation)):
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 // No actual instantiation of class 'Password' happens
@@ -32,7 +32,7 @@ Inline class must have a single property initialized in the primary constructor.
 val securePassword = Password("Don't try this in production") 
 ```
 
-</div>
+
 
 This is the primary property of inline classes, which inspired name "inline": data of the class is "inlined" into its usages (similar to how content of [inline functions](inline-functions.html) is inlined to call sites)
 
@@ -40,7 +40,7 @@ This is the primary property of inline classes, which inspired name "inline": da
 
 Inline classes support some functionality of usual classes. In particular, they are allowed to declare properties and functions:
 
-<div class="sample" markdown="1" theme="idea">
+
 
 ```kotlin
 inline class Name(val s: String) {
@@ -59,7 +59,7 @@ fun main() {
 }
 ```
 
-</div>
+
 
 However, there are some restrictions for inline classes members:
 * inline class cannot have *init*{: .keyword } block
@@ -72,7 +72,7 @@ However, there are some restrictions for inline classes members:
 
 Inline classes are allowed to inherit interfaces:
 
-<div class="sample" markdown="1" theme="idea">
+
 
 ```kotlin
 interface Printable {
@@ -89,7 +89,7 @@ fun main() {
 }
 ```  
 
-</div>
+
 
 It is forbidden for inline classes to participate in classes hierarchy. This means inline classes cannot extend other classes and must be *final*{: .keyword }.
 
@@ -99,7 +99,7 @@ In generated code, the Kotlin compiler keeps a *wrapper* for each inline class. 
 
 The Kotlin compiler will prefer using underlying types instead of wrappers to produce the most performant and optimized code. However, sometimes it is necessary to keep wrappers around. The rule of thumb is, inline classes are boxed whenever they are used as another type.
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 interface I
@@ -127,7 +127,7 @@ fun main() {
 }
 ```  
 
-</div>
+
 
 Because inline classes may be represented both as the underlying value and as a wrapper, [referential equality](equality.html#referential-equality) is pointless for them and is therefore prohibited.
 
@@ -135,7 +135,7 @@ Because inline classes may be represented both as the underlying value and as a 
 
 That inline classes are compiled to their underlying type may lead to various obscure errors, for example, unexpected platform signature clashes:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 inline class UInt(val x: Int)
@@ -146,7 +146,7 @@ fun compute(x: Int) { }
 fun compute(x: UInt) { }
 ```
 
-</div>
+
 
 To mitigate such issues, functions which use inline classes are *mangled* by adding some stable hashcode to the function name. Therefore, `fun compute(x: UInt)` will be in fact represented as `public final void compute-<hashcode>(int x)`, which therefore solves the clash problem.
 
@@ -161,7 +161,7 @@ However, the crucial difference is that type aliases are *assignment-compatible*
 
 In other words, inline classes introduce a truly _new_ type, contrary to type aliases which only introduce an alternative name (alias) for an existing type:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 typealias NameTypeAlias = String
@@ -185,7 +185,7 @@ fun main() {
 }
 ```
 
-</div>
+
 
 
 ## Experimental status of inline classes
@@ -195,7 +195,7 @@ The design of inline classes is experimental, meaning that this feature is *movi
 To remove the warning, you have to opt into the usage of experimental features by passing the argument `-XXLanguage:+InlineClasses` to the `kotlinc`.
 
 ### Enabling inline classes in Gradle:
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
 
 ``` groovy
 
@@ -204,13 +204,13 @@ compileKotlin {
 }
 ```
 
-</div>
+
 
 See [Compiler options in Gradle](using-gradle.html#compiler-options) for details
 
 ### Enabling inline classes in Maven
 
-<div class="sample" markdown="1" theme="idea" mode='xml'>
+
 
 ```xml
 <configuration>
@@ -220,7 +220,7 @@ See [Compiler options in Gradle](using-gradle.html#compiler-options) for details
 </configuration>
 ```
 
-</div>
+
 
 See [Compiler options in Maven](using-maven.html#specifying-compiler-options) for details
 

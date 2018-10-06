@@ -7,7 +7,7 @@ title: "Kotlin/Native"
 
 # **Kotlin/Native for Native**
 
-![Compiler Diagram]({{ url_for('asset', path='images/landing/native/native_overview.png')}})
+![Compiler Diagram](/assets/images/landing/native/native_overview.png)
 
 Kotlin/Native is a technology for compiling Kotlin code to native binaries, which can run without a virtual machine.
 It is an [LLVM](https://llvm.org/) based backend for the Kotlin compiler and native implementation of the Kotlin standard
@@ -69,7 +69,7 @@ shared parts of a project in Kotlin code once and share it with all of the targe
 ## How to Start
 
 <div style="display: flex; align-items: center; margin-bottom: 20px">
-    <img src="{{ url_for('asset', path='images/landing/native/book.png') }}" height="38p" width="55" style="margin-right: 10px;">
+    <img src="/assets/images/landing/native/book.png" height="38p" width="55" style="margin-right: 10px;">
     <b>Tutorials and Documentation</b>
 </div>
 
@@ -87,7 +87,7 @@ Recommended tutorials:
 - [Kotlin/Native as a Apple Framework](/docs/tutorials/native/apple-framework.html)
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
-    <img src="{{ url_for('asset', path='images/landing/native/try.png') }}" height="38p" width="55" style="margin-right: 10px;">
+    <img src="/assets/images/landing/native/try.png" height="38p" width="55" style="margin-right: 10px;">
     <b>Example Projects</b>
 </div>
 

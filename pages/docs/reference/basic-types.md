@@ -336,7 +336,7 @@ Also, [ranges and progressions](ranges.html) supported for `UInt` and `ULong` by
 To make unsigned integers easier to use, Kotlin provides an ability to tag an integer literal with a suffix indicating a specific unsigned type (similarly to Float/Long):
 * suffixes `u` and `U` tag literal as unsigned. Exact type will be determined based on the expected type. If no expected type is provided, `UInt` or `ULong` will be chosen based on the size of literal
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ``` kotlin
 val b: UByte = 1u  // UByte, expected type provided
@@ -347,17 +347,17 @@ val a1 = 42u // UInt: no expected type provided, constant fits in UInt
 val a2 = 0xFFFF_FFFF_FFFFu // ULong: no expected type provided, constant doesn't fit in UInt
 ```
 
-</div>
+
 
 * suffixes `uL` and `UL` explicitly tag literal as unsigned long.
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ``` kotlin
 val a = 1UL // ULong, even though no expected type provided and constant fits into UInt
 ```
 
-</div>
+
 
 ### Experimental status of unsigned integers
 

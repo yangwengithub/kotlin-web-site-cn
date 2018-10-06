@@ -134,7 +134,7 @@ typealias ClickHandler = (Button, ClickEvent) -> Unit
    
 * 使用实现函数类型接口的自定义类的实例：
 
-    <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
     ```kotlin
     class IntTransformer: (Int) -> Int {
         override operator fun invoke(x: Int): Int = TODO()
@@ -142,7 +142,7 @@ typealias ClickHandler = (Button, ClickEvent) -> Unit
     
     val intFunction: (Int) -> Int = IntTransformer() 
     ```
-    </div>
+
 
 如果有足够信息，编译器可以推断变量的函数类型：
 

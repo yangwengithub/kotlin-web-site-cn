@@ -27,7 +27,7 @@ That's why we have the following migration plan instead:
 
 The most notable change is in the continuation indentation policy. There's a nice idea to use the double indent for showing that a multi-line expression hasn't ended on the previous line. This is a very simple and general rule, but several Kotlin constructions look a bit awkward when they are formatted this way. In Kotlin Coding Conventions it's recommended to use a single indent in cases where the long continuation indent has been forced before
 
-![Code formatting difference]({{ url_for('tutorial_img', filename='codestyle-migration/code-formatting-diff.png') }})
+![Code formatting difference](/assets/images/tutorials/codestyle-migration/code-formatting-diff.png)
 
 In practice, quite a bit of code is affected, so this can be considered a major code style update.
 
@@ -60,7 +60,7 @@ Add **kotlin.code.style**=**official** property to the **gradle.properties** fil
 ### In Maven
 Add **kotlin.code.style official** property to root **pom.xml** project file. 
 
-<div class="sample" markdown="1" theme="idea" mode='xml'>
+
 
 ```
 <properties>
@@ -68,13 +68,13 @@ Add **kotlin.code.style official** property to root **pom.xml** project file.
 </properties>
 ```
 
-</div>
+
 
 _Warning:_ having the **kotlin.code.style** option set may modify the code style scheme during a project import and may change the code style settings.
 
 After updating your code style settings, activate “Reformat Code” in the project view on the desired scope.
 
-![Reformat code dialog]({{ url_for('tutorial_img', filename='codestyle-migration/reformat-code.png') }})
+![Reformat code dialog](/assets/images/tutorials/codestyle-migration/reformat-code.png)
 
 
 For a gradual migration, it's possible to enable the *"File is not formatted according to project settings"* inspection. It will highlight the places that should be reformatted. After enabling the *"Apply only to modified files"* option, inspection will show formatting problems only in modified files. Such files are probably going to be committed soon anyway.

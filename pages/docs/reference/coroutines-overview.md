@@ -19,7 +19,7 @@ As a bonus, coroutines not only open the doors to asynchronous programming, but 
 ## How to Start
 
 <div style="display: flex; align-items: center; margin-bottom: 20px">
-    <img src="{{ url_for('asset', path='images/landing/native/book.png') }}" height="38p" width="55" style="margin-right: 10px;">
+    <img src="/assets/images/landing/native/book.png" height="38p" width="55" style="margin-right: 10px;">
     <b>Tutorials and Documentation</b>
 </div>
 
@@ -37,7 +37,7 @@ Recommended tutorials:
 - [Asynchronous Programming](../tutorials/coroutines/async-programming.html)
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
-    <img src="{{ url_for('asset', path='images/landing/native/try.png') }}" height="38p" width="55" style="margin-right: 10px;">
+    <img src="/assets/images/landing/native/try.png" height="38p" width="55" style="margin-right: 10px;">
     <b>Example Projects</b>
 </div>
 

@@ -118,7 +118,7 @@ external fun newC()
 * 除了 `kotlin.Long` 的 Kotlin 数字类型映射到 JavaScript Number。
 * `kotlin.Char` 映射到 JavaScript Number 来表示字符代码。
 * Kotlin 在运行时无法区分数字类型（`kotlin.Long` 除外），即以下代码能够工作：
-  <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
   ``` kotlin
   fun f() {
       val x: Int = 23
@@ -126,7 +126,7 @@ external fun newC()
       println(y as Float)
   }
   ```
-  </div>
+
 
 * Kotlin 保留了 `kotlin.Int`、 `kotlin.Byte`、 `kotlin.Short`、 `kotlin.Char` 和 `kotlin.Long` 的溢出语义。
 * JavaScript 中没有 64 位整数，所以 `kotlin.Long` 没有映射到任何 JavaScript 对象，

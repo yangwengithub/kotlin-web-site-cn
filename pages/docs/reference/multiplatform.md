@@ -28,28 +28,25 @@ through the [`expect`/`actual` mechanism](platform-specific-declarations.html) p
 Here's an example of code sharing and interaction between the common and platform logic in a minimalistic
 logging framework. The common code would look like this:
 
-<div style="display:flex">
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+
 
 ```kotlin
+// compiled for all platforms
 enum class LogLevel {
     DEBUG, WARN, ERROR
 }
 
+// expected platform-specific API
 internal expect fun writeLogMessage(message: String, logLevel: LogLevel)
 
+// expected API can be used in the common code
 fun logDebug(message: String) = writeLogMessage(message, LogLevel.DEBUG)
 fun logWarn(message: String) = writeLogMessage(message, LogLevel.WARN)
 fun logError(message: String) = writeLogMessage(message, LogLevel.ERROR)
 ```
 
-</div>
-<div style="margin-left: 5px;white-space: pre-line; line-height: 18px; font-family: Tahoma;">
-    <div style="display:flex">├<i style="margin-left:5px">compiled for all platforms</i></div>
-    <div style="display:flex">├<i style="margin-left:5px">expected platform-specific API</i></div>
-    <div style="display:flex">├<i style="margin-left:5px">expected API can be used in the common code</i></div>
-</div>
-</div>
+
 
 It expects the targets to provide platform-specific implementations for `writeLogMessage`, and the common code can
 now use this declaration without any consideration of how it is implemented.
@@ -115,7 +112,7 @@ The [Ktor framework](https://ktor.io/) is suitable for building asynchronous ser
 ## How to start
 
 <div style="display: flex; align-items: center; margin-bottom: 20px">
-    <img src="{{ url_for('asset', path='images/landing/native/book.png') }}" height="38p" width="55" style="margin-right: 10px;">
+    <img src="/assets/images/landing/native/book.png" height="38p" width="55" style="margin-right: 10px;">
     <b>Tutorials and Documentation</b>
 </div>
 
@@ -130,7 +127,7 @@ Recommended tutorials:
 - [Multiplatform Project: iOS and Android](/docs/tutorials/native/mpp-ios-android.html)
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
-    <img src="{{ url_for('asset', path='images/landing/native/try.png') }}" height="38p" width="55" style="margin-right: 10px;">
+    <img src="/assets/images/landing/native/try.png" height="38p" width="55" style="margin-right: 10px;">
     <b>Example Projects</b>
 </div>
 

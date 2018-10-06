@@ -18,7 +18,7 @@ title: "可见性修饰符"
 
 函数、属性和类、对象和接口可以在顶层声明，即直接在包内：
 
-  <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 // 文件名：example.kt
 package foo
