@@ -20,7 +20,7 @@ Kotlin 非常适合开发服务器端应用程序，允许编写简明且表现�
    -->用 Kotlin 编写新代码，同时系统中较旧部分继续用 Java。
  * **工具**：除了很棒的 IDE 支持之外，Kotlin 还为 IntelliJ IDEA Ultimate 的插件提供了框架特定的工具（例如
    Spring）。
- * **学习曲线**：对于 Java 开发人员，Kotlin 入门很容易。包含在 Kotlin 插件中的自动 Java 到 Kotlin 的转换器有助于迈出第一步。[Kotlin 心印](/docs/tutorials/koans.html) 通过一系列互动练习提供了语言主要功能的指南。
+ * **学习曲线**：对于 Java 开发人员，Kotlin 入门很容易。包含在 Kotlin 插件中的自动 Java 到 Kotlin 的转换器有助于迈出第一步。[Kotlin 心印](https://www.kotlincn.net/docs/tutorials/koans.html) 通过一系列互动练习提供了语言主要功能的指南。
 
 ## 使用 Kotlin 进行服务器端开发的框架
 
@@ -60,8 +60,8 @@ AWS Labs 提供了一个[示例项目](https://github.com/awslabs/serverless-pho
 
 ## 下一步
 
-* [使用 Http Servlet 创建 Web 应用程序](/docs/tutorials/httpservlets.html)及<!--
--->[使用 Spring Boot 创建 RESTful Web 服务](/docs/tutorials/spring-boot-restful.html)教程<!--
+* [使用 Http Servlet 创建 Web 应用程序](https://www.kotlincn.net/docs/tutorials/httpservlets.html)及<!--
+-->[使用 Spring Boot 创建 RESTful Web 服务](https://www.kotlincn.net/docs/tutorials/spring-boot-restful.html)教程<!--
 -->将向你展示如何在 Kotlin 中构建和运行非常小的 Web 应用程序。
 * 关于更深入的介绍，请查看本站的[参考文档](index.html)及
-[Kotlin 心印](/docs/tutorials/koans.html)。
+[Kotlin 心印](https://www.kotlincn.net/docs/tutorials/koans.html)。

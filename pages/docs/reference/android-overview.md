@@ -22,7 +22,7 @@ Android 平台而不会引入任何新的限制：
   * **编译时长**：Kotlin 支持高效的增量编译，所以对于<!--
     -->清理构建会有额外的开销，[增量构建通常与 Java 一样快或者更快](https://medium.com/keepsafe-engineering/kotlin-vs-java-compilation-speed-e6c174b39b5d)。
   * **学习曲线**：对于 Java 开发人员，Kotlin 入门很容易。包含在 Kotlin 插件中的自动 Java 到 Kotlin 的转换器<!--
-    -->有助于迈出第一步。[Kotlin 心印](/docs/tutorials/koans.html) 通过一系列互动练习提供了语言主要功能的指南。
+    -->有助于迈出第一步。[Kotlin 心印](https://www.kotlincn.net/docs/tutorials/koans.html) 通过一系列互动练习提供了语言主要功能的指南。
 
 ## Kotlin 用于 Android 的案例学习
 
@@ -38,7 +38,7 @@ Kotlin 已被一些大公司成功采用，其中一些公司分享了他们的�
 
 Kotlin 团队为 Android 开发提供了一套超越标准语言功能的工具：
 
- * [Kotlin Android 扩展](/docs/tutorials/android-plugin.html)是一个编译器扩展，
+ * [Kotlin Android 扩展](https://www.kotlincn.net/docs/tutorials/android-plugin.html)是一个编译器扩展，
 可以让你摆脱代码中的 `findViewById()` 调用，并将其替换为合成的编译器生成的<!--
 -->属性。
  * [Anko](http://github.com/kotlin/anko) 是一个提供围绕 Android API 的 Kotlin 友好的包装器的库
@@ -47,10 +47,10 @@ Kotlin 团队为 Android 开发提供了一套超越标准语言功能的工具�
 ## 下一步
 
  * 下载并安装 [Android Studio 3.0](https://developer.android.com/studio/index.html)，其中包含开箱即用的 Kotlin 支持。
- * 按照 [Android 与 Kotlin 入门](/docs/tutorials/kotlin-android.html)教程<!--
+ * 按照 [Android 与 Kotlin 入门](https://www.kotlincn.net/docs/tutorials/kotlin-android.html)教程<!--
 -->创建你的第一个 Kotlin 应用程序。
  * 关于更深入的介绍，请查看本站的[参考文档](index.html)及
-[Kotlin 心印](/docs/tutorials/koans.html)。
+[Kotlin 心印](https://www.kotlincn.net/docs/tutorials/koans.html)。
  * 另一个很好的资源是 [Kotlin for Android Developers](https://leanpub.com/kotlin-for-android-developers)，
 这本书会引导你逐步完成在 Kotlin 中创建真正的 Android 应用程序的过程。
  * 检出 Google 的 [Kotlin 写的示例项目](https://developer.android.com/samples/index.html?language=kotlin)。

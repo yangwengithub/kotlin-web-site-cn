@@ -327,7 +327,7 @@ tutorials:
     - title: 多平台项目
       content:
         - url: /docs/tutorials/native/mpp-ios-android.html
-          title: "iOS 与 Android"
+          title: iOS 与 Android
         - url: /docs/tutorials/multiplatform-library.html
           title: 多平台库
 
@@ -350,15 +350,15 @@ tutorials:
         - url: /docs/tutorials/native/targeting-multiple-platforms.html
           title: 针对多平台
         - url: /docs/tutorials/native/dynamic-libraries.html
-          title: Kotlin/Native as a Dynamic Library
+          title: Kotlin/Native 开发动态库
         - url: /docs/tutorials/native/apple-framework.html
-          title: Kotlin/Native as an Apple Framework
+          title: Kotlin/Native 开发 Apple 框架
 #        - url: /docs/tutorials/native/kotlin-native-with-clion.html
 #          title: Kotlin/Native 使用 CLion
         - url: /docs/tutorials/native/gradle-for-kotlin-native.html
           title: Gradle 用于 Kotlin/Native
         - url: /docs/tutorials/native/mpp-ios-android.html
-          title: "多平台项目：iOS 与 Android"
+          title: 多平台项目：iOS 与 Android
 
     - title: 协程
       content:

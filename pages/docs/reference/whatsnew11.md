@@ -85,7 +85,7 @@ fun main(args: Array<String>) {
 
 运行上面的代码以查看结果。随意编辑它并再次运行！
 
-更多信息请参见[协程文档](coroutines.html)及[教程](/docs/tutorials/coroutines/coroutines-basic-jvm.html)。
+更多信息请参见[协程文档](coroutines.html)及[教程](https://www.kotlincn.net/docs/tutorials/coroutines/coroutines-basic-jvm.html)。
 
 请注意，协程目前还是一个**实验性的特性**，这意味着 Kotlin 团队不承诺<!--
 -->在最终的 1.1 版本时保持该功能的向后兼容性。

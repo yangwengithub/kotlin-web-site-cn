@@ -99,7 +99,7 @@ Sharing code between mobile platforms is one of the major Kotlin Multiplatform u
 possible to build mobile applications with parts of the code, such as business logic, connectivity,
 and more, shared between Android and iOS.
 
-See: [Multiplatform Project: iOS and Android](/docs/tutorials/native/mpp-ios-android.html)
+See: [Multiplatform Project: iOS and Android](https://www.kotlincn.net/docs/tutorials/native/mpp-ios-android.html)
 
 ### Client — Server
 
@@ -123,8 +123,8 @@ Suggested documentation pages:
 - [Platform-Specific Declarations](platform-specific-declarations.html)
 
 Recommended tutorials:
-- [Multiplatform Kotlin Library](/docs/tutorials/multiplatform-library.html)
-- [Multiplatform Project: iOS and Android](/docs/tutorials/native/mpp-ios-android.html)
+- [Multiplatform Kotlin Library](https://www.kotlincn.net/docs/tutorials/multiplatform-library.html)
+- [Multiplatform Project: iOS and Android](https://www.kotlincn.net/docs/tutorials/native/mpp-ios-android.html)
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
     <img src="/assets/images/landing/native/try.png" height="38p" width="55" style="margin-right: 10px;">
