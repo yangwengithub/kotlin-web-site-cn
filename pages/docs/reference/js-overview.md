@@ -39,9 +39,9 @@ API 访问第三方框架，可以使用 [ts2kt](https://github.com/kotlin/ts2kt
 
 JetBrains 特地为 React 社区开发并维护了几个工具：[React bindings](https://github.com/JetBrains/kotlin-wrappers) 以及 [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app)。后者可以帮你开始使用 Kotlin 构建 React 应用程序而无需构建配置。
 
-Kotlin 兼容 CommonJS、AMD 和 UMD，直截了当[与不同的模块系统交互](/docs/tutorials/javascript/working-with-modules/working-with-modules.html)。
+Kotlin 兼容 CommonJS、AMD 和 UMD，直截了当[与不同的模块系统交互](https://www.kotlincn.net/docs/tutorials/javascript/working-with-modules/working-with-modules.html)。
 
 
 ## Kotlin 转 JavaScript 入门
 
-要了解如何开始使用 JavaScript 平台的 Kotlin，请参考其[教程](/docs/tutorials/javascript/kotlin-to-javascript/kotlin-to-javascript.html)。
+要了解如何开始使用 JavaScript 平台的 Kotlin，请参考其[教程](https://www.kotlincn.net/docs/tutorials/javascript/kotlin-to-javascript/kotlin-to-javascript.html)。

@@ -74,9 +74,9 @@ vert.x 或 JSF。另外还有一些 Kotlin 写的特定框架，例如 [Ktor](ht
 
 ### 哪些 IDE 支持 Kotlin？
 
-所有主要的 Java IDE 都支持 Kotlin，包括 [IntelliJ IDEA](/docs/tutorials/getting-started.html)、
-[Android Studio](/docs/tutorials/kotlin-android.html)、[Eclipse](/docs/tutorials/getting-started-eclipse.html) 和
-[NetBeans](http://plugins.netbeans.org/plugin/68590/kotlin)。另外，有一个[命令行编译器](/docs/tutorials/command-line.html)<!--
+所有主要的 Java IDE 都支持 Kotlin，包括 [IntelliJ IDEA](https://www.kotlincn.net/docs/tutorials/getting-started.html)、
+[Android Studio](https://www.kotlincn.net/docs/tutorials/kotlin-android.html)、[Eclipse](https://www.kotlincn.net/docs/tutorials/getting-started-eclipse.html) 和
+[NetBeans](http://plugins.netbeans.org/plugin/68590/kotlin)。另外，有一个[命令行编译器](https://www.kotlincn.net/docs/tutorials/command-line.html)<!--
 -->可用，为编译和运行应用程序提供了直接的支持。
   
 ### 哪些构建工具支持 Kotlin？
@@ -113,7 +113,7 @@ Kotlin 主要由 JetBrains 的一个工程师团队开发（目前团队规模�
 
 最好的起始地方好是[本网站](https://www.kotlincn.net)（原文是[英文官网](https://kotlinlang.org)）。从那里你可以下载编译器、
 [在线尝试](https://play.kotlinlang.org)以及访问资源、[参考文档](index.html)<!--
--->和[教程](/docs/tutorials/index.html)。
+-->和[教程](https://www.kotlincn.net/docs/tutorials/index.html)。
 
 ### 有没有关于 Kotlin 的书？
 

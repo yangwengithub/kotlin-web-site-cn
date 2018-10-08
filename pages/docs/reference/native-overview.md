@@ -5,95 +5,95 @@ category: "Introduction"
 title: "Kotlin/Native"
 ---
 
-# **Kotlin/Native for Native**
+# **Kotlin/Native 用于原生开发**
 
 ![Compiler Diagram]({{ url_for('asset', path='images/landing/native/native_overview.png')}})
 
-Kotlin/Native is a technology for compiling Kotlin code to native binaries, which can run without a virtual machine.
-It is an [LLVM](https://llvm.org/) based backend for the Kotlin compiler and native implementation of the Kotlin standard
-library
+Kotlin/Native 是一种将 Kotlin 代码编译为无需虚拟机就可运行的原生二进制文件的技术。
+它是一个基于 [LLVM](https://llvm.org/) 的 Kotlin 编译器后端以及 Kotlin 标准库的原生实现<!--
+-->
 
-## Why Kotlin/Native?
+## 为什么选用 Kotlin/Native？
 
-Kotlin/Native is primarily designed to allow compilation for platforms where *virtual machines* are not
-desirable or possible, for example, embedded devices or iOS.
-It solves the situations when a developer needs to produce a
-self-contained program that does not require an additional runtime or virtual machine.
+Kotlin/Native 的主要设计目标是让 Kotlin 可以为不希望或者不可能使用 *虚拟机* 的平台<!--
+-->（例如嵌入式设备或者 iOS）编译。
+它解决了开发人员需要生成<!--
+-->无需额外运行时或虚拟机的自包含程序的情况。
 
-## Target Platforms
+## 目标平台
 
-Kotlin/Native supports the following platforms:
-   * iOS (arm32, arm64, emulator x86_64)
-   * MacOS (x86_64)
-   * Android (arm32, arm64)
-   * Windows (mingw x86_64)
-   * Linux (x86_64, arm32, MIPS, MIPS little endian)
-   * WebAssembly (wasm32)
+Kotlin/Native 支持以下平台：
+   * iOS（arm32、 arm64、 模拟器 x86_64）
+   * MacOS（x86_64）
+   * Android（arm32、arm64）
+   * Windows（mingw x86_64）
+   * Linux（x86_64、 arm32、 MIPS、 MIPS 小端次序）
+   * WebAssembly（wasm32）
 
-## Interoperability
+## 互操作
 
-Kotlin/Native supports two-way interoperability with the Native world.
-On the one hand, the compiler creates:
-- an executable for many [platforms](#target-platforms)
-- a static library or [dynamic](/docs/tutorials/native/dynamic-libraries.html) library with C headers for C/C++ projects
-- an [Apple framework](/docs/tutorials/native/apple-framework.html) for Swift and Objective-C projects
+Kotlin/Native 支持与原生世界的双向互操作。
+一方面，编译器可创建：
+- 用于多个[平台](#目标平台)的可执行文件
+- 用于 C/C++ 项目的静态库或[动态](https://www.kotlincn.net/docs/tutorials/native/dynamic-libraries.html)库以及 C 语言头文件
+- 用于Swift 与 Objective-C 项目的 [Apple 框架](https://www.kotlincn.net/docs/tutorials/native/apple-framework.html)
 
-On the other hand, Kotlin/Native supports interoperability to use existing libraries
-directly from Kotlin/Native:
-- static or dynamic [C Libraries](/docs/reference/native/c_interop.html)
-- C, [Swift, and Objective-C](/docs/reference/native/objc_interop.html) frameworks
+另一方面，Kotlin/Native 支持直接在 Kotlin/Native 中使用现有库<!--
+-->的互操作：
+- 静态或动态 [C 语言库](/docs/reference/native/c_interop.html)
+- C 语言、 [Swift 以及 Objective-C](/docs/reference/native/objc_interop.html) 框架
 
-It is easy to include a compiled Kotlin code into
-existing projects written in C, C++, Swift, Objective-C, and other languages.
-It is also easy to use existing native code,
-static or dynamic [C libraries](/docs/reference/native/c_interop.html),
-Swift/Objective-C [frameworks](/docs/reference/native/objc_interop.html),
-graphical engines, and anything else directly from Kotlin/Native.
+将编译后的 Kotlin 代码包含进<!--
+-->用 C、 C++、 Swift、 Objective-C 以及其他语言编写的现有项目中会很容易。
+直接在 Kotlin/Native 中使用现有原生代码、
+静态或动态 [C 语言库](/docs/reference/native/c_interop.html)、
+Swift/Objective-C [框架](/docs/reference/native/objc_interop.html)、
+图形引擎以及任何其他原生内容也很容易。
 
-Kotlin/Native [libraries](/docs/reference/native/platform_libs.html) help to share Kotlin
-code between projects.
-POSIX, gzip, OpenGL, Metal, Foundation, and many other popular libraries and Apple frameworks
-are pre-imported and included as Kotlin/Native libraries into the compiler package
+Kotlin/Native [库](/docs/reference/native/platform_libs.html)有助于在多个项目之间共享 Kotlin
+代码。
+POSIX、 gzip、 OpenGL、 Metal、 Foundation 以及许多其他流行库与<!--
+-->Apple 框架都已预先导入并作为 Kotlin/Native 库包含在编译器包中
 
-## Sharing Code between Platforms
+## 在多个平台之间共享代码
 
-[Multiplatform projects](/docs/reference/multiplatform.html) are supported between different Kotlin and
-Kotlin/Native targets.
-This is the way to share common Kotlin code between many platforms, including Android, iOS, server-side, JVM, client-side,
-JavaScript, CSS, and native.
+不同目标平台的 Kotlin 与 Kotlin/Native 之间支持[多平台项目](/docs/reference/multiplatform.html)<!--
+-->。
+这是在多个平台之间共享公共 Kotlin 代码的方法，这些平台包括 Android、 iOS、 服务器端、 JVM、 客户端、
+JavaScript、 CSS 以及原生平台。
 
-[Multiplatform libraries](/docs/reference/multiplatform.html#multiplatform-libraries)
-provide the necessary APIs for the common Kotlin code and help to develop
-shared parts of a project in Kotlin code once and share it with all of the target platforms.
+[多平台库](/docs/reference/multiplatform.html#multiplatform-libraries)<!--
+-->为公共 Kotlin 代码提供了必要的 API，并有助于在
+Kotlin 代码中一次性开发项目的共享部分，从而将其与所有目标平台共享。
 
-## How to Start
+## 如何开始
 
 <div style="display: flex; align-items: center; margin-bottom: 20px">
     <img src="{{ url_for('asset', path='images/landing/native/book.png') }}" height="38p" width="55" style="margin-right: 10px;">
-    <b>Tutorials and Documentation</b>
+    <b>教程与文档</b>
 </div>
 
-New to Kotlin? Take a look at the [Getting Started](/docs/reference/basic-syntax.html) page.
+Kotlin 新手？可以看看[入门](/docs/reference/basic-syntax.html)页。
 
-Suggested documentation pages:
-- [C interop](/docs/reference/native/c_interop.html)
-- [Swift/Objective-C interop](/docs/reference/native/objc_interop.html)
+建议的文档页：
+- [C 语言互操作](/docs/reference/native/c_interop.html)
+- [Swift/Objective-C 互操作](/docs/reference/native/objc_interop.html)
 
-Recommended tutorials:
-- [A basic Kotlin/Native application](/docs/tutorials/native/basic-kotlin-native-app.html)
-- [Multiplatform Project: iOS and Android](/docs/tutorials/native/mpp-ios-android.html)
-- [Types mapping between C and Kotlin/Native](/docs/tutorials/native/mapping-primitive-data-types-from-c.html)
-- [Kotlin/Native as a Dynamic Library](/docs/tutorials/native/dynamic-libraries.html)
-- [Kotlin/Native as a Apple Framework](/docs/tutorials/native/apple-framework.html)
+推荐的教程：
+- [基本的 Kotlin/Native 应用程序](https://www.kotlincn.net/docs/tutorials/native/basic-kotlin-native-app.html)
+- [多平台项目：iOS 与 Android](https://www.kotlincn.net/docs/tutorials/native/mpp-ios-android.html)
+- [C 语言 Kotlin/Native 之间的类型映射](https://www.kotlincn.net/docs/tutorials/native/mapping-primitive-data-types-from-c.html)
+- [Kotlin/Native 开发动态库](https://www.kotlincn.net/docs/tutorials/native/dynamic-libraries.html)
+- [Kotlin/Native 开发 Apple 框架](https://www.kotlincn.net/docs/tutorials/native/apple-framework.html)
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
     <img src="{{ url_for('asset', path='images/landing/native/try.png') }}" height="38p" width="55" style="margin-right: 10px;">
-    <b>Example Projects</b>
+    <b>示例项目</b>
 </div>
 
-- [Kotlin/Native sources and examples](https://github.com/JetBrains/kotlin-native/tree/master/samples)
+- [Kotlin/Native 源代码与示例](https://github.com/JetBrains/kotlin-native/tree/master/samples)
 - [KotlinConf app](https://github.com/JetBrains/kotlinconf-app)
 - [KotlinConf Spinner app](https://github.com/jetbrains/kotlinconf-spinner)
 
-Even more examples are on [GitHub](https://github.com/JetBrains/kotlin-examples)
+在 [GitHub](https://github.com/JetBrains/kotlin-examples) 上还有更多示例。
 
