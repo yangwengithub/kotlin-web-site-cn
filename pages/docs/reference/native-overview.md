@@ -11,7 +11,7 @@ title: "Kotlin/Native"
 
 Kotlin/Native 是一种将 Kotlin 代码编译为无需虚拟机就可运行的原生二进制文件的技术。
 它是一个基于 [LLVM](https://llvm.org/) 的 Kotlin 编译器后端以及 Kotlin 标准库的原生实现<!--
--->
+-->。
 
 ## 为什么选用 Kotlin/Native？
 
@@ -53,7 +53,7 @@ Swift/Objective-C [框架](/docs/reference/native/objc_interop.html)、
 Kotlin/Native [库](/docs/reference/native/platform_libs.html)有助于在多个项目之间共享 Kotlin
 代码。
 POSIX、 gzip、 OpenGL、 Metal、 Foundation 以及许多其他流行库与
-Apple 框架都已预先导入并作为 Kotlin/Native 库包含在编译器包中
+Apple 框架都已预先导入并作为 Kotlin/Native 库包含在编译器包中。
 
 ## 在多个平台之间共享代码
 
