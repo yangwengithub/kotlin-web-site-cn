@@ -4,11 +4,7 @@ title: "Reference"
 ---
 
 # **学习 Kotlin**
-<div style="display: inline-flex; border: 1px solid rgb(229, 229, 229); border-radius: 40px;" >
- <div id="material" onmouseover="this.style.backgroundColor='#F0F0F0'" onmouseout="this.style.backgroundColor=''" style="cursor: pointer; padding: 1rem 2rem;border-radius: 40px; border: 1px solid transparent;" >所有资料</div>
- <div id="start" onmouseover="this.style.backgroundColor='#F0F0F0'" onmouseout="this.style.backgroundColor=''" style="cursor: pointer; padding: 1rem 2rem;border-radius: 40px;">入门</div>
- <div id="migrate" onmouseover="this.style.backgroundColor='#F0F0F0'" onmouseout="this.style.backgroundColor=''" style="cursor: pointer; padding: 1rem 2rem;border-radius: 40px;">从 Java 迁移</div>
-</div>
+
 <div style="display:grid; grid-template-columns: 1fr 1fr;">
     <div style="padding: 5px;">
         <h3 style="font-weight: bold">文档</h3>
@@ -89,45 +85,7 @@ title: "Reference"
 
 
 
-<script>
-window.addEventListener('load', function () {
-    function switchDisplay(element, targetClass) {
-        if (!element.classList.contains(targetClass)) {
-            element.style.display = "none";
-        } else {
-            element.style.display = "list-item";
-        }
-    }
 
-    const material = document.getElementById('material');
-    const start = document.getElementById('start');
-    const migrate = document.getElementById('migrate');
-    const selectedBorder = '1px solid #5585B8';
-
-    material.style.border = selectedBorder;
-
-    const elements = Array.from(document.querySelectorAll(".start, .migrate"));
-    material.addEventListener('click', function (event) {
-        event.target.style.border = selectedBorder;
-        [start, migrate].forEach(el => el.style.border = 'none');
-        elements.forEach(el => {
-            el.style.display = "list-item"
-        })
-    });
-
-    start.addEventListener('click', function (event) {
-        event.target.style.border = selectedBorder;
-        [material, migrate].forEach(el => el.style.border = 'none');
-        elements.forEach(el => switchDisplay(el, "start"));
-    });
-
-    migrate.addEventListener('click', function (event) {
-        event.target.style.border = selectedBorder;
-        [start, material].forEach(el => el.style.border = 'none');
-        elements.forEach(el => switchDisplay(el, "migrate"));
-    });
-});
-</script>
 
 ---
 
