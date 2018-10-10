@@ -12,7 +12,7 @@ title: "Reference"
 <div style="display:grid; grid-template-columns: 1fr 1fr;">
     <div style="padding: 5px;">
         <h3 style="font-weight: bold">文档</h3>
-        <p>Kotlin 文档是一个很好的起点，最开始可查看以下链接：</p>
+        <p>Kotlin 文档是一个很好的起点，可查看以下链接来学习：</p>
         <ul>
             <li class="start">   <a style="text-decoration: none;" href="/docs/reference/basic-syntax.html">基础</a> </li>
             <li class="migrate"> <a style="text-decoration: none;" href="/docs/reference/idioms.html">习惯用法</a> </li>
@@ -21,7 +21,7 @@ title: "Reference"
     </div>
      <div style="padding: 5px;">
          <h3 style="font-weight: bold">IDE</h3>
-         <p>很多 IDE 都支持 Kotlin，这有助于编写地道的 Kotlin 代码：</p>
+         <p>很多 IDE 都支持 Kotlin，这些 IDE 有助于编写地道的 Kotlin 代码：</p>
          <ul>
              <li class="start">         <a style="text-decoration: none;" href="https://www.jetbrains.com/help/education/learner-start-guide.html?section=Kotlin%20Koans">Kotlin 教学插件</a> </li>
              <li class="migrate start"> <a style="text-decoration: none;" href="https://www.jetbrains.com/help/idea/converting-a-java-file-to-kotlin-file.html">Java2Kotlin 转换器</a>  </li>
@@ -41,7 +41,7 @@ title: "Reference"
       </div>
       <div style="padding: 5px;">
           <h3 style="font-weight: bold">演练平台</h3>
-          <p>在浏览器中通过实际示例掌握 Kotlin 技能的实践方式</p>
+          <p>实践<b>是</b>在浏览器中通过实际示例掌握 Kotlin 技能的方式：</p>
           <ul>
               <li class="start migrate"> <a style="text-decoration: none;" href="https://play.kotlinlang.org">演练平台</a> </li>
               <li class="migrate"> <a style="text-decoration: none;" href="https://play.kotlinlang.org/byExample">Kotlin 示例</a>  </li>
@@ -50,7 +50,7 @@ title: "Reference"
       </div>
       <div style="padding: 5px;">
           <h3 style="font-weight: bold">书籍</h3>
-          <p><a>这些书</a>很好地覆盖了 Kotlin 的各个方面，可以看这些书来学习：</p>
+          <p><a href="/docs/books.html">这些书</a>很好地覆盖了 Kotlin 的各个方面，可以看这些书来学习：</p>
           <ul>
               <li class="start"> <a style="text-decoration: none;" href="https://www.amazon.com/Kotlin-Programming-Nerd-Ranch-Guide/dp/0135161630">Kotlin Programming: The Big Nerd Ranch Guide</a> </li>
               <li class="migrate"> <a style="text-decoration: none;" href="https://leanpub.com/kotlin-for-android-developers">Kotlin for Android Developers</a> </li>
@@ -60,7 +60,7 @@ title: "Reference"
       </div>
       <div style="padding: 5px;">
           <h3 style="font-weight: bold">在线教程</h3>
-          <p>在线课程对 Kotlin 有很好地覆盖，可在这里查看推荐的课程</p>
+          <p>在线课程对 Kotlin 有很好地覆盖，可在这里查看推荐的课程：</p>
           <ul>
             <li class="start">   <a style="text-decoration: none;" href="http://shop.oreilly.com/product/0636920052982.do">Introduction to Kotlin Programming</a></li>
             <li class="migrate"> <a style="text-decoration: none;" href="http://shop.oreilly.com/product/0636920052999.do">Advanced Kotlin Programming</a></li>
@@ -70,7 +70,7 @@ title: "Reference"
       </div>
       <div style="padding: 5px;">
           <h3 style="font-weight: bold">认证培训</h3>
-          <p>JetBrains 认证是一个旨在与培训提供商合作的计划，用以验证他们现有的 Kotlin 培训计划，
+          <p>“JetBrains 认证”是一个旨在与培训提供商合作的计划，用以验证他们现有的 Kotlin 培训计划，
              同时建立一个值得信赖的全球合作伙伴网络：</p>
           <ul>
               <li class="start migrate"> <a style="text-decoration: none;" href="https://www.jetbrains.com/company/partners/kotlin/">培训合作伙伴</a></li>
@@ -78,7 +78,7 @@ title: "Reference"
       </div>
       <div style="padding: 5px;">
           <h3 style="font-weight: bold">社区资源</h3>
-          <p>查看这些社区资源以获取更多信息</p>
+          <p>查看这些社区资源以获取更多信息：</p>
           <ul>
               <li class="start migrate"> <a style="text-decoration: none;" href="https://kotlin.link">kotlin.link</a></li>
               <li class="start migrate"> <a style="text-decoration: none;" href="https://superkotlin.com/blog/">superkotlin 博客</a></li>
