@@ -14,6 +14,8 @@ related:
 
 1. 使用我们最喜欢的编辑器创建一个名为 *library.kt* 的文件:
 
+   <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
    ``` kotlin
    package org.sample
    
@@ -23,6 +25,8 @@ related:
        this.forEach { if (it % 2 == 1) f(it) }
    }
    ```
+
+   </div>
 
 2. 使用JS编译器编译该库
 
@@ -49,17 +53,21 @@ related:
    前者包含编译后的Javascript代码, 后者包含关于Kotlin代码的一些编译器需要的元信息.
 
    其实, 你也可以把 `sample-library.meta.js` 文件的内容追加到 `sample-library.js`, 得到一个结果文件.
-    
-   你也可以创建一个压缩包, 这个压缩包可以做为库进行分发:  
-   
+
+   你也可以创建一个压缩包, 这个压缩包可以做为库进行分发:
+
+   <div class="sample" markdown="1" theme="idea" mode="shell">
    ```
    $ jar cf sample-library.jar *.js
    ```
-   
+
+   </div>
+
 ### 使用 Kotlin/JavaScript 库.
 
    创建 binom.kt:
-   
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
 import org.sample.factorial
 import org.sample.forOdd
@@ -74,18 +82,28 @@ fun oddFactorial(n: Int): Long {
 }        
 ```
 
-   和库一起编译:
+</div>
 
+   Compile with library:
+
+<div class="sample" markdown="1" theme="idea" mode="shell">
+
+```bash
+$ kotlinc-js -output binom.js -libraries sample-library.meta.js binom.kt
 ```
-   $ kotlinc-js -output binom.js -libraries sample-library.meta.js binom.kt
-```
-   
+
+<div>
+
    `sample-library.js` 和 `sample-library.meta.js` 两个文件都要提供, 因为编译后的 Javascript 文件包含内联的元信息, 编译器需要这些信息
    
    如果库是以包含了 `sample-library.js` 和 `sample-library.meta.js` 文件的压缩包 `sample-library.jar` 提供的, 可以使用下面的命令
-   
+
+<div class="sample" markdown="1" theme="idea" mode="shell">
+
+``bash
+$ kotlinc-js -output binom.js -libraries sample-library.jar binom.kt
 ```
-   $ kotlinc-js -output binom.js -libraries sample-library.jar binom.kt
-```
-  
+
+</div>
+
    

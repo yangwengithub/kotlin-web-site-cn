@@ -119,7 +119,7 @@ Kotlin 主要由 JetBrains 的一个工程师团队开发（目前团队规模�
 
 已经有[一些](/docs/books.html)关于 Kotlin 的书籍。其中包括由 Kotlin 团队成员 Dmitry Jemerov 和 Svetlana Isakova 合著的 [Kotlin in Action](https://www.manning.com/books/kotlin-in-action)、
 针对 Android 开发人员的 [Kotlin for Android Developers](https://leanpub.com/kotlin-for-android-developers)。
-
+
 ### Kotlin 有没有在线课程？
 
 有一些 Kotlin 的课程，包括 Kevin Jones 的 [Pluralsight Kotlin Course](https://www.pluralsight.com/courses/kotlin-getting-started)、
@@ -131,7 +131,7 @@ Hadi Hariri 的 [O’Reilly Course](http://shop.oreilly.com/product/063692005298
 
 有。Kotlin 有一个非常有活力的社区。Kotlin 开发人员常出现在 [Kotlin 论坛](http://discuss.kotlinlang.org)、
 [StackOverflow](http://stackoverflow.com/questions/tagged/kotlin) 上并且更积极地活跃在 [Kotlin Slack](http://slack.kotlinlang.org)
-（截至 2017 年 5 月有近 7000 名成员）上。
+（截至 2018 年 10 月有近 20000 名成员）上。
 
 ### 有没有 Kotlin 活动？
  
@@ -140,7 +140,8 @@ Hadi Hariri 的 [O’Reilly Course](http://shop.oreilly.com/product/063692005298
 
 ### 有没有 Kotlin 大会？
 
-有。第一个官方 [KotlinConf](https://kotlinconf.com) 将于 2017 年 11 月 2-3 日在旧金山举行。
+有。 The official annual [KotlinConf](https://kotlinconf.com/) is hosted by JetBrains.
+It has taken place in San-Francisco in [2017](https://kotlinconf.com/2017/) and in Amsterdam in 2018.
 Kotlin 也会在全球不同地方举行大会。你可以在[网站上找到即将到来的会谈列表](/community/talks.html?time=upcoming)。
 
 ### Kotlin 上社交媒体吗？
