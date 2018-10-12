@@ -140,8 +140,8 @@ Hadi Hariri 的 [O’Reilly Course](http://shop.oreilly.com/product/063692005298
 
 ### 有没有 Kotlin 大会？
 
-有。 The official annual [KotlinConf](https://kotlinconf.com/) is hosted by JetBrains.
-It has taken place in San-Francisco in [2017](https://kotlinconf.com/2017/) and in Amsterdam in 2018.
+有。官方的年度 [KotlinConf](https://kotlinconf.com/) 由 JetBrains 主办。
+分别于 [2017 年](https://kotlinconf.com/2017/) 在旧金山、2018 年在阿姆斯特丹举行。
 Kotlin 也会在全球不同地方举行大会。你可以在[网站上找到即将到来的会谈列表](/community/talks.html?time=upcoming)。
 
 ### Kotlin 上社交媒体吗？
