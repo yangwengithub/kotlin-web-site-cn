@@ -29,7 +29,7 @@ import java.util.*
 
 带有两个 `Int` 参数、返回 `Int` 的函数：
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
 //sampleStart
@@ -38,7 +38,7 @@ fun sum(a: Int, b: Int): Int {
 }
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     print("sum of 3 and 5 is ")
     println(sum(3, 5))
 }
@@ -47,14 +47,14 @@ fun main(args: Array<String>) {
 
 将表达式作为函数体、返回值类型自动推断的函数：
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
 //sampleStart
 fun sum(a: Int, b: Int) = a + b
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     println("sum of 19 and 23 is ${sum(19, 23)}")
 }
 ```
@@ -62,7 +62,7 @@ fun main(args: Array<String>) {
 
 函数返回无意义的值：
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
 //sampleStart
@@ -71,7 +71,7 @@ fun printSum(a: Int, b: Int): Unit {
 }
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     printSum(-1, 8)
 }
 ```
@@ -79,7 +79,7 @@ fun main(args: Array<String>) {
 
 `Unit` 返回类型可以省略：
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
 //sampleStart
@@ -88,7 +88,7 @@ fun printSum(a: Int, b: Int) {
 }
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     printSum(-1, 8)
 }
 ```
@@ -100,10 +100,10 @@ fun main(args: Array<String>) {
 
 一次赋值（只读）的局部变量:
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     val a: Int = 1  // 立即赋值
     val b = 2   // 自动推断出 `Int` 类型
@@ -117,10 +117,10 @@ fun main(args: Array<String>) {
 
 可变变量：
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     var x = 5 // 自动推断出 `Int` 类型
     x += 1
@@ -132,7 +132,7 @@ fun main(args: Array<String>) {
 
 顶层变量：
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 ``` kotlin
 //sampleStart
 val PI = 3.14
@@ -143,7 +143,7 @@ fun incrementX() {
 }
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     println("x = $x; PI = $PI")
     incrementX()
     println("incrementX()")
@@ -172,10 +172,10 @@ fun main(args: Array<String>) {
 
 ## 使用字符串模板
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     var a = 1
     // 模板中的简单名称：
@@ -195,7 +195,7 @@ fun main(args: Array<String>) {
 ## 使用条件表达式
 
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
 //sampleStart
@@ -208,7 +208,7 @@ fun maxOf(a: Int, b: Int): Int {
 }
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     println("max of 0 and 42 is ${maxOf(0, 42)}")
 }
 ```
@@ -217,14 +217,14 @@ fun main(args: Array<String>) {
 
 使用 *if*{: .keyword } 作为表达式:
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
 //sampleStart
 fun maxOf(a: Int, b: Int) = if (a > b) a else b
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     println("max of 0 and 42 is ${maxOf(0, 42)}")
 }
 ```
@@ -249,7 +249,7 @@ fun parseInt(str: String): Int? {
 使用返回可空值的函数:
 
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
 fun parseInt(str: String): Int? {
@@ -273,7 +273,7 @@ fun printProduct(arg1: String, arg2: String) {
 //sampleEnd
 
 
-fun main(args: Array<String>) {
+fun main() {
     printProduct("6", "7")
     printProduct("a", "7")
     printProduct("a", "b")
@@ -284,7 +284,7 @@ fun main(args: Array<String>) {
 或者
 
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
 fun parseInt(str: String): Int? {
@@ -311,7 +311,7 @@ fun printProduct(arg1: String, arg2: String) {
 //sampleEnd
 }
 
-fun main(args: Array<String>) {
+fun main() {
     printProduct("6", "7")
     printProduct("a", "7")
     printProduct("99", "b")
@@ -327,7 +327,7 @@ fun main(args: Array<String>) {
 如果一个不可变的局部变量或属性已经判断出为某类型，那么检测后的分支中可以直接当作该类型使用，无需显式转换：
 
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
 //sampleStart
@@ -343,7 +343,7 @@ fun getStringLength(obj: Any): Int? {
 //sampleEnd
 
 
-fun main(args: Array<String>) {
+fun main() {
     fun printLength(obj: Any) {
         println("'$obj' string length is ${getStringLength(obj) ?: "... err, not a string"} ")
     }
@@ -356,7 +356,7 @@ fun main(args: Array<String>) {
 
 或者
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
 //sampleStart
@@ -369,7 +369,7 @@ fun getStringLength(obj: Any): Int? {
 //sampleEnd
 
 
-fun main(args: Array<String>) {
+fun main() {
     fun printLength(obj: Any) {
         println("'$obj' string length is ${getStringLength(obj) ?: "... err, not a string"} ")
     }
@@ -382,7 +382,7 @@ fun main(args: Array<String>) {
 
 甚至
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
 //sampleStart
@@ -397,7 +397,7 @@ fun getStringLength(obj: Any): Int? {
 //sampleEnd
 
 
-fun main(args: Array<String>) {
+fun main() {
     fun printLength(obj: Any) {
         println("'$obj' string length is ${getStringLength(obj) ?: "... err, is empty or not a string at all"} ")
     }
@@ -412,10 +412,10 @@ fun main(args: Array<String>) {
 
 ## 使用 `for` 循环
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     val items = listOf("apple", "banana", "kiwifruit")
     for (item in items) {
@@ -428,10 +428,10 @@ fun main(args: Array<String>) {
 
 或者
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     val items = listOf("apple", "banana", "kiwifruit")
     for (index in items.indices) {
@@ -447,10 +447,10 @@ fun main(args: Array<String>) {
 
 ## 使用 `while` 循环
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     val items = listOf("apple", "banana", "kiwifruit")
     var index = 0
@@ -468,7 +468,7 @@ fun main(args: Array<String>) {
 
 ## 使用 `when` 表达式
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
 //sampleStart
@@ -482,7 +482,7 @@ fun describe(obj: Any): String =
     }
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     println(describe(1))
     println(describe("Hello"))
     println(describe(1000L))
@@ -499,10 +499,10 @@ fun main(args: Array<String>) {
 
 使用 *in*{: .keyword } 运算符来检测某个数字是否在指定区间内：
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     val x = 10
     val y = 9
@@ -517,10 +517,10 @@ fun main(args: Array<String>) {
 
 检测某个数字是否在指定区间外:
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     val list = listOf("a", "b", "c")
     
@@ -538,10 +538,10 @@ fun main(args: Array<String>) {
 
 区间迭代:
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     for (x in 1..5) {
         print(x)
@@ -553,10 +553,10 @@ fun main(args: Array<String>) {
 
 或数列迭代：
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     for (x in 1..10 step 2) {
         print(x)
@@ -576,10 +576,10 @@ fun main(args: Array<String>) {
 
 对集合进行迭代:
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
     val items = listOf("apple", "banana", "kiwifruit")
 //sampleStart
     for (item in items) {
@@ -593,10 +593,10 @@ fun main(args: Array<String>) {
 
 使用 *in*{: .keyword } 运算符来判断集合内是否包含某实例：
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
     val items = setOf("apple", "banana", "kiwifruit")
 //sampleStart
     when {
@@ -615,7 +615,7 @@ fun main(args: Array<String>) {
 <div class="sample" markdown="1" theme="idea" auto-indent="false" indent="2">
 
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
   val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
   fruits
@@ -632,10 +632,10 @@ fun main(args: Array<String>) {
 
 ## 创建基本类及其实例：
 
-<div class="sample" markdown="1" theme="idea">
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     val rectangle = Rectangle(5.0, 2.0) // 不需要“new”关键字
     val triangle = Triangle(3.0, 4.0, 5.0)
