@@ -34,8 +34,13 @@ class ExternalMount:
         print("External source dir: ", self.source_external_path)
         print("External target dir: ", self.target_external_path)
 
-    def github_view_url(self, file: str) -> str:
-        return self.external_repo + "/blob/" + self.external_branch + "/" + file.lstrip("/")
+    def github_view_url(self, real_path: str) -> str:
+        file = path.relpath(real_path, self.source_checkout_root)
+        return self.external_repo.rstrip('/') + "/blob/" + self.external_branch + "/" + file.lstrip("/")
+
+    def github_edit_url(self, real_path: str) -> str:
+        file = path.relpath(real_path, self.source_checkout_root)
+        return self.external_repo.rstrip('/') + "/edit/" + self.external_branch + "/" + file.lstrip("/")
 
 
 def _rant_if_external_nav_is_not_found(self: ExternalMount):
@@ -78,9 +83,7 @@ class ExternalItem:
         self.target_name = self.ext_fix.sub(".md", self.url.lstrip('/'))
         self.target_item = path.join(module.target_external_path, self.target_name)
         self.target_dir = os.path.dirname(self.target_item)
-        self.github_edit_url = \
-            module.external_repo.rstrip('/') + "/edit/" + module.external_branch + "/" + self.md.lstrip("/")
-
+        self.github_edit_url = module.github_edit_url(self.source_item)
 
     def generate_header(self):
         return "##################################################\n" \
@@ -141,8 +144,8 @@ def _build_url_mappers(external_yml, mount: ExternalMount):
             elif not url.startswith("http://") and not url.startswith("https://"):
                 real_path = path.normpath(path.join(path.dirname(source_item), url))
                 if path.isfile(real_path):
-                    rel_path = path.relpath(real_path, mount.source_checkout_root)
-                    url = mount.github_view_url(rel_path)
+
+                    url = mount.github_view_url(real_path)
 
             return "](" + url + anchor + ")"
 
@@ -150,13 +153,16 @@ def _build_url_mappers(external_yml, mount: ExternalMount):
 
     return patch_the_text
 
+
 def _process_external_key(build_mode, data):
-    if 'external' not in data: return
+    if 'external' not in data:
+        return
+
     mount = ExternalMount(build_mode, data['external'])
     del data['external']
 
     if not _rant_if_external_nav_is_not_found(mount):
-        data['content'] = [{ 'url': '/', 'title': 'external "%s" is it included' % mount.external_path}]
+        data['content'] = [{'url': '/', 'title': 'external "%s" is it included' % mount.external_path}]
         return
 
     with open(mount.nav_file) as stream:

@@ -9,7 +9,7 @@ showAuthorInfo: false
 
 ### 安装 Kotlin 插件
 
-Android Studio 从 3.0（preview）版本开始将内置安装 Kotlin 插件。如果你正在使用的是早期版本，
+Android Studio 从 [3.0 版本](https://developer.android.com/studio/)开始将内置安装 Kotlin 插件。如果你正在使用的是早期版本，
 需要通过 _File \| Settings \| Plugins \| Install JetBrains plugin..._ 搜索并安装 *Kotlin* 插件。
 在 Android Studio 欢迎界面中，可以通过 _Configure \| Plugins \| Install JetBrains plugin..._ 。
 安装完成后需要重新启动 Android Studio。

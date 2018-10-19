@@ -30,6 +30,7 @@ import java.util.*
 带有两个 `Int` 参数、返回 `Int` 的函数：
 
 
+
 ``` kotlin
 //sampleStart
 fun sum(a: Int, b: Int): Int {
@@ -37,13 +38,15 @@ fun sum(a: Int, b: Int): Int {
 }
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     print("sum of 3 and 5 is ")
     println(sum(3, 5))
 }
 ```
 
+
 将表达式作为函数体、返回值类型自动推断的函数：
+
 
 
 ``` kotlin
@@ -51,12 +54,14 @@ fun main(args: Array<String>) {
 fun sum(a: Int, b: Int) = a + b
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     println("sum of 19 and 23 is ${sum(19, 23)}")
 }
 ```
 
+
 函数返回无意义的值：
+
 
 
 ``` kotlin
@@ -66,12 +71,14 @@ fun printSum(a: Int, b: Int): Unit {
 }
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     printSum(-1, 8)
 }
 ```
 
+
 `Unit` 返回类型可以省略：
+
 
 
 ``` kotlin
@@ -81,10 +88,11 @@ fun printSum(a: Int, b: Int) {
 }
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     printSum(-1, 8)
 }
 ```
+
 
 参见[函数](functions.html)。
 
@@ -93,8 +101,9 @@ fun main(args: Array<String>) {
 一次赋值（只读）的局部变量:
 
 
+
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     val a: Int = 1  // 立即赋值
     val b = 2   // 自动推断出 `Int` 类型
@@ -105,11 +114,13 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 可变变量：
 
 
+
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     var x = 5 // 自动推断出 `Int` 类型
     x += 1
@@ -118,7 +129,9 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 顶层变量：
+
 
 ``` kotlin
 //sampleStart
@@ -130,13 +143,14 @@ fun incrementX() {
 }
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     println("x = $x; PI = $PI")
     incrementX()
     println("incrementX()")
     println("x = $x; PI = $PI")
 }
 ```
+
 
 参见[属性与字段](properties.html)。
 
@@ -159,8 +173,9 @@ fun main(args: Array<String>) {
 ## 使用字符串模板
 
 
+
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     var a = 1
     // 模板中的简单名称：
@@ -174,9 +189,11 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 参见[字符串模板](basic-types.html#字符串模板)。
 
 ## 使用条件表达式
+
 
 
 
@@ -191,13 +208,15 @@ fun maxOf(a: Int, b: Int): Int {
 }
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     println("max of 0 and 42 is ${maxOf(0, 42)}")
 }
 ```
 
 
+
 使用 *if*{: .keyword } 作为表达式:
+
 
 
 ``` kotlin
@@ -205,10 +224,11 @@ fun main(args: Array<String>) {
 fun maxOf(a: Int, b: Int) = if (a > b) a else b
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     println("max of 0 and 42 is ${maxOf(0, 42)}")
 }
 ```
+
 
 参见[*if*{: .keyword } 表达式](control-flow.html#if-表达式)。
 
@@ -227,6 +247,7 @@ fun parseInt(str: String): Int? {
 
 
 使用返回可空值的函数:
+
 
 
 
@@ -252,14 +273,16 @@ fun printProduct(arg1: String, arg2: String) {
 //sampleEnd
 
 
-fun main(args: Array<String>) {
+fun main() {
     printProduct("6", "7")
     printProduct("a", "7")
     printProduct("a", "b")
 }
 ```
 
+
 或者
+
 
 
 
@@ -288,12 +311,13 @@ fun printProduct(arg1: String, arg2: String) {
 //sampleEnd
 }
 
-fun main(args: Array<String>) {
+fun main() {
     printProduct("6", "7")
     printProduct("a", "7")
     printProduct("99", "b")
 }
 ```
+
 
 参见[空安全](null-safety.html)。
 
@@ -301,6 +325,7 @@ fun main(args: Array<String>) {
 
 *is*{: .keyword } 运算符检测一个表达式是否某类型的一个实例。
 如果一个不可变的局部变量或属性已经判断出为某类型，那么检测后的分支中可以直接当作该类型使用，无需显式转换：
+
 
 
 
@@ -318,7 +343,7 @@ fun getStringLength(obj: Any): Int? {
 //sampleEnd
 
 
-fun main(args: Array<String>) {
+fun main() {
     fun printLength(obj: Any) {
         println("'$obj' string length is ${getStringLength(obj) ?: "... err, not a string"} ")
     }
@@ -328,7 +353,9 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 或者
+
 
 
 ``` kotlin
@@ -342,7 +369,7 @@ fun getStringLength(obj: Any): Int? {
 //sampleEnd
 
 
-fun main(args: Array<String>) {
+fun main() {
     fun printLength(obj: Any) {
         println("'$obj' string length is ${getStringLength(obj) ?: "... err, not a string"} ")
     }
@@ -352,7 +379,9 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 甚至
+
 
 
 ``` kotlin
@@ -368,7 +397,7 @@ fun getStringLength(obj: Any): Int? {
 //sampleEnd
 
 
-fun main(args: Array<String>) {
+fun main() {
     fun printLength(obj: Any) {
         println("'$obj' string length is ${getStringLength(obj) ?: "... err, is empty or not a string at all"} ")
     }
@@ -378,13 +407,15 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 参见[类](classes.html)以及[类型转换](typecasts.html)。
 
 ## 使用 `for` 循环
 
 
+
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     val items = listOf("apple", "banana", "kiwifruit")
     for (item in items) {
@@ -394,11 +425,13 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 或者
 
 
+
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     val items = listOf("apple", "banana", "kiwifruit")
     for (index in items.indices) {
@@ -409,13 +442,15 @@ fun main(args: Array<String>) {
 ```
 
 
+
 参见 [for 循环](control-flow.html#for-循环)。
 
 ## 使用 `while` 循环
 
 
+
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     val items = listOf("apple", "banana", "kiwifruit")
     var index = 0
@@ -428,9 +463,11 @@ fun main(args: Array<String>) {
 ```
 
 
+
 参见 [while 循环](control-flow.html#while-循环)。
 
 ## 使用 `when` 表达式
+
 
 
 ``` kotlin
@@ -445,7 +482,7 @@ fun describe(obj: Any): String =
     }
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     println(describe(1))
     println(describe("Hello"))
     println(describe(1000L))
@@ -455,6 +492,7 @@ fun main(args: Array<String>) {
 ```
 
 
+
 参见 [when 表达式](control-flow.html#when-表达式)。
 
 ## 使用区间（range）
@@ -462,8 +500,9 @@ fun main(args: Array<String>) {
 使用 *in*{: .keyword } 运算符来检测某个数字是否在指定区间内：
 
 
+
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     val x = 10
     val y = 9
@@ -475,11 +514,13 @@ fun main(args: Array<String>) {
 ```
 
 
+
 检测某个数字是否在指定区间外:
 
 
+
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     val list = listOf("a", "b", "c")
     
@@ -494,11 +535,13 @@ fun main(args: Array<String>) {
 ```
 
 
+
 区间迭代:
 
 
+
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     for (x in 1..5) {
         print(x)
@@ -507,11 +550,13 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 或数列迭代：
 
 
+
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     for (x in 1..10 step 2) {
         print(x)
@@ -524,6 +569,7 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 参见[区间](ranges.html)。
 
 ## 使用集合
@@ -531,8 +577,9 @@ fun main(args: Array<String>) {
 对集合进行迭代:
 
 
+
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
     val items = listOf("apple", "banana", "kiwifruit")
 //sampleStart
     for (item in items) {
@@ -543,11 +590,13 @@ fun main(args: Array<String>) {
 ```
 
 
+
 使用 *in*{: .keyword } 运算符来判断集合内是否包含某实例：
 
 
+
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
     val items = setOf("apple", "banana", "kiwifruit")
 //sampleStart
     when {
@@ -559,12 +608,14 @@ fun main(args: Array<String>) {
 ```
 
 
+
 使用 lambda 表达式来过滤（filter）与映射（map）集合：
 
 
 
+
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
   val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
   fruits
@@ -576,13 +627,15 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 参见[高阶函数及Lambda表达式](lambdas.html)。
 
 ## 创建基本类及其实例：
 
 
+
 ``` kotlin
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     val rectangle = Rectangle(5.0, 2.0) // 不需要“new”关键字
     val triangle = Triangle(3.0, 4.0, 5.0)
@@ -619,5 +672,6 @@ class Triangle(
     }
 }
 ```
+
 
 参见[类](classes.html)以及[对象与实例](object-declarations.html)。
