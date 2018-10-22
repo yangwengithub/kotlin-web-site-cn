@@ -4,37 +4,37 @@ layout: reference
 title: "What's Coming in Kotlin 1.3"
 ---
 
-# What's Coming in Kotlin 1.3
+# 1.3 即将带来什么
 
-## Coroutines release
+## 协程（正式发布）
 
-After some long and extensive battle testing, coroutines are now released! It means that from Kotlin 1.3 the language support and the API are [fully stable](evolution/components-stability.html). Check out the new [coroutines overview](coroutines-overview.html) page
+历经了漫长而充足的的测试，协程 API 终于正式发布！这意味着从 Kotlin 1.3 版本起，协程 API 将与其他正式发布的功能一样保持稳定。查看全新的[协程概览](coroutines-overview.html)。
 
-Kotlin 1.3 introduces callable references on suspend-functions and support of Coroutines in the Reflection API
+Kotlin 1.3 把挂起函数对 callable 引用支持和对协程的支持加入了 Reflection API。
 
 ## Kotlin/Native
 
-Kotlin 1.3 continues to improve and polish the Native target. See the [Kotlin/Native overview](native-overview.html) for details 
+Kotlin 1.3 将继续完善对 Native 平台的支持。详情查看[Kotlin/Native概览](native-overview.html)。
 
-## Multiplatform Projects
+## 多平台项目
 
-In 1.3, we've completely reworked the model of multiplatform projects in order to improve expressiveness and flexibility, and to make sharing common code easier. Also, Kotlin/Native is now supported as one of the targets! Find all the details [here](multiplatform.html)
+在 1.3 ，为了更具表现力和灵活性，同时也为了更简单的共享代码，我们彻底重写了多平台项目的模型。并且，Kotlin/Native 现在将作为支持目标之一！详情查看[这里](multiplatform.html)。
 
-## Contracts
+## 契约
 
-The Kotlin compiler does extensive static analysis to provide warnings and reduce boilerplate. One of the most notable features is smartcasts — with the ability to perform a cast automatically based on the performed type checks:
+Kotlin 编译器会做大量的静态分析工作，为了提供警告和降低模版代码。其中最重要的功能之一就是**类型智能转换**—提供了基于类型检查自动转换类型的能力。
 
 
 
 ```kotlin
 fun foo(s: String?) {
-    if (s != null) s.length // Compiler automatically casts 's' to 'String'
+    if (s != null) s.length // 编译器自动把 's' 转化为 'String'
 }
 ```
 
 
 
-However, as soon as these checks are extracted in a separate function, all the smartcasts immediately disappear:
+然而，一旦这些检查被提取到一个单独的函数中，类型智能转换就会失效：
 
 
 
@@ -42,64 +42,64 @@ However, as soon as these checks are extracted in a separate function, all the s
 fun String?.isNotNull(): Boolean = this != null
 
 fun foo(s: String?) {
-    if (s.isNotNull()) s.length // No smartcast :(
+    if (s.isNotNull()) s.length // 没有智能转化 :(
 }
 ```
 
 
 
-To improve the behavior in such cases, Kotlin 1.3 introduces experimental mechanism called *contracts*.
+为了改善这种情景下的行为，Kotlin 1.3 引入了**实验性**的机制，称之为**契约**。
 
-*Contracts* allow a function to explicitly describe its behavior in a way which is understood by the compiler. Currently, two wide classes of cases are supported:
+**契约**允许一个函数通过一种能让编译器理解的方式，显式的来描述它的行为。目前，支持两类常用的情景：
 
-* Improving smartcasts analysis by declaring the relation between a function's call outcome and the passed arguments values:
+- 通过声明函数的结果和参数的值的关系来改善类型智能分析：
 
 
 
 ```kotlin
 fun require(condition: Boolean) {
-    // This is a syntax form, which tells compiler:
-    // "if this function returns successfully, then passed 'condition' is true"
+    // 这是一个语法格式，告诉编译器：
+    // “如果这个函数成功返回，那么将 'condition' 赋值为 true”
     contract { returns() implies condition }
     if (!condition) throw IllegalArgumentException(...)
 }
 
 fun foo(s: String?) {
     require(s is String)
-    // s is smartcasted to 'String' here, because otherwise
-    // 'require' would have throw an exception
+    // s 在这里被智能的转化为 'String'，否则的话
+    // 'require' 将会抛出一个异常
 }
 ```
 
 
 
-* Improving the variable initialization analysis in the presence of high-order functions:
+-  在存在高阶函数的情况下，可以改善变量的初始化分析：
 
 
 
 ```kotlin
 fun synchronize(lock: Any?, block: () -> Unit) {
-    // It tells compiler:
-    // "This function will invoke 'block' here and now, and exactly one time"
+    // 告诉编译器：
+    // “这个函数将会在这里调用 'block'，而且只调用一次”
     contract { callsInPlace(block, EXACTLY_ONCE) }
 }
 
 fun foo() {
     val x: Int
     synchronize(lock) {
-        x = 42 // Compiler knows that lambda passed to 'synchronize' is called
-               // exactly once, so no reassignment is reported
+        x = 42 // 编译器知道传递给 'synchronize' 的 lambda 只会被调用一次
+               // 所以不会被重新赋值
     }
-    println(x) // Compiler knows that lambda will be definitely called, performing
-               // initialization, so 'x' is considered to be initialized here
+    println(x) // 编译器知道 lambda 肯定会被执行初始化操作
+               // 所以，'x' 在这里被认为已被初始化了
 }
 ```
 
 
 
-### Contracts in stdlib
+###标准库中的契约
 
-`stdlib` already makes use of contracts, which leads to improvements in the analyses described above.  This part of contracts is **stable**, meaning that you can benefit from the improved analysis right now without any additional opt-ins:
+`stdlib（kotlin 标准库）`已经在利用**契约**这一特性，改善了上述情景中代码分析情况。这一部分的契约功能已经趋于稳定，意味着你不需要任何额外的操作就可以享用改善后的代码分析。
 
 
 
@@ -107,7 +107,7 @@ fun foo() {
 //sampleStart
 fun bar(x: String?) {
     if (!x.isNullOrEmpty()) {
-        println("length of '$x' is ${x.length}") // Yay, smartcasted to not-null!
+        println("length of '$x' is ${x.length}") // 看，智能地向非空类型转换！
     }
 }
 //sampleEnd
@@ -119,11 +119,11 @@ fun main() {
 
 
 
-### Custom Contracts
+### 自定义契约
 
-It is possible to declare contracts for your own functions, but this feature is **experimental,** as the current syntax is in a state of early prototype and will most probably be changed. Also, please note, that currently the Kotlin compiler does not verify contracts, so it's a programmer's responsibility to write correct and sound contracts. 
+你也可以为你自己的函数来自定义契约，但是这一功能目前还是**实验性**的，因为目前的契约语法尚处于早期的原型态，很有可能在后面的版本被修改。而且，值得注意的是，目前 Kotlin 的编译器并没有对契约进行验证，所以需要开发者编写正确稳定的契约。
 
-Custom contracts are introduced by the call to `contract` stdlib function, which provides DSL scope:
+自定义契约通过调用标准库中的 `contract` 函数来引入，这个函数提供了 DSL：
 
 
 
@@ -138,11 +138,11 @@ fun String?.isNullOrEmpty(): Boolean {
 
 
 
-See the details on the syntax as well as the compatibility notice in the [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/kotlin-contracts.md)
+更多语法细节和兼容性建议请查看[KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/kotlin-contracts.md)。
 
-## Capturing `when` subject in a variable
+## 在变量中捕获`when`语句主语
 
-In Kotlin 1.3, it is now possible to capture the `when` subject into variable:
+在 Kotlin 1.3 中，允许你在变量中捕获 `when` 语句的主语：
 
 
 
@@ -156,13 +156,13 @@ fun Request.getBody() =
 
 
 
-While it was already possible to extract this variable just before `when` , `val` in `when` has its scope properly restricted to the body of `when`, and so preventing namespace pollution. See the full documentation on `when` [here](control-flow.html#when-expression)
+当然你也可以在 `when` 语句之前把变量提取出来，`when` 语句中的 `val` 的作用域被限制在 `when` 语句的方法体中，借此防止了命名空间污染。点击[这里](control-flow.html#when-expression)查看 `when` 语句说明文档。
 
-## @JvmStatic and @JvmField in companion of interfaces
+## 接口中的伴生对象的 @JvmStatic 和 @JvmField 注解
 
-With Kotlin 1.3, it is possible to mark members of a `companion` object of interfaces with annotations `@JvmStatic` and `@JvmField`. In the classfile, such members will be lifted to the corresponding interface and marked as `static`
+在 Kotlin 1.3 中，允许将作为接口成员的伴生对象使用 `@JvmStatic` 和 `@JvmField` 注解标记。在 .class 文件中，这类成员将会对应接口解除作为成员，而是标记为 `static`。
 
-For example, the following Kotlin code:
+例如，以下 Kotlin 代码：
 
 
 
@@ -182,7 +182,7 @@ interface Foo {
 
 
 
-It is equivalent to this Java code:
+和如下 Java 代码是相等的：
 
 
 
@@ -197,9 +197,9 @@ interface Foo {
 
 
 
-## Nested declarations in annotation classes
+## 注解类中的嵌套声明
 
-In Kotlin 1.3 it is possible for annotations to have nested classes, interfaces, objects, and companions:
+在 Kotlin 1.3 中，注解类允许包含嵌套的类、接口、对象和伴生对象：
 
 
 
@@ -218,11 +218,11 @@ annotation class Foo {
 
 
 
-## Parameterless `main`
+## 无参`main`方法
 
-By convention, the entry point of a Kotlin program is a function with a signature like `main(args: Array<String>)`, where `args` represent the command-line arguments passed to the program. However, not every application supports command-line arguments, so this parameter often ends up not being used. 
+一般来说，一个 Kotlin 程序的执行入口的方法签名为 `main(args: Array<String>)`，这里 `args` 表示传入的命令行参数。然而，并不是每个应用都支持命令行传参，所以这个参数通常并没有用到。
 
-Kotlin 1.3 introduced a simpler form of `main` which takes no parameters. Now “Hello, World” in Kotlin is 19 characters shorter!
+Kotlin 1.3 引入了一种简单的无参 `main`方法。现在 Kotlin 版的 `Hello,World`  缩短了19个字符！
 
 
 
@@ -234,11 +234,11 @@ fun main() {
 
 
 
-## Functions with big arity
+## 更多元的函数
 
-In Kotlin, functional types are represented as generic classes taking a different number of parameters: `Function0<R>`, `Function1<P0, R>`, `Function2<P0, P1, R>`, ... This approach has a problem in that this list is finite, and it currently ends with `Function22`. 
+在 Kotlin 中，函数类型用来表示带有许多参数的泛型类：`Function0<R>`, `Function1<P0, R>`, `Function2<P0, P1, R>`,... 这种方式有着列表是有限的问题，最多支持到 `Function22`。
 
-Kotlin 1.3 relaxes this limitation and adds support for functions with bigger arity:
+Kotlin 1.3 放宽了限制，并且增加了函数更多元的支持：
 
 
 
@@ -250,27 +250,27 @@ fun trueEnterpriseComesToKotlin(block: (Any, Any, ... /* 42 more */, Any) -> Any
 
 
 
-## Progressive mode
+## 渐进式模式
 
-Kotlin cares a lot about stability and backward compatibility of code: Kotlin compatibility policy says that "breaking changes" (e.g., a change which makes the code that used to compile fine, not compile anymore) can be introduced only in the major releases (1.2, 1.3, etc.)  
+Kotlin 非常注重代码的稳定性和向后兼容性：Kotlin 的兼容策略为 “打破构建的变化”（既一个变化使得之前能够编译成功的代码，编译失败）只能在大版本中被引入（例如 1.2，1.3等）。
 
-We believe that a lot of users could use a much faster cycle, where critical compiler bug fixes arrive immediately, making the code more safe and correct. So, Kotlin 1.3 introduces *progressive* compiler mode, which can be enabled by passing the argument `-progressive` to the compiler.
+为了保证了代码安全和正确，我们相信，可以缩短许多用户修复编译器严峻问题的周期。所以，Kotlin 1.3 引入了*渐进式* 编译器模式，找个模式可以通过向编译器传递 `-progressive` 来开启。
 
-In progressive mode, some fixes in language semantics can arrive immediately. All these fixes have two important properties:
+在渐进式模式中，一些语法上的问题能够及时的得到修复。所有的修复手段都包含两条重要的属性：
 
-* they preserve backward-compatibility of source code with older compilers, meaning that all the code which is compilable by the progressive compiler will be compiled fine by non-progressive one
-* they only make code *safer* in some sense — e.g., some unsound smartcast can be forbidden, behavior of the generated code may be changed to be more predictable/stable, and so on.
+— 保留源码对旧的编译器的兼容性支持，意味着所有对于**渐进式**编译器能编译的代码，也将能被**非渐进式**编译器编译。
+— 在某些场景，只会让代码更*安全* — 例如，一些不健壮的智能转换将会被禁止，自动生成的代码将会变的更加稳定、可预测，等。
 
-Enabling the progressive mode can require you to rewrite some of your code, but it shouldn't be too much — all the fixes which are enabled under progressive are carefully handpicked, reviewed, and provided with tooling migration assistance. 
-We expect that the progressive mode will be a nice choice for any actively maintained codebases which are updated to the latest language versions quickly.
+开启渐进式模式可能需要你重新某些代码，但不会太多 — 所有的开启渐进式需要修改都是精挑细选、仔细琢磨后的，而且提供工具迁移帮助。
+我们期望对于那些一直保持最新代码版本的人，渐进式模式将会是一个非常棒的选择。
 
-## Inline classes
+## 内联类
 
-> Inline classes are available only since Kotlin 1.3 and currently are *experimental*. See details in the [reference](inline-classes.html#experimental-status-of-inline-classes)
+> 内联类从 Kotlin 1.3 开始支持，而且现阶段是**实验性**的。更多详情请看[这里](inline-classes.html#experimental-status-of-inline-classes)。
 {:.note}
 
 
-Kotlin 1.3 introduces a new kind of declaration — `inline class`. Inline classes can be viewed as a restricted version of the usual classes, in particular, inline classes must have exactly one property:
+Kotlin 1.3 引入了一种新的声明方式 — `内联类`。内联类可视为常规类的限制版，值得一提的是，内联类必须有一个确切的属性：
 
 
 
@@ -280,7 +280,7 @@ inline class Name(val s: String)
 
 
 
-The Kotlin compiler will use this restriction to aggressively optimize runtime representation of inline classes and substitute their instances with the value of the underlying property where possible removing constructor calls, GC pressure, and enabling other optimizations:
+Kotlin 编译器将会利用这个限制，积极的提升内联类在运行时的表现，并且使用底层的属性值来替换内联类的实例，用于省略构造方法调用，减小 GC 压力，开启其他优化操作：
 
 
 
@@ -288,8 +288,8 @@ The Kotlin compiler will use this restriction to aggressively optimize runtime r
 inline class Name(val s: String)
 //sampleStart
 fun main() {
-    // In the next line no constructor call happens, and
-    // at the runtime 'name' contains just string "Kotlin"
+    // 下一行不会调用构造方法
+    // 而且在运行时，'name' 只会包含字符串 "Kotlin"
     val name = Name("Kotlin")
     println(name.s) 
 }
@@ -298,38 +298,38 @@ fun main() {
 
 
 
-See [reference](inline-classes.html) for inline classes for details 
+点击[这里](inline-classes.html)查看内联类更多细节。
 
-## Unsigned integers
+## 无符号整型
 
-> Unsigned integers are available only since Kotlin 1.3 and currently are *experimental*. See details in the [reference](basic-types.html#experimental-status-of-unsigned-integers)
+> 无符号整型从 Kotlin 1.3 开始支持，而且现阶段是**实验性**的。更多详情请看[这里](basic-types.html#experimental-status-of-unsigned-integers)。
 {:.note}
 
-Kotlin 1.3 introduces unsigned integer types:
+Kotlin 1.3 引入了无符号整型类型：
 
-* `kotlin.UByte`: an unsigned 8-bit integer, ranges from 0 to 255
-* `kotlin.UShort`: an unsigned 16-bit integer, ranges from 0 to 65535
-* `kotlin.UInt`: an unsigned 32-bit integer, ranges from 0 to 2^32 - 1
-* `kotlin.ULong`: an unsigned 64-bit integer, ranges from 0 to 2^64 - 1
+- `kotlin.UByte`: an unsigned 8-bit integer, ranges from 0 to 255
+- `kotlin.UShort`: an unsigned 16-bit integer, ranges from 0 to 65535
+- `kotlin.UInt`: an unsigned 32-bit integer, ranges from 0 to 2^32 - 1
+- `kotlin.ULong`: an unsigned 64-bit integer, ranges from 0 to 2^64 - 1
 
-Most of the functionality of signed types are supported for unsigned counterparts too:
+无符号类型也支持大多数有符号类型的功能：
 
 
 
 ```kotlin
 fun main() {
 //sampleStart
-// You can define unsigned types using literal suffixes
+// 你可以使用字面前缀定义无符号类型：
 val uint = 42u 
 val ulong = 42uL
 val ubyte: UByte = 255u
 
-// You can convert signed types to unsigned and vice versa via stdlib extensions:
+// 你可以把有符号类型通过标准库向无符号类型转换，反之亦然：
 val int = uint.toInt()
 val byte = ubyte.toByte()
 val ulong2 = byte.toULong()
 
-// Unsigned types support similar operators:
+// 无符号类型支持同义操作符：
 val x = 20u + 22u
 val y = 1u shl 8
 val z = "128".toUByte()
@@ -342,23 +342,23 @@ println("x: $x, y: $y, z: $z, range: $range")
 
 
 
-See [reference](basic-types.html#unsigned-integers) for details.
+点击[这里](basic-types.html#unsigned-integers)查看内联类更多细节。
 
 ## @JvmDefault
 
-> `@JvmDefault` is only available since Kotlin 1.3 and currently is *experimental*. See details in the [reference page](/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html)
+>`@JvmDefault` 从 Kotlin 1.3 开始支持，而且现阶段是**实验性**的。更多详情请看[这里](/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html)。
 {:.note}
 
 
-Kotlin targets a wide range of the Java versions, including Java 6 and Java 7, where default methods in the interfaces are not allowed. For your convenience, the Kotlin compiler works around that limitation, but this workaround isn't compatible with the `default` methods, introduced in Java 8. 
+Kotlin 兼容很多 Java 版本，包含接口中不允许方法默认实现的 Java6 和 Java7 。方便起见，Kotlin 编译器可以解决这个问题，但是这个解决方案将不会和 Java8 中的  `default`  方法兼容。
 
-This could be an issue for Java-interoperability, so Kotlin 1.3 introduces the `@JvmDefault` annotation. Methods, annotated with this annotation will be generated as `default` methods for JVM:
+对于和 Java 的交互，这可能是个问题，所以 Kotlin 1.3 引入了 `@JvmDefalut` 注解。被该注解标记的方法将会被 JVM 编译为 `default` 方法。
 
 
 
 ```kotlin
 interface Foo {
-    // Will be generated as 'default' method
+    // 将会被编译为默认方法
     @JvmDefault
     fun foo(): Int = 42
 }
@@ -366,14 +366,14 @@ interface Foo {
 
 
 
-> Warning! Annotating your API with `@JvmDefault` has serious implications on binary compatibility. Make sure to carefully read the [reference page](/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html) before using `@JvmDefault` in production
+> 注意！ 将你的 API 标记为 `@JvmDefault` 将会对二进制兼容性有严重影响。请确保你仔细阅读了[参考页面](/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html)，在你的产品中使用`@Default`之前。
 {:.note}
 
-# Standard library
+# 标准库
 
-## Multiplatform `Random`
+##多平台随机数
 
-Prior to Kotlin 1.3, there was no uniform way to generate random numbers on all platforms — we had to resort to platform specific solutions, like `java.util.Random` on JVM. This release fixes this issue by introducing the class `kotlin.random.Random`, which is available on all platforms:
+在 Kotlin 1.3 之前，没有办法在所有平台上统一来生成随机数 — 我们只能采取依赖平台的特定解决方案，比如 JVM 上的 `java.util.Random`。这个版本将会解决这个问题，通过引入 `kotlin.random.Random`，这是个支持所有平台的类：
 
 
 
@@ -382,7 +382,7 @@ import kotlin.random.Random
 
 fun main() {
 //sampleStart
-    val number = Random.nextInt(42)  // number is in range [0, limit)
+    val number = Random.nextInt(42)  // 数字区间 [0, limit)
     println(number)
 //sampleEnd
 }
@@ -390,14 +390,14 @@ fun main() {
 
 
 
-## isNullOrEmpty/orEmpty extensions
+## isNullOrEmpty 和 orEmpty 拓展
 
-`isNullOrEmpty` and `orEmpty` extensions for some types are already present in stdlib . The first one returns `true` if the receiver is `null` or empty, and the second one falls back to an empty instance if the receiver is `null`.
-Kotlin 1.3 provides similar extensions on collections, maps, and arrays of objects.
+某些类型的 `isNullOrEmpty` 和 `orEmpty` 拓展函数已经存在于标准库中，对于前者，如果函数接受者是 `null`或者为空将会返回 `true` ；对于后者， 如果接收者是 `null` ，将会返回一个空实例。
+Kotlin 1.3 为 `collections`、`maps` 和对象数组提供了类似的拓展函数。
 
-## Copying elements between two existing arrays
+## 非空数组间拷贝元素
 
-The `array.copyInto(targetArray, targetOffset, startIndex, endIndex)` functions for the existing array types, including the unsigned arrays, make it easier to implement array-based containers in pure Kotlin.
+对于非空数组类型，包括无符号数组类型，函数 `array.copyInto(targetArray, targetOffset, startIndex, endIndex)` 使得数组拷贝在 Kotlin 中更加简单。
 
 
 
@@ -418,7 +418,7 @@ fun main() {
 
 ## associateWith
 
-It is quite a common situation to have a list of keys and want to build a map by associating each of these keys with some value. It was possible to do it before with the `associate { it to getValue(it) }` function, but now we’re introducing a more efficient and easy to explore alternative: `keys.associateWith { getValue(it) }`
+对于一个 list 一个非常常见的场景是，希望通过把 list 的每个元素作为 key，然后和某个 value 关联起来，来构建一个 map。这可以通过 `associate { it to getValue(it) }` 函数来完成，但是现在我们引入了一个更为效率和便捷的实现方式：`keys.associateWith { getValue(it) }`
 
 
 
@@ -434,9 +434,9 @@ fun main() {
 
 
 
-## ifEmpty and ifBlank functions
+##ifEmpty 和 ifBlank 拓展
 
-Collections, maps, object arrays, char sequences, and sequences now have an `ifEmpty` function, which allows specifying a fallback value that will be used instead of the receiver if it is empty:
+Collections, maps, object arrays, char sequence 和 sequence 现在都有 `ifEmpty` 函数，用于指定一个默认值，当接收者为空时：
 
 
 
@@ -458,7 +458,7 @@ fun main() {
 
 
 
-Char sequences and strings in addition have an `ifBlank` extension that does the same thing as `ifEmpty`, but checks for a string being all whitespace instead of empty.
+Char sequences 和 strings 还额外拥有 `ifBlank` 拓展，和  `ifEmpty` 功能类似，但是用于检查一个 string 是否全是空格。
 
 
 
@@ -474,44 +474,48 @@ fun main() {
 
 
 
-## Sealed classes in reflection
+## 反射中的密封类
 
-We’ve added a new API to `kotlin-reflect` that can be used to enumerate all the direct subtypes of a `sealed` class, namely `KClass.sealedSubclasses`.
+我们向 `kotlin-reflect` 添加了一个新的 API ： `KClass.sealedSubclasses`，用于列出所有密封类的子类型。
 
-## Smaller changes
+## 微小的改变
 
-* `Boolean` type now has companion.
-* `Any?.hashCode()` extension, which returns 0 for `null`.
-* `Char` now provides `MIN_VALUE`/`MAX_VALUE` constants.
-* `SIZE_BYTES` and `SIZE_BITS` constants in primitive type companions.
+-  `Boolean` 类型现在支持伴生对象。
+- `Any?.hashCode()`  拓展函数会在 `null` 的时候返回 0。
+- `Char` 类型现在提供了 `MIN_VALUE`/`MAX_VALUE` 常量。
+- `SIZE_BYTES` 和  `SIZE_BITS` 会作为原生类型伴生对象常量。
 
-# Tooling
+# 工具
 
-## Code Style Support in IDE
+## IDE 中的代码风格支持
 
-Kotlin 1.3 introduces support for the [recommended code style](coding-conventions.html) in the IDE. Check out [this page](code-style-migration-guide.html) for the migration guidelines.
+Kotlin 1.3 在 IDE 中引入了代码[推荐风格](coding-conventions.html)支持。具体迁移指南查看[这里](code-style-migration-guide.html)。
 
 ## kotlinx.serialization
 
-[kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization) is a library which provides multiplatform support for (de)serializing objects in Kotlin. Previously, it was a separate project, but since Kotlin 1.3, it ships with the Kotlin compiler distribution on par with the other compiler plugins. The main difference is that you don't need to manually watch out for the Serialization IDE Plugin being compatible with the Kotlin IDE Plugin version you're using: now the Kotlin IDE Plugin already includes serialization!
+[kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization) 是一个提供支持多平台的序列化/反序列化的库。之前作为一个独立的库，从 Kotlin 1.3 起，它将会和其他编译器插件一样，包含在 Kotlin 编译器发行版中。主要区别在于，你不在需要自行关注 IDE 的序列化插件和 Kotlin IDE 插件的兼容性问题：因为 Kotlin IDE 插件已经支持序列化！
 
-See here for [details](https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/eap13.md)
+具体详情查看[这里](https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/eap13.md)。
 
-> Please, note, that even though kotlinx.serialization now ships with the Kotlin Compiler distribution, it is still considered to be an experimental feature. 
+> 值得注意的是，即便 kotlinx.serialization  包含在 Kotlin 编译器发行版中，它仍是一个**实验性**功能。
 {:.note}
 
-## Scripting update
+## 脚本更新
 
-> Please note, that scripting is an experimental feature, meaning that no compatibility guarantees on the API are given.
+> 注意，脚本是个**实验性**功能，对于现有的 API, 并没有任何兼容性的保障。
 {:.note}
 
-Kotlin 1.3 continues to evolve and improve scripting API, introducing some experimental support for scripts customization, such as adding external properties, providing static or dynamic dependencies, and so on. 
+Kotlin 1.3 将继续完善 script API，引入了一些自定义脚本实验性的支持，比如添加额外属性，提供静态或者动态依赖等。
 
-For additional details, please consult the [KEEP-75](https://github.com/Kotlin/KEEP/blob/master/proposals/scripting-support.md). 
+更详细的细节，请参考[KEEP-75](https://github.com/Kotlin/KEEP/blob/master/proposals/scripting-support.md)。
 
-## Scratches support
+## 草稿文件支持
 
-Kotlin 1.3 introduces support for runnable Kotlin *scratch files*. *Scratch file* is a kotlin script file with a .kts extension which you can run and get evaluation results directly in the editor. 
+Kotlin 1.3 引入了对可运行的**草稿文件**支持。**草稿文件**是一个以 .kts 拓展名结尾的 kotlin 脚本文件，你可以在编辑器里直接运行和获取计算结果。
 
-Consult the general [Scratches documentation](https://www.jetbrains.com/help/idea/scratches.html) for details
+更多细节请关注[Scratches documentation](https://www.jetbrains.com/help/idea/scratches.html)。
+
+
+
+
 
