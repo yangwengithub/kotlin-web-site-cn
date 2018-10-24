@@ -25,24 +25,24 @@ Android Studio 从 [3.0 版本](https://developer.android.com/studio/)开始将�
 为新工程命名，选择已安装的 Android SDK 版本。实际上大多数选项均有默认值 ，只需要按几次“回车”键即可。
 
 命名工程:
-![Dialog 1]({{ url_for('tutorial_img', filename='kotlin-android/0-create-new-project.png') }})
+![New Project]({{ url_for('tutorial_img', filename='kotlin-android/0-create-new-project.png') }})
 
-Android Studio 3.0 在当前对话框中提供启用 Kotlin 支持的选项，勾选后可以跳过
-“配置 Kotlin 工程（Configuring Kotlin in the project）”的步骤。
+Android Studio offers an option to enable Kotlin support on this screen. You can check this option and skip the
+"Configuring Kotlin in the project" step below.
 
 选择 Android 版本:
 
-![Dialog 2]({{ url_for('tutorial_img', filename='kotlin-android/1-create-new-project.png') }})
+![Target Android Devices]({{ url_for('tutorial_img', filename='kotlin-android/1-create-new-project.png') }})
 
 选择需要创建的 Activity 样式:
 
-![Dialog 3]({{ url_for('tutorial_img', filename='kotlin-android/2-create-new-project.png') }})
+![Add an Activity to Mobile]({{ url_for('tutorial_img', filename='kotlin-android/2-create-new-project.png') }})
 
 命名该 Activity:
 
-![Dialog 4]({{ url_for('tutorial_img', filename='kotlin-android/3-create-new-project.png') }})
+![Customize the Activity]({{ url_for('tutorial_img', filename='kotlin-android/3-create-new-project.png') }})
 
-在 Android Studio 3.0 中，可以选择使用 Kotlin 创建 activity，因此也不需要“将Java 代码转换为 Kotlin（Converting
+在 Android Studio 中，可以选择使用 Kotlin 创建 activity，因此也不需要“将Java 代码转换为 Kotlin（Converting
 Java code to Kotlin）”这一步骤。早期版本中则会先使用 Java 创建 activity，然后再使用自动转换工具<!--
 -->进行转换。
 
@@ -50,39 +50,39 @@ Java code to Kotlin）”这一步骤。早期版本中则会先使用 Java 创�
 值得一提的是，与其为了使用新的方式表达旧的模式而去查阅文档，
 不如直接使用 Java 编写代码，再复制粘贴到 Kotlin 文件中，IntelliJ IDEA（或Android Studio）会提示需要转换代码。
 
-
 #### 将 Java 代码转换为 Kotlin
 
 打开 `MainActivity.java` 文件，使用 **Convert Java File to Kotlin File** 命令。使用该命令的方式有如下几种，
 强烈推荐 [Find Action](https://www.jetbrains.com/idea/help/navigating-to-action.html)，输入相应的命令名称（见下方截图）即可。
 同样也可以通过菜单栏依次调出 _Code \| Convert Java File to Kotlin File_ 或使用快捷键（菜单栏入口可见）完成操作。
- 
-![Convert]({{ url_for('tutorial_img', filename='kotlin-android/convert-java-to-kotlin.png') }})
+
+![Convert Java to Kotlin file]({{ url_for('tutorial_img', filename='kotlin-android/convert-java-to-kotlin.png') }})
 
 转换完成后即可看到使用 Kotlin 编写的 activity。
 
-![Koltin-Activity]({{ url_for('tutorial_img', filename='kotlin-android/converted-code.png') }})
+![Converted Activity with Kotlin]({{ url_for('tutorial_img', filename='kotlin-android/converted-code.png') }})
 
 #### 工程中配置 Kotlin
 
-在开始编辑此文件时，Android Studio 会提示当前工程还未配置 Kotlin，根据提示完成操作即可；或者可以在菜单栏中选择 Tools | Kotlin | Configure Kotlin 。
+If you start editing this file, Android Studio shows you a prompt that Kotlin is not configured, so you can configure it.
+Alternatively, you can invoke the configuration by selecting _Tools \| Kotlin \| Configure Kotlin in Project_ from the main menu.
 
-![Config-Kotlin]({{ url_for('tutorial_img', filename='kotlin-android/kotlin-not-configured.png') }})
+![Configure Kotlin in project]({{ url_for('tutorial_img', filename='kotlin-android/kotlin-not-configured.png') }})
 
 选择配置时有如下对话框，选择已安装的最新版本即可。
 
-![Config-Kotlin-Details]({{ url_for('tutorial_img', filename='kotlin-android/configure-kotlin-in-project-details.png') }})
+![Choose Kotlin version]({{ url_for('tutorial_img', filename='kotlin-android/configure-kotlin-in-project-details.png') }})
 
 Kotlin 配置完成后，应用程序的 build.gradle 文件会更新。
 你能看到新增了 _apply plugin: 'kotlin-android'_ 及其依赖。
 
 *（有关使用 gradle 设置的详情，请查阅 [Gradle使用手册](/docs/reference/using-gradle.html)）*
- 
-![Sync-Project-With-Gradle]({{ url_for('tutorial_img', filename='kotlin-android/sync-project-with-gradle.png') }})
+
+![Add kotlin-android plugin to your build.gradle]({{ url_for('tutorial_img', filename='kotlin-android/sync-project-with-gradle.png') }})
 
 同步工程，在提示框中点击“立即同步（Sync Now）”或者使用 **Sync Project with Gradle Files**命令。
 
-![Sync-Project-With-Gradle-2]({{ url_for('tutorial_img', filename='kotlin-android/sync-project-with-gradle-2.png') }})
+![Sync Project with Gradle Files]({{ url_for('tutorial_img', filename='kotlin-android/sync-project-with-gradle-2.png') }})
 
 ### 构建和发布用于 Android 的 Kotlin 应用程序
 
