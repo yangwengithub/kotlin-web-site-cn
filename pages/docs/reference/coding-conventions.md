@@ -350,8 +350,8 @@ class MyFavouriteVeryLongClassHolder :
 class MyFavouriteVeryLongClassHolder :
     MyLongHolder<MyFavouriteVeryLongClass>(),
     SomeOtherInterface,
-    AndAnotherOne {
-
+    AndAnotherOne 
+{
     fun foo() { ... }
 }
 ```
