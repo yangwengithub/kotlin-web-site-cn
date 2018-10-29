@@ -1,10 +1,10 @@
 ---
 type: doc
 layout: reference
-title: "What's Coming in Kotlin 1.3"
+title: "Kotlin 1.3 即将带来什么"
 ---
 
-# 1.3 即将带来什么
+# Kotlin 1.3 即将带来什么
 
 ## 协程（正式发布）
 
