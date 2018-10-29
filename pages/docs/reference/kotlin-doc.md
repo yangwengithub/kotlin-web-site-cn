@@ -31,7 +31,7 @@ Dokka 有 Gradle、Maven 和 Ant 的插件，因此你可以将文档生成集�
 以下是使用 KDoc 编写类文档的一个示例：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 /**
  * 一组*成员*。
  *

@@ -61,7 +61,7 @@ launch(UI) {
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
-``` kotlin
+```kotlin
 import kotlin.coroutines.experimental.*
 
 fun main(args: Array<String>) {
@@ -102,7 +102,7 @@ fun main(args: Array<String>) {
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
-``` kotlin
+```kotlin
 //sampleStart
 typealias OscarWinners = Map<String, String>
 
@@ -144,7 +144,7 @@ fun main(args: Array<String>) {
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
-``` kotlin
+```kotlin
 //sampleStart
 val numberRegex = "\\d+".toRegex()
 val numbers = listOf("abc", "123", "456").filter(numberRegex::matches)
@@ -169,7 +169,7 @@ Kotlin 1.1 删除了一些对 Kotlin 1.0 中已存在的密封类和数据类的
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
-``` kotlin
+```kotlin
 //sampleStart
 sealed class Expr
 
@@ -203,7 +203,7 @@ fun main(args: Array<String>) {
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1" auto-indent="false" indent="2">
 
-``` kotlin
+```kotlin
 fun main(args: Array<String>) {
 //sampleStart
   val map = mapOf(1 to "one", 2 to "two")
@@ -228,7 +228,7 @@ fun main(args: Array<String>) {
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
-``` kotlin
+```kotlin
 fun main(args: Array<String>) {
     val map = mapOf(1 to "one", 2 to "two")
 
@@ -243,7 +243,7 @@ fun main(args: Array<String>) {
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
-``` kotlin
+```kotlin
 data class Result(val value: Any, val status: String)
 
 fun getResult() = Result(42, "ok").also { println("getResult() returns $it") }
@@ -266,7 +266,7 @@ fun main(args: Array<String>) {
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
-``` kotlin
+```kotlin
 //sampleStart
 val oneMillion = 1_000_000
 val hexBytes = 0xFF_EC_DE_5E
@@ -290,7 +290,7 @@ fun main(args: Array<String>) {
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
-``` kotlin
+```kotlin
 //sampleStart
 data class Person(val name: String, val age: Int) {
     val isAdult get() = age >= 20 // 属性类型推断为 “Boolean”
@@ -311,7 +311,7 @@ fun main(args: Array<String>) {
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
-``` kotlin
+```kotlin
 //sampleStart
 public val <T> List<T>.lastIndex: Int
     inline get() = this.size - 1
@@ -337,7 +337,7 @@ fun main(args: Array<String>) {
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
-``` kotlin
+```kotlin
 import java.util.Random
 
 fun needAnswer() = Random().nextBoolean()
@@ -370,7 +370,7 @@ fun main(args: Array<String>) {
 
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 class ResourceLoader<T>(id: ResourceID<T>) {
     operator fun provideDelegate(thisRef: MyUI, property: KProperty<*>): ReadOnlyProperty<MyUI, T> {
         checkProperty(thisRef, property.name)
@@ -401,7 +401,7 @@ class MyUI {
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
-``` kotlin
+```kotlin
 //sampleStart
 enum class RGB { RED, GREEN, BLUE }
 
@@ -422,7 +422,7 @@ fun main(args: Array<String>) {
 考虑那个典型的 [HTML 构建器示例](type-safe-builders.html)：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 table {
     tr {
         td { + "Text" }
@@ -470,7 +470,7 @@ val port = System.getenv("PORT")?.toIntOrNull() ?: 80
 -->包装序列，它在元素迭代时延迟应用给定的动作。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
-``` kotlin
+```kotlin
 inputDir.walk()
         .filter { it.isFile && it.name.endsWith(".txt") }
         .onEach { println("Moving $it to $outputDir") }
@@ -489,7 +489,7 @@ inputDir.walk()
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.1">
 
-``` kotlin
+```kotlin
 class Block {
     lateinit var content: String
 }
@@ -519,7 +519,7 @@ fun main(args: Array<String>) {
 结合 elvis-操作符和及早返回，它允许编写如下结构：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 val outDirFile = File(outputDir.path).takeIf { it.exists() } ?: return false
 // 对现有的 outDirFile 做些事情
 ```
@@ -527,7 +527,7 @@ val outDirFile = File(outputDir.path).takeIf { it.exists() } ?: return false
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
-``` kotlin
+```kotlin
 fun main(args: Array<String>) {
     val input = "Kotlin"
     val keyword = "in"
@@ -547,7 +547,7 @@ fun main(args: Array<String>) {
 `takeUnless` 与 `takeIf` 相同，只是它采用了反向谓词。当它 _不_ 满足谓词时返回接收者，否则返回 `null`。因此，上面的示例之一可以用 `takeUnless` 重写如下：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 val index = input.indexOf(keyword).takeUnless { it < 0 } ?: error("keyword not found")
 ```
 </div>
@@ -556,7 +556,7 @@ val index = input.indexOf(keyword).takeUnless { it < 0 } ?: error("keyword not f
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
-``` kotlin
+```kotlin
 private fun testTakeUnless(string: String) {
 //sampleStart
     val result = string.takeUnless(String::isEmpty)
@@ -579,7 +579,7 @@ fun main(args: Array<String>) {
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
-``` kotlin
+```kotlin
 fun main(args: Array<String>) {
     val words = "one two three four five six seven eight nine ten".split(' ')
 //sampleStart
@@ -600,7 +600,7 @@ fun main(args: Array<String>) {
 这俩函数可以用来简易复制映射：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 class ImmutablePropertyBag(map: Map<String, Any>) {
     private val mapCopy = map.toMap()
 }
@@ -614,7 +614,7 @@ class ImmutablePropertyBag(map: Map<String, Any>) {
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
-``` kotlin
+```kotlin
 fun main(args: Array<String>) {
 //sampleStart
     val map = mapOf("key" to 42)
@@ -633,7 +633,7 @@ fun main(args: Array<String>) {
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
-``` kotlin
+```kotlin
 fun main(args: Array<String>) {
 //sampleStart
     val list1 = listOf("a", "b")
@@ -655,7 +655,7 @@ fun main(args: Array<String>) {
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
-``` kotlin
+```kotlin
 fun main(args: Array<String>) {
 //sampleStart
     val squares = List(10) { index -> index * index }
@@ -675,7 +675,7 @@ fun main(args: Array<String>) {
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
-``` kotlin
+```kotlin
 fun main(args: Array<String>) {
 
 //sampleStart    
@@ -713,7 +713,7 @@ Kotlin 标准库中提供实现）。
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
-``` kotlin
+```kotlin
 fun main(args: Array<String>) {
 //sampleStart
     val array = arrayOf("a", "b", "c")
@@ -763,7 +763,7 @@ Kotlin 现在与[javax.script API](https://docs.oracle.com/javase/8/docs/api/jav
 其 API 允许在运行时求值代码段：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 val engine = ScriptEngineManager().getEngineByExtension("kts")!!
 engine.eval("val x = 3")
 println(engine.eval("x + 2"))  // 输出 5
@@ -804,7 +804,7 @@ minifiers、 optimisers、 linters 等）更加友好。
 例如，可以按以下方式声明 DOM `Node` 类：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 external class Node {
     val firstChild: Node
 
@@ -829,7 +829,7 @@ external class Node {
 例如，以下是将 JQuery 导入 Kotlin 模块的方法：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 external interface JQuery {
     fun toggle(duration: Int = definedExternally): JQuery
     fun click(handler: (Event) -> Unit): JQuery
@@ -848,7 +848,7 @@ external fun jquery(selector: String): JQuery
 你可以在应用程序中使用如下所示的这些声明：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 fun main(args: Array<String>) {
     jquery(".toggle-button").click {
         jquery(".toggle-panel").toggle(300)

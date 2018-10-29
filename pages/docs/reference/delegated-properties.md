@@ -17,7 +17,7 @@ title: "委托属性"
 为了涵盖这些（以及其他）情况，Kotlin 支持 _委托属性_:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 class Example {
     var p: String by Delegate()
 }
@@ -30,7 +30,7 @@ class Example {
 例如:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 class Delegate {
     operator fun getValue(thisRef: Any?, property: KProperty<*>): String {
         return "$thisRef, thank you for delegating '${property.name}' to me!"
@@ -48,7 +48,7 @@ class Delegate {
 （例如你可以取它的名字)。 例如:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 val e = Example()
 println(e.p)
 ```
@@ -63,7 +63,7 @@ Example@33a17727, thank you for delegating ‘p’ to me!
 类似地，当我们给 `p` 赋值时，将调用 `setValue()` 函数。前两个参数相同，第三个参数保存将要被赋予的值：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 e.p = "NEW"
 ```
 </div>
@@ -90,13 +90,13 @@ Kotlin 标准库为几种有用的委托提供了工厂方法。
 后续调用 `get()` 只是返回记录的结果。
 
 <div class="sample" markdown="1" theme="idea">
-``` kotlin
+```kotlin
 val lazyValue: String by lazy {
     println("computed!")
     "Hello"
 }
 
-fun main(args: Array<String>) {
+fun main() {
     println(lazyValue)
     println(lazyValue)
 }
@@ -117,7 +117,7 @@ fun main(args: Array<String>) {
 -->参数：被赋值的属性、旧值与新值：
 
 <div class="sample" markdown="1" theme="idea">
-``` kotlin
+```kotlin
 import kotlin.properties.Delegates
 
 class User {
@@ -127,7 +127,7 @@ class User {
     }
 }
 
-fun main(args: Array<String>) {
+fun main() {
     val user = User()
     user.name = "first"
     user.name = "second"
@@ -145,7 +145,7 @@ fun main(args: Array<String>) {
 在这种情况下，你可以使用映射实例自身作为委托来实现委托属性。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 class User(val map: Map<String, Any?>) {
     val name: String by map
     val age: Int     by map
@@ -156,7 +156,7 @@ class User(val map: Map<String, Any?>) {
 在这个例子中，构造函数接受一个映射参数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 val user = User(mapOf(
     "name" to "John Doe",
     "age"  to 25
@@ -167,13 +167,13 @@ val user = User(mapOf(
 委托属性会从这个映射中取值（通过字符串键——属性的名称）：
 
 <div class="sample" markdown="1" theme="idea">
-``` kotlin
+```kotlin
 class User(val map: Map<String, Any?>) {
     val name: String by map
     val age: Int     by map
 }
 
-fun main(args: Array<String>) {
+fun main() {
     val user = User(mapOf(
         "name" to "John Doe",
         "age"  to 25
@@ -189,7 +189,7 @@ fun main(args: Array<String>) {
 这也适用于 *var*{:.keyword} 属性，如果把只读的 `Map` 换成 `MutableMap` 的话：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 class MutableUser(val map: MutableMap<String, Any?>) {
     var name: String by map
     var age: Int     by map
@@ -205,7 +205,7 @@ class MutableUser(val map: MutableMap<String, Any?>) {
 例如，你可以使一个局部变量惰性初始化：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 fun example(computeFoo: () -> Foo) {
     val memoizedFoo by lazy(computeFoo)
 
@@ -244,7 +244,7 @@ fun example(computeFoo: () -> Foo) {
 这俩接口是在 Kotlin 标准库中声明的：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
-``` kotlin
+```kotlin
 interface ReadOnlyProperty<in R, out T> {
     operator fun getValue(thisRef: R, property: KProperty<*>): T
 }
@@ -262,7 +262,7 @@ interface ReadWriteProperty<in R, T> {
 例如，对于属性 `prop`，生成隐藏属性 `prop$delegate`，而访问器的代码只是简单地委托给这个附加属性：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
-``` kotlin
+```kotlin
 class C {
     var prop: Type by MyDelegate()
 }
@@ -294,7 +294,7 @@ Kotlin 编译器在参数中提供了关于 `prop` 的所有必要信息：第�
 例如，如果要在绑定之前检查属性名称，可以这样写：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 class ResourceDelegate<T> : ReadOnlyProperty<MyUI, T> {
     override fun getValue(thisRef: MyUI, property: KProperty<*>): T { ... }
 }
@@ -332,7 +332,7 @@ class MyUI {
 你必须显式传递属性名，这不是很方便：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 // 检查属性名称而不使用“provideDelegate”功能
 class MyUI {
     val image by bindResource(ResourceID.image_id, "image")
@@ -354,7 +354,7 @@ fun <T> MyUI.bindResource(
 -->[上面](delegated-properties.html#翻译规则)（当 `provideDelegate` 方法不存在时）生成的代码：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
-``` kotlin
+```kotlin
 class C {
     var prop: Type by MyDelegate()
 }

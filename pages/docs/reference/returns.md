@@ -16,7 +16,7 @@ Kotlin 有三种结构化跳转表达式：
 所有这些表达式都可以用作更大表达式的一部分：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 val s = person.name ?: return
 ```
 </div>
@@ -30,7 +30,7 @@ val s = person.name ?: return
 要为一个表达式加标签，我们只要在其前加标签即可。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 loop@ for (i in 1..100) {
     // ……
 }
@@ -40,7 +40,7 @@ loop@ for (i in 1..100) {
 现在，我们可以用标签限制 *break*{: .keyword } 或者*continue*{: .keyword }：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 loop@ for (i in 1..100) {
     for (j in 1..100) {
         if (……) break@loop
@@ -61,7 +61,7 @@ Kotlin 有函数字面量、局部函数和对象表达式。因此 Kotlin 的�
 
 <div class="sample" markdown="1" theme="idea">
 
-``` kotlin
+```kotlin
 //sampleStart
 fun foo() {
     listOf(1, 2, 3, 4, 5).forEach {
@@ -72,7 +72,7 @@ fun foo() {
 }
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     foo()
 }
 ```
@@ -84,7 +84,7 @@ fun main(args: Array<String>) {
 
 <div class="sample" markdown="1" theme="idea">
 
-``` kotlin
+```kotlin
 //sampleStart
 fun foo() {
     listOf(1, 2, 3, 4, 5).forEach lit@{
@@ -95,7 +95,7 @@ fun foo() {
 }
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     foo()
 }
 ```
@@ -106,7 +106,7 @@ fun main(args: Array<String>) {
 
 <div class="sample" markdown="1" theme="idea">
 
-``` kotlin
+```kotlin
 //sampleStart
 fun foo() {
     listOf(1, 2, 3, 4, 5).forEach {
@@ -117,7 +117,7 @@ fun foo() {
 }
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     foo()
 }
 ```
@@ -128,7 +128,7 @@ fun main(args: Array<String>) {
 
 <div class="sample" markdown="1" theme="idea">
 
-``` kotlin
+```kotlin
 //sampleStart
 fun foo() {
     listOf(1, 2, 3, 4, 5).forEach(fun(value: Int) {
@@ -139,7 +139,7 @@ fun foo() {
 }
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     foo()
 }
 ```
@@ -149,7 +149,7 @@ fun main(args: Array<String>) {
 
 <div class="sample" markdown="1" theme="idea">
 
-``` kotlin
+```kotlin
 //sampleStart
 fun foo() {
     run loop@{
@@ -162,7 +162,7 @@ fun foo() {
 }
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     foo()
 }
 ```
@@ -171,7 +171,7 @@ fun main(args: Array<String>) {
 当要返一个回值的时候，解析器优先选用标签限制的 return，即
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 return@a 1
 ```
 </div>

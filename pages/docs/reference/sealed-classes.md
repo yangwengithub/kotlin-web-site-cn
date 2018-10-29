@@ -17,7 +17,7 @@ title: "密封类"
 该规则更加严格：子类必须嵌套在密封类声明的内部）。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 sealed class Expr
 data class Const(val number: Double) : Expr()
 data class Sum(val e1: Expr, val e2: Expr) : Expr()
@@ -39,7 +39,7 @@ object NotANumber : Expr()
 -->验证语句覆盖了所有情况，就不需要为该语句再添加一个 `else` 子句了。当然，这只有当你用 `when` 作为表达式（使用结果）而不是作为语句时才有用。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 fun eval(expr: Expr): Double = when(expr) {
     is Const -> expr.number
     is Sum -> eval(expr.e1) + eval(expr.e2)

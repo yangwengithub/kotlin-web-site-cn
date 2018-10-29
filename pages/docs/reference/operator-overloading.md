@@ -36,14 +36,14 @@ Kotlin 允许我们为自己的类型提供预定义的一组操作符的实现�
 以下是如何重载一元减运算符的示例：
 
 <div class="sample" markdown="1" theme="idea">
-``` kotlin
+```kotlin
 data class Point(val x: Int, val y: Int)
 
 operator fun Point.unaryMinus() = Point(-x, -y)
 
 val point = Point(10, 20)
 
-fun main(args: Array<String>) {
+fun main() {
    println(-point)  // 输出“Point(x=-10, y=-20)”
 }
 
@@ -104,7 +104,7 @@ Kotlin 1.1 中被弃用。
 
 下面是一个从给定值起始的 Counter 类的示例，它可以使用重载的 `+` 运算符来增加计数：
 
-``` kotlin
+```kotlin
 data class Counter(val dayIndex: Int) {
     operator fun plus(increment: Int): Counter {
         return Counter(dayIndex + increment)

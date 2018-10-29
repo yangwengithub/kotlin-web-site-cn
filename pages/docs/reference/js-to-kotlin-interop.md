@@ -17,7 +17,7 @@ Kotlin 编译器生成正常的 JavaScript 类，可以在 JavaScript 代码中�
 -->通过 `myModule` 对象在 JavaScript 中可用。例如：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 fun foo() = "Hello"
 ```
 </div>
@@ -47,7 +47,7 @@ Kotlin 将其包结构暴露给 JavaScript，因此除非你在根包中定义�
 否则必须在 JavaScript 中使用完整限定的名称。例如：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 package my.qualified.packagename
 
 fun foo() = "Hello"
@@ -69,7 +69,7 @@ alert(myModule.my.qualified.packagename.foo());
 -->的名称。要控制生成的名称，可以使用 `@JsName` 注解：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 // 模块“kjs”
 class Person(val name: String) {
     fun hello() {
@@ -106,7 +106,7 @@ person.helloWithGreeting("Servus");      // 输出“Servus Dmitry!”
 以下示例会产生编译期错误：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 @JsName("new C()")   // 此处出错
 external fun newC()
 ```
@@ -119,7 +119,7 @@ external fun newC()
 * `kotlin.Char` 映射到 JavaScript Number 来表示字符代码。
 * Kotlin 在运行时无法区分数字类型（`kotlin.Long` 除外），即以下代码能够工作：
   <div class="sample" markdown="1" theme="idea" data-highlight-only>
-  ``` kotlin
+  ```kotlin
   fun f() {
       val x: Int = 23
       val y: Any = x

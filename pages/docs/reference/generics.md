@@ -11,7 +11,7 @@ title: "泛型：in、out、where"
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 class Box<T>(t: T) {
     var value = t
 }
@@ -23,7 +23,7 @@ class Box<T>(t: T) {
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 val box: Box<Int> = Box<Int>(1)
 ```
 
@@ -33,7 +33,7 @@ val box: Box<Int> = Box<Int>(1)
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 val box = Box(1) // 1 具有类型 Int，所以编译器知道我们说的是 Box<Int>。
 ```
 
@@ -164,7 +164,7 @@ void demo(Source<String> strs) {
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 interface Source<out T> {
     fun nextT(): T
 }
@@ -191,7 +191,7 @@ fun demo(strs: Source<String>) {
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 interface Comparable<in T> {
     operator fun compareTo(other: T): Int
 }
@@ -221,7 +221,7 @@ fun demo(x: Comparable<Number>) {
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 class Array<T>(val size: Int) {
     fun get(index: Int): T { …… }
     fun set(index: Int, value: T) { …… }
@@ -234,7 +234,7 @@ class Array<T>(val size: Int) {
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 fun copy(from: Array<Any>, to: Array<Any>) {
     assert(from.size == to.size)
     for (i in from.indices)
@@ -248,7 +248,7 @@ fun copy(from: Array<Any>, to: Array<Any>) {
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 val ints: Array<Int> = arrayOf(1, 2, 3)
 val any = Array<Any>(3) { "" } 
 copy(ints, any)
@@ -265,7 +265,7 @@ copy(ints, any)
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 fun copy(from: Array<out Any>, to: Array<Any>) { …… }
 ```
 
@@ -279,7 +279,7 @@ fun copy(from: Array<out Any>, to: Array<Any>) { …… }
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 fun fill(dest: Array<in String>, value: String) { …… }
 ```
 
@@ -313,7 +313,7 @@ Kotlin 为此提供了所谓的**星投影**语法：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 fun <T> singletonList(item: T): List<T> {
     // ……
 }
@@ -329,7 +329,7 @@ fun <T> T.basicToString() : String {  // 扩展函数
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 val l = singletonList<Int>(1)
 ```
 
@@ -339,7 +339,7 @@ val l = singletonList<Int>(1)
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 val l = singletonList(1)
 ```
 
@@ -355,7 +355,7 @@ val l = singletonList(1)
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 fun <T : Comparable<T>> sort(list: List<T>) {  …… }
 ```
 
@@ -365,7 +365,7 @@ fun <T : Comparable<T>> sort(list: List<T>) {  …… }
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 sort(listOf(1, 2, 3)) // OK。Int 是 Comparable<Int> 的子类型
 sort(listOf(HashMap<Int, String>())) // 错误：HashMap<Int, String> 不是 Comparable<HashMap<Int, String>> 的子类型
 ```
@@ -377,7 +377,7 @@ sort(listOf(HashMap<Int, String>())) // 错误：HashMap<Int, String> 不是 Com
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
 
-``` kotlin
+```kotlin
 fun <T> copyWhenGreater(list: List<T>, threshold: T): List<String>
     where T : CharSequence,
           T : Comparable<T> {

@@ -16,7 +16,7 @@ Kotlin 用*对象表达式*和*对象声明*对这个概念稍微概括了下。
 要创建一个继承自某个（或某些）类型的匿名类的对象，我们会这么写：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 window.addMouseListener(object : MouseAdapter() {
     override fun mouseClicked(e: MouseEvent) { …… }
 
@@ -29,7 +29,7 @@ window.addMouseListener(object : MouseAdapter() {
 多个超类型可以由跟在冒号后面的逗号分隔的列表指定：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 open class A(x: Int) {
     public open val y: Int = x
 }
@@ -45,7 +45,7 @@ val ab: A = object : A(1), B {
 任何时候，如果我们只需要“一个对象而已”，并不需要特殊超类型，那么我们可以简单地写：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 fun foo() {
     val adHoc = object {
         var x: Int = 0
@@ -62,7 +62,7 @@ fun foo() {
 -->中添加的成员将无法访问。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 class C {
     // 私有函数，所以其返回类型是匿名对象类型
     private fun foo() = object {
@@ -86,7 +86,7 @@ class C {
 （与 Java 不同的是，这不仅限于 final 变量。）
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 fun countClicks(window: JComponent) {
     var clickCount = 0
     var enterCount = 0
@@ -111,7 +111,7 @@ fun countClicks(window: JComponent) {
 而 Kotlin（继 Scala 之后）使单例声明变得很容易：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 object DataProviderManager {
     fun registerDataProvider(provider: DataProvider) {
         // ……
@@ -131,7 +131,7 @@ object DataProviderManager {
 如需引用该对象，我们直接使用其名称即可：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 DataProviderManager.registerDataProvider(……)
 ```
 </div>
@@ -139,7 +139,7 @@ DataProviderManager.registerDataProvider(……)
 这些对象可以有超类型：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 object DefaultListener : MouseAdapter() {
     override fun mouseClicked(e: MouseEvent) { …… }
 
@@ -156,7 +156,7 @@ object DefaultListener : MouseAdapter() {
 类内部的对象声明可以用 *companion*{: .keyword } 关键字标记：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 class MyClass {
     companion object Factory {
         fun create(): MyClass = MyClass()
@@ -168,7 +168,7 @@ class MyClass {
 该伴生对象的成员可通过只使用类名作为限定符来调用：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 val instance = MyClass.create()
 ```
 </div>
@@ -176,7 +176,7 @@ val instance = MyClass.create()
 可以省略伴生对象的名称，在这种情况下将使用名称 `Companion`：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 class MyClass {
     companion object { }
 }
@@ -189,7 +189,7 @@ val x = MyClass.Companion
 -->仍然是真实对象的实例成员，而且，例如还可以实现接口：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 interface Factory<T> {
     fun create(): T
 }

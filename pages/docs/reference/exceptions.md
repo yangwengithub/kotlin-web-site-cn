@@ -15,9 +15,9 @@ Kotlin 中所有异常类都是 `Throwable` 类的子孙类。
 使用 *throw*{: .keyword }-表达式来抛出异常：
 
 <div class="sample" markdown="1" theme="idea">
-``` kotlin
+```kotlin
 
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     throw Exception("Hi There!")
 //sampleEnd
@@ -28,7 +28,7 @@ fun main(args: Array<String>) {
 使用 *try*{: .keyword }-表达式来捕获异常：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 try {
     // 一些代码
 }
@@ -49,7 +49,7 @@ finally {
 *try*{: .keyword } 是一个表达式，即它可以有一个返回值：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 val a: Int? = try { parseInt(input) } catch (e: NumberFormatException) { null }
 ```
 </div>
@@ -75,7 +75,7 @@ Appendable append(CharSequence csq) throws IOException;
 所以它导致这种代码随处可见的出现：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 try {
     log.append(message)
 }
@@ -101,7 +101,7 @@ Bruce Eckel 在[《Java 是否需要受检的异常？》（Does Java need Check
 在 Kotlin 中 `throw` 是表达式，所以你可以使用它（比如）作为 Elvis 表达式的一部分：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 val s = person.name ?: throw IllegalArgumentException("Name required")
 ```
 </div>
@@ -111,7 +111,7 @@ val s = person.name ?: throw IllegalArgumentException("Name required")
 在你自己的代码中，你可以使用 `Nothing` 来标记一个永远不会返回的函数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 fun fail(message: String): Nothing {
     throw IllegalArgumentException(message)
 }
@@ -121,7 +121,7 @@ fun fail(message: String): Nothing {
 当你调用该函数时，编译器会知道执行不会超出该调用：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 val s = person.name ?: fail("Name required")
 println(s)     // 在此已知“s”已初始化
 ```
@@ -133,7 +133,7 @@ println(s)     // 在此已知“s”已初始化
 -->具体的类型时，编译器会推断出 `Nothing?` 类型：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 val x = null           // “x”具有类型 `Nothing?`
 val l = listOf(null)   // “l”具有类型 `List<Nothing?>
 ```

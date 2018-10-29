@@ -12,7 +12,7 @@ title: "数据类"
 -->数据机械推导而来的。在 Kotlin 中，这叫做 _数据类_ 并标记为 `data`：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 data class User(val name: String, val age: Int)
 ```
 </div>
@@ -49,7 +49,7 @@ Kotlin 1.2 中已弃用，并且会在 Kotlin 1.3 中禁用。
 （参见[构造函数](classes.html#构造函数)）。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 data class User(val name: String = "", val age: Int = 0)
 ```
 </div>
@@ -70,11 +70,11 @@ data class Person(val name: String) {
 
 <div class="sample" markdown="1" theme="idea">
 
-``` kotlin
+```kotlin
 data class Person(val name: String) {
     var age: Int = 0
 }
-fun main(args: Array<String>) {
+fun main() {
 //sampleStart
     val person1 = Person("John")
     val person2 = Person("John")
@@ -94,7 +94,7 @@ fun main(args: Array<String>) {
  `copy()` 函数就是为此而生成。对于上文的 `User` 类，其实现会类似下面这样：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 fun copy(name: String = this.name, age: Int = this.age) = User(name, age)     
 ```
 </div>
@@ -102,7 +102,7 @@ fun copy(name: String = this.name, age: Int = this.age) = User(name, age)
 这让我们可以写：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 val jack = User(name = "Jack", age = 1)
 val olderJack = jack.copy(age = 2)
 ```
@@ -113,7 +113,7 @@ val olderJack = jack.copy(age = 2)
 为数据类生成的 _Component 函数_ 使它们可在[解构声明](multi-declarations.html)中使用：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 val jane = User("Jane", 35)
 val (name, age) = jane
 println("$name, $age years of age") // 输出 "Jane, 35 years of age"

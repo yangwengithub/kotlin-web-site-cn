@@ -14,7 +14,7 @@ title: "动态类型"
 JavaScript生态系统）进行互操作。为了方便这些使用场景，语言中有 `dynamic` 类型可用：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 val dyn: dynamic = ……
 ```
 </div>
@@ -29,7 +29,7 @@ val dyn: dynamic = ……
 ：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 dyn.whatever(1, "foo", dyn) // “whatever”在任何地方都没有定义
 dyn.whatever(*arrayOf(1, 2, 3))
 ```
@@ -45,7 +45,7 @@ Kotlin 到 JavaScript 编译器执行的名字修饰。你可能需要使用 [@J
 动态调用总是返回 `dynamic` 作为结果，所以我们可以自由地这样链接调用：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 dyn.foo().bar.baz()
 ```
 </div>
@@ -53,7 +53,7 @@ dyn.foo().bar.baz()
 当我们把一个 lambda 表达式传给一个动态调用时，它的所有参数默认都是 `dynamic` 类型的：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 dyn.foo {
     x -> x.bar() // x 是 dynamic
 }

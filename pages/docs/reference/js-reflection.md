@@ -22,7 +22,7 @@ title: "JavaScript 反射"
 示例：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 class A
 class B
 class C

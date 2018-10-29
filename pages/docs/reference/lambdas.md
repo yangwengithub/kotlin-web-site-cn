@@ -24,7 +24,7 @@ Kotlin 函数都是[*头等的*](https://zh.wikipedia.org/wiki/%E5%A4%B4%E7%AD%8
 -->续接合起来代入累积值来构建返回值：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 fun <T, R> Collection<T>.fold(
     initial: R, 
     combine: (acc: R, nextElement: T) -> R
@@ -49,7 +49,7 @@ fun <T, R> Collection<T>.fold(
 <div class="sample" markdown="1" theme="idea">
 
 ```kotlin
-fun main(args: Array<String>) {
+fun main() {
     //sampleStart
     val items = listOf(1, 2, 3, 4, 5)
     
@@ -158,8 +158,8 @@ val a = { i: Int -> i + 1 } // 推断出的类型是 (Int) -> Int
  
 <div class="sample" markdown="1" theme="idea">
 
-``` kotlin
-fun main(args: Array<String>) {
+```kotlin
+fun main() {
     //sampleStart
     val repeatFun: String.(Int) -> String = { times -> this.repeat(times) }
     val twoParameters: (String, Int) -> String = repeatFun // OK
@@ -190,8 +190,8 @@ fun main(args: Array<String>) {
 
 <div class="sample" markdown="1" theme="idea">
 
-``` kotlin
-fun main(args: Array<String>) {
+```kotlin
+fun main() {
     //sampleStart
     val stringPlus: (String, String) -> String = String::plus
     val intPlus: Int.(Int) -> Int = Int::plus
@@ -218,7 +218,7 @@ lambda 表达式与匿名函数是“函数字面值”，即未声明的函数�
 但立即做为表达式传递。考虑下面的例子：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 max(strings, { a, b -> a.length < b.length })
 ```
 </div>
@@ -228,7 +228,7 @@ max(strings, { a, b -> a.length < b.length })
 -->以下命名函数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 fun compare(a: String, b: String): Boolean = a.length < b.length
 ```
 </div>
@@ -238,7 +238,7 @@ fun compare(a: String, b: String): Boolean = a.length < b.length
 Lambda 表达式的完整语法形式如下：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 val sum = { x: Int, y: Int -> x + y }
 ```
 </div>
@@ -250,7 +250,7 @@ lambda 表达式总是括在花括号中，
 如果我们把所有可选标注都留下，看起来如下：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 val sum: (Int, Int) -> Int = { x, y -> x + y }
 ```
 </div>
@@ -261,7 +261,7 @@ val sum: (Int, Int) -> Int = { x, y -> x + y }
 -->传入的 lambda 表达式可以放在圆括号之外：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 val product = items.fold(1) { acc, e -> acc * e }
 ```
 </div>
@@ -269,7 +269,7 @@ val product = items.fold(1) { acc, e -> acc * e }
 如果该 lambda 表达式是调用时唯一的参数，那么圆括号可以完全省略：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 run { println("...") }
 ```
 </div>
@@ -284,7 +284,7 @@ run { println("...") }
 该参数会隐式声明为 `it`：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 ints.filter { it > 0 } // 这个字面值是“(it: Int) -> Boolean”类型的
 ```
 </div>
@@ -297,7 +297,7 @@ ints.filter { it > 0 } // 这个字面值是“(it: Int) -> Boolean”类型的
 因此，以下两个片段是等价的：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 ints.filter {
     val shouldFilter = it > 0 
     shouldFilter
@@ -314,7 +314,7 @@ ints.filter {
 [LINQ-风格](http://msdn.microsoft.com/en-us/library/bb308959.aspx) 的代码：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 strings.filter { it.length == 5 }.sortedBy { it }.map { it.toUpperCase() }
 ```
 </div>
@@ -326,7 +326,7 @@ strings.filter { it.length == 5 }.sortedBy { it }.map { it.toUpperCase() }
 如果 lambda 表达式的参数未使用，那么可以用下划线取代其名称：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 map.forEach { _, value -> println("$value!") }
 ```
 </div>
@@ -344,7 +344,7 @@ map.forEach { _, value -> println("$value!") }
 -->确实需要显式指定，可以使用另一种语法： _匿名函数_ 。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 fun(x: Int, y: Int): Int = x + y
 ```
 </div>
@@ -353,7 +353,7 @@ fun(x: Int, y: Int): Int = x + y
 -->可以是表达式（如上所示）或代码块：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 fun(x: Int, y: Int): Int {
     return x + y
 }
@@ -364,7 +364,7 @@ fun(x: Int, y: Int): Int {
 -->能够从上下文推断出的参数类型可以省略：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 ints.filter(fun(item) = item > 0)
 ```
 </div>
@@ -388,7 +388,7 @@ Lambda 表达式或者匿名函数（以及[局部函数](functions.html#局部�
 可以访问其 _闭包_ ，即在外部作用域中声明的变量。 与 Java 不同的是可以修改闭包中捕获的变量：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 var sum = 0
 ints.filter { it > 0 }.forEach {
     sum += it
@@ -415,7 +415,7 @@ print(sum)
 ：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 val sum: Int.(Int) -> Int = { other -> plus(other) } 
 ```
 </div>
@@ -424,7 +424,7 @@ val sum: Int.(Int) -> Int = { other -> plus(other) }
 如果你需要使用带接收者的函数类型声明一个变量，并在之后使用它，这将非常有用。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 val sum = fun Int.(other: Int): Int = this + other
 ```
 </div>
@@ -433,7 +433,7 @@ val sum = fun Int.(other: Int): Int = this + other
 One of the most important examples of their usage is [type-safe builders](type-safe-builders.html):
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 class HTML {
     fun body() { …… }
 }

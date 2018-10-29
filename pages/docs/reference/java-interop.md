@@ -14,7 +14,7 @@ Kotlin 在设计时就考虑了 Java 互操作性。可以从 Kotlin 中自然�
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 import java.util.*
 
 fun demo(source: List<Int>) {
@@ -41,7 +41,7 @@ fun demo(source: List<Int>) {
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 import java.util.Calendar
 
 fun calendarDemo() {
@@ -73,7 +73,7 @@ fun calendarDemo() {
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 foo.`is`(bar)
 ```
 
@@ -89,7 +89,7 @@ Java 声明的类型在 Kotlin 中会被特别对待并称为*平台类型*。�
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 val list = ArrayList<String>() // 非空（构造函数结果）
 list.add("Item")
 val size = list.size // 非空（原生 int）
@@ -99,11 +99,12 @@ val item = list[0] // 推断为平台类型（普通 Java 对象）
 </div>
 
 当我们调用平台类型变量的方法时，Kotlin 不会在编译时报告可空性错误，
-但在运行时调用可能会失败，因为空指针异常或者 Kotlin 生成的阻止空值传播的断言：
+但在运行时调用可能会失败，因为空指针异常或者 Kotlin 生成的<!--
+-->阻止空值传播的断言：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 item.substring(1) // 允许，如果 item == null 可能会抛出异常
 ```
 
@@ -115,7 +116,7 @@ item.substring(1) // 允许，如果 item == null 可能会抛出异常
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 val nullable: String? = item // 允许，没有问题
 val notNull: String = item // 允许，运行时可能失败
 ```
@@ -465,7 +466,7 @@ Kotlin 只允许 *is*{: .keyword }-检测星投影的泛型类型：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 if (a is List<Int>) // 错误：无法检查它是否真的是一个 Int 列表
 // but
 if (a is List<*>) // OK：不保证列表的内容
@@ -503,7 +504,7 @@ public class JavaArrayExample {
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 val javaObj = JavaArrayExample()
 val array = intArrayOf(0, 1, 2, 3)
 javaObj.removeIndices(array)  // 将 int[] 传给方法
@@ -515,7 +516,7 @@ javaObj.removeIndices(array)  // 将 int[] 传给方法
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 val array = arrayOf(1, 2, 3, 4)
 array[1] = array[1] * 2 // 不会实际生成对 get() 和 set() 的调用
 for (x in array) { // 不会创建迭代器
@@ -529,7 +530,7 @@ for (x in array) { // 不会创建迭代器
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 for (i in array.indices) {// 不会创建迭代器
     array[i] += 2
 }
@@ -541,7 +542,7 @@ for (i in array.indices) {// 不会创建迭代器
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 if (i in array.indices) { // 同 (i >= 0 && i < array.size)
     print(array[i])
 }
@@ -570,7 +571,7 @@ public class JavaArrayExample {
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 val javaObj = JavaArrayExample()
 val array = intArrayOf(0, 1, 2, 3)
 javaObj.removeIndicesVarArg(*array)
@@ -594,7 +595,7 @@ javaObj.removeIndicesVarArg(*array)
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 fun render(list: List<*>, to: Appendable) {
     for (item in list) {
         to.append(item.toString()) // Java 会要求我们在这里捕获 IOException
@@ -629,7 +630,7 @@ fun render(list: List<*>, to: Appendable) {
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 val fooClass = foo::class.java
 ```
 
@@ -639,7 +640,7 @@ val fooClass = foo::class.java
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 val fooClass = foo.javaClass
 ```
 
@@ -690,7 +691,7 @@ Java 类的静态成员会形成该类的“伴生对象”。我们无法将这
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 if (Character.isLetter(a)) { …… }
 ```
 
@@ -715,7 +716,7 @@ Java 反射适用于 Kotlin 类，反之亦然。如上所述，你可以使用 
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 val runnable = Runnable { println("This runs in a runnable") }
 ```
 
@@ -725,7 +726,7 @@ val runnable = Runnable { println("This runs in a runnable") }
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 val executor = ThreadPoolExecutor()
 // Java 签名：void execute(Runnable command)
 executor.execute { println("This runs in a thread pool") }
@@ -739,7 +740,7 @@ executor.execute { println("This runs in a thread pool") }
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 executor.execute(Runnable { println("This runs in a thread pool") })
 ```
 
@@ -757,7 +758,7 @@ executor.execute(Runnable { println("This runs in a thread pool") })
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
-``` kotlin
+```kotlin
 external fun foo(x: Int): Double
 ```
 

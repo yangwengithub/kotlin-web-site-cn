@@ -14,7 +14,7 @@ title: "类型别名（自 1.1 起）"
 例如，通常缩减集合类型是很有吸引力的：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 typealias NodeSet = Set<Network.Node>
 
 typealias FileTable<K> = MutableMap<K, MutableList<File>>
@@ -24,7 +24,7 @@ typealias FileTable<K> = MutableMap<K, MutableList<File>>
 你可以为函数类型提供另外的别名：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 typealias MyHandler = (Int, String, Any) -> Unit
 
 typealias Predicate<T> = (T) -> Boolean
@@ -34,7 +34,7 @@ typealias Predicate<T> = (T) -> Boolean
 你可以为内部类和嵌套类创建新名称：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 class A {
     inner class Inner
 }
@@ -53,12 +53,12 @@ typealias BInner = B.Inner
 因此，当你需要泛型函数类型时，你可以传递该类型的变量，反之亦然：
 
 <div class="sample" markdown="1" theme="idea">
-``` kotlin
+```kotlin
 typealias Predicate<T> = (T) -> Boolean
 
 fun foo(p: Predicate<Int>) = p(42)
 
-fun main(args: Array<String>) {
+fun main() {
     val f: (Int) -> Boolean = { it > 0 }
     println(foo(f)) // 输出 "true"
 

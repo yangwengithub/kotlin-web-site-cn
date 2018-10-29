@@ -58,7 +58,7 @@ allOpen {
 它也适用于元注解：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 @com.my.Annotation
 annotation class MyFrameworkAnnotation
 

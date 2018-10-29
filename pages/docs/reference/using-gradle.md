@@ -202,7 +202,7 @@ compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 对于 Gradle Kotlin DSL，以下表示法的依赖关系与其等价：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 dependencies {
     compile(kotlin("stdlib"))
     // 或者以下之一：
@@ -349,7 +349,7 @@ compileKotlin {
 对于 Gradle Kotlin DSL，首先从项目的 `tasks` 中获取任务：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
+```kotlin
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 // ……
 
