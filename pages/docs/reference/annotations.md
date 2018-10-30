@@ -11,7 +11,7 @@ title: "注解"
 注解是将元数据附加到代码的方法。要声明注解，请将 *annotation*{: .keyword } 修饰符放在类的前面：
 
 
-``` kotlin
+```kotlin
 annotation class Fancy
 ```
 
@@ -42,7 +42,7 @@ annotation class Fancy
 ### 用法
 
 
-``` kotlin
+```kotlin
 @Fancy class Foo {
     @Fancy fun baz(@Fancy foo: Int): Int {
         return (@Fancy 1)
@@ -55,7 +55,7 @@ annotation class Fancy
 ，并将注解添加到其前面：
 
 
-``` kotlin
+```kotlin
 class Foo @Inject constructor(dependency: MyDependency) { …… }
 ```
 
@@ -63,7 +63,7 @@ class Foo @Inject constructor(dependency: MyDependency) { …… }
 你也可以标注属性访问器：
 
 
-``` kotlin
+```kotlin
 class Foo {
     var x: MyDependency? = null
         @Inject set
@@ -76,7 +76,7 @@ class Foo {
 注解可以有接受参数的构造函数。
 
 
-``` kotlin
+```kotlin
 annotation class Special(val why: String)
 
 @Special("example") class Foo {}
@@ -98,7 +98,7 @@ annotation class Special(val why: String)
 如果注解用作另一个注解的参数，则其名称不以 @ 字符为前缀：
 
 
-``` kotlin
+```kotlin
 annotation class ReplaceWith(val expression: String)
 
 annotation class Deprecated(
@@ -132,7 +132,7 @@ annotation class Ann(val arg1: KClass<*>, val arg2: KClass<out Any>)
 该框架使用注解进行并发控制。
 
 
-``` kotlin
+```kotlin
 annotation class Suspendable
 
 val f = @Suspendable { Fiber.sleep(10) }
@@ -146,7 +146,7 @@ val f = @Suspendable { Fiber.sleep(10) }
 。如果要指定精确地指定应该如何生成该注解，请使用以下语法：
 
 
-``` kotlin
+```kotlin
 class Example(@field:Ann val foo,    // 标注 Java 字段
               @get:Ann val bar,      // 标注 Java getter
               @param:Ann val quux)   // 标注 Java 构造函数参数
@@ -157,7 +157,7 @@ class Example(@field:Ann val foo,    // 标注 Java 字段
 -->文件的顶层、package 指令之前或者在所有导入之前（如果文件在默认包中的话）：
 
 
-``` kotlin
+```kotlin
 @file:JvmName("Foo")
 
 package org.jetbrains.demo
@@ -191,7 +191,7 @@ class Example {
 要标注扩展函数的接收者参数，请使用以下语法：
 
 
-``` kotlin
+```kotlin
 fun @receiver:Fancy String.myExtension() { ... }
 ```
 
@@ -209,7 +209,7 @@ fun @receiver:Fancy String.myExtension() { ... }
 Java 注解与 Kotlin 100% 兼容：
 
 
-``` kotlin
+```kotlin
 import org.junit.Test
 import org.junit.Assert.*
 import org.junit.Rule
@@ -241,7 +241,7 @@ public @interface Ann {
 
 
 
-``` kotlin
+```kotlin
 // Kotlin
 @Ann(intValue = 1, stringValue = "abc") class C
 ```
@@ -259,7 +259,7 @@ public @interface AnnWithValue {
 
 
 
-``` kotlin
+```kotlin
 // Kotlin
 @AnnWithValue("abc") class C
 ```
@@ -279,7 +279,7 @@ public @interface AnnWithArrayValue {
 
 
 
-``` kotlin
+```kotlin
 // Kotlin
 @AnnWithArrayValue("abc", "foo", "bar") class C
 ```
@@ -298,7 +298,7 @@ public @interface AnnWithArrayMethod {
 
 
 
-``` kotlin
+```kotlin
 // Kotlin 1.2+：
 @AnnWithArrayMethod(names = ["abc", "foo", "bar"]) 
 class C
@@ -323,7 +323,7 @@ public @interface Ann {
 
 
 
-``` kotlin
+```kotlin
 // Kotlin
 fun foo(ann: Ann) {
     val i = ann.value

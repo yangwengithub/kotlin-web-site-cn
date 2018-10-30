@@ -29,8 +29,8 @@ Kotlin 的类型系统旨在从我们的代码中消除 `NullPointerException`�
 例如，String 类型的常规变量不能容纳 *null*{: .keyword }：
 
 
-``` kotlin
-fun main(args: Array<String>) {
+```kotlin
+fun main() {
 //sampleStart
     var a: String = "abc"
     a = null // 编译错误
@@ -42,8 +42,8 @@ fun main(args: Array<String>) {
 如果要允许为空，我们可以声明一个变量为可空字符串，写作 `String?`：
 
 
-``` kotlin
-fun main(args: Array<String>) {
+```kotlin
+fun main() {
 //sampleStart
     var b: String? = "abc"
     b = null // ok
@@ -56,7 +56,7 @@ fun main(args: Array<String>) {
 现在，如果你调用 `a` 的方法或者访问它的属性，它保证不会导致 `NPE`，这样你就可以放心地使用：
 
 
-``` kotlin
+```kotlin
 val l = a.length
 ```
 
@@ -64,7 +64,7 @@ val l = a.length
 但是如果你想访问 `b` 的同一个属性，那么这是不安全的，并且编译器会报告一个错误：
 
 
-``` kotlin
+```kotlin
 val l = b.length // 错误：变量“b”可能为空
 ```
 
@@ -76,7 +76,7 @@ val l = b.length // 错误：变量“b”可能为空
 首先，你可以显式检查 `b` 是否为 *null*{: .keyword }，并分别处理两种可能：
 
 
-``` kotlin
+```kotlin
 val l = if (b != null) b.length else -1
 ```
 
@@ -85,8 +85,8 @@ val l = if (b != null) b.length else -1
 同时，也支持更复杂（更智能）的条件：
 
 
-``` kotlin
-fun main(args: Array<String>) {
+```kotlin
+fun main() {
 //sampleStart
     val b = "Kotlin"
     if (b != null && b.length > 0) {
@@ -109,8 +109,8 @@ fun main(args: Array<String>) {
 你的第二个选择是安全调用操作符，写作 `?.`：
 
 
-``` kotlin
-fun main(args: Array<String>) {
+```kotlin
+fun main() {
 //sampleStart
     val a = "Kotlin"
     val b: String? = null
@@ -127,7 +127,7 @@ fun main(args: Array<String>) {
 并且可能有另外一个员工是该部门的负责人，那么获取 Bob 所在部门负责人（如果有的话）的名字，我们写作：
 
 
-``` kotlin
+```kotlin
 bob?.department?.head?.name
 ```
 
@@ -137,8 +137,8 @@ bob?.department?.head?.name
 如果要只对非空值执行某个操作，安全调用操作符可以与 [`let`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/let.html) 一起使用：
 
 
-``` kotlin
-fun main(args: Array<String>) {
+```kotlin
+fun main() {
 //sampleStart
     val listWithNulls: List<String?> = listOf("Kotlin", null)
     for (item in listWithNulls) {
@@ -152,7 +152,7 @@ fun main(args: Array<String>) {
 安全调用也可以出现在赋值的左侧。这样，如果调用链中的任何一个接收者为空都会跳过赋值，而右侧的表达式根本不会求值：
 
 
-``` kotlin
+```kotlin
 // 如果 `person` 或者 `person.department` 其中之一为空，都不会调用该函数：
 person?.department?.head = managersPool.getManager()
 ```
@@ -163,7 +163,7 @@ person?.department?.head = managersPool.getManager()
 当我们有一个可空的引用 `r` 时，我们可以说“如果 `r` 非空，我使用它；否则使用某个非空的值 `x`”：
 
 
-``` kotlin
+```kotlin
 val l: Int = if (b != null) b.length else -1
 ```
 
@@ -171,7 +171,7 @@ val l: Int = if (b != null) b.length else -1
 除了完整的 *if*{: .keyword }-表达式，这还可以通过 Elvis 操作符表达，写作 `?:`：
 
 
-``` kotlin
+```kotlin
 val l = b?.length ?: -1
 ```
 
@@ -183,7 +183,7 @@ val l = b?.length ?: -1
  elvis 操作符右侧。这可能会非常方便，例如，检查函数参数：
 
 
-``` kotlin
+```kotlin
 fun foo(node: Node): String? {
     val parent = node.getParent() ?: return null
     val name = node.getName() ?: throw IllegalArgumentException("name expected")
@@ -199,7 +199,7 @@ fun foo(node: Node): String? {
 （例如：在我们例子中的 `String`）或者如果 `b` 为空，就会抛出一个 `NPE` 异常：
 
 
-``` kotlin
+```kotlin
 val l = b!!.length
 ```
 
@@ -212,7 +212,7 @@ val l = b!!.length
 另一个选择是使用安全的类型转换，如果尝试转换不成功则返回 *null*{: .keyword }：
 
 
-``` kotlin
+```kotlin
 val aInt: Int? = a as? Int
 ```
 
@@ -222,7 +222,7 @@ val aInt: Int? = a as? Int
 如果你有一个可空类型元素的集合，并且想要过滤非空元素，你可以使用 `filterNotNull` 来实现：
 
 
-``` kotlin
+```kotlin
 val nullableList: List<Int?> = listOf(1, 2, null, 4)
 val intList: List<Int> = nullableList.filterNotNull()
 ```

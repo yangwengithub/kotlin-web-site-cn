@@ -14,7 +14,7 @@ title: "控制流：if、when、for、while"
 
 
 
-``` kotlin
+```kotlin
 // 传统用法
 var max = a 
 if (a < b) max = b
@@ -37,7 +37,7 @@ val max = if (a > b) a else b
 
 
 
-``` kotlin
+```kotlin
 val max = if (a > b) {
     print("Choose a")
     a
@@ -60,7 +60,7 @@ val max = if (a > b) {
 
 
 
-``` kotlin
+```kotlin
 when (x) {
     1 -> print("x == 1")
     2 -> print("x == 2")
@@ -86,7 +86,7 @@ when (x) {
 
 
 
-``` kotlin
+```kotlin
 when (x) {
     0, 1 -> print("x == 0 or x == 1")
     else -> print("otherwise")
@@ -99,7 +99,7 @@ when (x) {
 
 
 
-``` kotlin
+```kotlin
 when (x) {
     parseInt(s) -> print("s encodes x")
     else -> print("s does not encode x")
@@ -112,7 +112,7 @@ when (x) {
 
 
 
-``` kotlin
+```kotlin
 when (x) {
     in 1..10 -> print("x is in the range")
     in validNumbers -> print("x is valid")
@@ -143,7 +143,7 @@ fun hasPrefix(x: Any) = when(x) {
 
 
 
-``` kotlin
+```kotlin
 when {
     x.isOdd() -> print("x is odd")
     x.isEven() -> print("x is even")
@@ -157,7 +157,7 @@ Since Kotlin 1.3, it is possible to capture *when*{: .keyword} subject in a vari
 
 
 
-``` kotlin
+```kotlin
 fun Request.getBody() =
         when (val response = executeRequest()) {
             is Success -> response.body
@@ -179,7 +179,7 @@ Scope of variable, introduced in *when*{: .keyword} subject, is restricted to *w
 
 
 
-``` kotlin
+```kotlin
 for (item in collection) print(item)
 ```
 
@@ -189,7 +189,7 @@ for (item in collection) print(item)
 
 
 
-``` kotlin
+```kotlin
 for (item: Int in ints) {
     // ……
 }
@@ -209,8 +209,8 @@ for (item: Int in ints) {
 
 
 
-``` kotlin
-fun main(args: Array<String>) {
+```kotlin
+fun main() {
 //sampleStart
 for (i in 1..3) {
     println(i)
@@ -230,8 +230,8 @@ for (i in 6 downTo 0 step 2) {
 
 
 
-``` kotlin
-fun main(args: Array<String>) {
+```kotlin
+fun main() {
 val array = arrayOf("a", "b", "c")
 //sampleStart
 for (i in array.indices) {
@@ -247,8 +247,8 @@ for (i in array.indices) {
 
 
 
-``` kotlin
-fun main(args: Array<String>) {
+```kotlin
+fun main() {
 val array = arrayOf("a", "b", "c")
 //sampleStart
 for ((index, value) in array.withIndex()) {
@@ -268,7 +268,7 @@ for ((index, value) in array.withIndex()) {
 
 
 
-``` kotlin
+```kotlin
 while (x > 0) {
     x--
 }

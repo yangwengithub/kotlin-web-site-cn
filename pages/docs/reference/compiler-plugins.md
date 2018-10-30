@@ -58,7 +58,7 @@ allOpen {
 它也适用于元注解：
 
 
-``` kotlin
+```kotlin
 @com.my.Annotation
 annotation class MyFrameworkAnnotation
 

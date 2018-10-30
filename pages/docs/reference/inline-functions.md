@@ -16,7 +16,7 @@ title: "内联函数与具体化的类型参数"
 考虑下面的情况：
 
 
-``` kotlin
+```kotlin
 lock(l) { foo() }
 ```
 
@@ -24,7 +24,7 @@ lock(l) { foo() }
 编译器没有为参数创建一个函数对象并生成一个调用。取而代之，编译器可以生成以下代码：
 
 
-``` kotlin
+```kotlin
 l.lock()
 try {
     foo()
@@ -40,7 +40,7 @@ finally {
 为了让编译器这么做，我们需要使用 `inline` 修饰符标记 `lock()` 函数：
 
 
-``` kotlin
+```kotlin
 inline fun <T> lock(lock: Lock, body: () -> T): T { …… }
 ```
 
@@ -56,7 +56,7 @@ inline fun <T> lock(lock: Lock, body: () -> T): T { …… }
 -->一些函数参数：
 
 
-``` kotlin
+```kotlin
 inline fun foo(inlined: () -> Unit, noinline notInlined: () -> Unit) { …… }
 ```
 
@@ -75,7 +75,7 @@ inline fun foo(inlined: () -> Unit, noinline notInlined: () -> Unit) { …… }
 -->在 lambda 表达式内部禁止使用裸 `return`，因为 lambda 表达式不能使包含它的函数返回：
 
 
-``` kotlin
+```kotlin
 fun ordinaryFunction(block: () -> Unit) {
     println("hi!")
 }
@@ -86,7 +86,7 @@ fun foo() {
     }
 }
 //sampleEnd
-fun main(args: Array<String>) {
+fun main() {
     foo()
 }
 ```
@@ -98,7 +98,7 @@ fun main(args: Array<String>) {
 inline fun inlined(block: () -> Unit) {
     println("hi!")
 }
-``` kotlin
+```kotlin
 //sampleStart
 fun foo() {
     inlined {
@@ -106,7 +106,7 @@ fun foo() {
     }
 }
 //sampleEnd
-fun main(args: Array<String>) {
+fun main() {
     foo()
 }
 ```
@@ -116,7 +116,7 @@ fun main(args: Array<String>) {
 -->在循环中用这种结构，其内联函数通常包含：
 
 
-``` kotlin
+```kotlin
 fun hasZeros(ints: List<Int>): Boolean {
     ints.forEach {
         if (it == 0) return true // 从 hasZeros 返回
@@ -132,7 +132,7 @@ fun hasZeros(ints: List<Int>): Boolean {
 -->用 `crossinline` 修饰符标记:
 
 
-``` kotlin
+```kotlin
 inline fun f(crossinline body: () -> Unit) {
     val f = object: Runnable {
         override fun run() = body()
@@ -149,7 +149,7 @@ inline fun f(crossinline body: () -> Unit) {
 有时候我们需要访问一个作为参数传给我们的一个类型：
 
 
-``` kotlin
+```kotlin
 fun <T> TreeNode.findParentOfType(clazz: Class<T>): T? {
     var p = parent
     while (p != null && !clazz.isInstance(p)) {
@@ -165,7 +165,7 @@ fun <T> TreeNode.findParentOfType(clazz: Class<T>): T? {
 这都没有问题，但是调用处不是很优雅：
 
 
-``` kotlin
+```kotlin
 treeNode.findParentOfType(MyTreeNode::class.java)
 ```
 
@@ -173,7 +173,7 @@ treeNode.findParentOfType(MyTreeNode::class.java)
 我们真正想要的只是传一个类型给该函数，即像这样调用它：
 
 
-``` kotlin
+```kotlin
 treeNode.findParentOfType<MyTreeNode>()
 ```
 
@@ -181,7 +181,7 @@ treeNode.findParentOfType<MyTreeNode>()
 为能够这么做，内联函数支持*具体化的类型参数*，于是我们可以这样写：
 
 
-``` kotlin
+```kotlin
 inline fun <reified T> TreeNode.findParentOfType(): T? {
     var p = parent
     while (p != null && p !is T) {
@@ -199,7 +199,7 @@ inline fun <reified T> TreeNode.findParentOfType(): T? {
 虽然在许多情况下可能不需要反射，但我们仍然可以对一个具体化的类型参数使用它：
 
 
-``` kotlin
+```kotlin
 inline fun <reified T> membersOf() = T::class.members
 
 fun main(s: Array<String>) {
@@ -222,7 +222,7 @@ fun main(s: Array<String>) {
 你可以标注独立的属性访问器：
 
 
-``` kotlin
+```kotlin
 val foo: Foo
     inline get() = Foo()
 
@@ -235,7 +235,7 @@ var bar: Bar
 你也可以标注整个属性，将它的两个访问器都标记为内联：
 
 
-``` kotlin
+```kotlin
 inline var bar: Bar
     get() = ……
     set(v) { …… }

@@ -22,7 +22,7 @@ title: "JavaScript 反射"
 示例：
 
 
-``` kotlin
+```kotlin
 class A
 class B
 class C

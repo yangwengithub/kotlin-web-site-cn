@@ -12,7 +12,7 @@ title: "基本语法"
 包的声明应处于源文件顶部：
 
 
-``` kotlin
+```kotlin
 package my.demo
 
 import java.util.*
@@ -31,7 +31,7 @@ import java.util.*
 
 
 
-``` kotlin
+```kotlin
 //sampleStart
 fun sum(a: Int, b: Int): Int {
     return a + b
@@ -49,7 +49,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 //sampleStart
 fun sum(a: Int, b: Int) = a + b
 //sampleEnd
@@ -64,7 +64,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 //sampleStart
 fun printSum(a: Int, b: Int): Unit {
     println("sum of $a and $b is ${a + b}")
@@ -81,7 +81,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 //sampleStart
 fun printSum(a: Int, b: Int) {
     println("sum of $a and $b is ${a + b}")
@@ -102,7 +102,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 fun main() {
 //sampleStart
     val a: Int = 1  // 立即赋值
@@ -119,7 +119,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 fun main() {
 //sampleStart
     var x = 5 // 自动推断出 `Int` 类型
@@ -133,7 +133,7 @@ fun main() {
 顶层变量：
 
 
-``` kotlin
+```kotlin
 //sampleStart
 val PI = 3.14
 var x = 0
@@ -159,7 +159,7 @@ fun main() {
 
 正如 Java 与 JavaScript，Kotlin 支持行注释及块注释。
 
-``` kotlin
+```kotlin
 // 这是一个行注释
 
 /* 这是一个多行的
@@ -174,7 +174,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 fun main() {
 //sampleStart
     var a = 1
@@ -197,7 +197,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 //sampleStart
 fun maxOf(a: Int, b: Int): Int {
     if (a > b) {
@@ -219,7 +219,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 //sampleStart
 fun maxOf(a: Int, b: Int) = if (a > b) a else b
 //sampleEnd
@@ -239,7 +239,7 @@ fun main() {
 如果 `str` 的内容不是数字返回 *null*{: .keyword }：
 
 
-``` kotlin
+```kotlin
 fun parseInt(str: String): Int? {
     // ……
 }
@@ -251,7 +251,7 @@ fun parseInt(str: String): Int? {
 
 
 
-``` kotlin
+```kotlin
 fun parseInt(str: String): Int? {
     return str.toIntOrNull()
 }
@@ -286,7 +286,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 fun parseInt(str: String): Int? {
     return str.toIntOrNull()
 }
@@ -329,7 +329,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 //sampleStart
 fun getStringLength(obj: Any): Int? {
     if (obj is String) {
@@ -358,7 +358,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 //sampleStart
 fun getStringLength(obj: Any): Int? {
     if (obj !is String) return null
@@ -384,7 +384,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 //sampleStart
 fun getStringLength(obj: Any): Int? {
     // `obj` 在 `&&` 右边自动转换成 `String` 类型
@@ -414,7 +414,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 fun main() {
 //sampleStart
     val items = listOf("apple", "banana", "kiwifruit")
@@ -430,7 +430,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 fun main() {
 //sampleStart
     val items = listOf("apple", "banana", "kiwifruit")
@@ -449,7 +449,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 fun main() {
 //sampleStart
     val items = listOf("apple", "banana", "kiwifruit")
@@ -470,7 +470,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 //sampleStart
 fun describe(obj: Any): String =
     when (obj) {
@@ -501,7 +501,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 fun main() {
 //sampleStart
     val x = 10
@@ -519,7 +519,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 fun main() {
 //sampleStart
     val list = listOf("a", "b", "c")
@@ -540,7 +540,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 fun main() {
 //sampleStart
     for (x in 1..5) {
@@ -555,7 +555,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 fun main() {
 //sampleStart
     for (x in 1..10 step 2) {
@@ -578,7 +578,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 fun main() {
     val items = listOf("apple", "banana", "kiwifruit")
 //sampleStart
@@ -595,7 +595,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 fun main() {
     val items = setOf("apple", "banana", "kiwifruit")
 //sampleStart
@@ -614,7 +614,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 fun main() {
 //sampleStart
   val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
@@ -634,7 +634,7 @@ fun main() {
 
 
 
-``` kotlin
+```kotlin
 fun main() {
 //sampleStart
     val rectangle = Rectangle(5.0, 2.0) // 不需要“new”关键字

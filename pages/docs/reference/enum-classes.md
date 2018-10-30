@@ -10,7 +10,7 @@ title: "枚举类"
 枚举类的最基本的用法是实现类型安全的枚举：
 
 
-``` kotlin
+```kotlin
 enum class Direction {
     NORTH, SOUTH, WEST, EAST
 }
@@ -24,7 +24,7 @@ enum class Direction {
 因为每一个枚举都是枚举类的实例，所以他们可以是这样初始化过的：
 
 
-``` kotlin
+```kotlin
 enum class Color(val rgb: Int) {
         RED(0xFF0000),
         GREEN(0x00FF00),
@@ -38,7 +38,7 @@ enum class Color(val rgb: Int) {
 枚举常量也可以声明自己的匿名类：
 
 
-``` kotlin
+```kotlin
 enum class ProtocolState {
     WAITING {
         override fun signal() = TALKING
@@ -65,7 +65,7 @@ enum class ProtocolState {
 
 
 
-``` kotlin
+```kotlin
 import java.util.function.BinaryOperator
 import java.util.function.IntBinaryOperator
 
@@ -82,7 +82,7 @@ enum class IntArithmetics : BinaryOperator<Int>, IntBinaryOperator {
 }
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     val a = 13
     val b = 31
     for (f in IntArithmetics.values()) {
@@ -98,7 +98,7 @@ fun main(args: Array<String>) {
 -->签名如下（假设枚举类的名称是 `EnumClass`）：
 
 
-``` kotlin
+```kotlin
 EnumClass.valueOf(value: String): EnumClass
 EnumClass.values(): Array<EnumClass>
 ```
@@ -110,7 +110,7 @@ EnumClass.values(): Array<EnumClass>
 ：
 
 
-``` kotlin
+```kotlin
 enum class RGB { RED, GREEN, BLUE }
 
 inline fun <reified T : Enum<T>> printAllValues() {
@@ -124,7 +124,7 @@ printAllValues<RGB>() // 输出 RED, GREEN, BLUE
 每个枚举常量都具有在枚举类声明中获取其名称与位置的属性：
 
 
-``` kotlin
+```kotlin
 val name: String
 val ordinal: Int
 ```

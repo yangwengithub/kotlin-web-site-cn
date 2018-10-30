@@ -23,7 +23,7 @@ title: "This 表达式"
 -->代指 *this*{: .keyword } 来源的标签：
 
 
-``` kotlin
+```kotlin
 class A { // 隐式标签 @A
     inner class B { // 隐式标签 @B
         fun Int.foo() { // 隐式标签 @foo

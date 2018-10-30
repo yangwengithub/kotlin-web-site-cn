@@ -20,7 +20,7 @@ Kotlin 中自由地与 JavaScript 交流，但是如果你想要 Kotlin 类型�
 例如：
 
 
-``` kotlin
+```kotlin
 fun jsTypeOf(o: Any): String {
     return js("typeof o")
 }
@@ -30,7 +30,7 @@ fun jsTypeOf(o: Any): String {
 `js` 的参数必须是字符串常量。因此，以下代码是不正确的：
 
 
-``` kotlin
+```kotlin
 fun jsTypeOf(o: Any): String {
     return js(getTypeof() + " o") // 此处报错
 }
@@ -47,7 +47,7 @@ fun getTypeof() = "typeof"
 这意味着你应该省略 `external` 声明内容的代码体。例如：
 
 
-``` kotlin
+```kotlin
 external fun alert(message: Any?): Unit
 
 external class Node {
@@ -87,7 +87,7 @@ Kotlin 中没有这样的语法。然而，在 Kotlin 中我们有伴生（`comp
 -->就是该类自身的成员。要描述来自上例中的 `MyClass`，你可以这样写：
 
 
-``` kotlin
+```kotlin
 external class MyClass {
     companion object {
         fun sharedMember()
@@ -107,7 +107,7 @@ JavaScript 实现实际上如何计算这些参数的默认值，是 Kotlin 所�
 你应该使用以下语法：
 
 
-``` kotlin
+```kotlin
 external fun myFunWithOptionalArgs(x: Int,
     y: String = definedExternally,
     z: Long = definedExternally)
@@ -124,7 +124,7 @@ external fun myFunWithOptionalArgs(x: Int,
 -->非 `external` 类扩展它。例如：
 
 
-``` kotlin
+```kotlin
 external open class HTMLElement : Element() {
     /* 成员 */
 }
@@ -152,7 +152,7 @@ JavaScript 没有接口的概念。当函数期望其参数支持 `foo`
 对于静态类型的 Kotlin，你可以使用接口来表达这点，例如：
 
 
-``` kotlin
+```kotlin
 external interface HasFooAndBar {
     fun foo()
 
@@ -166,7 +166,7 @@ external fun myFunction(p: HasFooAndBar)
 外部接口的另一个使用场景是描述设置对象。例如：
 
 
-``` kotlin
+```kotlin
 external interface JQueryAjaxSettings {
     var async: Boolean
 

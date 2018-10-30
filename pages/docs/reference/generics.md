@@ -10,7 +10,7 @@ title: "泛型：in、out、where"
 与 Java 类似，Kotlin 中的类也可以有类型参数：
 
 
-``` kotlin
+```kotlin
 class Box<T>(t: T) {
     var value = t
 }
@@ -20,7 +20,7 @@ class Box<T>(t: T) {
 一般来说，要创建这样类的实例，我们需要提供类型参数：
 
 
-``` kotlin
+```kotlin
 val box: Box<Int> = Box<Int>(1)
 ```
 
@@ -28,7 +28,7 @@ val box: Box<Int> = Box<Int>(1)
 但是如果类型参数可以推断出来，例如从构造函数的参数或者从其他途径，允许省略类型参数：
 
 
-``` kotlin
+```kotlin
 val box = Box(1) // 1 具有类型 Int，所以编译器知道我们说的是 Box<Int>。
 ```
 
@@ -145,7 +145,7 @@ void demo(Source<String> strs) {
 为此，我们提供 **out** 修饰符：
 
 
-``` kotlin
+```kotlin
 interface Source<out T> {
     fun nextT(): T
 }
@@ -170,7 +170,7 @@ fun demo(strs: Source<String>) {
 -->被生产。逆变类型的一个很好的例子是 `Comparable`：
 
 
-``` kotlin
+```kotlin
 interface Comparable<in T> {
     operator fun compareTo(other: T): Int
 }
@@ -198,7 +198,7 @@ fun demo(x: Comparable<Number>) {
 一个很好的例子是 Array：
 
 
-``` kotlin
+```kotlin
 class Array<T>(val size: Int) {
     fun get(index: Int): T { …… }
     fun set(index: Int, value: T) { …… }
@@ -209,7 +209,7 @@ class Array<T>(val size: Int) {
 该类在 `T` 上既不能是协变的也不能是逆变的。这造成了一些不灵活性。考虑下述函数：
 
 
-``` kotlin
+```kotlin
 fun copy(from: Array<Any>, to: Array<Any>) {
     assert(from.size == to.size)
     for (i in from.indices)
@@ -221,7 +221,7 @@ fun copy(from: Array<Any>, to: Array<Any>) {
 这个函数应该将项目从一个数组复制到另一个数组。让我们尝试在实践中应用它：
 
 
-``` kotlin
+```kotlin
 val ints: Array<Int> = arrayOf(1, 2, 3)
 val any = Array<Any>(3) { "" } 
 copy(ints, any)
@@ -236,7 +236,7 @@ copy(ints, any)
 那么，我们唯一要确保的是 `copy()` 不会做任何坏事。我们想阻止它**写**到 `from`，我们可以：
 
 
-``` kotlin
+```kotlin
 fun copy(from: Array<out Any>, to: Array<Any>) { …… }
 ```
 
@@ -248,7 +248,7 @@ fun copy(from: Array<out Any>, to: Array<Any>) { …… }
 你也可以使用 **in** 投影一个类型：
 
 
-``` kotlin
+```kotlin
 fun fill(dest: Array<in String>, value: String) { …… }
 ```
 
@@ -280,7 +280,7 @@ Kotlin 为此提供了所谓的**星投影**语法：
 不仅类可以有类型参数。函数也可以有。类型参数要放在函数名称**之前**：
 
 
-``` kotlin
+```kotlin
 fun <T> singletonList(item: T): List<T> {
     // ……
 }
@@ -294,7 +294,7 @@ fun <T> T.basicToString() : String {  // 扩展函数
 要调用泛型函数，在调用处函数名**之后**指定类型参数即可：
 
 
-``` kotlin
+```kotlin
 val l = singletonList<Int>(1)
 ```
 
@@ -302,7 +302,7 @@ val l = singletonList<Int>(1)
 可以省略能够从上下文中推断出来的类型参数，所以以下示例同样适用：
 
 
-``` kotlin
+```kotlin
 val l = singletonList(1)
 ```
 
@@ -316,7 +316,7 @@ val l = singletonList(1)
 最常见的约束类型是与 Java 的 *extends* 关键字对应的 **上界**：
 
 
-``` kotlin
+```kotlin
 fun <T : Comparable<T>> sort(list: List<T>) {  …… }
 ```
 
@@ -324,7 +324,7 @@ fun <T : Comparable<T>> sort(list: List<T>) {  …… }
 冒号之后指定的类型是**上界**：只有 `Comparable<T>` 的子类型可以替代 `T`。 例如：
 
 
-``` kotlin
+```kotlin
 sort(listOf(1, 2, 3)) // OK。Int 是 Comparable<Int> 的子类型
 sort(listOf(HashMap<Int, String>())) // 错误：HashMap<Int, String> 不是 Comparable<HashMap<Int, String>> 的子类型
 ```
@@ -334,7 +334,7 @@ sort(listOf(HashMap<Int, String>())) // 错误：HashMap<Int, String> 不是 Com
 如果同一类型参数需要多个上界，我们需要一个单独的 **where**\-子句：
 
 
-``` kotlin
+```kotlin
 fun <T> copyWhenGreater(list: List<T>, threshold: T): List<String>
     where T : CharSequence,
           T : Comparable<T> {

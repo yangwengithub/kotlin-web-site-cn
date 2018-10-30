@@ -43,7 +43,7 @@ public void setFirstName(String firstName) {
 在 `org.foo.bar` 包内的 `example.kt` 文件中声明的所有的函数和属性，包括扩展函数，
 都编译成一个名为 `org.foo.bar.ExampleKt` 的 Java 类的静态方法。
 
-``` kotlin
+```kotlin
 // example.kt
 package demo
 
@@ -65,7 +65,7 @@ demo.ExampleKt.bar();
 可以使用 `@JvmName` 注解修改生成的 Java 类的类名：
 
 
-``` kotlin
+```kotlin
 @file:JvmName("DemoUtils")
 
 package demo
@@ -91,7 +91,7 @@ demo.DemoUtils.bar();
 要启用生成这样的外观，请在所有相关文件中使用 @JvmMultifileClass 注解。
 
 
-``` kotlin
+```kotlin
 // oldutils.kt
 @file:JvmName("Utils")
 @file:JvmMultifileClass
@@ -103,7 +103,7 @@ fun foo() { ... }
 
 
 
-``` kotlin
+```kotlin
 // newutils.kt
 @file:JvmName("Utils")
 @file:JvmMultifileClass
@@ -129,7 +129,7 @@ demo.Utils.bar();
 /`override` 或者 `const` 修饰符并且不是被委托的属性，那么你可以用 `@JvmField` 注解该属性。
 
 
-``` kotlin
+```kotlin
 class C(id: String) {
     @JvmField val ID = id
 }
@@ -164,7 +164,7 @@ class JavaClient {
 使用 `@JvmField` 标注这样的属性使其成为与属性本身具有相同可见性的静态字段。
 
 
-``` kotlin
+```kotlin
 class Key(val value: Int) {
     companion object {
         @JvmField
@@ -186,7 +186,7 @@ Key.COMPARATOR.compare(key1, key2);
 -->具有与属性 setter 相同可见性的静态幕后字段。
 
 
-``` kotlin
+```kotlin
 object Singleton {
     lateinit var provider: Provider
 }
@@ -204,7 +204,7 @@ Singleton.provider = new Provider();
 用 `const` 标注的（在类中以及在顶层的）属性在 Java 中会成为静态字段：
 
 
-``` kotlin
+```kotlin
 // 文件 example.kt
 
 object Obj {
@@ -239,7 +239,7 @@ Kotlin 还可以为命名对象或伴生对象中定义的函数生成静态方�
 例如：
 
 
-``` kotlin
+```kotlin
 class C {
     companion object {
         @JvmStatic fun foo() {}
@@ -263,7 +263,7 @@ C.Companion.bar(); // 唯一的工作方式
 对于命名对象也同样：
 
 
-``` kotlin
+```kotlin
 object Obj {
     @JvmStatic fun foo() {}
     fun bar() {}
@@ -316,7 +316,7 @@ kotlin.jvm.JvmClassMappingKt.getKotlinClass(MainView.class)
 最突出的例子是由于*类型擦除*引发的：
 
 
-``` kotlin
+```kotlin
 fun List<String>.filterValid(): List<String>
 fun List<Int>.filterValid(): List<Int>
 ```
@@ -326,7 +326,7 @@ fun List<Int>.filterValid(): List<Int>
 如果我们真的希望它们在 Kotlin 中用相同名称，我们需要用 `@JvmName` 去标注其中的一个（或两个），并指定不同的名称作为参数：
 
 
-``` kotlin
+```kotlin
 fun List<String>.filterValid(): List<String>
 
 @JvmName("filterValidInt")
@@ -339,7 +339,7 @@ fun List<Int>.filterValid(): List<Int>
 同样的技巧也适用于属性 `x` 和函数 `getX()` 共存：
 
 
-``` kotlin
+```kotlin
 val x: Int
     @JvmName("getX_prop")
     get() = 15
@@ -351,7 +351,7 @@ fun getX() = 10
 如需在没有显式实现 getter 与 setter 的情况下更改属性生成的访问器方法的名称，可以使用 `@get:JvmName` 与 `@set:JvmName`：
 
 
-``` kotlin
+```kotlin
 @get:JvmName("x")
 @set:JvmName("changeX")
 var x: Int = 23
@@ -368,7 +368,7 @@ var x: Int = 23
 -->在接口中定义的方法。
 
 
-``` kotlin
+```kotlin
 class Foo @JvmOverloads constructor(x: Int, y: Double = 0.0) {
     @JvmOverloads fun f(a: String, b: Int = 0, c: String = "abc") { …… }
 }
@@ -404,7 +404,7 @@ void f(String a) { }
 于是如果我们有一个这样的 Kotlin 函数：
 
 
-``` kotlin
+```kotlin
 // example.kt
 package demo
 
@@ -432,7 +432,7 @@ catch (IOException e) { // 错误：foo() 未在 throws 列表中声明 IOExcept
 为了解决这个问题，要在 Kotlin 中使用 `@Throws` 注解。
 
 
-``` kotlin
+```kotlin
 @Throws(IOException::class)
 fun foo() {
     throw IOException()
@@ -452,7 +452,7 @@ fun foo() {
 -->可以从 Java 代码中看到它们的用法。让我们假设我们有以下类和两个使用它的函数：
 
 
-``` kotlin
+```kotlin
 class Box<out T>(val value: T)
 
 interface Base
@@ -506,7 +506,7 @@ Base unboxBase(Box<? extends Base> box) { …… }
 如果我们在默认不生成通配符的地方需要通配符，我们可以使用 `@JvmWildcard` 注解：
 
 
-``` kotlin
+```kotlin
 fun boxDerived(value: Derived): Box<@JvmWildcard Derived> = Box(value)
 // 将被转换成
 // Box<? extends Derived> boxDerived(Derived value) { …… }
@@ -516,7 +516,7 @@ fun boxDerived(value: Derived): Box<@JvmWildcard Derived> = Box(value)
 另一方面，如果我们根本不需要默认的通配符转换，我们可以使用`@JvmSuppressWildcards`
 
 
-``` kotlin
+```kotlin
 fun unboxBase(box: Box<@JvmSuppressWildcards Base>): Base = box.value
 // 会翻译成
 // Base unboxBase(Box<Base> box) { …… }
@@ -533,7 +533,7 @@ fun unboxBase(box: Box<@JvmSuppressWildcards Base>): Base = box.value
 -->准确表示。这就是为什么在使用 `Nothing` 参数的地方 Kotlin 生成一个原始类型：
 
 
-``` kotlin
+```kotlin
 fun emptyList(): List<Nothing> = listOf()
 // 会翻译成
 // List emptyList() { …… }

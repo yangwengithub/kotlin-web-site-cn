@@ -10,7 +10,7 @@ title: "解构声明"
 有时把一个对象 _解构_ 成很多变量会很方便，例如:
 
 
-``` kotlin
+```kotlin
 val (name, age) = person
 ```
 
@@ -19,7 +19,7 @@ val (name, age) = person
 我们已经声明了两个新变量： `name` 和 `age`，并且可以独立使用它们：
 
 
-``` kotlin
+```kotlin
 println(name)
 println(age)
 ```
@@ -28,7 +28,7 @@ println(age)
 一个解构声明会被编译成以下代码：
 
 
-``` kotlin
+```kotlin
 val name = person.component1()
 val age = person.component2()
 ```
@@ -44,7 +44,7 @@ val age = person.component2()
 解构声明也可以用在 *for*{: .keyword }-循环中：当你写：
 
 
-``` kotlin
+```kotlin
 for ((a, b) in collection) { …… }
 ```
 
@@ -57,7 +57,7 @@ for ((a, b) in collection) { …… }
 在 Kotlin 中一个简洁的实现方式是声明一个[_数据类_](data-classes.html) 并返回其实例：
 
 
-``` kotlin
+```kotlin
 data class Result(val result: Int, val status: Status)
 fun function(……): Result {
     // 各种计算
@@ -80,7 +80,7 @@ val (result, status) = function(……)
 可能遍历一个映射（map）最好的方式就是这样：
 
 
-``` kotlin
+```kotlin
 for ((key, value) in map) {
    // 使用该 key、value 做些事情
 }
@@ -95,7 +95,7 @@ for ((key, value) in map) {
 当然事实上，标准库提供了这样的扩展：
 
 
-``` kotlin
+```kotlin
 operator fun <K, V> Map<K, V>.iterator(): Iterator<Map.Entry<K, V>> = entrySet().iterator()
 operator fun <K, V> Map.Entry<K, V>.component1() = getKey()
 operator fun <K, V> Map.Entry<K, V>.component2() = getValue()
@@ -111,7 +111,7 @@ operator fun <K, V> Map.Entry<K, V>.component2() = getValue()
 如果在解构声明中你不需要某个变量，那么可以用下划线取代其名称：
 
 
-``` kotlin
+```kotlin
 val (_, status) = getResult()
 ```
 
@@ -126,7 +126,7 @@ val (_, status) = getResult()
 如果 lambda 表达式具有 `Pair` 类型（或者 `Map.Entry` 或任何其他具有相应 `componentN` 函数的类型）的参数，那么可以通过将它们放在括号中来引入多个新参数来取代单个新参数：
 
 
-``` kotlin
+```kotlin
 map.mapValues { entry -> "${entry.value}!" }
 map.mapValues { (key, value) -> "$value!" }
 ```
@@ -135,7 +135,7 @@ map.mapValues { (key, value) -> "$value!" }
 注意声明两个参数和声明一个解构对来取代单个参数之间的区别：
 
 
-``` kotlin
+```kotlin
 { a //-> …… } // 一个参数
 { a, b //-> …… } // 两个参数
 { (a, b) //-> …… } // 一个解构对
@@ -146,7 +146,7 @@ map.mapValues { (key, value) -> "$value!" }
 如果解构的参数中的一个组件未使用，那么可以将其替换为下划线，以避免编造其名称：
 
 
-``` kotlin
+```kotlin
 map.mapValues { (_, value) -> "$value!" }
 ```
 
@@ -154,7 +154,7 @@ map.mapValues { (_, value) -> "$value!" }
 你可以指定整个解构的参数的类型或者分别指定特定组件的类型：
 
 
-``` kotlin
+```kotlin
 map.mapValues { (_, value): Map.Entry<Int, String> -> "$value!" }
 
 map.mapValues { (_, value: String) -> "$value!" }

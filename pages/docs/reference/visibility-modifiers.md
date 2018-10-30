@@ -19,7 +19,7 @@ title: "可见性修饰符"
 函数、属性和类、对象和接口可以在顶层声明，即直接在包内：
 
 
-``` kotlin
+```kotlin
 // 文件名：example.kt
 package foo
 
@@ -39,7 +39,7 @@ class Bar { ... }
 例如:
 
 
-``` kotlin
+```kotlin
 // 文件名：example.kt
 package foo
 
@@ -68,7 +68,7 @@ internal val baz = 6    // 相同模块内可见
 例子:
 
 
-``` kotlin
+```kotlin
 open class Outer {
     private val a = 1
     protected open val b = 2
@@ -102,7 +102,7 @@ class Unrelated(o: Outer) {
 -->显式 *constructor*{:.keyword} 关键字）：
 
 
-``` kotlin
+```kotlin
 class C private constructor(a: Int) { …… }
 ```
 

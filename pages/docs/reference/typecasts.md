@@ -12,7 +12,7 @@ title: "类型的检查与转换：“is”与“as”"
 我们可以在运行时通过使用 `is` 操作符或其否定形式 `!is` 来检查对象是否符合给定类型：
 
 
-``` kotlin
+```kotlin
 if (obj is String) {
     print(obj.length)
 }
@@ -32,7 +32,7 @@ else {
 -->不可变值的 `is`-检查以及[显式转换](#不安全的转换操作符)，并在需要时自动插入（安全的）转换：
 
 
-``` kotlin
+```kotlin
 fun demo(x: Any) {
     if (x is String) {
         print(x.length) // x 自动转换为字符串
@@ -44,7 +44,7 @@ fun demo(x: Any) {
 编译器足够聪明，能够知道如果反向检查导致返回那么该转换是安全的：
 
 
-``` kotlin
+```kotlin
     if (x !is String) return
     print(x.length) // x 自动转换为字符串
 ```
@@ -53,7 +53,7 @@ fun demo(x: Any) {
 或者在 `&&` 和 `||` 的右侧：
 
 
-``` kotlin
+```kotlin
     // `||` 右侧的 x 自动转换为字符串
     if (x !is String || x.length == 0) return
 
@@ -68,7 +68,7 @@ fun demo(x: Any) {
 和 [*while*{: .keyword }-循环 ](control-flow.html#while-循环) 也一样：
 
 
-``` kotlin
+```kotlin
 when (x) {
     is Int -> print(x + 1)
     is String -> print(x.length + 1)
@@ -93,7 +93,7 @@ when (x) {
 Kotlin 中的不安全转换由中缀操作符 *as*{: .keyword }（参见[operator precedence](grammar.html#precedence)）完成：
 
 
-``` kotlin
+```kotlin
 val x: String = y as String
 ```
 
@@ -103,7 +103,7 @@ val x: String = y as String
 为了匹配 Java 转换语义，我们必须在转换右边有可空类型，就像：
 
 
-``` kotlin
+```kotlin
 val x: String? = y as String?
 ```
 
@@ -115,7 +115,7 @@ val x: String? = y as String?
 为了避免抛出异常，可以使用*安全*转换操作符 *as?*{: .keyword }，它可以在失败时返回 *null*{: .keyword }：
 
 
-``` kotlin
+```kotlin
 val x: String? = y as? String
 ```
 
@@ -162,7 +162,7 @@ fun handleStrings(list: List<String>) {
 
 
 
-``` kotlin
+```kotlin
 //sampleStart
 inline fun <reified A, reified B> Pair<*, *>.asPairOf(): Pair<A, B>? {
     if (first !is A || second !is B) return null
@@ -177,7 +177,7 @@ val stringToList = somePair.asPairOf<String, List<*>>()
 val stringToStringList = somePair.asPairOf<String, List<String>>() // 破坏类型安全！
 //sampleEnd
 
-fun main(args: Array<String>) {
+fun main() {
     println("stringToSomething = " + stringToSomething)
     println("stringToInt = " + stringToInt)
     println("stringToList = " + stringToList)

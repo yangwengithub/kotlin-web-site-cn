@@ -61,7 +61,7 @@ launch(UI) {
 
 
 
-``` kotlin
+```kotlin
 import kotlin.coroutines.experimental.*
 
 fun main(args: Array<String>) {
@@ -83,6 +83,7 @@ fun main(args: Array<String>) {
 
 
 
+
 运行上面的代码以查看结果。随意编辑它并再次运行！
 
 更多信息请参见[协程文档](coroutines.html)及[教程](https://www.kotlincn.net/docs/tutorials/coroutines/coroutines-basic-jvm.html)。
@@ -101,7 +102,7 @@ fun main(args: Array<String>) {
 
 
 
-``` kotlin
+```kotlin
 //sampleStart
 typealias OscarWinners = Map<String, String>
 
@@ -131,6 +132,7 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 更详细信息请参阅其 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/type-aliases.md)。
 
 
@@ -142,7 +144,7 @@ fun main(args: Array<String>) {
 
 
 
-``` kotlin
+```kotlin
 //sampleStart
 val numberRegex = "\\d+".toRegex()
 val numbers = listOf("abc", "123", "456").filter(numberRegex::matches)
@@ -152,6 +154,7 @@ fun main(args: Array<String>) {
     println("Result is $numbers")
 }
 ```
+
 
 
 更详细信息请参阅其 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/bound-callable-references.md)。
@@ -166,7 +169,7 @@ Kotlin 1.1 删除了一些对 Kotlin 1.0 中已存在的密封类和数据类的
 
 
 
-``` kotlin
+```kotlin
 //sampleStart
 sealed class Expr
 
@@ -187,6 +190,7 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 更详细信息请参阅其[文档](sealed-classes.html)或者<!--
 -->[密封类](https://github.com/Kotlin/KEEP/blob/master/proposals/sealed-class-inheritance.md)及<!--
 -->[数据类](https://github.com/Kotlin/KEEP/blob/master/proposals/data-class-inheritance.md)的 KEEP。
@@ -199,7 +203,7 @@ fun main(args: Array<String>) {
 
 
 
-``` kotlin
+```kotlin
 fun main(args: Array<String>) {
 //sampleStart
   val map = mapOf(1 to "one", 2 to "two")
@@ -214,6 +218,7 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 更详细信息请参阅其[文档](multi-declarations.html#在-lambda-表达式中解构自-11-起)及其 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/destructuring-in-parameters.md)。
 
 
@@ -223,7 +228,7 @@ fun main(args: Array<String>) {
 
 
 
-``` kotlin
+```kotlin
 fun main(args: Array<String>) {
     val map = mapOf(1 to "one", 2 to "two")
 
@@ -233,11 +238,12 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 这也适用于[解构声明](multi-declarations.html)：
 
 
 
-``` kotlin
+```kotlin
 data class Result(val value: Any, val status: String)
 
 fun getResult() = Result(42, "ok").also { println("getResult() returns $it") }
@@ -250,6 +256,7 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 更详细信息请参阅其 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/underscore-for-unused-parameters.md)。
 
 
@@ -259,7 +266,7 @@ fun main(args: Array<String>) {
 
 
 
-``` kotlin
+```kotlin
 //sampleStart
 val oneMillion = 1_000_000
 val hexBytes = 0xFF_EC_DE_5E
@@ -273,6 +280,7 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 更详细信息请参阅其 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/underscores-in-numeric-literals.md)。
 
 
@@ -282,7 +290,7 @@ fun main(args: Array<String>) {
 
 
 
-``` kotlin
+```kotlin
 //sampleStart
 data class Person(val name: String, val age: Int) {
     val isAdult get() = age >= 20 // 属性类型推断为 “Boolean”
@@ -295,6 +303,7 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 ### 内联属性访问器
 
 如果属性没有幕后字段，现在可以使用 `inline` 修饰符来标记该属性访问器。
@@ -302,7 +311,7 @@ fun main(args: Array<String>) {
 
 
 
-``` kotlin
+```kotlin
 //sampleStart
 public val <T> List<T>.lastIndex: Int
     inline get() = this.size - 1
@@ -314,6 +323,7 @@ fun main(args: Array<String>) {
     println("Last index of $list is ${list.lastIndex}")
 }
 ```
+
 
 你也可以将整个属性标记为 `inline`——这样修饰符应用于两个访问器。
 
@@ -327,7 +337,7 @@ fun main(args: Array<String>) {
 
 
 
-``` kotlin
+```kotlin
 import java.util.Random
 
 fun needAnswer() = Random().nextBoolean()
@@ -348,6 +358,7 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 更详细信息请参阅其 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/local-delegated-properties.md)。
 
 
@@ -359,7 +370,7 @@ fun main(args: Array<String>) {
 
 
 
-``` kotlin
+```kotlin
 class ResourceLoader<T>(id: ResourceID<T>) {
     operator fun provideDelegate(thisRef: MyUI, property: KProperty<*>): ReadOnlyProperty<MyUI, T> {
         checkProperty(thisRef, property.name)
@@ -390,7 +401,7 @@ class MyUI {
 
 
 
-``` kotlin
+```kotlin
 //sampleStart
 enum class RGB { RED, GREEN, BLUE }
 
@@ -404,13 +415,14 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 ### 对于 DSL 中隐式接收者的作用域控制
 
 `@DslMarker` 注解允许限制来自 DSL 上下文中的外部作用域的接收者的使用。
 考虑那个典型的 [HTML 构建器示例](type-safe-builders.html)：
 
 
-``` kotlin
+```kotlin
 table {
     tr {
         td { + "Text" }
@@ -458,7 +470,7 @@ val port = System.getenv("PORT")?.toIntOrNull() ?: 80
 -->包装序列，它在元素迭代时延迟应用给定的动作。
 
 
-``` kotlin
+```kotlin
 inputDir.walk()
         .filter { it.isFile && it.name.endsWith(".txt") }
         .onEach { println("Moving $it to $outputDir") }
@@ -477,7 +489,7 @@ inputDir.walk()
 
 
 
-``` kotlin
+```kotlin
 class Block {
     lateinit var content: String
 }
@@ -501,12 +513,13 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 `takeIf` 就像单个值的 `filter`。它检查接收者是否满足该谓词，并<!--
 -->在满足时返回该接收者否则不满足时返回 `null`。
 结合 elvis-操作符和及早返回，它允许编写如下结构：
 
 
-``` kotlin
+```kotlin
 val outDirFile = File(outputDir.path).takeIf { it.exists() } ?: return false
 // 对现有的 outDirFile 做些事情
 ```
@@ -514,7 +527,7 @@ val outDirFile = File(outputDir.path).takeIf { it.exists() } ?: return false
 
 
 
-``` kotlin
+```kotlin
 fun main(args: Array<String>) {
     val input = "Kotlin"
     val keyword = "in"
@@ -530,10 +543,11 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 `takeUnless` 与 `takeIf` 相同，只是它采用了反向谓词。当它 _不_ 满足谓词时返回接收者，否则返回 `null`。因此，上面的示例之一可以用 `takeUnless` 重写如下：
 
 
-``` kotlin
+```kotlin
 val index = input.indexOf(keyword).takeUnless { it < 0 } ?: error("keyword not found")
 ```
 
@@ -542,7 +556,7 @@ val index = input.indexOf(keyword).takeUnless { it < 0 } ?: error("keyword not f
 
 
 
-``` kotlin
+```kotlin
 private fun testTakeUnless(string: String) {
 //sampleStart
     val result = string.takeUnless(String::isEmpty)
@@ -557,6 +571,7 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 ### groupingBy()
 
 此 API 可以用于按照键对集合进行分组，并同时折叠每个组。 例如，它可以用于<!--
@@ -564,7 +579,7 @@ fun main(args: Array<String>) {
 
 
 
-``` kotlin
+```kotlin
 fun main(args: Array<String>) {
     val words = "one two three four five six seven eight nine ten".split(' ')
 //sampleStart
@@ -579,12 +594,13 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 ### Map.toMap() 和 Map.toMutableMap()
 
 这俩函数可以用来简易复制映射：
 
 
-``` kotlin
+```kotlin
 class ImmutablePropertyBag(map: Map<String, Any>) {
     private val mapCopy = map.toMap()
 }
@@ -598,7 +614,7 @@ class ImmutablePropertyBag(map: Map<String, Any>) {
 
 
 
-``` kotlin
+```kotlin
 fun main(args: Array<String>) {
 //sampleStart
     val map = mapOf("key" to 42)
@@ -610,13 +626,14 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 ### minOf() 和 maxOf()
 
 这些函数可用于查找两个或三个给定值中的最小和最大值，其中值是原生数字或 `Comparable` 对象。每个函数还有一个重载，它接受一个额外的 `Comparator` 实例，如果你想比较自身不可比的对象的话。
 
 
 
-``` kotlin
+```kotlin
 fun main(args: Array<String>) {
 //sampleStart
     val list1 = listOf("a", "b")
@@ -630,6 +647,7 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 ### 类似数组的列表实例化函数
 
 类似于 `Array` 构造函数，现在有创建 `List` 和 `MutableList` 实例的函数，并通过<!--
@@ -637,7 +655,7 @@ fun main(args: Array<String>) {
 
 
 
-``` kotlin
+```kotlin
 fun main(args: Array<String>) {
 //sampleStart
     val squares = List(10) { index -> index * index }
@@ -649,6 +667,7 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 ### Map.getValue()
 
 `Map` 上的这个扩展函数返回一个与给定键相对应的现有值，或者抛出一个异常，提示找不到该键。
@@ -656,7 +675,7 @@ fun main(args: Array<String>) {
 
 
 
-``` kotlin
+```kotlin
 fun main(args: Array<String>) {
 
 //sampleStart    
@@ -676,6 +695,7 @@ fun main(args: Array<String>) {
 }
 ```
 
+
 ### 抽象集合
 
 这些抽象类可以在实现 Kotlin 集合类时用作基类。
@@ -693,7 +713,7 @@ Kotlin 标准库中提供实现）。
 
 
 
-``` kotlin
+```kotlin
 fun main(args: Array<String>) {
 //sampleStart
     val array = arrayOf("a", "b", "c")
@@ -702,6 +722,7 @@ fun main(args: Array<String>) {
 //sampleEnd
 }
 ```
+
 
 ## JVM 后端
 
@@ -742,7 +763,7 @@ Kotlin 现在与[javax.script API](https://docs.oracle.com/javase/8/docs/api/jav
 其 API 允许在运行时求值代码段：
 
 
-``` kotlin
+```kotlin
 val engine = ScriptEngineManager().getEngineByExtension("kts")!!
 engine.eval("val x = 3")
 println(engine.eval("x + 2"))  // 输出 5
@@ -783,7 +804,7 @@ minifiers、 optimisers、 linters 等）更加友好。
 例如，可以按以下方式声明 DOM `Node` 类：
 
 
-``` kotlin
+```kotlin
 external class Node {
     val firstChild: Node
 
@@ -808,7 +829,7 @@ external class Node {
 例如，以下是将 JQuery 导入 Kotlin 模块的方法：
 
 
-``` kotlin
+```kotlin
 external interface JQuery {
     fun toggle(duration: Int = definedExternally): JQuery
     fun click(handler: (Event) -> Unit): JQuery
@@ -827,7 +848,7 @@ external fun jquery(selector: String): JQuery
 你可以在应用程序中使用如下所示的这些声明：
 
 
-``` kotlin
+```kotlin
 fun main(args: Array<String>) {
     jquery(".toggle-button").click {
         jquery(".toggle-panel").toggle(300)

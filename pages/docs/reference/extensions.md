@@ -16,7 +16,7 @@ Kotlin 同 C# 与 Gosu 类似，能够扩展一个类的新功能而无需继承
 下面代码为 `MutableList<Int>` 添加一个`swap` 函数：
 
 
-``` kotlin
+```kotlin
 fun MutableList<Int>.swap(index1: Int, index2: Int) {
     val tmp = this[index1] // “this”对应该列表
     this[index1] = this[index2]
@@ -29,7 +29,7 @@ fun MutableList<Int>.swap(index1: Int, index2: Int) {
 现在，我们对任意 `MutableList<Int>` 调用该函数了：
 
 
-``` kotlin
+```kotlin
 val l = mutableListOf(1, 2, 3)
 l.swap(0, 2) // “swap()”内部的“this”得到“l”的值
 ```
@@ -38,7 +38,7 @@ l.swap(0, 2) // “swap()”内部的“this”得到“l”的值
 当然，这个函数对任何 `MutableList<T>` 起作用，我们可以泛化它：
 
 
-``` kotlin
+```kotlin
 fun <T> MutableList<T>.swap(index1: Int, index2: Int) {
     val tmp = this[index1] // “this”对应该列表
     this[index1] = this[index2]
@@ -60,7 +60,7 @@ fun <T> MutableList<T>.swap(index1: Int, index2: Int) {
 而不是由表达式运行时求值结果决定的。例如：
 
 
-``` kotlin
+```kotlin
 open class C
 
 class D: C()
@@ -84,7 +84,7 @@ printFoo(D())
 例如：
 
 
-``` kotlin
+```kotlin
 class C {
     fun foo() { println("member") }
 }
@@ -117,7 +117,7 @@ fun C.foo(i: Int) { println("extension") }
 -->在没有检测 null 的时候调用 Kotlin 中的toString()：检测发生在扩展函数的内部。
 
 
-``` kotlin
+```kotlin
 fun Any?.toString(): String {
     if (this == null) return "null"
     // 空检测之后，“this”会自动转换为非空类型，所以下面的 toString()
@@ -132,7 +132,7 @@ fun Any?.toString(): String {
 与函数类似，Kotlin 支持扩展属性：
 
 
-``` kotlin
+```kotlin
 val <T> List<T>.lastIndex: Int
     get() = size - 1
 ```
@@ -145,7 +145,7 @@ val <T> List<T>.lastIndex: Int
 例如:
 
 
-``` kotlin
+```kotlin
 val Foo.bar = 1 // 错误：扩展属性不能有初始化器
 ```
 
@@ -157,7 +157,7 @@ val Foo.bar = 1 // 错误：扩展属性不能有初始化器
 -->扩展函数与属性：
 
 
-``` kotlin
+```kotlin
 class MyClass {
     companion object { }  // 将被称为 "Companion"
 }
@@ -169,7 +169,7 @@ fun MyClass.Companion.foo() { …… }
 就像伴生对象的其他普通成员，只需用类名作为限定符去调用他们
 
 
-``` kotlin
+```kotlin
 MyClass.foo()
 ```
 
@@ -180,7 +180,7 @@ MyClass.foo()
 大多数时候我们在顶层定义扩展，即直接在包里：
 
 
-``` kotlin
+```kotlin
 package foo.bar
 
 fun Baz.goo() { …… }
@@ -190,7 +190,7 @@ fun Baz.goo() { …… }
 要使用所定义包之外的一个扩展，我们需要在调用方导入它：
 
 
-``` kotlin
+```kotlin
 package com.example.usage
 
 import foo.bar.goo // 导入所有名为“goo”的扩展
@@ -213,7 +213,7 @@ fun usage(baz: Baz) {
 _分发接收者_，扩展方法调用所在的接收者类型的实例称为 _扩展接收者_ 。
 
 
-``` kotlin
+```kotlin
 class D {
     fun bar() { …… }
 }
@@ -237,7 +237,7 @@ class C {
 -->优先。要引用分发接收者的成员你可以使用 [限定的 `this` 语法](this-expressions.html#限定的-this)。
 
 
-``` kotlin
+```kotlin
 class C {
     fun D.foo() {
         toString()         // 调用 D.toString()
@@ -251,7 +251,7 @@ class C {
 -->对于分发接收者类型是虚拟的，但对于扩展接收者类型是静态的。
 
 
-``` kotlin
+```kotlin
 open class D { }
 
 class D1 : D() { }
@@ -280,7 +280,7 @@ class C1 : C() {
     }
 }
 
-fun main(args: Array<String>) {
+fun main() {
     C().caller(D())   // 输出 "D.foo in C"
     C1().caller(D())  // 输出 "D.foo in C1" —— 分发接收者虚拟解析
     C().caller(D1())  // 输出 "D.foo in C" —— 扩展接收者静态解析

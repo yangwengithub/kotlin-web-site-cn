@@ -16,7 +16,8 @@ Kotlin 的 `List<out T>` 类型是一个提供只读操作如 `size`、`get`等�
 我们可以看下 list 及 set 类型的基本用法：
 
 
-``` kotlin
+
+```kotlin
 val numbers: MutableList<Int> = mutableListOf(1, 2, 3)
 val readOnlyView: List<Int> = numbers
 println(numbers)        // 输出 "[1, 2, 3]"
@@ -29,6 +30,7 @@ assert(strings.size == 3)
 ```
 
 
+
 Kotlin 没有专门的语法结构创建 list 或 set。 要用标准库的方法，如
 `listOf()`、 `mutableListOf()`、 `setOf()`、 `mutableSetOf()`。
 在非性能关键代码中创建 map 可以用一个简单的[惯用法](idioms.html#只读-map)来完成：`mapOf(a to b, c to d)`。
@@ -36,9 +38,11 @@ Kotlin 没有专门的语法结构创建 list 或 set。 要用标准库的方�
 注意上面的 `readOnlyView` 变量（译者注：与对应可变集合变量 `numbers`）指向相同的底层 list 并会随之改变。 如果一个 list 只存在只读引用，我们可以考虑该集合完全不可变。创建一个这样的集合的一个简单方式如下：
 
 
-``` kotlin
+
+```kotlin
 val items = listOf(1, 2, 3)
 ```
+
 
 
 目前 `listOf` 方法是使用 array list 实现的，但是未来可以利用它们知道自己不能变的事实，返回更节约内存的完全不可变的集合类型。
@@ -48,7 +52,8 @@ val items = listOf(1, 2, 3)
 有时你想给调用者返回一个集合在某个特定时间的一个快照, 一个保证不会变的：
 
 
-``` kotlin
+
+```kotlin
 class Controller {
     private val _items = mutableListOf<String>()
     val items: List<String> get() = _items.toList()
@@ -56,12 +61,14 @@ class Controller {
 ```
 
 
+
 这个 `toList` 扩展方法只是复制列表项，因此返回的 list 保证永远不会改变。
 
 List 与 set 有很多有用的扩展方法值得熟悉：
 
 
-``` kotlin
+
+```kotlin
 val items = listOf(1, 2, 3, 4)
 items.first() == 1
 items.last() == 4
@@ -74,14 +81,17 @@ val item = rwList.firstOrNull()
 ```
 
 
+
 …… 以及所有你所期望的实用工具，例如 sort、zip、fold、reduce 等等。
 
 Map 遵循同样模式。它们可以容易地实例化与访问，像这样：
 
 
-``` kotlin
+
+```kotlin
 val readWriteMap = hashMapOf("foo" to 1, "bar" to 2)
 println(readWriteMap["foo"])  // 输出“1”
 val snapshot: Map<String, Int> = HashMap(readWriteMap)
 ```
+
 

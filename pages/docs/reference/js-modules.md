@@ -91,7 +91,7 @@ module.exports.sayHello = function(name) { alert("Hello, " + name); }
 你应该在 Kotlin 中这样声明：
 
 
-``` kotlin
+```kotlin
 @JsModule("hello")
 external fun sayHello(name: String)
 ```
@@ -106,7 +106,7 @@ external fun sayHello(name: String)
 编译器允许使用以下助记符将导入的 JavaScript 包映射到 Kotlin 包：
 
 
-``` kotlin
+```kotlin
 @file:JsModule("extModule")
 package ext.jspackage.name
 
@@ -131,7 +131,7 @@ module.exports = {
 下面的示例会产生编译期错误：
 
 
-``` kotlin
+```kotlin
 @file:JsModule("extModule")
 package ext.jspackage.name
 
