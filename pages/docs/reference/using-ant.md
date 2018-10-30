@@ -22,7 +22,7 @@ Kotlin 为 Ant 提供了三个任务：
 
 当项目由 Kotlin 专用源代码组成时，编译项目的最简单方法是使用 *kotlinc* 任务：
 
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea">
+
 
 ```xml
 <project name="Ant Task Test" default="build">
@@ -34,7 +34,7 @@ Kotlin 为 Ant 提供了三个任务：
 </project>
 ```
 
-</div>
+
 
 其中 `${kotlin.lib}` 指向解压缩 Kotlin 独立编译器所在文件夹。
 
@@ -42,7 +42,7 @@ Kotlin 为 Ant 提供了三个任务：
 
 如果项目由多个源代码根组成，那么使用 *src* 作为元素来定义路径：
 
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
+
 
 ```xml
 <project name="Ant Task Test" default="build">
@@ -57,14 +57,14 @@ Kotlin 为 Ant 提供了三个任务：
 </project>
 ```
 
-</div>
+
 
 ## 针对 JVM 使用 Kotlin 和 Java 源代码
 
 如果项目由 Kotlin 和 Java 源代码组成，虽然可以使用 *kotlinc* 来避免任务参数的重复，但是<!--
 -->建议使用 *withKotlin* 任务：
 
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
+
 
 ```xml
 <project name="Ant Task Test" default="build">
@@ -83,22 +83,22 @@ Kotlin 为 Ant 提供了三个任务：
 </project>
 ```
 
-</div>
+
 
 还可以将正在编译的模块的名称指定为 `moduleName` 属性：
 
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
+
 
 ```xml
 <withKotlin moduleName="myModule"/>
 ```
 
-</div>
+
 
 
 ## 针对 JavaScript 用单个源文件夹
 
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
+
 
 ```xml
 <project name="Ant Task Test" default="build">
@@ -110,11 +110,11 @@ Kotlin 为 Ant 提供了三个任务：
 </project>
 ```
 
-</div>
+
 
 ## 针对 JavaScript 用 Prefix、 PostFix 以及 sourcemap 选项
 
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
+
 
 ```xml
 <project name="Ant Task Test" default="build">
@@ -126,7 +126,7 @@ Kotlin 为 Ant 提供了三个任务：
 </project>
 ```
 
-</div>
+
 
 ## 针对 JavaScript 用单个源文件夹以及 metaInfo 选项
 
@@ -135,7 +135,7 @@ Kotlin 为 Ant 提供了三个任务：
 -->二进制元数据的额外的 JS 文件。该文件应该与翻译<!--
 -->结果一起分发：
 
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
+
 
 ```xml
 <project name="Ant Task Test" default="build">
@@ -148,7 +148,7 @@ Kotlin 为 Ant 提供了三个任务：
 </project>
 ```
 
-</div>
+
 
 ## 参考
 
@@ -191,7 +191,7 @@ Kotlin 为 Ant 提供了三个任务：
 如需传递原始编译器参数，可以使用带 `value` 或 `line` 属性的 `<compilerarg>` 元素。
 可以放在 `<kotlinc>`、 `<kotlin2js>` 与 `<withKotlin>` 任务元素内，如下所示：
 
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
+
 
 ```xml
 <kotlinc src="${test.data}/hello.kt" output="${temp}/hello.jar">
@@ -201,6 +201,6 @@ Kotlin 为 Ant 提供了三个任务：
 </kotlinc>
 ```
 
-</div>
+
 
 当运行 `kotlinc -help` 时，会显示可以使用的参数的完整列表。

@@ -420,7 +420,7 @@ samWithReceiver {
 
 ### 在 Maven 中使用
 
-<div class="sample" markdown="1" theme="idea" mode="xml" auto-indent="false">
+
 
 ```xml
 <plugin>

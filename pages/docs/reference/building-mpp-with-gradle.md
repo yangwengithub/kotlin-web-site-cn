@@ -169,7 +169,7 @@ kotlin {
 To modify [the Kotlin compiler options](using-gradle.html#compiler-options) of a compilation, use the compilation's task which
 can be found by its name:
 
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
 
 ```groovy
 kotlin {
@@ -197,7 +197,7 @@ kotlin {
 }
 ```
 
-</div>
+
 
 All of the targets may share some of the sources and may have platform-specific sources in their compilations as well. 
 See [Configuring source sets](#configuring-source-sets) for details.
@@ -445,7 +445,7 @@ kotlin {
 
 It is possible to configure the language settings of all source sets at once:
 
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
 
 ```groovy
 kotlin.sourceSets.all {
@@ -455,7 +455,7 @@ kotlin.sourceSets.all {
 }
 ```
 
-</div>
+
 
 
 Language settings of a source set affect how the sources are analyzed in the IDE. Due to the current limitations, in a Gradle build, only the language settings 

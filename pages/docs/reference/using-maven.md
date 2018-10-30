@@ -13,7 +13,7 @@ description: "This tutorials walks you through different scenarios when using Ma
 
 通过 *kotlin.version* 属性定义要使用的 Kotlin 版本：
 
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
+
 
 ```xml
 <properties>
@@ -21,13 +21,13 @@ description: "This tutorials walks you through different scenarios when using Ma
 </properties>
 ```
 
-</div>
+
 
 ## 依赖
 
 Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配置以下依赖关系：
 
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
+
 
 ```xml
 <dependencies>
@@ -39,7 +39,7 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 </dependencies>
 ```
 
-</div>
+
 
 如果你是针对 JDK 7 或 JDK 8，那么可以使用扩展版本的 Kotlin 标准库，
 其中包含为新版 JDK 所增 API 而加的额外的扩展函数。使用 `kotlin-stdlib-jdk7`
@@ -53,7 +53,7 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 
 要编译源代码，请在 `<build>` 标签中指定源代码目录：
 
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
+
 
 ```xml
 <build>
@@ -62,11 +62,11 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 </build>
 ```
 
-</div>
+
 
 需要引用 Kotlin Maven 插件来编译源代码：
 
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
+
 
 ```xml
 <build>
@@ -92,14 +92,14 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 </build>
 ```
 
-</div>
+
 
 ## 同时编译 Kotlin 与 Java 源代码
 
 要编译混合代码应用程序，必须在 Java 编译器之前调用 Kotlin 编译器。
 按照 maven 的方式，这意味着应该使用以下方法在 maven-compiler-plugin 之前运行 kotlin-maven-plugin，确保 pom.xml 文件中的 kotlin 插件位于 maven-compiler-plugin 上面：
 
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
+
 
 ```xml
 <build>
@@ -162,14 +162,14 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 </build>
 ```
 
-</div>
+
 
 ## 增量编译
 
 为了使构建更快，可以为 Maven 启用增量编译（从 Kotlin 1.1.2 起支持）。
 为了做到这一点，需要定义 `kotlin.compiler.incremental` 属性：
 
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
+
 
 ```xml
 <properties>
@@ -177,7 +177,7 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 </properties>
 ```
 
-</div>
+
 
 或者，使用 `-Dkotlin.compiler.incremental=true` 选项运行构建。
 
@@ -190,7 +190,7 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 在 Kotlin 1.2 中[协程](coroutines.html)支持是一项实验性的特性，因此当你在项目中使用协程时 Kotlin 编译器会报警告。
 可以将以下代码块添加到 `pom.xml` 文件中来关闭这一警告：
 
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
+
 
 ```xml
 <configuration>
@@ -198,14 +198,14 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 </configuration>
 ```
 
-</div>
+
 
 ## Jar 文件
 
 要创建一个仅包含模块代码的小型 Jar 文件，请在 Maven pom.xml 文件中的 `build->plugins` 下面包含以下内容，
 其中 `main.class` 定义为一个属性，并指向主 Kotlin 或 Java 类：
 
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
+
 
 ```xml
 <plugin>
@@ -223,14 +223,14 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 </plugin>
 ```
 
-</div>
+
 
 ## 独立的 Jar 文件
 
 要创建一个独立的（self-contained）Jar 文件，包含模块中的代码及其依赖项，请在 Maven pom.xml 文件中的 `build->plugins` 下面包含以下内容<!--
 -->其中 `main.class` 定义为一个属性，并指向主 Kotlin 或 Java 类：
 
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
+
 
 ```xml
 <plugin>
@@ -257,7 +257,7 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 </plugin>
 ```
 
-</div>
+
 
 这个独立的 jar 文件可以直接传给 JRE 来运行应用程序：
 
@@ -269,7 +269,7 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
 为了编译 JavaScript 代码，需要使用 `js` 和 `test-js` 目标来执行 `compile`：
 
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
+
 
 ```xml
 <plugin>
@@ -295,12 +295,12 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 </plugin>
 ```
 
-</div>
+
 
 你还需要更改标准库依赖：
 
 
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
+
 
 ```xml
 <groupId>org.jetbrains.kotlin</groupId>
@@ -308,7 +308,7 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 <version>${kotlin.version}</version>
 ```
 
-</div>
+
 
 对于单元测试支持，你还需要添加对 `kotlin-test-js` 构件的依赖。
 
@@ -320,7 +320,7 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 可以将额外的编译器选项与参数指定为 Maven 插件节点的 `<configuration>` 元素下的标签
 ：
 
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
+
 
 ```xml
 <plugin>
@@ -337,11 +337,11 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
     </configuration>
 </plugin>
 ```
-</div>
+
 
 许多选项还可以通过属性来配置：
 
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
+
 
 ```xml
 <project ……>
@@ -351,7 +351,7 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 </project>
 ```
 
-</div>
+
 
 支持以下属性：
 
