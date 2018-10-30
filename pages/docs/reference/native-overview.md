@@ -94,8 +94,8 @@ Kotlin 新手？可以看看[入门](/docs/reference/basic-syntax.html)页。
 - [Kotlin/Native 源代码与示例](https://github.com/JetBrains/kotlin-native/tree/master/samples)
 - [KotlinConf app](https://github.com/JetBrains/kotlinconf-app)
 - [KotlinConf Spinner app](https://github.com/jetbrains/kotlinconf-spinner)
-- [Kotlin/Native sources and examples (.tgz)](https://download.jetbrains.com/kotlin/native/kotlin-native-samples-1.0.1.tar.gz)
-- [Kotlin/Native sources and examples (.zip)](https://download.jetbrains.com/kotlin/native/kotlin-native-samples-1.0.1.zip)
+- [Kotlin/Native 源代码与示例（.tgz）](https://download.jetbrains.com/kotlin/native/kotlin-native-samples-1.0.1.tar.gz)
+- [Kotlin/Native 源代码与示例（.zip）](https://download.jetbrains.com/kotlin/native/kotlin-native-samples-1.0.1.zip)
 
 在 [GitHub](https://github.com/JetBrains/kotlin-examples) 上还有更多示例。
 
