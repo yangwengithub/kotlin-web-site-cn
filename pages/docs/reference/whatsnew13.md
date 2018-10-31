@@ -10,7 +10,7 @@ title: "Kotlin 1.3 的新特性"
 
 历经了漫长而充足的的测试，协程 API 终于正式发布！这意味着从 Kotlin 1.3 版本起，协程 API 将与其他正式发布的功能一样保持稳定。查看全新的[协程概览](coroutines-overview.html)。
 
-Kotlin 1.3 把挂起函数对 callable 引用支持和对协程的支持加入了 Reflection API。
+Kotlin 1.3 introduces callable references on suspend-functions and support of Coroutines in the Reflection API.
 
 ## Kotlin/Native
 
@@ -18,7 +18,18 @@ Kotlin 1.3 将继续完善对 Native 平台的支持。详情查看[Kotlin/Nativ
 
 ## 多平台项目
 
-在 1.3 ，为了更具表现力和灵活性，同时也为了更简单的共享代码，我们彻底重写了多平台项目的模型。并且，Kotlin/Native 现在将作为支持目标之一！详情查看[这里](multiplatform.html)。
+In 1.3, we've completely reworked the model of multiplatform projects in order to improve expressiveness and flexibility, and to make sharing common code easier. Also, Kotlin/Native is now supported as one of the targets!
+
+The key differences to the old model are:
+
+  * In the old model, common and platform-specific code needed to be placed in separate modules, linked by `expectedBy` dependencies.
+    Now, common and platform-specific code is placed in different source roots of the same module, making projects easier to configure.
+  * There is now a large number of [preset platform configurations](/docs/reference/building-mpp-with-gradle.html#supported-platforms) for different supported platforms.
+  * The [dependencies configuration](/docs/reference/building-mpp-with-gradle.html#adding-dependencies) has been changed; dependencies are now specified separately for each source root.
+  * Source sets can now be shared between an arbitrary subset of platforms (for example, in a module that targets JS, Android and iOS, you can have a source set that is shared only between Android and iOS).
+  * [Publishing multiplatform libraries](/docs/reference/building-mpp-with-gradle.html#publishing-a-multiplatform-library) is now supported.
+
+For more information, please refer to the [Multiplatform Programming documentation](/docs/reference/multiplatform.html).
 
 ## 契约
 
