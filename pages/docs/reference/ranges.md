@@ -26,8 +26,6 @@ if (i in 1..10) { // 等同于 1 <= i && i <= 10
 fun main() {
 //sampleStart
 for (i in 1..4) print(i)
-
-for (i in 4..1) print(i)
 //sampleEnd
 }
 ```

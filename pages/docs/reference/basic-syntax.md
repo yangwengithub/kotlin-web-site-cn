@@ -12,6 +12,7 @@ title: "基本语法"
 包的声明应处于源文件顶部：
 
 
+
 ```kotlin
 package my.demo
 
@@ -19,6 +20,7 @@ import java.util.*
 
 // ……
 ```
+
 
 
 目录与包的结构无需匹配：源代码可以在文件系统的任意位置。
@@ -45,6 +47,7 @@ fun main() {
 ```
 
 
+
 将表达式作为函数体、返回值类型自动推断的函数：
 
 
@@ -58,6 +61,7 @@ fun main() {
     println("sum of 19 and 23 is ${sum(19, 23)}")
 }
 ```
+
 
 
 函数返回无意义的值：
@@ -77,6 +81,7 @@ fun main() {
 ```
 
 
+
 `Unit` 返回类型可以省略：
 
 
@@ -92,6 +97,7 @@ fun main() {
     printSum(-1, 8)
 }
 ```
+
 
 
 参见[函数](functions.html)。
@@ -115,6 +121,7 @@ fun main() {
 ```
 
 
+
 可变变量：
 
 
@@ -130,7 +137,9 @@ fun main() {
 ```
 
 
+
 顶层变量：
+
 
 
 ```kotlin
@@ -152,6 +161,7 @@ fun main() {
 ```
 
 
+
 参见[属性与字段](properties.html)。
 
 
@@ -159,12 +169,16 @@ fun main() {
 
 正如 Java 与 JavaScript，Kotlin 支持行注释及块注释。
 
+
+
 ```kotlin
 // 这是一个行注释
 
 /* 这是一个多行的
    块注释。 */
 ```
+
+
 
 与 Java 不同的是，Kotlin 的块注释可以嵌套。
 
@@ -188,6 +202,7 @@ fun main() {
     println(s2)
 }
 ```
+
 
 
 参见[字符串模板](basic-types.html#字符串模板)。
@@ -215,6 +230,7 @@ fun main() {
 
 
 
+
 使用 *if*{: .keyword } 作为表达式:
 
 
@@ -230,6 +246,7 @@ fun main() {
 ```
 
 
+
 参见[*if*{: .keyword } 表达式](control-flow.html#if-表达式)。
 
 ## 使用可空值及 *null*{: .keyword } 检测
@@ -239,11 +256,13 @@ fun main() {
 如果 `str` 的内容不是数字返回 *null*{: .keyword }：
 
 
+
 ```kotlin
 fun parseInt(str: String): Int? {
     // ……
 }
 ```
+
 
 
 使用返回可空值的函数:
@@ -279,6 +298,7 @@ fun main() {
     printProduct("a", "b")
 }
 ```
+
 
 
 或者
@@ -319,6 +339,7 @@ fun main() {
 ```
 
 
+
 参见[空安全](null-safety.html)。
 
 ## 使用类型检测及自动类型转换
@@ -354,6 +375,7 @@ fun main() {
 ```
 
 
+
 或者
 
 
@@ -378,6 +400,7 @@ fun main() {
     printLength(listOf(Any()))
 }
 ```
+
 
 
 甚至
@@ -408,6 +431,7 @@ fun main() {
 ```
 
 
+
 参见[类](classes.html)以及[类型转换](typecasts.html)。
 
 ## 使用 `for` 循环
@@ -426,6 +450,7 @@ fun main() {
 ```
 
 
+
 或者
 
 
@@ -440,6 +465,7 @@ fun main() {
 //sampleEnd
 }
 ```
+
 
 
 
@@ -461,6 +487,7 @@ fun main() {
 //sampleEnd
 }
 ```
+
 
 
 
@@ -493,6 +520,7 @@ fun main() {
 
 
 
+
 参见 [when 表达式](control-flow.html#when-表达式)。
 
 ## 使用区间（range）
@@ -515,6 +543,7 @@ fun main() {
 
 
 
+
 检测某个数字是否在指定区间外:
 
 
@@ -528,11 +557,12 @@ fun main() {
         println("-1 is out of range")
     }
     if (list.size !in list.indices) {
-        println("list size is out of valid list indices range too")
+        println("list size is out of valid list indices range, too")
     }
 //sampleEnd
 }
 ```
+
 
 
 
@@ -549,6 +579,7 @@ fun main() {
 //sampleEnd
 }
 ```
+
 
 
 或数列迭代：
@@ -568,6 +599,7 @@ fun main() {
 //sampleEnd
 }
 ```
+
 
 
 参见[区间](ranges.html)。
@@ -591,6 +623,7 @@ fun main() {
 
 
 
+
 使用 *in*{: .keyword } 运算符来判断集合内是否包含某实例：
 
 
@@ -606,6 +639,7 @@ fun main() {
 //sampleEnd
 }
 ```
+
 
 
 
@@ -626,6 +660,7 @@ fun main() {
 //sampleEnd
 }
 ```
+
 
 
 参见[高阶函数及Lambda表达式](lambdas.html)。
@@ -672,6 +707,7 @@ class Triangle(
     }
 }
 ```
+
 
 
 参见[类](classes.html)以及[对象与实例](object-declarations.html)。
