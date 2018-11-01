@@ -12,6 +12,7 @@ title: "基本语法"
 包的声明应处于源文件顶部：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 package my.demo
 
@@ -19,6 +20,7 @@ import java.util.*
 
 // ……
 ```
+
 </div>
 
 目录与包的结构无需匹配：源代码可以在文件系统的任意位置。
@@ -43,6 +45,7 @@ fun main() {
     println(sum(3, 5))
 }
 ```
+
 </div>
 
 将表达式作为函数体、返回值类型自动推断的函数：
@@ -58,6 +61,7 @@ fun main() {
     println("sum of 19 and 23 is ${sum(19, 23)}")
 }
 ```
+
 </div>
 
 函数返回无意义的值：
@@ -75,6 +79,7 @@ fun main() {
     printSum(-1, 8)
 }
 ```
+
 </div>
 
 `Unit` 返回类型可以省略：
@@ -92,6 +97,7 @@ fun main() {
     printSum(-1, 8)
 }
 ```
+
 </div>
 
 参见[函数](functions.html)。
@@ -113,6 +119,7 @@ fun main() {
     println("a = $a, b = $b, c = $c")
 }
 ```
+
 </div>
 
 可变变量：
@@ -128,11 +135,13 @@ fun main() {
     println("x = $x")
 }
 ```
+
 </div>
 
 顶层变量：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
+
 ```kotlin
 //sampleStart
 val PI = 3.14
@@ -150,6 +159,7 @@ fun main() {
     println("x = $x; PI = $PI")
 }
 ```
+
 </div>
 
 参见[属性与字段](properties.html)。
@@ -159,12 +169,16 @@ fun main() {
 
 正如 Java 与 JavaScript，Kotlin 支持行注释及块注释。
 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 // 这是一个行注释
 
 /* 这是一个多行的
    块注释。 */
 ```
+
+</div>
 
 与 Java 不同的是，Kotlin 的块注释可以嵌套。
 
@@ -188,6 +202,7 @@ fun main() {
     println(s2)
 }
 ```
+
 </div>
 
 参见[字符串模板](basic-types.html#字符串模板)。
@@ -212,6 +227,7 @@ fun main() {
     println("max of 0 and 42 is ${maxOf(0, 42)}")
 }
 ```
+
 </div>
 
 
@@ -228,6 +244,7 @@ fun main() {
     println("max of 0 and 42 is ${maxOf(0, 42)}")
 }
 ```
+
 </div>
 
 参见[*if*{: .keyword } 表达式](control-flow.html#if-表达式)。
@@ -239,11 +256,13 @@ fun main() {
 如果 `str` 的内容不是数字返回 *null*{: .keyword }：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun parseInt(str: String): Int? {
     // ……
 }
 ```
+
 </div>
 
 使用返回可空值的函数:
@@ -279,6 +298,7 @@ fun main() {
     printProduct("a", "b")
 }
 ```
+
 </div>
 
 或者
@@ -317,6 +337,7 @@ fun main() {
     printProduct("99", "b")
 }
 ```
+
 </div>
 
 参见[空安全](null-safety.html)。
@@ -352,6 +373,7 @@ fun main() {
     printLength(listOf(Any()))
 }
 ```
+
 </div>
 
 或者
@@ -378,6 +400,7 @@ fun main() {
     printLength(listOf(Any()))
 }
 ```
+
 </div>
 
 甚至
@@ -406,6 +429,7 @@ fun main() {
     printLength(1000)
 }
 ```
+
 </div>
 
 参见[类](classes.html)以及[类型转换](typecasts.html)。
@@ -424,6 +448,7 @@ fun main() {
 //sampleEnd
 }
 ```
+
 </div>
 
 或者
@@ -440,6 +465,7 @@ fun main() {
 //sampleEnd
 }
 ```
+
 </div>
 
 
@@ -461,6 +487,7 @@ fun main() {
 //sampleEnd
 }
 ```
+
 </div>
 
 
@@ -490,6 +517,7 @@ fun main() {
     println(describe("other"))
 }
 ```
+
 </div>
 
 
@@ -512,6 +540,7 @@ fun main() {
 //sampleEnd
 }
 ```
+
 </div>
 
 
@@ -528,11 +557,12 @@ fun main() {
         println("-1 is out of range")
     }
     if (list.size !in list.indices) {
-        println("list size is out of valid list indices range too")
+        println("list size is out of valid list indices range, too")
     }
 //sampleEnd
 }
 ```
+
 </div>
 
 
@@ -549,6 +579,7 @@ fun main() {
 //sampleEnd
 }
 ```
+
 </div>
 
 或数列迭代：
@@ -568,6 +599,7 @@ fun main() {
 //sampleEnd
 }
 ```
+
 </div>
 
 参见[区间](ranges.html)。
@@ -588,6 +620,7 @@ fun main() {
 //sampleEnd
 }
 ```
+
 </div>
 
 
@@ -606,6 +639,7 @@ fun main() {
 //sampleEnd
 }
 ```
+
 </div>
 
 
@@ -626,6 +660,7 @@ fun main() {
 //sampleEnd
 }
 ```
+
 </div>
 
 参见[高阶函数及Lambda表达式](lambdas.html)。
@@ -672,6 +707,7 @@ class Triangle(
     }
 }
 ```
+
 </div>
 
 参见[类](classes.html)以及[对象与实例](object-declarations.html)。

@@ -16,6 +16,7 @@ Kotlin 同 C# 与 Gosu 类似，能够扩展一个类的新功能而无需继承
 下面代码为 `MutableList<Int>` 添加一个`swap` 函数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun MutableList<Int>.swap(index1: Int, index2: Int) {
     val tmp = this[index1] // “this”对应该列表
@@ -23,21 +24,25 @@ fun MutableList<Int>.swap(index1: Int, index2: Int) {
     this[index2] = tmp
 }
 ```
+
 </div>
 
 这个 *this*{: .keyword } 关键字在扩展函数内部对应到接收者对象（传过来的在点符号前的对象）
 现在，我们对任意 `MutableList<Int>` 调用该函数了：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 val l = mutableListOf(1, 2, 3)
 l.swap(0, 2) // “swap()”内部的“this”得到“l”的值
 ```
+
 </div>
 
 当然，这个函数对任何 `MutableList<T>` 起作用，我们可以泛化它：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun <T> MutableList<T>.swap(index1: Int, index2: Int) {
     val tmp = this[index1] // “this”对应该列表
@@ -45,6 +50,7 @@ fun <T> MutableList<T>.swap(index1: Int, index2: Int) {
     this[index2] = tmp
 }
 ```
+
 </div>
 
 为了在接收者类型表达式中使用泛型，我们要在函数名前声明泛型参数。
@@ -60,6 +66,7 @@ fun <T> MutableList<T>.swap(index1: Int, index2: Int) {
 而不是由表达式运行时求值结果决定的。例如：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 open class C
 
@@ -75,6 +82,7 @@ fun printFoo(c: C) {
 
 printFoo(D())
 ```
+
 </div>
 
 这个例子会输出 "c"，因为调用的扩展函数只取决于<!--
@@ -84,6 +92,7 @@ printFoo(D())
 例如：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class C {
     fun foo() { println("member") }
@@ -91,6 +100,7 @@ class C {
 
 fun C.foo() { println("extension") }
 ```
+
 </div>
 
 如果我们调用 `C` 类型 `c`的 `c.foo()`，它将输出“member”，而不是“extension”。
@@ -98,6 +108,7 @@ fun C.foo() { println("extension") }
 当然，扩展函数重载同样名字但不同签名成员函数也完全可以：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class C {
     fun foo() { println("member") }
@@ -105,6 +116,7 @@ class C {
 
 fun C.foo(i: Int) { println("extension") }
 ```
+
 </div>
 
 调用 `C().foo(1)` 将输出 "extension"。
@@ -117,6 +129,7 @@ fun C.foo(i: Int) { println("extension") }
 -->在没有检测 null 的时候调用 Kotlin 中的toString()：检测发生在扩展函数的内部。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun Any?.toString(): String {
     if (this == null) return "null"
@@ -125,17 +138,20 @@ fun Any?.toString(): String {
     return toString()
 }
 ```
+
 </div>
 
 ## 扩展属性
 
 与函数类似，Kotlin 支持扩展属性：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 val <T> List<T>.lastIndex: Int
     get() = size - 1
 ```
+
 </div>
 
 注意：由于扩展没有实际的将成员插入类中，因此对扩展属性来说<!--
@@ -145,6 +161,7 @@ val <T> List<T>.lastIndex: Int
 例如:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 val Foo.bar = 1 // 错误：扩展属性不能有初始化器
 ```
@@ -157,6 +174,7 @@ val Foo.bar = 1 // 错误：扩展属性不能有初始化器
 -->扩展函数与属性：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class MyClass {
     companion object { }  // 将被称为 "Companion"
@@ -164,14 +182,17 @@ class MyClass {
 
 fun MyClass.Companion.foo() { …… }
 ```
+
 </div>
 
 就像伴生对象的其他普通成员，只需用类名作为限定符去调用他们
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 MyClass.foo()
 ```
+
 </div>
 
 
@@ -180,16 +201,19 @@ MyClass.foo()
 大多数时候我们在顶层定义扩展，即直接在包里：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 package foo.bar
 
 fun Baz.goo() { …… }
 ```
+
 </div>
 
 要使用所定义包之外的一个扩展，我们需要在调用方导入它：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 package com.example.usage
 
@@ -202,6 +226,7 @@ fun usage(baz: Baz) {
 }
 
 ```
+
 </div>
 
 更多信息参见[导入](packages.html#导入)
@@ -213,6 +238,7 @@ fun usage(baz: Baz) {
 _分发接收者_，扩展方法调用所在的接收者类型的实例称为 _扩展接收者_ 。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class D {
     fun bar() { …… }
@@ -231,12 +257,14 @@ class C {
     }
 }
 ```
+
 </div>
 
 对于分发接收者与扩展接收者的成员名字冲突的情况，扩展接收者<!--
 -->优先。要引用分发接收者的成员你可以使用 [限定的 `this` 语法](this-expressions.html#限定的-this)。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class C {
     fun D.foo() {
@@ -245,12 +273,14 @@ class C {
     }
 }
 ```
+
 </div>
 
 声明为成员的扩展可以声明为 `open` 并在子类中覆盖。这意味着这些函数的分发<!--
 -->对于分发接收者类型是虚拟的，但对于扩展接收者类型是静态的。
 
 <div class="sample" markdown="1" theme="idea">
+
 ```kotlin
 open class D { }
 
@@ -286,6 +316,7 @@ fun main() {
     C().caller(D1())  // 输出 "D.foo in C" —— 扩展接收者静态解析
 }
 ```
+
 </div>
 
 ## 关于可见性的说明
@@ -300,27 +331,32 @@ fun main() {
 在Java中，我们将类命名为“\*Utils”：`FileUtils`、`StringUtils` 等，著名的 `java.util.Collections` 也属于同一种命名方式。
 关于这些 Utils-类的不愉快的部分是代码写成这样：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
+<div class="sample" markdown="1" theme="idea" mode="java" auto-indent="false">
+
 ```java
 // Java
 Collections.swap(list, Collections.binarySearch(list,
     Collections.max(otherList)),
     Collections.max(list));
 ```
+
 </div>
 
 这些类名总是碍手碍脚的，我们可以通过静态导入达到这样效果：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="java">
+
 ```java
 // Java
 swap(list, binarySearch(list, max(otherList)), max(list));
 ```
+
 </div>
 
 这会变得好一点，但是我们并没有从 IDE 强大的自动补全功能中得到帮助。如果能这样就更好了：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" theme="idea" mode="java">
+
 ```java
 // Java
 list.swap(list.binarySearch(otherList.max()), list.max());
