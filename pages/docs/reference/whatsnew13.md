@@ -429,7 +429,7 @@ fun main() {
 
 ## associateWith
 
-对于一个 list 一个非常常见的场景是，希望通过把 list 的每个元素作为 key，然后和某个 value 关联起来，来构建一个 map。这可以通过 `associate { it to getValue(it) }` 函数来完成，但是现在我们引入了一个更为效率和便捷的实现方式：`keys.associateWith { getValue(it) }`
+对于一个 list 一个非常常见的场景是，希望通过把 list 的每个元素作为 key，然后和某个 value 关联起来，来构建一个 map。这可以通过 `associate { it to getValue(it) }` 函数来完成，但是现在我们引入了一个更为效率和便捷的实现方式：`keys.associateWith { getValue(it) }`。
 
 <div class="sample" data-min-compiler-version="1.3" markdown="1" theme="idea">
 
@@ -525,8 +525,4 @@ Kotlin 1.3 将继续完善 script API，引入了一些自定义脚本实验性�
 Kotlin 1.3 引入了对可运行的**草稿文件**支持。**草稿文件**是一个以 .kts 扩展名结尾的 kotlin 脚本文件，你可以在编辑器里直接运行和获取计算结果。
 
 更多细节请关注[Scratches documentation](https://www.jetbrains.com/help/idea/scratches.html)。
-
-
-
-
 

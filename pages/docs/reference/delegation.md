@@ -35,6 +35,7 @@ fun main() {
     Derived(b).print()
 }
 ```
+
 </div>
 
 `Derived` 的超类型列表中的 *by*{: .keyword }-子句表示 `b` 将会在 `Derived` 中内部存储，
@@ -69,6 +70,7 @@ fun main() {
     Derived(b).printMessageLine()
 }
 ```
+
 </div>
 
 但请注意，以这种方式重写的成员不会在委托对象的成员中调用
@@ -99,4 +101,5 @@ fun main() {
     println(derived.message)
 }
 ```
+
 </div>
