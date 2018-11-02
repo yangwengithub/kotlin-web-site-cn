@@ -108,7 +108,7 @@ fun foo() {
 
 
 
-###标准库中的契约
+### 标准库中的契约
 
 `stdlib（kotlin 标准库）`已经在利用**契约**这一特性，改善了上述情景中代码分析情况。这一部分的契约功能已经趋于稳定，意味着你不需要任何额外的操作就可以享用改善后的代码分析。
 
@@ -382,7 +382,7 @@ interface Foo {
 
 # 标准库
 
-##多平台随机数
+## 多平台随机数
 
 在 Kotlin 1.3 之前，没有办法在所有平台上统一来生成随机数 — 我们只能采取依赖平台的特定解决方案，比如 JVM 上的 `java.util.Random`。这个版本将会解决这个问题，通过引入 `kotlin.random.Random`，这是个支持所有平台的类：
 
@@ -401,10 +401,10 @@ fun main() {
 
 
 
-## isNullOrEmpty 和 orEmpty 拓展
+## isNullOrEmpty 与 orEmpty
 
-某些类型的 `isNullOrEmpty` 和 `orEmpty` 拓展函数已经存在于标准库中，对于前者，如果函数接受者是 `null`或者为空将会返回 `true` ；对于后者， 如果接收者是 `null` ，将会返回一个空实例。
-Kotlin 1.3 为 `collections`、`maps` 和对象数组提供了类似的拓展函数。
+某些类型的 `isNullOrEmpty` 和 `orEmpty` 扩展函数已经存在于标准库中，对于前者，如果函数接受者是 `null`或者为空将会返回 `true` ；对于后者， 如果接收者是 `null` ，将会返回一个空实例。
+Kotlin 1.3 为 `collections`、`maps` 和对象数组提供了类似的扩展函数。
 
 ## 非空数组间拷贝元素
 
@@ -445,7 +445,7 @@ fun main() {
 
 
 
-##ifEmpty 和 ifBlank 拓展
+## ifEmpty 与 ifBlank
 
 Collections, maps, object arrays, char sequence 和 sequence 现在都有 `ifEmpty` 函数，用于指定一个默认值，当接收者为空时：
 
@@ -469,7 +469,7 @@ fun main() {
 
 
 
-Char sequences 和 strings 还额外拥有 `ifBlank` 拓展，和  `ifEmpty` 功能类似，但是用于检查一个 string 是否全是空格。
+Char sequences 和 strings 还额外拥有 `ifBlank` 扩展，和  `ifEmpty` 功能类似，但是用于检查一个 string 是否全是空格。
 
 
 
@@ -492,7 +492,7 @@ fun main() {
 ## 微小的改变
 
 -  `Boolean` 类型现在支持伴生对象。
-- `Any?.hashCode()`  拓展函数会在 `null` 的时候返回 0。
+- `Any?.hashCode()`  扩展函数会在 `null` 的时候返回 0。
 - `Char` 类型现在提供了 `MIN_VALUE`/`MAX_VALUE` 常量。
 - `SIZE_BYTES` 和  `SIZE_BITS` 会作为原生类型伴生对象常量。
 
@@ -522,7 +522,7 @@ Kotlin 1.3 将继续完善 script API，引入了一些自定义脚本实验性�
 
 ## 草稿文件支持
 
-Kotlin 1.3 引入了对可运行的**草稿文件**支持。**草稿文件**是一个以 .kts 拓展名结尾的 kotlin 脚本文件，你可以在编辑器里直接运行和获取计算结果。
+Kotlin 1.3 引入了对可运行的**草稿文件**支持。**草稿文件**是一个以 .kts 扩展名结尾的 kotlin 脚本文件，你可以在编辑器里直接运行和获取计算结果。
 
 更多细节请关注[Scratches documentation](https://www.jetbrains.com/help/idea/scratches.html)。
 
