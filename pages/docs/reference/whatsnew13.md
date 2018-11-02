@@ -6,30 +6,30 @@ title: "Kotlin 1.3 的新特性"
 
 # Kotlin 1.3 的新特性
 
-## 协程（正式发布）
+## 协程正式发布
 
-历经了漫长而充足的的测试，协程 API 终于正式发布！这意味着从 Kotlin 1.3 版本起，协程 API 将与其他正式发布的功能一样保持稳定。查看全新的[协程概览](coroutines-overview.html)。
+历经了漫长而充足的的测试，协程终于正式发布了！这意味着自 Kotlin 1.3 起，协程的语言支持与 API 已[完全稳定](evolution/components-stability.html)。参见新版[协程概述](coroutines-overview.html)。
 
-Kotlin 1.3 introduces callable references on suspend-functions and support of Coroutines in the Reflection API.
+Kotlin 1.3 引入了挂起函数的可调用引用以及在反射 API 中对协程的支持。
 
 ## Kotlin/Native
 
-Kotlin 1.3 将继续完善对 Native 平台的支持。详情查看[Kotlin/Native概览](native-overview.html)。
+Kotlin 1.3 继续改进与完善原生平台。详情请参见 [Kotlin/Native 概述](native-overview.html)。
 
 ## 多平台项目
 
-In 1.3, we've completely reworked the model of multiplatform projects in order to improve expressiveness and flexibility, and to make sharing common code easier. Also, Kotlin/Native is now supported as one of the targets!
+在 1.3 中，我们完全修改了多平台项目的模型，以提高表现力与灵活性，并使共享公共代码更加容易。此外，多平台项目现在也支持 Kotlin/Native！
 
-The key differences to the old model are:
+与旧版模型的主要区别在于：
 
-  * In the old model, common and platform-specific code needed to be placed in separate modules, linked by `expectedBy` dependencies.
-    Now, common and platform-specific code is placed in different source roots of the same module, making projects easier to configure.
-  * There is now a large number of [preset platform configurations](/docs/reference/building-mpp-with-gradle.html#supported-platforms) for different supported platforms.
-  * The [dependencies configuration](/docs/reference/building-mpp-with-gradle.html#adding-dependencies) has been changed; dependencies are now specified separately for each source root.
-  * Source sets can now be shared between an arbitrary subset of platforms (for example, in a module that targets JS, Android and iOS, you can have a source set that is shared only between Android and iOS).
-  * [Publishing multiplatform libraries](/docs/reference/building-mpp-with-gradle.html#publishing-a-multiplatform-library) is now supported.
+  * 在旧版模型中，需要将公共代码与平台相关代码分别放在独立的模块中，以 `expectedBy` 依赖项链接。
+    现在，公共代码与平台相关代码放在相同模块的不同源根（source root）中，使项目更易于配置。
+  * 对于不同的已支持平台，现在有大量的[预设的平台配置](/docs/reference/building-mpp-with-gradle.html#supported-platforms)。
+  * 更改了[依赖配置](/docs/reference/building-mpp-with-gradle.html#adding-dependencies)；现在为每个源根分别指定依赖项。
+  * 源集（source set）现在可以在任意平台子集之间共享（例如，在一个目标平台为 JS、Android 与 iOS 的模块中，可以有一个只在 Android 与 iOS 之间共享的源集）。
+  * 现在支持[发布多平台库](/docs/reference/building-mpp-with-gradle.html#publishing-a-multiplatform-library)了。
 
-For more information, please refer to the [Multiplatform Programming documentation](/docs/reference/multiplatform.html).
+更多相关信息，请参考[多平台程序设计文档](/docs/reference/multiplatform.html)。
 
 ## 契约
 
