@@ -166,7 +166,7 @@ kotlin {
 
 </div>
 
-To modify [the Kotlin compiler options](using-gradle.html#compiler-options) of a compilation, use the compilation's task which
+To modify [the Kotlin compiler options](using-gradle.html#编译器选项) of a compilation, use the compilation's task which
 can be found by its name:
 
 <div class="sample" markdown="1" theme="idea" mode='groovy'>

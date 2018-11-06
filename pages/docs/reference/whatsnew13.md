@@ -167,7 +167,7 @@ fun Request.getBody() =
 
 </div>
 
-当然你也可以在 `when` 语句之前把变量提取出来，`when` 语句中的 `val` 的作用域被限制在 `when` 语句的方法体中，借此防止了命名空间污染。点击[这里](control-flow.html#when-expression)查看 `when` 语句说明文档。
+当然你也可以在 `when` 语句之前把变量提取出来，`when` 语句中的 `val` 的作用域被限制在 `when` 语句的方法体中，借此防止了命名空间污染。点击[这里](control-flow.html#when-表达式)查看 `when` 语句说明文档。
 
 ## 接口中的伴生对象的 @JvmStatic 和 @JvmField 注解
 

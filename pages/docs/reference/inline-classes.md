@@ -64,7 +64,7 @@ fun main() {
 However, there are some restrictions for inline class members:
 * inline classes cannot have *init*{: .keyword } blocks
 * inline classes cannot have *inner*{: .keyword } classes
-* inline class properties cannot have [backing fields](properties.html#backing-fields)
+* inline class properties cannot have [backing fields](properties.html#幕后字段)
     * it follows that inline classes can only have simple computable properties (no lateinit/delegated properties)
 
 
@@ -95,7 +95,7 @@ It is forbidden for inline classes to participate in a class hierarchy. This mea
 
 ## Representation
 
-In generated code, the Kotlin compiler keeps a *wrapper* for each inline class. Inline class instances can be represented at runtime either as wrappers or as the underlying type. This is similar to how `Int` can be [represented](basic-types.html#representation) either as a primitive `int` or as the wrapper `Integer`.
+In generated code, the Kotlin compiler keeps a *wrapper* for each inline class. Inline class instances can be represented at runtime either as wrappers or as the underlying type. This is similar to how `Int` can be [represented](basic-types.html#表示方式) either as a primitive `int` or as the wrapper `Integer`.
 
 The Kotlin compiler will prefer using underlying types instead of wrappers to produce the most performant and optimized code. However, sometimes it is necessary to keep wrappers around. As a rule of thumb, inline classes are boxed whenever they are used as another type.
 
@@ -129,7 +129,7 @@ fun main() {
 
 </div>
 
-Because inline classes may be represented both as the underlying value and as a wrapper, [referential equality](equality.html#referential-equality) is pointless for them and is therefore prohibited.
+Because inline classes may be represented both as the underlying value and as a wrapper, [referential equality](equality.html#引用相等) is pointless for them and is therefore prohibited.
 
 ### Mangling
 
@@ -207,7 +207,7 @@ compileKotlin {
 
 </div>
 
-See [Compiler options in Gradle](using-gradle.html#compiler-options) for details.
+See [Compiler options in Gradle](using-gradle.html#编译器选项) for details.
 
 ### Enabling inline classes in Maven
 
@@ -223,7 +223,7 @@ See [Compiler options in Gradle](using-gradle.html#compiler-options) for details
 
 </div>
 
-See [Compiler options in Maven](using-maven.html#specifying-compiler-options) for details.
+See [Compiler options in Maven](using-maven.html#指定编译器选项) for details.
 
 ## Further discussion
 
