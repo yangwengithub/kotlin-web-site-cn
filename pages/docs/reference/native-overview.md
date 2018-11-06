@@ -40,29 +40,29 @@ Kotlin/Native 支持与原生世界的双向互操作。
 
 另一方面，支持直接在 Kotlin/Native 中使用以下现有库<!--
 -->的互操作：
-- 静态或动态 [C 语言库](/docs/reference/native/c_interop.html)
-- C 语言、 [Swift 以及 Objective-C](/docs/reference/native/objc_interop.html) 框架
+- 静态或动态 [C 语言库](native/c_interop.html)
+- C 语言、 [Swift 以及 Objective-C](native/objc_interop.html) 框架
 
 将编译后的 Kotlin 代码包含进<!--
 -->用 C、 C++、 Swift、 Objective-C 以及其他语言编写的现有项目中会很容易。
 直接在 Kotlin/Native 中使用现有原生代码、
-静态或动态 [C 语言库](/docs/reference/native/c_interop.html)、
-Swift/Objective-C [框架](/docs/reference/native/objc_interop.html)、
+静态或动态 [C 语言库](native/c_interop.html)、
+Swift/Objective-C [框架](native/objc_interop.html)、
 图形引擎以及任何其他原生内容也很容易。
 
-Kotlin/Native [库](/docs/reference/native/platform_libs.html)有助于在多个项目之间共享 Kotlin
+Kotlin/Native [库](native/platform_libs.html)有助于在多个项目之间共享 Kotlin
 代码。
 POSIX、 gzip、 OpenGL、 Metal、 Foundation 以及许多其他流行库与
 Apple 框架都已预先导入并作为 Kotlin/Native 库包含在编译器包中。
 
 ## 在多个平台之间共享代码
 
-不同目标平台的 Kotlin 与 Kotlin/Native 之间支持[多平台项目](/docs/reference/multiplatform.html)<!--
+不同目标平台的 Kotlin 与 Kotlin/Native 之间支持[多平台项目](multiplatform.html)<!--
 -->。
 这是在多个平台之间共享公共 Kotlin 代码的方式，这些平台包括 Android、 iOS、 服务器端、 JVM、 客户端、
 JavaScript、 CSS 以及原生平台。
 
-[多平台库](/docs/reference/multiplatform.html#multiplatform-libraries)<!--
+[多平台库](multiplatform.html#multiplatform-libraries)<!--
 -->为公共 Kotlin 代码提供了必要的 API，并有助于在
 Kotlin 代码中一次性开发项目的共享部分，从而将其与所有目标平台共享。
 
@@ -73,11 +73,11 @@ Kotlin 代码中一次性开发项目的共享部分，从而将其与所有目�
     <b>教程与文档</b>
 </div>
 
-Kotlin 新手？可以看看[入门](/docs/reference/basic-syntax.html)页。
+Kotlin 新手？可以看看[入门](basic-syntax.html)页。
 
 建议的文档页：
-- [C 语言互操作](/docs/reference/native/c_interop.html)
-- [Swift/Objective-C 互操作](/docs/reference/native/objc_interop.html)
+- [C 语言互操作](native/c_interop.html)
+- [Swift/Objective-C 互操作](native/objc_interop.html)
 
 推荐的教程：
 - [基本的 Kotlin/Native 应用程序](https://www.kotlincn.net/docs/tutorials/native/basic-kotlin-native-app.html)

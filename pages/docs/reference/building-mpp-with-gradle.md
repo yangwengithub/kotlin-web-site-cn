@@ -684,7 +684,7 @@ This creates additional link tasks for the debug and release binaries. The tasks
 
 ### CInterop support
 
-Since Kotlin/Native provides [interoperability with native languages](/docs/reference/native/c_interop.html),
+Since Kotlin/Native provides [interoperability with native languages](native/c_interop.html),
 there is a DSL allowing one to configure this feature for a specific compilation.
 
 A compilation can interact with several native libraries. Interoperability with each of them can be configured in

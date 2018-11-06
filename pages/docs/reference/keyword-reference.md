@@ -94,7 +94,7 @@ title: "关键字与操作符"
 以下符号作为声明中修饰符列表中的关键字，并可用作其他上下文中<!--
 -->的标识符：
 
- * `actual` 表示[多平台项目](/docs/reference/multiplatform.html)中的一个平台相关实现
+ * `actual` 表示[多平台项目](multiplatform.html)中的一个平台相关实现
  * `abstract` 将一个类或成员标记为[抽象](classes.html#抽象类)
  * `annotation` 声明一个[注解类](annotations.html)
  * `companion` 声明一个[伴生对象](object-declarations.html#伴生对象)
@@ -102,7 +102,7 @@ title: "关键字与操作符"
  * `crossinline` 禁止[传递给内联函数的 lambda 中的非局部返回](inline-functions.html#非局部返回) 
  * `data` 指示编译器[为类生成典型成员](data-classes.html)
  * `enum` 声明一个[枚举](enum-classes.html)
- * `expect` 将一个声明标记为[平台相关](/docs/reference/multiplatform.html)，并期待在平台模块中实现。
+ * `expect` 将一个声明标记为[平台相关](multiplatform.html)，并期待在平台模块中实现。
  * `external` 将一个声明标记为不是在 Kotlin 中实现（通过 [JNI](java-interop.html#在-kotlin-中使用-jni) 访问或者在 [JavaScript](js-interop.html#external-修饰符) 中实现）
  * `final` 禁止[成员覆盖](classes.html#覆盖方法)
  * `infix` 允许以[中缀表示法](functions.html#中缀表示法)调用函数

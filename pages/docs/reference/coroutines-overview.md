@@ -23,14 +23,14 @@ title: "协程概述"
     <b>Tutorials and Documentation</b>
 </div>
 
-Kotlin 新手？可以看看[入门](/docs/reference/basic-syntax.html)页。
+Kotlin 新手？可以看看[入门](basic-syntax.html)页。
 
 精选文档页：
-- [协程指南](/docs/reference/coroutines/coroutines-guide.html)
-- [基础](/docs/reference/coroutines/basics.html)
-- [通道](/docs/reference/coroutines/channels.html)
-- [协程上下文与调度器](/docs/reference/coroutines/coroutine-context-and-dispatchers.html)
-- [共享的可变状态与并发](/docs/reference/coroutines/shared-mutable-state-and-concurrency.html)
+- [协程指南](coroutines/coroutines-guide.html)
+- [基础](coroutines/basics.html)
+- [通道](coroutines/channels.html)
+- [协程上下文与调度器](coroutines/coroutine-context-and-dispatchers.html)
+- [共享的可变状态与并发](coroutines/shared-mutable-state-and-concurrency.html)
 
 推荐的教程：
 - [你的第一个 Kotlin 协程程序](../tutorials/coroutines/coroutines-basic-jvm.html)
