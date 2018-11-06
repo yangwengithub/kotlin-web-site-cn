@@ -116,7 +116,7 @@ The [Ktor framework](https://ktor.io/) is suitable for building asynchronous ser
     <b>Tutorials and Documentation</b>
 </div>
 
-New to Kotlin? Take a look at the [Getting Started](/docs/reference/basic-syntax.html) page.
+New to Kotlin? Take a look at the [Getting Started](basic-syntax.html) page.
 
 Suggested documentation pages:
 - [Setting up a Multiplatform Project](building-mpp-with-gradle.html#setting-up-a-multiplatform-project)
