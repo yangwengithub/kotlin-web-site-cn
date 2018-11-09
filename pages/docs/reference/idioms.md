@@ -51,7 +51,7 @@ val positives = list.filter { it > 0 }
 ```
 
 
-### String 内插
+### 字符串内插
 
 
 ```kotlin
