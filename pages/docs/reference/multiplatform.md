@@ -13,7 +13,7 @@ title: "多平台编程"
 
 在所有平台上运行是Kotlin明确的目标，但是我们将它看作是另一个更重要目标的前提条件：<!--
 -->实现不同平台的代码共享。如果我们支持JVM，Android， JavaScript， iOS， Linux， Windows,
-Mac 甚至嵌入式平台STM32，Kotlin就能运行在现代程序的所有组建中。<!--
+Mac 甚至嵌入式平台STM32，Kotlin就能运行在现代程序的所有组件中。<!--
 -->这将带来代码和经验复用，开发者节省更多的时间去做更有<!--
 -->挑战的任务而不是每次实现相同的任务2次或者更多次。
 
@@ -25,8 +25,8 @@ Mac 甚至嵌入式平台STM32，Kotlin就能运行在现代程序的所有组�
 -->所有的组件都可以使用共享代码并通过[`expect`/`actual` 机制](platform-specific-declarations.html)<!--
 -->使用平台特有APIs
 
-接下来是一个简单的日志框架代码共享和交互的<!--
--->例子。通用代码如下所示：
+接下来是一个简单的共享日志框架代码<!--
+-->示例。通用代码如下所示：
 
 <div style="display:flex">
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -92,7 +92,7 @@ internal actual fun writeLogMessage(message: String, logLevel: LogLevel) {
 通用的代码可以依赖一些已经实现的比较常用的库比如[HTTP](https://ktor.kotlincn.net/clients/http-client/multiplatform.html)， [serialization](https://github.com/Kotlin/kotlinx.serialization)， 和[managing
 coroutines](https://github.com/Kotlin/kotlinx.coroutines)。并且，我们还有一个针对全平台的扩展通用库。
 
-你当然也可以写一个包含通用API和不同平台实现的库。
+当然你也可以写一个包含通用API和不同平台实现的库。
 
 ## 使用范例
 
@@ -106,7 +106,7 @@ coroutines](https://github.com/Kotlin/kotlinx.coroutines)。并且，我们还�
 
 ### 客户端 — 服务端
 
-另一个情况代码共享也会带来好处，在互联系统中部分逻辑代码可以
+另一种情况代码共享也会带来好处，在互联系统中部分逻辑代码可以
 同时运行在服务端和浏览器的客户端上。这也在Kotlin
 的多平台范畴内。
 
