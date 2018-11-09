@@ -51,7 +51,7 @@ val positives = list.filter { it > 0 }
 ```
 </div>
 
-### String 内插
+### 字符串内插
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
