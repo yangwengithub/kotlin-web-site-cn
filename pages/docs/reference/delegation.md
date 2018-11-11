@@ -45,7 +45,7 @@ fun main() {
 
 [覆盖](classes.html#覆盖方法)符合预期：编译器会使用 `override`
 覆盖的实现而不是委托对象中的。如果将 `override fun printMessage() { print("abc") }` 添加到
-`Derived`，那么当调用 `print` 时程序会输出“abc”而不是“10”：
+`Derived`，那么当调用 `printMessage` 时程序会输出“abc”而不是“10”：
 
 
 
