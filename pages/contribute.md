@@ -43,7 +43,9 @@ Kotlin 只有很小的运行时，且旨在保持如此。我们相信标准运�
 官方网站是 Kotlin 语言的官方文档，我们需要能够确保那里的所有信息
 是正确且最新的。对于一种 Kotlin 团队中没有人说的语言这么做，不幸的是现在并不可行。
 
-**译注**：补充或改善中文站（即本站）翻译，请 fork [Kotlin 语言中文站](https://github.com/hltj/kotlin-web-site-cn)项目并提 Pull Request。
+**译注**：补充或改善中文站（即本站）翻译，可以 fork [Kotlin 语言中文站](https://github.com/hltj/kotlin-web-site-cn)项目并提 Pull Request。
+目前《翻译指南》还在制订中，不过 [#35](https://github.com/hltj/kotlin-web-site-cn/issues/35) 有一些草稿，
+初次翻译请务必先阅读 [#35](https://github.com/hltj/kotlin-web-site-cn/issues/35) 及其中链接对应的内容。
 
 ### 传播这个词
 
