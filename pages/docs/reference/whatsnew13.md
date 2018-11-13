@@ -110,7 +110,7 @@ fun foo() {
 
 ### 标准库中的契约
 
-`stdlib（kotlin 标准库）`已经在利用**契约**这一特性，改善了上述情景中代码分析情况。这一部分的契约功能已经趋于稳定，意味着你不需要任何额外的操作就可以享用改善后的代码分析。
+`stdlib`（kotlin 标准库）已经利用契约带来了如上所述的对代码分析的改进。这部分契约是**稳定版的**，这意味着你现在就可以从改进的代码分析中受益，而无需任何额外的 opt-ins：
 
 
 
@@ -118,7 +118,7 @@ fun foo() {
 //sampleStart
 fun bar(x: String?) {
     if (!x.isNullOrEmpty()) {
-        println("length of '$x' is ${x.length}") // 看，智能地向非空类型转换！
+        println("length of '$x' is ${x.length}") // 哇，已经智能转换为非空！
     }
 }
 //sampleEnd

@@ -325,12 +325,25 @@ def page(page_path):
     return process_page(page_path)
 
 
+@app.route('/404.html')
+def page_404():
+    return render_template('pages/404.html')
+
+
 @freezer.register_generator
 def api_page():
     api_folder = path.join(root_folder, 'api')
     for root, dirs, files in os.walk(api_folder):
         for file in files:
             yield {'page_path': path.join(path.relpath(root, api_folder), file).replace(os.sep, '/')}
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('pages/404.html'), 404
+
+
+app.register_error_handler(404, page_not_found)
 
 
 @app.route('/api/<path:page_path>')
