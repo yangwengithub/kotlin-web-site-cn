@@ -9,7 +9,7 @@ showAuthorInfo: false
 ---
 
 
-In this tutorial we'll see how to
+在本教程中你将会看到：
 
 * [Configure modules when using IntelliJ IDEA](#configuring-modules-with-intellij-idea)
 * [Configure modules when using Maven or Gradle](#configuring-modules-when-using-maven-or-gradle)
