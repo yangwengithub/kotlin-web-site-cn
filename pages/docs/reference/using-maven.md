@@ -17,7 +17,7 @@ description: "This tutorials walks you through different scenarios when using Ma
 
 ```xml
 <properties>
-    <kotlin.version>1.3.0</kotlin.version>
+    <kotlin.version>1.3.10</kotlin.version>
 </properties>
 ```
 
