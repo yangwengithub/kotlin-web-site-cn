@@ -11,35 +11,35 @@ showAuthorInfo: false
 
 在本教程中你将会看到：
 
-* [Configure modules when using IntelliJ IDEA](#configuring-modules-with-intellij-idea)
-* [Configure modules when using Maven or Gradle](#configuring-modules-when-using-maven-or-gradle)
-* [Use Kotlin in the browser with AMD](#using-amd)
-* [Use Kotlin from node.js with CommonJS](#using-commonjs)
+* [使用IntelliJ IDEA配置模块](#configuring-modules-with-intellij-idea)
+* [使用Maven或者Gradle配置模块](#configuring-modules-when-using-maven-or-gradle)
+* [在浏览器中通过AMD使用Koltin](#using-amd)
+* [在node.js中通过CommonJS使用Kotlin](#using-commonjs)
 
 
 
-## Configuring Modules with IntelliJ IDEA
+## 使用IntelliJ IDEA配置模块
+ 
+Koltin所生成的JavaScript代码能够兼容异步模块定义（AMD, Asynchronous Module Definition）, CommonJS和统一模块定义（UMD，Unified Module Definitions）。
 
-Kotlin generate JavaScript code that is compatible with Asynchronous Module Definition (AMD), CommonJS and Universal Model Definition (UMD). 
+* **AMD** 通常是使用在客户端的浏览器上，其概念是可以异步加载模块，从而提高性能和易用性。
+* **CommonJS** 通常是使用在服务端的模块系统，特别是适合用于node.js，Node模块全都是遵循这样的定义的。 CommonJS 模块也可以通过[Browserify](http://browserify.org/)在浏览器中使用。
+* **UMD** 则是试图让模块在客户端和服务端都能使用。
 
-* **AMD** is usually used on the client-side in the browser. The idea behind AMD is to load modules asynchronously, thus improving usability and performance.
-* **CommonJS** is the module system used on the server-side, and in particular with node.js. Node modules all abide by this definition. CommonJS modules can also be used in the browser via [Browserify](http://browserify.org/).
-* **UMD** tries to unify both models allowing these to be used either on the client or server.
-
-We can configure the Kotlin compiler option to use any of these. The last option (UMD) will generate UMD and fallback to the other options if one is not available.
-Currently Kotlin compiler options are per IntelliJ IDEA project as opposed to a Kotlin module.
+我们可以利用Kotlin编译器配置来选择生成哪种模块。 注意如果使用UMS选项的话，一旦其中一类无法编译的话则会生成另外一类。
+一般来说IDEA中Kotlin的编译器选项会影响整个项目而不仅仅是一个单独的模块。
  
 ![Kotlin Compiler Options]({{ url_for('tutorial_img', filename='javascript/working-with-modules/kotlin-compiler.png')}})
 
-## Configuring Modules when using Maven or Gradle
+## 使用Maven或者Gradle配置模块
+ 
+如果是使用Maven或者Gradle的话还可以配置模块的输出格式，详细信息请移步[JavaScript Modules](http://kotlinlang.org/docs/reference/js-modules.html)。
 
-If using Maven or Gradle, we can also configure the module output format. For more information see [JavaScript Modules](http://kotlinlang.org/docs/reference/js-modules.html).
-
-## Using AMD
-
-When using AMD, we set the compiler option to use AMD. Once we do that, we can then reference any modules that we've defined as if they were regular AMD ones.
-
-For instance, given
+## 使用异步模块定义（AMD）
+ 
+当我们要开始使用AMD，首先需要把编译器的选项设置成AMD。通过这些操作，我们就可以编译出的模块就可以和其他任意常规的AMD模块一起使用。
+ 
+举个例子：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -52,7 +52,7 @@ class Customer(val id: Int, val name: String, val email: String) {
 ```
 </div>
  
-the following JavaScript code will be generated
+会生成如下的JavaScript代码：
 
 <div class="sample" markdown="1" theme="idea" mode="js">
 ```javascript
@@ -75,13 +75,12 @@ define('customerBL', ['kotlin'], function (Kotlin) {
 });
 ```
 </div>
-
-Assuming we have the following project layout
+ 
+假设我们有个项目的结构如下：
 
 ![Project Structure AMD]({{ url_for('tutorial_img', filename='javascript/working-with-modules/project-structure-amd.png')}})
-
-
-we could define our `index.html` to load `require.js` along with `main.js` as the value of the `data-main` attribute
+ 
+那么可以在 `index.html` 中利用标签中 `data-main` 属性的值来定义 `main.js` 从而引入 `require.js` ，如下所示：
 
 <div class="sample" markdown="1" theme="idea" mode="xml">
 ```html
@@ -92,8 +91,8 @@ we could define our `index.html` to load `require.js` along with `main.js` as th
 </head>
 ```
 </div>
-
-The contents of our `main.js` would be:
+ 
+其中 `main.js` 的内容如下：
 
 <div class="sample" markdown="1" theme="idea" mode="js">
 ```javascript
@@ -109,16 +108,15 @@ requirejs(["customerBL"], function (customerBL) {
 });
 ```
 </div>
+ 
+通过这样的配置，我们就可以访问 `customerBL` 模块里的任意函数了。
 
-With this, we can then access any of the functionality defined inside `customerBL`.
 
-
-## Using CommonJS
-
-In order to use Kotlin with node.js, we need to set the compiler option to use CommonJS. Once we do that, the output of the application
-should be accessible using the node module system. 
-
-For instance, given 
+## 使用 CommonJS 
+ 
+为了能够配合node.js一起使用Kotlin，我们需要把编译器的选项设置成使用CommonJs，这样我们编译出来的模块就可以被node的模块系统所使用。
+ 
+举个例子：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -130,8 +128,8 @@ class Customer(val id: Int, val name: String, val email: String) {
 }
 ```
 </div>
-
-the following JavaScript code will be generated
+ 
+会生成如下的JavaScript代码：
 
 <div class="sample" markdown="1" theme="idea" mode="js">
 ```javascript
@@ -155,19 +153,18 @@ module.exports = function (Kotlin) {
 
 ```
 </div>
+ 
+函数的最后一行是回调了自身并传递了一个 `kotlin` 参数，该参数代表了基本库。这可以通过以下两种方式获得：
 
-The last line is invoking the function itself and passing as argument `kotlin`, which refers to the standard library. This can be obtained in one of two ways:
-
-*Local reference* 
-
-When compiling, the compiler always outputs the kotlin.js file. The easiest way to reference this without having to refer to paths, is to set the output library folder for the compiler options 
-to `node_modules`. This way, Node will automatically pick it up as it does an exhaustive search for files under these folders
+*本地引用* 
+ 
+编译器总会在编译的时候自动生成kotlin.js文件。关联该文件最简单的方式就是在编译器选项中设置 `node_modules` 的输出目录。这样，Node将会在该目录下彻底查询的时候自动地使用该文件。
 
 ![Node Modules]({{ url_for('tutorial_img', filename='javascript/working-with-modules/node-modules.png')}})
 
-*NPM Directory*
+*NPM目录*
  
-The Kotlin standard library is available on [npm](https://www.npmjs.com/) and we can simply include it in our `package.json` as a dependency. 
+Kotlin基本库在[npm](https://www.npmjs.com/)是可用的因此我们可以简单的在项目的`package.json`中以一个依赖的形式进行引用，如下所示：
 
 <div class="sample" markdown="1" theme="idea" mode="js">
 ```json
@@ -181,9 +178,8 @@ The Kotlin standard library is available on [npm](https://www.npmjs.com/) and we
 }
 ```
 </div>
-
-
-We can simply refer to any class or member function inside our node.js code by simply importing the module using `require`:
+ 
+我们可以简单地在node.js代码中通过使用 `require` 来导入模块从而可以使用模块里的任意类和函数，如下所示：
 
 <div class="sample" markdown="1" theme="idea" mode="js">
 ```javascript
@@ -196,7 +192,7 @@ customer.makePreferred()
 console.dir(customer)
 ```
 </div>
-
-In this case, we've set the output of our compilation to the `scripts` folder. On running the application we should see the following output:
+ 
+这个例子里，我们是把编译输出目录设置成了 `scripts` 文件夹，一旦程序开始运行那么应该会有如下的输出：
 
 ![Output CommonJS]({{ url_for('tutorial_img', filename='javascript/working-with-modules/output-commonjs.png')}})
