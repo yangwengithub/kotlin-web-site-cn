@@ -19,7 +19,7 @@ showAuthorInfo: false
 
 
 ## 使用 IntelliJ IDEA 配置模块
- 
+
 Koltin 所生成的 JavaScript 代码能够兼容异步模块定义（AMD, Asynchronous Module Definition）, CommonJS 以及统一模块定义（UMD，Unified Module Definitions）。
 
 * **AMD** 通常是使用在客户端的浏览器上，其概念是可以异步加载模块，从而提高性能和易用性。
@@ -28,17 +28,17 @@ Koltin 所生成的 JavaScript 代码能够兼容异步模块定义（AMD, Async
 
 我们可以利用 Kotlin 编译器配置来选择生成哪种模块。 注意如果使用 UMD 选项的话，一旦其中一类无法编译的话则会生成另外一类。
 一般来说 IDEA 中 Kotlin 的编译器选项会影响整个项目而不仅仅是一个单独的模块。
- 
+
 ![Kotlin Compiler Options]({{ url_for('tutorial_img', filename='javascript/working-with-modules/kotlin-compiler.png')}})
 
 ## 使用 Maven 或者 Gradle 配置模块
- 
+
 如果是使用 Maven 或者 Gradle 的话还可以配置模块的输出格式，详细信息请移步[JavaScript Modules](http://kotlinlang.org/docs/reference/js-modules.html)。
 
 ## 使用异步模块定义（AMD）
- 
+
 当我们要开始使用 AMD，首先需要把编译器的选项设置成 AMD。通过这些操作，我们就可以编译出的模块就可以和其他任意常规的 AMD 模块一起使用。
- 
+
 举个例子：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -51,7 +51,7 @@ class Customer(val id: Int, val name: String, val email: String) {
 }
 ```
 </div>
- 
+
 会生成如下的 JavaScript 代码：
 
 <div class="sample" markdown="1" theme="idea" mode="js">
@@ -75,11 +75,12 @@ define('customerBL', ['kotlin'], function (Kotlin) {
 });
 ```
 </div>
- 
+
 假设我们有个项目的结构如下：
 
 ![Project Structure AMD]({{ url_for('tutorial_img', filename='javascript/working-with-modules/project-structure-amd.png')}})
- 
+
+
 那么可以在 `index.html` 中利用标签中 `data-main` 属性的值来定义 `main.js` 从而引入 `require.js` ，如下所示：
 
 <div class="sample" markdown="1" theme="idea" mode="xml">
@@ -91,7 +92,7 @@ define('customerBL', ['kotlin'], function (Kotlin) {
 </head>
 ```
 </div>
- 
+
 其中 `main.js` 的内容如下：
 
 <div class="sample" markdown="1" theme="idea" mode="js">
@@ -108,14 +109,15 @@ requirejs(["customerBL"], function (customerBL) {
 });
 ```
 </div>
- 
+
 通过这样的配置，我们就可以访问 `customerBL` 模块里的任意函数了。
 
 
 ## 使用 CommonJS 
- 
-为了能够配合 node.js 一起使用 Kotlin，我们需要把编译器的选项设置成使用 CommonJs，这样我们编译出来的模块就可以被 node 的模块系统所使用。
- 
+
+为了能够配合 node.js 一起使用 Kotlin，我们需要把编译器的选项设置成使用 CommonJs，这样我们的程序编译出来的模块
+就可以被 node 的模块系统所使用。
+
 举个例子：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -128,7 +130,7 @@ class Customer(val id: Int, val name: String, val email: String) {
 }
 ```
 </div>
- 
+
 会生成如下的 JavaScript 代码：
 
 <div class="sample" markdown="1" theme="idea" mode="js">
@@ -153,17 +155,18 @@ module.exports = function (Kotlin) {
 
 ```
 </div>
- 
+
 函数的最后一行是回调了自身并传递了一个 `kotlin` 参数，该参数代表了基本库。这可以通过以下两种方式获得：
 
 *本地引用* 
- 
-编译器总会在编译的时候自动生成 kotlin.js 文件。关联该文件最简单的方式就是在编译器选项中设置 `node_modules` 的输出目录。这样 Node 将会在该目录下彻底查询的时候自动地使用该文件。
+
+编译器总会在编译的时候自动生成 kotlin.js 文件。关联该文件最简单的方式就是在编译器选项中设置 `node_modules` 的输出目录。
+这样 Node 将会在该目录下彻底查询的时候自动地使用该文件。
 
 ![Node Modules]({{ url_for('tutorial_img', filename='javascript/working-with-modules/node-modules.png')}})
 
 *NPM目录*
- 
+
 Kotlin 基本库在[npm](https://www.npmjs.com/)是可用的，因此我们可以轻松地在项目的 `package.json` 文件中以一个依赖的形式进行引用，如下所示：
 
 <div class="sample" markdown="1" theme="idea" mode="js">
@@ -178,7 +181,8 @@ Kotlin 基本库在[npm](https://www.npmjs.com/)是可用的，因此我们可�
 }
 ```
 </div>
- 
+
+
 我们可以轻松地在 node.js 代码中通过使用 `require` 函数来导入模块从而可以使用模块里的任意类和函数，如下所示：
 
 <div class="sample" markdown="1" theme="idea" mode="js">
@@ -192,7 +196,7 @@ customer.makePreferred()
 console.dir(customer)
 ```
 </div>
- 
+
 在这个例子里，我们是把编译输出目录设置成了 `scripts` 文件夹，一旦程序开始运行那么应该会有如下的输出：
 
 ![Output CommonJS]({{ url_for('tutorial_img', filename='javascript/working-with-modules/output-commonjs.png')}})
