@@ -353,7 +353,7 @@ println("x: $x, y: $y, z: $z, range: $range")
 
 </div>
 
-点击[这里](basic-types.html#unsigned-integers)查看内联类更多细节。
+点击[这里](basic-types.html#unsigned-integers)查看无符号整型更多细节。
 
 ## @JvmDefault
 
