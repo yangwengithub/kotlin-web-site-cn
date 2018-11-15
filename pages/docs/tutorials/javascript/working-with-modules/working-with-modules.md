@@ -1,8 +1,8 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Working with Kotlin and JavaScript Modules"
-description: "A look at how to use Kotlin to interact with JavaScript modules."
+title:  "Kotlin 与 JavaScript 模块合用"
+description: "看看如何使用 Kotlin 与 JavaScript 模块进行交互。"
 authors: Hadi Hariri 
 date: 2016-09-30
 showAuthorInfo: false
@@ -113,7 +113,7 @@ requirejs(["customerBL"], function (customerBL) {
 通过这样的配置，我们就可以访问 `customerBL` 模块里的任意函数了。
 
 
-## 使用 CommonJS 
+## 使用 CommonJS
 
 为了能够配合 node.js 一起使用 Kotlin，我们需要把编译器的选项设置成使用 CommonJs，这样我们的程序编译出来的模块
 就可以被 node 的模块系统所使用。
