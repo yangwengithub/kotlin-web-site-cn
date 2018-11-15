@@ -320,7 +320,7 @@ tutorials:
         - url: /docs/tutorials/javascript/getting-started-command-line/command-line-library-js.html
           title: 使用命令行编译器创建 Kotlin JavaScript 库
         - url: /docs/tutorials/javascript/working-with-modules/working-with-modules.html
-          title: Kotlin 与 JavaScript 模块使用
+          title: Kotlin 与 JavaScript 模块合用
         - url: /docs/tutorials/javascript/working-with-javascript.html
           title: 与 JavaScript 合用
         - url: /docs/tutorials/javascript/debugging-javascript/debugging-javascript.html

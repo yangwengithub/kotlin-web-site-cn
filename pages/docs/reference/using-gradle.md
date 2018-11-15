@@ -425,8 +425,8 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java).all 
 
 | Name | Description | Possible values |Default value |
 |------|-------------|-----------------|--------------|
-| `apiVersion` | 只允许使用来自捆绑库的指定版本中的声明 | "1.0", "1.1", "1.2", "1.3 (EXPERIMENTAL)" |  |
-| `languageVersion` | 提供与指定语言版本源代码兼容性 | "1.0", "1.1", "1.2", "1.3 (EXPERIMENTAL)" |  |
+| `apiVersion` | 只允许使用来自捆绑库的指定版本中的声明 | "1.0"、 "1.1"、 "1.2"、 "1.3"、 "1.4 (EXPERIMENTAL)" |  |
+| `languageVersion` | 提供与指定语言版本源代码兼容性 | "1.0"、 "1.1"、 "1.2"、 "1.3"、 "1.4 (EXPERIMENTAL)" |  |
 
 ### JVM 特有的属性
 
