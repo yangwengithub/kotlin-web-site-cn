@@ -207,7 +207,7 @@ compileKotlin {
 
 </div>
 
-See [Compiler options in Gradle](using-gradle.html#编译器选项) for details. For [Multiplatform Projects](whatsnew13.html#multiplatform-projects) settings, see [building Multiplatform Projects with Gradle](building-mpp-with-gradle.html#language-settings) section.
+See [Compiler options in Gradle](using-gradle.html#编译器选项) for details. For [Multiplatform Projects](whatsnew13.html#多平台项目) settings, see [building Multiplatform Projects with Gradle](building-mpp-with-gradle.html#language-settings) section.
 
 ### Enabling inline classes in Maven
 

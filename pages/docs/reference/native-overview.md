@@ -62,7 +62,7 @@ Apple 框架都已预先导入并作为 Kotlin/Native 库包含在编译器包�
 这是在多个平台之间共享公共 Kotlin 代码的方式，这些平台包括 Android、 iOS、 服务器端、 JVM、 客户端、
 JavaScript、 CSS 以及原生平台。
 
-[多平台库](multiplatform.html#multiplatform-libraries)<!--
+[多平台库](multiplatform.html#多平台库)<!--
 -->为公共 Kotlin 代码提供了必要的 API，并有助于在
 Kotlin 代码中一次性开发项目的共享部分，从而将其与所有目标平台共享。
 
