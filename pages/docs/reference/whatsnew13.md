@@ -313,7 +313,7 @@ fun main() {
 
 ## 无符号整型
 
-> 无符号整型从 Kotlin 1.3 开始支持，而且现阶段是**实验性**的。更多详情请看[这里](basic-types.html#experimental-status-of-unsigned-integers)。
+> 无符号整型从 Kotlin 1.3 开始支持，而且现阶段是**实验性**的。更多详情请看[这里](basic-types.html#无符号整型的实验性状态)。
 {:.note}
 
 Kotlin 1.3 引入了无符号整型类型：
@@ -353,7 +353,7 @@ println("x: $x, y: $y, z: $z, range: $range")
 
 
 
-点击[这里](basic-types.html#unsigned-integers)查看无符号整型更多细节。
+点击[这里](basic-types.html#无符号整型)查看无符号整型更多细节。
 
 ## @JvmDefault
 

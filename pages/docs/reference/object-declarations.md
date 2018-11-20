@@ -185,6 +185,25 @@ val x = MyClass.Companion
 ```
 
 
+其自身所用的类的名称（不是另一个名称的限定符）可用作对该类的伴生对象
+（无论是否命名）的引用：
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+```kotlin
+class MyClass1 {
+    companion object Named { }
+}
+
+val x = MyClass1
+
+class MyClass2 {
+    companion object { }
+}
+
+val y = MyClass2
+```
+</div>
+
 请注意，即使伴生对象的成员看起来像其他语言的静态成员，在运行时他们<!--
 -->仍然是真实对象的实例成员，而且，例如还可以实现接口：
 
@@ -199,6 +218,8 @@ class MyClass {
         override fun create(): MyClass = MyClass()
     }
 }
+
+val f: Factory<MyClass> = MyClass
 ```
 
 
