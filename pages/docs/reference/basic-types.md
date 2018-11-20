@@ -324,82 +324,82 @@ x[0] = x[1] + x[2]
 
 </div>
 
-## Unsigned integers
+## 无符号整型
 
-> Unsigned types are available only since Kotlin 1.3 and currently are *experimental*. See details [below](#experimental-status-of-unsigned-integers)
+> 无符号类型自 Kotlin 1.3 起才可用，并且目前是*实验性的*。详见[下文](#无符号整型的实验性状态)
 {:.note}
 
-Kotlin introduces following types for unsigned integers:
+Kotlin 为无符号整数引入了以下类型：
 
-* `kotlin.UByte`: an unsigned 8-bit integer, ranges from 0 to 255
-* `kotlin.UShort`: an unsigned 16-bit integer, ranges from 0 to 65535
-* `kotlin.UInt`: an unsigned 32-bit integer, ranges from 0 to 2^32 - 1
-* `kotlin.ULong`: an unsigned 64-bit integer, ranges from 0 to 2^64 - 1
+* `kotlin.UByte`: 无符号 8 比特整数，范围为 0 到 255
+* `kotlin.UShort`: 无符号 16 比特整数，范围为 0 到 65535
+* `kotlin.UInt`: 无符号 32 比特整数，范围为 0 到 2^32 - 1
+* `kotlin.ULong`: 无符号 64 比特整数，范围为 0 到 2^64 - 1
 
-Unsigned types support most of the operations of their signed counterparts.
+无符号类型支持其对应有符号类型的大多数操作。
 
-> Note that changing type from unsigned type to signed counterpart (and vice versa) is a *binary incompatible* change
+> 请注意，将类型从无符号类型更改为对应的有符号类型（反之亦然）是*二进制不兼容*变更
 {:.note}
 
-Unsigned types are implemented using another experimental feature, namely [inline classes](inline-classes.html).
+无符号类型是使用另一个实验性特性（即[内联类](inline-classes.html)）实现的。
 
-### Specialized classes
+### 特化的类
 
-Same as for primitives, each of unsigned type has corresponding type that represents array, specialized for that unsigned type:
+与原生类型相同，每个无符号类型都有相应的为该类型特化的表示数组的类型：
 
-* `kotlin.UByteArray`: an array of unsigned bytes
-* `kotlin.UShortArray`: an array of unsigned shorts
-* `kotlin.UIntArray`: an array of unsigned ints
-* `kotlin.ULongArray`: an array of unsigned longs
+* `kotlin.UByteArray`: 无符号字节数组
+* `kotlin.UShortArray`: 无符号短整型数组
+* `kotlin.UIntArray`: 无符号整型数组
+* `kotlin.ULongArray`: 无符号长整型数组
 
-Same as for signed integer arrays, they provide similar API to `Array` class without boxing overhead.
+与有符号整型数组一样，它们提供了类似于 `Array` 类的 API 而没有装箱开销。
 
-Also, [ranges and progressions](ranges.html) supported for `UInt` and `ULong` by classes `kotlin.ranges.UIntRange`, `kotlin.ranges.UIntProgression`, `kotlin.ranges.ULongRange`, `kotlin.ranges.ULongProgression`
+此外，[区间与数列](ranges.html)也支持 `UInt` 与 `ULong`（通过这些类 `kotlin.ranges.UIntRange`、 `kotlin.ranges.UIntProgression`、 `kotlin.ranges.ULongRange`、 `kotlin.ranges.ULongProgression`）
 
-### Literals
+### 字面值
 
-To make unsigned integers easier to use, Kotlin provides an ability to tag an integer literal with a suffix indicating a specific unsigned type (similarly to Float/Long):
-* suffixes `u` and `U` tag literal as unsigned. Exact type will be determined based on the expected type. If no expected type is provided, `UInt` or `ULong` will be chosen based on the size of literal
+为使无符号整型更易于使用，Kotlin 提供了用后缀标记整型字面值来表示指定无符号类型（类似于 Float/Long）：
+* 后缀 `u` 与 `U` 将字面值标记为无符号。确切类型会根据预期类型确定。如果没有提供预期的类型，会根据字面值大小选择 `UInt` 或者 `ULong`
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-val b: UByte = 1u  // UByte, expected type provided
-val s: UShort = 1u // UShort, expected type provided
-val l: ULong = 1u  // ULong, expected type provided
+val b: UByte = 1u  // UByte，已提供预期类型
+val s: UShort = 1u // UShort，已提供预期类型
+val l: ULong = 1u  // ULong，已提供预期类型
 
-val a1 = 42u // UInt: no expected type provided, constant fits in UInt
-val a2 = 0xFFFF_FFFF_FFFFu // ULong: no expected type provided, constant doesn't fit in UInt
+val a1 = 42u // UInt：未提供预期类型，常量适于 UInt
+val a2 = 0xFFFF_FFFF_FFFFu // ULong：未提供预期类型，常量不适于 UInt
 ```
 
 </div>
 
-* suffixes `uL` and `UL` explicitly tag literal as unsigned long.
+* 后缀 `uL` 与 `UL` 显式将字面值标记为无符号长整型。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-val a = 1UL // ULong, even though no expected type provided and constant fits into UInt
+val a = 1UL // ULong，即使未提供预期类型并且常量适于 UInt
 ```
 
 </div>
 
-### Experimental status of unsigned integers
+### 无符号整型的实验性状态
 
-The design of unsigned types is experimental, meaning that this feature is moving fast and no compatibility guarantees are given. When using unsigned arithmetics in Kotlin 1.3+, warning will be reported, indicating that this feature is experimental. To remove warning, you have to opt-in for experimental usage of unsigned types.
+无符号类型的设计是实验性的，这意味着这个特性改进很快并且没有给出兼容性保证。当在 Kotlin 1.3+ 中使用无符号算术时，会报出警告表明这个特性是实验性的。如需移除警告，必须选择加入（opt-in）无符号类型的实验性使用。
 
-There are two possible ways to opt-in for unsigned types: with marking your API as experimental too, or without doing that.
+选择加入无符号整型有两种可行的方式：将 API 标记为实验性的，或者无需标记。
 
-- to propagate experimentality, either annotate declarations which use unsigned integers with `@ExperimentalUnsignedTypes` or pass `-Xexperimental=kotlin.ExperimentalUnsignedTypes` to the compiler (note that the latter will make *all* declaration in compiled module experimental)
-- to opt-in without propagating experimentality, either annotate declarations with `@UseExperimental(ExperimentalUnsignedTypes::class)` or pass `-Xuse-experimental=kotlin.ExperimentalUnsignedTypes`
+- 如需传播实验性，要么使用 `@ExperimentalUnsignedTypes` 标注使用了无符号整型的声明，要么将 `-Xexperimental=kotlin.ExperimentalUnsignedTypes` 传给编译器（请注意，后者会使所编译的模块内的*所有*声明都具实验性）
+- 如需选择加入而不传播实验性，要么使用 `@UseExperimental(ExperimentalUnsignedTypes::class)` 注解标注声明，要么将 `-Xuse-experimental=kotlin.ExperimentalUnsignedTypes` 传给编译器
 
-It's up to you to decide if your clients have to explicitly opt-in into usage of your API, but bear in mind that unsigned types are an experimental feature, so API which uses them can be suddenly broken due to changes in language.
+你的客户是否必须选择使用你的 API 取决于你，不过请记住，无符号整型是一个实验性特性，因此使用它们的 API 可能会因语言的变更而发生突然破坏。
 
-See also or Experimental API [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/experimental.md) for technical details.
+技术细节也参见实验性 API [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/experimental.md)。
 
-### Further discussion
+### 深入探讨
 
-See [language proposal for unsigned types](https://github.com/Kotlin/KEEP/blob/master/proposals/unsigned-types.md) for technical details and further discussion.
+关于技术细节与深入探讨请参见[无符号类型的语言提案](https://github.com/Kotlin/KEEP/blob/master/proposals/unsigned-types.md)。
 
 ## 字符串
 
