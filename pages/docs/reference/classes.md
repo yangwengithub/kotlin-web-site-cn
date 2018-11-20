@@ -307,7 +307,7 @@ class Derived() : Base() {
 
 Derived.v() 函数上必须加上 *override*{: .keyword} 修饰符。如果没写，编译器将会报错。
 如果函数没有标注 *open*{: .keyword} 如 `Base.nv()`，那么子类中不允许定义相同签名的函数，
-不论加不加 **override**。The *open*{: .keyword } modifier has no effect when added on members of a final class (i.e.. a class with no *open*{: .keyword } modifier).
+不论加不加 **override**。将 *open*{: .keyword } 修饰符添加到 final 类（即没有 *open*{: .keyword } 的类）的成员上不起作用。
 
 标记为 *override*{: .keyword} 的成员本身是开放的，也就是说，它可以在子类中覆盖。如果你想禁止再次覆盖，使用 *final*{: .keyword} 关键字：
 

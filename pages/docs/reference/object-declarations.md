@@ -185,8 +185,8 @@ val x = MyClass.Companion
 ```
 </div>
 
-The name of a class used by itself (not as a qualifier to another name) acts as a reference to the companion
-object of the class (whether named or not):
+其自身所用的类的名称（不是另一个名称的限定符）可用作对该类的伴生对象
+（无论是否命名）的引用：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
