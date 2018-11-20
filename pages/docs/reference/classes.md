@@ -288,8 +288,8 @@ class MyView : View {
 
 ### 覆盖方法
 
-我们之前提到过，Kotlin 力求清晰显式。与 Java 不同，Kotlin 需要显式<!--
--->标注可覆盖的成员（我们称之为*开放*）以及覆盖后的成员：
+我们之前提到过，Kotlin 力求清晰显式。与 Java 不同，Kotlin 对于<!--
+-->可覆盖的成员（我们称之为*开放*）以及覆盖后的成员需要显式修饰符：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -305,9 +305,9 @@ class Derived() : Base() {
 
 </div>
 
-Derived.v() 函数上必须加上 **override**标注。如果没写，编译器将会报错。
-如果函数没有标注 **open** 如 `Base.nv()`，则子类中不允许定义相同签名的函数，
-不论加不加 **override**。在一个 **final** 类中（没有用 **open** 标注的类），开放成员是禁止的。
+Derived.v() 函数上必须加上 *override*{: .keyword} 修饰符。如果没写，编译器将会报错。
+如果函数没有标注 *open*{: .keyword} 如 `Base.nv()`，那么子类中不允许定义相同签名的函数，
+不论加不加 **override**。The *open*{: .keyword } modifier has no effect when added on members of a final class (i.e.. a class with no *open*{: .keyword } modifier).
 
 标记为 *override*{: .keyword} 的成员本身是开放的，也就是说，它可以在子类中覆盖。如果你想禁止再次覆盖，使用 *final*{: .keyword} 关键字：
 

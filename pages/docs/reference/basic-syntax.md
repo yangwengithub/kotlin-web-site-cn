@@ -104,7 +104,7 @@ fun main() {
 
 ## 定义变量
 
-一次赋值（只读）的局部变量:
+Read-only local variables are defined using the keyword `val`. They can be assigned a value only once.
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -122,7 +122,7 @@ fun main() {
 
 </div>
 
-可变变量：
+Variables that can be reassigned use the `var` keyword:
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
