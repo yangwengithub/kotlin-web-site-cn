@@ -188,7 +188,7 @@ fun toSet(elements: (Mutable)Collection<String!>) : (Mutable)Set<String!> { …�
 
 标注类型参数适用于针对 Java 8 或更高版本环境，并且要求可空性注解支持 `TYPE_USE` 目标（`org.jetbrains.annotations` 15 或以上版本支持）。
 
-> Note: due to the current technical limitations, the IDE does not correctly recognize these annotations on type arguments in compiled Java libraries that are used as dependencies.
+> 注：由于当前的技术限制，IDE 无法正确识别用作依赖的已编译 Java 库中类型参数上的这些注解。
 {:.note}
 
 ### JSR-305 支持
