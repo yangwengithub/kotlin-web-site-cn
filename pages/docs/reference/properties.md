@@ -71,7 +71,8 @@ val inferredType = 1 // 类型 Int 、默认 getter
 ```
 </div>
 
-我们可以编写自定义的访问器，非常像普通函数，刚好在属性声明内部。这里有一个自定义 getter 的例子:
+We can define custom accessors for a property. If we define a custom getter, it will be called every time we access
+the property (this allows us to implement a computed property). Here's an example of a custom getter:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
 ```kotlin
@@ -80,7 +81,7 @@ val isEmpty: Boolean
 ```
 </div>
 
-一个自定义的 setter 的例子:
+If we define a custom setter, it will be called every time we assign a value to the property. A custom setter looks like this:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
 ```kotlin
