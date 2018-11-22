@@ -36,7 +36,8 @@ plugins {
   id 'org.jetbrains.kotlin.konan' version '0.9.1'
 }
 
-konan.targets = [ 'macos_x64' ]
+// optinally specify the target (e.g. for iOS)
+// konan.targets = [ 'macos_x64' ]
 
 konanArtifacts {
   program("app") {
@@ -46,7 +47,7 @@ konanArtifacts {
 ```
 </div>
 
-The `buildscript` section defines the repositories and dependencies required for the Gradle plugin for Kotlin/Native which is `konan`. Then come the actual parameters for compiling:
+The `plugins` block enables the Gradle plugin for Kotlin/Native which is `konan`. Then come the actual parameters for compiling:
 
 1. The `konan.targets` can contain one or more target platforms.
 
@@ -100,8 +101,6 @@ In Gradle we can combine all of this in a single script:
 plugins {
   id 'org.jetbrains.kotlin.konan' version '0.9.1'
 }
-
-konan.targets = [ 'macos_x64' ]
 
 konanArtifacts {
     library('utils') {

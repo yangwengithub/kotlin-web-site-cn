@@ -40,7 +40,7 @@ apply plugin: war
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
-@WebServlet(name = "Hello", value = "/hello")
+@WebServlet(name = "Hello", value = ["/hello"])
 class HomeController : HttpServlet() {
     override fun doGet(req: HttpServletRequest, res: HttpServletResponse) {
         res.writer.write("Hello, World!")
