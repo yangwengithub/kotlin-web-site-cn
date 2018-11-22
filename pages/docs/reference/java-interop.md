@@ -188,6 +188,9 @@ fun toSet(elements: (Mutable)Collection<String!>) : (Mutable)Set<String!> { …�
 
 标注类型参数适用于针对 Java 8 或更高版本环境，并且要求可空性注解支持 `TYPE_USE` 目标（`org.jetbrains.annotations` 15 或以上版本支持）。
 
+> Note: due to the current technical limitations, the IDE does not correctly recognize these annotations on type arguments in compiled Java libraries that are used as dependencies.
+{:.note}
+
 ### JSR-305 支持
 
 已支持 [JSR-305](https://jcp.org/en/jsr/detail?id=305) 中定义的 [`@Nonnull`](https://aalmiray.github.io/jsr-305/apidocs/javax/annotation/Nonnull.html)
