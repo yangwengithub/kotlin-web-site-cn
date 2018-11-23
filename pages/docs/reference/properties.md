@@ -5,7 +5,7 @@ category: "Syntax"
 title: "属性与字段：Getters、Setters、const、lateinit"
 ---
 
-# 属性和字段
+# 属性与字段
 
 ## 声明属性
 
@@ -71,7 +71,8 @@ val inferredType = 1 // 类型 Int 、默认 getter
 ```
 
 
-我们可以编写自定义的访问器，非常像普通函数，刚好在属性声明内部。这里有一个自定义 getter 的例子:
+我们可以为属性定义自定义的访问器。如果我们定义了一个自定义的 getter，那么每次访问该属性时都会调用它
+（这让我们可以实现计算出的属性）。以下是一个自定义 getter 的示例：
 
 
 ```kotlin
@@ -80,7 +81,7 @@ val isEmpty: Boolean
 ```
 
 
-一个自定义的 setter 的例子:
+如果我们定义了一个自定义的 setter，那么每次给属性赋值时都会调用它。一个自定义的 setter 如下所示：
 
 
 ```kotlin

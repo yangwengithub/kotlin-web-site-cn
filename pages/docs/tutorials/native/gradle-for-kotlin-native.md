@@ -121,12 +121,13 @@ during the building of our actual application.
 
 The output structure after running `gradle build` should be:
 
-![Directory Structure After Lib Build]({{ url_for('tutorial_img', filename='native/gradle-for-kotlin-native/dir-lib-build.png')}}))
+![Directory Structure After Lib Build]({{ url_for('tutorial_img', filename='native/gradle-for-kotlin-native/dir-lib-build.png')}})
 
 We can execute our application by referencing it directly or use Gradle via:
 
+```bash
     gradle run
-
+```
     
 resulting in:
     
