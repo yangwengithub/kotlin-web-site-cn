@@ -26,9 +26,11 @@ a?.equals(b) ?: (b === null)
 
 请注意，当与 `null` 显式比较时完全没必要优化你的代码：`a == null` 会被自动转换为 `a=== null`。
 
+Structural equality has nothing to do with comparison defined by the `Comparable<...>` interface, so only a custom `equals(Any?)` implementation may affect the behavior of the operator.
+
 ## 浮点数相等性
 
-当相等性检测的两个操作数都是静态已知的（可空或非空的）`Float` 或 `Double` 类型时，该检测遵循 IEEE 754 
+当相等性检测的两个操作数都是静态已知的（可空或非空的）`Float` 或 `Double` 类型时，该检测遵循 IEEE 754
 浮点数运算标准。
 
 否则会使用不符合该标准的结构相等性检测，这会导致 `NaN` 等于其自身，而 `-0.0` 不等于 `0.0`。
