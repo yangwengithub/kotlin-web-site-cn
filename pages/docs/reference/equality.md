@@ -26,7 +26,7 @@ a?.equals(b) ?: (b === null)
 
 请注意，当与 `null` 显式比较时完全没必要优化你的代码：`a == null` 会被自动转换为 `a=== null`。
 
-Structural equality has nothing to do with comparison defined by the `Comparable<...>` interface, so only a custom `equals(Any?)` implementation may affect the behavior of the operator.
+结构相等与 `Comparable<……>` 接口定义的比较无关，因此只有自定义的 `equals(Any?)` 实现可能会影响该操作符的行为。
 
 ## 浮点数相等性
 
