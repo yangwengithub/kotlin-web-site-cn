@@ -132,9 +132,9 @@ fun main() {
 
 ### 自定义契约
 
-你也可以为你自己的函数来自定义契约，但是这一功能目前还是**实验性**的，因为目前的契约语法尚处于早期的原型态，很有可能在后面的版本被修改。而且，值得注意的是，目前 Kotlin 的编译器并没有对契约进行验证，所以需要开发者编写正确稳定的契约。
+可以为自己的函数声明契约，不过这个特性是**实验性的**，因为目前的语法尚处于早期原型状态，并且很可能还会更改。另外还要注意，目前 Kotlin 编译器并不会验证契约，因此程序员有责任编写正确合理的契约。
 
-自定义契约通过调用标准库中的 `contract` 函数来引入，这个函数提供了 DSL：
+通过调用标准库（stdlib）函数 `contract` 来引入自定义契约，该函数提供了 DSL 作用域：
 
 
 
@@ -149,11 +149,11 @@ fun String?.isNullOrEmpty(): Boolean {
 
 
 
-更多语法细节和兼容性建议请查看[KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/kotlin-contracts.md)。
+请参见 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/kotlin-contracts.md) 中关于语法与兼容性注意事项的详细信息。
 
-## 在变量中捕获`when`语句主语
+## 将 `when` 主语捕获到变量中
 
-在 Kotlin 1.3 中，允许你在变量中捕获 `when` 语句的主语：
+在 Kotlin 1.3 中，可以将 `when` 表达式主语捕获到变量中：
 
 
 
@@ -167,11 +167,11 @@ fun Request.getBody() =
 
 
 
-当然你也可以在 `when` 语句之前把变量提取出来，`when` 语句中的 `val` 的作用域被限制在 `when` 语句的方法体中，借此防止了命名空间污染。点击[这里](control-flow.html#when-表达式)查看 `when` 语句说明文档。
+虽然已经可以在 `when` 表达式前面提取这个变量，但是在 `when` 中的 `val` 使其作用域刚好限制在 `when` 主体中，从而防止命名空间污染。关于 `when` 表达式的完整文档请参见[这里](control-flow.html#when-表达式)。
 
-## 接口中的伴生对象的 @JvmStatic 和 @JvmField 注解
+## 接口中伴生对象的 @JvmStatic 与 @JvmField
 
-在 Kotlin 1.3 中，允许将作为接口成员的伴生对象使用 `@JvmStatic` 和 `@JvmField` 注解标记。在 .class 文件中，这类成员将会对应接口解除作为成员，而是标记为 `static`。
+对于 Kotlin 1.3，可以使用注解 `@JvmStatic` 与 `@JvmField` 标记接口的 `companion` 对象成员。在类文件中会将这些成员提升到相应接口中并标记为 `static`。
 
 例如，以下 Kotlin 代码：
 
@@ -193,7 +193,7 @@ interface Foo {
 
 
 
-和如下 Java 代码是相等的：
+相当于这段 Java 代码：
 
 
 
@@ -201,16 +201,16 @@ interface Foo {
 interface Foo {
     public static int answer = 42;
     public static void sayHello() {
-        // ...
+        // ……
     }
 }
 ```
 
 
 
-## 注解类中的嵌套声明
+## 注解类中的内嵌声明
 
-在 Kotlin 1.3 中，注解类允许包含嵌套的类、接口、对象和伴生对象：
+在 Kotlin 1.3 中，注解可以有内嵌的类、接口、对象与伴生对象：
 
 
 
@@ -229,11 +229,11 @@ annotation class Foo {
 
 
 
-## 无参`main`方法
+## 无参的 `main`
 
-一般来说，一个 Kotlin 程序的执行入口的方法签名为 `main(args: Array<String>)`，这里 `args` 表示传入的命令行参数。然而，并不是每个应用都支持命令行传参，所以这个参数通常并没有用到。
+按照惯例，Kotlin 程序的入口点是一个签名类似于 `main(args: Array<String>)` 的函数，其中 `args` 表示传给该程序的命令行参数。然而，并非每个应用程序都支持命令行参数，因此这个参数往往到最后都没有用到。
 
-Kotlin 1.3 引入了一种简单的无参 `main`方法。现在 Kotlin 版的 `Hello,World`  缩短了19个字符！
+Kotlin 1.3 引入了一种更简单的无参 `main` 形式。现在 Kotlin 版的 `Hello,World` 缩短了19个字符！
 
 
 
