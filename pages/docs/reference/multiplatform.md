@@ -19,14 +19,14 @@ Mac 甚至像 STM32 这样的嵌入式系统的支持，Kotlin 可以处理现�
 
 ## 它是如何工作的
 
-总的来说，多平台不是为所有的平台编译全部的代码。这种模型有明显的<!--
--->限制，并且我们都知道现代的应用程序需要使用他们运行平台本身的<!--
--->特性。Kotlin允许你使用平台间通用的公共API。<!--
--->所有的组件都可以使用共享代码并通过 [`expect`/`actual` 机制](platform-specific-declarations.html)<!--
--->使用平台特有APIs
+总得来说，多平台并不是为所有平台编译全部代码。这个模型有其明显的<!--
+-->局限性，我们知道现代应用程序需要访问<!--
+-->其所运行平台的独有特性。Kotlin 并不会限制你只使用其中所有 API 的公共子集。
+每个组件都可以根据需要与其他组件共享尽可能多的代码，
+而通过语言所提供的 [`expect`/`actual` 机制](platform-specific-declarations.html)可以随时访问平台 API。
 
-以下是在极简版日志框架中公共逻辑与平台逻辑之间代码共享与交互的示例<!--
--->示例。通用代码如下所示：
+以下是在极简版日志框架中公共逻辑与平台逻辑之间代码共享与交互的<!--
+-->示例。其公共代码如下所示：
 
 <div style="display:flex">
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -45,9 +45,9 @@ fun logError(message: String) = writeLogMessage(message, LogLevel.ERROR)
 
 </div>
 <div style="margin-left: 5px;white-space: pre-line; line-height: 18px; font-family: Tahoma;">
-    <div style="display:flex">├<i style="margin-left:5px">compiled for all platforms</i></div>
-    <div style="display:flex">├<i style="margin-left:5px">expected platform-specific API</i></div>
-    <div style="display:flex">├<i style="margin-left:5px">expected API can be used in the common code</i></div>
+    <div style="display:flex">├<i style="margin-left:5px">为所有平台编译</i></div>
+    <div style="display:flex">├<i style="margin-left:5px">预期的平台相关 API</i></div>
+    <div style="display:flex">├<i style="margin-left:5px">可在公共代码中使用预期的 API</i></div>
 </div>
 </div>
 
