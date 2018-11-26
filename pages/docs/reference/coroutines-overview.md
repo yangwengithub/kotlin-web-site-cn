@@ -38,7 +38,7 @@ Kotlin 新手？可以看看[入门](basic-syntax.html)页。
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
     <img src="/assets/images/landing/native/try.png" height="38p" width="55" style="margin-right: 10px;">
-    <b>Example Projects</b>
+    <b>示例项目</b>
 </div>
 
 - [kotlinx.coroutines 示例与源代码](https://github.com/Kotlin/kotlin-coroutines/tree/master/examples)
