@@ -26,6 +26,8 @@ a?.equals(b) ?: (b === null)
 
 请注意，当与 `null` 显式比较时完全没必要优化你的代码：`a == null` 会被自动转换为 `a === null`。
 
+To provide a custom equals check implementation, override the [`equals(other: Any?): Boolean`](/api/latest/jvm/stdlib/kotlin/-any/equals.html) function. Functions with the same name and other signatures, like `equals(other: Foo)`, don't affect equality checks with the operators `==` and `!=`.
+
 结构相等与 `Comparable<……>` 接口定义的比较无关，因此只有自定义的 `equals(Any?)` 实现可能会影响该操作符的行为。
 
 ## 浮点数相等性
