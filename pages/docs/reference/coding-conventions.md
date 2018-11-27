@@ -98,6 +98,7 @@ Kotlin 遵循 Java 命名约定。尤其是：
 类与对象的名称以大写字母开头并使用驼峰：
 
 
+
 ```kotlin
 open class DeclarationProcessor { …… }
 
@@ -105,9 +106,11 @@ object EmptyDeclarationProcessor : DeclarationProcessor() { …… }
 ```
 
 
+
 ### 函数名
  
 函数、属性与局部变量的名称以小写字母开头、使用驼峰而不使用下划线：
+
 
 
 ```kotlin
@@ -116,7 +119,9 @@ var declarationCount = ……
 ```
 
 
+
 例外：用于创建类实例的工厂函数可以与要创建的类具有相同的名称：
+
 
 
 ```kotlin
@@ -128,11 +133,13 @@ fun Foo(): Foo { return FooImpl(……) }
 ```
 
 
+
 #### 测试方法的名称
 
 当且仅当在测试中，可以使用反引号括起来的带空格的方法名。
 （请注意，Android 运行时目前不支持这样的方法名。）测试代码中<!--
 -->也允许方法名使用下划线。
+
 
 
 ```kotlin
@@ -144,10 +151,12 @@ class MyTestCase {
 ```
 
 
+
 ### 属性名
 
 常量名称（标有 `const` 的属性，或者保存不可变数据的没有自定义 `get` 函数<!--
 -->的顶层/对象 `val` 属性）应该使用大写、下划线分隔的名称：
+
 
 
 ```kotlin
@@ -156,7 +165,9 @@ val USER_NAME_FIELD = "UserName"
 ```
 
 
+
 保存带有行为的对象或者可变数据的顶层/对象属性的名称应该使用常规驼峰名称：
+
 
 
 ```kotlin
@@ -164,12 +175,15 @@ val mutableCollection: MutableSet<String> = HashSet()
 ```
 
 
+
 保存单例对象引用的属性的名称可以使用与 `object` 声明相同的命名风格：
+
 
 
 ```kotlin
 val PersonComparator: Comparator<Person> = ...
 ```
+
 
 
 对于枚举常量，可以使用大写、下划线分隔的名称
@@ -181,6 +195,7 @@ val PersonComparator: Comparator<Person> = ...
 -->细节，那么使用下划线作为私有属性名称的前缀：
 
 
+
 ```kotlin
 class C {
     private val _elementList = mutableListOf<Element>()
@@ -189,6 +204,7 @@ class C {
          get() = _elementList
 }
 ```
+
 
 
 ### 选择好名称
@@ -216,6 +232,7 @@ class C {
 -->放在与左括结构横向对齐的单独一行。
 
 
+
 ```kotlin
 if (elements != null) {
     for (element in elements) {
@@ -223,6 +240,7 @@ if (elements != null) {
     }
 }
 ```
+
 
 
 （注意：在 Kotlin 中，分号是可选的，因此换行很重要。语言设计采用
@@ -239,6 +257,7 @@ Java 风格的花括号格式，如果尝试使用不同的格式化风格，那
 不要在主构造函数声明、方法声明或者方法调用的左括号之前留空格。
 
 
+
 ```kotlin
 class A(val x: Int)
 
@@ -248,6 +267,7 @@ fun bar() {
     foo(1)
 }
 ```
+
 
 
 绝不在 `(`、 `[` 之后或者 `]`、 `)` 之前留空格。
@@ -278,6 +298,7 @@ fun bar() {
 在 `:` 之后总要留一个空格。
 
 
+
 ```kotlin
 abstract class Foo<out T : Any> : IFoo {
     abstract fun foo(a: Int): T
@@ -291,9 +312,11 @@ class FooImpl : Foo() {
 ```
 
 
+
 ### 类头格式化
 
 具有少数主构造函数参数的类可以写成一行：
+
 
 
 ```kotlin
@@ -301,9 +324,11 @@ class Person(id: Int, name: String)
 ```
 
 
+
 具有较长类头的类应该格式化，以使每个主构造函数参数都在带有缩进的独立的行中。
 另外，右括号应该位于一个新行上。如果使用了继承，那么超类的构造函数调用或者所实现接口的列表<!--
 -->应该与右括号位于同一行：
+
 
 
 ```kotlin
@@ -315,7 +340,9 @@ class Person(
 ```
 
 
+
 对于多个接口，应该将超类构造函数调用放在首位，然后将每个接口应放在不同的行中：
+
 
 
 ```kotlin
@@ -328,7 +355,9 @@ class Person(
 ```
 
 
+
 对于具有很长超类型列表的类，在冒号后面换行，并横向对齐所有超类型名：
+
 
 
 ```kotlin
@@ -342,8 +371,10 @@ class MyFavouriteVeryLongClassHolder :
 ```
 
 
+
 为了将类头与类体分隔清楚，当类头很长时，可以在类头后放一空行
 （如上例所示）或者将左花括号放在独立行上：
+
 
 
 ```kotlin
@@ -357,6 +388,7 @@ class MyFavouriteVeryLongClassHolder :
 ```
 
 
+
 构造函数参数使用常规缩进（4 个空格）。
 
 > 理由：这确保了在主构造函数中声明的属性与
@@ -365,6 +397,7 @@ class MyFavouriteVeryLongClassHolder :
 ### 修饰符
 
 如果一个声明有多个修饰符，请始终按照以下顺序安放：
+
 
 
 ```kotlin
@@ -387,13 +420,16 @@ data
 ```
 
 
+
 将所有注解放在修饰符前：
+
 
 
 ```kotlin
 @Named("Foo")
 private val foo: Foo
 ```
+
 
 
 除非你在编写库，否则请省略多余的修饰符（例如 `public`）。
@@ -403,13 +439,16 @@ private val foo: Foo
 注解通常放在单独的行上，在它们所依附的声明之前，并使用相同的缩进：
 
 
+
 ```kotlin
 @Target(AnnotationTarget.PROPERTY)
 annotation class JsonExclude
 ```
 
 
+
 无参数的注解可以放在同一行：
+
 
 
 ```kotlin
@@ -418,7 +457,9 @@ var x: String
 ```
 
 
+
 无参数的单个注解可以与相应的声明放在同一行：
+
 
 
 ```kotlin
@@ -426,9 +467,11 @@ var x: String
 ```
 
 
+
 ### 文件注解
 
 文件注解位于文件注释（如果有的话）之后、`package` 语句之前，并且用一个空白行与 `package` 分开（为了强调其针对文件而不是包）。
+
 
 
 ```kotlin
@@ -439,9 +482,11 @@ package foo.bar
 ```
 
 
+
 ### 函数格式化
 
 如果函数签名不适合单行，请使用以下语法：
+
 
 
 ```kotlin
@@ -454,11 +499,13 @@ fun longMethodName(
 ```
 
 
+
 函数参数使用常规缩进（4 个空格）。
 
 > 理由：与构造函数参数一致
 
 对于由单个表达式构成的函数体，优先使用表达式形式。
+
 
 
 ```kotlin
@@ -470,10 +517,12 @@ fun foo() = 1        // 良好
 ```
 
 
+
 ### 表达式函数体格式化
 
 如果函数的表达式函数体与函数声明不适合放在同一行，那么将 `=` 留在第一行。
 将表达式函数体缩进 4 个空格。
+
 
 
 ```kotlin
@@ -482,9 +531,11 @@ fun f(x: String) =
 ```
 
 
+
 ### 属性格式化
 
 对于非常简单的只读属性，请考虑单行格式：
+
 
 
 ```kotlin
@@ -492,7 +543,9 @@ val isEmpty: Boolean get() = size == 0
 ```
 
 
+
 对于更复杂的属性，总是将 `get` 与 `set` 关键字放在不同的行上：
+
 
 
 ```kotlin
@@ -501,8 +554,10 @@ val foo: String
 ```
 
 
+
 对于具有初始化器的属性，如果初始化器很长，那么在等号后增加一个换行<!--
 -->并将初始化器缩进四个空格：
+
 
 
 ```kotlin
@@ -511,11 +566,13 @@ private val defaultCharset: Charset? =
 ```
 
 
+
 ### 格式化控制流语句
 
 如果 `if` 或 `when` 语句的条件有多行，那么在语句体外边总是使用大括号。
 将该条件的每个后续行相对于条件语句起始处缩进 4 个空格。
 将该条件的右圆括号与左花括号放在单独一行：
+
 
 
 ```kotlin
@@ -527,10 +584,12 @@ if (!component.isSyncing &&
 ```
 
 
+
 > 理由：对齐整齐并且将条件与语句体分隔清楚
 
 将 `else`、 `catch`、 `finally` 关键字以及 do/while 循环的 `while` 关键字与<!--
 -->之前的花括号放在相同的行上：
+
 
 
 ```kotlin
@@ -548,7 +607,9 @@ try {
 ```
 
 
+
 在 `when` 语句中，如果一个分支不止一行，可以考虑用空行将其与相邻的分支块分开：
+
 
 
 ```kotlin
@@ -564,7 +625,9 @@ private fun parsePropertyValue(propName: String, token: Token) {
 ```
 
 
+
 将短分支放在与条件相同的行上，无需花括号。
+
 
 
 ```kotlin
@@ -576,10 +639,12 @@ when (foo) {
 
 
 
+
 ### 方法调用格式化
 
 在较长参数列表的左括号后添加一个换行符。按 4 个空格缩进参数。
 将密切相关的多个参数分在同一行。
+
 
 
 ```kotlin
@@ -591,11 +656,13 @@ drawSquare(
 ```
 
 
+
 在分隔参数名与值的 `=` 左右留空格。
 
 ### 链式调用换行
 
 当对链式调用换行时，将 `.` 字符或者 `?.` 操作符放在下一行，并带有单倍缩进：
+
 
 
 ```kotlin
@@ -606,6 +673,7 @@ val anchor = owner
 ```
 
 
+
 调用链的第一个调用通常在换行之前，当然如果能让代码更有意义也可以忽略这点。
 
 ### Lambda 表达式格式化
@@ -614,12 +682,15 @@ val anchor = owner
 如果一个调用接受单个 lambda 表达式，应该尽可能将其放在圆括号外边传入。
 
 
+
 ```kotlin
 list.filter { it > 10 }
 ```
 
 
+
 如果为 lambda 表达式分配一个标签，那么不要在该标签与左花括号之间留空格：
+
 
 
 ```kotlin
@@ -631,7 +702,9 @@ fun foo() {
 ```
 
 
+
 在多行的 lambda 表达式中声明参数名时，将参数名放在第一行，后跟箭头与换行符：
+
 
 
 ```kotlin
@@ -641,7 +714,9 @@ appendCommaSeparated(properties) { prop ->
 ```
 
 
+
 如果参数列表太长而无法放在一行上，请将箭头放在单独一行：
+
 
 
 ```kotlin
@@ -654,10 +729,12 @@ foo {
 ```
 
 
+
 ## 文档注释
 
 对于较长的文档注释，将开头 `/**` 放在一个独立行中，并且后续每行都<!--
 -->以星号开头：
+
 
 
 ```kotlin
@@ -668,7 +745,9 @@ foo {
 ```
 
 
+
 简短注释可以放在一行内：
+
 
 
 ```kotlin
@@ -676,9 +755,11 @@ foo {
 ```
 
 
+
 通常，避免使用 `@param` 与 `@return` 标记。而是将参数与返回值的描述<!--
 -->直接合并到文档注释中，并在提到参数的任何地方加上参数链接。
 只有当需要不适合放进主文本流程的冗长描述时才应使用 `@param` 与 `@return`。
+
 
 
 ```kotlin
@@ -700,6 +781,7 @@ fun abs(number: Int) = ……
 ```
 
 
+
 ## 避免重复结构
 
 一般来说，如果 Kotlin 中的某种语法结构是可选的并且被 IDE
@@ -711,11 +793,13 @@ fun abs(number: Int) = ……
 如果函数返回 Unit，那么应该省略返回类型：
 
 
+
 ```kotlin
 fun foo() { // 这里省略了“: Unit”
 
 }
 ```
+
 
 
 ### 分号
@@ -727,9 +811,11 @@ fun foo() { // 这里省略了“: Unit”
 将简单变量传入到字符串模版中时不要使用花括号。只有用到更长表达式时才使用花括号。
 
 
+
 ```kotlin
 println("$name has ${children.size} children")
 ```
+
 
 
 
@@ -743,6 +829,7 @@ println("$name has ${children.size} children")
 总是使用不可变集合接口（`Collection`, `List`, `Set`, `Map`）来声明无需<!--
 -->改变的集合。使用工厂函数创建集合实例时，尽可能选用返回不可变<!--
 -->集合类型的函数：
+
 
 
 ```kotlin
@@ -760,9 +847,11 @@ val allowedValues = listOf("a", "b", "c")
 ```
 
 
+
 ### 默认参数值
 
 优先声明带有默认参数的函数而不是声明重载函数。
+
 
 
 ```kotlin
@@ -775,16 +864,19 @@ fun foo(a: String = "a") { …… }
 ```
 
 
+
 ### 类型别名
 
 如果有一个在代码库中多次用到的函数类型或者带有类型参数的类型，那么最好为它定义<!--
 -->一个类型别名：
 
 
+
 ```kotlin
 typealias MouseClickHandler = (Any, MouseEvent) -> Unit
 typealias PersonIndex = Map<String, Person>
 ```
+
 
 
 ### Lambda 表达式参数
@@ -806,14 +898,17 @@ typealias PersonIndex = Map<String, Person>
 除非在上下文中的所有参数的含义都已绝对清楚。
 
 
+
 ```kotlin
 drawSquare(x = 10, y = 10, width = 100, height = 100, fill = true)
 ```
 
 
+
 ### 使用条件语句
 
 优先使用 `try`、`if` 与 `when` 的表达形式。例如：
+
 
 
 ```kotlin
@@ -826,7 +921,9 @@ return when(x) {
 ```
 
 
+
 优先选用上述代码而不是：
+
 
 
 ```kotlin
@@ -842,9 +939,11 @@ when(x) {
 ```
 
 
+
 ### `if` 还是 `when`
 
 二元条件优先使用 `if` 而不是 `when`。不要使用
+
 
 
 ```kotlin
@@ -853,6 +952,7 @@ when (x) {
     else -> ……
 }
 ```
+
 
 
 而应使用 `if (x == null) …… else ……`
@@ -876,10 +976,12 @@ when (x) {
 使用 `until` 函数在一个区间上循环：
 
 
+
 ```kotlin
 for (i in 0..n - 1) { …… }  // 不良
 for (i in 0 until n) { …… }  // 良好
 ```
+
 
 
 ### 使用字符串
@@ -890,6 +992,7 @@ for (i in 0 until n) { …… }  // 良好
 
 如需在多行字符串中维护缩进，当生成的字符串不需要任何内部<!--
 -->缩进时使用 `trimIndent`，而需要内部缩进时使用 `trimMargin`：
+
 
 
 ```kotlin
@@ -905,6 +1008,7 @@ val a = """if(a > 1) {
           |    return a
           |}""".trimMargin()
 ```
+
 
 
 ### 函数还是属性
@@ -941,6 +1045,7 @@ val a = """if(a > 1) {
 例如：
 
 
+
 ```kotlin
 class Point(val x: Double, val y: Double) {
     companion object {
@@ -948,6 +1053,7 @@ class Point(val x: Double, val y: Double) {
     }
 }
 ```
+
 
 
 如果一个对象有多个重载的构造函数，它们并非调用不同的超类构造函数，并且<!--
@@ -959,12 +1065,15 @@ class Point(val x: Double, val y: Double) {
 返回平台类型表达式的公有函数/方法必须显式声明其 Kotlin 类型：
 
 
+
 ```kotlin
 fun apiCall(): String = MyJavaApi.getProperty("name")
 ```
 
 
+
 任何使用平台类型表达式初始化的属性（包级别或类级别）必须显式声明其 Kotlin 类型：
+
 
 
 ```kotlin
@@ -974,7 +1083,9 @@ class Person {
 ```
 
 
+
 使用平台类型表达式初始化的局部值可以有也可以没有类型声明：
+
 
 
 ```kotlin
@@ -985,6 +1096,7 @@ fun main() {
 ```
 
 
+
 ### 使用作用域函数 apply/with/run/also/let
 
 Kotlin 提供了一系列用来在给定对象上下文中执行代码块的函数。要选择正确的<!--
@@ -993,6 +1105,7 @@ Kotlin 提供了一系列用来在给定对象上下文中执行代码块的函�
   * 是否在块中的多个对象上调用方法，或者将上下文对象的实例作为<!--
     -->参数传递？如果是，那么使用以 `it` 而不是 `this` 形式访问上下文对象的函数之一
     （ `also` 或 `let` ）。如果在代码块中根本没有用到接收者，那么使用 `also`。
+
 
 
 ```kotlin
@@ -1021,9 +1134,11 @@ class Baz {
 }
 ```
 
+
     
   * 调用的结果是什么？如果结果需是该上下文对象，那么使用 `apply` 或 `also`。
     如果需要从代码块中返回一个值，那么使用 `with`、`let` 或者 `run`
+
 
 
 ```kotlin
@@ -1042,10 +1157,13 @@ class Baz {
         loadBar()
     }
 }
-```    
+```
+
+
 
   * 上下文对象是否可空，或者是否作为调用链的结果求值而来的？如果是，那么使用 `apply`、`let` 或者 `run`。
     否则，使用 `with` 或者 `also`。
+
 
 
 ```kotlin
@@ -1057,6 +1175,7 @@ with(person) {
     println("First name: $firstName, last name: $lastName")
 }
 ```
+
 
 
 

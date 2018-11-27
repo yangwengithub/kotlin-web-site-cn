@@ -16,36 +16,45 @@ title: "Kotlin 与 OSGi"
 
 将 Kotlin OSGi 包引入到 Maven 项目中：
 
+
+
 ```xml
-   <dependencies>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-osgi-bundle</artifactId>
-            <version>${kotlin.version}</version>
-        </dependency>
-    </dependencies>
+<dependencies>
+    <dependency>
+        <groupId>org.jetbrains.kotlin</groupId>
+        <artifactId>kotlin-osgi-bundle</artifactId>
+        <version>${kotlin.version}</version>
+    </dependency>
+</dependencies>
 ```
+
+
 
 从外部库中排除标准库（注意“星排除”只在 Maven 3 中有效）：
 
-```xml
-        <dependency>
-            <groupId>some.group.id</groupId>
-            <artifactId>some.library</artifactId>
-            <version>some.library.version</version>
 
-            <exclusions>
-                <exclusion>
-                    <groupId>org.jetbrains.kotlin</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+
+```xml
+<dependency>
+    <groupId>some.group.id</groupId>
+    <artifactId>some.library</artifactId>
+    <version>some.library.version</version>
+
+    <exclusions>
+        <exclusion>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>*</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
 ```
+
+
 
 ## Gradle
 
 将 `kotlin-osgi-bundle` 引入到 gradle 项目中：
+
 
 
 ```groovy
@@ -53,7 +62,9 @@ compile "org.jetbrains.kotlin:kotlin-osgi-bundle:$kotlinVersion"
 ```
 
 
+
 要排除作为传递依赖的默认 Kotlin 库，你可以使用以下方法：
+
 
 
 ```groovy
@@ -64,6 +75,7 @@ dependencies {
   exclude group: 'org.jetbrains.kotlin'
 }
 ```
+
 
 
 ## FAQ

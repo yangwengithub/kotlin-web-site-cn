@@ -24,6 +24,7 @@ Kotlin 函数都是[*头等的*](https://zh.wikipedia.org/wiki/%E5%A4%B4%E7%AD%8
 -->续接合起来代入累积值来构建返回值：
 
 
+
 ```kotlin
 fun <T, R> Collection<T>.fold(
     initial: R, 
@@ -36,6 +37,7 @@ fun <T, R> Collection<T>.fold(
     return accumulator
 }
 ```
+
 
 
 在上述代码中，参数 `combine` 具有[函数类型](#函数类型) `(R, T) -> R`，因此 `fold` 接受一个函数作为参数，
@@ -76,6 +78,7 @@ fun main() {
 ```
 
 
+
 以下各节会更详细地解释上文提到的这些概念。
 
 ## 函数类型
@@ -110,9 +113,11 @@ Kotlin 使用类似 `(Int) -> String` 的一系列函数类型来处理函数的
 还可以通过使用[类型别名](type-aliases.html)给函数类型起一个别称：
 
 
+
 ```kotlin
 typealias ClickHandler = (Button, ClickEvent) -> Unit
 ```
+
 
 
 ### 函数类型实例化
@@ -135,6 +140,7 @@ typealias ClickHandler = (Button, ClickEvent) -> Unit
 * 使用实现函数类型接口的自定义类的实例：
 
 
+
     ```kotlin
     class IntTransformer: (Int) -> Int {
         override operator fun invoke(x: Int): Int = TODO()
@@ -144,12 +150,15 @@ typealias ClickHandler = (Button, ClickEvent) -> Unit
     ```
 
 
+
 如果有足够信息，编译器可以推断变量的函数类型：
+
 
 
 ```kotlin
 val a = { i: Int -> i + 1 } // 推断出的类型是 (Int) -> Int
 ```
+
 
 
 带与不带接收者的函数类型*非字面*值可以互换，其中接收者可以替代<!--
@@ -172,6 +181,7 @@ fun main() {
     println("result = $result")
 }
 ```
+
 
 
 > 请注意，默认情况下推断出的是没有接收者的函数类型，即使变量是通过<!--
@@ -207,6 +217,7 @@ fun main() {
 ```
 
 
+
 ### 内联函数
 
 有时使用[内联函数](inline-functions.html)可以为<!--
@@ -218,9 +229,11 @@ lambda 表达式与匿名函数是“函数字面值”，即未声明的函数�
 但立即做为表达式传递。考虑下面的例子：
 
 
+
 ```kotlin
 max(strings, { a, b -> a.length < b.length })
 ```
+
 
 
 函数 `max` 是一个高阶函数，它接受一个函数作为第二个参数。
@@ -228,9 +241,11 @@ max(strings, { a, b -> a.length < b.length })
 -->以下命名函数：
 
 
+
 ```kotlin
 fun compare(a: String, b: String): Boolean = a.length < b.length
 ```
+
 
 
 ### Lambda 表达式语法
@@ -238,9 +253,11 @@ fun compare(a: String, b: String): Boolean = a.length < b.length
 Lambda 表达式的完整语法形式如下：
 
 
+
 ```kotlin
 val sum = { x: Int, y: Int -> x + y }
 ```
+
 
 
 lambda 表达式总是括在花括号中，
@@ -250,9 +267,11 @@ lambda 表达式总是括在花括号中，
 如果我们把所有可选标注都留下，看起来如下：
 
 
+
 ```kotlin
 val sum: (Int, Int) -> Int = { x, y -> x + y }
 ```
+
 
 
 ### 将 lambda 表达式传给最后一个参数
@@ -261,17 +280,21 @@ val sum: (Int, Int) -> Int = { x, y -> x + y }
 -->传入的 lambda 表达式可以放在圆括号之外：
 
 
+
 ```kotlin
 val product = items.fold(1) { acc, e -> acc * e }
 ```
 
 
+
 如果该 lambda 表达式是调用时唯一的参数，那么圆括号可以完全省略：
+
 
 
 ```kotlin
 run { println("...") }
 ```
+
 
 
 {:#it单个参数的隐式名称}
@@ -284,9 +307,11 @@ run { println("...") }
 该参数会隐式声明为 `it`：
 
 
+
 ```kotlin
 ints.filter { it > 0 } // 这个字面值是“(it: Int) -> Boolean”类型的
 ```
+
 
 
 ### 从 lambda 表达式中返回一个值
@@ -295,6 +320,7 @@ ints.filter { it > 0 } // 这个字面值是“(it: Int) -> Boolean”类型的
 否则，将隐式返回最后一个表达式的值。
 
 因此，以下两个片段是等价的：
+
 
 
 ```kotlin
@@ -310,13 +336,16 @@ ints.filter {
 ```
 
 
+
 这一约定连同[在圆括号外传递 lambda 表达式](#将-lambda-表达式传给最后一个参数)一起支持
 [LINQ-风格](http://msdn.microsoft.com/en-us/library/bb308959.aspx) 的代码：
+
 
 
 ```kotlin
 strings.filter { it.length == 5 }.sortedBy { it }.map { it.toUpperCase() }
 ```
+
 
 
 {:#下划线用于未使用的变量自-11-起}
@@ -326,9 +355,11 @@ strings.filter { it.length == 5 }.sortedBy { it }.map { it.toUpperCase() }
 如果 lambda 表达式的参数未使用，那么可以用下划线取代其名称：
 
 
+
 ```kotlin
 map.forEach { _, value -> println("$value!") }
 ```
+
 
 
 {:#在-lambda-表达式中解构自-11-起}
@@ -344,13 +375,16 @@ map.forEach { _, value -> println("$value!") }
 -->确实需要显式指定，可以使用另一种语法： _匿名函数_ 。
 
 
+
 ```kotlin
 fun(x: Int, y: Int): Int = x + y
 ```
 
 
+
 匿名函数看起来非常像一个常规函数声明，除了其名称省略了。其函数体<!--
 -->可以是表达式（如上所示）或代码块：
+
 
 
 ```kotlin
@@ -360,13 +394,16 @@ fun(x: Int, y: Int): Int {
 ```
 
 
+
 参数和返回类型的指定方式与常规函数相同，除了<!--
 -->能够从上下文推断出的参数类型可以省略：
+
 
 
 ```kotlin
 ints.filter(fun(item) = item > 0)
 ```
+
 
 
 匿名函数的返回类型推断机制与正常函数一样：对于具有表达式函数体的匿名函数将自动<!--
@@ -388,6 +425,7 @@ Lambda 表达式或者匿名函数（以及[局部函数](functions.html#局部�
 可以访问其 _闭包_ ，即在外部作用域中声明的变量。 与 Java 不同的是可以修改闭包中捕获的变量：
 
 
+
 ```kotlin
 var sum = 0
 ints.filter { it > 0 }.forEach {
@@ -395,6 +433,7 @@ ints.filter { it > 0 }.forEach {
 }
 print(sum)
 ```
+
 
 
 ### 带有接收者的函数字面值
@@ -415,13 +454,16 @@ print(sum)
 ：
 
 
+
 ```kotlin
 val sum: Int.(Int) -> Int = { other -> plus(other) } 
 ```
 
 
+
 匿名函数语法允许你直接指定函数字面值的接收者类型。
 如果你需要使用带接收者的函数类型声明一个变量，并在之后使用它，这将非常有用。
+
 
 
 ```kotlin
@@ -429,8 +471,10 @@ val sum = fun Int.(other: Int): Int = this + other
 ```
 
 
+
 当接收者类型可以从上下文推断时，lambda 表达式可以用作带接收者的函数字面值。
 One of the most important examples of their usage is [type-safe builders](type-safe-builders.html):
+
 
 
 ```kotlin
@@ -448,4 +492,5 @@ html {       // 带接收者的 lambda 由此开始
     body()   // 调用该接收者对象的一个方法
 }
 ```
+
 
