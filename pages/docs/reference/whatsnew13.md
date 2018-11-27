@@ -357,7 +357,7 @@ println("x: $x, y: $y, z: $z, range: $range")
 
 ## @JvmDefault
 
->`@JvmDefault` 从 Kotlin 1.3 开始支持，而且现阶段是**实验性**的。更多详情请看[这里](/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html)。
+>`@JvmDefault` 从 Kotlin 1.3 开始支持，而且现阶段是**实验性**的。更多详情请看[这里](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html)。
 {:.note}
 
 
@@ -377,7 +377,7 @@ interface Foo {
 
 </div>
 
-> 注意！ 将你的 API 标记为 `@JvmDefault` 将会对二进制兼容性有严重影响。请确保你仔细阅读了[参考页面](/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html)，在你的产品中使用`@Default`之前。
+> 注意！ 将你的 API 标记为 `@JvmDefault` 将会对二进制兼容性有严重影响。请确保你仔细阅读了[参考页面](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html)，在你的产品中使用`@Default`之前。
 {:.note}
 
 # 标准库
