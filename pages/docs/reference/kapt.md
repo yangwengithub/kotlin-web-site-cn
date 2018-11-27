@@ -18,30 +18,36 @@ title: "使用 kapt"
 
 应用 `kotlin-kapt` Gradle 插件：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" mode="groovy" theme="idea">
+
 ```groovy
 apply plugin: 'kotlin-kapt'
 ```
+
 </div>
 
 或者，你可以使用插件 DSL 应用它：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+<div class="sample" markdown="1" mode="groovy" theme="idea">
+
 ```groovy
 plugins {
     id "org.jetbrains.kotlin.kapt" version "{{ site.data.releases.latest.version }}"
 }
 ```
+
 </div>
 
 然后在 `dependencies` 块中使用 `kapt` 配置添加相应的依赖项：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` groovy
+<div class="sample" markdown="1" mode="groovy" theme="idea">
+
+```groovy
 dependencies {
     kapt 'groupId:artifactId:版本'
 }
 ```
+
 </div>
 
 如果你以前使用 [Android 支持](https://developer.android.com/studio/build/gradle-plugin-3-0-0-migration.html#annotationProcessor_config)作为注解处理器，那么以 `kapt` 取代 `annotationProcessor` 配置的使用。如果你的项目包含 Java 类，`kapt` 也会顾全到它们。
@@ -52,14 +58,16 @@ dependencies {
 
 使用 `arguments {}` 块将参数传给注解处理器：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` groovy
+<div class="sample" markdown="1" mode="groovy" theme="idea">
+
+```groovy
 kapt {
     arguments {
         arg("key", "value")
     }
 }
 ```
+
 </div>
 
 ## Java 编译器选项
@@ -67,8 +75,9 @@ kapt {
 Kapt 使用 Java 编译器来运行注解处理器。
 以下是将任意选项传给 javac 的方式：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` groovy
+<div class="sample" markdown="1" mode="groovy" theme="idea">
+
+```groovy
 kapt {
     javacOptions {
         // 增加注解处理器的最大错误次数
@@ -77,23 +86,28 @@ kapt {
     }
 }
 ```
+
 </div>
 
 ## 非存在类型校正
 
 一些注解处理器（如 `AutoFactory`）依赖于声明签名中的精确类型。默认情况下，Kapt 将每个未知类型（包括生成的类的类型）替换为 `NonExistentClass`，但你可以更改此行为。将额外标志添加到 `build.gradle` 文件以启用在存根（stub）中推断出的错误类型：
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` groovy
+<div class="sample" markdown="1" mode="groovy" theme="idea">
+
+```groovy
 kapt {
     correctErrorTypes = true
 }
 ```
+
 </div>
 
 ## 在 Maven 中使用
 
 在 `compile` 之前在 kotlin-maven-plugin 中添加 `kapt` 目标的执行：
+
+<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
 
 ```xml
 <execution>
@@ -117,7 +131,9 @@ kapt {
     </configuration>
 </execution>
 ```
- 
+
+</div>
+
 你可以在
 [Kotlin 示例版本库](https://github.com/JetBrains/kotlin-examples/tree/master/maven/dagger-maven-example) 中找到一个显示使用 Kotlin、Maven 和 Dagger 的完整示例项目。
  
@@ -130,9 +146,13 @@ Kapt 编译器插件已随 Kotlin 编译器的二进制发行版分发。
 
 可以使用 kotlinc 选项 `Xplugin` 提供该 JAR 文件的路径来附加该插件：
 
+<div class="sample" markdown="1" mode="shell" theme="idea">
+
 ```bash
 -Xplugin=$KOTLIN_HOME/lib/kotlin-annotation-processing.jar
 ```
+
+</div>
 
 以下是可用选项的列表：
 
@@ -155,6 +175,8 @@ Kapt 编译器插件已随 Kotlin 编译器的二进制发行版分发。
 
 一个示例：
 
+<div class="sample" markdown="1" mode="shell" theme="idea">
+
 ```bash
 -P plugin:org.jetbrains.kotlin.kapt3:sources=build/kapt/sources
 -P plugin:org.jetbrains.kotlin.kapt3:classes=build/kapt/classes
@@ -166,6 +188,7 @@ Kapt 编译器插件已随 Kotlin 编译器的二进制发行版分发。
 -P plugin:org.jetbrains.kotlin.kapt3:correctErrorTypes=true
 ```
 
+</div>
 
 ## 生成 Kotlin 代码
 
@@ -182,6 +205,7 @@ Kapt 可生成 Kotlin 代码。是将生成的 Kotlin 源文件写入`processing
 这是自己编码选项的方式：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun encodeList(options: Map<String, String>): String {
     val os = ByteArrayOutputStream()
@@ -197,4 +221,5 @@ fun encodeList(options: Map<String, String>): String {
     return Base64.getEncoder().encodeToString(os.toByteArray())
 }
 ```
+
 </div>
