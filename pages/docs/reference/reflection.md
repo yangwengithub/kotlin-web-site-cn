@@ -120,7 +120,7 @@ val predicate: (String) -> Boolean = ::isOdd   // 引用到 isOdd(x: String)
 
 
 ```kotlin
-val isEmptyStringList: List<String>.() -> Boolean = List::isEmpty 
+val isEmptyStringList: List<String>.() -> Boolean = List<String>::isEmpty 
 ```
 
 
