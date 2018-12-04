@@ -93,13 +93,13 @@ fun main() {
 <div class="sample" markdown="1" theme="idea">
 ```kotlin
 fun main() {
-    //sampleStart
+//sampleStart
     fun isOdd(x: Int) = x % 2 != 0
     fun isOdd(s: String) = s == "brillig" || s == "slithy" || s == "tove"
     
     val numbers = listOf(1, 2, 3)
     println(numbers.filter(::isOdd)) // 引用到 isOdd(x: Int)
-    //sampleEnd
+//sampleEnd
 }
 ```
 </div>

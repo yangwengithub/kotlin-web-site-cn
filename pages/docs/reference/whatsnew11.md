@@ -66,16 +66,16 @@ import kotlin.coroutines.experimental.*
 
 fun main(args: Array<String>) {
 //sampleStart
-  val seq = buildSequence {
+    val seq = buildSequence {
       for (i in 1..5) {
           // 产生一个 i 的平方
           yield(i * i)
       }
       // 产生一个区间
       yieldAll(26..28)
-  }
-  
-  // 输出该序列
+    }
+
+    // 输出该序列
   println(seq.toList())
 //sampleEnd
 }
@@ -206,15 +206,15 @@ fun main(args: Array<String>) {
 ```kotlin
 fun main(args: Array<String>) {
 //sampleStart
-  val map = mapOf(1 to "one", 2 to "two")
-  // 之前
-  println(map.mapValues { entry ->
+    val map = mapOf(1 to "one", 2 to "two")
+    // 之前
+    println(map.mapValues { entry ->
       val (key, value) = entry
       "$key -> $value!"
-  })
-  // 现在
-  println(map.mapValues { (key, value) -> "$key -> $value!" })
-//sampleEnd    
+    })
+    // 现在
+    println(map.mapValues { (key, value) -> "$key -> $value!" })
+//sampleEnd
 }
 ```
 </div>
@@ -234,7 +234,7 @@ fun main(args: Array<String>) {
 
 //sampleStart
     map.forEach { _, value -> println("$value!") }
-//sampleEnd    
+//sampleEnd
 }
 ```
 </div>
@@ -279,6 +279,7 @@ fun main(args: Array<String>) {
     println(bytes.toString(2))
 }
 ```
+
 </div>
 
 更详细信息请参阅其 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/underscores-in-numeric-literals.md)。
@@ -292,16 +293,16 @@ fun main(args: Array<String>) {
 
 ```kotlin
 //sampleStart
-data class Person(val name: String, val age: Int) {
+    data class Person(val name: String, val age: Int) {
     val isAdult get() = age >= 20 // 属性类型推断为 “Boolean”
 }
 //sampleEnd
-
 fun main(args: Array<String>) {
     val akari = Person("Akari", 26)
     println("$akari.isAdult = ${akari.isAdult}")
 }
 ```
+
 </div>
 
 ### 内联属性访问器
@@ -323,6 +324,7 @@ fun main(args: Array<String>) {
     println("Last index of $list is ${list.lastIndex}")
 }
 ```
+
 </div>
 
 你也可以将整个属性标记为 `inline`——这样修饰符应用于两个访问器。
@@ -357,6 +359,7 @@ fun main(args: Array<String>) {
 //sampleEnd
 }
 ```
+
 </div>
 
 更详细信息请参阅其 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/local-delegated-properties.md)。
@@ -370,6 +373,7 @@ fun main(args: Array<String>) {
 
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class ResourceLoader<T>(id: ResourceID<T>) {
     operator fun provideDelegate(thisRef: MyUI, property: KProperty<*>): ReadOnlyProperty<MyUI, T> {
@@ -387,6 +391,7 @@ class MyUI {
     val text by bindResource(ResourceID.text_id)
 }
 ```
+
 </div>
 
 `provideDelegate` 方法在创建 `MyUI` 实例期间将会为每个属性调用，并且可以立即执行<!--
@@ -414,6 +419,7 @@ fun main(args: Array<String>) {
     printAllValues<RGB>() // 输出 RED, GREEN, BLUE
 }
 ```
+
 </div>
 
 ### 对于 DSL 中隐式接收者的作用域控制
@@ -422,6 +428,7 @@ fun main(args: Array<String>) {
 考虑那个典型的 [HTML 构建器示例](type-safe-builders.html)：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 table {
     tr {
@@ -429,6 +436,7 @@ table {
     }
 }
 ```
+
 </div>
 
 在 Kotlin 1.0 中，传递给 `td` 的 lambda 表达式中的代码可以访问三个隐式接收者：传递给 `table`、`tr`
@@ -454,9 +462,11 @@ table {
 `String.toIntOrNull(): Int?`、 `String.toDoubleOrNull(): Double?` 等。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 val port = System.getenv("PORT")?.toIntOrNull() ?: 80
 ```
+
 </div>
 
 还有整数转换函数，如 `Int.toString()`、 `String.toInt()`、 `String.toIntOrNull()`，
@@ -470,12 +480,14 @@ val port = System.getenv("PORT")?.toIntOrNull() ?: 80
 -->包装序列，它在元素迭代时延迟应用给定的动作。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
+
 ```kotlin
 inputDir.walk()
         .filter { it.isFile && it.name.endsWith(".txt") }
         .onEach { println("Moving $it to $outputDir") }
         .forEach { moveFile(it, File(outputDir, it.toRelativeString(inputDir))) }
 ```
+
 </div>
 
 ### also()、takeIf() 和 takeUnless()
@@ -512,6 +524,7 @@ fun main(args: Array<String>) {
     println(block.content == copy.content)
 }
 ```
+
 </div>
 
 `takeIf` 就像单个值的 `filter`。它检查接收者是否满足该谓词，并<!--
@@ -519,10 +532,12 @@ fun main(args: Array<String>) {
 结合 elvis-操作符和及早返回，它允许编写如下结构：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 val outDirFile = File(outputDir.path).takeIf { it.exists() } ?: return false
 // 对现有的 outDirFile 做些事情
 ```
+
 </div>
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
@@ -542,14 +557,17 @@ fun main(args: Array<String>) {
     println(" ".repeat(index) + "^")
 }
 ```
+
 </div>
 
 `takeUnless` 与 `takeIf` 相同，只是它采用了反向谓词。当它 _不_ 满足谓词时返回接收者，否则返回 `null`。因此，上面的示例之一可以用 `takeUnless` 重写如下：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 val index = input.indexOf(keyword).takeUnless { it < 0 } ?: error("keyword not found")
 ```
+
 </div>
 
 当你有一个可调用的引用而不是 lambda 时，使用也很方便：
@@ -570,6 +588,7 @@ fun main(args: Array<String>) {
     testTakeUnless("abc")
 }
 ```
+
 </div>
 
 ### groupingBy()
@@ -593,6 +612,7 @@ fun main(args: Array<String>) {
     println("Comparing the result with using 'groupBy': ${groupBy == frequencies}.")
 }
 ```
+
 </div>
 
 ### Map.toMap() 和 Map.toMutableMap()
@@ -600,11 +620,13 @@ fun main(args: Array<String>) {
 这俩函数可以用来简易复制映射：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class ImmutablePropertyBag(map: Map<String, Any>) {
     private val mapCopy = map.toMap()
 }
 ```
+
 </div>
 
 ### Map.minus(key)
@@ -625,6 +647,7 @@ fun main(args: Array<String>) {
     println("emptyMap: $emptyMap")
 }
 ```
+
 </div>
 
 ### minOf() 和 maxOf()
@@ -646,6 +669,7 @@ fun main(args: Array<String>) {
     println("longestList = $longestList")
 }
 ```
+
 </div>
 
 ### 类似数组的列表实例化函数
@@ -666,6 +690,7 @@ fun main(args: Array<String>) {
     println("mutable: $mutable")
 }
 ```
+
 </div>
 
 ### Map.getValue()
@@ -677,7 +702,6 @@ fun main(args: Array<String>) {
 
 ```kotlin
 fun main(args: Array<String>) {
-
 //sampleStart    
     val map = mapOf("key" to 42)
     // 返回不可空 Int 值 42
@@ -694,6 +718,7 @@ fun main(args: Array<String>) {
     println("value2 is $value2")
 }
 ```
+
 </div>
 
 ### 抽象集合
@@ -722,6 +747,7 @@ fun main(args: Array<String>) {
 //sampleEnd
 }
 ```
+
 </div>
 
 ## JVM 后端
@@ -763,11 +789,13 @@ Kotlin 现在与[javax.script API](https://docs.oracle.com/javase/8/docs/api/jav
 其 API 允许在运行时求值代码段：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 val engine = ScriptEngineManager().getEngineByExtension("kts")!!
 engine.eval("val x = 3")
 println(engine.eval("x + 2"))  // 输出 5
 ```
+
 </div>
 
 关于使用 API 的示例项目参见[这里](https://github.com/JetBrains/kotlin/tree/master/libraries/examples/kotlin-jsr223-local-example)
@@ -804,6 +832,7 @@ minifiers、 optimisers、 linters 等）更加友好。
 例如，可以按以下方式声明 DOM `Node` 类：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 external class Node {
     val firstChild: Node
@@ -815,6 +844,7 @@ external class Node {
     // 等等
 }
 ```
+
 </div>
 
 ### 改进的导入处理
@@ -829,6 +859,7 @@ external class Node {
 例如，以下是将 JQuery 导入 Kotlin 模块的方法：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 external interface JQuery {
     fun toggle(duration: Int = definedExternally): JQuery
@@ -840,6 +871,7 @@ external interface JQuery {
 @JsName("$")
 external fun jquery(selector: String): JQuery
 ```
+
 </div>
 
 在这种情况下，JQuery 将作为名为 `jquery` 的模块导入。或者，它可以用作 $-对象，
@@ -848,6 +880,7 @@ external fun jquery(selector: String): JQuery
 你可以在应用程序中使用如下所示的这些声明：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun main(args: Array<String>) {
     jquery(".toggle-button").click {
@@ -855,4 +888,5 @@ fun main(args: Array<String>) {
     }
 }
 ```
+
 </div>
