@@ -212,12 +212,12 @@ for (item: Int in ints) {
 ```kotlin
 fun main() {
 //sampleStart
-for (i in 1..3) {
-    println(i)
-}
-for (i in 6 downTo 0 step 2) {
-    println(i)
-}
+    for (i in 1..3) {
+        println(i)
+    }
+    for (i in 6 downTo 0 step 2) {
+        println(i)
+    }
 //sampleEnd
 }
 ```
@@ -234,9 +234,9 @@ for (i in 6 downTo 0 step 2) {
 fun main() {
 val array = arrayOf("a", "b", "c")
 //sampleStart
-for (i in array.indices) {
-    println(array[i])
-}
+    for (i in array.indices) {
+        println(array[i])
+    }
 //sampleEnd
 }
 ```
@@ -249,11 +249,11 @@ for (i in array.indices) {
 
 ```kotlin
 fun main() {
-val array = arrayOf("a", "b", "c")
+    val array = arrayOf("a", "b", "c")
 //sampleStart
-for ((index, value) in array.withIndex()) {
-    println("the element at $index is $value")
-}
+    for ((index, value) in array.withIndex()) {
+        println("the element at $index is $value")
+    }
 //sampleEnd
 }
 ```

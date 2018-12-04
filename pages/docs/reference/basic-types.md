@@ -494,8 +494,8 @@ val text = """
 ```kotlin
 fun main() {
 //sampleStart
-val i = 10
-println("i = $i") // 输出“i = 10”
+    val i = 10
+    println("i = $i") // 输出“i = 10”
 //sampleEnd
 }
 ```
@@ -509,8 +509,8 @@ println("i = $i") // 输出“i = 10”
 ```kotlin
 fun main() {
 //sampleStart
-val s = "abc"
-println("$s.length is ${s.length}") // 输出“abc.length is 3”
+    val s = "abc"
+    println("$s.length is ${s.length}") // 输出“abc.length is 3”
 //sampleEnd
 }
 ```

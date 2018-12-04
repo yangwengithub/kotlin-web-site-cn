@@ -141,13 +141,13 @@ typealias ClickHandler = (Button, ClickEvent) -> Unit
 
 
 
-    ```kotlin
-    class IntTransformer: (Int) -> Int {
-        override operator fun invoke(x: Int): Int = TODO()
-    }
-    
-    val intFunction: (Int) -> Int = IntTransformer() 
-    ```
+```kotlin
+class IntTransformer: (Int) -> Int {
+    override operator fun invoke(x: Int): Int = TODO()
+}
+
+val intFunction: (Int) -> Int = IntTransformer()
+```
 
 
 

@@ -205,9 +205,14 @@ class DontCreateMe private constructor () { ... }
 > **注意**：在 JVM 上，如果主构造函数的所有的参数都有默认值，编译器会生成
 > 一个额外的无参构造函数，它将使用默认值。这使得
 > Kotlin 更易于使用像 Jackson 或者 JPA 这样的通过无参构造函数创建类的实例的库。
-> ``` kotlin
-> class Customer(val customerName: String = "")
-> ```
+
+>
+>
+>```kotlin
+>class Customer(val customerName: String = "")
+>```
+>
+>
 
 {:.info}
 

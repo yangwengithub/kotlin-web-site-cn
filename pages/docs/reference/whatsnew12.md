@@ -31,6 +31,7 @@ title: "Kotlin 1.2 的新特性"
 在公共代码中：
 
 
+
 ```kotlin
 // 预期平台相关 API:
 expect fun hello(world: String): String
@@ -48,7 +49,9 @@ expect class URL(spec: String) {
 ```
 
 
+
 在 JVM 平台代码中：
+
 
 
 ```kotlin
@@ -58,6 +61,7 @@ actual fun hello(world: String): String =
 // 使用既有平台相关实现：
 actual typealias URL = java.net.URL
 ```
+
 
 
 关于构建多平台项目的详细信息与步骤，请参见其[documentation](http://kotlinlang.org/docs/reference/multiplatform.html)<!--
@@ -71,12 +75,14 @@ actual typealias URL = java.net.URL
 -->使用 `arrayOf` 函数：
 
 
+
 ```kotlin
 @CacheConfig(cacheNames = ["books", "default"])
 public class BookRepositoryImpl {
     // ……
 }
 ```
+
 
 
 该数组字面值语法仅限于注解参数。
@@ -106,6 +112,8 @@ fun main(args: Array<String>) {
 }
 ```
 
+
+
 ### 检查 lateinit 变量是否已初始化
 
 现在可以通过属性引用的 `isInitialized` 来检测该 lateinit var 是否已初始化：
@@ -117,11 +125,11 @@ class Foo {
     lateinit var lateinitVar: String
 
     fun initializationLogic() {
-        //sampleStart
+//sampleStart
         println("isInitialized before assignment: " + this::lateinitVar.isInitialized)
         lateinitVar = "value"
         println("isInitialized after assignment: " + this::lateinitVar.isInitialized)
-        //sampleEnd
+//sampleEnd
     }
 }
 
@@ -129,6 +137,8 @@ fun main(args: Array<String>) {
 	Foo().initializationLogic()
 }
 ```
+
+
 
 ### 内联函数带有默认函数式参数
 
@@ -151,6 +161,8 @@ fun main(args: Array<String>) {
 }
 ```
 
+
+
 ### 源自显式类型转换的信息会用于类型推断
 
  Kotlin 编译器现在可将类型转换信息用于类型推断。如果你调用一个<!--
@@ -161,9 +173,11 @@ fun main(args: Array<String>) {
  Android API 级别 26中的泛型 `findViewById` 调用：
 
 
+
 ```kotlin
 val button = findViewById(R.id.button) as Button
 ```
+
 
 
 ### 智能类型转换改进
@@ -176,12 +190,12 @@ val button = findViewById(R.id.button) as Button
 ```kotlin
 fun countFirst(s: Any): Int {
 //sampleStart
-  val firstChar = (s as? CharSequence)?.firstOrNull()
-  if (firstChar != null)
+    val firstChar = (s as? CharSequence)?.firstOrNull()
+    if (firstChar != null)
     return s.count { it == firstChar } // s: Any 会智能转换为 CharSequence
-    
-  val firstItem = (s as? Iterable<*>)?.firstOrNull()
-  if (firstItem != null)
+
+    val firstItem = (s as? Iterable<*>)?.firstOrNull()
+    if (firstItem != null)
     return s.count { it == firstItem } // s: Any 会智能转换为 Iterable<*>
 //sampleEnd
     return -1
@@ -198,13 +212,15 @@ fun main(args: Array<String>) {
 }
 ```
 
+
+
 智能转换现在也允许用于在 lambda 表达式中局部变量，只要这些局部变量仅在 lambda 表达式之前修改即可：
 
 
 
 ```kotlin
 fun main(args: Array<String>) {
-    //sampleStart
+//sampleStart
     val flag = args.size == 0
     var x: String? = null
     if (flag) x = "Yahoo!"
@@ -214,9 +230,11 @@ fun main(args: Array<String>) {
             println(x.length) // x 会智能转换为 String
         }
     }
-    //sampleEnd
+//sampleEnd
 }
 ```
+
+
 
 ### 支持 ::foo 作为 this::foo 的简写
 
@@ -254,9 +272,11 @@ fun main(args: Array<String>) {
 -->数组工厂函数：
 
 
+
 ```kotlin
 foo(items = *intArrayOf(1))
 ```
+
 
 
 在这种情况下有一项防止性能下降的优化可以消除冗余的数组创建。
@@ -298,7 +318,7 @@ foo(items = *intArrayOf(1))
 
 ```kotlin
 fun main(args: Array<String>) {
-    //sampleStart
+//sampleStart
     val items = (1..9).map { it * it }
 
     val chunkedIntoLists = items.chunked(4)
@@ -306,7 +326,7 @@ fun main(args: Array<String>) {
     val windowed = items.windowed(4)
     val slidingAverage = items.windowed(4) { it.average() }
     val pairwiseDifferences = items.zipWithNext { a, b -> b - a }
-    //sampleEnd
+//sampleEnd
 
     println("items: $items\n")
 
@@ -318,6 +338,8 @@ fun main(args: Array<String>) {
 }
 ```
 
+
+
 ### fill、replaceAll、shuffle/shuffled
 
 添加了一些用于操作列表的扩展函数：`MutableList` 的 `fill`、 `replaceAll` 与 `shuffle` ，
@@ -327,7 +349,7 @@ fun main(args: Array<String>) {
 
 ```kotlin
 fun main(args: Array<String>) {
-    //sampleStart
+//sampleStart
     val items = (1..5).toMutableList()
     
     items.shuffle()
@@ -338,9 +360,11 @@ fun main(args: Array<String>) {
     
     items.fill(5)
     println("Items filled with 5: $items")
-    //sampleEnd
+//sampleEnd
 }
 ```
+
+
 
 ### kotlin-stdlib 中的数学运算
 
@@ -458,9 +482,11 @@ Kotlin 1.2 引入了一些使用  `BigInteger` 与 `BigDecimal` 运算以及由�
 -->在 Gradle 中使用以下代码片段：
 
 
+
 ```groovy
 compileKotlin {
     kotlinOptions.allWarningsAsErrors = true
 }
 ```
+
 
