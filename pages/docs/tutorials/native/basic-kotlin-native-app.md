@@ -1,8 +1,8 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "A Basic Kotlin/Native Application"
-description: "A look at how to compile our first Kotlin/Native application"
+title:  "基本 Kotlin/Native 应用程序"
+description: "看看如何编译我们的第一个 Kotlin/Native 应用程序"
 authors: Hadi Hariri 
 date: 2017-12-03
 showAuthorInfo: false
