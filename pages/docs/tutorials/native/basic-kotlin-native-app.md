@@ -9,7 +9,7 @@ showAuthorInfo: false
 ---
 
 
-In this tutorial we'll see how to
+在本教程中我们将会学习到：
 
 * [Obtain the Kotlin/Native compiler](#obtaining-the-compiler)
 * [Write the application](#creating-hello-kotlin)
