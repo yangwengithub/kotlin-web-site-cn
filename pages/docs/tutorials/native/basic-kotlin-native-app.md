@@ -19,7 +19,8 @@ showAuthorInfo: false
 
 ## 获取编译器
 
-Kotlin/Native 是可以运行在 macOS ， Linux 和 Windows 上的。 由于我们是工作在不同的操作系统上，因此需要正确地下载对应的编译器。 虽然跨平台交叉编译是可行的（例如使用一个系统编译成另一个系统的可执行文件），在第一次的教程当中
+Kotlin/Native 是可以运行在 macOS ， Linux 和 Windows 上的。 由于我们是工作在不同的操作系统上，因此需要正确地下载
+对应的编译器。 虽然跨平台交叉编译是可行的（例如使用一个系统编译成另一个系统的可执行文件），在第一次的教程当中
 我们将会编译出与当前运行的操作系统一致的结果。本例中使用的将会是 macOS 。
 
 我们可以从 [GitHub releases page](https://github.com/JetBrains/kotlin-native/releases) 获取到最新版的编译器。
@@ -45,7 +46,8 @@ fun main(args: Array<String>) {
 
 ## 编译和测试输出
 
-Kotlin 编译器使用的是一种叫 [LLVM](https://en.wikipedia.org/wiki/LLVM) 的技术来支持多个平台。 LLVM 需要中介码（或者被称为 IR ）作为输入。 IR 是一种字节码的代表，该文件是比特流文件格式。
+Kotlin 编译器使用的是一种叫 [LLVM](https://en.wikipedia.org/wiki/LLVM) 的技术来支持多个平台。 LLVM 需要中介码（或者被称为 IR ）作为输入。 IR 
+是一种字节码的代表，该文件是比特流文件格式。
 
 ![Compiler Diagram]({{ url_for('tutorial_img', filename='native/basic-kotlin-native/llvm-diagram.png')}})
 
@@ -59,7 +61,7 @@ kotlinc-native hello.kt
 
 这是告诉编译器来编译 `hello.kt` 文件中的源码。
 
-编译器第一次运行的时候会下载一些相关的依赖，因此第一次编译的时候会花费较长的时间。如果所有的步骤都正确执行了，那么输出的文件 
+编译器第一次运行的时候会下载一些相关的依赖，因此第一次编译的时候会花费较长的时间。如果所有的步骤都正确执行了，那么输出的文件
 应该会是 `program.kexe` 。
 
 该文件是针对我们目标平台所实际生成的二进制文件。 编译器为我们提供了一系列的选项，其中一个
@@ -71,7 +73,8 @@ kotlinc-native -o first hello.kt
 
 这样生成的文件就应该是： `first.kexe` 。
 
-后缀名是无法进行修改的，因为这取决于目标平台，但是我们仍然可以使用常用的系统命令来把这些可执行文件重命名为任何喜欢的名字。
+后缀名是无法进行修改的，因为这取决于目标平台，但是我们仍然可以使用
+常用的系统命令来把这些可执行文件重命名为任何喜欢的名字。
 
 ## 运行应用程序
 
