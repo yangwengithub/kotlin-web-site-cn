@@ -32,7 +32,7 @@ apply plugin: 'kotlin-kapt'
 
 ```groovy
 plugins {
-    id "org.jetbrains.kotlin.kapt" version "1.3.10"
+    id "org.jetbrains.kotlin.kapt" version "1.3.11"
 }
 ```
 
