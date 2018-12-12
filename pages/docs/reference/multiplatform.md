@@ -85,7 +85,7 @@ internal actual fun writeLogMessage(message: String, logLevel: LogLevel) {
 
 ## 多平台库
 
-公共代码可以依赖于一组涵盖日常任务的库，例如 [HTTP](http s://ktor.kotlincn.net/clients/http-client/multiplatform.html)、 [serialization](https://github.com/Kotlin/kotlinx.serialization) 以及[协程<!--
+公共代码可以依赖于一组涵盖日常任务的库，例如 [HTTP](https://ktor.kotlincn.net/clients/http-client/multiplatform.html)、 [serialization](https://github.com/Kotlin/kotlinx.serialization) 以及[协程<!--
 -->管理](https://github.com/Kotlin/kotlinx.coroutines)。此外，丰富的标准库在所有平台上都可用。
 
 你可以随时编写<!--

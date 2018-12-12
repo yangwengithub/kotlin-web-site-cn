@@ -167,7 +167,7 @@ public val table: Map<String, Int>
 已知值的属性可以使用 *const*{: .keyword } 修饰符标记为 _编译期常量_。
 这些属性需要满足以下要求：
 
-  * 位于顶层或者是 [*object*{: .keyword } 声明](object-declarations.html#object-declarations) 或 [*companion object*{: .keyword }](object-declarations.html#companion-objects) 的一个成员
+  * 位于顶层或者是 [*object*{: .keyword } 声明](object-declarations.html#对象声明) 或 [*companion object*{: .keyword }](object-declarations.html#伴生对象) 的一个成员
   * 以 `String` 或原生类型值初始化
   * 没有自定义 getter
 
