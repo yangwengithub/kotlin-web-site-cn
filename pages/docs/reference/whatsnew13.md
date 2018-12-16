@@ -357,19 +357,19 @@ println("x: $x, y: $y, z: $z, range: $range")
 
 ## @JvmDefault
 
->`@JvmDefault` 从 Kotlin 1.3 开始支持，而且现阶段是**实验性**的。更多详情请看[这里](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html)。
+> `@JvmDefault` 仅在 Kotlin 1.3 起才可用，并且目前是**实验性**的。详见其[参考文档页](/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html)。
 {:.note}
 
 
-Kotlin 兼容很多 Java 版本，包含接口中不允许方法默认实现的 Java6 和 Java7 。方便起见，Kotlin 编译器可以解决这个问题，但是这个解决方案将不会和 Java8 中的  `default`  方法兼容。
+Kotlin 兼容很多 Java 版本，其中包括不支持默认方法的 Java 6 与 Java 7。为了方便起见，Kotlin 编译器可以变通突破这个限制，不过这个变通方法与 Java 8 引入的 `default` 方法并不兼容。
 
-对于和 Java 的交互，这可能是个问题，所以 Kotlin 1.3 引入了 `@JvmDefalut` 注解。被该注解标记的方法将会被 JVM 编译为 `default` 方法。
+这可能会是 Java 互操作性的一个问题，因此 Kotlin 1.3 引入了 `@JvmDefault` 注解。以此注解标注的方法会生成为 JVM 平台的 `default` 方法：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 interface Foo {
-    // 将会被编译为默认方法
+    // 会生成为“default”方法
     @JvmDefault
     fun foo(): Int = 42
 }
@@ -377,14 +377,14 @@ interface Foo {
 
 </div>
 
-> 注意！ 将你的 API 标记为 `@JvmDefault` 将会对二进制兼容性有严重影响。请确保你仔细阅读了[参考页面](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html)，在你的产品中使用`@Default`之前。
+> 警告！以 `@JvmDefault` 注解标注的 API 会对二进制兼容性产生严重影响。在生产中使用 `@JvmDefault` 之前，请务必仔细阅读其[参考文档页](/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html)。
 {:.note}
 
 # 标准库
 
-## 多平台随机数
+## 多平台 `Random`
 
-在 Kotlin 1.3 之前，没有办法在所有平台上统一来生成随机数 — 我们只能采取依赖平台的特定解决方案，比如 JVM 上的 `java.util.Random`。这个版本将会解决这个问题，通过引入 `kotlin.random.Random`，这是个支持所有平台的类：
+在 Kotlin 1.3 之前没有在所有平台生成随机数的统一方式——我们不得不借助平台相关的解决方案，如 JVM 平台的 `java.util.Random`。这个版本通过引入在所有平台都可用的 `kotlin.random.Random` 类来解决这一问题。
 
 <div class="sample" data-min-compiler-version="1.3" markdown="1" theme="idea">
 
@@ -393,7 +393,7 @@ import kotlin.random.Random
 
 fun main() {
 //sampleStart
-    val number = Random.nextInt(42)  // 数字区间 [0, limit)
+    val number = Random.nextInt(42)  // 数字在区间 [0, 上限) 内
     println(number)
 //sampleEnd
 }
@@ -401,14 +401,14 @@ fun main() {
 
 </div>
 
-## isNullOrEmpty 与 orEmpty
+## isNullOrEmpty 与 orEmpty 扩展
 
-某些类型的 `isNullOrEmpty` 和 `orEmpty` 扩展函数已经存在于标准库中，对于前者，如果函数接受者是 `null`或者为空将会返回 `true` ；对于后者， 如果接收者是 `null` ，将会返回一个空实例。
-Kotlin 1.3 为 `collections`、`maps` 和对象数组提供了类似的扩展函数。
+一些类型的 `isNullOrEmpty` 与 `orEmpty` 扩展已经存在于标准库中。如果接收者是 `null` 或空容器，第一个函数返回 `true`；而如果接收者是 `null`，第二个函数回退为空容器实例。
+Kotlin 1.3 为集合、映射以及对象数组提供了类似的扩展。
 
-## 非空数组间拷贝元素
+## 在两个现有数组间复制元素
 
-对于非空数组类型，包括无符号数组类型，函数 `array.copyInto(targetArray, targetOffset, startIndex, endIndex)` 使得数组拷贝在 Kotlin 中更加简单。
+为包括无符号整型数组在内的现有数组类型新增的函数 `array.copyInto(targetArray, targetOffset, startIndex, endIndex)` 使在纯 Kotlin 中实现基于数组的容器更容易。
 
 <div class="sample" data-min-compiler-version="1.3" markdown="1" theme="idea">
 
@@ -429,7 +429,7 @@ fun main() {
 
 ## associateWith
 
-对于一个 list 一个非常常见的场景是，希望通过把 list 的每个元素作为 key，然后和某个 value 关联起来，来构建一个 map。这可以通过 `associate { it to getValue(it) }` 函数来完成，但是现在我们引入了一个更为效率和便捷的实现方式：`keys.associateWith { getValue(it) }`。
+一个很常见的情况是，有一个键的列表，希望通过将其中的每个键与某个值相关联来构建映射。以前可以通过 `associate { it to getValue(it) }` 函数来实现，不过现在我们引入了一种更高效、更易读的替代方式：`keys.associateWith { getValue(it) }`。
 
 <div class="sample" data-min-compiler-version="1.3" markdown="1" theme="idea">
 
@@ -445,9 +445,9 @@ fun main() {
 
 </div>
 
-## ifEmpty 与 ifBlank
+## ifEmpty 与 ifBlank 函数
 
-Collections, maps, object arrays, char sequence 和 sequence 现在都有 `ifEmpty` 函数，用于指定一个默认值，当接收者为空时：
+集合、映射、对象数组、字符序列以及序列现在都有一个 `ifEmpty` 函数，它可以指定一个备用值，当接收者为空容器时以该值代替接收者使用：
 
 <div class="sample" data-min-compiler-version="1.3" markdown="1" theme="idea">
 
@@ -469,7 +469,7 @@ fun main() {
 
 </div>
 
-Char sequences 和 strings 还额外拥有 `ifBlank` 扩展，和  `ifEmpty` 功能类似，但是用于检查一个 string 是否全是空格。
+此外，字符序列与字符串还有一个 `ifBlank` 扩展，它与 `ifEmpty` 类似，只是会检测字符串是否全部都是空白符而不只是空串。
 
 <div class="sample" data-min-compiler-version="1.3" markdown="1" theme="idea">
 
