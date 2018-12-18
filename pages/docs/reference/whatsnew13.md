@@ -506,7 +506,7 @@ Kotlin 1.3 在 IDE 中引入了代码[推荐风格](coding-conventions.html)支�
 
 [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization) 是一个提供支持多平台的序列化/反序列化的库。之前作为一个独立的库，从 Kotlin 1.3 起，它将会和其他编译器插件一样，包含在 Kotlin 编译器发行版中。主要区别在于，你不在需要自行关注 IDE 的序列化插件和 Kotlin IDE 插件的兼容性问题：因为 Kotlin IDE 插件已经支持序列化！
 
-具体详情查看[这里](https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/eap13.md)。
+详见[这里](https://github.com/Kotlin/kotlinx.serialization#current-project-status)。
 
 > 值得注意的是，即便 kotlinx.serialization  包含在 Kotlin 编译器发行版中，它仍是一个**实验性**功能。
 {:.note}
