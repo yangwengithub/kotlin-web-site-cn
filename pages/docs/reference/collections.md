@@ -84,7 +84,7 @@ val item = rwList.firstOrNull()
 
 …… 以及所有你所期望的实用工具，例如 sort、zip、fold、reduce 等等。
 
-It's important to note, that the operations on readonly collections which return a modified collection (like `+`, `filter`, `drop`, etc.) do not create their results atomically, therefore the results are not safe to use from a different thread without proper synchronization.
+非常值得注意的是，对只读集合返回修改后的集合的操作（例如 `+`、 `filter`、 `drop` 等）并不会以原子方式创建其结果，因此如果没有合适的同步机制，在不同的线程中使用其结果是不安全的。
 
 Map 遵循同样模式。它们可以容易地实例化与访问，像这样：
 
