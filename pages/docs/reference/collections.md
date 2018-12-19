@@ -84,6 +84,8 @@ val item = rwList.firstOrNull()
 
 …… 以及所有你所期望的实用工具，例如 sort、zip、fold、reduce 等等。
 
+It's important to note, that the operations on readonly collections which return a modified collection (like `+`, `filter`, `drop`, etc.) do not create their results atomically, therefore the results are not safe to use from a different thread without proper synchronization.
+
 Map 遵循同样模式。它们可以容易地实例化与访问，像这样：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
