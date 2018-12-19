@@ -487,42 +487,42 @@ fun main() {
 
 ## 反射中的密封类
 
-我们向 `kotlin-reflect` 添加了一个新的 API ： `KClass.sealedSubclasses`，用于列出所有密封类的子类型。
+我们在 `kotlin-reflect` 中添加了一个新的 API，可以列出密封（`sealed`）类的所有直接子类型，即 `KClass.sealedSubclasses`。
 
-## 微小的改变
+## 小改动
 
--  `Boolean` 类型现在支持伴生对象。
-- `Any?.hashCode()`  扩展函数会在 `null` 的时候返回 0。
-- `Char` 类型现在提供了 `MIN_VALUE`/`MAX_VALUE` 常量。
-- `SIZE_BYTES` 和  `SIZE_BITS` 会作为原生类型伴生对象常量。
+* `Boolean` 类型现在有伴生对象了。
+* `Any?.hashCode()` 扩展函数对 `null` 返回 0。
+* `Char` 现在提供了 `MIN_VALUE`/`MAX_VALUE` 常量。
+* 原生类型伴生对象中的常量 `SIZE_BYTES` 与  `SIZE_BITS`。
 
 # 工具
 
 ## IDE 中的代码风格支持
 
-Kotlin 1.3 在 IDE 中引入了代码[推荐风格](coding-conventions.html)支持。具体迁移指南查看[这里](code-style-migration-guide.html)。
+Kotlin 1.3 在 IDE 中引入了对[推荐代码风格](coding-conventions.html)的支持。其迁移指南参见[这里](code-style-migration-guide.html)。
 
 ## kotlinx.serialization
 
-[kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization) 是一个提供支持多平台的序列化/反序列化的库。之前作为一个独立的库，从 Kotlin 1.3 起，它将会和其他编译器插件一样，包含在 Kotlin 编译器发行版中。主要区别在于，你不在需要自行关注 IDE 的序列化插件和 Kotlin IDE 插件的兼容性问题：因为 Kotlin IDE 插件已经支持序列化！
+[kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization) 是一个在 Kotlin 中为（反）序列化对象提供多平台支持的库。以前，它是一个独立项目，不过自 Kotlin 1.3 起，它与其他编译器插件一样随 Kotlin 编译器发行版一起发行。其主要区别在于，无需人为关注序列化 IDE 插件与正在使用的 Kotlin IDE 插件是否兼容了：现在 Kotlin IDE 插件已经包含了序列化支持！
 
 详见[这里](https://github.com/Kotlin/kotlinx.serialization#current-project-status)。
 
-> 值得注意的是，即便 kotlinx.serialization  包含在 Kotlin 编译器发行版中，它仍是一个**实验性**功能。
+> 请注意，尽管 kotlinx.serialization 现在随 Kotlin 编译器发行版一起发行，但它仍是一个**实验性的**特性。
 {:.note}
 
 ## 脚本更新
 
-> 注意，脚本是个**实验性**功能，对于现有的 API, 并没有任何兼容性的保障。
+> 请注意，脚本支持是一项**实验性的**特性，这意味着不会对 API 提供兼容性保证。
 {:.note}
 
-Kotlin 1.3 将继续完善 script API，引入了一些自定义脚本实验性的支持，比如添加额外属性，提供静态或者动态依赖等。
+Kotlin 1.3 继续发展与改进脚本 API，为脚本定制引入了一些实验性支持，例如添加外部属性、提供静态或动态依赖等等。
 
-更详细的细节，请参考[KEEP-75](https://github.com/Kotlin/KEEP/blob/master/proposals/scripting-support.md)。
+关于其他细节，请参考 [KEEP-75](https://github.com/Kotlin/KEEP/blob/master/proposals/scripting-support.md)。
 
 ## 草稿文件支持
 
-Kotlin 1.3 引入了对可运行的**草稿文件**支持。**草稿文件**是一个以 .kts 扩展名结尾的 kotlin 脚本文件，你可以在编辑器里直接运行和获取计算结果。
+Kotlin 1.3 引入了对可运行的*草稿文件（scratch files）*的支持。*草稿文件*是一个扩展名为 .kts 的 kotlin 脚本文件，可以在编辑器中直接运行并获取求值结果。
 
-更多细节请关注[Scratches documentation](https://www.jetbrains.com/help/idea/scratches.html)。
+更多细节请参考通用[草稿文件文档](https://www.jetbrains.com/help/idea/scratches.html)。
 
