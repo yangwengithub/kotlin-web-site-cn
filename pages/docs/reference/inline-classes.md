@@ -10,9 +10,9 @@ title: "Inline classes"
 > 内联类仅在 Kotlin 1.3 之后版本可用，目前还是*实验性的*。关于详情请参见[下文](#experimental-status-of-inline-classes)
 {:.note}
 
-有时候，业务逻辑需要围绕某种类型创建包装器。然而，由于额外的堆内存分配问题，它会引入运行时的性能开销。此外，如果被包装的类型是原生类型，性能的损失是很糟糕的，因为原生类型通常在运行时就进行了大量优化，然而他们的包装器却没有得到任何特殊的处理。 
+有时候，业务逻辑需要围绕某种类型创建包装器。然而，由于额外的堆内存分配问题，它会引入运行时的性能开销。此外，如果被包装的类型是原生类型，性能的损失是很糟糕的，因为原生类型通常在运行时就进行了大量优化，然而他们的包装器却没有得到任何特殊的处理。
 
-为了解决这类问题，Kotlin引入了一种被称为 `内联类` 的特殊类，它通过在类的前面定义一个 `inline` 修饰符来声明：
+为了解决这类问题，Kotlin 引入了一种被称为 `内联类` 的特殊类，它通过在类的前面定义一个 `inline` 修饰符来声明：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -22,7 +22,7 @@ inline class Password(val value: String)
 
 </div>
 
-内联类必须含有唯一的一个属性在主构造函数中初始化。在运行时，将使用这个唯一属性来表示内联类的实例 (关于运行时的内部表达请参阅 [下文](#representation))：
+内联类必须含有唯一的一个属性在主构造函数中初始化。在运行时，将使用这个唯一属性来表示内联类的实例（关于运行时的内部表达请参阅[下文](#representation)）：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -34,11 +34,11 @@ val securePassword = Password("Don't try this in production")
 
 </div>
 
-这就是内联类的主要特性，它灵感来源于 “inline” 这个名称：类的数据被 “内联”到该类使用的地方(类似于 [内联函数](inline-functions.html) 中的代码被内联到该函数调用的地方)。
+这就是内联类的主要特性，它灵感来源于 “inline” 这个名称：类的数据被 “内联”到该类使用的地方（类似于[内联函数](inline-functions.html)中的代码被内联到该函数调用的地方）。
 
 ## 成员
 
-内联类支持普通类中的一些功能。特别是，内联类可以声明属性与函数:
+内联类支持普通类中的一些功能。特别是，内联类可以声明属性与函数：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -61,11 +61,11 @@ fun main() {
 
 </div>
 
-然而，内联类的成员也有一些限制:
+然而，内联类的成员也有一些限制：
 * 内联类不能含有 *init*{: .keyword } 代码块
 * 内联类不能含有 *inner*{: .keyword } 类
 * 内联类不能含有[幕后字段](properties.html#幕后字段)
-    * 因此，内联类只能含有简单的计算属性(不能含有延迟初始化/委托属性) 
+    * 因此，内联类只能含有简单的计算属性（不能含有延迟初始化/委托属性）
 
 
 ## 继承
@@ -95,7 +95,7 @@ fun main() {
 
 ## 表示方式
 
-在生成的代码中，Kotlin编译器为每个内联类保留一个包装器。内联类的实例可以在运行时表示为包装器或者基础类型。这就类似于 `Int` 可以[表示](basic-types.html#表示方式)为原生类型 `int` 或者包装器 `Integer`。
+在生成的代码中，Kotlin 编译器为每个内联类保留一个包装器。内联类的实例可以在运行时表示为包装器或者基础类型。这就类似于 `Int` 可以[表示](basic-types.html#表示方式)为原生类型 `int` 或者包装器 `Integer`。
 
 为了生成性能最优的代码，Kotlin 编译更倾向于使用基础类型而不是包装器。 然而，有时候使用包装器是必要的。一般来说，只要将内联类用作另一种类型，它们就会被装箱。
 
@@ -121,7 +121,7 @@ fun main() {
     asInterface(f) // 装箱操作: 用作类型 I
     asNullable(f)  // 装箱操作: 用作不同于 Foo 的可空类型 Foo?
     
-    // 在下面这里例子中，'f' 首先会被装箱(当它作为参数传递给 'id' 函数时)然后又被拆箱(当它从'id'函数中被返回时)
+    // 在下面这里例子中，'f' 首先会被装箱（当它作为参数传递给 'id' 函数时）然后又被拆箱（当它从'id'函数中被返回时）
     // 最后， 'c' 中就包含了被拆箱后的内部表达(也就是 '42')， 和 'f' 一样 
     val c = id(f)  
 }
@@ -140,18 +140,19 @@ fun main() {
 ```kotlin
 inline class UInt(val x: Int)
 
-// 在JVM平台上被表示为'public final void compute(int x)'
+// 在 JVM 平台上被表示为'public final void compute(int x)'
 fun compute(x: Int) { }
 
-// 同理，在JVM平台上也被表示为'public final void compute(int x)'!
+// 同理，在 JVM 平台上也被表示为'public final void compute(int x)'！
 fun compute(x: UInt) { }
 ```
 
 </div>
 
-为了缓解这种问题，一般会通过在函数名后面拼接一些稳定的哈希码来重命名函数。 因此, `fun compute(x: UInt)` 将会被表示为 `public final void compute-<hashcode>(int x)`, 以此来解决冲突的问题。
+为了缓解这种问题，一般会通过在函数名后面拼接一些稳定的哈希码来重命名函数。 因此，`fun compute(x: UInt)` 将会被表示为 `public final void compute-<hashcode>(int x)`，以此来解决冲突的问题。
 
-> 请注意在Java中 `-` 是一个 *无效的* 符号，也就是说在Java中不能调用使用内联类作为形参的函数。{:.note}
+> 请注意在 Java 中 `-` 是一个 *无效的* 符号，也就是说在 Java 中不能调用使用内联类作为形参的函数。
+{:.note}
 
 ## 内联类与类型别名
 
@@ -194,7 +195,7 @@ fun main() {
 
 要想移除警告，你必须通过对 `kotlinc` 指定 `-XXLanguage:+InlineClasses`参数来选择使用该实验性的特性。
 
-### 在Gradle中启用内联类:
+### 在 Gradle 中启用内联类：
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
 ``` groovy
@@ -206,9 +207,9 @@ compileKotlin {
 
 </div>
 
-关于详细信息，请参见[编译器选项](using-gradle.html#编译器选项)。关于[多平台项目](whatsnew13.html#多平台项目)的设置，请参见[使用Gradle构建多平台项目](building-mpp-with-gradle.html#language-settings)章节。
+关于详细信息，请参见[编译器选项](using-gradle.html#编译器选项)。关于[多平台项目](whatsnew13.html#多平台项目)的设置，请参见[使用 Gradle 构建多平台项目](building-mpp-with-gradle.html#language-settings)章节。
 
-### 在Maven中启用内联类
+### 在 Maven 中启用内联类
 
 <div class="sample" markdown="1" theme="idea" mode='xml'>
 
