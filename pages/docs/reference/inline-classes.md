@@ -7,7 +7,7 @@ title: "Inline classes"
 
 # 内联类
 
-> 内联类仅在Kotlin 1.3之后版本可用，目前还是*实验性的*。关于详情请参见[下文](#experimental-status-of-inline-classes)
+> 内联类仅在 Kotlin 1.3 之后版本可用，目前还是*实验性的*。关于详情请参见[下文](#experimental-status-of-inline-classes)
 {:.note}
 
 有时候，业务逻辑需要围绕某种类型创建包装器。然而，由于额外的堆内存分配问题，它会引入运行时的性能开销。此外，如果被包装的类型是原生类型，性能的损失是很糟糕的，因为原生类型通常在运行时就进行了大量优化，然而他们的包装器却没有得到任何特殊的处理。 
@@ -27,8 +27,8 @@ inline class Password(val value: String)
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-// 不存在'Password'类的真实实例对象
-// 在运行时，'securePassword'仅仅包含'String'
+// 不存在 'Password' 类的真实实例对象
+// 在运行时，'securePassword' 仅仅包含 'String'
 val securePassword = Password("Don't try this in production") 
 ```
 
@@ -54,8 +54,8 @@ inline class Name(val s: String) {
 
 fun main() {
     val name = Name("Kotlin")
-    name.greet() // `greet`方法会作为一个静态方法被调用
-    println(name.length) // 属性的get方法会作为一个静态方法被调用
+    name.greet() // `greet` 方法会作为一个静态方法被调用
+    println(name.length) // 属性的 get 方法会作为一个静态方法被调用
 }
 ```
 
@@ -95,9 +95,9 @@ fun main() {
 
 ## 表示方式
 
-在生成的代码中，Kotlin编译器为每个内联类保留一个包装器。内联类的实例可以在运行时表示为包装器或者基础类型。这就类似于 `Int` 可以[表示](basic-types.html#表示方式)为原生类型 `int` 或者包装器 `Integer` 。
+在生成的代码中，Kotlin编译器为每个内联类保留一个包装器。内联类的实例可以在运行时表示为包装器或者基础类型。这就类似于 `Int` 可以[表示](basic-types.html#表示方式)为原生类型 `int` 或者包装器 `Integer`。
 
-为了生成性能最优的代码，Kotlin编译更倾向于使用基础类型而不是包装器。 然而，有时候使用包装器是必要的。一般来说，只要将内联类用作另一种类型，它们就会被装箱。
+为了生成性能最优的代码，Kotlin 编译更倾向于使用基础类型而不是包装器。 然而，有时候使用包装器是必要的。一般来说，只要将内联类用作另一种类型，它们就会被装箱。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -116,13 +116,13 @@ fun <T> id(x: T): T = x
 fun main() {
     val f = Foo(42) 
     
-    asInline(f)    // 拆箱操作: 用作Foo本身
-    asGeneric(f)   // 装箱操作: 用作泛型类型T
-    asInterface(f) // 装箱操作: 用作类型I
-    asNullable(f)  // 装箱操作: 用作不同于Foo的可空类型Foo?
+    asInline(f)    // 拆箱操作: 用作 Foo 本身
+    asGeneric(f)   // 装箱操作: 用作泛型类型 T
+    asInterface(f) // 装箱操作: 用作类型 I
+    asNullable(f)  // 装箱操作: 用作不同于 Foo 的可空类型 Foo?
     
-    // 在下面这里例子中，'f'首先会被装箱(当它作为参数传递给'id'函数时)然后又被拆箱(当它从'id'函数中被返回时)
-    // 最后， 'c'中就包含了被拆箱后的内部表达(也就是 '42')， 和 'f' 一样 
+    // 在下面这里例子中，'f' 首先会被装箱(当它作为参数传递给 'id' 函数时)然后又被拆箱(当它从'id'函数中被返回时)
+    // 最后， 'c' 中就包含了被拆箱后的内部表达(也就是 '42')， 和 'f' 一样 
     val c = id(f)  
 }
 ```  
@@ -190,7 +190,7 @@ fun main() {
 
 ## 内联类的实验性状态
 
-内联类的设计目前是实验性的，这就是说此特性是正在 *快速变化*的，并且不保证其兼容性。在Kotlin 1.3+中使用内联类时，将会得到一个警告，来表明此特性还是实验性的。
+内联类的设计目前是实验性的，这就是说此特性是正在 *快速变化*的，并且不保证其兼容性。在 Kotlin 1.3+ 中使用内联类时，将会得到一个警告，来表明此特性还是实验性的。
 
 要想移除警告，你必须通过对 `kotlinc` 指定 `-XXLanguage:+InlineClasses`参数来选择使用该实验性的特性。
 
@@ -226,4 +226,4 @@ compileKotlin {
 
 ## 进一步讨论
 
-关于其他技术详细信息和讨论，请参见[内联类的语言提议](https://github.com/Kotlin/KEEP/blob/master/proposals/inline-classes.md)。
+关于其他技术详细信息和讨论，请参见[内联类的语言提议](https://github.com/Kotlin/KEEP/blob/master/proposals/inline-classes.md)
