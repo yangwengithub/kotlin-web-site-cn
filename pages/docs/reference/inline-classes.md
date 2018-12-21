@@ -70,7 +70,7 @@ fun main() {
 
 ## 继承
 
-内联类允许去实现接口
+内联类允许去继承接口
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -91,7 +91,7 @@ fun main() {
 
 </div>
 
-禁止内联类参与类的继承关系中。这就意味着内联类不能继承其他的类而且必须是 *final*{: .keyword }。
+禁止内联类参与到类的继承关系结构中。这就意味着内联类不能继承其他的类而且必须是 *final*{: .keyword }。
 
 ## 表示方式
 
@@ -176,11 +176,11 @@ fun main() {
     val nameInlineClass: NameInlineClass = NameInlineClass("")
     val string: String = ""
 
-    acceptString(nameAlias) // 正确: 传递别名类型的实参替代函数中基础类型的形参
+    acceptString(nameAlias) // 正确: 传递别名类型的实参替代函数中基础类型的形参
     acceptString(nameInlineClass) // 错误: 不能传递内联类的实参替代函数中基础类型的形参
 
     // And vice versa:
-    acceptNameTypeAlias("") // 正确: 传递基础类型的实参替代函数中别名类型的形参
+    acceptNameTypeAlias("") // 正确: 传递基础类型的实参替代函数中别名类型的形参
     acceptNameInlineClass("") // 错误: 不能传递基础类型的实参替代函数中内联类类型的形参
 }
 ```
@@ -206,7 +206,7 @@ compileKotlin {
 
 </div>
 
-关于详细信息，请参见[编译器选项](using-gradle.html#编译器选项)。关于[多平台项目](whatsnew13.html#多平台项目)的设置，请参见[使用Gradle构建多平台项目](building-mpp-with-gradle.html#language-settings) 部分。
+关于详细信息，请参见[编译器选项](using-gradle.html#编译器选项)。关于[多平台项目](whatsnew13.html#多平台项目)的设置，请参见[使用Gradle构建多平台项目](building-mpp-with-gradle.html#language-settings)章节。
 
 ### 在Maven中启用内联类
 
