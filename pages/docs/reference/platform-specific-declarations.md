@@ -2,27 +2,27 @@
 type: doc
 layout: reference
 category: "Other"
-title: "Platform-Specific Declarations"
+title: "平台相关声明"
 ---
 
-## Platform-Specific Declarations
+## 平台相关声明
 
-> Multiplatform projects are an experimental feature in Kotlin 1.2 and 1.3. All of the language
-and tooling features described in this document are subject to change in future Kotlin versions.
+> 多平台项目是 Kotlin 1.2 与 Kotlin 1.3 中的一个实验性特性。本文档中描述的所有语言<!--
+-->与工具特性在未来的 Kotlin 版本中都可能会有所变化。
 {:.note}
 
-One of the key capabilities of Kotlin's multiplatform code is a way for common code to
-depend on platform-specific declarations. In other languages, this can often be accomplished
-by building a set of interfaces in the common code and implementing these interfaces in platform-specific
-modules. However, this approach is not ideal in cases when you have a library on one of the platforms
-that implements the functionality you need, and you'd like to use the API of this library directly
-without extra wrappers. Also, it requires common declarations to be expressed as interfaces, which
-doesn't cover all possible cases.
+Kotlin 多平台代码的一个关键功能是让公共代码能够<!--
+-->依赖平台相关声明的一种方式。在其他语言中，这通常可以通过<!--
+-->在公共代码中构建一组接口并在平台相关模块中实现这些接口来完成<!--
+-->。然而，当在其中某个平台上有一个<!--
+-->实现所需功能的库，并且希望直接使用该库的 API
+而无需额外包装器时，这种方法并不理想。此外，它需要以接口表示公共声明，这<!--
+-->无法覆盖所有可能情况。
 
-As an alternative, Kotlin provides a mechanism of _expected and actual declarations_.
-With this mechanism, a common module can define _expected declarations_, and a platform module
-can provide _actual declarations_ corresponding to the expected ones. 
-To see how this works, let's look at an example first. This code is part of a common module:
+作为替代方案，Kotlin 提供了一种 _预期声明与实际声明_ 的机制。
+利用这种机制，公共模块可以定义 _预期声明_ ，而平台模块<!--
+-->可以提供与预期声明相对应的 _实际声明_ 。
+为了了解其工作机制，我们先来看一个示例。此代码是公共模块的一部分：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -39,7 +39,7 @@ fun main() {
 ```
 </div>
 
-And this is the corresponding JVM module:
+而这是相应的 JVM 模块：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
