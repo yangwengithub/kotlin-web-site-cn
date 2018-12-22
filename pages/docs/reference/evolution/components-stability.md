@@ -16,7 +16,7 @@ title: "不同组件的稳定性"
 *   **稳定增量版本（SIR，Stable Incremental Releases）**：增量版本完全兼容，只会有优化与 bug 修复。可以在[特性版本](kotlin-evolution.html#feature-releases-and-incremental-releases)中进行任何更改。
 
 <a name="fully-stable"></a>
-*   **完全稳定（FS，Fully Stable）**：增量版本完全兼容，特性版本兼容旧版。
+*   **完全稳定（FS，Fully Stable）**：增量版本完全兼容，只会有优化与 bug 修复。特性版本兼容旧版。
 
 对于相同的组件，源代码兼容性与二进制兼容性可以有不同的模式，例如，在二进制格式稳定之前，源代码语言可以达到完全稳定，反之亦然。
 
