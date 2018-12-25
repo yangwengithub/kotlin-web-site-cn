@@ -54,25 +54,25 @@ actual class Foo actual constructor(val bar: String) {
 ```
 </div>
 
-This illustrates several important points:
+这阐明了几个要点：
 
-  * An expected declaration in the common module and its actual counterparts always
-    have exactly the same fully qualified name.
-  * An expected declaration is marked with the `expect` keyword; the actual declaration
-    is marked with the `actual` keyword.
-  * All actual declarations that match any part of an expected declaration need to be marked
-    as `actual`.
-  * Expected declarations never contain any implementation code.
+  * 公共模块中的预期声明与其对应的实际声明始终<!--
+    -->具有完全相同的完整限定名。
+  * 预期声明标有 `expect` 关键字；实际声明<!--
+    -->标有 `actual` 关键字。
+  * 与预期声明的任何部分匹配的所有实际声明都需要标记<!--
+    -->为 `actual`。
+  * 预期声明决不包含任何实现代码。
 
-Note that expected declarations are not restricted to interfaces and interface members.
-In this example, the expected class has a constructor and can be created directly from common code.
-You can apply the `expect` modifier to other declarations as well, including top-level declarations and
-annotations:
+请注意，预期声明并不限于接口与接口成员。
+在本例中，预期的类有一个构造函数，于是可以直接在公共代码中创建该类。
+还可以将 `expect` 修饰符应用于其他声明，包括顶层声明以及<!--
+-->注解：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-// Common
+// 公共
 expect fun formatString(source: String, vararg args: Any): String
 
 expect annotation class Test
@@ -85,13 +85,13 @@ actual typealias Test = org.junit.Test
 ```
 </div>
 
-The compiler ensures that every expected declaration has actual declarations in all platform
-modules that implement the corresponding common module, and reports an error if any actual declarations are 
-missing. The IDE provides tools that help you create the missing actual declarations.
+编译器会确保每个预期声明在实现相应公共模块的所有平台模块中<!--
+-->都具有实际声明，并且如果缺少任何实际声明，编译器都会报错<!--
+-->。IDE 提供了帮助创建所缺失实际声明的工具。
 
-If you have a platform-specific library that you want to use in common code while providing your own
-implementation for another platform, you can provide a typealias to an existing class as the actual
-declaration:
+如果有一个希望用在公共代码中的平台相关的库，同时为其他平台提供自己<!--
+-->的实现，那么可以将现有类的别名作为实际<!--
+-->声明：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
