@@ -147,7 +147,7 @@ We provide the -language-version and -api-version flags that make a new version 
 
 Actively maintained code bases can benefit from getting bug fixes ASAP, without waiting for a full deprecation cycle to complete. Currently such project can enable the -progressive flag and get such fixes enabled even in incremental releases.
 
-All flags are available on the command line as well as [Gradle](../using-gradle.html#compiler-options) and [Maven](../using-maven.html#specifying-compiler-options).
+All flags are available on the command line as well as [Gradle](../using-gradle.html#编译器选项) and [Maven](../using-maven.html#指定编译器选项).
 
 
 ### Evolving the binary format
