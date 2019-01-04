@@ -242,7 +242,7 @@ fun main(args: Array<String>) {
  `this::foo`。这也使在引用外部接收者的成员的 lambda 表达式中使用可调用引用更加方便<!--
 -->。
 
-### 阻断性变更：try 块后可靠智能转换
+### 破坏性变更：try 块后可靠智能转换
 
  Kotlin 以前将 `try` 块中的赋值语句用于块后的智能转换，这可能会破坏类型安全与空安全<!--
 -->并引发运行时故障。这个版本修复了该问题，使智能转换更加严格，但可能会破坏一些<!--
@@ -449,7 +449,7 @@ Kotlin 1.2 引入了一些使用  `BigInteger` 与 `BigDecimal` 运算以及由�
 -->超类型调用的警告：`Super calls to Java default methods are deprecated in JVM target 1.6. Recompile with '-jvm-target 1.8'`（“针对 JVM 1.6 的 Java 默认方法的超类型调用已弃用，请使用‘-jvm-target 1.8’重新编译”）。
 在 Kotlin 1.2 中，这是一个**错误 **，因此这样的代码都需要针对 JVM 1.8 编译。
 
-### 阻断性变更：平台类型 x.equals(null) 的一致行为
+### 破坏性变更：平台类型 x.equals(null) 的一致行为
 
 在映射到 Java 原生类型
 （`Int!`、 `Boolean!`、 `Short!`、 `Long!`、 `Float!`、 `Double!`、 `Char!`）的平台类型上调用 `x.equals(null)`，当 `x` 为 `null` 时错误地返回了 `true`。
@@ -458,7 +458,7 @@ Kotlin 1.2 引入了一些使用  `BigInteger` 与 `BigDecimal` 运算以及由�
 
 要返回到 1.2 之前的行为，请将标志 `-Xno-exception-on-explicit-equals-for-boxed-null` 传给编译器。
 
-### 阻断性变更：修正平台 null 透过内联扩展接收者逃逸
+### 破坏性变更：修正平台 null 透过内联扩展接收者逃逸
 
 在平台类型的空值上调用内联扩展函数并没有检测接收者是否为 null，
 因而允许 null 逃逸到其他代码中。Kotlin 1.2 在调用处强制执行这项检测，
