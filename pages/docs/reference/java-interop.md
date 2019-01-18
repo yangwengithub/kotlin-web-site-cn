@@ -616,7 +616,7 @@ fun render(list: List<*>, to: Appendable) {
 
 ### wait()/notify()
 
-类型 `Any` 的引用没有提供 `wait()` 与 `notify()` 方法。通常不鼓励使用它们，而建议使用 `java.utl.concurrent`。
+类型 `Any` 的引用没有提供 `wait()` 与 `notify()` 方法。通常不鼓励使用它们，而建议使用 `java.util.concurrent`。
 如果确实需要调用这两个方法的话，那么可以将引用转换为 `java.lang.Object`：
 
 
