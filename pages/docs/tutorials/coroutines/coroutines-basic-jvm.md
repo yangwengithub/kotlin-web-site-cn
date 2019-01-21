@@ -7,7 +7,7 @@ authors: Dmitry Jemerov，乔禹昂（中文翻译）
 showAuthorInfo: false
 ---
 
-在Kotlin 1.1 中引入了协程，一种全新的编写异步、非阻塞（以及更多）代码的方式。在这篇教程中我们将通过一些使用 Kotlin 协程的基础示例来帮助我们学习 `kotlinx.coroutines` 库，它是现有 Java 库的帮助程序和包装器的集合。
+在 Kotlin 1.1 中引入的协程，一种全新的编写异步、非阻塞（以及更多）代码的方式。在这篇教程中我们将通过一些使用 Kotlin 协程的基础示例来帮助我们学习 `kotlinx.coroutines` 库，它是现有 Java 库的帮助程序和包装器的集合。
 
 ## 创建一个工程
 
@@ -147,7 +147,7 @@ fun main(args: Array<String>) {
         println("Hello")
     }
 
-    Thread.sleep(2000) // 等待 2 秒钟
+    Thread.sleep(2000) // 等待两秒钟
     println("Stop")
 //sampleEnd
 }
@@ -157,7 +157,7 @@ fun main(args: Array<String>) {
 
 这里我们启动了一个协程并等待 1 秒钟以及打印 `Hello`。
 
-我们使用了类似 `Thread.sleep()` 的 `delay()` 函数，但是它更好：它 _不会阻塞一个线程_ ，但是只会挂起协程自身。
+我们使用了类似 `Thread.sleep()` 的 `delay()` 函数，但是它更优异：它 _不会阻塞一个线程_ ，但是会挂起协程自身。
 当这个协程处于等待状态时该线程会返回线程池中，当等待结束的时候，这个协程会在线程池中的空闲线程上恢复。
 
 主线程（通过 `main()` 函数运行的线程）必须等到我们的协程完成，否则程序会在 `Hello` 被打印之前终止。
@@ -334,4 +334,4 @@ GlobalScope.async {
 
 </div>
 
-我们的 `workload()` 可以在一个协程中调用（或另一个挂起函数），但是 _不能_ 在协程外调用。自然的，`delay()` 与 `await()` 这些我们在上面使用的函数它们自己也被修饰为 `suspend`，并且这也是为什么我们要将它们放入 `runBlocking {}`，`launch {}` 或者 `async {}` 中。
+我们的 `workload()` 可以在一个协程中调用（或另一个挂起函数），但是 _不能_ 在协程外调用。自然地，`delay()` 与 `await()` 这些我们在上面使用的函数它们自己也被修饰为 `suspend`，并且这也是为什么我们要将它们放入 `runBlocking {}`，`launch {}` 或者 `async {}` 中。
