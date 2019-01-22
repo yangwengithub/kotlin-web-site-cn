@@ -2,7 +2,7 @@
 type: tutorial
 layout: tutorial
 title: "你的第一个 Kotlin 协程程序"
-description: "这篇教程引导我们通过创建一个工程来使用协程，并编写使用它们代码。"
+description: "这篇教程将引导我们通过创建一个工程来使用协程，并编写使用它们的代码。"
 authors: Dmitry Jemerov，乔禹昂（中文翻译）
 showAuthorInfo: false
 ---
@@ -17,7 +17,7 @@ showAuthorInfo: false
 
 <img src="{{ url_for('tutorial_img', filename='coroutines-basic-jvm/new_gradle_project_jvm.png')}}"/>
 
-接下来跟随向导的步伐。你将根据[这篇文档](/docs/reference/using-gradle.html)配置使用 Kotlin 创建的 `build.gradle` 文件。
+接下来跟随向导的步伐。你将根据[这篇文档](/docs/reference/using-gradle.html)配置使用启用 Kotlin 的 `build.gradle` 文件。
 确保它配置了 Kotlin 1.3 或者更高版本。
 
 由于我们将使用 [`kotlinx.coroutines`](https://github.com/Kotlin/kotlinx.coroutines)，来让我们将它最近的版本添加到依赖中：
@@ -33,7 +33,7 @@ dependencies {
 
 </div>
 
-这个库已经发布到了 Bintray JCenter 库，所以让我们添加它：
+这个库已经发布到了 Bintray JCenter 仓库，所以让我们添加它：
 
 <div class="sample" markdown="1" theme="idea" mode="groovy">
 
@@ -53,7 +53,7 @@ repositories {
 
 <img src="{{ url_for('tutorial_img', filename='coroutines-basic-jvm/new_mvn_project_jvm.png')}}"/>
 
-接下来跟随向导的步伐。你将根据[这篇文档](/docs/reference/using-maven.html)配置使用 Kotlin 创建的 `pom.xml` 文件。
+接下来跟随向导的步伐。你将根据[这篇文档](/docs/reference/using-maven.html)配置使用启用 Kotlin 的 `pom.xml` 文件。
 确保它配置了 Kotlin 1.3 或者更高版本。
 
 <div class="sample" markdown="1" theme="idea" mode="xml" auto-indent="false">
@@ -90,7 +90,7 @@ repositories {
 
 </div>
 
-这个库已经发布到了 Bintray JCenter 库，所以让我们添加它：
+这个库已经发布到了 Bintray JCenter 仓库，所以让我们添加它：
 
 <div class="sample" markdown="1" theme="idea" mode="xml" auto-indent="false">
 
@@ -273,7 +273,7 @@ runBlocking {
 
 现在它打印了一些合理的东西：`1784293664`，因为所有的协程都执行完毕了。
 
-让我们也确保我们的协程是实际并行运行的。如果我们在每个 `async` 中添加了1秒钟的 `delay()`，程序将不会运行1'000'000秒（超过11.5天）：
+让我们也确保我们的协程是实际并行运行的。如果我们在每个 `async` 中添加了 1 秒钟的 `delay()`，程序将不会运行 1'000'000 秒（超过 11.5 天）：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
 
@@ -292,7 +292,7 @@ val deferred = (1..1_000_000).map { n ->
 
 ## 挂起函数
 
-现在，假设我们要将 _工作_ （“等待1秒并返回一个数字”）提取到一个单独的函数中：
+现在，假设我们要将 _工作_ （“等待 1 秒并返回一个数字”）提取到一个单独的函数中：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -309,7 +309,7 @@ fun workload(n: Int): Int {
 
 > 挂起函数只被允许在协程或另一个挂起函数中调用
 
-让我们深入了解它的含义。协程的最大优点是它们可以 _挂起_ 而不会阻塞一个线程。编译器必须发出一些特殊代码才能实现这一点，所以在这段代码中我们需要明确地将函数标记为 _可以挂起_ 。我们对它使用了 `suspend` 修饰符：
+让我们深入了解它的含义。协程的最大优点是它们可以 _挂起_ 而不会阻塞一个线程。编译器必须发出一些特殊代码才能实现这一点，所以在这段代码中我们需要显式地将函数标记为 _可挂起_ 。我们对它使用了 `suspend` 修饰符：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
