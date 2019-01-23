@@ -83,7 +83,7 @@ fun preparePostAsync(callback: (Token) -> Unit) {
 
 ## Futures，Promises 等等
 
-futures 或 promises 背后的想法（这也可能会根据语言/平台而有不同饿的术语），是当我们发起调用的时候，我们承诺<!--
+futures 或 promises 背后的想法（这也可能会根据语言/平台而有不同的术语），是当我们发起调用的时候，我们承诺<!--
 -->在某些时候它将返回一个名为 Promise 的可被操作的对象。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -119,7 +119,7 @@ fun preparePostAsync(): Promise<Token> {
 ## 响应式扩展
 
 [Erik Meijer](https://en.wikipedia.org/wiki/Erik_Meijer_(computer_scientist)) 介绍了 C# 中的响应式扩展（Rx）。虽然它在 .NET 平台上是毫无疑义的，
-但是在 Netflix 将它移植到 Java 并取名为 RxJava 之前它绝对不是主流。从那时起，响应式被移植到各种平台，包括 JavaScript（RxJS）。
+但是在 Netflix 将它移植到 Java 并取名为 RxJava 之前绝对不是主流。从那时起，响应式被移植到各种平台，包括 JavaScript（RxJS）。
 
 Rx 背后的想法是走向所谓的“可观察流”，我们现在将数据视为流（无限量的数据），并且可以观察到这些流。 实际上，Rx 很简单，
 [Observer Pattern](https://en.wikipedia.org/wiki/Observer_pattern) 带有一系列扩展，允许我们对数据进行操作。
@@ -168,9 +168,9 @@ suspend fun preparePost(): Token {
 
 * 该函数的签名保持完全相同。唯一的不同是它被添加了 `suspend` 修饰符。但是返回类型依然是我们想要的<!--
 -->类型。
-* 编写这段代码代码就好像我们正在编写同步代码，自上而下，不需要任何特殊语法，除了使用一个名为 `launch` 的函数，它实质上启动了
-该协程（在其他教程中介绍）。
-* 编程模型和 API 保持不变。 我们可以继续使用循环，异常处理等，而且不需要学习一整套新的 API。
+* 编写这段代码代码就好像我们正在编写同步代码，自上而下，不需要任何特殊语法，除了使用一个名为 `launch` 的函数，它实质上启动了<!--
+-->该协程（在其他教程中介绍）。
+* 编程模型和 API 保持不变。我们可以继续使用循环，异常处理等，而且不需要学习一整套新的 API。
 * 它与平台无关。无论我们是针对 JVM，JavaScript 还是其他任何平台，我们编写的代码都是相同的。编译器负责将其适应每个平台。
 
 协程并不是一个新的概念，它并不是 Kotlin 发明的。它们已经存在了几十年，并且在 Go 等其他一些编程语言中很受欢迎。但重要的是要注意<!--
