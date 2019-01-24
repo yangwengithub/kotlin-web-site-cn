@@ -18,6 +18,32 @@ title: "使用 kapt"
 
 应用 `kotlin-kapt` Gradle 插件：
 
+> Groovy DSL
+
+
+```groovy
+plugins {
+    id "org.jetbrains.kotlin.kapt" version "{{ site.data.releases.latest.version }}"
+}
+```
+
+
+
+
+> Kotlin DSL
+
+
+```kotlin
+plugins {
+    kotlin("kapt") version "{{ site.data.releases.latest.version }}"
+}
+```
+
+
+
+
+Alternatively, you can use the `apply plugin` syntax:
+
 
 
 ```groovy
@@ -26,20 +52,9 @@ apply plugin: 'kotlin-kapt'
 
 
 
-或者，你可以使用插件 DSL 应用它：
-
-
-
-```groovy
-plugins {
-    id "org.jetbrains.kotlin.kapt" version "1.3.11"
-}
-```
-
-
-
 然后在 `dependencies` 块中使用 `kapt` 配置添加相应的依赖项：
 
+> Groovy DSL
 
 
 ```groovy
@@ -47,6 +62,19 @@ dependencies {
     kapt 'groupId:artifactId:版本'
 }
 ```
+
+
+
+
+> Kotlin DSL
+
+
+```kotlin
+dependencies {
+    kapt("groupId:artifactId:version")
+}
+```
+
 
 
 
@@ -65,6 +93,20 @@ kapt {
     arguments {
         arg("key", "value")
     }
+}
+```
+
+
+
+## Gradle Build Cache Support (since 1.2.20)
+
+The kapt annotation processing tasks are not [cached in Gradle](https://guides.gradle.org/using-build-cache/) by default. Annotation processors run arbitrary code that may not necessarily transform the task inputs into the outputs, might access and modify the files that are not tracked by Gradle etc. To enable caching for kapt anyway, add the following lines to the build script:
+
+
+
+```groovy
+kapt {
+    useBuildCache = true
 }
 ```
 
@@ -92,6 +134,7 @@ kapt {
 ## 非存在类型校正
 
 一些注解处理器（如 `AutoFactory`）依赖于声明签名中的精确类型。默认情况下，Kapt 将每个未知类型（包括生成的类的类型）替换为 `NonExistentClass`，但你可以更改此行为。将额外标志添加到 `build.gradle` 文件以启用在存根（stub）中推断出的错误类型：
+
 
 
 
