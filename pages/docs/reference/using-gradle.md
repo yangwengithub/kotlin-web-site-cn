@@ -129,7 +129,7 @@ apply plugin: 'kotlin'
 
 </div>
 
-It's not recommended to apply Kotlin plugins with `apply` in Gradle Kotlin DSL. The details are provided [below](#using-gradle-kotlin-dsl).
+It's not recommended to apply Kotlin plugins with `apply` in Gradle Kotlin DSL. The details are provided [below](#使用-gradle-kotlin-dsl).
 
 Kotlin 源代码可以与同一个文件夹或不同文件夹中的 Java 源代码混用。默认约定是使用不同的文件夹：
 
