@@ -531,7 +531,7 @@ Kotlin 插件支持 [Gradle 构建缓存](https://guides.gradle.org/using-build-
 
 如需禁用所有 Kotlin 任务的缓存，请将系统属性标志 `kotlin.caching.enabled` 设置为 `false`（运行构建带上参数 `-Dkotlin.caching.enabled=false`）。
 
-If you use [kapt](kapt.html), note that the kapt annotation processing tasks are not cached by default. However, you can enable caching for them manually. See the [kapt page](kapt.html#gradle-build-cache-support-since-1220) for details.
+If you use [kapt](kapt.html), note that the kapt annotation processing tasks are not cached by default. However, you can enable caching for them manually. See the [kapt page](kapt.html#gradle-构建缓存支持自-1220-起) for details.
 
 ## 编译器选项
 

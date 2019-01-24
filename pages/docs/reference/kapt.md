@@ -42,7 +42,7 @@ plugins {
 </div>
 </div>
 
-Alternatively, you can use the `apply plugin` syntax:
+或者使用 `apply plugin` 语法：
 
 <div class="sample" markdown="1" mode="groovy" theme="idea">
 
@@ -71,7 +71,7 @@ dependencies {
 
 ```kotlin
 dependencies {
-    kapt("groupId:artifactId:version")
+    kapt("groupId:artifactId:版本")
 }
 ```
 
@@ -98,9 +98,11 @@ kapt {
 
 </div>
 
-## Gradle Build Cache Support (since 1.2.20)
+{:#gradle-构建缓存支持自-1220-起}
 
-The kapt annotation processing tasks are not [cached in Gradle](https://guides.gradle.org/using-build-cache/) by default. Annotation processors run arbitrary code that may not necessarily transform the task inputs into the outputs, might access and modify the files that are not tracked by Gradle etc. To enable caching for kapt anyway, add the following lines to the build script:
+## Gradle 构建缓存支持（自 1.2.20 起）
+
+默认情况下，kapt 注解处理任务不会[在 Gradle 中缓存](https://guides.gradle.org/using-build-cache/)。注解处理器所运行的任意代码可能不一定将输入转换为输出、可能访问与修改 Gradle 未跟踪的文件等。如需还要为 kapt 启用缓存，请将以下几行添加到构建脚本中：
 
 <div class="sample" markdown="1" mode="groovy" theme="idea">
 
