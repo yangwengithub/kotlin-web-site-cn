@@ -18,17 +18,8 @@ title: "使用 kapt"
 
 应用 `kotlin-kapt` Gradle 插件：
 
-<div class="sample" markdown="1" mode="groovy" theme="idea">
-
-```groovy
-apply plugin: 'kotlin-kapt'
-```
-
-</div>
-
-或者，你可以使用插件 DSL 应用它：
-
-<div class="sample" markdown="1" mode="groovy" theme="idea">
+<div class="multi-language-sample" data-lang="groovy">
+<div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
 
 ```groovy
 plugins {
@@ -37,10 +28,34 @@ plugins {
 ```
 
 </div>
+</div>
+
+<div class="multi-language-sample" data-lang="kotlin">
+<div class="sample" markdown="1" mode="kotlin" theme="idea" data-lang="kotlin" data-highlight-only>
+
+```kotlin
+plugins {
+    kotlin("kapt") version "{{ site.data.releases.latest.version }}"
+}
+```
+
+</div>
+</div>
+
+Alternatively, you can use the `apply plugin` syntax:
+
+<div class="sample" markdown="1" mode="groovy" theme="idea">
+
+```groovy
+apply plugin: 'kotlin-kapt'
+```
+
+</div>
 
 然后在 `dependencies` 块中使用 `kapt` 配置添加相应的依赖项：
 
-<div class="sample" markdown="1" mode="groovy" theme="idea">
+<div class="multi-language-sample" data-lang="groovy">
+<div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
 
 ```groovy
 dependencies {
@@ -48,6 +63,19 @@ dependencies {
 }
 ```
 
+</div>
+</div>
+
+<div class="multi-language-sample" data-lang="kotlin">
+<div class="sample" markdown="1" mode="kotlin" theme="idea" data-lang="kotlin" data-highlight-only>
+
+```kotlin
+dependencies {
+    kapt("groupId:artifactId:version")
+}
+```
+
+</div>
 </div>
 
 如果你以前使用 [Android 支持](https://developer.android.com/studio/build/gradle-plugin-3-0-0-migration.html#annotationProcessor_config)作为注解处理器，那么以 `kapt` 取代 `annotationProcessor` 配置的使用。如果你的项目包含 Java 类，`kapt` 也会顾全到它们。
@@ -65,6 +93,20 @@ kapt {
     arguments {
         arg("key", "value")
     }
+}
+```
+
+</div>
+
+## Gradle Build Cache Support (since 1.2.20)
+
+The kapt annotation processing tasks are not [cached in Gradle](https://guides.gradle.org/using-build-cache/) by default. Annotation processors run arbitrary code that may not necessarily transform the task inputs into the outputs, might access and modify the files that are not tracked by Gradle etc. To enable caching for kapt anyway, add the following lines to the build script:
+
+<div class="sample" markdown="1" mode="groovy" theme="idea">
+
+```groovy
+kapt {
+    useBuildCache = true
 }
 ```
 
@@ -92,6 +134,7 @@ kapt {
 ## 非存在类型校正
 
 一些注解处理器（如 `AutoFactory`）依赖于声明签名中的精确类型。默认情况下，Kapt 将每个未知类型（包括生成的类的类型）替换为 `NonExistentClass`，但你可以更改此行为。将额外标志添加到 `build.gradle` 文件以启用在存根（stub）中推断出的错误类型：
+
 
 <div class="sample" markdown="1" mode="groovy" theme="idea">
 
