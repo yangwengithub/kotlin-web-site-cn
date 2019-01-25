@@ -502,30 +502,19 @@ implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
 Kotlin 通过 *Kotlin 注解处理工具*（`kapt`）支持注解处理。kapt 同 Gradle 合用的用法已在 [kapt 页](kapt.html)描述。
 
-## 增量编译
+## Incremental Compilation
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` groovy
-archivesBaseName = 'myExampleProject_lib'
-```
-</div>
+Kotlin Gradle 插件支持支持增量编译。Incremental compilation tracks changes of source files between builds so only files affected by these changes would be compiled.
 
-对于 Gradle Kotlin DSL 是这样：
+Incremental compilation is supported for Kotlin/JVM and Kotlin/JS projects. It's enabled by default since Kotlin 1.1.1 for Kotlin/JVM and 1.3.20 for Kotlin/JS.
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-``` kotlin
-setProperty("archivesBaseName", "myExampleProject_lib")
-```
-</div>
+There are several ways to override the default setting:
 
-  1. 将 `kotlin.incremental=true` 或者 `kotlin.incremental=false` 行添加到一个 `gradle.properties` 或者一个 `local.properties` 文件中；
+* In Gradle configuration files: add the line `kotlin.incremental=<value>` for Kotlin/JVM or `kotlin.incremental.js=<value>` for Kotlin/JS projects either to `gradle.properties` or to `local.properties` file. `<value>` is a boolean value reflecting the usage of incremental compilation.
 
-  2. 将 `-Pkotlin.incremental=true` 或 `-Pkotlin.incremental=false` 添加到 Gradle 命令行参数。请注意，这样用法中，该参数必须添加到后续每个子构建，并且任何具有禁用增量编译的构建将使增量缓存失效。
+* In Gradle command line parameters: add the parameter `-Pkotlin.incremental` or `-Pkotlin.incremental.js` with the boolean value reflecting the usage of incremental compilation. 请注意，这样用法中，该参数必须添加到后续每个子构建，并且任何具有禁用增量编译的构建将使增量缓存失效。
 
-请注意，首次构建不会是增量的。
-
-
-## Gradle 构建缓存支持（自 1.2.20 起）
+请注意，任何情况下首次构建都不会是增量的。
 
 Kotlin 插件支持 [Gradle 构建缓存](https://guides.gradle.org/using-build-cache/)（需要 Gradle 4.3 及以上版本；低版本则禁用缓存）。
 
