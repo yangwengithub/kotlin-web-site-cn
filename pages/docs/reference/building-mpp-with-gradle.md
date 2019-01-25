@@ -87,7 +87,7 @@ script in the following way:
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version '{{ site.data.releases.latest.version }}'
+    id 'org.jetbrains.kotlin.multiplatform' version '1.3.20'
 }
 
 repositories {
@@ -111,7 +111,7 @@ kotlin {
 
 ```kotlin
 plugins {
-    kotlin("multiplatform") version "{{ site.data.releases.latest.version }}"
+    kotlin("multiplatform") version "1.3.20"
 }
 
 repositories {
@@ -248,7 +248,7 @@ beginning of the `build.gradle` file:
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version '{{ site.data.releases.latest.version }}'
+    id 'org.jetbrains.kotlin.multiplatform' version '1.3.20'
 }
 ```
 
@@ -260,7 +260,7 @@ plugins {
 
 ```kotlin
 plugins {
-    kotlin("multiplatform") version "{{ site.data.releases.latest.version }}"
+    kotlin("multiplatform") version "1.3.20"
 }
 ```
 
@@ -1454,7 +1454,7 @@ Creating an Android target requires that one of the Android Gradle plugins, like
 ```groovy
 plugins {
     id("com.android.library")
-    id("org.jetbrains.kotlin.multiplatform").version("{{ site.data.releases.latest.version }}")
+    id("org.jetbrains.kotlin.multiplatform").version("1.3.20")
 }
 
 android { /* ... */ }
@@ -1475,7 +1475,7 @@ kotlin {
 ```kotlin
 plugins {
     id("com.android.library")
-    kotlin("multiplatform").version("{{ site.data.releases.latest.version }}")
+    kotlin("multiplatform").version("1.3.20")
 }
 
 android { /* ... */ }

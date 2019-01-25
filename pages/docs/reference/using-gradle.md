@@ -18,7 +18,7 @@ title: "使用 Gradle"
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.＜……＞' version '{{ site.data.releases.latest.version }}'
+    id 'org.jetbrains.kotlin.＜……＞' version '1.3.20'
 }
 ```
 
@@ -30,7 +30,7 @@ plugins {
 
 ```kotlin
 plugins {
-    kotlin("＜……＞") version "{{ site.data.releases.latest.version }}"
+    kotlin("＜……＞") version "1.3.20"
 }
 ```
 
@@ -49,12 +49,12 @@ buildscript {
     }
 
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:{{ site.data.releases.latest.version }}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.20"
     }
 }
 
 plugins {
-    id "org.jetbrains.kotlin.＜……＞" version "{{ site.data.releases.latest.version }}"
+    id "org.jetbrains.kotlin.＜……＞" version "1.3.20"
 }
 ```
 
@@ -71,7 +71,7 @@ buildscript {
     }
 
     dependencies {
-        classpath(kotlin("gradle-plugin", version = "{{ site.data.releases.latest.version }}"))
+        classpath(kotlin("gradle-plugin", version = "1.3.20"))
     }
 }
 plugins {
@@ -98,7 +98,7 @@ plugins {
 
 ```groovy
 plugins {
-    id "org.jetbrains.kotlin.jvm" version "1.3.11"
+    id "org.jetbrains.kotlin.jvm" version "1.3.20"
 }
 ```
 
@@ -110,7 +110,7 @@ plugins {
 
 ```kotlin
 plugins {
-    kotlin("jvm") version "1.3.11"
+    kotlin("jvm") version "1.3.20"
 }
 ```
 
@@ -184,7 +184,7 @@ sourceSets["main"].withConvention(KotlinSourceSet::class) {
 
 ``` groovy
 plugins {
-    id 'kotlin2js' version '{{ site.data.releases.latest.version }}'
+    id 'kotlin2js' version '1.3.20'
 }
 ```
 
@@ -196,7 +196,7 @@ plugins {
 
 ```kotlin
 plugins {
-    id("kotlin2js") version "{{ site.data.releases.latest.version }}"
+    id("kotlin2js") version "1.3.20"
 }
 ```
 
@@ -287,7 +287,7 @@ Android 的 Gradle 模型与普通 Gradle 有点不同，所以如果我们要�
 
 ```groovy
 buildscript {
-    ext.kotlin_version = '1.3.11'
+    ext.kotlin_version = '1.3.20'
 
     ……
 
@@ -313,7 +313,7 @@ plugins {
 buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:3.2.1")
-        classpath(kotlin("gradle-plugin", version = "{{ site.data.releases.latest.version }}"))
+        classpath(kotlin("gradle-plugin", version = "1.3.20"))
     }
 }
 plugins {
