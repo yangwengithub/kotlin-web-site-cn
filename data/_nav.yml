@@ -350,7 +350,7 @@ tutorials:
         - url: /docs/tutorials/native/working-with-klib.html
           title: 使用 Kotlin/Native 库
         - url: /docs/tutorials/native/targeting-multiple-platforms.html
-          title: 针对多平台
+          title: 面向多平台
         - url: /docs/tutorials/native/dynamic-libraries.html
           title: Kotlin/Native 开发动态库
         - url: /docs/tutorials/native/apple-framework.html
