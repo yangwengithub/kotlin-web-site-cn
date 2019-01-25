@@ -9,7 +9,7 @@ title: FAQ
 
 ### Kotlin 是什么？
 
-Kotlin 是一门针对 JVM、Android、JavaScript 以及原生平台的开源（OSS）静态类型编程语言。
+Kotlin 是一门面向 JVM、Android、JavaScript 以及原生平台的开源（OSS）静态类型编程语言。
 它是由 [JetBrains](http://www.jetbrains.com) 开发的。该项目开始于 2010 年并且很早就已开源。第一个官方 1.0 版发布于 2016 年 2 月。
 
 ### Kotlin 的当前版本是多少？
@@ -70,7 +70,7 @@ vert.x 或 JSF。另外还有一些 Kotlin 写的特定框架，例如 [Ktor](ht
 
 原生 Kotlin（Kotlin/Native）目前[正在准备中](https://blog.jetbrains.com/kotlin/tag/native/)。它将 Kotlin 编译为<!--
 -->可以无需 VM 运行的原生代码。有一个技术预览发布版，但它还不能用于生产，并且 1.0 我们还<!--
--->没有针对所有平台支持的计划。更多信息请查看 [Kotlin/Native 博文公告](https://blog.jetbrains.com/kotlin/2017/04/kotlinnative-tech-preview-kotlin-without-a-vm/)。
+-->没有面向所有平台支持的计划。更多信息请查看 [Kotlin/Native 博文公告](https://blog.jetbrains.com/kotlin/2017/04/kotlinnative-tech-preview-kotlin-without-a-vm/)。
 
 ### 哪些 IDE 支持 Kotlin？
 
@@ -86,10 +86,10 @@ vert.x 或 JSF。另外还有一些 Kotlin 写的特定框架，例如 [Ktor](ht
 
 ### Kotlin 会编译成什么？
 
-当针对JVM 平台时，Kotlin 生成 Java 兼容的字节码。当针对JavaScript 时，Kotlin 会转译到 ES5.1，并生成与<!--
--->包括 AMD 和 CommonJS 在内的模块系统相兼容的代码。当针对原生平台时，Kotlin 会（通过 LLVM）生成平台相关的代码。
+当面向JVM 平台时，Kotlin 生成 Java 兼容的字节码。当面向 JavaScript 时，Kotlin 会转译到 ES5.1，并生成与<!--
+-->包括 AMD 和 CommonJS 在内的模块系统相兼容的代码。当面向原生平台时，Kotlin 会（通过 LLVM）生成平台相关的代码。
 
-### Kotlin 只针对 Java 6 吗？
+### Kotlin 只面向 Java 6 吗？
 
 不是。Kotlin 可以让你选择生成 Java 6 或者 Java 8 兼容的字节码。可以为较高版本的平台生成更优化的字节码。
 
@@ -118,7 +118,7 @@ Kotlin 主要由 JetBrains 的一个工程师团队开发（目前团队规模�
 ### 有没有关于 Kotlin 的书？
 
 已经有[一些](/docs/books.html)关于 Kotlin 的书籍。其中包括由 Kotlin 团队成员 Dmitry Jemerov 和 Svetlana Isakova 合著的 [Kotlin in Action](https://www.manning.com/books/kotlin-in-action)、
-针对 Android 开发人员的 [Kotlin for Android Developers](https://leanpub.com/kotlin-for-android-developers)。
+面向 Android 开发人员的 [Kotlin for Android Developers](https://leanpub.com/kotlin-for-android-developers)。
 
 ### Kotlin 有没有在线课程？
 

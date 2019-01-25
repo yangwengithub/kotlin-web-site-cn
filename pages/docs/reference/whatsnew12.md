@@ -22,7 +22,7 @@ title: "Kotlin 1.2 的新特性"
 
 * 一个*公共*模块包含平台无关代码，以及无实现的依赖平台的 API 声明。
 * *平台*模块包含通用模块中的平台相关声明在指定平台的实现，以及其他平台相关代码。
-* 常规模块针对指定的平台，既可以是平台模块的依赖，也可以依赖平台模块。
+* 常规模块面向指定的平台，既可以是平台模块的依赖，也可以依赖平台模块。
 
 当你为指定平台编译多平台项目时，既会生成公共代码也会生成平台相关代码。
 
@@ -445,9 +445,9 @@ Kotlin 1.2 引入了一些使用  `BigInteger` 与 `BigDecimal` 运算以及由�
 
 ### Java 默认方法调用
 
-在 Kotlin 1.2 之前，针对 JVM 1.6 的接口成员覆盖 Java 默认方法会产生一个关于<!--
--->超类型调用的警告：`Super calls to Java default methods are deprecated in JVM target 1.6. Recompile with '-jvm-target 1.8'`（“针对 JVM 1.6 的 Java 默认方法的超类型调用已弃用，请使用‘-jvm-target 1.8’重新编译”）。
-在 Kotlin 1.2 中，这是一个**错误 **，因此这样的代码都需要针对 JVM 1.8 编译。
+在 Kotlin 1.2 之前，面向 JVM 1.6 的接口成员覆盖 Java 默认方法会产生一个关于<!--
+-->超类型调用的警告：`Super calls to Java default methods are deprecated in JVM target 1.6. Recompile with '-jvm-target 1.8'`（“面向 JVM 1.6 的 Java 默认方法的超类型调用已弃用，请使用‘-jvm-target 1.8’重新编译”）。
+在 Kotlin 1.2 中，这是一个**错误 **，因此这样的代码都需要面向 JVM 1.8 编译。
 
 ### 破坏性变更：平台类型 x.equals(null) 的一致行为
 

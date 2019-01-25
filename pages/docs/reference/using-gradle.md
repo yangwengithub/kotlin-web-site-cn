@@ -6,19 +6,19 @@ title: "使用 Gradle"
 
 # 使用 Gradle
 
-为了用 Gradle 构建 Kotlin，你应该[设置好 *kotlin-gradle* 插件](#插件和版本)，[将其应用](#针对-jvm)到你的项目中，并且[添加 *kotlin-stdlib* 依赖](#配置依赖)。这些操作也可以在 IntelliJ IDEA 中通过调用 Project action 中的 Tools \| Kotlin \| Configure Kotlin 自动执行。
+为了用 Gradle 构建 Kotlin，你应该[设置好 *kotlin-gradle* 插件](#插件和版本)，[将其应用](#面向-jvm)到你的项目中，并且[添加 *kotlin-stdlib* 依赖](#配置依赖)。这些操作也可以在 IntelliJ IDEA 中通过调用 Project action 中的 Tools \| Kotlin \| Configure Kotlin 自动执行。
 
-## 插件和版本
+## 插件与版本
 
-Apply the Kotlin plugin by using [the Gradle plugins DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block),
-replacing the placeholder with one of the plugin names that can be found in further sections:
+使用 [Gradle 插件 DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block) 应用 Kotlin 插件，
+只要将其中的占位符替换为可在后续部分中找到的插件名之一即可：
 
 > Groovy DSL
 
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.<...>' version '{{ site.data.releases.latest.version }}'
+    id 'org.jetbrains.kotlin.＜……＞' version '{{ site.data.releases.latest.version }}'
 }
 ```
 
@@ -30,14 +30,14 @@ plugins {
 
 ```kotlin
 plugins {
-    kotlin("<...>") version "{{ site.data.releases.latest.version }}"
+    kotlin("＜……＞") version "{{ site.data.releases.latest.version }}"
 }
 ```
 
 
 
 
-Alternatively, apply plugin by adding the `kotlin-gradle-plugin` dependency to the build script classpath:
+或者通过将依赖项 `kotlin-gradle-plugin` 添加到构建脚本类路径来应用插件：
 
 > Groovy DSL
 
@@ -54,7 +54,7 @@ buildscript {
 }
 
 plugins {
-    id "org.jetbrains.kotlin.<...>" version "{{ site.data.releases.latest.version }}"
+    id "org.jetbrains.kotlin.＜……＞" version "{{ site.data.releases.latest.version }}"
 }
 ```
 
@@ -71,11 +71,11 @@ buildscript {
     }
 
     dependencies {
-        classpath(kotlin("gradle-plugin", version = "{{ site.data.releases.latest.version }}'"))
+        classpath(kotlin("gradle-plugin", version = "{{ site.data.releases.latest.version }}"))
     }
 }
 plugins {
-    kotlin("<...>")
+    kotlin("＜……＞")
 }
 ```
 
@@ -83,14 +83,14 @@ plugins {
 
 当通过 [Gradle 插件 DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block) 与 [Gradle Kotlin DSL](https://github.com/gradle/kotlin-dsl) 使用 Kotlin Gradle 插件 1.1.1 及以上版本时，这不是必需的。
 
-## Building Kotlin Multiplatform Projects
+## 构建 Kotlin 多平台项目
 
-Using the `kotlin-multiplatform` plugin for building [multiplatform projects](multiplatform.html) is described in
-[Building Multiplatform Projects with Gradle](building-mpp-with-gradle.html).
+使用 `kotlin-multiplatform` 插件构建[多平台项目](multiplatform.html)在<!--
+-->[以 Gradle 构建多平台项目](building-mpp-with-gradle.html)中详述。
 
-## 针对 JVM
+## 面向 JVM
 
-To target the JVM, apply the Kotlin JVM plugin. Starting with Kotlin 1.1.1, the plugin can be applied using the [Gradle plugins DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block):
+如需面向 JVM 平台，请应用 Kotlin JVM 插件。自 Kotlin 1.1.1 起，可以使用 [Gradle 插件 DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block) 来应用该插件：
 
 
 > Groovy DSL
@@ -117,9 +117,9 @@ plugins {
 
 
 
-The `version` should be literal in this block, and it cannot be applied from another build script.
+在这个代码块中的 `version` 应该是字面值，并且不能在其他构建脚本中应用。
 
-Alternatively, you can use the older `apply plugin` approach:
+或者使用旧版 `apply plugin` 方式：
 
 > Groovy DSL
 
@@ -129,7 +129,7 @@ apply plugin: 'kotlin'
 
 
 
-It's not recommended to apply Kotlin plugins with `apply` in Gradle Kotlin DSL. The details are provided [below](#使用-gradle-kotlin-dsl).
+不建议在 Gradle Kotlin DSL 中以 `apply` 的方式应用 Kotlin 插件。详见[下文](#使用-gradle-kotlin-dsl)。
 
 Kotlin 源代码可以与同一个文件夹或不同文件夹中的 Java 源代码混用。默认约定是使用不同的文件夹：
 
@@ -175,9 +175,9 @@ sourceSets["main"].withConvention(KotlinSourceSet::class) {
 
 对于 Gradle Kotlin DSL，请改用 `java.sourceSets { …… }` 配置源集。
 
-## 针对 JavaScript
+## 面向 JavaScript
 
-当针对 JavaScript 时，须应用不同的插件：
+当面向 JavaScript 时，须应用不同的插件：
 
 > Groovy DSL
 
@@ -203,7 +203,7 @@ plugins {
 
 
 
-Note that this way of applying the Kotlin/JS plugin requires adding the following code to Gradle settings file (`settings.gradle`):
+请注意，这种应用 Kotlin/JS 插件的方式需要将以下代码添加到 Gradle 设置文件（`settings.gradle`）中：
 
 
 ```groovy
@@ -220,7 +220,7 @@ pluginManagement {
 
 
 这个插件只适用于 Kotlin 文件，因此建议将 Kotlin 和 Java 文件分开（如果是同一项目包含 Java 文件的情况）。与<!--
--->针对 JVM 一样，如果不使用默认约定，需要使用 *sourceSets* 来指定源代码文件夹：
+-->面向 JVM 一样，如果不使用默认约定，需要使用 *sourceSets* 来指定源代码文件夹：
 
 > Groovy DSL
 
@@ -277,7 +277,7 @@ tasks {
 
 
 
-## 针对 Android
+## 面向 Android
 
 Android 的 Gradle 模型与普通 Gradle 有点不同，所以如果我们要构建一个用 Kotlin 编写的 Android 项目，我们需要<!--
 -->用 *kotlin-android* 插件取代 *kotlin* 插件：
@@ -313,7 +313,7 @@ plugins {
 buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:3.2.1")
-        classpath(kotlin("gradle-plugin", version = "{{ site.data.releases.latest.version }}'"))
+        classpath(kotlin("gradle-plugin", version = "{{ site.data.releases.latest.version }}"))
     }
 }
 plugins {
@@ -352,7 +352,7 @@ android {
 
 ```kotlin
 android {
-  ...
+  ……
 
     sourceSets["main"].java.srcDir("src/main/kotlin")
 }
@@ -377,7 +377,7 @@ repositories {
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
 }
 ```
 
@@ -393,22 +393,22 @@ repositories {
 }
 
 dependencies {
-    compile(kotlin("stdlib"))
+    implementation(kotlin("stdlib"))
 }
 ```
 
 
 
 
-The Kotlin standard library `kotlin-stdlib` targets Java 6 and above. There are extended versions of the standard library that add support for some of the features of JDK 7 and JDK 8. To use these versions, add one of the
-following dependencies instead of `kotlin-stdlib`:
+Kotlin 标准库 `kotlin-stdlib` 面向 Java 6 及以上版本。还有扩展版本的标准库，增加了对 JDK 7 与 JDK 8 中某些特性支持。如需使用这些版本，请添加<!--
+-->下列依赖之一而不是 `kotlin-stdlib`：
 
 > Groovy DSL
 
 
 ```groovy
-compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
-compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
+implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 ```
 
 
@@ -418,8 +418,8 @@ compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
 
 ```kotlin
-compile(kotlin("stdlib-jdk7"))
-compile(kotlin("stdlib-jdk8"))
+implementation(kotlin("stdlib-jdk7"))
+implementation(kotlin("stdlib-jdk8"))
 ```
 
 
@@ -427,13 +427,13 @@ compile(kotlin("stdlib-jdk8"))
 
 在 Kotlin 1.1.x 中，请使用 `kotlin-stdlib-jre7` 与 `kotlin-stdlib-jre8`。
 
-If you target JavaScript, use the `stdlib-js` dependency.
+如果是面向 JavaScript，请使用依赖项 `stdlib-js。
 
 > Groovy DSL
 
 
 ```groovy
-compile "org.jetbrains.kotlin:kotlin-stdlib-js"
+implementation "org.jetbrains.kotlin:kotlin-stdlib-js"
 ```
 
 
@@ -443,21 +443,21 @@ compile "org.jetbrains.kotlin:kotlin-stdlib-js"
 
 
 ```kotlin
-compile(kotlin("stdlib-js"))
+implementation(kotlin("stdlib-js"))
 ```
 
 
 
 
-If your project uses [Kotlin reflection](/api/latest/jvm/stdlib/kotlin.reflect.full/index.html) or testing facilities, you need to add the corresponding dependencies as well:
+如果项目中用到了 [Kotlin 反射](/api/latest/jvm/stdlib/kotlin.reflect.full/index.html)或者测试设施，还需要添加相应的依赖项：
 
 > Groovy DSL
 
 
 ```groovy
-compile "org.jetbrains.kotlin:kotlin-reflect"
-testCompile "org.jetbrains.kotlin:kotlin-test"
-testCompile "org.jetbrains.kotlin:kotlin-test-junit"
+implementation "org.jetbrains.kotlin:kotlin-reflect"
+testImplementation "org.jetbrains.kotlin:kotlin-test"
+testImplementation "org.jetbrains.kotlin:kotlin-test-junit"
 ```
 
 
@@ -467,22 +467,22 @@ testCompile "org.jetbrains.kotlin:kotlin-test-junit"
 
 
 ```kotlin
-compile(kotlin("reflect"))
-testCompile(kotlin("test"))
-testCompile(kotlin("test-junit"))
+implementation(kotlin("reflect"))
+testImplementation(kotlin("test"))
+testImplementation(kotlin("test-junit"))
 ```
 
 
 
 
-从 Kotlin 1.1.2 起，使用 `org.jetbrains.kotlin` group 的依赖项默认使用<!--
+自 Kotlin 1.1.2 起，使用 `org.jetbrains.kotlin` group 的依赖项默认使用<!--
 -->从已应用的插件获得的版本来解析。你可以用完整的依赖关系助记符：
 
 > Groovy DSL
 
 
  ```groovy
-compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
  ```
 
 
@@ -491,58 +491,47 @@ compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 > Kotlin DSL
 
 
-
 ``` kotlin
-compile(kotlin("stdlib", kotlinVersion))
+implementation(kotlin("stdlib", kotlinVersion))
  ```
+
 
 
 
 ## 注解处理
 
-Kotlin supports annonation processing via the _Kotlin annotation processing tool_(`kapt`). Usage of kapt with Gradle is described on the [kapt page](kapt.html).
+Kotlin 通过 *Kotlin 注解处理工具*（`kapt`）支持注解处理。kapt 同 Gradle 合用的用法已在 [kapt 页](kapt.html)描述。
 
 ## 增量编译
 
+Kotlin Gradle 插件支持支持增量编译。增量编译会跟踪多次构建之间源文件的变更，因此只会编译这些变更所影响的文件。
 
-``` groovy
-archivesBaseName = 'myExampleProject_lib'
-```
+Kotlin/JVM 与 Kotlin/JS 项目均支持增量编译。对于 Kotlin 1.1.1 起的 Kotlin/JVM 项目以及自 Kotlin 1.3.20 起的 Kotlin/JS 项目默认启用增量编译。
 
+有几种方法可以覆盖默认设置：
 
-With Gradle Kotlin DSL, it is:
+* 在 Gradle 配置文件中：在 `gradle.properties` 或者 `local.properties` 中，对于 Kotlin/JVM 项目添加一行 `kotlin.incremental=＜值＞`，对于 Kotlin/JS 项目添加一行 `kotlin.incremental.js=＜值＞`。`＜值＞` 是一个反应增量编译用法的布尔值。
 
+* 在 Gradle 命令行参数中：添加带有反应增量编译用法的布尔值的 `-Pkotlin.incremental` or `-Pkotlin.incremental.js` 参数。请注意，这样用法中，该参数必须添加到后续每个子构建，并且任何具有禁用增量编译的构建将使增量缓存失效。
 
-``` kotlin
-setProperty("archivesBaseName", "myExampleProject_lib")
-```
-
-
-  1. Add `kotlin.incremental=true` or `kotlin.incremental=false` line either to a `gradle.properties` or to a `local.properties` file;
-
-  2. Add `-Pkotlin.incremental=true` or `-Pkotlin.incremental=false` to Gradle command line parameters. Note that in this case the parameter should be added to each subsequent build, and any build with disabled incremental compilation invalidates incremental caches.
-
-Note, that the first build won't be incremental.
-
-
-## Gradle 构建缓存支持（自 1.2.20 起）
+请注意，任何情况下首次构建都不会是增量的。
 
 Kotlin 插件支持 [Gradle 构建缓存](https://guides.gradle.org/using-build-cache/)（需要 Gradle 4.3 及以上版本；低版本则禁用缓存）。
 
 如需禁用所有 Kotlin 任务的缓存，请将系统属性标志 `kotlin.caching.enabled` 设置为 `false`（运行构建带上参数 `-Dkotlin.caching.enabled=false`）。
 
-If you use [kapt](kapt.html), note that the kapt annotation processing tasks are not cached by default. However, you can enable caching for them manually. See the [kapt page](kapt.html#gradle-build-cache-support-since-1220) for details.
+如果使用 [kapt](kapt.html)，请注意默认情况下不会缓存注解处理任务。不过，可以手动为它们启用缓存。详见 [kapt 页](kapt.html#gradle-构建缓存支持自-1220-起)。
 
 ## 编译器选项
 
 要指定附加的编译选项，请使用 Kotlin 编译任务的 `kotlinOptions` 属性。
 
-当针对 JVM 时，对于生产代码这些任务称为 `compileKotlin` 而对于<!--
+当面向 JVM 时，对于生产代码这些任务称为 `compileKotlin` 而对于<!--
 -->测试代码称为 `compileTestKotlin`。对于自定义源文件集（source set）这些任务称呼取决于 `compile＜Name＞Kotlin` 模式。
 
 Android 项目中的任务名称包含[构建变体](https://developer.android.com/studio/build/build-variants.html) 名称，并遵循 `compile<BuildVariant>Kotlin` 的模式，例如 `compileDebugKotlin`、 `compileReleaseUnitTestKotlin`。
 
-当针对 JavaScript 时，这些任务分别称为 `compileKotlin2Js` 与 `compileTestKotlin2Js`，以及对于自定义源文件集称为 `compile＜Name＞Kotlin2Js`。
+当面向 JavaScript 时，这些任务分别称为 `compileKotlin2Js` 与 `compileTestKotlin2Js`，以及对于自定义源文件集称为 `compile＜Name＞Kotlin2Js`。
 
 要配置单个任务，请使用其名称。示例：
 
@@ -554,7 +543,7 @@ compileKotlin {
     kotlinOptions.suppressWarnings = true
 }
 
-//or
+//或者
 
 compileKotlin {
     kotlinOptions {

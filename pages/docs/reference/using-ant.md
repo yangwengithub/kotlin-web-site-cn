@@ -11,14 +11,14 @@ description: "This tutorial walks you through different scenarios when using Ant
 
 Kotlin 为 Ant 提供了三个任务：
 
-* kotlinc: 针对 JVM 的 Kotlin 编译器；
-* kotlin2js: 针对 JavaScript 的 Kotlin 编译器；
+* kotlinc: 面向 JVM 的 Kotlin 编译器；
+* kotlin2js: 面向 JavaScript 的 Kotlin 编译器；
 * withKotlin: 使用标准 *javac* Ant 任务时编译 Kotlin 文件的任务。
 
 这仨任务在 *kotlin-ant.jar* 库中定义，该库位于 [Kotlin 编译器](https://github.com/JetBrains/kotlin/releases/tag/v1.3.11)的 *lib* 文件夹中
 需要 Ant 1.8.2+ 版本。
 
-## 针对 JVM 只用 Kotlin 源代码
+## 面向 JVM 只用 Kotlin 源代码
 
 当项目由 Kotlin 专用源代码组成时，编译项目的最简单方法是使用 *kotlinc* 任务：
 
@@ -38,7 +38,7 @@ Kotlin 为 Ant 提供了三个任务：
 
 其中 `${kotlin.lib}` 指向解压缩 Kotlin 独立编译器所在文件夹。
 
-## 针对 JVM 只用 Kotlin 源代码且多根
+## 面向 JVM 只用 Kotlin 源代码且多根
 
 如果项目由多个源代码根组成，那么使用 *src* 作为元素来定义路径：
 
@@ -59,7 +59,7 @@ Kotlin 为 Ant 提供了三个任务：
 
 
 
-## 针对 JVM 使用 Kotlin 和 Java 源代码
+## 面向 JVM 使用 Kotlin 和 Java 源代码
 
 如果项目由 Kotlin 和 Java 源代码组成，虽然可以使用 *kotlinc* 来避免任务参数的重复，但是<!--
 -->建议使用 *withKotlin* 任务：
@@ -96,7 +96,7 @@ Kotlin 为 Ant 提供了三个任务：
 
 
 
-## 针对 JavaScript 用单个源文件夹
+## 面向 JavaScript 用单个源文件夹
 
 
 
@@ -112,7 +112,7 @@ Kotlin 为 Ant 提供了三个任务：
 
 
 
-## 针对 JavaScript 用 Prefix、 PostFix 以及 sourcemap 选项
+## 面向 JavaScript 用 Prefix、 PostFix 以及 sourcemap 选项
 
 
 
@@ -128,7 +128,7 @@ Kotlin 为 Ant 提供了三个任务：
 
 
 
-## 针对 JavaScript 用单个源文件夹以及 metaInfo 选项
+## 面向 JavaScript 用单个源文件夹以及 metaInfo 选项
 
 如果要将翻译结果作为 Kotlin/JavaScript 库分发，那么 `metaInfo` 选项会很有用。
 如果 `metaInfo` 设置为 `true`，则在编译期间将创建具有<!--

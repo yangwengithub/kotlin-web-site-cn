@@ -7,7 +7,7 @@ title: "Kotlin 用于服务器端开发"
 
 # 使用 Kotlin 进行服务器端开发
 
-Kotlin 非常适合开发服务器端应用程序，允许编写简明且表现力强的代码，
+Kotlin 非常适合开发服务器端应用程序，可以让你编写简明且表现力强的代码，
 同时保持与现有基于 Java 的技术栈的完全兼容性以及平滑的学习曲线：
 
  * **表现力**：Kotlin 的革新式语言功能，例如支持[类型安全的构建器](type-safe-builders.html)<!--
@@ -25,7 +25,7 @@ Kotlin 非常适合开发服务器端应用程序，允许编写简明且表现�
 ## 使用 Kotlin 进行服务器端开发的框架
 
  * [Spring](https://spring.io) 利用 Kotlin 的语言功能提供[更简洁的 API](https://spring.io/blog/2017/01/04/introducing-kotlin-support-in-spring-framework-5-0)，
-从版本 5.0 开始。[在线项目生成器](https://start.spring.io/#!language=kotlin)允许用 Kotlin 快速生成一个新项目。
+从版本 5.0 开始。[在线项目生成器](https://start.spring.io/#!language=kotlin)可以让你用 Kotlin 快速生成一个新项目。
 
  * [Vert.x](http://vertx.io) 是在 JVM 上构建响应式 Web 应用程序的框架，
 为 Kotlin 提供了[专门支持](https://github.com/vert-x3/vertx-lang-kotlin)，包括[完整的文档](http://vertx.io/docs/vertx-core/kotlin/)。
