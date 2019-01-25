@@ -502,17 +502,17 @@ implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
 Kotlin 通过 *Kotlin 注解处理工具*（`kapt`）支持注解处理。kapt 同 Gradle 合用的用法已在 [kapt 页](kapt.html)描述。
 
-## Incremental Compilation
+## 增量编译
 
-Kotlin Gradle 插件支持支持增量编译。Incremental compilation tracks changes of source files between builds so only files affected by these changes would be compiled.
+Kotlin Gradle 插件支持支持增量编译。增量编译会跟踪多次构建之间源文件的变更，因此只会编译这些变更所影响的文件。
 
-Incremental compilation is supported for Kotlin/JVM and Kotlin/JS projects. It's enabled by default since Kotlin 1.1.1 for Kotlin/JVM and 1.3.20 for Kotlin/JS.
+Kotlin/JVM 与 Kotlin/JS 项目均支持增量编译。对于 Kotlin 1.1.1 起的 Kotlin/JVM 项目以及自 Kotlin 1.3.20 起的 Kotlin/JS 项目默认启用增量编译。
 
-There are several ways to override the default setting:
+有几种方法可以覆盖默认设置：
 
-* In Gradle configuration files: add the line `kotlin.incremental=<value>` for Kotlin/JVM or `kotlin.incremental.js=<value>` for Kotlin/JS projects either to `gradle.properties` or to `local.properties` file. `<value>` is a boolean value reflecting the usage of incremental compilation.
+* 在 Gradle 配置文件中：在 `gradle.properties` 或者 `local.properties` 中，对于 Kotlin/JVM 项目添加一行 `kotlin.incremental=＜值＞`，对于 Kotlin/JS 项目添加一行 `kotlin.incremental.js=＜值＞`。`＜值＞` 是一个反应增量编译用法的布尔值。
 
-* In Gradle command line parameters: add the parameter `-Pkotlin.incremental` or `-Pkotlin.incremental.js` with the boolean value reflecting the usage of incremental compilation. 请注意，这样用法中，该参数必须添加到后续每个子构建，并且任何具有禁用增量编译的构建将使增量缓存失效。
+* 在 Gradle 命令行参数中：添加带有反应增量编译用法的布尔值的 `-Pkotlin.incremental` or `-Pkotlin.incremental.js` 参数。请注意，这样用法中，该参数必须添加到后续每个子构建，并且任何具有禁用增量编译的构建将使增量缓存失效。
 
 请注意，任何情况下首次构建都不会是增量的。
 
