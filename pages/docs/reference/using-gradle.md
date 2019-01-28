@@ -6,7 +6,7 @@ title: "使用 Gradle"
 
 # 使用 Gradle
 
-为了用 Gradle 构建 Kotlin，你应该[设置好 *kotlin-gradle* 插件](#插件和版本)，[将其应用](#面向-jvm)到你的项目中，并且[添加 *kotlin-stdlib* 依赖](#配置依赖)。这些操作也可以在 IntelliJ IDEA 中通过调用 Project action 中的 Tools \| Kotlin \| Configure Kotlin 自动执行。
+为了用 Gradle 构建 Kotlin，你应该[设置好 *kotlin-gradle* 插件](#插件与版本)，[将其应用](#面向-jvm)到你的项目中，并且[添加 *kotlin-stdlib* 依赖](#配置依赖)。这些操作也可以在 IntelliJ IDEA 中通过调用 Project action 中的 Tools \| Kotlin \| Configure Kotlin 自动执行。
 
 ## 插件与版本
 
