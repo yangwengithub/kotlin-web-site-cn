@@ -206,7 +206,7 @@ compileKotlin {
 
 </div>
 
-关于详细信息，请参见[编译器选项](using-gradle.html#编译器选项)。关于[多平台项目](whatsnew13.html#多平台项目)的设置，请参见[使用 Gradle 构建多平台项目](building-mpp-with-gradle.html#language-settings)章节。
+关于详细信息，请参见[编译器选项](using-gradle.html#编译器选项)。关于[多平台项目](whatsnew13.html#多平台项目)的设置，请参见[使用 Gradle 构建多平台项目](building-mpp-with-gradle.html#语言设置)章节。
 
 ### 在 Maven 中启用内联类
 

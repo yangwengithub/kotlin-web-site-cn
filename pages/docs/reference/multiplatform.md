@@ -8,7 +8,7 @@ title: "多平台程序设计"
 # 多平台程序设计
 
 > 多平台项目是 Kotlin 1.2 与 1.3 中的实验性特性。本文档中描述的所有的语言<!--
--->与工具特性在未来的版本中都可能会发生变化。
+-->与工具特性在未来的版本中都可能会有所变化。
 {:.note}
 
 在所有平台上都能用是 Kotlin 的一个明确目标，但我们将其视为一个更重要的目标<!--
@@ -122,7 +122,7 @@ internal actual fun writeLogMessage(message: String, logLevel: LogLevel) {
 Kotlin 新手？可以看看[入门][Getting Started](basic-syntax.html)页。
 
 建议的文档页：
-- [搭建一个多平台项目](building-mpp-with-gradle.html#setting-up-a-multiplatform-project)
+- [搭建一个多平台项目](building-mpp-with-gradle.html#搭建一个多平台项目)
 - [平台相关声明](platform-specific-declarations.html)
 
 推荐的教程：
