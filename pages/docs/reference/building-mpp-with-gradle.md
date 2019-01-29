@@ -55,7 +55,7 @@ compilation. The default source set is also used for directing other source sets
 
 Here's an illustration of what a project targeting the JVM and JS looks like:
 
-![Project structure](/asset/images/reference/building-mpp-with-gradle/mpp-structure-default-jvm-js.png)
+![Project structure](/assets/images/reference/building-mpp-with-gradle/mpp-structure-default-jvm-js.png)
 
 Here, the two targets, `jvm` and `js`, each compile the production and test sources, and some of the sources are shared.
 This layout is achieved by just creating the two targets, with no additional configuration for the compilations and
@@ -64,7 +64,7 @@ source sets: those are [created by default](#默认项目布局) for these targe
 In the example above, the production sources for the JVM target are compiled by its `main` compilation and therefore
 include the sources and dependencies from the source sets `jvmMain` and `commonMain` (due to the *depends on* relation):
 
-![Source sets and compilation]/asset/images/reference/building-mpp-with-gradle/mpp-one-compilation.png)
+![Source sets and compilation]/assets/images/reference/building-mpp-with-gradle/mpp-one-compilation.png)
 
 Here, the `jvmMain` source set provides [plaform-specific implementations](platform-specific-declarations.html) for the
 expected API in the shared `commonMain` sources. This is how the code is shared between the platforms in a flexible way
