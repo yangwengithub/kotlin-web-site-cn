@@ -64,7 +64,7 @@ source sets: those are [created by default](#默认项目布局) for these targe
 In the example above, the production sources for the JVM target are compiled by its `main` compilation and therefore
 include the sources and dependencies from the source sets `jvmMain` and `commonMain` (due to the *depends on* relation):
 
-![Source sets and compilation]/assets/images/reference/building-mpp-with-gradle/mpp-one-compilation.png)
+![Source sets and compilation](/assets/images/reference/building-mpp-with-gradle/mpp-one-compilation.png)
 
 Here, the `jvmMain` source set provides [plaform-specific implementations](platform-specific-declarations.html) for the
 expected API in the shared `commonMain` sources. This is how the code is shared between the platforms in a flexible way
