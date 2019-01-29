@@ -292,7 +292,7 @@ tutorials:
         - url: /docs/tutorials/command-line.html
           title: 使用命令行编译器
         - url: /docs/tutorials/quick-run.html
-          title: Running Code Snippets
+          title: 运行代码片段
         - url: /docs/tutorials/build-tools.html
           title: 使用构建工具
         - url: /docs/tutorials/koans.html
