@@ -41,7 +41,8 @@ subnav:
           urlPattern: ^/community/$
           title: 社区概述
 
-        - url: /community/user-groups.html
+        - url: /user-groups/user-group-list.html
+          urlPattern: /user-groups*
           title: 用户群组
 
         - url: /community/kotlin-nights.html
@@ -403,11 +404,20 @@ tutorials:
 
 foundation:
   content:
-      - url: /foundation/kotlin-foundation.html
-        title: Kotlin 基金会
-      - url: /foundation/language-committee-guidelines.html
-        title: 语言委员会指南
-      - url: /foundation/submitting-incompatible-changes.html
-        title: 提交不兼容的更改
-      - url: /foundation/faq.html
-        title: FAQ
+    - url: /foundation/kotlin-foundation.html
+      title: Kotlin 基金会
+    - url: /foundation/language-committee-guidelines.html
+      title: 语言委员会指南
+    - url: /foundation/submitting-incompatible-changes.html
+      title: 提交不兼容的更改
+    - url: /foundation/faq.html
+      title: FAQ
+
+groups:
+  content:
+    - url: /user-groups/user-group-list.html
+      title: Kotlin User Groups List
+    - url: /user-groups/support.html
+      title: Support and Guidelines
+    - url: /user-groups/branding.html
+      title: Branding
