@@ -135,7 +135,7 @@ Hadi Hariri 的 [O’Reilly Course](http://shop.oreilly.com/product/063692005298
 
 ### 有没有 Kotlin 活动？
  
-有。现在有很多用户组和集会组专注于 Kotlin。你可以[在网站上找到一个列表](/community/user-groups.html)。
+有。现在有很多用户组和集会组专注于 Kotlin。你可以[在网站上找到一个列表](/user-groups/user-group-list.html)。
 此外，还有世界各地的社区组织的 [Kotlin 之夜](/community/kotlin-nights.html)活动。
 
 ### 有没有 Kotlin 大会？
