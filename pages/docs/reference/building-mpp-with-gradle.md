@@ -18,9 +18,9 @@ title: "使用 Gradle 构建多平台项目"
 * [项目结构](#项目结构)
 * [搭建一个多平台项目](#搭建一个多平台项目)
 * [Gradle 插件](#gradle-插件)
-* [设置目标平台](#设置目标平台)
+* [设置目标](#设置目标)
     * [已支持平台](#已支持平台)
-    * [配置 compilations](#配置-compilations)
+    * [配置编译项](#配置编译项)
 * [配置源集](#配置源集)
     * [关联源集](#关联源集)
     * [添加依赖](#添加依赖)
@@ -35,42 +35,42 @@ title: "使用 Gradle 构建多平台项目"
 
 ## 项目结构
 
-The layout of a Kotlin multiplatform project is constructed out of the following building blocks:
+Kotlin 多平台项目的布局由以下构建块构成：
 
-* A [target](#设置目标平台) is a part of the build that is responsible for building, testing,
-and packaging a complete piece of software for one of the platforms. Therefore, a multiplatform project usually contains
-multiple targets.
+* [目标](#设置目标)是构建的一部分，负责构建、测试<!--
+-->及打包其中一个平台的完整软件。因此，多平台项目通常包含<!--
+-->多个目标。
 
-* Building each target involves compiling Kotlin sources once or multiple times. In other words, a target may have one or
-more [compilations](#配置-compilations). For example, one compilation for production sources, the other for tests.
+* 构建每个目标涉及一到多次编译 Kotlin 源代码。换句话说，一个目标可能有一到<!--
+-->多个[编译项](#配置编译项)。例如，一个编译项用于编译生产代码，另一个用于编译测试代码。
 
-* The Kotlin sources are arranged into [source sets](#配置源集). In addition to Kotlin source files and
-resources, each source set may have its own dependencies. Source sets form a hierarchy that is built with
-the *"depends on"* relation. A source set by itself is platform agnostic, but it may contain platform-specific code and
-dependencies if it's only compiled for a single platform.
+* Kotlin 源代码会放到[源集](#配置源集)中。除了 Kotlin 源文件与<!--
+-->资源外，每个源集都可能有自己的依赖项。源集之间以<!--
+-->*“依赖于”*关系构成了层次结构。源集本身是平台无关的，但是<!--
+-->如果一个源集只面向单一平台编译，那么它可能包含平台相关代码与依赖项。
 
-Each compilation has a default source set, which is the place for sources and dependencies that are specific to that
-compilation. The default source set is also used for directing other source sets to the compilation by the means of the
-"depends on" relation.
+每个编译项都有一个默认源集，是放置该编译项的源代码与依赖项的地<!--
+-->方。默认源集还用于通过<!--
+-->“依赖于”关系将其他源集引到该编译项中。
 
-Here's an illustration of what a project targeting the JVM and JS looks like:
+以下是一个面向 JVM 与 JS 的项目的图示：
 
-![Project structure](/assets/images/reference/building-mpp-with-gradle/mpp-structure-default-jvm-js.png)
+![项目结构](/assets/images/reference/building-mpp-with-gradle/mpp-structure-default-jvm-js.png)
 
-Here, the two targets, `jvm` and `js`, each compile the production and test sources, and some of the sources are shared.
-This layout is achieved by just creating the two targets, with no additional configuration for the compilations and
-source sets: those are [created by default](#默认项目布局) for these targets.
+这里有两个目标，即 `jvm` 与 `js`，每个目标都分别编译生产代码、测试代码，其中一些代码是共享的。
+这种布局只是通过创建两个目标来实现的，并没有对编译项与源集进行额外配置<!--
+-->：都是为相应目标[默认创建](#默认项目布局)的。
 
-In the example above, the production sources for the JVM target are compiled by its `main` compilation and therefore
-include the sources and dependencies from the source sets `jvmMain` and `commonMain` (due to the *depends on* relation):
+在上述示例中，JVM 目标的生产源代码由其 `main` 编译项编译，其中<!--
+-->包括来自 `jvmMain` 与 `commonMain`（由于*依赖于*关系）的源代码与依赖项：
 
-![Source sets and compilation](/assets/images/reference/building-mpp-with-gradle/mpp-one-compilation.png)
+![源集与编译项](/assets/images/reference/building-mpp-with-gradle/mpp-one-compilation.png)
 
-Here, the `jvmMain` source set provides [plaform-specific implementations](platform-specific-declarations.html) for the
-expected API in the shared `commonMain` sources. This is how the code is shared between the platforms in a flexible way
-with platform-specific implementations where needed.
+这里 `jvmMain` 源集为共享的 `commonMain` 源集中的预期 API 提供了[平台相关实现](platform-specific-declarations.html)<!--
+-->。这就是在平台之间灵活共享代码、
+按需使用平台相关实现的方式。
 
-In further sections, these concepts are described in more detail along with the DSL to configure them in a project.
+在后续部分，会详细描述这些概念以及将其配置到项目中的 DSL。
 
 ## 搭建一个多平台项目
 
@@ -78,7 +78,7 @@ You can create a new multiplatform project in the IDE by selecting one of the mu
 New Project dialog under the "Kotlin" section.
 
 For example, if you choose "Kotlin (Multiplatform Library)", a library project is created that has three
-[targets](#设置目标平台), one for the JVM, one for JS, and one for the Native platform that you are using.
+[targets](#设置目标), one for the JVM, one for JS, and one for the Native platform that you are using.
 These are configured in the `build.gradle`
 script in the following way:
 
@@ -269,10 +269,10 @@ plugins {
 
 This creates the `kotlin` extension at the top level. You can then access it in the build script for:
 
-* [setting up the targets](#设置目标平台) for multiple platforms (no targets are created by default);
+* [setting up the targets](#设置目标) for multiple platforms (no targets are created by default);
 * [configuring the source sets](#配置源集) and their [dependencies](#添加依赖);
 
-## 设置目标平台
+## 设置目标
 
 A target is a part of the build responsible for compiling, testing, and packaging a piece of software aimed for
 one of the [supported platforms](#已支持平台).
@@ -406,7 +406,7 @@ following target platforms:
 Some targets may require additional configuration. For Android and iOS examples, see
 the [Multiplatform Project: iOS and Android](/docs/tutorials/native/mpp-ios-android.html) tutorial.
 
-### 配置 compilations
+### 配置编译项
 
 Building a target requires compiling Kotlin once or multiple times. Each Kotlin compilation of a target may serve a
 different purpose (e.g. production code, tests) and incorporate different [source sets](#配置源集).
@@ -614,7 +614,7 @@ default.
 ## 配置源集
 
 A Kotlin source set is a collection of Kotlin sources, along with their resources, dependencies, and language settings,
-which may take part in Kotlin compilations of one or more [targets](#设置目标平台).
+which may take part in Kotlin compilations of one or more [targets](#设置目标).
 
 A source set is not bound to be platform-specific or "shared"; what it's allowed to content depends on its usage:
 a source set added to multiple compilations is limited to the common language features and dependencies, while a source
