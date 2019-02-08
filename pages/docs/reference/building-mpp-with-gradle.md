@@ -87,7 +87,7 @@ script in the following way:
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version '1.3.20'
+    id 'org.jetbrains.kotlin.multiplatform' version '1.3.21'
 }
 
 repositories {
@@ -111,7 +111,7 @@ kotlin {
 
 ```kotlin
 plugins {
-    kotlin("multiplatform") version "1.3.20"
+    kotlin("multiplatform") version "1.3.21"
 }
 
 repositories {
@@ -248,7 +248,7 @@ beginning of the `build.gradle` file:
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version '1.3.20'
+    id 'org.jetbrains.kotlin.multiplatform' version '1.3.21'
 }
 ```
 
@@ -260,7 +260,7 @@ plugins {
 
 ```kotlin
 plugins {
-    kotlin("multiplatform") version "1.3.20"
+    kotlin("multiplatform") version "1.3.21"
 }
 ```
 
@@ -1454,7 +1454,7 @@ Creating an Android target requires that one of the Android Gradle plugins, like
 ```groovy
 plugins {
     id("com.android.library")
-    id("org.jetbrains.kotlin.multiplatform").version("1.3.20")
+    id("org.jetbrains.kotlin.multiplatform").version("1.3.21")
 }
 
 android { /* ... */ }
@@ -1475,7 +1475,7 @@ kotlin {
 ```kotlin
 plugins {
     id("com.android.library")
-    kotlin("multiplatform").version("1.3.20")
+    kotlin("multiplatform").version("1.3.21")
 }
 
 android { /* ... */ }
@@ -1793,7 +1793,7 @@ kotlin {
 This creates binaries with corresponding types and the compilation name as name prefixes in the `binaries` container. But note that such
 binaries are created after project evaluation so they are available only in an `afterEvaluate` code block.
 
-> Despite the fact that this approach is supported in 1.3.20, it will be eventually deprecated. So it's recommended to use the binaries
+> Despite the fact that this approach is supported in 1.3.21, it will be eventually deprecated. So it's recommended to use the binaries
 DSL instead.
 
 #### Accessing binaries

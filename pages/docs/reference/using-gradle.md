@@ -18,7 +18,7 @@ title: "使用 Gradle"
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.＜……＞' version '1.3.20'
+    id 'org.jetbrains.kotlin.＜……＞' version '1.3.21'
 }
 ```
 
@@ -30,7 +30,7 @@ plugins {
 
 ```kotlin
 plugins {
-    kotlin("＜……＞") version "1.3.20"
+    kotlin("＜……＞") version "1.3.21"
 }
 ```
 
@@ -49,12 +49,12 @@ buildscript {
     }
 
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.20"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.21"
     }
 }
 
 plugins {
-    id "org.jetbrains.kotlin.＜……＞" version "1.3.20"
+    id "org.jetbrains.kotlin.＜……＞" version "1.3.21"
 }
 ```
 
@@ -71,7 +71,7 @@ buildscript {
     }
 
     dependencies {
-        classpath(kotlin("gradle-plugin", version = "1.3.20"))
+        classpath(kotlin("gradle-plugin", version = "1.3.21"))
     }
 }
 plugins {
@@ -98,7 +98,7 @@ plugins {
 
 ```groovy
 plugins {
-    id "org.jetbrains.kotlin.jvm" version "1.3.20"
+    id "org.jetbrains.kotlin.jvm" version "1.3.21"
 }
 ```
 
@@ -110,7 +110,7 @@ plugins {
 
 ```kotlin
 plugins {
-    kotlin("jvm") version "1.3.20"
+    kotlin("jvm") version "1.3.21"
 }
 ```
 
@@ -184,7 +184,7 @@ sourceSets["main"].withConvention(KotlinSourceSet::class) {
 
 ``` groovy
 plugins {
-    id 'kotlin2js' version '1.3.20'
+    id 'kotlin2js' version '1.3.21'
 }
 ```
 
@@ -196,7 +196,7 @@ plugins {
 
 ```kotlin
 plugins {
-    id("kotlin2js") version "1.3.20"
+    id("kotlin2js") version "1.3.21"
 }
 ```
 
@@ -287,7 +287,7 @@ Android 的 Gradle 模型与普通 Gradle 有点不同，所以如果我们要�
 
 ```groovy
 buildscript {
-    ext.kotlin_version = '1.3.20'
+    ext.kotlin_version = '1.3.21'
 
     ……
 
@@ -313,7 +313,7 @@ plugins {
 buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:3.2.1")
-        classpath(kotlin("gradle-plugin", version = "1.3.20"))
+        classpath(kotlin("gradle-plugin", version = "1.3.21"))
     }
 }
 plugins {
@@ -506,7 +506,7 @@ Kotlin 通过 *Kotlin 注解处理工具*（`kapt`）支持注解处理。kapt �
 
 Kotlin Gradle 插件支持支持增量编译。增量编译会跟踪多次构建之间源文件的变更，因此只会编译这些变更所影响的文件。
 
-Kotlin/JVM 与 Kotlin/JS 项目均支持增量编译。对于 Kotlin 1.1.1 起的 Kotlin/JVM 项目以及自 Kotlin 1.3.20 起的 Kotlin/JS 项目默认启用增量编译。
+Kotlin/JVM 与 Kotlin/JS 项目均支持增量编译。对于 Kotlin 1.1.1 起的 Kotlin/JVM 项目以及自 Kotlin 1.3.21 起的 Kotlin/JS 项目默认启用增量编译。
 
 有几种方法可以覆盖默认设置：
 
