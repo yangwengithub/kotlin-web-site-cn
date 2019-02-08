@@ -52,7 +52,7 @@ val max = if (a > b) {
 如果你使用 *if*{: .keyword } 作为表达式而不是语句（例如：返回它的值或者<!--
 -->把它赋给变量），该表达式需要有 `else` 分支。
 
-参见 [*if*{: .keyword } 语法](grammar.html#if)。
+参见 [*if*{: .keyword } 语法](grammar.html#ifExpression)。
 
 ## When 表达式
 
@@ -169,7 +169,7 @@ fun Request.getBody() =
 
 Scope of variable, introduced in *when*{: .keyword} subject, is restricted to *when*{: .keyword} body.
 
-参见 [*when*{: .keyword } 语法](grammar.html#when)。
+参见 [*when*{: .keyword } 语法](grammar.html#whenExpression)。
 
 
 ## For 循环
@@ -260,7 +260,7 @@ fun main() {
 
 </div>
 
-参见[*for*{: .keyword } 语法](grammar.html#for)。
+参见[*for*{: .keyword } 语法](grammar.html#forStatement)。
 
 ## While 循环
 
@@ -280,7 +280,7 @@ do {
 
 </div>
 
-参见[*while*{: .keyword } 语法](grammar.html#while).
+参见[*while*{: .keyword } 语法](grammar.html#whileStatement).
 
 ## 循环中的 Break 与 continue
 
