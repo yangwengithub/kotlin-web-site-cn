@@ -50,7 +50,7 @@ class Goo { ... }
 ## 导入
 
 除了默认导入之外，每个文件可以包含它自己的导入指令。
-导入语法在[语法](grammar.html#import)中讲述。
+导入语法在[语法](grammar.html#importHeader)中讲述。
 
 可以导入一个单独的名字，如.
 
