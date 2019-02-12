@@ -580,7 +580,7 @@ compileKotlin.kotlinOptions.suppressWarnings = true
 
 
 ```groovy
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java).all {
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
     kotlinOptions { …… }
 }
 ```
@@ -592,6 +592,8 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java).all 
 
 
 ```kotlin
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 tasks.withType<KotlinCompile> {
     kotlinOptions.suppressWarnings = true
 }

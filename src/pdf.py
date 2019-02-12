@@ -1,3 +1,5 @@
+# vim: fileencoding=utf-8
+
 import re
 import subprocess
 from os import path
@@ -78,7 +80,7 @@ def get_pdf_content(build_mode: bool, pages: MyFlatPages, toc: Dict) -> str:
                 document = BeautifulSoup(page_html, 'html.parser')
                 document = document.find("div", {"class": "grammar"})
                 page_id = "grammar"
-                title = "Grammar"
+                title = "语法"
             else:
                 page = pages.get(url)
                 if page is None:
