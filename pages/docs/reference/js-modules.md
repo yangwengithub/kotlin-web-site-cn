@@ -44,8 +44,8 @@ Kotlin 允许你将 Kotlin 项目编译为热门模块系统的 JavaScript 模�
 
 ``` xml
 <plugin>
-    <artifactId>kotlin-maven-plugin</artifactId>
     <groupId>org.jetbrains.kotlin</groupId>
+    <artifactId>kotlin-maven-plugin</artifactId>
     <version>${kotlin.version}</version>
     <executions>
         <execution>

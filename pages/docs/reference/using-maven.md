@@ -72,8 +72,8 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 <build>
     <plugins>
         <plugin>
-            <artifactId>kotlin-maven-plugin</artifactId>
             <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-maven-plugin</artifactId>
             <version>${kotlin.version}</version>
 
             <executions>
@@ -105,8 +105,8 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 <build>
     <plugins>
         <plugin>
-            <artifactId>kotlin-maven-plugin</artifactId>
             <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-maven-plugin</artifactId>
             <version>${kotlin.version}</version>
             <executions>
                 <execution>
@@ -324,8 +324,8 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
 ```xml
 <plugin>
-    <artifactId>kotlin-maven-plugin</artifactId>
     <groupId>org.jetbrains.kotlin</groupId>
+    <artifactId>kotlin-maven-plugin</artifactId>
     <version>${kotlin.version}</version>
     <executions>……</executions>
     <configuration>
