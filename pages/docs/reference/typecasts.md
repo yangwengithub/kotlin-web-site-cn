@@ -45,8 +45,9 @@ fun demo(x: Any) {
 
 
 ```kotlin
-    if (x !is String) return
-    print(x.length) // x 自动转换为字符串
+if (x !is String) return
+
+print(x.length) // x 自动转换为字符串
 ```
 
 
@@ -54,13 +55,13 @@ fun demo(x: Any) {
 
 
 ```kotlin
-    // `||` 右侧的 x 自动转换为字符串
-    if (x !is String || x.length == 0) return
+// `||` 右侧的 x 自动转换为字符串
+if (x !is String || x.length == 0) return
 
-    // `&&` 右侧的 x 自动转换为字符串
-    if (x is String && x.length > 0) {
-        print(x.length) // x 自动转换为字符串
-    }
+// `&&` 右侧的 x 自动转换为字符串
+if (x is String && x.length > 0) {
+    print(x.length) // x 自动转换为字符串
+}
 ```
 
 
