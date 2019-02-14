@@ -115,7 +115,7 @@ fun main() {
     val a = "Kotlin"
     val b: String? = null
     println(b?.length)
-    println(a?.length) // Unnecessary safe call
+    println(a?.length) // 无需安全调用
 //sampleEnd
 }
 ```
