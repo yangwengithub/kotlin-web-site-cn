@@ -49,6 +49,9 @@ Google Cloud Platform 等。
 AWS Labs 提供了一个[示例项目](https://github.com/awslabs/serverless-photo-recognition)，展示了 Kotlin
 编写 [AWS Lambda](https://aws.amazon.com/lambda/) 函数的使用。
 
+Google Cloud Platform offers a series of tutorials for deploying Kotlin applications to GCP, both for [Ktor and App Engine](https://cloud.google.com/community/tutorials/kotlin-ktor-app-engine-java8) and [Spring and App engine](https://cloud.google.com/community/tutorials/kotlin-springboot-app-engine-java8). In addition
+there is an [interactive code lab](https://codelabs.developers.google.com/codelabs/cloud-spring-cloud-gcp-kotlin) for deploying a Kotlin Spring application.
+
 ## Kotlin 用于服务器端的用户
 
 [Corda](https://www.corda.net/) 是一个开源的分布式分类帐平台，由各大银行提供支持
