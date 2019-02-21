@@ -410,6 +410,8 @@ foundation:
       title: 语言委员会指南
     - url: /foundation/submitting-incompatible-changes.html
       title: 提交不兼容的更改
+    - url: /foundation/guidelines.html
+      title: Kotlin Brand Usage Guidelines
     - url: /foundation/faq.html
       title: FAQ
 
