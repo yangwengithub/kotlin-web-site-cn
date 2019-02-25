@@ -418,8 +418,8 @@ foundation:
 groups:
   content:
     - url: /user-groups/user-group-list.html
-      title: Kotlin User Groups List
+      title: Kotlin 用户组列表
     - url: /user-groups/support.html
-      title: Support and Guidelines
+      title: 支助和准则
     - url: /user-groups/branding.html
-      title: Branding
+      title: 品牌
