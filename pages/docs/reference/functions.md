@@ -86,14 +86,15 @@ foo(baz = 1) // 使用默认值 bar = 0
 ```
 
 
-不过如果最后一个 [lambda 表达式](lambdas.html#lambda-表达式与匿名函数)参数从括号外传给函数函数调用，那么允许默认参数不传值：
+如果在默认参数之后的最后一个参数是 [lambda 表达式](lambdas.html#lambda-表达式语法)，那么它既可以作为命名参数在括号内传入，也可以在[括号外](lambdas.html#将-lambda-表达式传给最后一个参数)传入：
 
 
 ```kotlin
 fun foo(bar: Int = 0, baz: Int = 1, qux: () -> Unit) { …… }
 
-foo(1) { println("hello") } // 使用默认值 baz = 1
-foo { println("hello") }    // 使用两个默认值 bar = 0 与 baz = 1
+foo(1) { println("hello") }     // 使用默认值 baz = 1
+foo(qux = { println("hello") }) // 使用两个默认值 bar = 0 与 baz = 1
+foo { println("hello") }        // 使用两个默认值 bar = 0 与 baz = 1
 ```
 
 
