@@ -124,6 +124,8 @@ reference:
           title: 枚举类
         - url: /docs/reference/object-declarations.html
           title: 对象
+        - url: /docs/reference/type-aliases.html
+          title: 类型别名
         - url: /docs/reference/inline-classes.html
           title: 内联类
         - url: /docs/reference/delegation.html
@@ -176,8 +178,6 @@ reference:
           title: 反射
         - url: /docs/reference/type-safe-builders.html
           title: 类型安全的构建器
-        - url: /docs/reference/type-aliases.html
-          title: 类型别名
 
     - title: 核心库
       content:

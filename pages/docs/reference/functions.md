@@ -86,14 +86,15 @@ foo(baz = 1) // 使用默认值 bar = 0
 ```
 </div>
 
-不过如果最后一个 [lambda 表达式](lambdas.html#lambda-表达式与匿名函数)参数从括号外传给函数函数调用，那么允许默认参数不传值：
+If the last argument after default parameters is a [lambda](lambdas.html#lambda-expression-syntax), it can be passed in either as a named argument or [outside the parentheses](lambdas.html#passing-a-lambda-to-the-last-parameter):
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 fun foo(bar: Int = 0, baz: Int = 1, qux: () -> Unit) { …… }
 
-foo(1) { println("hello") } // 使用默认值 baz = 1
-foo { println("hello") }    // 使用两个默认值 bar = 0 与 baz = 1
+foo(1) { println("hello") }     // 使用默认值 baz = 1
+foo(qux = { println("hello") }) // 使用两个默认值 bar = 0 与 baz = 1
+foo { println("hello") }        // 使用两个默认值 bar = 0 与 baz = 1
 ```
 </div>
 
