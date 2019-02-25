@@ -86,7 +86,7 @@ foo(baz = 1) // 使用默认值 bar = 0
 ```
 </div>
 
-If the last argument after default parameters is a [lambda](lambdas.html#lambda-expression-syntax), it can be passed in either as a named argument or [outside the parentheses](lambdas.html#passing-a-lambda-to-the-last-parameter):
+如果在默认参数之后的最后一个参数是 [lambda 表达式](lambdas.html#lambda-表达式语法)，那么它既可以作为命名参数在括号内传入，也可以在[括号外](lambdas.html#将-lambda-表达式传给最后一个参数)传入：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
