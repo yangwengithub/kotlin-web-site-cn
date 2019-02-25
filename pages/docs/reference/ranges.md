@@ -85,11 +85,11 @@ for (i in 1 until 10) {
 第一个元素是 `first`，后续元素是前一个元素加上 `step`。 `last` 元素总会被迭代命中，除非该数列是空的。
 
 数列是 `Iterable<N>` 的子类型，其中 `N` 分别为 `Int`、 `Long` 或者 `Char`，所以它可用于 *for*{: .keyword }-循环以及像 `map`、`filter` 等函数中。
-对 `Progression` 迭代相当于 Java/JavaScript 的基于索引的 *for*{: .keyword }-循环：
+对 `step` 为正数的 `Progression` 迭代相当于 Java/JavaScript 的基于索引的 *for*{: .keyword }-循环：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```java
-for (int i = first; i != last; i += step) {
+for (int i = first; i <= last; i += step) {
   // ……
 }
 ```
