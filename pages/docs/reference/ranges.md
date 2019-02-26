@@ -145,7 +145,7 @@ class Int {
 
 </div>
 
-The `rangeTo` operator for floating point numbers (`Double`, `Float`) returns a range that [follows the IEEE-754 standard](/docs/reference/basic-types.html#floating-point-numbers-comparison) when comparing a number with the range ends in range checks. The range returned by this function is not a progression cannot be used for iteration.
+浮点数（`Double`、`Float`）的 `rangeTo` 操作符返回一个[遵循 IEEE-754 标准](/docs/reference/basic-types.html#浮点数比较)的区间，用于比较一个数字是否在指定区间内。该函数返回的区间并不是数列，不能用于迭代遍历。
 
 ### `downTo()`
 
