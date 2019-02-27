@@ -285,7 +285,7 @@ fun <T> singletonList(item: T): List<T> {
     // ……
 }
 
-fun <T> T.basicToString() : String {  // 扩展函数
+fun <T> T.basicToString(): String {  // 扩展函数
     // ……
 }
 ```
