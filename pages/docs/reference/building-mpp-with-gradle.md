@@ -74,13 +74,13 @@ Kotlin 多平台项目的布局由以下构建块构成：
 
 ## 搭建一个多平台项目
 
-You can create a new multiplatform project in the IDE by selecting one of the multiplatform project templates in the 
-New Project dialog under the "Kotlin" section.
+您可以在 IDE 的 New Project - Kotlin 对话框下选择一个多平台项目模板<!--
+-->来创建一个多平台项目
 
-For example, if you choose "Kotlin (Multiplatform Library)", a library project is created that has three
-[targets](#设置目标), one for the JVM, one for JS, and one for the Native platform that you are using.
-These are configured in the `build.gradle`
-script in the following way:
+例如， 如果您选择了 "Kotlin (Multiplatform Library)"， 将创建一个包含三个 <!--
+-->[设置目标](#设置目标) 的库项目， 其中一个用于 JVM， 一个用于 JS， 还有一个用于您正在使用的原生平台。
+这些是在 `build.gradle` <!--
+-->脚本中以下列方式配置的：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -95,9 +95,9 @@ repositories {
 }
 
 kotlin {
-    jvm() // Creates a JVM target with the default name 'jvm'
-    js()  // JS target named 'js'
-    mingwX64("mingw") // Windows (MinGW X64) target named 'mingw'
+    jvm() // 使用默认名称 ‘jvm’ 创建一个 JVM 目标
+    js()  // 使用名称 ‘js’ 创建一个 JS 目标
+    mingwX64("mingw") // 使用名称 ‘mingw’ 创建一个 Windows (MinGW X64) 目标
     
     sourceSets { /* ... */ }
 }
@@ -119,9 +119,9 @@ repositories {
 }
 
 kotlin {
-    jvm() // Creates a JVM target with the default name 'jvm'
-    js()  // JS target named 'js'
-    mingwX64("mingw") // Windows (MinGW X64) target named 'mingw'
+    jvm() // 使用默认名称 ‘jvm’ 创建一个 JVM 目标
+    js()  // 使用名称 ‘js’ 创建一个 JS 目标
+    mingwX64("mingw") // 使用名称 ‘mingw’ 创建一个 Windows (MinGW X64) 目标
 
     sourceSets { /* ... */ }
 }
@@ -130,10 +130,10 @@ kotlin {
 </div>
 </div>
 
-The three targets are created with the preset functions `jvm()`, `js()`, and `mingwX64()` that provide some
-[default configuration](#默认项目布局). There are presets for each of the [supported platforms](#已支持平台).
+这三个目标是通过预设函数 `jvm()`， `js()` 和 `mingwX64()` 创建的， 它们提供了一些 <!--
+-->[默认项目布局](#默认项目布局)。 每个 [已支持平台](#已支持平台) 都有预设的函数。
 
-The [source sets](#配置源集) and their [dependencies](#添加依赖) are then configured as follows:
+然后配置 [源集](#配置源集) 及其 [依赖](#添加依赖)， 如下所示：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -142,7 +142,7 @@ The [source sets](#配置源集) and their [dependencies](#添加依赖) are the
 plugins { /* ... */ }
 
 kotlin {
-    /* Targets declarations omitted */
+    /* 省略目标声明 */
 
     sourceSets {
         commonMain {
@@ -157,14 +157,14 @@ kotlin {
             }
         }
 
-        // Default source set for JVM-specific sources and dependencies.
-        // Alternatively, jvmMain { ... } would work as well:
+        // 仅用于 JVM 的源码及其依赖的默认源集
+        // 或者使用 jvmMain { ... }
         jvm().compilations.main.defaultSourceSet {
             dependencies {
                 implementation kotlin('stdlib-jdk8')
             }
         }
-        // JVM-specific tests and their dependencies:
+        // 仅用于 JVM 的测试及其依赖
         jvm().compilations.test.defaultSourceSet {
             dependencies {
                 implementation kotlin('test-junit')
@@ -190,7 +190,7 @@ kotlin {
 plugins { /* ... */ }
 
 kotlin {
-    /* Targets declarations omitted */
+    /* 省略目标声明 */
 
     sourceSets {
         val commonMain by getting {
@@ -205,13 +205,13 @@ kotlin {
             }
         }
 
-        // Default source set for JVM-specific sources and dependencies:
+        // 仅用于 JVM 的源码及其依赖的默认源集
         jvm().compilations["main"].defaultSourceSet {
             dependencies {
                 implementation(kotlin("stdlib-jdk8"))
             }
         }
-        // JVM-specific tests and their dependencies:
+        // 仅用于 JVM 的测试及其依赖
         jvm().compilations["test"].defaultSourceSet {
             dependencies {
                 implementation(kotlin("test-junit"))
@@ -230,10 +230,10 @@ kotlin {
 </div>
 </div>
 
-These are the [default source set names](#默认项目布局) for the production and test sources for the targets
-configured above. The source sets `commonMain` and `commonTest` are included into production and test compilations, respectively, of all targets.
-Note that the dependencies for common source sets `commonMain` and `commonTest` are the common artifacts, and the 
-platform libraries go to the source sets of the specific targets.
+这些在上面配置的目标的生成和测试的源码<!--
+-->都有各自的 [默认源集名称](#默认项目布局)。 源集 `commonMain` 和 `commonTest` 将被分别包含在所有目标的生成和测试的编译中。
+需要注意的是， 公共源集 `commonMain` 和 `commonTest` 的依赖使用的都是公共文件， 而<!--
+-->平台库将转到特定目标的源集
 
 ## Gradle 插件
 
