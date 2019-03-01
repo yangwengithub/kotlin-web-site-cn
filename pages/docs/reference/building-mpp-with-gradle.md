@@ -99,7 +99,7 @@ kotlin {
     js()  // 使用名称 “js” 创建一个 JS 目标
     mingwX64("mingw") // 使用名称 “mingw” 创建一个 Windows (MinGW X64) 目标
     
-    sourceSets { /* ... */ }
+    sourceSets { /* …… */ }
 }
 ```
 
@@ -123,7 +123,7 @@ kotlin {
     js()  // 使用名称 “js” 创建一个 JS 目标
     mingwX64("mingw") // 使用名称 “mingw” 创建一个 Windows (MinGW X64) 目标
 
-    sourceSets { /* ... */ }
+    sourceSets { /* …… */ }
 }
 ```
 
@@ -139,7 +139,7 @@ kotlin {
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
 ```groovy
-plugins { /* ... */ }
+plugins { /* …… */ }
 
 kotlin {
     /* 省略目标声明 */
@@ -158,7 +158,7 @@ kotlin {
         }
 
         // 仅用于 JVM 的源码及其依赖的默认源集
-        // 或者使用 jvmMain { ... }
+        // 或者使用 jvmMain { …… }
         jvm().compilations.main.defaultSourceSet {
             dependencies {
                 implementation kotlin('stdlib-jdk8')
@@ -171,11 +171,11 @@ kotlin {
             }
         }
 
-        js().compilations.main.defaultSourceSet  { /* ... */ }
-        js().compilations.test.defaultSourceSet { /* ... */ }
+        js().compilations.main.defaultSourceSet  { /* …… */ }
+        js().compilations.test.defaultSourceSet { /* …… */ }
 
-        mingwX64('mingw').compilations.main.defaultSourceSet { /* ... */ }
-        mingwX64('mingw').compilations.test.defaultSourceSet { /* ... */ }
+        mingwX64('mingw').compilations.main.defaultSourceSet { /* …… */ }
+        mingwX64('mingw').compilations.test.defaultSourceSet { /* …… */ }
     }
 }
 ```
@@ -187,7 +187,7 @@ kotlin {
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
 
 ```kotlin
-plugins { /* ... */ }
+plugins { /* …… */ }
 
 kotlin {
     /* 省略目标声明 */
@@ -218,11 +218,11 @@ kotlin {
             }
         }
 
-        js().compilations["main"].defaultSourceSet  { /* ... */ }
-        js().compilations["test"].defaultSourceSet { /* ... */ }
+        js().compilations["main"].defaultSourceSet  { /* …… */ }
+        js().compilations["test"].defaultSourceSet { /* …… */ }
 
-        mingwX64("mingw").compilations["main"].defaultSourceSet { /* ... */ }
-        mingwX64("mingw").compilations["test"].defaultSourceSet { /* ... */ }
+        mingwX64("mingw").compilations["main"].defaultSourceSet { /* …… */ }
+        mingwX64("mingw").compilations["test"].defaultSourceSet { /* …… */ }
     }
 }
 ```
