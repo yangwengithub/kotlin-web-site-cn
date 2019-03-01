@@ -75,10 +75,10 @@ Kotlin 多平台项目的布局由以下构建块构成：
 ## 搭建一个多平台项目
 
 您可以在 IDE 的 New Project - Kotlin 对话框下选择一个多平台项目模板<!--
--->来创建一个多平台项目
+-->来创建一个多平台项目。
 
-例如， 如果您选择了 "Kotlin (Multiplatform Library)"， 将创建一个包含三个 <!--
--->[设置目标](#设置目标) 的库项目， 其中一个用于 JVM， 一个用于 JS， 还有一个用于您正在使用的原生平台。
+例如，如果您选择了 "Kotlin (Multiplatform Library)"，将创建一个包含三个<!--
+-->[设置目标](#设置目标)的库项目，其中一个用于 JVM，一个用于 JS，还有一个用于您正在使用的原生平台。
 这些是在 `build.gradle` <!--
 -->脚本中以下列方式配置的：
 
@@ -95,9 +95,9 @@ repositories {
 }
 
 kotlin {
-    jvm() // 使用默认名称 ‘jvm’ 创建一个 JVM 目标
-    js()  // 使用名称 ‘js’ 创建一个 JS 目标
-    mingwX64("mingw") // 使用名称 ‘mingw’ 创建一个 Windows (MinGW X64) 目标
+    jvm() // 使用默认名称 “jvm” 创建一个 JVM 目标
+    js()  // 使用名称 “js” 创建一个 JS 目标
+    mingwX64("mingw") // 使用名称 “mingw” 创建一个 Windows (MinGW X64) 目标
     
     sourceSets { /* ... */ }
 }
@@ -119,9 +119,9 @@ repositories {
 }
 
 kotlin {
-    jvm() // 使用默认名称 ‘jvm’ 创建一个 JVM 目标
-    js()  // 使用名称 ‘js’ 创建一个 JS 目标
-    mingwX64("mingw") // 使用名称 ‘mingw’ 创建一个 Windows (MinGW X64) 目标
+    jvm() // 使用默认名称 “jvm” 创建一个 JVM 目标
+    js()  // 使用名称 “js” 创建一个 JS 目标
+    mingwX64("mingw") // 使用名称 “mingw” 创建一个 Windows (MinGW X64) 目标
 
     sourceSets { /* ... */ }
 }
@@ -130,10 +130,10 @@ kotlin {
 </div>
 </div>
 
-这三个目标是通过预设函数 `jvm()`， `js()` 和 `mingwX64()` 创建的， 它们提供了一些 <!--
--->[默认项目布局](#默认项目布局)。 每个 [已支持平台](#已支持平台) 都有预设的函数。
+这三个目标是通过预设函数 `jvm()`、`js()` 与 `mingwX64()` 创建的，它们提供了一些<!--
+-->[默认项目布局](#默认项目布局)。每个[已支持平台](#已支持平台)都有预设的函数。
 
-然后配置 [源集](#配置源集) 及其 [依赖](#添加依赖)， 如下所示：
+然后配置[源集](#配置源集)及其[依赖](#添加依赖)，如下所示：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -230,10 +230,10 @@ kotlin {
 </div>
 </div>
 
-这些在上面配置的目标的生成和测试的源码<!--
--->都有各自的 [默认源集名称](#默认项目布局)。 源集 `commonMain` 和 `commonTest` 将被分别包含在所有目标的生成和测试的编译中。
-需要注意的是， 公共源集 `commonMain` 和 `commonTest` 的依赖使用的都是公共文件， 而<!--
--->平台库将转到特定目标的源集
+这些在上面配置的目标的生产与测试的源码<!--
+-->都有各自的[默认源集名称](#默认项目布局)。源集 `commonMain` 与 `commonTest` 将被分别包含在所有目标的生产与测试编译项中。
+需要注意的是，公共源集 `commonMain` 与 `commonTest` 的依赖使用的都是公共构件，而<!--
+-->平台库将转到特定目标的源集。
 
 ## Gradle 插件
 
