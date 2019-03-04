@@ -62,8 +62,8 @@ class DripCoffeeModule {
 ```
 </div>
 
-`@Module`-注解的类定义如何提供不同对象。
-需要注意的是，作为多参数传递注解参数时，需要显示的使用[数组字面值](/docs/reference/annotations.html#数组作为注解参数) `[...]` 进行包装，如上文示例中的 `@Module(includes = [PumpModule::class])`。
+`@Module`-annotated classes define how to provide different objects.
+Note that when you pass an annotation argument as a vararg argument, you have to explicitly wrap it into an [array literal](/docs/reference/annotations.html#arrays-as-annotation-parameters) `[...]`, like in `@Module(includes = [PumpModule::class])` above.
 
 使用 `@Component` 为类型生成依赖注入的实现。
 自动生成类文件的类名带有 Dagger 前缀，比如下文示例 `DaggerCoffeeShop`：
