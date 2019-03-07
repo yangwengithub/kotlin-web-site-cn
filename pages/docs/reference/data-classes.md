@@ -42,7 +42,7 @@ data class User(val name: String, val age: Int)
 那么会为数据类生成相应的函数，并覆盖超类的实现。如果超类型的这些函数<!--
 -->由于签名不兼容或者是 final 而导致无法覆盖，那么会报错；
 * 从一个已具 `copy(……)` 函数且签名匹配的类型派生一个数据类在
-Kotlin 1.2 中已弃用，并且会在 Kotlin 1.3 中禁用。
+Kotlin 1.2 中已弃用，并且在 Kotlin 1.3 中已禁用。
 * 不允许为 `componentN()` 以及 `copy()` 函数提供显式实现。
 
 自 1.1 起，数据类可以扩展其他类（示例请参见[密封类](sealed-classes.html)）。
