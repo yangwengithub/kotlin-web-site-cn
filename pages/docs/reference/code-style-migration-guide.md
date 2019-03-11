@@ -10,7 +10,7 @@ title: "编码规范"
 
 ## Kotlin 编码规范与 IntelliJ IDEA 格式化程序
 
-[Kotlin 编码规范](https://kotlinlang.org/docs/reference/coding-conventions.html) affect several aspects of writing idiomatic Kotlin, and a set of formatting recommendations aimed at improving Kotlin code readability is among them. 
+[Kotlin 编码规范](https://www.kotlincn.net/docs/reference/coding-conventions.html) affect several aspects of writing idiomatic Kotlin, and a set of formatting recommendations aimed at improving Kotlin code readability is among them.
 
 Unfortunately, the code formatter built into IntelliJ IDEA had to work long before this document was released and now has a default setup that produces different formatting from what is now recommended.
 

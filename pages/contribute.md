@@ -24,11 +24,11 @@ Kotlin 是 Apache 2 授权的开源（OSS）项目。其源代码、工具、文
 
 ### 贡献教程或视频
 
-你已经为 Kotlin 创建了一个教程或视频吗？请告诉我们。我们非常乐于在[社区内容](http://kotlinlang.org/docs/resources.html)下展示。
+你已经为 Kotlin 创建了一个教程或视频吗？请告诉我们。我们非常乐于在[社区内容](http://www.kotlincn.net/docs/resources.html)下展示。
 
 ### 演讲
 
-如果你已经或者将要为 Kotlin 发表演讲，请告诉我们。我们会[将其展示在列表中](http://kotlinlang.org/docs/events.html)。
+如果你已经或者将要为 Kotlin 发表演讲，请告诉我们。我们会[将其展示在列表中](http://www.kotlincn.net/docs/events.html)。
 
 ### Kotlin-x 项目与社区项目
 
