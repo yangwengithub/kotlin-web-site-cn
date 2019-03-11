@@ -146,7 +146,7 @@ Kotlin 也会在全球不同地方举行大会。你可以在[网站上找到即
 
 ### Kotlin 上社交媒体吗？
 
-上。最活跃的 Kotlin 帐号是 [Twitter 上的](https://twitter.com/kotlin)。还有一个 [Google+ 群组](https://plus.google.com/communities/104597899765146112928)。
+上。最活跃的 Kotlin 帐号是 [Twitter 上的](https://twitter.com/kotlin)。
 
 ### 其他在线 Kotlin 资源呢？
 

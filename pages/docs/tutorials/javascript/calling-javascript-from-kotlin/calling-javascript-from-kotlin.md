@@ -106,7 +106,7 @@ and we'd get an unresolved reference
 
 ![Unresolved Reference]({{ url_for('tutorial_img', filename='javascript/calling-javascript-from-kotlin/unresolved-reference.png')}})
 
-In such cases, we can use the `asDynamic()` function to cast the return type `jq` to [dynamic](https://kotlinlang.org/docs/reference/dynamic-type.html). This will then satisfy the compiler.
+In such cases, we can use the `asDynamic()` function to cast the return type `jq` to [dynamic](https://www.kotlincn.net/docs/reference/dynamic-type.html). This will then satisfy the compiler.
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin

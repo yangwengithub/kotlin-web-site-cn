@@ -64,7 +64,7 @@ actual typealias URL = java.net.URL
 
 
 
-关于构建多平台项目的详细信息与步骤，请参见其[documentation](http://kotlinlang.org/docs/reference/multiplatform.html)<!--
+关于构建多平台项目的详细信息与步骤，请参见其[文档](http://www.kotlincn.net/docs/reference/multiplatform.html)<!--
 -->。
 
 ## 其他语言特性

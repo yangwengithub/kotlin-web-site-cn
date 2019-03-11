@@ -123,7 +123,7 @@ dependencies {
 
 [ButterKnife](http://jakewharton.github.io/butterknife/)可以直接将view和变量进行绑定从而免去调用`findViewById`。
 
-另外，[Kotlin Android 扩展](https://kotlinlang.org/docs/tutorials/android-plugin.html)插件（Android Studio 内置)具有同样的效果：使用简洁明了的代码替换`findViewByid`。
+另外，[Kotlin Android 扩展](https://www.kotlincn.net/docs/tutorials/android-plugin.html)插件（Android Studio 内置)具有同样的效果：使用简洁明了的代码替换`findViewByid`。
 除非现在你正在使用 ButterKnife 而且没有迁移计划，那么前者非常值得尝试。
  
 在 Kotlin 中使用 `ButterKnife` 与 Java 中完全一致。
@@ -311,7 +311,7 @@ button.setOnClickListener { presenter.onSaveClick(task) }
 ```
 </div>
 
-最后一行中 `button` 由 `id` 使用 [Kotlin Android 扩展](https://kotlinlang.org/docs/tutorials/android-plugin.html)插件所引用。
+最后一行中 `button` 由 `id` 使用 [Kotlin Android 扩展](https://www.kotlincn.net/docs/tutorials/android-plugin.html)插件所引用。
 使用该插件作为替代方案，既允许在代码中保持绑定逻辑，同时又具有简洁的语法。
 
 查看[完整示例](https://github.com/JetBrains/kotlin-examples/tree/master/gradle/android-databinding)。

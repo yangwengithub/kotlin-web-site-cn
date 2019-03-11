@@ -33,7 +33,7 @@ Koltin 所生成的 JavaScript 代码能够兼容异步模块定义（AMD, Async
 
 ## 使用 Maven 或者 Gradle 配置模块
 
-如果是使用 Maven 或者 Gradle 的话还可以配置模块的输出格式，详细信息请移步[JavaScript Modules](http://kotlinlang.org/docs/reference/js-modules.html)。
+如果是使用 Maven 或者 Gradle 的话还可以配置模块的输出格式，详细信息请移步[JavaScript Modules](http://www.kotlincn.net/docs/reference/js-modules.html)。
 
 ## 使用异步模块定义（AMD）
 
