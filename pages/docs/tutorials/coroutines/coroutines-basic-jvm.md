@@ -27,7 +27,7 @@ showAuthorInfo: false
 ```groovy
 dependencies {
     ...
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1"
 }
 ```
 
