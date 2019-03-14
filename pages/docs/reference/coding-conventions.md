@@ -1100,7 +1100,7 @@ fun main() {
 ### 使用作用域函数 apply/with/run/also/let
 
 Kotlin 提供了一系列用来在给定对象上下文中执行代码块的函数：`let`、 `run`、 `with`、 `apply` 以及 `also`。
-For the guidance on choosing the right scope function for your case, refer to [Scope Functions](scope-functions.html).
+关于不同情况下选择正确作用域函数的准则，请参考[作用域函数](scope-functions.html)。
 
 ## 库的编码规范
 
