@@ -177,11 +177,11 @@ reference:
         - url: /docs/reference/reflection.html
           title: 反射
         - url: /docs/reference/scope-functions.html
-          title: Scope Functions
+          title: 作用域函数
         - url: /docs/reference/type-safe-builders.html
           title: 类型安全的构建器
         - url: /docs/reference/experimental.html
-          title: Experimental API Markers
+          title: 实验性 API 标记
 
     - title: 核心库
       content:
