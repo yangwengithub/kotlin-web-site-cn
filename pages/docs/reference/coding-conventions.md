@@ -1099,85 +1099,8 @@ fun main() {
 
 ### 使用作用域函数 apply/with/run/also/let
 
-Kotlin 提供了一系列用来在给定对象上下文中执行代码块的函数。要选择正确的<!--
--->函数，请考虑以下几点：
-
-  * 是否在块中的多个对象上调用方法，或者将上下文对象的实例作为<!--
-    -->参数传递？如果是，那么使用以 `it` 而不是 `this` 形式访问上下文对象的函数之一
-    （ `also` 或 `let` ）。如果在代码块中根本没有用到接收者，那么使用 `also`。
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-
-```kotlin
-// 上下文对象是“it”
-class Baz {
-    var currentBar: Bar?
-    val observable: Observable
-
-    val foo = createBar().also {
-        currentBar = it                    // 访问 Baz 的属性
-        observable.registerCallback(it)    // 将上下文对象作为参数传递
-    }
-}
-
-// 代码块中未使用接收者
-val foo = createBar().also {
-    LOG.info("Bar created")
-}
-
-// 上下文对象是“this”
-class Baz {
-    val foo: Bar = createBar().apply {
-        color = RED    // 只访问 Bar 的属性
-        text = "Foo"
-    }
-}
-```
-
-</div>
-    
-  * 调用的结果是什么？如果结果需是该上下文对象，那么使用 `apply` 或 `also`。
-    如果需要从代码块中返回一个值，那么使用 `with`、`let` 或者 `run`
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-
-```kotlin
-// 返回值是上下文对象
-class Baz {
-    val foo: Bar = createBar().apply {
-        color = RED    // 只访问 Bar 的属性
-        text = "Foo"
-    }
-}
-
-
-// 返回值是代码块的结果
-class Baz {
-    val foo: Bar = createNetworkConnection().let {
-        loadBar()
-    }
-}
-```
-
-</div>
-
-  * 上下文对象是否可空，或者是否作为调用链的结果求值而来的？如果是，那么使用 `apply`、`let` 或者 `run`。
-    否则，使用 `with` 或者 `also`。
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-
-```kotlin
-// 上下文对象可空
-person.email?.let { sendEmail(it) }
-
-// 上下文对象非空且可直接访问
-with(person) {
-    println("First name: $firstName, last name: $lastName")
-}
-```
-
-</div>
-
+Kotlin 提供了一系列用来在给定对象上下文中执行代码块的函数：`let`、 `run`、 `with`、 `apply` 以及 `also`。
+For the guidance on choosing the right scope function for your case, refer to [Scope Functions](scope-functions.html).
 
 ## 库的编码规范
 
