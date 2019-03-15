@@ -7,6 +7,7 @@ title: "Experimental API Markers"
 
 # Experimental API Markers
 > The annotations for marking and using experimental APIs (`@Experimental` and `@UseExperimental`) are *experimental* in Kotlin 1.3. See details [below](#experimental-status-of-experimental-api-markers).
+{:.note}
 
 The Kotlin standard library provides developers with a mechanism for creating and using _experimental_ APIs. This mechanism lets library authors inform users that certain components of their API, such as classes or functions, are unstable and are likely to change in the future. Such changes may require rewriting and recompiling the client code. To prevent potential compatibility issues, the compiler warns users of the experimental status of such APIs and may require them to give their explicit consent to use the API.
 
@@ -111,7 +112,7 @@ To use an experimental API in all functions and classes in a file, add the file-
 ### Module-wide use
 
 If you don't want to annotate every usage of experimental APIs in your code, you can accept the experimental status for your whole module. Module-wide use of experimental APIs can be propagating and non-propagating as well:
-* To accept the experimental status without propagation, compile the module with the argument `Xuse-experimental`, specifying the fully qualified name of the experimental API marker you use: `-Xuse-experimental=org.mylibrary.ExperimentalMarker`. Compiling with this argument has the same effect as if every declaration in the module had the annotation`@UseExperimental(ExperimentalMarker::class)`.
+* To accept the experimental status without propagation, compile the module with the argument `-Xuse-experimental`, specifying the fully qualified name of the experimental API marker you use: `-Xuse-experimental=org.mylibrary.ExperimentalMarker`. Compiling with this argument has the same effect as if every declaration in the module had the annotation`@UseExperimental(ExperimentalMarker::class)`.
 * To accept and propagate the experimental status to your whole module, compile the module with the argument `-Xexperimental=org.mylibrary.ExperimentalMarker`. In this case, _every declaration_ in the module becomes experimental. The use of the module requires the acceptance of its experimental status as well.
 
 If you build your module with Gradle, you can add arguments like this:

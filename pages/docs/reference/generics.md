@@ -387,6 +387,8 @@ fun <T> copyWhenGreater(list: List<T>, threshold: T): List<String>
 
 </div>
 
+The passed type must satisfy all conditions of the `where` clause simultaneously. In the above example, the `T` type must implement *both* `CharSequence` and `Comparable`.
+
 ## 类型擦除
 
 Kotlin 为泛型声明用法执行的类型安全检测仅在编译期进行。
