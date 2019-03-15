@@ -343,6 +343,8 @@ fun <T> copyWhenGreater(list: List<T>, threshold: T): List<String>
 ```
 
 
+所传递的类型必须同时满足 `where` 子句的所有条件。在上述示例中，类型 `T` 必须*既*实现了 `CharSequence` *也*实现了 `Comparable`。
+
 ## 类型擦除
 
 Kotlin 为泛型声明用法执行的类型安全检测仅在编译期进行。
