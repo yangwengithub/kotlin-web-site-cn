@@ -2,10 +2,10 @@
 type: doc
 layout: reference
 category: "Syntax"
-title: "Scope Functions"
+title: "作用域函数"
 ---
 
-# Scope Functions
+# 作用域函数
 
 The Kotlin standard library contains several functions whose sole purpose is to execute a block of code within the context of an object. When you call such a function on an object with a [lambda expression](lambdas.html) provided, it forms a temporary scope. In this scope, you can access the object without its name. Such functions are called _scope functions_. There are five of them: `let`, `run`, `with`, `apply`, and `also`.
 
@@ -62,13 +62,13 @@ The scope functions do not introduce any new technical capabilities, but they ca
 
 Due to the similar nature of scope functions, choosing the right one for your case can be a bit tricky. The choice mainly depends on your intent and the consistency of use in your project. Below we'll provide detailed descriptions of the distinctions between scope functions and the conventions on their usage.
 
-## Distinctions
+## 区别
 
 Because the scope functions are all quite similar in nature, it's important to understand the differences between them. There are two main differences between each scope function: 
 * The way to refer to the context object
 * The return value.
 
-### Context object: `this` or `it`
+### 上下文对象：`this` 还是 `it`
 
 Inside the lambda of a scope function, the context object is available by a short reference instead of its actual name. Each scope function uses one of two ways to access the context object: as a lambda [receiver](lambdas.html#function-literals-with-receiver) (`this`) or as a lambda argument (`it`). Both provide the same capabilities, so we'll describe the pros and cons of each for different cases and provide recommendations on their use.
 
@@ -167,7 +167,7 @@ fun main() {
 
 </div>
 
-### Return value
+### 返回值
 
 The scope functions differ by the result they return:
 * `apply` and `also` return the context object.
@@ -175,7 +175,7 @@ The scope functions differ by the result they return:
 
 These two options let you choose the proper function depending on what you do next in your code.
 
-#### Context object 
+#### 上下文对象
 
 The return value of `apply` and `also` is the context object itself. Hence, they can be included into call chains as _side steps_: you can continue chaining function calls on the same object after them.  
 
@@ -226,7 +226,7 @@ fun main() {
 
 </div>
 
-#### Lambda result
+#### Lambda 表达式结果
 
 `let`, `run`, and `with` return the lambda result. So, you can use them when assigning the result to a variable, chaining operations on the result, and so on.
 
@@ -267,7 +267,7 @@ fun main() {
 
 </div>
 
-## Functions
+## 几个函数
 
 To help you choose the right scope function for your case, we'll describe them in detail and provide usage recommendations. Technically, functions are interchangeable in many cases, so the examples show the conventions that define the common usage style. 
 
@@ -516,7 +516,7 @@ fun main() {
 
 </div>
 
-## Function selection
+## 函数选择
 
 To help you choose the right scope function for your purpose, we provide the table of key differences between them. 
 
@@ -543,7 +543,7 @@ The use cases of different functions overlap, so that you can choose the functio
 
 Although the scope functions are a way of making the code more concise, avoid overusing them: it can decrease your code readability and lead to errors. Avoid nesting scope functions and be careful when chaining them: it's easy to get confused about the current context object and the value of `this` or `it`.
 
-## `takeIf` and `takeUnless`
+## `takeIf` 与 `takeUnless`
 
 In addition to scope functions, the standard library contains the functions `takeIf` and `takeUnless`. These functions let you embed checks of the object state in call chains. 
 
