@@ -74,10 +74,10 @@ Kotlin 多平台项目的布局由以下构建块构成：
 
 ## 搭建一个多平台项目
 
-您可以在 IDE 的 New Project - Kotlin 对话框下选择一个多平台项目模板<!--
+可以在 IDE 的 New Project - Kotlin 对话框下选择一个多平台项目模板<!--
 -->来创建一个多平台项目。
 
-例如，如果您选择了 "Kotlin (Multiplatform Library)"，将创建一个包含三个<!--
+例如，如果选择了“Kotlin (Multiplatform Library)”，会创建一个包含三个<!--
 -->[设置目标](#设置目标)的库项目，其中一个用于 JVM，一个用于 JS，还有一个用于您正在使用的原生平台。
 这些是在 `build.gradle` <!--
 -->脚本中以下列方式配置的：
@@ -237,11 +237,11 @@ kotlin {
 
 ## Gradle 插件
 
-Kotlin Multiplatform projects require Gradle version 4.7 and above, older Gradle versions are not supported.
+Kotlin 多平台项目需要 Gradle 4.7 及以上版本，不支持旧版本的 Gradle。
 
-To setup a multiplatform project from scratch in a Gradle project, first apply the
-`kotlin-multiplatform` plugin to the project by adding the following to the
-beginning of the `build.gradle` file:
+如需在 Gradle 项目中从头开始设置多平台项目，首先要将
+`kotlin-multiplatform` 插件应用到项目中，即在
+`build.gradle` 文件的开头添加以下内容：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -267,10 +267,10 @@ plugins {
 </div>
 </div>
 
-This creates the `kotlin` extension at the top level. You can then access it in the build script for:
+这会在顶层创建 `kotlin` 扩展。然后可以在构建脚本中访问该扩展，来：
 
-* [setting up the targets](#设置目标) for multiple platforms (no targets are created by default);
-* [configuring the source sets](#配置源集) and their [dependencies](#添加依赖);
+* 为多个平台[设置目标](#设置目标)（默认不会创建目标）；
+* [配置源集](#配置源集)及其[依赖](#添加依赖)；
 
 ## 设置目标
 
