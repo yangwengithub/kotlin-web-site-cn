@@ -4,6 +4,7 @@
 
 {% block scripts %}
     <script src="{{ url_for('static', filename='tutorial.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='tutorial.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -14,7 +15,7 @@
             </div>
         </aside>
 
-        <article role="main" class="page-content g-9">
+        <article role="main" class="page-content g-9"{%- if site.contenteditable -%} contenteditable="true"{%- endif -%}>
             {% include 'inc/edit-on-github-link.html' %}
 
             <h1>
