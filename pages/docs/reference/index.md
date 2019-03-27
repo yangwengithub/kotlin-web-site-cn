@@ -10,9 +10,9 @@ title: "Reference"
         <h3 style="font-weight: bold">文档</h3>
         <p>Kotlin 文档是一个很好的起点，可查看以下链接来学习：</p>
         <ul>
-            <li class="start">   <a style="text-decoration: none;" href="/docs/reference/basic-syntax.html">基础</a> </li>
-            <li class="migrate"> <a style="text-decoration: none;" href="/docs/reference/idioms.html">习惯用法</a> </li>
-            <li class="migrate"> <a style="text-decoration: none;" href="/docs/reference/java-interop.html">与 Java 互操作</a>  </li>
+            <li class="start">   <a style="text-decoration: none;" href="basic-syntax.html">基础</a> </li>
+            <li class="migrate"> <a style="text-decoration: none;" href="idioms.html">习惯用法</a> </li>
+            <li class="migrate"> <a style="text-decoration: none;" href="java-interop.html">与 Java 互操作</a>  </li>
         </ul>
     </div>
      <div style="padding: 5px;">
@@ -46,7 +46,7 @@ title: "Reference"
       </div>
       <div style="padding: 5px;">
           <h3 style="font-weight: bold">书籍</h3>
-          <p><a href="/docs/books.html">这些书</a>很好地覆盖了 Kotlin 的各个方面，可以看这些书来学习：</p>
+          <p><a href="https://www.kotlincn.net/docs/books.html">这些书</a>很好地覆盖了 Kotlin 的各个方面，可以看这些书来学习：</p>
           <ul>
               <li class="start"> <a style="text-decoration: none;" href="https://www.amazon.com/Kotlin-Programming-Nerd-Ranch-Guide/dp/0135161630">Kotlin Programming: The Big Nerd Ranch Guide</a> </li>
               <li class="migrate"> <a style="text-decoration: none;" href="https://leanpub.com/kotlin-for-android-developers">Kotlin for Android Developers</a> </li>
