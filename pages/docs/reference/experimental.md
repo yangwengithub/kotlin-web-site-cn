@@ -6,7 +6,7 @@ title: "实验性 API 标记"
 ---
 
 # 实验性 API 标记
-> The annotations for marking and using experimental APIs (`@Experimental` and `@UseExperimental`) are *experimental* in Kotlin 1.3. See details [below](#experimental-status-of-experimental-api-markers).
+> The annotations for marking and using experimental APIs (`@Experimental` and `@UseExperimental`) are *experimental* in Kotlin 1.3. See details [below](#实验性-api-标记的实验性状态).
 {:.note}
 
 The Kotlin standard library provides developers with a mechanism for creating and using _experimental_ APIs. This mechanism lets library authors inform users that certain components of their API, such as classes or functions, are unstable and are likely to change in the future. Such changes may require rewriting and recompiling the client code. To prevent potential compatibility issues, the compiler warns users of the experimental status of such APIs and may require them to give their explicit consent to use the API.
@@ -226,7 +226,7 @@ fun getTime(): Time {}
 
 
 ### 模块级标记
-If you consider all the APIs of your module experimental, you can mark the entire module as such with the compiler argument `-Xexperimental` as described in [Module-wide use](#module-wide-use). 
+If you consider all the APIs of your module experimental, you can mark the entire module as such with the compiler argument `-Xexperimental` as described in [Module-wide use](#模块级使用).
 
 ## 实验性 API 转正
 Once your experimental API graduates and is released in its final state, remove its marker annotation from declarations so that the clients can use it without restriction. However, you should leave the marker classes in modules so that the existing client code remains compatible. To let the API users update their modules accordingly (remove the markers from their code and recompile), mark the annotations as [`@Deprecated`](/api/latest/jvm/stdlib/kotlin/-deprecated/index.html) and provide the explanation in its message.
