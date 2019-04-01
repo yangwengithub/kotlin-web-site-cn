@@ -124,7 +124,7 @@ Kotlin provides us with an API to deal with both types easily, let's try it and 
 
 `CValue<T>` type is used to pass by-value parameters to a C function call.
 We use `cValue` function to create `CValue<T>` object instance. The function requires a
-[lambda function with a receiver](../../reference/lambdas.html#function-literals-with-receiver) 
+[lambda function with a receiver](../../reference/lambdas.html#带有接收者的函数字面值)
 to initialize the underlying C type in-place. The function is declared as follows:
 <div class="sample" markdown="1" theme="idea" data-highlight-only="1" auto-indent="false">
 
