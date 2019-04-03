@@ -142,7 +142,7 @@ fun main() {
 //sampleStart
     val listWithNulls: List<String?> = listOf("Kotlin", null)
     for (item in listWithNulls) {
-         item?.let { println(it) } // 输出 A 并忽略 null
+         item?.let { println(it) } // 输出 Kotlin 并忽略 null
     }
 //sampleEnd
 }
