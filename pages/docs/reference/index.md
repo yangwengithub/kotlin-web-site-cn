@@ -17,14 +17,14 @@ title: "Reference"
     </div>
      <div style="padding: 5px;">
          <h3 style="font-weight: bold">IDE</h3>
-         <p>很多 IDE 都支持 Kotlin，这些 IDE 有助于编写地道的 Kotlin 代码：</p>
+         <p>很多现代 IDE 都支持 Kotlin 并且有助于编写地道的 Kotlin 代码：</p>
          <ul>
              <li class="start">         <a style="text-decoration: none;" href="https://www.jetbrains.com/help/education/learner-start-guide.html?section=Kotlin%20Koans">Kotlin 教学插件</a> </li>
              <li class="migrate start"> <a style="text-decoration: none;" href="https://www.jetbrains.com/help/idea/converting-a-java-file-to-kotlin-file.html">Java2Kotlin 转换器</a>  </li>
          </ul>
      </div>
       <div style="padding: 5px;">
-          <h3 style="font-weight: bold">问答社区</h3>
+          <h3 style="font-weight: bold">社区</h3>
           <p>Kotlin 社区开放、有用、热情。不要犹豫，可加入下述任何你喜欢的平台并提问：</p>
           <ul>
               <li class="migrate"> <a style="text-decoration: none;" href="https://www.kotliner.cn/">中文博客</a> </li>
@@ -37,7 +37,7 @@ title: "Reference"
       </div>
       <div style="padding: 5px;">
           <h3 style="font-weight: bold">演练平台</h3>
-          <p>实践<b>是</b>在浏览器中通过实际示例掌握 Kotlin 技能的方式：</p>
+          <p>亲身体验是在浏览器中通过实际示例掌握 Kotlin 技能的方式：</p>
           <ul>
               <li class="start migrate"> <a style="text-decoration: none;" href="https://play.kotlinlang.org">演练平台</a> </li>
               <li class="migrate"> <a style="text-decoration: none;" href="https://play.kotlinlang.org/byExample">Kotlin 示例</a>  </li>
@@ -60,7 +60,7 @@ title: "Reference"
           <ul>
             <li class="start">   <a style="text-decoration: none;" href="http://shop.oreilly.com/product/0636920052982.do">Introduction to Kotlin Programming</a></li>
             <li class="migrate"> <a style="text-decoration: none;" href="http://shop.oreilly.com/product/0636920052999.do">Advanced Kotlin Programming</a></li>
-            <li class="start">   <a style="text-decoration: none;" href="https://www.coursera.org/learn/vvedenie-v-yazyk-kotlin">Introduction to Kotlin (in russian)</a></li>
+            <li class="start">   <a style="text-decoration: none;" href="https://www.coursera.org/learn/vvedenie-v-yazyk-kotlin">Introduction to Kotlin (in Russian)</a></li>
             <li class="migrate"> <a style="text-decoration: none;" href="https://coursera.org/learn/kotlin-for-java-developers">Kotlin for Java Developers</a></li>
           </ul>
       </div>
