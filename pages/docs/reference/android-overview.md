@@ -46,7 +46,7 @@ Kotlin 团队为 Android 开发提供了一套超越标准语言功能的工具�
 
 ## 下一步
 
- * 下载并安装 [Android Studio 3.0](https://developer.android.com/studio/index.html)，其中包含开箱即用的 Kotlin 支持。
+ * 下载并安装 [Android Studio](https://developer.android.com/studio/index.html)，其中包含开箱即用的 Kotlin 支持。
  * 按照 [Android 与 Kotlin 入门](https://www.kotlincn.net/docs/tutorials/kotlin-android.html)教程<!--
 -->创建你的第一个 Kotlin 应用程序。
  * 关于更深入的介绍，请查看本站的[参考文档](index.html)及
