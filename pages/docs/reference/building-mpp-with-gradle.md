@@ -1611,10 +1611,10 @@ those will be merged into one dependencies list.
 
 It is important to note that some of the [Kotlin/Native targets](#已支持平台) may only be built with an appropriate host machine:
 
-* Linux targets may only be built on a Linux host;
+* Linux MIPS targets (`linuxMips32` and `linuxMipsel32`) require a Linux host. Other Linux targets can be built on any supported host;
 * Windows targets require a Windows host;
 * macOS and iOS targets can only be built on a macOS host;
-* Android Native targets require a Linux or macOS host; 
+* The 64-bit Android Native target require a Linux or macOS host;
 
 A target that is not supported by the current host is ignored during build and therefore not published. A library author may want to set up
 builds and publishing from different hosts as required by the library target platforms.
@@ -1752,6 +1752,8 @@ Also this prefix is used as a default name for the binary file. For example on W
 
 #### Using binary declaration APIs introduced in 1.3
 
+> __Important:__ The approach described in this section is deprecated in Kotlin 1.3.30 and will not be available since Kotlin 1.3.40. Consider using the [`binaries`](#declaring-binaries) block instead.
+
 It is possible to use the binary declaration APIs introduced in 1.3 in addition to the binaries DSL. One can specify one or more of
 the `outputKinds` for a compilation using these APIs. The following output kinds are available:
 
@@ -1792,9 +1794,6 @@ kotlin {
 
 This creates binaries with corresponding types and the compilation name as name prefixes in the `binaries` container. But note that such
 binaries are created after project evaluation so they are available only in an `afterEvaluate` code block.
-
-> Despite the fact that this approach is supported in 1.3.20, it will be eventually deprecated. So it's recommended to use the binaries
-DSL instead.
 
 #### Accessing binaries
 
@@ -1905,6 +1904,8 @@ Binaries have a set of properties allowing one to configure them. The following 
  - **Access to a run task** (for executable binaries only). The `kotlin-multiplatform` plugin creates run tasks for all executable binaries of host
  platforms (Windows, Linux and macOS). Names of such tasks are based on binary names, e.g. `runReleaseExecutable<target-name>`
  or `runFooDebugExecutable<target-name>`. A run task can be accessed using the `runTask` property of an executable binary.
+- **Framework type** (only for Objective-C frameworks). By default a framework built by Kotlin/Native contains a dynamic library. But it's possible
+ to replace it with a static library.
 
 The following example shows how to use these settings.
 
@@ -1935,6 +1936,11 @@ binaries {
         // Accessing the run task.
         // Note that the runTask is null for non-host platforms.
         runTask?.dependsOn(prepareForRun)
+    }
+
+    framework('my_framework' [RELEASE]) {
+        // Include a static library instead of a dynamic one into the framework.
+        isStatic = true
     }
 }
 
@@ -1976,6 +1982,11 @@ binaries {
         // Accessing the run task.
         // Note that the runTask is null for non-host platforms.
         runTask?.dependsOn(prepareForRun)
+    }
+
+    framework("my_framework" listOf(RELEASE)) {
+        // Include a static library instead of a dynamic one into the framework.
+        isStatic = true
     }
 }
 
@@ -2083,6 +2094,91 @@ binaries {
         export(project(":dependency"))
         // Export transitively.
         transitiveExport = true
+    }
+}
+```
+
+</div>
+</div>
+
+#### Building universal frameworks
+
+By default, an Objective-C framework produced by Kotlin/Native supports only one platform. However, such frameworks can be merged
+into a single universal (fat) binary using the `lipo` utility. Particularly, such an operation makes sense for 32-bit and 64-bit iOS
+frameworks. In this case the resulting universal framework can be used on both 32-bit and 64-bit devices.
+
+The Gradle plugin provides a separate task that creates a universal framework for iOS targets from several regular ones.
+The example below shows how to use this task. Note that the fat framework must have the same base name as the initial frameworks.
+
+<div class="multi-language-sample" data-lang="groovy">
+<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
+```groovy
+import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
+
+kotlin {
+    // Create and configure the targets.
+    targets {
+        iosArm32("ios32")
+        iosArm64("ios64")
+
+        configure([ios32, ios64]) {
+            binaries.framework {
+                baseName = "my_framework"
+            }
+        }
+    }
+
+    // Create a task building a fat framework.
+    task debugFatFramework(type: FatFrameworkTask) {
+        // The fat framework must have the same base name as the initial frameworks.
+        baseName = "my_framework"
+
+        // The default destination directory is '<build directory>/fat-framework'.
+        destinationDir = file("$buildDir/fat-framework/debug")
+
+        // Specify the frameworks to be merged.
+        from(
+            targets.ios32.binaries.getFramework("DEBUG"),
+            targets.ios64.binaries.getFramework("DEBUG")
+        )
+    }
+}
+```
+
+</div>
+</div>
+
+<div class="multi-language-sample" data-lang="kotlin">
+<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+```kotlin
+import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
+
+kotlin {
+    // Create and configure the targets.
+    val ios32 = iosArm32("ios32")
+    val ios64 = iosArm64("ios64")
+
+    configure(listOf(ios32, ios64)) {
+        binaries.framework {
+            baseName = "my_framework"
+        }
+    }
+
+    // Create a task building a fat framework.
+    tasks.create("debugFatFramework", FatFrameworkTask::class) {
+        // The fat framework must have the same base name as the initial frameworks.
+        baseName = "my_framework"
+
+        // The default destination directory is '<build directory>/fat-framework'.
+        destinationDir = buildDir.resolve("fat-framework/debug")
+
+        // Specify the frameworks to be merged.
+        from(
+            ios32.binaries.getFramework("DEBUG"),
+            ios64.binaries.getFramework("DEBUG")
+        )
     }
 }
 ```
