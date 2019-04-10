@@ -427,7 +427,7 @@ implementation(kotlin("stdlib-jdk8"))
 
 在 Kotlin 1.1.x 中，请使用 `kotlin-stdlib-jre7` 与 `kotlin-stdlib-jre8`。
 
-如果是面向 JavaScript，请使用依赖项 `stdlib-js。
+如果是面向 JavaScript，请使用依赖项 `stdlib-js` 。
 
 > Groovy DSL
 
