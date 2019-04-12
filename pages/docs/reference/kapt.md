@@ -114,6 +114,24 @@ kapt {
 
 </div>
 
+## Incremental Annotation Processing (since 1.3.30)
+
+Starting from version 1.3.30, kapt supports incremental annotation processing. The support for incremental annotation processors is experimental with certain limitations:
+* Annotation processing can be incremental only if all annotation processors being used are incremental.
+* Changing dependencies' [ABI](https://en.wikipedia.org/wiki/Application_binary_interface) will lead to non-incremental annotation processing.
+
+To enable incremental annotation processing, add this line to your `gradle.properties` file:
+
+<div class="sample" markdown="1" mode="xml" theme="idea">
+
+```
+kapt.incremental.apt=true
+```
+
+</div>
+
+Note that incremental annotation processing requires [incremental compilation](using-gradle.html#incremental-compilation) to be enabled as well.
+
 ## Java 编译器选项
 
 Kapt 使用 Java 编译器来运行注解处理器。
