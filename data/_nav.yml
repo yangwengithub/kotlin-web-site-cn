@@ -230,7 +230,7 @@ reference:
         nav: _nav_reference.yml
         base: /docs/reference/native
         repo: https://github.com/hltj/kotlin-native-cn.git
-        branch: v1.1.0-fixes
+        branch: v1.2.0-fixes
 
     - title: 协程
       description: Kotlin 协程库
