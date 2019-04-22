@@ -102,3 +102,5 @@ Kotlin 编程语言中文站翻译贡献者如下（排名不分先后）：
 * [wangkezun](https://github.com/wangkezun)
 * [TangHuaiZhe](https://github.com/TangHuaiZhe)
 * [singlepig](https://github.com/singlepig)
+* [phxnirvana](https://github.com/phxnirvana)
+* [Farubaba](https://github.com/Farubaba)
