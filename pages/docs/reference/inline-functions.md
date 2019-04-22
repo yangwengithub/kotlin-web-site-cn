@@ -52,8 +52,8 @@ inline fun <T> lock(lock: Lock, body: () -> T): T { …… }
 
 ## 禁用内联
 
-如果你只希望让传递给内联函数的一些 lamda 表达式参数被内联，你可以用 `noinline` 修饰符标记<!--
--->那些你不希望被内联的 lambda 函数参数：
+如果希望只内联一部分传给内联函数的 lambda 表达式参数，那么可以用 `noinline` 修饰符标记<!--
+-->不希望内联的函数参数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
