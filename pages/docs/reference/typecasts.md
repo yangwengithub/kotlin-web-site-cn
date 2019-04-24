@@ -91,7 +91,7 @@ when (x) {
 ## “不安全的”转换操作符
 
 通常，如果转换是不可能的，转换操作符会抛出一个异常。因此，我们称之为*不安全的*。
-Kotlin 中的不安全转换由中缀操作符 *as*{: .keyword }（参见[operator precedence](grammar.html#precedence)）完成：
+Kotlin 中的不安全转换由中缀操作符 *as*{: .keyword }（参见[operator precedence](grammar.html#expressions)）完成：
 
 
 ```kotlin

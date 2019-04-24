@@ -288,7 +288,7 @@ infix fun Int.shl(x: Int): Int { …… }
 > * `a && b xor c` 与 `a && (b xor c)`
 > * `a xor b in c` 与 `(a xor b) in c`
 > 
-> 完整的优先级层次结构请参见其[语法参考](grammar.html#precedence)。
+> 完整的优先级层次结构请参见其[语法参考](grammar.html#expressions)。
 {:.note}
 
 请注意，中缀函数总是要求指定接收者与参数。当<!--
