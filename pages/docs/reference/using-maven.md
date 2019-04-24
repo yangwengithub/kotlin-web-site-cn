@@ -372,7 +372,7 @@ java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
 | 名称 | 属性名 | 描述 | 可能的值 | 默认值 |
 |------|---------------|-------------|-----------------|--------------|
-| jvmTarget | kotlin.compiler.jvmTarget | 生成的 JVM 字节码的目标版本 | "1.6"、 "1.8" | "1.6" |
+| jvmTarget | kotlin.compiler.jvmTarget | 生成的 JVM 字节码的目标版本 | "1.6"、 "1.8"、 "9"、 "10"、 "11"、 "12" | "1.6" |
 | jdkHome | kotlin.compiler.jdkHome | 要包含到 classpath 中的 JDK 主目录路径，如果与默认 JAVA_HOME 不同的话 | | &nbsp; |
 
 ### JS 特有的属性

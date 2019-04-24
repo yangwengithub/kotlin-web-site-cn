@@ -626,7 +626,7 @@ tasks.withType<KotlinCompile> {
 |------|-------------|-----------------|--------------|
 | `javaParameters` | 为方法参数生成 Java 1.8 反射的元数据 |  | false |
 | `jdkHome` | 要包含到 classpath 中的 JDK 主目录路径，如果与默认 JAVA_HOME 不同的话 |  |  |
-| `jvmTarget` | 生成的 JVM 字节码的目标版本（1.6 或 1.8），默认为 1.6 | "1.6"、 "1.8" | "1.6" |
+| `jvmTarget` | 生成的 JVM 字节码的目标版本（1.6、 1.8、 9、 10、 11 或 12），默认为 1.6 | "1.6"、 "1.8"、 "9"、 "10"、 "11"、 "12" | "1.6" |
 | `noJdk` | 不要在 classpath 中包含 Java 运行时 |  | false |
 | `noReflect` | 不要在 classpath 中包含 Kotlin 反射实现 |  | true |
 | `noStdlib` | 不要在 classpath 中包含 Kotlin 运行时 |  | true |
