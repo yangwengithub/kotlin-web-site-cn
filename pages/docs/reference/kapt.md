@@ -140,7 +140,7 @@ With compile avoidance enabled, Gradle can skip annotation processing when rebui
 However, compile avoidance can't be used for annotation processors discovered in the compile classpath since _any changes_ in them require running the annotation processing tasks.
 
 To run kapt with compile avoidance:
-* Add the annotation processor dependencies to the `kapt*` configurations manually as described [above](#using-in-gradle).
+* Add the annotation processor dependencies to the `kapt*` configurations manually as described [above](#在-gradle-中使用).
 * Turn off the discovery of annotation processors in the compile classpath by adding this line to your `gradle.properties` file:
 
 <div class="sample" markdown="1" mode="xml" theme="idea">
