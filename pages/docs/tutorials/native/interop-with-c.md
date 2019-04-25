@@ -2,7 +2,7 @@
 type: tutorial
 layout: tutorial
 title: "与 C 语言库互操作"
-description: "来看看如何调用 C 语言库"
+description: "来看看如何与 C 语言库互操作"
 authors: Hadi Hariri 
 date: 2018-11-20
 showAuthorInfo: false
@@ -19,7 +19,7 @@ Kotlin/Native 给我们提供了操作 C 语言标准库的能力，这样就开
 然而在本教程中，我们将看到如何使用一些诸如 `libcurl` 这样的具体的库。我们将学到
 
 * [创建 Kotlin 绑定器](#生成绑定)
-* [消费生成的 Kotlin API](#消费生成的-kotlin-api)
+* [使用生成的 Kotlin API](#使用生成的-kotlin-api)
 * [在应用程序中连接库](#在应用程序中连接库)
 
 
@@ -45,7 +45,7 @@ linkerOpts.linux = -L/usr/lib/x86_64-linux-gnu -lcurl
 </div>
 
 该文件中正在进行一些操作，让我们逐一查看它们。第一个条目是 `headers`，它是我们想要生成的头文件列表
-Kotlin 存根。我们可以在此条目中添加多个文件，在每个新行上使用 `\` 进行分隔。在我们的案例中我们仅仅想要 `curl.h`。我们引用的文件<!--
+Kotlin stub。我们可以在此条目中添加多个文件，在每个新行上使用 `\` 进行分隔。在我们的案例中我们仅仅想要 `curl.h`。我们引用的文件<!--
 -->需要相对于定义文件所在的文件夹，或者在系统路径上可用（在我们的例子中是 `/usr/include/curl`）。
 
 第二行是 `headerFilter`。这用于表示我们想要包含的内容。在 C 语言中，当一个文件使用 `#include` 指令引用另一个文件时，<!--
@@ -80,12 +80,12 @@ Kotlin 存根。我们可以在此条目中添加多个文件，在每个新行�
 -->`.lib` 文件通常由工具链生成，并且它在内部使用 `.dll`。
 
 
-## 消费生成的 Kotlin API
+## 使用生成的 Kotlin API
 
-Now that we have our library and Kotlin stubs, we can consume them from our application. To keep things simple, in this tutorial we're going to convert one of the simplest 
-`libcurl` examples over to Kotlin. 
+现在，我们有了一个库和相应的 Kotlin stub，我们可以在应用程序中使用它们。为了让事情简单一些，在本示例中我们将最简单的一个
+`libcurl` 示例转换为 Kotlin。
 
-The code in question is from the [simple](https://curl.haxx.se/libcurl/c/simple.html) example (comments removed for brevity)
+有问题的代码来自[示例](https://curl.haxx.se/libcurl/c/simple.html)（为简洁起见删除了评论）
 
 <div class="sample" markdown="1" theme="idea" mode="c">
 
@@ -114,7 +114,7 @@ int main(void)
 ```
 </div>
 
-The first thing we'll need is a Kotlin file called `Main.kt` with the `main` function defined in it and then proceed to translate each line
+第一件事情是我们将需要一个定义了 `main` 函数的 Kotlin 文件，并起名为 `Main.kt` 接下来将继续翻译每一行
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -137,30 +137,30 @@ fun main(args: Array<String>) {
 ```
 </div>
 
-As we can see, we've eliminated the explicit variable declarations in the Kotlin version, but everything else is pretty much verbatim to the C version. All the calls we'd
-expect in the `libcurl` library are available in their Kotlin version.
+我们可以看到，我们已经消除了 Kotlin 版本中的显式变量声明，但是其它的一切都是 C 版本的逐字逐句翻译。我们可以调用<!--
+-->所有 `libcurl` 库中的 API 的 Kotlin 版本。
 
-Note that for the purpose of this tutorial, we've done a line by line literal translation. Obviously we could write this in a more Kotlin idiomatic way.
+注意，出于本教程的目的，我们对逐行进行了直译。显然，我们可以用更 Kotlin 的惯用方式来编写这个例子。
 
-## Compiling and Linking the library
+## 编译与链接库
 
-The next step is to compile our application. We already covered the basics of compiling a Kotlin/Native application from the command line in the [A Basic Kotlin/Native application](basic-kotlin-native-app.html) tutorial.
-The only difference in this case is that we have to include the library that `cinterop` generated for us. 
+下一步是编译我们的应用程序。我们已经在这篇[基本 Kotlin/Native 应用程序](basic-kotlin-native-app.html)教程中介绍了从命令行编译 Kotlin/Native 应用程序的基础知识。<!--
+-->这个案例中的唯一不同之处是我们必须引入 `cinterop` 为我们生成的库。
 
 ```bash
 kotlinc-native Main.kt -library build/c_interop/libcurl
 ```
 
-We can see that we're passing in as `library` parameter the output path of `cinterop`. 
+我们可以看到作为 `library` 参数传递 `cinterop` 的输出路径。
 
-If there are no errors during compilation, we should see the output as a file named `program.kexe`, which on execution should output 
-the contents of the site `http://example.com`
+如果编译期间没有错误，我们应该查看名为 `program.kexe` 的输出文件，执行时应该输出哪个
+`http://example.com` 网站的内容
 
 ![Output]({{ url_for('tutorial_img', filename='native/cinterop/output.png')}})
 
-The reason we're seeing the actual output is because the call `curl_easy_perform` prints the result to the standard output. We could hide this using 
-`curl_easy_setopt`. 
+我们看到实际输出的原因是因为调用 `curl_easy_perform` 将结果打印到标准输出。我们应该使用
+`curl_easy_setopt` 隐藏它。 
 
-For a more complete example of using `libcurl`, the [libcurl sample of the Kotlin/Native project](https://github.com/JetBrains/kotlin-native/tree/master/samples/libcurl) shows how to abstract the code into Kotlin
-classes as well as display headers. It also demonstrates how to make the steps a little easier by combining them into a shell script or Gradle build. We'll cover these topics though in more detail in subsequent tutorials.
+有关使用 `libcurl` 的更完整示例，[libcurl 在 Kotlin/Native 项目中的示例](https://github.com/JetBrains/kotlin-native/tree/master/samples/libcurl)展示了如何将代码抽象为 Kotlin
+类以及显示标题。它还演示了如何通过将它们组合到 shell 脚本或 Gradle 构建脚本中来使步骤更简洁一些。我们将在后续教程中介绍这些主题的更多细节。
 
