@@ -114,7 +114,7 @@ kapt {
 
 </div>
 
-## Running kapt tasks in parallel (since 1.2.60)
+## 并行运行 kapt 任务（自 1.2.60 起）
 
 To improve the speed of builds that use kapt, you can enable the [Gradle worker API](https://guides.gradle.org/using-the-worker-api/) for kapt tasks.
 Using the worker API lets Gradle run independent annotation processing tasks from a single project in parallel, which in some cases significantly decreases the execution time.
@@ -130,7 +130,7 @@ kapt.use.worker.api=true
 
 </div>
 
-## Compile avoidance for kapt (since 1.3.20)
+## kapt 的避免编译（自 1.3.20 起）
 
 To improve the times of incremental builds with kapt, it can use the Gradle [compile avoidance](https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_compile_avoidance).
 With compile avoidance enabled, Gradle can skip annotation processing when rebuilding a project. Particularly, annotation processing is skipped when:
