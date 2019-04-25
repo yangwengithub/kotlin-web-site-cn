@@ -114,6 +114,43 @@ kapt {
 
 
 
+## 并行运行 kapt 任务（自 1.2.60 起）
+
+To improve the speed of builds that use kapt, you can enable the [Gradle worker API](https://guides.gradle.org/using-the-worker-api/) for kapt tasks.
+Using the worker API lets Gradle run independent annotation processing tasks from a single project in parallel, which in some cases significantly decreases the execution time.
+However, running kapt with Gradle worker API enabled can result in increased memory consumption due to parallel execution.
+
+To use the Gradle worker API for parallel execution of kapt tasks, add this line to your `gradle.properties` file:
+
+<div class="sample" markdown="1" mode="xml" theme="idea">
+
+```
+kapt.use.worker.api=true
+```
+
+</div>
+
+## kapt 的避免编译（自 1.3.20 起）
+
+To improve the times of incremental builds with kapt, it can use the Gradle [compile avoidance](https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_compile_avoidance).
+With compile avoidance enabled, Gradle can skip annotation processing when rebuilding a project. Particularly, annotation processing is skipped when:
+* The project's source files are unchanged.
+* The changes in dependencies are [ABI](https://en.wikipedia.org/wiki/Application_binary_interface) compatible. For example, the only changes are in method bodies.
+
+However, compile avoidance can't be used for annotation processors discovered in the compile classpath since _any changes_ in them require running the annotation processing tasks.
+
+To run kapt with compile avoidance:
+* Add the annotation processor dependencies to the `kapt*` configurations manually as described [above](#using-in-gradle).
+* Turn off the discovery of annotation processors in the compile classpath by adding this line to your `gradle.properties` file:
+
+<div class="sample" markdown="1" mode="xml" theme="idea">
+
+```
+kapt.include.complie.classpath=false
+```
+
+</div>
+
 ## 增量注解处理（自 1.3.30 起）
 
 Starting from version 1.3.30, kapt supports incremental annotation processing. The support for incremental annotation processors is experimental with certain limitations:

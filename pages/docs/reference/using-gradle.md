@@ -6,12 +6,13 @@ title: "使用 Gradle"
 
 # 使用 Gradle
 
-为了用 Gradle 构建 Kotlin，你应该[设置好 *kotlin-gradle* 插件](#插件与版本)，[将其应用](#面向-jvm)到你的项目中，并且[添加 *kotlin-stdlib* 依赖](#配置依赖)。这些操作也可以在 IntelliJ IDEA 中通过调用 Project action 中的 Tools \| Kotlin \| Configure Kotlin 自动执行。
+为了用 Gradle 构建 Kotlin 项目，需要[设置好 *kotlin-gradle* 插件](#插件与版本)，[将其应用](#面向-jvm)到你的项目中，并且[添加 *kotlin-stdlib* 依赖](#配置依赖)。
+这些操作也可以在 IntelliJ IDEA 中通过调用 **Project action** 中的 **Tools \| Kotlin \| Configure Kotlin** 自动执行。
 
 ## 插件与版本
 
-使用 [Gradle 插件 DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block) 应用 Kotlin 插件，
-只要将其中的占位符替换为可在后续部分中找到的插件名之一即可：
+使用 [Gradle 插件 DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block) 应用 Kotlin Gradle 插件。
+Kotlin Gradle 插件 {{ site.data.releases.latest.version }} 适用于 Gradle 4.1 及更高版本。
 
 > Groovy DSL
 
@@ -36,6 +37,8 @@ plugins {
 
 
 
+
+需要将其中的占位符 `＜……＞` 替换为可在后续部分中找到的插件名之一。
 
 或者通过将依赖项 `kotlin-gradle-plugin` 添加到构建脚本类路径来应用插件：
 
@@ -324,6 +327,8 @@ plugins {
 
 
 
+
+Kotlin Gradle 插件 {{ site.data.releases.latest.version }} 适用于 Android Gradle 插件 3.0 及更高版本。
 
 不要忘记配置[标准库依赖关系](#配置依赖)。
 
