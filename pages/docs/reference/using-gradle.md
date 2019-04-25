@@ -12,7 +12,7 @@ title: "使用 Gradle"
 ## 插件与版本
 
 使用 [Gradle 插件 DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block) 应用 Kotlin Gradle 插件。
-Kotlin Gradle 插件 {{ site.data.releases.latest.version }} 适用于 Gradle 4.1 及更高版本。
+Kotlin Gradle 插件 1.3.30 适用于 Gradle 4.1 及更高版本。
 
 > Groovy DSL
 
@@ -328,7 +328,7 @@ plugins {
 
 
 
-Kotlin Gradle 插件 {{ site.data.releases.latest.version }} 适用于 Android Gradle 插件 3.0 及更高版本。
+Kotlin Gradle 插件 1.3.30 适用于 Android Gradle 插件 3.0 及更高版本。
 
 不要忘记配置[标准库依赖关系](#配置依赖)。
 
