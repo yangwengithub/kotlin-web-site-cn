@@ -23,7 +23,7 @@ title: "使用 kapt"
 
 ```groovy
 plugins {
-    id "org.jetbrains.kotlin.kapt" version "1.3.30"
+    id "org.jetbrains.kotlin.kapt" version "1.3.31"
 }
 ```
 
@@ -35,7 +35,7 @@ plugins {
 
 ```kotlin
 plugins {
-    kotlin("kapt") version "1.3.30"
+    kotlin("kapt") version "1.3.31"
 }
 ```
 
@@ -151,9 +151,9 @@ kapt.include.compile.classpath=false
 
 </div>
 
-## 增量注解处理（自 1.3.30 起）
+## 增量注解处理（自 1.3.31 起）
 
-Starting from version 1.3.30, kapt supports incremental annotation processing as an experimental feature.
+Starting from version 1.3.31, kapt supports incremental annotation processing as an experimental feature.
 Currently, annotation processing can be incremental only if all annotation processors being used are incremental.
 
 To enable incremental annotation processing, add this line to your `gradle.properties` file:

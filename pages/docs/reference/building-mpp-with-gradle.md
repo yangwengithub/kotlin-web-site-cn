@@ -87,7 +87,7 @@ Kotlin 多平台项目的布局由以下构建块构成：
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version '1.3.30'
+    id 'org.jetbrains.kotlin.multiplatform' version '1.3.31'
 }
 
 repositories {
@@ -111,7 +111,7 @@ kotlin {
 
 ```kotlin
 plugins {
-    kotlin("multiplatform") version "1.3.30"
+    kotlin("multiplatform") version "1.3.31"
 }
 
 repositories {
@@ -248,7 +248,7 @@ Kotlin 多平台项目需要 Gradle 4.7 及以上版本，不支持旧版本的 
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version '1.3.30'
+    id 'org.jetbrains.kotlin.multiplatform' version '1.3.31'
 }
 ```
 
@@ -260,7 +260,7 @@ plugins {
 
 ```kotlin
 plugins {
-    kotlin("multiplatform") version "1.3.30"
+    kotlin("multiplatform") version "1.3.31"
 }
 ```
 
@@ -1454,7 +1454,7 @@ Creating an Android target requires that one of the Android Gradle plugins, like
 ```groovy
 plugins {
     id("com.android.library")
-    id("org.jetbrains.kotlin.multiplatform").version("1.3.30")
+    id("org.jetbrains.kotlin.multiplatform").version("1.3.31")
 }
 
 android { /* ... */ }
@@ -1475,7 +1475,7 @@ kotlin {
 ```kotlin
 plugins {
     id("com.android.library")
-    kotlin("multiplatform").version("1.3.30")
+    kotlin("multiplatform").version("1.3.31")
 }
 
 android { /* ... */ }
@@ -1752,7 +1752,7 @@ Also this prefix is used as a default name for the binary file. For example on W
 
 #### Using binary declaration APIs introduced in 1.3
 
-> __Important:__ The approach described in this section is deprecated in Kotlin 1.3.30 and will not be available since Kotlin 1.3.40. Consider using the [`binaries`](#declaring-binaries) block instead.
+> __Important:__ The approach described in this section is deprecated in Kotlin 1.3.31 and will not be available since Kotlin 1.3.40. Consider using the [`binaries`](#declaring-binaries) block instead.
 
 It is possible to use the binary declaration APIs introduced in 1.3 in addition to the binaries DSL. One can specify one or more of
 the `outputKinds` for a compilation using these APIs. The following output kinds are available:
