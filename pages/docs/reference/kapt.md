@@ -146,16 +146,15 @@ To run kapt with compile avoidance:
 <div class="sample" markdown="1" mode="xml" theme="idea">
 
 ```
-kapt.include.complie.classpath=false
+kapt.include.compile.classpath=false
 ```
 
 </div>
 
 ## 增量注解处理（自 1.3.30 起）
 
-Starting from version 1.3.30, kapt supports incremental annotation processing. The support for incremental annotation processors is experimental with certain limitations:
-* Annotation processing can be incremental only if all annotation processors being used are incremental.
-* Changing dependencies' [ABI](https://en.wikipedia.org/wiki/Application_binary_interface) will lead to non-incremental annotation processing.
+Starting from version 1.3.30, kapt supports incremental annotation processing as an experimental feature.
+Currently, annotation processing can be incremental only if all annotation processors being used are incremental.
 
 To enable incremental annotation processing, add this line to your `gradle.properties` file:
 
