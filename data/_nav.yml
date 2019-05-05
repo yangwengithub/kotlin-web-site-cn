@@ -357,11 +357,11 @@ tutorials:
         - url: /docs/tutorials/native/apple-framework.html
           title: Kotlin/Native 开发 Apple 框架
         - url: /docs/tutorials/multiplatform-library.html
-          title: Publishing a Kotlin/Native Library
+          title: 发布 Kotlin/Native 库
         - url: /docs/tutorials/native/curl.html
-          title: Using C Interop and libcurl for an App
+          title: 在应用中使用 C 语言互操作与 libcurl
         - url: /docs/tutorials/native/mpp-ios-android.html
-          title: Building iOS and Android App
+          title: 构建 iOS 与 Android 应用
 
     - title: 协程
       content:
