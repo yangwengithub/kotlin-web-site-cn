@@ -9,8 +9,8 @@ title: "属性与字段：Getters、Setters、const、lateinit"
 
 ## 声明属性
 
-Kotlin的类可以有属性。
-属性可以用关键字*var*{: .keyword } 声明为可变的，否则使用只读关键字*val*{: .keyword }。
+Kotlin 类中的属性既可以用关键字 *var*{: .keyword } 声明为可变的，也可以用关键字 *val*{: .keyword } 声明为只读的。
+
 
 
 ```kotlin
@@ -25,6 +25,7 @@ class Address {
 
 
 要使用一个属性，只要用名称引用它即可，就像 Java 中的字段：
+
 
 
 ```kotlin
@@ -43,6 +44,7 @@ fun copyAddress(address: Address): Address {
 声明一个属性的完整语法是
 
 
+
 ```kotlin
 var <propertyName>[: <PropertyType>] [= <property_initializer>]
     [<getter>]
@@ -56,6 +58,7 @@ var <propertyName>[: <PropertyType>] [= <property_initializer>]
 例如:
 
 
+
 ```kotlin
 var allByDefault: Int? // 错误：需要显式初始化器，隐含默认 getter 和 setter
 var initialized = 1 // 类型 Int、默认 getter 和 setter
@@ -63,6 +66,7 @@ var initialized = 1 // 类型 Int、默认 getter 和 setter
 
 
 一个只读属性的语法和一个可变的属性的语法有两方面的不同：1、只读属性的用 `val`开始代替`var` 2、只读属性不允许 setter
+
 
 
 ```kotlin
@@ -75,6 +79,7 @@ val inferredType = 1 // 类型 Int 、默认 getter
 （这让我们可以实现计算出的属性）。以下是一个自定义 getter 的示例：
 
 
+
 ```kotlin
 val isEmpty: Boolean
     get() = this.size == 0
@@ -82,6 +87,7 @@ val isEmpty: Boolean
 
 
 如果我们定义了一个自定义的 setter，那么每次给属性赋值时都会调用它。一个自定义的 setter 如下所示：
+
 
 
 ```kotlin
@@ -98,6 +104,7 @@ var stringRepresentation: String
 自 Kotlin 1.1 起，如果可以从 getter 推断出属性类型，则可以省略它：
 
 
+
 ```kotlin
 val isEmpty get() = this.size == 0  // 具有类型 Boolean
 ```
@@ -105,6 +112,7 @@ val isEmpty get() = this.size == 0  // 具有类型 Boolean
 
 如果你需要改变一个访问器的可见性或者对其注解，但是不需要改变默认的实现，
 你可以定义访问器而不定义其实现:
+
 
 
 ```kotlin
@@ -119,6 +127,7 @@ var setterWithAnnotation: Any? = null
 ### 幕后字段
 
 在 Kotlin 类中不能直接声明字段。然而，当一个属性需要一个幕后字段时，Kotlin 会自动提供。这个幕后字段可以使用`field`标识符在访问器中引用：
+
 
 
 ```kotlin
@@ -136,6 +145,7 @@ var counter = 0 // 注意：这个初始器直接为幕后字段赋值
 例如，下面的情况下， 就没有幕后字段：
 
 
+
 ```kotlin
 val isEmpty: Boolean
     get() = this.size == 0
@@ -145,6 +155,7 @@ val isEmpty: Boolean
 ### 幕后属性
 
 如果你的需求不符合这套“隐式的幕后字段”方案，那么总可以使用 *幕后属性（backing property）*：
+
 
 
 ```kotlin
@@ -174,6 +185,7 @@ public val table: Map<String, Int>
 这些属性可以用在注解中：
 
 
+
 ```kotlin
 const val SUBSYSTEM_DEPRECATED: String = "This subsystem is deprecated"
 
@@ -190,6 +202,7 @@ const val SUBSYSTEM_DEPRECATED: String = "This subsystem is deprecated"
 但你仍然想在类体中引用该属性时避免空检查。
 
 为处理这种情况，你可以用 `lateinit` 修饰符标记该属性：
+
 
 
 ```kotlin
@@ -218,6 +231,7 @@ public class MyTest {
 
 要检测一个 `lateinit var` 是否已经初始化过，请在[该属性的引用](reflection.html#属性引用)上使用
 `.isInitialized`：
+
 
 
 ```kotlin
