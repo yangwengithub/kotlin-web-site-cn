@@ -2,7 +2,7 @@
 type: doc
 layout: reference
 category: "Syntax"
-title: "区间与数列
+title: "区间与数列"
 ---
 
 # 区间与数列
