@@ -143,45 +143,45 @@ reference:
         - url: /docs/reference/inline-functions.html
           title: 内联函数
 
-    - title: Collections
-      description: Kotlin stlib collections
+    - title: 集合
+      description: Kotlin 标准库中的集合
       content:
         - url: /docs/reference/collections-overview.html
-          title: Collections Overview
+          title: 集合概述
         - url: /docs/reference/constructing-collections.html
-          title: Constructing Collections
+          title: 构造集合
         - url: /docs/reference/iterators.html
-          title: Iterators
+          title: 迭代器
         - url: /docs/reference/ranges.html
-          title: Ranges and Progressions
+          title: 区间与数列
         - url: /docs/reference/sequences.html
-          title: Sequences
+          title: 序列
         - url: /docs/reference/collection-operations.html
-          title: Operations Overview
+          title: 操作概述
         - url: /docs/reference/collection-transformations.html
-          title: Transformations
+          title: 转换
         - url: /docs/reference/collection-filtering.html
-          title: Filtering
+          title: 过滤
         - url: /docs/reference/collection-plus-minus.html
-          title: Plus and Minus Operators
+          title: 加减操作符
         - url: /docs/reference/collection-grouping.html
-          title: Grouping
+          title: 分组
         - url: /docs/reference/collection-parts.html
-          title: Retrieving Collection Parts
+          title: 取集合的一部分
         - url: /docs/reference/collection-elements.html
-          title: Retrieving Single Elements
+          title: 取单个元素
         - url: /docs/reference/collection-ordering.html
-          title: Ordering
+          title: 排序
         - url: /docs/reference/collection-aggregate.html
-          title: Aggregate Operations
+          title: 聚合操作
         - url: /docs/reference/collection-write.html
-          title: Collection Write Operations
+          title: 集合写操作
         - url: /docs/reference/list-operations.html
-          title: List Specific Operations
+          title: List 相关操作
         - url: /docs/reference/set-operations.html
-          title: Set Specific Operations
+          title: Set 相关操作
         - url: /docs/reference/map-operations.html
-          title: Map Specific Operations
+          title: Map 相关操作
 
     - title: 多平台程序设计
       description: 跨 JVM、 JS 与原生平台复用代码
@@ -339,7 +339,7 @@ tutorials:
         - url: /docs/tutorials/koans.html
           title: 心印
         - url: /docs/tutorials/competitive-programming.html
-          title: Competitive Programming
+          title: 竞技程序设计
     - title: Android
       content:
         - url: /docs/tutorials/kotlin-android.html
