@@ -13,13 +13,13 @@ On this page, we provide descriptions of the map processing functions from the s
 
 ## Retrieving keys and values
 
-For retrieving a value from a map, you must provide its key as an argument of the [`get()`](/api/latest/jvm/stdlib/kotlin.collections/-map/get.html) function.
+For retrieving a value from a map, you must provide its key as an argument of the [`get()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/get.html) function.
 The shorthand `[key]` syntax is also supported. If the given key is not found, it returns `null`.
-There is also the function [`getValue()`](/api/latest/jvm/stdlib/kotlin.collections/get-value.html) which has slightly different behavior: it throws an exception if the key is not found in the map.
+There is also the function [`getValue()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-value.html) which has slightly different behavior: it throws an exception if the key is not found in the map.
 Additionally, you have two more options to handle the key absence: 
 
-* [`getOrElse()`](/api/latest/jvm/stdlib/kotlin.collections/get-or-else.html) works the same way as for lists: the values for non-existent keys are returned from the given lambda function.
-* [`getOrDefault()`](/api/latest/jvm/stdlib/kotlin.collections/get-or-default.html) returns the specified default value if the key is not found.
+* [`getOrElse()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-else.html) works the same way as for lists: the values for non-existent keys are returned from the given lambda function.
+* [`getOrDefault()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-default.html) returns the specified default value if the key is not found.
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -56,7 +56,7 @@ fun main() {
 
 ## Filtering
 
-You can [filter](collection-filtering.html) maps with the [`filter()`](/api/latest/jvm/stdlib/kotlin.collections/filter.html) function as well as other collections.
+You can [filter](collection-filtering.html) maps with the [`filter()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html) function as well as other collections.
 When calling `filter()` on a map, pass to it a predicate with a `Pair` as an argument.
 This enables you to use both the key and the value in the filtering predicate.
 
@@ -75,7 +75,7 @@ fun main() {
 </div>
 
 There are also two specific ways for filtering maps: by keys and by values.
-For each way, there is a function: [`filterKeys()`](/api/latest/jvm/stdlib/kotlin.collections/filter-keys.html) and [`filterValues()`](/api/latest/jvm/stdlib/kotlin.collections/filter-values.html).
+For each way, there is a function: [`filterKeys()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-keys.html) and [`filterValues()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-values.html).
 Both return a new map of entries which match the given predicate.
 The predicate for `filterKeys()` checks only the element keys, the one for `filterValues()` checks only values.
 
@@ -98,7 +98,7 @@ fun main() {
 
 ## `plus` and `minus` operators
 
-Due to the key access to elements, [`plus`](/api/latest/jvm/stdlib/kotlin.collections/plus.html) (`+`) and [`minus`](/api/latest/jvm/stdlib/kotlin.collections/minus.html) (`-`) operators work for maps differently than for other collections. 
+Due to the key access to elements, [`plus`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus.html) (`+`) and [`minus`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus.html) (`-`) operators work for maps differently than for other collections.
 `plus` returns a `Map` that contains elements of its both operands: a `Map` on the left and a `Pair` or another `Map` on the right.
 When the right-hand side operand contains entries with keys present in the left-hand side `Map`, the result map contains the entries from the right side.
 
@@ -134,7 +134,7 @@ fun main() {
 ```
 </div>
 
-For details on using [`plusAssign`](/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) (`+=`) and [`minusAssign`](/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) operators on mutable maps, see [Map write operations](#map-write-operations) below.
+For details on using [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) (`+=`) and [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) operators on mutable maps, see [Map write operations](#map-write-operations) below.
 
 ## Map write operations
 
@@ -150,7 +150,7 @@ Below are descriptions of the standard library functions for write operations av
 
 ### Adding and updating entries
 
-To  add a new key-value pair to a mutable map, use [`put()`](/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/put.html).
+To  add a new key-value pair to a mutable map, use [`put()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/put.html).
 When a new entry is put into a `LinkedHashMap` (the default map implementation), it is added so that it comes last when iterating the map.
 In sorted maps, the positions of new elements are defined by the order of their keys. 
 
@@ -168,7 +168,7 @@ fun main() {
 ```
 </div>
 
-To add multiple entries at a time, use [`putAll()`](/api/latest/jvm/stdlib/kotlin.collections/put-all.html). Its argument can be a `Map` or a group of `Pairs`: `Iterable`, `Sequence`, or `Array`.
+To add multiple entries at a time, use [`putAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/put-all.html). Its argument can be a `Map` or a group of `Pairs`: `Iterable`, `Sequence`, or `Array`.
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -203,7 +203,7 @@ fun main() {
 
 You can also add new entries to maps using the shorthand operator form. There are two ways:
 
-* [`plusAssign`](/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) (`+=`) operator.
+* [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) (`+=`) operator.
 * the `[]` operator alias for `put()`.  
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
@@ -225,7 +225,7 @@ When called with the key present in the map, operators overwrite the values of t
 
 ### Removing entries
 
-To remove an entry from a mutable map, use the [`remove()`](/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/remove.html) function.
+To remove an entry from a mutable map, use the [`remove()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/remove.html) function.
 When calling `remove()`, you can pass either a key or a whole key-value-pair.
 If you specify both the key and value, the element with this key will be removed only if its value matches the second argument. 
 
@@ -266,7 +266,7 @@ fun main() {
 </div>
 
 
-The [`minusAssign`](/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) operator is also available for mutable maps. 
+The [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) operator is also available for mutable maps.
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 

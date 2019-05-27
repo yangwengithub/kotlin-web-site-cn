@@ -13,7 +13,7 @@ For more specific operations available for `List` and `Map`, see [List Specific 
 
 ## Adding elements
 
-To add a single element to a list or a set, use the [`add()`](/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/add.html) function. The specified object is appended to the end of the collection.
+To add a single element to a list or a set, use the [`add()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/add.html) function. The specified object is appended to the end of the collection.
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -28,7 +28,7 @@ fun main() {
 ```
 </div>
 
-[`addAll()`](/api/latest/jvm/stdlib/kotlin.collections/add-all.html) adds every element of the argument object to a list or a set.
+[`addAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/add-all.html) adds every element of the argument object to a list or a set.
 The argument can be any `Collection`, for example, you can add all items from a `Set` to a `List`.
 Moreover, `addAll()` can accept any `Iterable`, `Sequence`, or `Array`.
 
@@ -58,7 +58,7 @@ fun main() {
 ```
 </div>
 
-You can also add elements using the in-place version of the [`plus` operator](collection-plus-minus.html) - [`plusAssign`](/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) (`+=`)
+You can also add elements using the in-place version of the [`plus` operator](collection-plus-minus.html) - [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) (`+=`)
  When applied to a mutable collection, `+=` appends the second operand (an element or another collection) to the end of the collection.
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
@@ -78,7 +78,7 @@ fun main() {
 
 ## Removing elements
 
-To remove an element from a mutable collection, use the [`remove()`](/api/latest/jvm/stdlib/kotlin.collections/remove.html) function.
+To remove an element from a mutable collection, use the [`remove()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/remove.html) function.
 `remove()` accepts the element value and removes one occurrence of this value. 
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
@@ -98,11 +98,11 @@ fun main() {
 
 For removing multiple elements at once, there are the following functions :
 
-* [`removeAll()`](/api/latest/jvm/stdlib/kotlin.collections/remove-all.html) removes all elements that are present in the argument collection.
+* [`removeAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/remove-all.html) removes all elements that are present in the argument collection.
    Alternatively, you can call it with a predicate as an argument; in this case the function removes all elements for which the predicate yields `true`.
-* [`retainAll()`](/api/latest/jvm/stdlib/kotlin.collections/retain-all.html) is the opposite of `removeAll()`: it removes all elements except the ones from the argument collection.
+* [`retainAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/retain-all.html) is the opposite of `removeAll()`: it removes all elements except the ones from the argument collection.
    When used with a predicate, it leaves only elements that match it.
-* [`clear()`](/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/clear.html) removes all elements from a list and leaves it empty.
+* [`clear()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/clear.html) removes all elements from a list and leaves it empty.
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -124,7 +124,7 @@ fun main() {
 ```
 </div>
 
-Another way to remove elements from a collection is with the [`minusAssign`](/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) operator – the in-place version of [`minus`](collection-plus-minus.html). 
+Another way to remove elements from a collection is with the [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) operator – the in-place version of [`minus`](collection-plus-minus.html).
 The second argument can be a single instance of the element type or another collection.
 With a single element on the right-hand side, `-=` removes the _first_ occurrence of it.
 In turn, if it's a collection, _all_ occurrences of its elements are removed.

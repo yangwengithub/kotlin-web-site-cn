@@ -104,7 +104,7 @@ fun main() {
 
 Note the use of Kotlin's 
 [null-assertion operator](/docs/reference/null-safety.html#the--operator) `!!`
-after the [readLine()](/api/latest/jvm/stdlib/kotlin.io/read-line.html) function call. 
+after the [readLine()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/read-line.html) function call.
 Kotlin's `readLine()` function is defined to return a 
 [nullable type](/docs/reference/null-safety.html#nullable-types-and-non-null-types)
 `String?` and returns `null` on the end of the input, which explicitly forces developer to handle the 
@@ -114,7 +114,7 @@ There is no need to handle the case of misformatted input in competitive program
 In competitive programming an input format is always precisely specified and the actual input cannot deviate from 
 the input specification in the problem statement. That is what null-assertion operator `!!` essentially does &mdash; 
 it asserts that the input string is present and throws exception if not. Likewise, 
-[String.toInt()](/api/latest/jvm/stdlib/kotlin.text/to-int.html) 
+[String.toInt()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/to-int.html)
 function throws an exception if an input string is not integer.
 
 All online competitive programming events allow the use of pre-written code, so you can define your own library of 
@@ -239,13 +239,13 @@ natural in Kotlin. However, beware that `java.util.Scanner` is extremely slow. S
 `split(" ").map { it.toInt() }` would handle. 
 
 Writing output in Kotlin is usually straightforward with 
-[println(...)](/api/latest/jvm/stdlib/kotlin.io/println.html) 
+[println(...)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/println.html)
 calls and using Kotlin's 
 [string templates](/docs/reference/basic-types.html#string-templates). However, care must be taken when output 
 contains on order of 10<sup>5</sup> lines or more. Issuing so many `println` calls is too slow, since the output 
 in Kotlin is automatically flushed after each line. 
 A faster way to write many lines from an array or a list is using
-[joinToString()](/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html) function
+[joinToString()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html) function
 with `"\n"` as separator, like this:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>

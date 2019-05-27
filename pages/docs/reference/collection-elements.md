@@ -24,7 +24,7 @@ However, such results are unpredictable to the caller unless they know the speci
 
 ## Retrieving by position
 
- For retrieving an element at a specific position, there is the function [`elementAt()`](/api/latest/jvm/stdlib/kotlin.collections/element-at.html).
+ For retrieving an element at a specific position, there is the function [`elementAt()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at.html).
  Call it with the integer number as an argument, and you'll receive the collection element at the given position.
  The first element has the position `0`, and the last one is `(size - 1)`.
  
@@ -46,7 +46,7 @@ fun main() {
 ```
 </div>
 
-There are also useful aliases for retrieving the first and the last element of the collection: [`first()`](/api/latest/jvm/stdlib/kotlin.collections/first.html) and [`last()`](/api/latest/jvm/stdlib/kotlin.collections/last.html).
+There are also useful aliases for retrieving the first and the last element of the collection: [`first()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html) and [`last()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html).
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -63,8 +63,8 @@ fun main() {
 
 To avoid exceptions when retrieving element with non-existing positions, use safe variations of `elementAt()`:
 
-* [`elementAtOrNull()`](/api/latest/jvm/stdlib/kotlin.collections/element-at-or-null.html) returns null when the specified position is out of the collection bounds.
-* [`elementAtOrElse()`](/api/latest/jvm/stdlib/kotlin.collections/element-at-or-else.html) additionally takes a lambda function that maps an `Int` argument to an instance of the collection element type.
+* [`elementAtOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at-or-null.html) returns null when the specified position is out of the collection bounds.
+* [`elementAtOrElse()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at-or-else.html) additionally takes a lambda function that maps an `Int` argument to an instance of the collection element type.
    When called with an out-of-bounds position, the `elementAtOrElse()` returns the result of the lambda on the given value.
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
@@ -82,7 +82,7 @@ fun main() {
 
 ## Retrieving by condition
 
-Functions [`first()`](/api/latest/jvm/stdlib/kotlin.collections/first.html) and [`last()`](/api/latest/jvm/stdlib/kotlin.collections/last.html) also let you search a collection for elements matching a given predicate.
+Functions [`first()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html) and [`last()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html) also let you search a collection for elements matching a given predicate.
 When you call `first()` with a predicate that tests a collection element, you'll receive the first element on which the predicate yields `true`.
 In turn, `last()` with a predicate returns the last element matching it. 
 
@@ -100,7 +100,7 @@ fun main() {
 </div>
 
 If no elements match the predicate, both functions throw exceptions.
-To avoid them, use [`firstOrNull()`](/api/latest/jvm/stdlib/kotlin.collections/first-or-null.html) and [`lastOrNull()`](/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html) instead: they return `null` if no matching elements are found.
+To avoid them, use [`firstOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-or-null.html) and [`lastOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html) instead: they return `null` if no matching elements are found.
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -116,8 +116,8 @@ fun main() {
 
 Alternatively, you can use the aliases if their names suit your situation better:
 
-* [`find()`](/api/latest/jvm/stdlib/kotlin.collections/find.html) instead of `firstOrNull()`
-* [`findLast()`](/api/latest/jvm/stdlib/kotlin.collections/find-last.html) instead of `lastOrNull()`
+* [`find()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html) instead of `firstOrNull()`
+* [`findLast()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find-last.html) instead of `lastOrNull()`
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -134,8 +134,8 @@ fun main() {
 
 ## Random element
 
-If you need to retrieve an arbitrary element of a collection, call the [`random()`](/api/latest/jvm/stdlib/kotlin.collections/random.html) function.
-You can call it without arguments or with a [`Random`](/api/latest/jvm/stdlib/kotlin.random/-random/index.html) object as a source of the randomness.
+If you need to retrieve an arbitrary element of a collection, call the [`random()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/random.html) function.
+You can call it without arguments or with a [`Random`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.random/-random/index.html) object as a source of the randomness.
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -151,11 +151,11 @@ fun main() {
 
 ## Checking existence
 
-To check the presence of an element in a collection, use the [`contains()`](/api/latest/jvm/stdlib/kotlin.collections/contains.html) function.
+To check the presence of an element in a collection, use the [`contains()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/contains.html) function.
 It returns `true` if there is a collection element that `equals()` the function argument.
 You can call `contains()` in the operator form with the `in` keyword.
 
-To check the presence of multiple instances together at once, call [`containsAll()`](/api/latest/jvm/stdlib/kotlin.collections/contains-all.html) with a collection of these instances as an argument.
+To check the presence of multiple instances together at once, call [`containsAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/contains-all.html) with a collection of these instances as an argument.
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -173,7 +173,7 @@ fun main() {
 ```
 </div>
 
-Additionally, you can check if the collection contains any elements by calling [`isEmpty()`](/api/latest/jvm/stdlib/kotlin.collections/is-empty.html) or [`isNotEmpty()`](/api/latest/jvm/stdlib/kotlin.collections/is-not-empty.html). 
+Additionally, you can check if the collection contains any elements by calling [`isEmpty()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/is-empty.html) or [`isNotEmpty()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/is-not-empty.html).
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 

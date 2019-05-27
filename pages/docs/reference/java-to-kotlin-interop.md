@@ -338,7 +338,7 @@ interface ChatBot {
 
 Starting from JDK 1.8, interfaces in Java can contain [default methods](https://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html).
 You can declare a non-abstract member of a Kotlin interface as default for the Java classes implementing it.
-To make a member default, mark it with the [`@JvmDefault`](/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html) annotation.
+To make a member default, mark it with the [`@JvmDefault`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html) annotation.
 Here is an example of a Kotlin interface with a default method:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -406,7 +406,7 @@ Depending on the case of adding the annotation, specify one of the argument valu
    This mode helps avoid compatibility breaks: all the interface implementations written for the previous versions will be fully compatible with the new version.
    However, the compatibility mode may add some overhead to the resulting bytecode size and affect the performance.
 
-For more details about compatibility issues, see the `@JvmDefault` [reference page](/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html).
+For more details about compatibility issues, see the `@JvmDefault` [reference page](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html).
 
 Note that if an interface with `@JvmDefault` methods is used as a [delegate](/docs/reference/delegation.html),
 the default method implementations are called even if the actual delegate type provides its own implementations.

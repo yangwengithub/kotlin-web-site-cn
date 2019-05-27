@@ -454,7 +454,7 @@ implementation(kotlin("stdlib-js"))
 </div>
 </div>
 
-如果项目中用到了 [Kotlin 反射](/api/latest/jvm/stdlib/kotlin.reflect.full/index.html)或者测试设施，还需要添加相应的依赖项：
+如果项目中用到了 [Kotlin 反射](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect.full/index.html)或者测试设施，还需要添加相应的依赖项：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
