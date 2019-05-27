@@ -8,6 +8,11 @@ title: "Java 中调用 Kotlin"
 # Java 中调用 Kotlin
 
 Java 可以轻松调用 Kotlin 代码。
+For example, instances of a Kotlin class can be seamlessly created and operated in Java methods.
+However, there are certain differences between Java and Kotlin that require attention when
+integrating Kotlin code into Java.
+On this page, we'll describe the ways to tailor the interop of your Kotlin code with its Java clients.
+
 
 ## 属性
 
@@ -20,6 +25,7 @@ Kotlin 属性会编译成以下 Java 元素：
 例如，`var firstName: String` 编译成以下 Java 声明：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` java
 private String firstName;
 
@@ -40,108 +46,118 @@ public void setFirstName(String firstName) {
 
 ## 包级函数
 
-在 `org.foo.bar` 包内的 `example.kt` 文件中声明的所有的函数和属性，包括扩展函数，
-都编译成一个名为 `org.foo.bar.ExampleKt` 的 Java 类的静态方法。
+在 `org.example` 包内的 `app.kt` 文件中声明的所有的函数和属性，包括扩展函数，
+都编译成一个名为 `org.example.AppKt` 的 Java 类的静态方法。
+
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
-// example.kt
-package demo
+// app.kt
+package org.example
 
-class Foo
+class Util
 
-fun bar() { …… }
+fun getTime() { /*……*/ }
 
 ```
 </div>
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` java
 // Java
-new demo.Foo();
-demo.ExampleKt.bar();
+new org.example.Util();
+org.example.AppKt.getTime();
 ```
 </div>
 
 可以使用 `@JvmName` 注解修改生成的 Java 类的类名：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 @file:JvmName("DemoUtils")
 
-package demo
+package org.example
 
-class Foo
+class Util
 
-fun bar() { ... }
+fun getTime() { /*...*/ }
 
 ```
 </div>
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` java
 // Java
-new demo.Foo();
-demo.DemoUtils.bar();
+new org.example.Util();
+org.example.DemoUtils.getTime();
 ```
 </div>
 
 如果多个文件中生成了相同的 Java 类名（包名相同并且类名相同或者有相同的
-`@JvmName` 注解）通常是错误的。然而，编译器能够生成一个单一的 Java 外观<!--
+[`@JvmName`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-name/index.html) 注解）通常是错误的。然而，编译器能够生成一个单一的 Java 外观<!--
 -->类，它具有指定的名称且包含来自所有文件中具有该名称的所有声明。
-要启用生成这样的外观，请在所有相关文件中使用 @JvmMultifileClass 注解。
+要启用生成这样的外观，请在所有相关文件中使用 [`@JvmMultifileClass`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-multifile-class/index.html) 注解。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 // oldutils.kt
 @file:JvmName("Utils")
 @file:JvmMultifileClass
 
-package demo
+package org.example
 
-fun foo() { ... }
+fun getTime() { /*...*/ }
 ```
 </div>
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 // newutils.kt
 @file:JvmName("Utils")
 @file:JvmMultifileClass
 
-package demo
+package org.example
 
-fun bar() { ... }
+fun getDate() { /*...*/ }
 ```
 </div>
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` java
 // Java
-demo.Utils.foo();
-demo.Utils.bar();
+org.example.Utils.getTime();
+org.example.Utils.getDate();
 ```
 </div>
 
 ## 实例字段
 
-如果需要在 Java 中将 Kotlin 属性作为字段暴露，那就需要使用 `@JvmField` 注解对其标注。
+如果需要在 Java 中将 Kotlin 属性作为字段暴露，那就使用 [`@JvmField`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-field/index.html) 注解对其标注。
 该字段将具有与底层属性相同的可见性。如果一个属性有幕后字段（backing field）、非私有、没有 `open`
 /`override` 或者 `const` 修饰符并且不是被委托的属性，那么你可以用 `@JvmField` 注解该属性。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
-class C(id: String) {
+class User(id: String) {
     @JvmField val ID = id
 }
 ```
 </div>
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` java
 // Java
 class JavaClient {
-    public String getID(C c) {
-        return c.ID;
+    public String getID(User user) {
+        return user.ID;
     }
 }
 ```
@@ -157,13 +173,14 @@ class JavaClient {
 
 通常这些字段是私有的，但可以通过以下方式之一暴露出来：
 
- - `@JvmField` 注解；
+ - [`@JvmField`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-field/index.html) 注解；
  - `lateinit` 修饰符；
  - `const` 修饰符。
 
 使用 `@JvmField` 标注这样的属性使其成为与属性本身具有相同可见性的静态字段。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class Key(val value: Int) {
     companion object {
@@ -175,6 +192,7 @@ class Key(val value: Int) {
 </div>
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` java
 // Java
 Key.COMPARATOR.compare(key1, key2);
@@ -186,6 +204,7 @@ Key.COMPARATOR.compare(key1, key2);
 -->具有与属性 setter 相同可见性的静态幕后字段。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 object Singleton {
     lateinit var provider: Provider
@@ -194,6 +213,7 @@ object Singleton {
 </div>
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` java
 // Java
 Singleton.provider = new Provider();
@@ -201,9 +221,10 @@ Singleton.provider = new Provider();
 ```
 </div>
 
-用 `const` 标注的（在类中以及在顶层的）属性在 Java 中会成为静态字段：
+（在类中以及在顶层）以 `const` 声明的属性在 Java 中会成为静态字段：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 // 文件 example.kt
 
@@ -224,49 +245,53 @@ const val MAX = 239
 在 Java 中：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` java
-int c = Obj.CONST;
-int d = ExampleKt.MAX;
-int v = C.VERSION;
+int const = Obj.CONST;
+int max = ExampleKt.MAX;
+int version = C.VERSION;
 ```
 </div>
 
 ## 静态方法
 
 如上所述，Kotlin 将包级函数表示为静态方法。
-Kotlin 还可以为命名对象或伴生对象中定义的函数生成静态方法，如果你将这些函数标注为 `@JvmStatic` 的话。
+Kotlin 还可以为命名对象或伴生对象中定义的函数生成静态方法，如果你将这些函数标注为 [`@JvmStatic`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-static/index.html) 的话。
 如果你使用该注解，编译器既会在相应对象的类中生成静态方法，也会在对象自身中生成实例方法。
 例如：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class C {
     companion object {
-        @JvmStatic fun foo() {}
-        fun bar() {}
+        @JvmStatic fun callStatic() {}
+        fun callNonStatic() {}
     }
 }
 ```
 </div>
 
-现在，`foo()` 在 Java 中是静态的，而 `bar()` 不是：
+现在，`callStatic()` 在 Java 中是静态的，而 `callNonStatic()` 不是：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` java
-C.foo(); // 没问题
-C.bar(); // 错误：不是一个静态方法
-C.Companion.foo(); // 保留实例方法
-C.Companion.bar(); // 唯一的工作方式
+C.callStatic(); // 没问题
+C.callNonStatic(); // 错误：不是一个静态方法
+C.Companion.callStatic(); // 保留实例方法
+C.Companion.callNonStatic(); // 唯一的工作方式
 ```
 </div>
 
 对于命名对象也同样：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 object Obj {
-    @JvmStatic fun foo() {}
-    fun bar() {}
+    @JvmStatic fun callStatic() {}
+    fun callNonStatic() {}
 }
 ```
 </div>
@@ -274,16 +299,145 @@ object Obj {
 在 Java 中：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` java
-Obj.foo(); // 没问题
-Obj.bar(); // 错误
-Obj.INSTANCE.bar(); // 没问题，通过单例实例调用
-Obj.INSTANCE.foo(); // 也没问题
+Obj.callStatic(); // 没问题
+Obj.callNonStatic(); // 错误
+Obj.INSTANCE.callNonStatic(); // 没问题，通过单例实例调用
+Obj.INSTANCE.callStatic(); // 也没问题
+```
+</div>
+
+Starting from Kotlin 1.3, `@JvmStatic` applies to functions defined in companion objects of interfaces as well.
+Such functions compile to static methods in interfaces. Note that static method in interfaces were introduced in Java 1.8,
+so be sure to use the corresponding targets.
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```kotlin
+interface ChatBot {
+    companion object {
+        @JvmStatic fun greet(username: String) {
+            println("Hello, $username")
+        }
+    }
+}
 ```
 </div>
 
 `@JvmStatic`　注解也可以应用于对象或伴生对象的属性，
 使其 getter 和 setter 方法在该对象或包含该伴生对象的类中是静态成员。
+
+## Default methods in interfaces
+
+> Default methods are available only for targets JVM 1.8 and above.
+{:.note}
+
+> The `@JvmDefault` annotation is experimental in Kotlin 1.3. Its name and behavior may change, leading to future incompatibility.
+{:.note}
+
+Starting from JDK 1.8, interfaces in Java can contain [default methods](https://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html).
+You can declare a non-abstract member of a Kotlin interface as default for the Java classes implementing it.
+To make a member default, mark it with the [`@JvmDefault`](/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html) annotation.
+Here is an example of a Kotlin interface with a default method:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```kotlin
+interface Robot {
+    @JvmDefault fun move() { println("~walking~") }
+    fun speak(): Unit
+}
+```
+</div>
+
+The default implementation is available for Java classes implementing the interface.
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```java
+//Java implementation
+public class C3PO implements Robot {
+    // move() implementation from Robot is available implicitly
+    @Override
+    public void speak() {
+        System.out.println("I beg your pardon, sir");
+    }
+}
+```
+</div>
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```java
+C3PO c3po = new C3PO();
+c3po.move(); // default implementation from the Robot interface
+c3po.speak();
+```
+</div>
+
+Implementations of the interface can override default methods.
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```java
+//Java
+public class BB8 implements Robot {
+    //own implementation of the default method
+    @Override
+    public void move() {
+        System.out.println("~rolling~");
+    }
+
+    @Override
+    public void speak() {
+        System.out.println("Beep-beep");
+    }
+}
+```
+</div>
+
+For the `@JvmDefault` annotation to take effect, the interface must be compiled with an `-Xjvm-default` argument.
+Depending on the case of adding the annotation, specify one of the argument values:
+
+* `-Xjvm-default=enabled` should be used if you add only new methods with the `@JvmDefault` annotation.
+   This includes adding the entire interface for your API.
+* `-Xjvm-default=compatibility` should be used if you are adding a `@JvmDefault` to the methods that were available in the API before.
+   This mode helps avoid compatibility breaks: all the interface implementations written for the previous versions will be fully compatible with the new version.
+   However, the compatibility mode may add some overhead to the resulting bytecode size and affect the performance.
+
+For more details about compatibility issues, see the `@JvmDefault` [reference page](/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html).
+
+Note that if an interface with `@JvmDefault` methods is used as a [delegate](/docs/reference/delegation.html),
+the default method implementations are called even if the actual delegate type provides its own implementations.
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```kotlin
+interface Producer {
+    @JvmDefault fun produce() {
+        println("interface method")
+    }
+}
+
+class ProducerImpl: Producer {
+    override fun produce() {
+        println("class method")
+    }
+}
+
+class DelegatedProducer(val p: Producer): Producer by p {
+}
+
+fun main() {
+    val prod = ProducerImpl()
+    DelegatedProducer(prod).produce() // prints "interface method"
+}
+```
+</div>
+
+For more details about interface delegation in Kotlin, see [Delegation](/docs/reference/delegation.html).
+
 
 ## 可见性
 
@@ -305,17 +459,19 @@ Kotlin 的可见性以下列方式映射到 Java：
 `Class<T>.kotlin` 扩展属性的等价形式来手动进行转换：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 kotlin.jvm.JvmClassMappingKt.getKotlinClass(MainView.class)
 ```
 </div>
 
-## 用 @JvmName 解决签名冲突
+## 用 `@JvmName` 解决签名冲突
 
 有时我们想让一个 Kotlin 中的命名函数在字节码中有另外一个 JVM 名称。
 最突出的例子是由于*类型擦除*引发的：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun List<String>.filterValid(): List<String>
 fun List<Int>.filterValid(): List<Int>
@@ -323,9 +479,10 @@ fun List<Int>.filterValid(): List<Int>
 </div>
 
 这两个函数不能同时定义，因为它们的 JVM 签名是一样的：`filterValid(Ljava/util/List;)Ljava/util/List;`。
-如果我们真的希望它们在 Kotlin 中用相同名称，我们需要用 `@JvmName` 去标注其中的一个（或两个），并指定不同的名称作为参数：
+如果我们真的希望它们在 Kotlin 中用相同名称，我们需要用 [`@JvmName`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-name/index.html) 去标注其中的一个（或两个），并指定不同的名称作为参数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun List<String>.filterValid(): List<String>
 
@@ -339,6 +496,7 @@ fun List<Int>.filterValid(): List<Int>
 同样的技巧也适用于属性 `x` 和函数 `getX()` 共存：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
+
 ```kotlin
 val x: Int
     @JvmName("getX_prop")
@@ -351,6 +509,7 @@ fun getX() = 10
 如需在没有显式实现 getter 与 setter 的情况下更改属性生成的访问器方法的名称，可以使用 `@get:JvmName` 与 `@set:JvmName`：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 @get:JvmName("x")
 @set:JvmName("changeX")
@@ -362,15 +521,16 @@ var x: Int = 23
 
 通常，如果你写一个有默认参数值的 Kotlin 函数，在 Java 中只会有一个所有参数都存在的完整参数<!--
 -->签名的方法可见，如果希望向 Java 调用者暴露多个重载，可以使用
-`@JvmOverloads` 注解。
+[`@JvmOverloads`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-overloads/index.html) 注解。
 
 该注解也适用于构造函数、静态方法等。它不能用于抽象方法，包括<!--
 -->在接口中定义的方法。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
-class Foo @JvmOverloads constructor(x: Int, y: Double = 0.0) {
-    @JvmOverloads fun f(a: String, b: Int = 0, c: String = "abc") { …… }
+class Circle @JvmOverloads constructor(centerX: Int, centerY: Int, radius: Double = 1.0) {
+    @JvmOverloads fun draw(label: String, lineWidth: Int = 1, color: String = "red") { /*……*/ }
 }
 ```
 </div>
@@ -380,15 +540,16 @@ class Foo @JvmOverloads constructor(x: Int, y: Double = 0.0) {
 ：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` java
 // 构造函数：
-Foo(int x, double y)
-Foo(int x)
+Circle(int centerX, int centerY, double radius)
+Circle(int centerX, int centerY)
 
 // 方法
-void f(String a, int b, String c) { }
-void f(String a, int b) { }
-void f(String a) { }
+void draw(String label, int lineWidth, String color) { }
+void draw(String label, int lineWidth) { }
+void draw(String label) { }
 ```
 </div>
 
@@ -404,11 +565,13 @@ void f(String a) { }
 于是如果我们有一个这样的 Kotlin 函数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 // example.kt
 package demo
 
-fun foo() {
+fun writeToFile() {
+    /*...*/
     throw IOException()
 }
 ```
@@ -417,24 +580,27 @@ fun foo() {
 然后我们想要在 Java 中调用它并捕捉这个异常：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` java
 // Java
 try {
-  demo.Example.foo();
+  demo.Example.writeToFile();
 }
-catch (IOException e) { // 错误：foo() 未在 throws 列表中声明 IOException
+catch (IOException e) { // 错误：writeToFile() 未在 throws 列表中声明 IOException
   // ……
 }
 ```
 </div>
 
-因为 `foo()` 没有声明 `IOException`，我们从 Java 编译器得到了一个报错消息。
-为了解决这个问题，要在 Kotlin 中使用 `@Throws` 注解。
+因为 `writeToFile()` 没有声明 `IOException`，我们从 Java 编译器得到了一个报错消息。
+为了解决这个问题，要在 Kotlin 中使用 [`@Throws`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-throws/index.html) 注解。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 @Throws(IOException::class)
-fun foo() {
+fun writeToFile() {
+    /*...*/
     throw IOException()
 }
 ```
@@ -452,6 +618,7 @@ fun foo() {
 -->可以从 Java 代码中看到它们的用法。让我们假设我们有以下类和两个使用它的函数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class Box<out T>(val value: T)
 
@@ -466,6 +633,7 @@ fun unboxBase(box: Box<Base>): Base = box.value
 一种看似理所当然地将这俩函数转换成 Java 代码的方式可能会是：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` java
 Box<Derived> boxDerived(Derived value) { …… }
 Base unboxBase(Box<Base> box) { …… }
@@ -477,6 +645,7 @@ Base unboxBase(Box<Base> box) { …… }
 要使其在 Java 中工作，我们按以下这样定义 `unboxBase`：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` java
 Base unboxBase(Box<? extends Base> box) { …… }
 ```
@@ -491,6 +660,7 @@ Base unboxBase(Box<? extends Base> box) { …… }
 Java 编码风格）。因此，我们的示例中的对应函数实际上翻译如下：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` java
 // 作为返回类型——没有通配符
 Box<Derived> boxDerived(Derived value) { …… }
@@ -500,12 +670,13 @@ Base unboxBase(Box<? extends Base> box) { …… }
 ```
 </div>
 
-注意：当参数类型是 final 时，生成通配符通常没有意义，所以无论在什么地方 `Box<String>`
-始终转换为 `Box<String>`。
+当参数类型是 final 时，生成通配符通常没有意义，所以无论在什么地方 `Box<String>`始终转换为 `Box<String>`。
+{:.note}
 
 如果我们在默认不生成通配符的地方需要通配符，我们可以使用 `@JvmWildcard` 注解：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun boxDerived(value: Derived): Box<@JvmWildcard Derived> = Box(value)
 // 将被转换成
@@ -516,6 +687,7 @@ fun boxDerived(value: Derived): Box<@JvmWildcard Derived> = Box(value)
 另一方面，如果我们根本不需要默认的通配符转换，我们可以使用`@JvmSuppressWildcards`
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun unboxBase(box: Box<@JvmSuppressWildcards Base>): Base = box.value
 // 会翻译成
@@ -523,16 +695,17 @@ fun unboxBase(box: Box<@JvmSuppressWildcards Base>): Base = box.value
 ```
 </div>
 
-注意：`@JvmSuppressWildcards` 不仅可用于单个类型参数，还可用于整个声明（如<!--
--->函数或类），从而抑制其中的所有通配符。
+`@JvmSuppressWildcards` 不仅可用于单个类型参数，还可用于整个声明（如函数或类），从而抑制其中的所有通配符。
+{:.note}
 
-### Nothing 类型翻译
+### `Nothing` 类型翻译
  
 类型 [`Nothing`](exceptions.html#nothing-类型) 是特殊的，因为它在 Java 中没有自然的对应。确实，每个 Java 引用类型，包括
 `java.lang.Void` 都可以接受 `null` 值，但是 Nothing 不行。因此，这种类型不能在 Java 世界中<!--
 -->准确表示。这就是为什么在使用 `Nothing` 参数的地方 Kotlin 生成一个原始类型：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun emptyList(): List<Nothing> = listOf()
 // 会翻译成
