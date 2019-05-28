@@ -2,10 +2,10 @@
 type: doc
 layout: reference
 category: "Collections"
-title: "Set Specific Operations"
+title: "Set 相关操作"
 ---
 
-# Set Specific Operations
+# Set 相关操作
 
 The Kotlin collections package contains extension functions for popular operations on sets: finding intersections, merging, or subtracting collections from each other.
 

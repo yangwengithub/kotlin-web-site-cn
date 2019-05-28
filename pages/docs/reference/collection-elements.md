@@ -2,10 +2,10 @@
 type: doc
 layout: reference
 category: "Collections"
-title: "Retrieving Single Elements"
+title: "取单个元素"
 ---
 
-# Retrieving Single Elements
+# 取单个元素
 
 Kotlin collections provide a set of functions for retrieving single elements from collections.
 Functions described on this page apply to both lists and sets.
@@ -22,7 +22,7 @@ The order of a set of elements can also be unknown.
 In such cases, the elements are still ordered somehow, so the functions that rely on the element positions still return their results.
 However, such results are unpredictable to the caller unless they know the specific implementation of `Set` used.
 
-## Retrieving by position
+## 按位置取
 
  For retrieving an element at a specific position, there is the function [`elementAt()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at.html).
  Call it with the integer number as an argument, and you'll receive the collection element at the given position.
@@ -80,7 +80,7 @@ fun main() {
 ```
 </div>
 
-## Retrieving by condition
+## 按条件取
 
 Functions [`first()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html) and [`last()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html) also let you search a collection for elements matching a given predicate.
 When you call `first()` with a predicate that tests a collection element, you'll receive the first element on which the predicate yields `true`.
@@ -132,7 +132,7 @@ fun main() {
 ```
 </div>
 
-## Random element
+## 随机取元素
 
 If you need to retrieve an arbitrary element of a collection, call the [`random()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/random.html) function.
 You can call it without arguments or with a [`Random`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.random/-random/index.html) object as a source of the randomness.
@@ -149,7 +149,7 @@ fun main() {
 ```
 </div>
 
-## Checking existence
+## 检测存在与否
 
 To check the presence of an element in a collection, use the [`contains()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/contains.html) function.
 It returns `true` if there is a collection element that `equals()` the function argument.

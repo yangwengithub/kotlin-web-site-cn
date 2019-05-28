@@ -2,10 +2,10 @@
 type: doc
 layout: reference
 category: "Collections"
-title: "Sequences"
+title: "序列"
 ---
 
-# Sequences
+# 序列
 
 Along with collections, the Kotlin standard library contains another container type – _sequences_ ([`Sequence<T>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence/index.html)).
 Sequences offer the same functions as [`Iterable`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/index.html) but implement another approach to multi-step collection processing.
@@ -20,9 +20,9 @@ So, the sequences let you avoid building results of intermediate steps, therefor
 However, the lazy nature of sequences adds some overhead which may be significant when processing smaller collections or doing simpler computations.
 Hence, you should consider both `Sequence` and `Iterable` and decide which one is better for your case.
 
-## Constructing
+## 构造
 
-### From elements
+### 由元素
 To create a sequence, call the [`sequenceOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/sequence-of.html) function listing the elements as its arguments.
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -32,7 +32,7 @@ val numbersSequence = sequenceOf("four", "three", "two", "one")
 ```
 </div>
 
-### From `Iterable`
+### 由 `Iterable`
 If you already have an `Iterable` object (such as a `List` or a `Set`), you can create a sequence from it by calling [`asSequence()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/as-sequence.html).
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -44,7 +44,7 @@ val numbersSequence = numbers.asSequence()
 ```
 </div>
 
-### From function
+### 由函数
 One more way to create a sequence is by building it with a function that calculates its elements.
 To build a sequence based on a function, call [`generateSequence()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/generate-sequence.html) with this function as an argument.
 Optionally, you can specify the first element as an explicit value or a result of a function call.
@@ -77,7 +77,7 @@ fun main() {
 ```
 </div>
 
-### From chunks
+### 由组块
 
 Finally, there is a function that lets you produce sequence elements one by one or by chunks of arbitrary sizes – the [`sequence()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/sequence.html) function.
 This function takes a lambda expression containing calls of [`yield()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence-scope/yield.html) and [`yieldAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence-scope/yield-all.html) functions.
@@ -100,7 +100,7 @@ fun main() {
 ```
 </div>
 
-## Sequence operations
+## 序列操作
 
 The sequence operations can be classified into the following groups regarding their state requirements:
 
@@ -113,7 +113,7 @@ Otherwise, the operation is _terminal_. Examples of terminal operations are [`to
 
 Sequences can be iterated multiple times; however some sequence implementations might constrain themselves to be iterated only once. That is mentioned specifically in their documentation.
 
-## Sequence processing example
+## 序列处理示例
 
 Let's take a look at the difference between `Iterable` and `Sequence` with an example. 
 

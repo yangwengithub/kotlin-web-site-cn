@@ -2,10 +2,10 @@
 type: doc
 layout: reference
 category: "Collections"
-title: "Grouping"
+title: "分组"
 ---
 
-# Grouping
+# 分组
 
 The Kotlin standard library provides extension functions for grouping collection elements.
 The basic function [`groupBy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/group-by.html) takes a lambda function and returns a `Map`.

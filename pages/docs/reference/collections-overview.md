@@ -2,10 +2,10 @@
 type: doc
 layout: reference
 category: "Collections"
-title: "Collections Overview"
+title: "集合概述"
 ---
 
-# Kotlin Collections Overview
+# Kotlin 集合概述
 
 The Kotlin Standard Library provides a comprehensive set of tools for managing _collections_ – groups of a variable number of items (possibly zero) that share significance to the problem being solved and are operated upon commonly.
 
@@ -23,7 +23,7 @@ So, the Kotlin Standard Library offers generic interfaces, classes, and function
 
 The collection interfaces and related functions are located in the kotlin.collections package. Let's get an overview of its contents.
 
-## Collection types
+## 集合类型
 
 The Kotlin Standard Library provides implementations for basic collection types: sets, lists, and maps.
 A pair of interfaces represent each collection type: 

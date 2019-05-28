@@ -2,16 +2,16 @@
 type: doc
 layout: reference
 category: "Collections"
-title: "Collection Write Operations"
+title: "集合写操作"
 ---
 
-# Collection Write Operations
+# 集合写操作
 
 [Mutable collections](collections-overview.html#collection-types) support operations for changing the collection contents, for example, adding or removing elements.
 On this page, we'll describe write operations available for all implementations of `MutableCollection`.
 For more specific operations available for `List` and `Map`, see [List Specific Operations](list-operations.html) and [Map Specific Operations](map-operations.html) respectively.
 
-## Adding elements
+## 添加元素
 
 To add a single element to a list or a set, use the [`add()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/add.html) function. The specified object is appended to the end of the collection.
 
@@ -76,7 +76,7 @@ fun main() {
 ```
 </div>
 
-## Removing elements
+## 删除元素
 
 To remove an element from a mutable collection, use the [`remove()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/remove.html) function.
 `remove()` accepts the element value and removes one occurrence of this value. 
@@ -147,7 +147,7 @@ fun main() {
 ```
 </div>
 
-## Updating elements
+## 更新元素
 
 Lists and sets also provide operations for updating elements.
 They are described in [List Specific Operations](list-operations.html) and [Map Specific Operations](map-operations.html).

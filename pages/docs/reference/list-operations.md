@@ -2,14 +2,14 @@
 type: doc
 layout: reference
 category: "Collections"
-title: "List Specific Operations"
+title: "List 相关操作"
 ---
 
-# List Specific Operations
+# List 相关操作
 
 [`List`](collections-overview.html#list) is the most popular type of built-in collection in Kotlin. Index access to the elements of lists provides a powerful set of operations for lists. 
 
-## Retrieving elements by index
+## 按索引取元素
 
 Lists support all common operations for element retrieval: `elementAt()`, `first()`, `last()`, and others listed in [Retrieving Single Elements](collection-elements.html).
 What is specific for lists is index access to the elements, so the simplest way to read an element is retrieving it by index.
@@ -38,7 +38,7 @@ fun main() {
 ```
 </div>
 
-## Retrieving list parts
+## 取列表的一部分
 
 In addition to common operations for [Retrieving Collection Parts](collection-parts.html), lists provide the [`subList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/sub-list.html) function that returns a view of the specified elements range as a list.
 Thus, if an element of the original collection changes, it also changes in the previously created sublists and vice versa.
@@ -56,9 +56,9 @@ fun main() {
 ```
 </div>
 
-## Finding element positions
+## 查找元素位置
 
-### Linear search
+### 线性查找
 
 In any lists, you can find the position of an element using the functions [`indexOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of.html) and [`lastIndexOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-index-of.html).
 They return the first and the last position of an element equal to the given argument in the list.
@@ -97,7 +97,7 @@ fun main() {
 ```
 </div>
 
-### Binary search in sorted lists
+### 在有序列表中二分查找
 
 There is one more way to search elements in lists – [binary search](https://en.wikipedia.org/wiki/Binary_search_algorithm).
 It works significantly faster than other built-in search functions but *requires the list to be [sorted](collection-ordering.html)* in ascending order according to a certain ordering: natural or another one provided in the function parameter.
@@ -126,7 +126,7 @@ fun main() {
 ```
 </div>
 
-#### Comparator binary search
+#### Comparator 二分搜索
 
 When list elements aren't `Comparable`, you should provide a [`Comparator`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparator.html) to use in the binary search.
 The list must be sorted in ascending order according to this `Comparator`. Let's have a look at an example:
@@ -169,7 +169,7 @@ fun main() {
 ```
 </div>
 
-#### Comparison binary search
+#### 比较函数二分搜索
 
 Binary search with _comparison_ function lets you find elements without providing explicit search values.
 Instead, it takes a comparison function mapping elements to `Int` values and searches for the element where the function returns zero.
@@ -199,12 +199,12 @@ fun main() {
 
 Both comparator and comparison binary search can be performed for list ranges as well.
 
-## List write operations
+## List 写操作
 
 In addition to the collection modification operations described in [Collection Write Operations](collection-write.html), [mutable](collections-overview.html#collection-types) lists support specific write operations.
 Such operations use the index to access elements to broaden the list modification capabilities.
 
-### Adding
+### 添加
 
 To add elements to a specific position in a list, use [`add()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/add.html) and [`addAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/add-all.html) providing the position for element insertion as an additional argument.
 All elements that come after the position shift to the right.
@@ -224,7 +224,7 @@ fun main() {
 ```
 </div>
 
-### Updating
+### 更新
 
 Lists also offer a function to replace an element at a given position - [`set()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/set.html) and its operator form `[]`. `set()` doesn't change the indexes of other elements.
 
@@ -259,7 +259,7 @@ fun main() {
 </div>
 
 
-### Removing
+### 删除
 
 To remove an element at a specific position from a list, use the [`removeAt()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/remove-at.html) function providing the position as an argument.
 All indices of elements that come after the element being removed will decrease by one.
@@ -277,7 +277,7 @@ fun main() {
 ```
 </div>
 
-### Sorting
+### 排序
 
 In [Collection Ordering](collection-ordering.html), we describe operations that retrieve collection elements in specific orders.
 For mutable lists, the standard library offers similar extension functions that perform the same ordering operations in place.

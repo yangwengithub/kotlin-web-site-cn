@@ -2,14 +2,14 @@
 type: doc
 layout: reference
 category: "Collections"
-title: "Collection Operations Overview"
+title: "集合操作概述"
 ---
 
-# Collection Operations Overview
+# 集合操作概述
 
 The Kotlin standard library offers a broad variety of functions for performing operations on collections. This includes simple operations, such as getting or adding elements, as well as more complex ones including search, sorting, filtering, transformations, and so on.  
 
-## Extension and member functions
+## 扩展与成员函数
 
 Collection operations are declared in the standard library in two ways: [member functions](classes.html#class-members) of collection interfaces and [extension functions](extensions.html#extension-functions). 
 
@@ -20,7 +20,7 @@ To make the creation of new implementations easier, use the skeletal implementat
 
 Other collection operations are declared as extension functions. These are filtering, transformation, ordering, and other collection processing functions. 
 
-## Common operations
+## 公共操作
 
 Common operations are available for both [read-only and mutable collections](collections-overview.html#collection-types). Common operations fall into these groups:
 
@@ -91,7 +91,7 @@ fun main() {
 
 Functions with destination are available for filtering, association, grouping, flattening, and other operations. For the complete list of destination operations see the [Kotlin collections reference](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index.html).
 
-## Write operations
+## 写操作
 
 For mutable collections, there are also _write operations_ that change the collection state. Such operations include adding, removing, and updating elements. Write operations are listed in the [Write operations](collection-write.html) and corresponding sections of [List specific operations](list-operations.html#list-write-operations) and [Map specific operations](map-operations.html#map-write-operations).
 

@@ -2,16 +2,16 @@
 type: doc
 layout: reference
 category: "Collections"
-title: "Map Specific Operations"
+title: "Map 相关操作"
 ---
 
-# Map Specific Operations
+# Map 相关操作
 
 In [maps](collections-overview.html#map), types of both keys and values are user-defined.
 Key-based access to map entries enables various map-specific processing capabilities from getting a value by key to separate filtering of keys and values.
 On this page, we provide descriptions of the map processing functions from the standard library.
 
-## Retrieving keys and values
+## 取键与值
 
 For retrieving a value from a map, you must provide its key as an argument of the [`get()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/get.html) function.
 The shorthand `[key]` syntax is also supported. If the given key is not found, it returns `null`.
@@ -54,7 +54,7 @@ fun main() {
 ```
 </div>
 
-## Filtering
+## 过滤
 
 You can [filter](collection-filtering.html) maps with the [`filter()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html) function as well as other collections.
 When calling `filter()` on a map, pass to it a predicate with a `Pair` as an argument.
@@ -96,7 +96,7 @@ fun main() {
 ```
 </div>
 
-## `plus` and `minus` operators
+## `plus` 与 `minus` 操作
 
 Due to the key access to elements, [`plus`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus.html) (`+`) and [`minus`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus.html) (`-`) operators work for maps differently than for other collections.
 `plus` returns a `Map` that contains elements of its both operands: a `Map` on the left and a `Pair` or another `Map` on the right.
@@ -136,7 +136,7 @@ fun main() {
 
 For details on using [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) (`+=`) and [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) operators on mutable maps, see [Map write operations](#map-write-operations) below.
 
-## Map write operations
+## Map 写操作
 
 [Mutable](collections-overview.html#collection-types) maps offer map-specific write operations.
 These operations let you change the map content using the key-based access to the values.
@@ -148,7 +148,7 @@ There are certain rules that define write operations on maps:
 
 Below are descriptions of the standard library functions for write operations available on mutable maps.
 
-### Adding and updating entries
+### 添加与更新条目
 
 To  add a new key-value pair to a mutable map, use [`put()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/put.html).
 When a new entry is put into a `LinkedHashMap` (the default map implementation), it is added so that it comes last when iterating the map.
@@ -223,7 +223,7 @@ fun main() {
 
 When called with the key present in the map, operators overwrite the values of the corresponding entries. 
 
-### Removing entries
+### 删除条目
 
 To remove an entry from a mutable map, use the [`remove()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/remove.html) function.
 When calling `remove()`, you can pass either a key or a whole key-value-pair.
