@@ -2,10 +2,10 @@
 type: doc
 layout: reference
 category: "Collections"
-title: "Aggregate Operations"
+title: "聚合操作"
 ---
 
-# Collection Aggregate Operations
+# 集合聚合操作
 
 Kotlin collections contain functions for commonly used _aggregate operations_ – operations that return a single value based on the collection content.
 Most of them are well known and work the same way as they do in other languages:
@@ -72,7 +72,7 @@ fun main() {
 ```
 
 
-## Fold and reduce
+## Fold 与 reduce
 
 For more specific cases, there are the functions [`reduce()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce.html) and [`fold()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold.html) that apply the provided operation to the collection elements sequentially and return the accumulated result.
 The operation takes two arguments:  the previously accumulated value and the collection element.

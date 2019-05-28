@@ -2,12 +2,12 @@
 type: doc
 layout: reference
 category: "Collections"
-title: "Constructing Collections"
+title: "构造集合"
 ---
 
-# Constructing Collections
+# 构造集合
 
-## Constructing from elements
+## 由元素构造
 
 The most common way to create a collection is with the standard library functions [`listOf<T>()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/list-of.html), [`setOf<T>()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/set-of.html), [`mutableListOf<T>()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/mutable-list-of.html), [`mutableSetOf<T>()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/mutable-set-of.html).
 If you provide a comma-separated list of collection elements as arguments, the compiler detects the element type automatically.  When creating empty collections, specify the type explicitly.
@@ -40,7 +40,7 @@ val numbersMap = mutableMapOf<String, String>().apply { this["one"] = "1"; this[
 ```
 
 
-## Empty collections
+## 空集合
 
 There are also functions for creating collections without any elements: [`emptyList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/empty-list.html), [`emptySet()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/empty-set.html), and [`emptyMap()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/empty-map.html).
 When creating empty collections, you should specify the type of elements that the collection will hold.
@@ -52,7 +52,7 @@ val empty = emptyList<String>()
 ```
 
 
-## Initializer functions for lists
+## list 的初始化函数
 
 For lists, there is a constructor that takes the list size and the initializer function that defines the element value based on its index.
 
@@ -68,7 +68,7 @@ fun main() {
 ```
 
 
-## Concrete type constructors
+## 具体类型构造函数
 
 To create a concrete type collection, such as an `ArrayList` or `LinkedList`, you can use the available constructors for these types.
 Similar constructors are available for implementations of `Set` and `Map`.
@@ -81,7 +81,7 @@ val presizedSet = HashSet<Int>(32)
 ```
 
 
-## Copying
+## 复制
 
 To create a collection with the same elements as an existing collection, you can use copying operations. Collection copying operations from the standard library create _shallow_ copy collections with references to the same elements.
 Thus, a change made to a collection element reflects in all its copies. 
@@ -159,7 +159,7 @@ fun main() {
 ```
 
 
-## Invoking functions on other collections
+## 调用其他集合的函数
 
 Collections can be created in result of various operations on other collections. For example, [filtering](collection-filtering.html) a list creates a new list of elements that match the filter:
 
@@ -176,7 +176,7 @@ fun main() {
 ```
 
 
-[Mapping](collection-transformations.html#mapping) produces a list of a transformation results:
+[Mapping](collection-transformations.html#映射) produces a list of a transformation results:
 
 
 
@@ -191,7 +191,7 @@ fun main() {
 ```
 
 
-[Association](collection-transformations.html#association) produces maps:
+[Association](collection-transformations.html#关联) produces maps:
 
 
 

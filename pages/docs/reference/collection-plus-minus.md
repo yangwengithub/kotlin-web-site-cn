@@ -2,10 +2,10 @@
 type: doc
 layout: reference
 category: "Collections"
-title: "Plus and Minus Operators"
+title: "加减操作符"
 ---
 
-# `plus` and `minus` Operators
+# `plus` 与 `minus` 操作符
 
 In Kotlin, [`plus`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus.html) (`+`) and [`minus`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus.html) (`-`) operators are defined for collections.
 They take a collection as the first operand; the second operand can be either an element or another collection.

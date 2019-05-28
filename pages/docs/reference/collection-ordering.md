@@ -2,10 +2,10 @@
 type: doc
 layout: reference
 category: "Collections"
-title: "Ordering"
+title: "排序"
 ---
 
-# Collection Ordering
+# 集合排序
 
 The order of elements is an important aspect of certain collection types.
 For example, two lists of the same elements are not equal if their elements are ordered differently. 
@@ -87,11 +87,11 @@ println(listOf("aaa", "bb", "c").sortedWith(compareBy { it.length }))
 </div>
 
 The Kotlin collections package provides functions for sorting collections in natural, custom, and even random orders.
-On this page, we'll describe sorting functions that apply to [read-only](collections-overview.html#collection-types) collections.
+On this page, we'll describe sorting functions that apply to [read-only](collections-overview.html#集合类型) collections.
 These functions return their result as a new collection containing the elements of the original collection in the requested order.
-To learn about functions for sorting [mutable](collections-overview.html#collection-types) collections in place, see the [List Specific Operations](list-operations.html#sorting).
+To learn about functions for sorting [mutable](collections-overview.html#集合类型) collections in place, see the [List Specific Operations](list-operations.html#排序).
 
-## Natural order
+## 自然顺序
 
 The basic functions [`sorted()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sorted.html) and [`sortedDescending()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sorted-descending.html) return elements of a collection sorted into ascending and descending sequence according to their natural order.
 These functions apply to collections of `Comparable` elements.
@@ -111,7 +111,7 @@ fun main() {
 ```
 </div>
 
-## Custom orders
+## 自定义顺序
  
 For sorting in custom orders or sorting non-comparable objects, there are the functions [`sortedBy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sorted-by.html) and [`sortedByDescending()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sorted-by-descending.html).
 They take a selector function that maps collection elements to `Comparable` values and sort the collection in natural order of that values.
@@ -150,7 +150,7 @@ fun main() {
 ```
 </div>
 
-## Reverse order
+## 倒序
 
 You can retrieve the collection in the reversed order using the [`reversed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reversed.html) function.
 
@@ -206,7 +206,7 @@ fun main() {
 
 However, if the mutability of the list is unknown or the source is not a list at all, `reversed()` is more preferable since its result is a copy that won't change in the future.
 
-## Random order
+## 随机顺序
 
 Finally, there is a shuffle function that retrieves all collection elements in a random order - [`shuffled()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/shuffled.html).
 You can call it without arguments or with a [`Random`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.random/-random/index.html) object.

@@ -2,10 +2,10 @@
 type: doc
 layout: reference
 category: "Collections"
-title: "Retrieving Collection Parts"
+title: "取集合的一部分"
 ---
 
-# Retrieving Collection Parts
+# 取集合的一部分
 
 The Kotlin standard library contains extension functions for retrieving parts of a collection.
 These functions provide a variety of ways to select elements for the result collection: listing their positions explicitly, specifying the result size, and others. 
@@ -29,7 +29,7 @@ fun main() {
 ```
 
 
-## Take and drop
+## Take 与 drop
 
 To get the specified number of elements starting from the first, use the [`take()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/take.html) function.
 For getting the last elements, use [`takeLast()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/take-last.html).

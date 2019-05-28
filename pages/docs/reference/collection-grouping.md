@@ -2,10 +2,10 @@
 type: doc
 layout: reference
 category: "Collections"
-title: "Grouping"
+title: "分组"
 ---
 
-# Grouping
+# 分组
 
 The Kotlin standard library provides extension functions for grouping collection elements.
 The basic function [`groupBy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/group-by.html) takes a lambda function and returns a `Map`.
@@ -36,7 +36,7 @@ The `Grouping` instance lets you apply operations to all groups in a lazy manner
 Namely, `Grouping` supports the following operations:
 
 * [`eachCount()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/each-count.html) counts the elements in each group.
-* [`fold()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold.html) and [`reduce()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce.html) perform [fold and reduce](collection-aggregate.html#fold-and-reduce) operations on each group as a separate collection and return the results.
+* [`fold()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold.html) and [`reduce()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce.html) perform [fold and reduce](collection-aggregate.html#fold-与-reduce) operations on each group as a separate collection and return the results.
 * [`aggregate()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/aggregate.html) applies a given operation subsequently to all the elements in each group and returns the result.
    This is the generic way to perform any operations on a `Grouping`. Use it to implement custom operations when fold or reduce are not enough.
 

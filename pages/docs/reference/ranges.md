@@ -81,7 +81,7 @@ fun main() {
 ```
 
 
-## Range
+## 区间
 
 A range defines a closed interval in the mathematical sense: it is defined by its two endpoint values which are both included in the range.
 Ranges are defined for comparable types: having an order, you can define whether an arbitrary instance is in the range between two given instances.
@@ -113,7 +113,7 @@ fun main() {
 ```
 
 
-## Progression
+## 数列
 
 As shown in the examples above, the ranges of integral types, such as `Int`, `Long`, and `Char`, can be treated as [arithmetic progressions](https://en.wikipedia.org/wiki/Arithmetic_progression) of them.
 In Kotlin, these progressions are defined by special types: [`IntProgression`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-int-progression/index.html), [`LongProgression`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-long-progression/index.html), and [`CharProgression`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-char-progression/index.html).

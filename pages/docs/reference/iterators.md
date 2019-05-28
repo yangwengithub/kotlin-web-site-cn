@@ -2,10 +2,10 @@
 type: doc
 layout: reference
 category: "Collections"
-title: "Iterators"
+title: "迭代器"
 ---
 
-# Iterators
+# 迭代器
 
 For traversing collection elements, the Kotlin standard library supports the commonly used mechanism of _iterators_ – objects that provide access to the elements sequentially without exposing the underlying structure of the collection.
 Iterators are useful when you need to process all the elements of a collection one-by-one, for example, print values or make similar updates to them.
@@ -61,7 +61,7 @@ fun main() {
 ```
 
 
-## List iterators
+## List 迭代器
 
 For lists, there is a special iterator implementation: [`ListIterator`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list-iterator/index.html). It supports iterating lists in both directions: forwards and backwards.
 Backward iteration is implemented by the functions [`hasPrevious()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list-iterator/has-previous.html) and [`previous()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list-iterator/previous.html).
@@ -87,7 +87,7 @@ fun main() {
 
 Having the ability to iterate in both directions, means the `ListIterator` can still be used after it reaches the last element.
 
-## Mutable iterators
+## 可变迭代器
 
 For iterating mutable collections, there is [`MutableIterator`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-iterator/index.html) that extends `Iterator` with the element removal function [`remove()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-iterator/remove.html). So, you can remove elements from a collection while iterating it.
 

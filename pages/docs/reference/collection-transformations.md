@@ -2,16 +2,16 @@
 type: doc
 layout: reference
 category: "Collections"
-title: "Collection Transformation Operations"
+title: "集合转换操作"
 ---
 
-# Collection Transformations
+# 集合转换
 
 The Kotlin standard library provides a set of extension functions for collection _transformations_.
 These functions build new collections from existing ones based on the transformation rules provided.
 In this page, we'll give an overview of the available collection transformation functions.
 
-## Mapping
+## 映射
 
 The _mapping_ transformation creates a collection from the results of a function on the elements of another collection.
 The basic mapping function is [`map()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map.html).
@@ -64,7 +64,7 @@ fun main() {
 ```
 </div>
 
-## Zipping
+## 双路合并
 
 _Zipping_ transformation is building pairs from elements with the same positions in both collections.
 In the Kotlin standard library, this is done by the [`zip()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/zip.html) extension function.
@@ -125,7 +125,7 @@ fun main() {
 ```
 </div>
 
-## Association
+## 关联
 
 _Association_ transformations allow building maps from the collection elements and certain values associated with them.
 In different association types, the elements can be either keys or values in the association map.
@@ -195,7 +195,7 @@ fun parseFullName(fullName: String): FullName {
 Here we call a transform function on an element first, and then build a pair from the properties of that function's result.
 
 
-## Flattening
+## 打平
 
 If you operate nested collections, you may find the standard library functions that provide flat access to nested collection elements useful.
 
@@ -237,7 +237,7 @@ fun main() {
 ```
 </div>
 
-## String representation
+## 字符串表示
 
 If you need to retrieve the collection content in a readable format, use functions that transform the collections to strings: [`joinToString()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html) and [`joinTo()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to.html).
 

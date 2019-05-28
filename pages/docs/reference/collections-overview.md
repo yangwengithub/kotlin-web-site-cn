@@ -2,10 +2,10 @@
 type: doc
 layout: reference
 category: "Collections"
-title: "Collections Overview"
+title: "集合概述"
 ---
 
-# Kotlin Collections Overview
+# Kotlin 集合概述
 
 The Kotlin Standard Library provides a comprehensive set of tools for managing _collections_ – groups of a variable number of items (possibly zero) that share significance to the problem being solved and are operated upon commonly.
 
@@ -23,7 +23,7 @@ So, the Kotlin Standard Library offers generic interfaces, classes, and function
 
 The collection interfaces and related functions are located in the kotlin.collections package. Let's get an overview of its contents.
 
-## Collection types
+## 集合类型
 
 The Kotlin Standard Library provides implementations for basic collection types: sets, lists, and maps.
 A pair of interfaces represent each collection type: 
@@ -31,7 +31,7 @@ A pair of interfaces represent each collection type:
 * A _read-only_ interface that provides operations for accessing collection elements.
 * A _mutable_ interface that extends the corresponding read-only interface with write operations: adding, removing, and updating its elements.
 
-Note that altering a mutable collection doesn't require it to be a [`var`](basic-syntax.html#defining-variables): write operations modify the same mutable collection object, so the reference doesn't change.
+Note that altering a mutable collection doesn't require it to be a [`var`](basic-syntax.html#定义变量): write operations modify the same mutable collection object, so the reference doesn't change.
 Although, if you try to reassign a `val` collection, you'll get a compilation error.
 
 
@@ -48,7 +48,7 @@ fun main() {
 
 
 
-The read-only collection types are [covariant](generics.html#variance).
+The read-only collection types are [covariant](generics.html#型变).
 This means that, if a `Rectangle` class inherits from `Shape`, you can use a `List<Rectangle>` anywhere the `List<Shape>` is required.
 In other words, the collection types have the same subtyping relationship as the element types. Maps are covariant on the value type, but not on the key type.
 
@@ -125,7 +125,7 @@ fun main() {
 
 
 List elements (including nulls) can duplicate: a list can contain any number of equal objects or occurrences of a single object.
-Two lists are considered equal if they have the same sizes and [structurally equal](equality.html#structural-equality) elements at the same positions. 
+Two lists are considered equal if they have the same sizes and [structurally equal](equality.html#结构相等) elements at the same positions.
 
 
 
