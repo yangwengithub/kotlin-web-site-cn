@@ -122,13 +122,13 @@ However, running kapt with Gradle worker API enabled can result in increased mem
 
 To use the Gradle worker API for parallel execution of kapt tasks, add this line to your `gradle.properties` file:
 
-<div class="sample" markdown="1" mode="xml" theme="idea">
+
 
 ```
 kapt.use.worker.api=true
 ```
 
-</div>
+
 
 ## kapt 的避免编译（自 1.3.20 起）
 
@@ -143,13 +143,13 @@ To run kapt with compile avoidance:
 * Add the annotation processor dependencies to the `kapt*` configurations manually as described [above](#在-gradle-中使用).
 * Turn off the discovery of annotation processors in the compile classpath by adding this line to your `gradle.properties` file:
 
-<div class="sample" markdown="1" mode="xml" theme="idea">
+
 
 ```
 kapt.include.compile.classpath=false
 ```
 
-</div>
+
 
 ## 增量注解处理（自 1.3.31 起）
 
@@ -158,13 +158,13 @@ Currently, annotation processing can be incremental only if all annotation proce
 
 To enable incremental annotation processing, add this line to your `gradle.properties` file:
 
-<div class="sample" markdown="1" mode="xml" theme="idea">
+
 
 ```
 kapt.incremental.apt=true
 ```
 
-</div>
+
 
 Note that incremental annotation processing requires [incremental compilation](using-gradle.html#增量编译) to be enabled as well.
 

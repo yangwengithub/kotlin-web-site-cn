@@ -62,7 +62,7 @@ To use multiple experimental APIs, annotate the declaration with all their marke
 
 ### 非传播使用
 
-In modules that don't provide their own API, such as application modules, you can use experimental APIs without propagating the experimental status to your code. In this case, mark your code with the [@UseExperimental(Marker::class)](/api/latest/jvm/stdlib/kotlin/-use-experimental/index.html) annotation specifying the marker annotation of the experimental API:
+In modules that don't provide their own API, such as application modules, you can use experimental APIs without propagating the experimental status to your code. In this case, mark your code with the [@UseExperimental(Marker::class)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-use-experimental/index.html) annotation specifying the marker annotation of the experimental API:
 
 
 
@@ -173,7 +173,7 @@ To accept the usage of multiple experimental APIs on the module level, add one o
 
 ### 创建标记注解
 
-If you want to declare your module's API as experimental, create an annotation class to use as its _experimental marker_. This class must be annotated with [@Experimental](/api/latest/jvm/stdlib/kotlin/-experimental/index.html):
+If you want to declare your module's API as experimental, create an annotation class to use as its _experimental marker_. This class must be annotated with [@Experimental](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-experimental/index.html):
 
 
 
@@ -187,11 +187,11 @@ annotation class ExperimentalDateTime
 
 
 Experimental marker annotations must meet several requirements:
-* `BINARY` [retention](/api/latest/jvm/stdlib/kotlin.annotation/-annotation-retention/index.html)
-* No `EXPRESSION` and `FILE` among [targets](/api/latest/jvm/stdlib/kotlin.annotation/-annotation-target/index.html)
+* `BINARY` [retention](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/-annotation-retention/index.html)
+* No `EXPRESSION` and `FILE` among [targets](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/-annotation-target/index.html)
 * No parameters.
 
-A marker annotation can have one of two severity [levels](/api/latest/jvm/stdlib/kotlin/-experimental/-level/index.html) of informing about experimental API usage:
+A marker annotation can have one of two severity [levels](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-experimental/-level/index.html) of informing about experimental API usage:
 * `Experimental.Level.ERROR`. Acceptance is mandatory. Otherwise, the code that uses marked API won't compile. This level is used by default.
 * `Experimental.Level.WARNING`. Acceptance is not mandatory, but advisable. Without it, the compiler raises a warning.
 To set the desired level, specify the `level` parameter of the `@Experimental` annotation.
@@ -229,7 +229,7 @@ fun getTime(): Time {}
 If you consider all the APIs of your module experimental, you can mark the entire module as such with the compiler argument `-Xexperimental` as described in [Module-wide use](#模块级使用).
 
 ## 实验性 API 转正
-Once your experimental API graduates and is released in its final state, remove its marker annotation from declarations so that the clients can use it without restriction. However, you should leave the marker classes in modules so that the existing client code remains compatible. To let the API users update their modules accordingly (remove the markers from their code and recompile), mark the annotations as [`@Deprecated`](/api/latest/jvm/stdlib/kotlin/-deprecated/index.html) and provide the explanation in its message.
+Once your experimental API graduates and is released in its final state, remove its marker annotation from declarations so that the clients can use it without restriction. However, you should leave the marker classes in modules so that the existing client code remains compatible. To let the API users update their modules accordingly (remove the markers from their code and recompile), mark the annotations as [`@Deprecated`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-deprecated/index.html) and provide the explanation in its message.
 
 
 

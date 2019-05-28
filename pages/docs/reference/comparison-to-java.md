@@ -21,7 +21,7 @@ Kotlin 通过以下措施修复了 Java 中一系列长期困扰我们的问题�
 ## Java 有而 Kotlin 没有的东西
 
 * [受检异常](exceptions.html)
-* 不是类的[原生类型](basic-types.html) 
+* 不是类的[原生类型](basic-types.html)
 * [静态成员](classes.html)
 * [非私有化字段](properties.html)
 * [通配符类型](generics.html)
@@ -44,5 +44,5 @@ Kotlin 通过以下措施修复了 Java 中一系列长期困扰我们的问题�
 * [操作符重载](operator-overloading.html)
 * [伴生对象](classes.html#伴生对象)
 * [数据类](data-classes.html)
-* [分离用于只读与可变集合的接口](collections.html)
+* [分离用于只读与可变集合的接口](collections-overview.html)
 * [协程](coroutines.html)

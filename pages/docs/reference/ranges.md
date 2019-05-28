@@ -2,100 +2,126 @@
 type: doc
 layout: reference
 category: "Syntax"
-title: "区间"
+title: "区间与数列"
 ---
 
-# 区间
+# 区间与数列
 
-区间表达式由具有操作符形式 `..` 的 `rangeTo` 函数辅以 *in*{: .keyword } 和 *!in*{: .keyword } 形成。
-区间是为任何可比较类型定义的，但对于整型原生类型，它有一个优化的实现。以下是使用区间的一些示例：
-
-
-
-```kotlin
-if (i in 1..10) { // 等同于 1 <= i && i <= 10
-    println(i)
-}
-```
-
-
-
-整型区间（`IntRange`、 `LongRange`、 `CharRange`）有一个额外的特性：它们可以迭代。
-编译器负责将其转换为类似 Java 的基于索引的 *for*{: .keyword }-循环而无额外开销：
+Kotlin lets you easily create ranges of values using the [`rangeTo()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/range-to.html) function from the `kotlin.ranges` package and its operator form `..`.
+Usually, `rangeTo()` is complemented by `in` or `!in` functions.
 
 
 
 ```kotlin
-fun main() {
-//sampleStart
-for (i in 1..4) print(i)
-//sampleEnd
+if (i in 1..4) {  // 等同于 1 <= i && i <= 4
+    print(i)
 }
 ```
 
 
-
-如果你想倒序迭代数字呢？也很简单。你可以使用标准库中定义的 `downTo()` 函数：
+Integral type ranges ([`IntRange`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-int-range/index.html), [`LongRange`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-long-range/index.html), [`CharRange`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-char-range/index.html)) have an extra feature: they can be iterated over.
+These ranges are also [progressions](https://en.wikipedia.org/wiki/Arithmetic_progression) of the corresponding integral types.
+Such ranges are generally used for iteration in the `for` loops.
 
 
 
 ```kotlin
 fun main() {
 //sampleStart
-for (i in 4 downTo 1) print(i)
+    for (i in 1..4) print(i)
 //sampleEnd
 }
+
 ```
 
 
-
-能否以不等于 1 的任意步长迭代数字？ 当然没问题， `step()` 函数有助于此：
+To iterate numbers in reverse order, use the [`downTo`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/down-to.html) function instead of `..`.
 
 
 
 ```kotlin
 fun main() {
 //sampleStart
-for (i in 1..4 step 2) print(i)
-
-for (i in 4 downTo 1 step 2) print(i)
+    for (i in 4 downTo 1) print(i)
 //sampleEnd
 }
+
 ```
 
 
-
-要创建一个不包括其结束元素的区间，可以使用 `until` 函数：
+It is also possible to iterate over numbers with an arbitrary step (not necessarily 1). This is done via the [`step`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/step.html) function.
 
 
 
 ```kotlin
 fun main() {
 //sampleStart
-for (i in 1 until 10) {
-     // i in [1, 10) 排除了 10
-     println(i)
-}
+    for (i in 1..8 step 2) print(i)
+    println()
+    for (i in 8 downTo 1 step 2) print(i)
 //sampleEnd
 }
+
 ```
 
 
+To iterate a number range which does not include its end element, use the [`until`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/until.html) function:
 
-## 它是如何工作的
 
-区间实现了该库中的一个公共接口：`ClosedRange<T>`。
 
-`ClosedRange<T>` 在数学意义上表示一个闭区间，它是为可比较类型定义的。
-它有两个端点：`start` 和 `endInclusive` 他们都包含在区间内。
-其主要操作是 `contains`，通常以 *in*{: .keyword }/*!in*{: .keyword } 操作符形式使用。
+```kotlin
+fun main() {
+//sampleStart
+    for (i in 1 until 10) {       // i in [1, 10), 10 is excluded
+        print(i)
+    }
+//sampleEnd
+}
 
-整型数列（`IntProgression`、 `LongProgression`、 `CharProgression`）表示等差数列。
-数列由 `first` 元素、`last` 元素和非零的 `step` 定义。
-第一个元素是 `first`，后续元素是前一个元素加上 `step`。 `last` 元素总会被迭代命中，除非该数列是空的。
+```
 
-数列是 `Iterable<N>` 的子类型，其中 `N` 分别为 `Int`、 `Long` 或者 `Char`，所以它可用于 *for*{: .keyword }-循环以及像 `map`、`filter` 等函数中。
-对 `step` 为正数的 `Progression` 迭代相当于 Java/JavaScript 的基于索引的 *for*{: .keyword }-循环：
+
+## Range
+
+A range defines a closed interval in the mathematical sense: it is defined by its two endpoint values which are both included in the range.
+Ranges are defined for comparable types: having an order, you can define whether an arbitrary instance is in the range between two given instances.
+The main operation on ranges is `contains`, which is usually used in the form of `in` and `!in` operators.
+
+To create a range for your class, call the `rangeTo()` function on the range start value and provide the end value as an argument.
+`rangeTo()` is often called in its operator form `..`.
+
+
+```kotlin
+class Version(val major: Int, val minor: Int): Comparable<Version> {
+    override fun compareTo(other: Version): Int {
+        if (this.major != other.major) {
+            return this.major - other.major
+        } else if (this.minor != other.minor) {
+            return this.minor - other.minor
+        } else return 0
+    }
+}
+
+fun main() {
+//sampleStart
+    val versionRange = Version(1, 11)..Version(1, 30)
+    println(Version(0, 9) in versionRange)
+    println(Version(1, 20) in versionRange)
+//sampleEnd
+}
+
+```
+
+
+## Progression
+
+As shown in the examples above, the ranges of integral types, such as `Int`, `Long`, and `Char`, can be treated as [arithmetic progressions](https://en.wikipedia.org/wiki/Arithmetic_progression) of them.
+In Kotlin, these progressions are defined by special types: [`IntProgression`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-int-progression/index.html), [`LongProgression`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-long-progression/index.html), and [`CharProgression`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-char-progression/index.html).
+
+Progressions have three essential properties: the `first` element, the `last` element, and a non-zero `step`.
+The first element is `first`, subsequent elements are the previous element plus a `step`.
+The last element is always hit by iteration unless the progression is empty.
+Iteration over a progression with a positive step is equivalent to an indexed `for` loop in Java/JavaScript.
 
 
 
@@ -106,109 +132,62 @@ for (int i = first; i <= last; i += step) {
 ```
 
 
-
-对于整型类型，`..` 操作符创建一个同时实现 `ClosedRange<T>` 和 `*Progression` 的对象。
-例如，`IntRange` 实现了 `ClosedRange<Int>` 并扩展自 `IntProgression`，因此为 `IntProgression` 定义的所有操作也可用于 `IntRange`。
-`downTo()` 和 `step()` 函数的结果总是一个 `*Progression`。
-
-数列由在其伴生对象中定义的 `fromClosedRange` 函数构造：
-
-
-```kotlin
-IntProgression.fromClosedRange(start, end, step)
-```
-
-
-数列的 `last` 元素这样计算：对于正的 `step` 找到不大于 `end` 值的最大值、或者对于负的 `step` 找到不小于 `end` 值的最小值，使得 `(last - first) % increment == 0`。
-
-
-
-## 一些实用函数
-
-### `rangeTo()`
-
-整型类型的 `rangeTo()` 操作符只是调用 `*Range` 类的构造函数，例如：
+When you create a progression implicitly by iterating a range, this progression's `first` and `last` elements are the range's endpoints, and the `step` is 1.
 
 
 
 ```kotlin
-
-class Int {
-    //……
-    operator fun rangeTo(other: Long): LongRange = LongRange(this, other)
-    //……
-    operator fun rangeTo(other: Int): IntRange = IntRange(this, other)
-    //……
+fun main() {
+//sampleStart
+    for (i in 1..10) print(i)
+//sampleEnd
 }
 
 ```
 
 
-
-浮点数（`Double`、`Float`）的 `rangeTo` 操作符返回一个[遵循 IEEE-754 标准](/docs/reference/basic-types.html#浮点数比较)的区间，用于比较一个数字是否在指定区间内。该函数返回的区间并不是数列，不能用于迭代遍历。
-
-### `downTo()`
-
-扩展函数 `downTo()` 是为任何整型类型对定义的，这里有两个例子：
+To define a custom progression step, use the `step` function on a range.
 
 
 
 ```kotlin
-fun Long.downTo(other: Int): LongProgression {
-    return LongProgression.fromClosedRange(this, other.toLong(), -1L)
+fun main() {
+//sampleStart
+    for (i in 1..8 step 2) print(i)
+//sampleEnd
 }
 
-fun Byte.downTo(other: Int): IntProgression {
-    return IntProgression.fromClosedRange(this.toInt(), other, -1)
-}
 ```
 
 
+The last element of the progression is calculated to find the maximum value not greater than the end value for a positive step or the minimum value not less than the end value for a negative step such that `(last - first) % step == 0`.
 
-### `reversed()`
-
-扩展函数 `reversed()` 是为每个 `*Progression` 类定义的，并且所有这些函数返回反转后的数列：
+To create a progression for iterating in reverse order, use `downTo` instead of `..` when defining the range for it.
 
 
 
 ```kotlin
-fun IntProgression.reversed(): IntProgression {
-    return IntProgression.fromClosedRange(last, first, -step)
+fun main() {
+//sampleStart
+    for (i in 4 downTo 1) print(i)
+//sampleEnd
 }
+
 ```
 
 
-
-### `step()`
-
-扩展函数 `step()` 是为每个 `*Progression` 类定义的，
-所有这些函数都返回带有修改了 `step` 值（函数参数）的数列。
-步长（step）值必须始终为正，因此该函数不会更改迭代的方向：
+Progressions implement `Iterable<N>`, where `N` is `Int`, `Long`, or `Char` respectively, so you can use them in various [collection functions](collection-operations.html) like `map`, `filter`, and other.
 
 
 
 ```kotlin
-fun IntProgression.step(step: Int): IntProgression {
-    if (step <= 0) throw IllegalArgumentException("Step must be positive, was: $step")
-    return IntProgression.fromClosedRange(first, last, if (this.step > 0) step else -step)
+fun main() {
+//sampleStart
+    println((1..10).filter { it % 2 == 0 })
+//sampleEnd
 }
 
-fun CharProgression.step(step: Int): CharProgression {
-    if (step <= 0) throw IllegalArgumentException("Step must be positive, was: $step")
-    return CharProgression.fromClosedRange(first, last, if (this.step > 0) step else -step)
-}
 ```
 
-
-
-请注意，返回数列的 `last` 值可能与原始数列的 `last` 值不同，以便保持不变式 `(last - first) % step == 0` 成立。这里是一个例子：
-
-
-
-```kotlin
-(1..12 step 2).last == 11  // 值为 [1, 3, 5, 7, 9, 11] 的数列
-(1..12 step 3).last == 10  // 值为 [1, 4, 7, 10] 的数列
-(1..12 step 4).last == 9   // 值为 [1, 5, 9] 的数列
-```
 
 

@@ -2110,8 +2110,8 @@ frameworks. In this case the resulting universal framework can be used on both 3
 The Gradle plugin provides a separate task that creates a universal framework for iOS targets from several regular ones.
 The example below shows how to use this task. Note that the fat framework must have the same base name as the initial frameworks.
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
+> Groovy DSL
 
 ```groovy
 import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
@@ -2146,11 +2146,11 @@ kotlin {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+
+
+> Kotlin DSL
 
 ```kotlin
 import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
@@ -2183,8 +2183,8 @@ kotlin {
 }
 ```
 
-</div>
-</div>
+
+
 
 ### CInterop support
 

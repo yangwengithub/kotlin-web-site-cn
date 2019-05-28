@@ -454,7 +454,7 @@ implementation(kotlin("stdlib-js"))
 
 
 
-如果项目中用到了 [Kotlin 反射](/api/latest/jvm/stdlib/kotlin.reflect.full/index.html)或者测试设施，还需要添加相应的依赖项：
+如果项目中用到了 [Kotlin 反射](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect.full/index.html)或者测试设施，还需要添加相应的依赖项：
 
 > Groovy DSL
 

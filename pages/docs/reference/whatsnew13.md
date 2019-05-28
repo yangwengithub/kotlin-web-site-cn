@@ -357,7 +357,7 @@ println("x: $x, y: $y, z: $z, range: $range")
 
 ## @JvmDefault
 
-> `@JvmDefault` 仅在 Kotlin 1.3 起才可用，并且目前是**实验性**的。详见其[参考文档页](/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html)。
+> `@JvmDefault` 仅在 Kotlin 1.3 起才可用，并且目前是**实验性**的。详见其[参考文档页](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html)。
 {:.note}
 
 
@@ -377,7 +377,7 @@ interface Foo {
 
 
 
-> 警告！以 `@JvmDefault` 注解标注的 API 会对二进制兼容性产生严重影响。在生产中使用 `@JvmDefault` 之前，请务必仔细阅读其[参考文档页](/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html)。
+> 警告！以 `@JvmDefault` 注解标注的 API 会对二进制兼容性产生严重影响。在生产中使用 `@JvmDefault` 之前，请务必仔细阅读其[参考文档页](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html)。
 {:.note}
 
 # 标准库
