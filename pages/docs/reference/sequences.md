@@ -104,12 +104,12 @@ fun main() {
 
 The sequence operations can be classified into the following groups regarding their state requirements:
 
-* _Stateless_ operations require no state and process each element independently, for example, [`map()`](collection-transformations.html#mapping) or [`filter()`](collection-filtering.html).
+* _Stateless_ operations require no state and process each element independently, for example, [`map()`](collection-transformations.html#映射) or [`filter()`](collection-filtering.html).
    Stateless operations can also require a small constant amount of state to process an element, for example, [`take()` or `drop()`](collection-parts.html).
 * _Stateful_ operations require a significant amount of state, usually proportional to the number of elements in a sequence.
 
 If a sequence operation returns another sequence, which is produced lazily, it's called _intermediate_.
-Otherwise, the operation is _terminal_. Examples of terminal operations are [`toList()`](constructing-collections.html#copying) or [`sum()`](collection-aggregate.html). Sequence elements can be retrieved only with terminal operations.
+Otherwise, the operation is _terminal_. Examples of terminal operations are [`toList()`](constructing-collections.html#复制) or [`sum()`](collection-aggregate.html). Sequence elements can be retrieved only with terminal operations.
 
 Sequences can be iterated multiple times; however some sequence implementations might constrain themselves to be iterated only once. That is mentioned specifically in their documentation.
 

@@ -176,7 +176,7 @@ fun main() {
 ```
 </div>
 
-[Mapping](collection-transformations.html#mapping) produces a list of a transformation results:
+[Mapping](collection-transformations.html#映射) produces a list of a transformation results:
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -191,7 +191,7 @@ fun main() {
 ```
 </div>
 
-[Association](collection-transformations.html#association) produces maps:
+[Association](collection-transformations.html#关联) produces maps:
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 

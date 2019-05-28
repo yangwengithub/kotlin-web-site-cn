@@ -201,7 +201,7 @@ Both comparator and comparison binary search can be performed for list ranges as
 
 ## List 写操作
 
-In addition to the collection modification operations described in [Collection Write Operations](collection-write.html), [mutable](collections-overview.html#collection-types) lists support specific write operations.
+In addition to the collection modification operations described in [Collection Write Operations](collection-write.html), [mutable](collections-overview.html#集合类型) lists support specific write operations.
 Such operations use the index to access elements to broaden the list modification capabilities.
 
 ### 添加

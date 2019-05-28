@@ -11,7 +11,7 @@ The Kotlin standard library offers a broad variety of functions for performing o
 
 ## 扩展与成员函数
 
-Collection operations are declared in the standard library in two ways: [member functions](classes.html#class-members) of collection interfaces and [extension functions](extensions.html#extension-functions). 
+Collection operations are declared in the standard library in two ways: [member functions](classes.html#类成员) of collection interfaces and [extension functions](extensions.html#扩展函数).
 
 Member functions define operations that are essential for a collection type. For example, [`Collection`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html) contains the function [`isEmpty()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/is-empty.html) for checking its emptiness; [`List`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html) contains [`get()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/get.html) for index access to elements, and so on.
 
@@ -22,7 +22,7 @@ Other collection operations are declared as extension functions. These are filte
 
 ## 公共操作
 
-Common operations are available for both [read-only and mutable collections](collections-overview.html#collection-types). Common operations fall into these groups:
+Common operations are available for both [read-only and mutable collections](collections-overview.html#集合类型). Common operations fall into these groups:
 
 * [Transformations](collection-transformations.html)
 * [Filtering](collection-filtering.html)
@@ -93,7 +93,7 @@ Functions with destination are available for filtering, association, grouping, f
 
 ## 写操作
 
-For mutable collections, there are also _write operations_ that change the collection state. Such operations include adding, removing, and updating elements. Write operations are listed in the [Write operations](collection-write.html) and corresponding sections of [List specific operations](list-operations.html#list-write-operations) and [Map specific operations](map-operations.html#map-write-operations).
+For mutable collections, there are also _write operations_ that change the collection state. Such operations include adding, removing, and updating elements. Write operations are listed in the [Write operations](collection-write.html) and corresponding sections of [List specific operations](list-operations.html#list-写操作) and [Map specific operations](map-operations.html#map-写操作).
 
 For certain operations, there are pairs of functions for performing the same operation: one applies the operation in-place and the other returns the result as a separate collection.
 For example, [`sort()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sort.html) sorts a mutable collection in-place, so it's state changes; [`sorted()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sorted.html) creates a new collection that contains the same elements in the sorted order.

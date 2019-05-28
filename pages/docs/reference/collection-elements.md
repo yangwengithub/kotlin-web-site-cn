@@ -29,7 +29,7 @@ However, such results are unpredictable to the caller unless they know the speci
  The first element has the position `0`, and the last one is `(size - 1)`.
  
  `elementAt()` is useful for collections that do not provide indexed access, or are not statically known to provide one.
-  In case of `List`, it's more idiomatic to use [indexed access operator](list-operations.html#retrieving-elements-by-index) (`get()` or `[]`).
+  In case of `List`, it's more idiomatic to use [indexed access operator](list-operations.html#按索引取元素) (`get()` or `[]`).
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 

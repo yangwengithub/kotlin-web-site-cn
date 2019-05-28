@@ -134,11 +134,11 @@ fun main() {
 ```
 </div>
 
-For details on using [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) (`+=`) and [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) operators on mutable maps, see [Map write operations](#map-write-operations) below.
+For details on using [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) (`+=`) and [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) operators on mutable maps, see [Map write operations](#map-写操作) below.
 
 ## Map 写操作
 
-[Mutable](collections-overview.html#collection-types) maps offer map-specific write operations.
+[Mutable](collections-overview.html#集合类型) maps offer map-specific write operations.
 These operations let you change the map content using the key-based access to the values.
 
 There are certain rules that define write operations on maps:
