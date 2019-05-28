@@ -56,7 +56,7 @@ In turn, mutable collections aren't covariant; otherwise, this would lead to run
 
 Below is a diagram of the Kotlin collection interfaces:
 
-![Collection interfaces hierarchy]({{ url_for('asset', path='images/reference/collections-overview/collections-diagram.png') }})
+![Collection interfaces hierarchy](/assets/images/reference/collections-overview/collections-diagram.png)
 
 Let's walk through the interfaces and their implementations.
 

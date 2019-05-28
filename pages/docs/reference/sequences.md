@@ -142,7 +142,7 @@ When you run this code, you'll see that the `filter()` and `map()` functions are
 First, you see `filter:` for all elements, then `length:` for the elements left after filtering, and then the output of the two last lines. 
 This is how the list processing goes:
 
-![List processing]({{ url_for('asset', path='images/reference/sequences/list-processing.png') }})
+![List processing](/assets/images/reference/sequences/list-processing.png)
 
 ### Sequence
 
@@ -176,6 +176,6 @@ When the result size reaches 4, the processing stops because it's the largest po
 
 The sequence processing goes like this:
 
-![Sequences processing]({{ url_for('asset', path='images/reference/sequences/sequence-processing.png') }})
+![Sequences processing](/assets/images/reference/sequences/sequence-processing.png)
 
 In this example, the sequence processing takes 18 steps instead of 23 steps for doing the same with lists.
