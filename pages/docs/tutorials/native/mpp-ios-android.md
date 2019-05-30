@@ -1,64 +1,64 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Multiplatform Project: iOS and Android"
-description: "Sharing Kotlin code between iOS and Android"
+title:  "多平台项目: iOS 与 Android"
+description: "在 iOS 与 Android 之间共享 Kotlin 代码"
 authors: Eugene Petrenko
 date: 2018-10-04
 showAuthorInfo: false
 issue: EVAN-6029
 ---
 
-In this tutorial we will create an iOS and Android application, by making use of Kotlin's code sharing features.
-For Android we'll be using Kotlin/JVM, while for iOS it will be Kotlin/Native. 
+在本教程中我们将通过创建一个 iOS 与一个 Android 应用，来展示 Kotlin 代码的共享功能。
+在 Android 上我们将使用 Kotlin/JVM，而在 iOS 上将是 Kotlin/Native。
 
-We'll learn how to:
- - Create an [Android app](#creating-an-android-project) with Android Studio
- - Create a shared [Kotlin library](#creating-the-shared-module)
-   - Use it [from Android app](#using-sharedcode-from-android)
-   - Start the [Android application](#running-the-android-application)
- - Create an [iOS app](#creating-ios-application) with Xcode
-   - Use the shared Kotlin library [from iOS app](#setting-up-framework-dependency-in-xcode)
-   - Use [Kotlin from Swift](#calling-kotlin-code-from-swift)
-   - Start the [iOS application](#running-the-ios-application)
+我们将学习到如何去：
+ - 使用 Android Studio 创建一个 [Android app](#创建一个-Android-工程)
+ - 创建一个共享的 [Kotlin library](#creating-the-shared-module)
+   - 在 [Android app](#using-sharedcode-from-android) 中使用它
+   - 运行 [Android application](#running-the-android-application)
+ - 使用 Xcode 创建一个 [iOS app](#creating-ios-application)
+   - 在 [iOS app](#setting-up-framework-dependency-in-xcode) 上使用共享的 Kotlin library
+   - 使用 [Kotlin from Swift](#calling-kotlin-code-from-swift)
+   - 运行 [iOS application](#running-the-ios-application)
 
-Our goal of this tutorial is to demonstrate the ability to share code within Kotlin and the benefits it provides. While 
-what we'll be looking at is a simplified application, what is shown here can be applied to real world applications,
-independent of their size or complexity.
+本教程的目标是展示 Kotlin 共享代码的能力以及它带来的优势。
+我们将会看到的是一个简化的应用程序，但这里展示的内容可以用于真实的应用，
+而与它的大小或复杂度无关。
 
-The application we're going to create will simply show 
-`Kotlin Rocks on Android` on Android and `Kotlin Rocks on iOS <version>` on iOS.
-The idea is to share the code that generates this message.
+我们要创建的应用程序将只在 Android 上显示
+`Kotlin Rocks on Android` 或在 iOS 上显示 `Kotlin Rocks on iOS <version>`。
+我们希望共享生成此消息的代码。
 
-The common code is `"Kotlin Rocks on ${platformName()}"`, where `platformName()` is 
-a function that is declared using the `expect` keyword. The `actual` implementation will be specific to the platform.
+通用的代码是 `"Kotlin Rocks on ${platformName()}"`，`platformName()`
+是一个使用 `expect` 关键字声明的函数。而 `actual` 的实现将根据特定的平台而异。
 
-# Setting Up the Local Environment
+# 搭建本地环境
 
-* We will be using [Android Studio](https://developer.android.com/studio/) for the Android part of the tutorial. 
-It is also possible to use [IntelliJ IDEA](https://jetbrains.com/idea) Community or Ultimate edition.
+* 我们将使用 [Android Studio](https://developer.android.com/studio/) 来讲解 Android 部分的内容. 
+当然也可以使用 [IntelliJ IDEA](https://jetbrains.com/idea) 社区版或终级版。
 
-* Kotlin plugin 1.3.21 or higher should be installed in the IDE. This can be verified via
-*Language & Frameworks | Kotlin Updates* section in the *Settings* (or *Preferences*) of the IDE.
+* IDE 应该安装了 Kotlin 插件 1.3.21 或更高版本。这个可以通过
+IDE 的 *Settings*（或*Preferences*）中的 *Language & Frameworks | Kotlin Updates* 部分验证。
 
-* macOS host operating system is required to compile for iOS and macOS devices. We need to have
-[Xcode](https://developer.apple.com/xcode/) and the tools installed and configured. Check out
-the [Apple Developer Site](https://developer.apple.com/xcode/) for more details. 
+* 编译 iOS 以及 macOS 设备的代码需要 masOS 系统。我们需要安装以及配置
+[Xcode](https://developer.apple.com/xcode/) 工具。查看
+[Apple 开发者网站](https://developer.apple.com/xcode/) 来获取更多细节。
 
-*Note: We'll be using IntelliJ IDEA 2018.3 EAP, Android Studio 3.2, Kotlin 1.3.21, Xcode 10.0, macOS 10.14, Gradle 4.7*
+*注意：我们将使用 IntelliJ IDEA 2018.3 EAP、Android Studio 3.2、Kotlin 1.3.21、Xcode 10.0、macOS 10.14、Gradle 4.7*
 
-# Creating an Android Project
+# 创建一个 Android 工程
 
-We'll create a new Android project via *Start New Android Project* item. If using IntelliJ IDEA, we need to select *Android* in 
-the left panel of the *New Project* wizard. 
+我们将通过 *Start New Android Project* 来创建一个 Android 工程。如果使用 IntelliJ IDEA，我们需要在左边的 *New Project* 
+向导面板中选择 *Android*。
 
-It's important to make sure that the *Include Kotlin support* checkbox is ticked. For now we can leave the default settings 
-in the next step of the wizard. We then proceed to select the *Empty Activity* option and click *Next*, finally pressing *Finish*.  
+重要的一点是你需要确保勾选了 *Include Kotlin support* 选择框。现在我们可以在向导的下一步中<!--
+-->保留默认设置。我们接下来选择 *Empty Activity* 选项并点击 *Next*，最后点击 *Finish*。
 
-**Note** If using pre-release or EAP versions of the Kotlin plugin, the IDE may fail to open the generated project, 
-giving a Gradle import [error](https://youtrack.jetbrains.com/issue/KT-18835#focus=streamItem-27-2718879-0-0).
-This is because the right Maven repository isn't referenced in the `build.gradle` file, it can be resolved by adding 
-the following entry *twice*, into each of the `repositories { .. }` blocks.
+**注意** 如果使用早期发行版或者 EAP 版本的 Kotlin plugin，IDE 在生成工程的时候可能会失败， 
+给 Gradle 导入 [error](https://youtrack.jetbrains.com/issue/KT-18835#focus=streamItem-27-2718879-0-0)。
+这是因为 `build.gradle` 文件中没有引用正确的 Maven 库，在每一个 `repositories { .. }`
+块中它可以通过添加来解决以下条目 *两次*。
 
 <div class="sample" markdown="1" mode="groovy" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -68,16 +68,16 @@ maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
 </div>
 
 <a name="gradle-upgrade"/>
-Kotlin/Native plugin requires a newer version of Gradle, let's patch the `gradle/wrapper/gradle-wrapper.properties`
-and use the following `distrubutionUrl`:
+Kotlin/Native 插件需要更新版本的 Gradle，让我们修改 `gradle/wrapper/gradle-wrapper.properties`
+并且使用下面的 `distrubutionUrl`：
 ```
 distributionUrl=https\://services.gradle.org/distributions/gradle-4.7-all.zip
 ```
 
-We need to refresh the Gradle Project settings to apply these changes. Click on the `Sync Now` link or 
-use the *Gradle* tool window and click the refresh action from the context menu on the root Gradle project.
+我们需要通过刷新 Gradle Project 来让其接受设置变更。点击 `Sync Now` 链接或者<!--
+-->在 Gradle 根工程的上下文菜单中使用 *Gradle* 工具窗口并且点击刷新按钮。
 
-At this point, we should be able to compile and run the Android application
+此刻，我们应该可以编译并运行这个 Android 应用了。
 
 # Creating the Shared Module
 
