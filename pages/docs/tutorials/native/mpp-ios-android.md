@@ -12,15 +12,15 @@ issue: EVAN-6029
 在本教程中我们将通过创建一个 iOS 与一个 Android 应用，来展示 Kotlin 代码的共享功能。
 在 Android 上我们将使用 Kotlin/JVM，而在 iOS 上将是 Kotlin/Native。
 
-我们将学习到如何去：
+我们将学习到如何：
  - 使用 Android Studio 创建一个 [Android app](#创建一个-Android-工程)
- - 创建一个共享的 [Kotlin library](#creating-the-shared-module)
-   - 在 [Android app](#using-sharedcode-from-android) 中使用它
-   - 运行 [Android application](#running-the-android-application)
+ - 创建一个共享的 [Kotlin library](#创建共享模块)
+   - 在 [Android app](#在-android-中使用共享代码) 中使用它
+   - 运行 [Android 应用程序](#运行-android-应用程序)
  - 使用 Xcode 创建一个 [iOS app](#creating-ios-application)
-   - 在 [iOS app](#setting-up-framework-dependency-in-xcode) 上使用共享的 Kotlin library
-   - 使用 [Kotlin from Swift](#calling-kotlin-code-from-swift)
-   - 运行 [iOS application](#running-the-ios-application)
+   - 在 [iOS app](#setting-up-framework-dependency-in-xcode) 上使用共享的 Kotlin 库
+   - 在 [Swift 中使用 Kotlin](#在-swift-中调用-kotlin-代码)
+   - 运行 [iOS 应用程序](#running-the-ios-application)
 
 本教程的目标是展示 Kotlin 共享代码的能力以及它带来的优势。
 我们将会看到的是一个简化的应用程序，但这里展示的内容可以用于真实的应用，
@@ -56,7 +56,7 @@ IDE 的 *Settings*（或*Preferences*）中的 *Language & Frameworks | Kotlin U
 -->保留默认设置。我们接下来选择 *Empty Activity* 选项并点击 *Next*，最后点击 *Finish*。
 
 **注意** 如果使用早期发行版或者 EAP 版本的 Kotlin plugin，IDE 在生成工程的时候可能会失败， 
-给 Gradle 导入 [error](https://youtrack.jetbrains.com/issue/KT-18835#focus=streamItem-27-2718879-0-0)。
+给 Gradle 抛出 [error](https://youtrack.jetbrains.com/issue/KT-18835#focus=streamItem-27-2718879-0-0)。
 这是因为 `build.gradle` 文件中没有引用正确的 Maven 库，在每一个 `repositories { .. }`
 块中它可以通过添加来解决以下条目 *两次*。
 
@@ -79,18 +79,18 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-4.7-all.zip
 
 此刻，我们应该可以编译并运行这个 Android 应用了。
 
-# Creating the Shared Module
+# 创建共享模块
 
-The goal of the tutorial is to demonstrate Kotlin code re-use between Android and iOS. Let's start
-by creating the `SharedCode` sub-project in our Gradle project. The source code from the `SharedCode`
-project will be shared between platforms.
-We will create several new files in our project to implement that.
+这部分教程的目标是演示在 Android 与 iOS 之间复用 Kotlin 源码。让我们从在
+Gradle 工程中创建一个 `SharedCode` 子工程开始。`SharedCode` 工程中的源码<!--
+-->将被在两个平台之间共享。
+我们将在工程中创建几个新文件来实现这个目标。
 
-## Adding Kotlin Sources
+## 添加 Kotlin 源码
 
-The idea is to make every platform show similar text: `Kotlin Rocks on Android` and 
-`Kotlin Rocks on iOS`, depending on the platform. We will reuse the way we generate the message. 
-Let's create the main file under `SharedCode/src/commonMain/kotlin/common.kt`
+我们想要使每个平台都根据平台自身展示相似的文本：`Kotlin Rocks on Android` 以及
+`Kotlin Rocks on iOS`。我们将复用生成消息的方式。
+让我们在 `SharedCode/src/commonMain/kotlin/common.kt` 下创建一个 main 文件。
 
 <div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -106,11 +106,11 @@ fun createApplicationScreenMessage() : String {
 ```
 </div>
 
-That is the common part. The code to generate the final message. It `expect`s the platform
-to provide the platform name from the `expect fun platformName(): String` function. We will use
-the `createApplicationScreenMessage` from both Android and iOS applications.
+这是通用的部分。这段代码生成了最终的消息。它 `expect` 平台<!--
+-->提供来自 `expect fun platformName（）：String` 函数的平台名称。我们将同时在
+Android 与 iOS 应用中使用 `createApplicationScreenMessage`。
 
-Now, we need to create the implementation for Android in the `SharedCode/src/androidMain/kotlin/actual.kt`:
+现在，我们需要在 `SharedCode/src/androidMain/kotlin/actual.kt` 中为 Android 创建相应的实现：
 <div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only="1" auto-indent="false">
 
 ```kotlin
@@ -123,7 +123,7 @@ actual fun platformName(): String {
 ```
 </div>
 
-We create a similar file for the iOS target in the `SharedCode/src/iosMain/kotlin/actual.kt`:
+我们为 iOS 创建了一个相似的文件 `SharedCode/src/iosMain/kotlin/actual.kt`：
 <div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only="1" auto-indent="false">
 
 ```kotlin
@@ -139,23 +139,23 @@ actual fun platformName(): String {
 ```
 </div>
 
-Here we can use the [UIDevice](https://developer.apple.com/documentation/uikit/uidevice?language=objc)
-class from the Apple UIKit Framework, which is not available in Java, it is only usable in Swift and Objective-C.
-Kotlin/Native compiler comes with a set of pre-imported frameworks, so we can use
-the UIKit Framework without additional steps.
-Objective-C and Swift Interop is covered in details in the [documentation](/docs/reference/native/objc_interop.html)
+这里我们可以使用 Apple UIKit Framework 中的 [UIDevice](https://developer.apple.com/documentation/uikit/uidevice?language=objc)
+类，这是一个仅仅在 Swift 以及 Objective-C 中使用而在 Java 中没有的类。
+Kotlin/Native 编译器带有一组预先导入的框架，所以我们可以无需额外步骤的<!--
+-->使用 UIKit Framework。
+Objective-C 与 Swift 互操作的细节被包含在这篇[文档](/docs/reference/native/objc_interop.html)中
 
-## Updating Gradle Scripts
+## 更新 Gradle 脚本
 
-The `SharedCode` project should generate several artifacts for us:
- - JAR file for the Android project, from the `androidMain` source set
+`SharedCode` 应该为我们生成一系列产物：
+ - 在 `androidMain` 源集中为 Android 工程生成 JAR 文件
  - Apple framework 
-   - for iOS device and App Store (`arm64` target)
-   - for iOS emulator (`x86_64` target)
+   - 面向 iOS 设备以及 App Store (`arm64` target)
+   - 面向 iOS emulator (`x86_64` target)
 
-Let's update the Gradle scripts. 
+让我们更新该 Gradle 脚本。
 
-First, we add the new project into the `settings.gradle` file, simply by adding the following line to the end of the file:
+首先，我们将一个新工程添加到 `settings.gradle` 文件，只需要将下面这行代码添加到文件末尾：
 <div class="sample" markdown="1" mode="groovy" theme="idea" data-highlight-only="1" auto-indent="false">
 
 ```groovy
@@ -163,8 +163,8 @@ include ':SharedCode'
 ```
 </div>
 
-Next,
-we need to create the `SharedCode/build.gradle` file with the following content:
+接下来，
+我们需要使用下面的内容来创建 `SharedCode/build.gradle` 文件：
  
 <div class="sample" markdown="1" mode="groovy" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -204,41 +204,41 @@ configurations {
 ```
 </div>
 
-## Multiplatform Gradle Project
+## 多平台 Gradle 工程  
 
-The `SharedCode/build.gradle` file uses the `kotlin-multiplatform` plugin to implement 
-what we need. 
-In the file, we define several targets `common`, `android`, and `iOS`. Each
-target has its own platform. The `common` target contains the Kotlin common code 
-which is included into every platform compilation. It is allowed to have `expect` declarations.
-Other targets provide `actual` implementations for all `expect`-actions from the `common` target. 
-The more detailed explanation of the multiplatform projects can be found on the
-[Multiplatform Projects](/docs/reference/building-mpp-with-gradle.html) documentation page.
+`SharedCode/build.gradle` 文件使用了 `kotlin-multiplatform` 插件来实现<!--
+-->我们所需的功能。
+在这个文件中，我们定义了一些目标：`common`、`android` 以及 `iOS`。 每一个<!--
+-->都有它自己的平台。`common` 目标包含了 Kotlin 的通用代码，
+它会被导入每一个平台的编译中。它允许拥有 `expect` 声明。
+其它的目标为 `common` 目标中的所有 `expect`-actions 提供了 `actual` 实现。
+关于更多多平台项目的细节说明可以在<!--
+-->[多平台项目](/docs/reference/building-mpp-with-gradle.html)文档页中找到。
 
-Let's summarize what we have in the table:
+让我们用下面的表格总结一下：
 
-| name | source folder | target | artifact |
+| 名称 | 源路径 | 目标 | 产物 |
 |---|---|---|---|
 | common | `SharedCode/commonMain/kotlin` |  - | Kotlin metadata |
 | android | `SharedCode/androidMain/kotlin` | JVM 6 | `.jar` file or `.class` files |
 | iOS | `SharedCode/iosMain` | iOS arm64 or x86_64| Apple framework |
 
-Now it is time to refresh the Gradle project again in Android Studio. Click *Sync Now* on the yellow stripe 
-or use the *Gradle* tool window and click the `Refresh` action in the context menu on the root Gradle project.
-The `:SharedCode` project should be recognized by the IDE now.
+现在是时候再次在 Android Studio 中刷新这个 Gradle 工程了。在黄色条目上点击 *Sync Now*
+或者在根 Gradle 工程的上下文菜单中使用 *Gradle* 工具窗口并点击 `Refresh` 按钮。
+现在 `:SharedCode` 工程应该被 IDE 识别了。
 
-We are ready to use the `SharedCode` library from our Android and iOS applications.
+我们已经准备好在我们的 Android 与 iOS 应用中使用 `SharedCode` 库了。
 
-# Using SharedCode from Android
+# 在 Android 中使用共享代码
 
-For this tutorial, we want to minimize Android project changes, so we add an ordinary dependency from that 
-project to the `SharedCode` project.
-It is also possible to use the `kotlin-multiplatform` plugin directly in an Android 
-Gradle project, instead of the `kotlin-android` plugin. For more information, please refer to the
-[Multiplatform Projects](/docs/reference/multiplatform.html) documentation.  
+在这部分教程中，我想将 Android 工程的改动降到最低，所以我们在主工程中添加了对
+`SharedCode` 工程的普通依赖。
+也可以直接在 Android Gradle 工程中使用 `kotlin-multiplatform`
+插件，来代替 `kotlin-android` 插件。关于更多信息，请参考<!--
+-->[多平台项目](/docs/reference/multiplatform.html)文档。  
 
-Let's include the dependency from the `SharedCode` project to the Android project. We need to patch
-the `app/build.gradle` file and include the following line into the `dependencies { .. }` block:
+让我们将对 `SharedCode` 工程的依赖引入 Android 工程。我们需要修改
+`app/build.gradle` 文件并在 `dependencies { .. }` 块中引入下面这行代码：
 
 <div class="sample" markdown="1" mode="groovy" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -247,12 +247,12 @@ the `app/build.gradle` file and include the following line into the `dependencie
 ```
 </div>
 
-We need to
-assign the `id` to the `TextView` control of our activity to access it from the code.
-Let's patch the
-`app/src/main/res/layout/activity_main.xml` file
-(the name may be different if we changed it in the new project wizard)
-and add several more attributes to the `<TextView>` element: 
+我们需要<!--
+-->给 `TextView` 指定 `id` 以用来在我们控制它的 activity 的代码中访问它。
+让我们修改
+`app/src/main/res/layout/activity_main.xml` 文件<!--
+-->（如果我们在新项目向导中更改了名称，则名称可能会有所不同）
+并且为 `<TextView>` 元素添加几个更多的属性：
 ```
         android:id="@+id/main_text"
         android:textSize="42sp"
@@ -260,32 +260,32 @@ and add several more attributes to the `<TextView>` element:
         android:textAlignment="center"
 ```
 
-Next, let's include the following line of code into the `MainActivity` class
-from the `/app/src/main/java/<package>/MainActivity.kt` file, to 
-the end of the `onCreate` method:
+接下来，让我们在 `/app/src/main/java/<package>/MainActivity.kt` 文件的 `MainActivity`
+类中将下面这行代码添加到
+`onCreate` 方法的末尾：
 
 ```
 findViewById<TextView>(R.id.main_text).text = createApplicationScreenMessage()
 ```
 
-Use the intention from the IDE to include the missing import line:
+使用 IDE 中的联想功能来引入缺少的导入行：
 ```kotlin
 import org.kotlin.mpp.mobile.createApplicationScreenMessage
 ```
-into the same file. 
+到类似的文件中。
 
-Now we have the `TextView` that will show us the text created by the shared
-code function `createApplicationScreenMessage()`. It shows `Kotlin Rocks on Android`.
-Let's see how it works. 
+现在我们拥有一个 `TextView`，它将使用可共享的代码函数 `createApplicationScreenMessage()`
+为我们展示文本。它将显示 `Kotlin Rocks on Android`。
+让我们看看它是如何工作的。
 
-## Running the Android Application
+## 运行 Android 应用程序
 
-Let's click on the `App` run configuration
-to get our project running either on a real Android Device or on the emulator. 
+让我们点击 `App` 运行配置<!--
+-->来让我们的项目在真正的 Android 设备或模拟器上运行。
 
 ![Start the Application]({{ url_for('tutorial_img', filename='native/mpp-ios-android/studio-start-app.png') }})
 
-And so now we can see the Application running in the Android emulator:
+现在我们可以看到应用程序运行在 Android 模拟器上。
     
 ![Emulator App]({{ url_for('tutorial_img', filename='native/mpp-ios-android/android-emulator-kotlin-rocks-android.png') }}){: width="30%"}
 
@@ -405,7 +405,7 @@ We should drag the created build phase to the top of the list
 
 We are now ready to start coding the iOS application and to use the Kotlin code from it
 
-## Calling Kotlin Code from Swift
+## 在 Swift 中调用 Kotlin 代码
 
 Remember, our goal is to show the text message on the screen. As we see, our iOS application does not draw
 anything on the screen. Let's make it show the `UILabel` with the text message. 
