@@ -12,7 +12,7 @@ issue: EVAN-6029
 在本教程中我们将通过创建一个 iOS 与一个 Android 应用，来展示 Kotlin 代码的共享功能。
 在 Android 上我们将使用 Kotlin/JVM，而在 iOS 上将是 Kotlin/Native。
 
-我们将学习到如何去：
+我们将学习到如何：
  - 使用 Android Studio 创建一个 [Android app](#创建一个-Android-工程)
  - 创建一个共享的 [Kotlin library](#创建共享模块)
    - 在 [Android app](#在-android-中使用共享代码) 中使用它
@@ -56,7 +56,7 @@ IDE 的 *Settings*（或*Preferences*）中的 *Language & Frameworks | Kotlin U
 -->保留默认设置。我们接下来选择 *Empty Activity* 选项并点击 *Next*，最后点击 *Finish*。
 
 **注意** 如果使用早期发行版或者 EAP 版本的 Kotlin plugin，IDE 在生成工程的时候可能会失败， 
-给 Gradle 导入 [error](https://youtrack.jetbrains.com/issue/KT-18835#focus=streamItem-27-2718879-0-0)。
+给 Gradle 抛出 [error](https://youtrack.jetbrains.com/issue/KT-18835#focus=streamItem-27-2718879-0-0)。
 这是因为 `build.gradle` 文件中没有引用正确的 Maven 库，在每一个 `repositories { .. }`
 块中它可以通过添加来解决以下条目 *两次*。
 
@@ -82,8 +82,8 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-4.7-all.zip
 # 创建共享模块
 
 这部分教程的目标是演示在 Android 与 iOS 之间复用 Kotlin 源码。让我们从在
-Gradle 工程中创建一个 `SharedCode` 子工程开始。`SharedCode` 工程中的源码
-将被在两个平台之间共享。
+Gradle 工程中创建一个 `SharedCode` 子工程开始。`SharedCode` 工程中的源码<!--
+-->将被在两个平台之间共享。
 我们将在工程中创建几个新文件来实现这个目标。
 
 ## 添加 Kotlin 源码
@@ -141,8 +141,8 @@ actual fun platformName(): String {
 
 这里我们可以使用 Apple UIKit Framework 中的 [UIDevice](https://developer.apple.com/documentation/uikit/uidevice?language=objc)
 类，这是一个仅仅在 Swift 以及 Objective-C 中使用而在 Java 中没有的类。
-Kotlin/Native 编译器带有一组预先导入的框架，所以我们可以无需额外步骤的
-使用 UIKit Framework。
+Kotlin/Native 编译器带有一组预先导入的框架，所以我们可以无需额外步骤的<!--
+-->使用 UIKit Framework。
 Objective-C 与 Swift 互操作的细节被包含在这篇[文档](/docs/reference/native/objc_interop.html)中
 
 ## 更新 Gradle 脚本
@@ -208,7 +208,7 @@ configurations {
 
 `SharedCode/build.gradle` 文件使用了 `kotlin-multiplatform` 插件来实现<!--
 -->我们所需的功能。
-在这个文件中，我们定义了一些目标 `common`、`android` 以及 `iOS`。 每一个<!--
+在这个文件中，我们定义了一些目标：`common`、`android` 以及 `iOS`。 每一个<!--
 -->都有它自己的平台。`common` 目标包含了 Kotlin 的通用代码，
 它会被导入每一个平台的编译中。它允许拥有 `expect` 声明。
 其它的目标为 `common` 目标中的所有 `expect`-actions 提供了 `actual` 实现。
@@ -231,8 +231,8 @@ configurations {
 
 # 在 Android 中使用共享代码
 
-在这部分教程中，我想将 Android 工程的改动将到最低，所以我们在主工程中添加了对
-`SharedCode` 工程的普通依赖.
+在这部分教程中，我想将 Android 工程的改动降到最低，所以我们在主工程中添加了对
+`SharedCode` 工程的普通依赖。
 也可以直接在 Android Gradle 工程中使用 `kotlin-multiplatform`
 插件，来代替 `kotlin-android` 插件。关于更多信息，请参考<!--
 -->[多平台项目](/docs/reference/multiplatform.html)文档。  
@@ -274,7 +274,7 @@ import org.kotlin.mpp.mobile.createApplicationScreenMessage
 ```
 到类似的文件中。
 
-现在我们拥有一个Now we have the `TextView`，它将使用可共享的代码函数 `createApplicationScreenMessage()`
+现在我们拥有一个 `TextView`，它将使用可共享的代码函数 `createApplicationScreenMessage()`
 为我们展示文本。它将显示 `Kotlin Rocks on Android`。
 让我们看看它是如何工作的。
 
