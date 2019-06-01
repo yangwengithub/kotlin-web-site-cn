@@ -7,12 +7,12 @@ title: "集合概述"
 
 # Kotlin 集合概述
 
-The Kotlin Standard Library provides a comprehensive set of tools for managing _collections_ – groups of a variable number of items (possibly zero) that share significance to the problem being solved and are operated upon commonly.
+Kotlin 标准库提供了一整套用于管理*集合*的工具，集合是可变数量（可能为零）的一组条目，各种集合对于解决问题都具有重要意义，并且经常用到。
 
-Collections are a common concept for most programming languages, so if you're familiar with, for example, Java or Python collections, you can skip this introduction and proceed to the detailed sections. 
+集合是大多数编程语言的常见概念，因此如果熟悉像 Java 或者 Python 语言的集合，那么可以跳过这一介绍转到详细部分。
 
-A collection usually contains a number of objects (this number may also be zero) of the same type. Objects in a collection are called _elements_ or _items_. For example, all the students in a department form a collection that can be used to calculate their average age. 
-The  following collection types are relevant for Kotlin:
+集合通常包含相同类型的一些（数目也可以为零）对象。集合中的对象称为*元素*或*条目*。例如，一个系的所有学生组成一个集合，可以用于计算他们的平均年龄。
+以下是 Kotlin 相关的集合类型：
 
 * _List_ is an ordered collection with access to elements by indices – integer numbers that reflect their position. Elements can occur more than once in a list. An example of a list is a sentence: it's a group of words, their order is important, and they can repeat. 
 * _Set_ is a collection of unique elements. It reflects the mathematical abstraction of set: a group of objects without repetitions. Generally, the order of set elements has no significance. For example, an alphabet is a set of letters. 
