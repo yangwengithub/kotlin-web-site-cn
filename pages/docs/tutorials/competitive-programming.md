@@ -1,34 +1,34 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Competitive Programming"
+title:  "竞技程序设计"
 authors: Roman Elizarov
 showAuthorInfo: true
-description: "This tutorial explains basic usage of Kotlin for competitive programing."
+description: "本教程介绍了 Kotlin 在竞技性程序设计中的基本用法。"
 ---
 
-## Prerequisites
+## 先决条件
 
-This tutorial is designed both for competitive programmers that did not use Kotlin before and 
-for Kotlin developers that did not participate in any competitive programming events before.
-It assumes the corresponding programming skills.
+本教程适用于之前未使用 Kotlin
+的竞技程序员，也适用于之前从未参与过任何竞技性程序设计活动的 Kotlin 开发人员。
+本教程假定读者具有相应的编程技能。
 
-## Competitive programming and Kotlin
+## 竞技程序设计与 Kotlin
 
-[Competitive programming](https://en.wikipedia.org/wiki/Competitive_programming)
-is a mind sport where contestants write programs to solve precisely specified 
-algorithmic problems within strict constraints. Problems can range from simple ones that can be solved by 
-any software developer and require little code to get a correct solution, to complex ones that require knowledge of 
-special algorithms, data structures, and lots of practice. While not being specifically designed for competitive 
-programming, Kotlin incidentally fits well in this domain, reducing the typical amount of boilerplate that a 
-programmer needs to write and read while working with the code almost to the level offered by dynamically-typed 
-scripting languages, while having tooling and performance of a statically-typed language.
+[竞技性程序设计](https://en.wikipedia.org/wiki/Competitive_programming)
+是一项智力运动，参赛选手在严格的限制条件下编写程序精确地解决指定的<!--
+-->算法问题。问题可以简单到<!--
+-->任何软件开发人员都能解题、只需很少代码就能得到正确答案，也可以复杂到需要<!--
+-->特殊的算法、数据结构知识以及大量实践。虽然 Kotlin 不是专为竞技性<!--
+-->编程而设计的，但是它恰好适合这一领域，显著减少了<!--
+-->程序员所需编写与阅读的样板代码量，这样几乎可以像动态<!--
+-->脚本语言一样编写代码，同时又有静态类型语言的工具与性能支持。
 
-See [Getting Started with IntelliJ IDEA](/docs/tutorials/getting-started.html) on how to set up development
-environment for Kotlin. In competitive programming, a single project is usually created and each problem's solution is 
-written in a single source file.
+关于如何搭建 Kotlin 开发环境，请参见[以 IntelliJ IDEA 入门](/docs/tutorials/getting-started.html)<!--
+-->。在竞技程序设计中，通常会创建单个项目，而每个问题的答案<!--
+-->写在单个源文件中。
 
-## Simple example: Reachable Numbers problem
+## 简单示例：可达数问题
 
 Let's take a look at a concrete example. 
 
@@ -137,7 +137,7 @@ While the concept of visibility modifier is not relevant for competitive program
 it allows you to place multiple solution files based on the
 same template without getting an error for conflicting public declaration in the same package.
 
-## Functional operators example: Long Number problem
+## 函数式操作符示例：长数问题
 
 For more complicated problems, Kotlin's extensive library of functional operations on collections comes in handy to 
 minimize the boilerplate and turn the code into a linear top-to-bottom and left-to-right fluent data transformation 
@@ -214,7 +214,7 @@ It is easier to keep the same names for input data as it is given in the problem
 However, more complex problems require more code to solve and subsequently variable and function names tend to 
 become longer and more self-explanatory. 
 
-## More tips and tricks
+## 更多提示和技巧
 
 Competitive programming problems often have input like this:
 
@@ -256,7 +256,7 @@ println(a.joinToString("\n")) // each element of array/list of a separate line
 
 </div>
 
-## Learning Kotlin
+## 学习 Kotlin
 
 Kotlin is designed to be easy to learn for people who already know Java.
 A quick overview of differences is given on [the official comparison page](/docs/reference/comparison-to-java.html). 
