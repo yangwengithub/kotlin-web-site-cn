@@ -1,33 +1,33 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Kotlin to JavaScript"
-description: "A look at how Kotlin compiles to JavaScript and the use cases for that."
+title:  "Kotlin 转 JavaScript"
+description: "本文介绍 Kotlin 是如何编译到 JavaScript 及一些使用示例。"
 authors: Hadi Hariri
 showAuthorInfo: false
 ---
 
-There are multiple ways to compile Kotlin to JavaScript.
-The recommended approach is to use Gradle; if desired, you can also build JavaScript projects directly from
-IntelliJ IDEA, use Maven, or compile the code manually from the command line.
-To learn more about how to compile to JavaScript please see the corresponding tutorials:
+将 Kotlin 编译到 JavaScript 有许多种方法，<!--
+-->推荐的方法是使用 Gradle。如果需要，你还可以直接使用 Intellij IDEA 构建 JavaScript 项目，<!--
+-->使用 Maven 编译，或者手动使用命令行编译代码。<!--
+-->学习如何将 Kotlin 编译为 JavaScript，请参阅下面的相应教程：
  
-* [使用Gradle](../getting-started-gradle/getting-started-with-gradle.html)
-* [使用IntelliJ IDEA](../getting-started-idea/getting-started-with-intellij-idea.html)
-* [使用Maven](../getting-started-maven/getting-started-with-maven.html)
+* [使用 Gradle](../getting-started-gradle/getting-started-with-gradle.html)
+* [使用 IntelliJ IDEA](../getting-started-idea/getting-started-with-intellij-idea.html)
+* [使用 Maven](../getting-started-maven/getting-started-with-maven.html)
 * [使用命令行](../getting-started-command-line/command-line-library-js.html)
 
 
-## Examining the compilation output
+## 检查编译输出
 
-When compiling (we'll use this term interchangeably with [transpiling](https://en.wiktionary.org/wiki/transpile)) to JavaScript, Kotlin outputs two main files:
+当编译到（我们会交替使用编译（compile）和转译（[transpile](https://en.wiktionary.org/wiki/transpile)）两个术语） JavaScript 时，Kotlin 会输出两个主要的文件：
 
-* `kotlin.js`. Kotlin正在使用版本的运行时标准库, 该文件在程序运行期间不会改变
-* `{module}.js`. 程序实际的代码。 所有文件都被编译成一个与模块名称相同的JavaScript文件。
+* `kotlin.js`：Kotlin 的运行时和标准库。这个文件在所有程序中都是一样的，它与我们使用的 Kotlin 版本有关。
+* `{module}.js`：来自应用程序的实际代码。 所有文件都编译为单个 JavaScript 文件，该文件与模块同名。
 
-另外, 每个文件都会生成一个 `{file}.meta.js` 文件用于对应Kotlin代码和Javascript代码的关系
+另外，上面的每个文件还有一个相应的 `{file}.meta.js` 元数据文件，该文件用来实现反射及其他的功能。
 
-根据上面的描述, 我们给出下面的代码(模块名是 `ConsoleOutput`)
+根据上面的描述, 我们给出下面的代码（模块名是 `ConsoleOutput`）
 
 <div class="sample" markdown="1" data-target-platform="js" theme="idea">
 
@@ -38,13 +38,13 @@ fun main(args: Array<String>) {
 ```
 </div>
 
-Kotlin编译器将会生成下面的文件
+Kotlin 编译器将会生成下面的文件：
 
    ![Compiler Output]({{ url_for('tutorial_img', filename='javascript/kotlin-to-javascript/compiler-output.png')}})
    
-注意：包含kotlin.js和其他库文件的lib目录仅在基于IntelliJ IDEA的项目中创建，并由Kotlin构面设置中的复制库运行时文件标志控制。 在Maven或Gradle构建（包括多平台项目）中，默认情况下没有库文件被复制到编译输出目录。 请参阅相应的教程，了解如何在这些构建系统上实现相同的效果。
+注意：仅有基于 Intellij IDEA 的项目才会创建包含 `kotlin.js` 和其他库文件的 `lib` 目录，此功能由 Kotlin [构面设置](https://www.jetbrains.com/help/idea/facets.html)中的 ”Copy library runtime files“ 标记控制。在 Maven 或 Gradle 构建（包含多平台项目）中，默认不会把库文件复制到编译输出目录。有关如何使用这些构建系统实现相同功能的说明，请参阅相应的教程。
 
-我们最感兴趣的文件是`ConsoleOutput.js`
+我们最感兴趣的文件是 `ConsoleOutput.js`：
 
 <div class="sample" markdown="1" theme="idea" mode="js">
 
