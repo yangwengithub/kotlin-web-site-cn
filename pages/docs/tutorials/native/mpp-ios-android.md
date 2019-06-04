@@ -17,10 +17,10 @@ issue: EVAN-6029
  - 创建一个共享的 [Kotlin library](#创建共享模块)
    - 在 [Android app](#在-android-中使用共享代码) 中使用它
    - 运行 [Android 应用程序](#运行-android-应用程序)
- - 使用 Xcode 创建一个 [iOS app](#creating-ios-application)
-   - 在 [iOS app](#setting-up-framework-dependency-in-xcode) 上使用共享的 Kotlin 库
+ - 使用 Xcode 创建一个 [iOS app](#创建-ios-应用程序)
+   - 在 [iOS app](#在-xcode-中配置-framework-依赖) 上使用共享的 Kotlin 库
    - 在 [Swift 中使用 Kotlin](#在-swift-中调用-kotlin-代码)
-   - 运行 [iOS 应用程序](#running-the-ios-application)
+   - 运行 [iOS 应用程序](#运行-ios-应用程序)
 
 本教程的目标是展示 Kotlin 共享代码的能力以及它带来的优势。
 我们将会看到的是一个简化的应用程序，但这里展示的内容可以用于真实的应用，
@@ -290,40 +290,40 @@ import org.kotlin.mpp.mobile.createApplicationScreenMessage
 ![Emulator App]({{ url_for('tutorial_img', filename='native/mpp-ios-android/android-emulator-kotlin-rocks-android.png') }}){: width="30%"}
 
 
-# Creating iOS Application
+# 创建 iOS 应用程序
 
-We open Xcode and select *Create a new Xcode project* option. In 
-the dialog, we choose the iOS target and select the *Single View App*. Fill the next page with defaults, 
-and use the `KotlinIOS` (or something else) as the *Product Name*. Let's select Swift as the language (it is possible to use
-Objective-C too). We should instruct Xcode to place the project into the `native` folder under our project, later we
-will use relative paths in the configuration files. 
+我们打开 Xcode 并选择 *Create a new Xcode project* 选项。在<!--
+-->该对话框中，我们选择 iOS target 并选择 *Single View App*。下一页全部使用默认选项，
+然后使用 `KotlinIOS`（或其它的）作为 *Product Name*。让我们选择 Swift 作为编程语言（也可以选择使用
+Objective-C）。 我们应该指示 Xcode 将工程放入我们工程下的 `native` 文件夹中，稍后我们<!--
+-->将在配置文件中使用相对路径。 
 
-The created iOS application is ready to run on the iOS emulator or on the iOS device. The device run
-may require an Apple developer account and to issue a developer certificate. Xcode does its
-best to guide us through the process. 
+这个已经被创建好的 iOS 应用已经准备好可以运行在 iOS 模拟器或者 iOS 设备上。在设备上运行<!--
+-->也许需要一个 Apple 开发者账号并申请一个开发者证书。Xcode
+会引导我们完成整个流程。
 
-Let's make sure we can run the application on the iPhone emulator or device. 
+让我们确保我们可以在 iPhone 模拟器或真实设备上运行该应用程序。
 
 
-# Setting up Framework Dependency in Xcode
+# 在 Xcode 中配置 Framework 依赖
 
-The `SharedCode` build generates iOS frameworks for use with the Xcode project.
-All frameworks are in the `SharedCode/build/bin` folder. 
-It creates a *debug* and *release* version for every framework target.
-The frameworks are in the following paths:
+`SharedCode` 构建生成用于 Xcode 工程的 iOS frameworks。
+所有的 framework 都位于 `SharedCode/build/bin` 文件夹。
+它为每个 framework 目标都创建了 *debug* 和 *release* 版本。
+这些 frameworks 都位于下面的路径：
 ```
 SharedCode/build/bin/iOS/main/debug/framework/SharedCode.framework
 SharedCode/build/bin/iOS/main/release/framework/SharedCode.framework
 ```
 
-We use the condition in the Gradle script to select the target platform for the framework.
-It is either `iOS arm64` or `iOS x86_64` depending on environment variables.
+我们在 Gradle 脚本中使用条件来选择 framework 的目标平台。
+根据环境变量，它可能是 `iOS arm64` 或者 `iOS x86_64`。
 
-## Tuning the Gradle Build Script
-We need to supply the right Framework out of those four depending on the selected target in the Xcode
-project. It depends on the target configuration selected in Xcode. Also,
-we'd like to make Xcode compile the Framework for us before the build.
-We need to include the additional task to the end of the `SharedCode/build.gradle` Gradle file:
+## 修改 Gradle 构建脚本
+我们需要根据 Xcode 中选定的目标从这四个中提供正确的 Framewrok
+工程。它取决于在 Xcode 中选择的目标配置。当然，
+我们想让 Xcode 在构建之前为我们编译 Framework。
+我们需要在 `SharedCode/build.gradle` Gradle 文件的末尾包含附加任务：
 
 <div class="sample" markdown="1" mode="groovy" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -350,38 +350,38 @@ tasks.build.dependsOn packForXCode
 ```
 </div>
 
-Note, the task may not work [correctly](https://github.com/gradle/gradle/issues/6330)
-if you use Gradle older than 4.10. 
-In this tutorial we have already [upgraded it to 4.7](#gradle-upgrade).
+注意，如果你使用 Gradle 4.10 之前的版本，
+这个任务也许不能[正确地](https://github.com/gradle/gradle/issues/6330)工作。
+在这篇教程中我们已经[升级到 4.7](#gradle-upgrade)。
 
-Let's switch back to the Android Studio and execute the `build` target of the `SharedCode` project from
-the *Gradle* tool window. The task looks for environment variables set by the Xcode build and copies
-the right variant of the framework into the `SharedCode/build/xcode-frameworks` folder. We then include the
-framework from that folder into the build
+让我们切换回 Android Studio 并在 `SharedCode` 工程的 *Gradle* 工具窗口中执行
+`build` 目标。该任务查找在 `SharedCode/build/xcode-frameworks` 文件夹下的由
+Xcode 构建以及 framework 的正确变体设置的环境变量。接下来我们导入
+build 文件夹下的 framework。
 
-## Setting up Xcode
+## 配置 Xcode
 
-We add the `SharedCode` framework to the Xcode project.
-For that let's click on the root node of the *project navigator* and select the *target* settings.
-Next, we click on the `+` in the *Embedded Binaries* section, click *Add Other...* button in the dialog
-to choose the framework from the disk. We can point to the following folder: 
+我们将 `SharedCode` framework 添加到 Xcode 工程中。
+为此我们点击 *project navigator* 的根节点并选择 *target* 设置。
+接下来，我们在 *Embedded Binaries* 中的 `+`，在弹窗中点击 *Add Other...* 按钮<!--
+-->来在硬盘中选择 framework。我们可以指向以下文件夹：
 ```
 SharedCode/build/xcode-frameworks/SharedCode.framework
 ```
 
-We will then see something similar to this: 
+接下来我们会看到如下的界面：
 ![Xcode General Screen]({{ url_for('tutorial_img', filename='native/mpp-ios-android/xcode-general.png') }})
 
-Now we need to explain to Xcode, where to look for frameworks. We need to add the *relative* path 
-`$(SRCROOT)/../../SharedCode/build/xcode-frameworks` into the *Search Paths | Framework Search Paths* section.
-Open the *Build Settings* tab again, pick the *All* sub-tab below, and type the *Framework Search Paths* into
-the search field to easily find the option.
-Xcode will then show the substituted path in the UI for it.
+腺癌我们需要向 Xcode 说明去哪里寻找 frameworks。我们需要添加 *相对* 路径
+`$(SRCROOT)/../../SharedCode/build/xcode-frameworks` 到 *Search Paths | Framework Search Paths*。
+再次打开 *Build Settings* 选项卡，选择 *All* 子选项卡，并输入 *Framework Search Paths*
+搜索字段可以轻松找到该选项。
+然后 Xcode 将在 UI 中显示替换路径。
 
 ![Xcode Build Settings]({{ url_for('tutorial_img', filename='native/mpp-ios-android/xcode-search-path.png') }})
 
-The final step is to make Xcode call our Gradle build to prepare the `SharedCode` framework before each run.
-We open the *Build Phases* tab and click `+` to add the *New Run Script Phase* and add the following code into it:
+最后一步是让 Xcode 调用我们的 Gradle 构建在每次运行前准备 `SharedCode` framework。
+我们打开 *Build Phases* 选项卡并点击 `+` 来添加 *New Run Script Phase* 并且将下面的代码添加进去：
 
 <div class="sample" markdown="1" mode="bash" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -391,26 +391,26 @@ cd "$SRCROOT/../../SharedCode/build/xcode-frameworks"
 ```
 </div>
 
-Note, here we use the `$SRCROOT/../..` as the path to the root of our Gradle project.
-It can depend on the way the Xcode project was created. Also, we use the generated
-`SharedCode/build/xcode-frameworks/gradlew` script,
-the `packForXCode` task generates it. We assumed that the Gradle build is executed at least once,
-before opening the Xcode project on a fresh machine
+注意，这里我们使用 `$SRCROOT/../..` 作为我们的 Gradle 工程的根路径。
+它取决于 Xcode 工程的创建方式。另外，我们使用生成的
+`SharedCode/build/xcode-frameworks/gradlew` 脚本，
+`packForXCode` 任务会生成它。在新机器上打开 Xcode 工程之前，
+我们假设Gradle构建至少执行一次。
 
 ![Xcode Build Phases]({{ url_for('tutorial_img', filename='native/mpp-ios-android/xcode-run-script.png') }})
 
-We should drag the created build phase to the top of the list
+我们应该将创建的构建阶段拖到列表的顶部
 
 ![Xcode Build Phases]({{ url_for('tutorial_img', filename='native/mpp-ios-android/xcode-run-script-order.png') }})
 
-We are now ready to start coding the iOS application and to use the Kotlin code from it
+我们现在已经准备好编写 iOS 应用程序并在其中使用 Kotlin 代码
 
 ## 在 Swift 中调用 Kotlin 代码
 
-Remember, our goal is to show the text message on the screen. As we see, our iOS application does not draw
-anything on the screen. Let's make it show the `UILabel` with the text message. 
-We need to replace the contents
-of the `ViewController.swift` file with the following code:
+请牢记，我们的目标是在屏幕上展示这条信息。我们可以看到，我们的 iOS 应用没有在屏幕上<!--
+-->绘制任何内容。让我们使用 `UILabel` 展示这条消息。
+我们需要使用下面的代码替换
+`ViewController.swift` 文件中的内容：
  
 <div class="sample" markdown="1" mode="swift" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -434,50 +434,50 @@ class ViewController: UIViewController {
 ```
 </div>
  
-We use the `import SharedCode` to import our Framework, which we compiled with Kotlin/Native from Kotlin code.
-Next, we call the Kotlin function from it as `CommonKt.createApplicationScreenMessage()`. Follow the 
-[Kotlin/Native as an Apple Framework](/docs/tutorials/native/apple-framework.html) tutorial for
-more details on the Kotlin/Native to Swift (or Objective-C) interop.
+我们使用 `import SharedCode` 来导入我们使用 Kotlin/Native 编译的 Kotlin 代码而生成的 Framework。
+接下来，我们调用库中的 Kotlin 函数作为`CommonKt.createApplicationScreenMessage()`。然后
+[Kotlin/Native 开发 Apple Framework](/docs/tutorials/native/apple-framework.html) 教程中<!--
+-->有更多关于 Kotlin/Native 与 Swift（或 Objective-C）互操作的细节。
 
-Right now, we are ready to start the application in the emulator or on an iOS device.
+现在，我们已准备好在模拟器或 iOS 设备上启动应用程序。
 
-## Running the iOS Application
+## 运行 iOS 应用程序
 
-Let's click the *Run* button in Xcode, and we'll see our application running 
+让我们在 Xcode 中点击 *Run* 按钮，接下来我们将看到应用程序运行
 
 ![Emulator App]({{ url_for('tutorial_img', filename='native/mpp-ios-android/iPhone-emulator-kotlin-rocks.png') }}){: width="30%"}
 
-# Summary
+# 总结
 
-In the tutorial we:
- - created an Android application in Android Studio
- - created an iOS application in Xcode
- - added Kotlin multiplatform sub-project  
-   - with shared Kotlin code
-   - compiled it to Android Jar
-   - compiled it to iOS Framework
- - put it all together and re-used Kotlin code
+在本篇教程中我们：
+ - 在 Android Studio 中创建了一个 Android 应用程序
+ - 在 Xcode 中创建了一个 iOS 应用程序
+ - 添加了 Kotlin 多平台项目子工程 
+   - 共享 Kotlin 代码
+   - 将它编译成 Android Jar
+   - 将它编译成 iOS Framework
+ - 将它们放在一起并复用 Kotlin 代码
  
-We may find the whole sources from that tutorial on [GitHub](https://github.com/JetBrains/kotlin-examples/tree/master/tutorials/mpp-iOS-Android).
+我们可以在 [GitHub](https://github.com/JetBrains/kotlin-examples/tree/master/tutorials/mpp-iOS-Android) 上找到这篇教程的所有源码。
 
-# Next Steps
+# 接下来
 
-This is only the beginning and a small example of Kotlin code sharing
-between iOS and Android (and other platforms) with Kotlin, Kotlin/Native
-and Kotlin multiplatform projects. The same approach works for real applications,
-independent of their size or complexity.
+这只是一个开始，并且仅仅是一个关于在
+iOS 与 Android（以及其它平台）上使用 Kotlin、Kotlin/Native
+以及 Kotlin 多平台项目的小示例。相同的方法适用于真实的应用程序，
+而与它们的大小以及复杂度无关。
 
-Kotlin/Native interop with Swift and Objective-C is covered in the
-[documentation](/docs/reference/native/objc_interop.html) article. Also,
-the same topic is covered in the [Kotlin/Native as an Apple Framework](apple-framework.html)
-tutorial.
+Kotlin/Native 与 Swift 以及 Objective-C 的互操作被包含在这篇<!--
+-->[文档](/docs/reference/native/objc_interop.html)中。另外，
+类似的话题被包含在 [Kotlin/Native 开发 Apple Framework](apple-framework.html)
+教程中。
 
-The multiplatform projects and multiplatform libraries are discussed in the [documentation](/docs/reference/multiplatform.html) too.
+多平台项目以及多平台库在这篇[文档](/docs/reference/multiplatform.html)中讨论。
 
-Sharing code between platforms is a powerful technique, but it may be hard to
-accomplish without rich APIs that we have in Android, JVM, or iOS platforms.
-Multiplatform libraries can be used to fix that. They bring rich APIs
-directly in the common Kotlin code. There are several examples of such libraries:  
+在平台之间共享代码是一种强大的技术，但是它可能很难在
+Android、JVM 或 iOS 这些拥有丰富不同 API 的平台上办到。
+而多平台库可以被用来解决这一问题。它们直接使用<!--
+-->通用的 Kotlin 代码来提供丰富的 API。举例来说我们有如下的多平台库：
 
 - [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines/blob/master/native/README.md)
 - [kotlinx.io](https://github.com/Kotlin/kotlinx-io)
@@ -485,4 +485,4 @@ directly in the common Kotlin code. There are several examples of such libraries
 - [ktor](https://ktor.io/)
 - [ktor-http-client](https://ktor.io/clients/http-client.html)
 
-Looking for more APIs? It is easy to create a [multiplatform library](/docs/tutorials/multiplatform-library.html) and share it!
+想了解更多 API？来轻松的创建一个[多平台项目](/docs/tutorials/multiplatform-library.html)并共享它吧！
