@@ -71,7 +71,9 @@ var ConsoleOutput = function (_, Kotlin) {
 * `var ConsoleOutput = function (_, Kotlin) { ... }`：这是以你的 Kotlin 模块命名的变量，它的值是匿名函数的调用结果，函数体就是我们的模块中的代码。
 * `var println = Kotlin.kotlin.io.println_s8jyv4$;`：一个变量，它从传入的参数 `Kotlin` 中引用了 `kotlin.io.println` 函数，这是导入 `kotlin.js` 中定义的标准 `println` 函数的方法。
 * `function main(args) { ... }`：你的 `main` 函数。
-* `_.main_kand9s$ = main;`：导出声明的 `main` 函数，左侧的名称将用于从模块外部访问该函数。该名称被 `kand9s$` 修饰，这是因为你可以在 Kotlin 中使用重载函数，而 JavaScript 并不支持重载，所以在翻译为 JavaScript 代码的时候需要以此区分。要自定义生成的函数的名称，请使用 [`@JsName` 注解](/docs/reference/js-to-kotlin-interop.html#jsname-annotation)。
+* `_.main_kand9s$ = main;`：导出声明的 `main` 函数，左侧的名称将用于从模块外部访问该函数。该名称被 `kand9s$` 修饰，<!--
+-->这是因为你可以在 Kotlin 中使用重载函数，而 JavaScript 并不支持重载，所以在翻译为 JavaScript 代码的时候需要以此区分。<!--
+-->要自定义生成的函数的名称，请使用 [`@JsName` 注解](/docs/reference/js-to-kotlin-interop.html#jsname-annotation)。
 * `main([]);`：调用 `main` 函数。
 * `(typeof ConsoleOutput === 'undefined' ? {} : ConsoleOutput, kotlin);`：检查 `ConsoleOutput` 是否存在。如果在作用域中早已存在该变量，则会将新的声明添加到其中。
 
