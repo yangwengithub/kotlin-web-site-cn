@@ -4,7 +4,7 @@ layout: tutorial
 title:  "Kotlin 转 JavaScript"
 description: "本文介绍 Kotlin 是如何编译到 JavaScript 及一些使用示例。"
 authors: Hadi Hariri，刘文俊（翻译）
-showAuthorInfo: false
+showAuthorInfo: true
 ---
 
 将 Kotlin 编译到 JavaScript 有许多种方法，<!--
