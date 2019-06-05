@@ -3,8 +3,8 @@ type: tutorial
 layout: tutorial
 title: "你的第一个 Kotlin 协程程序"
 description: "这篇教程将引导我们通过创建一个工程来使用协程，并编写使用它们的代码。"
-authors: Dmitry Jemerov，乔禹昂（中文翻译）
-showAuthorInfo: false
+authors: Dmitry Jemerov，乔禹昂（翻译）
+showAuthorInfo: true
 ---
 
 在 Kotlin 1.1 中引入的协程，一种全新的编写异步、非阻塞（以及更多）代码的方式。在这篇教程中我们将通过一些使用 Kotlin 协程的基础示例来帮助我们学习 `kotlinx.coroutines` 库，它是现有 Java 库的帮助程序和包装器的集合。

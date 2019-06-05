@@ -3,9 +3,9 @@ type: tutorial
 layout: tutorial
 title:  "多平台项目: iOS 与 Android"
 description: "在 iOS 与 Android 之间共享 Kotlin 代码"
-authors: Eugene Petrenko
+authors: Eugene Petrenko，乔禹昂（翻译）
 date: 2018-10-04
-showAuthorInfo: false
+showAuthorInfo: true
 issue: EVAN-6029
 ---
 
