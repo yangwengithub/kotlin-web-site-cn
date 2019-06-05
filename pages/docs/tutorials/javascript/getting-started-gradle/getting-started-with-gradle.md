@@ -1,21 +1,21 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Getting Started with Kotlin and JavaScript with Gradle"
-description: "A look at how to use Gradle to target JavaScript."
-authors: Hadi Hariri 
+title:  "以 Gradle 入门 Kotlin 和 JavaScript"
+description: "本文介绍如何使用 Gradle 把 Kotlin 编译到 JavaScript"
+authors: Hadi Hariri ，刘文俊（翻译）
 date: 2016-11-04
-showAuthorInfo: false
+showAuthorInfo: true
 ---
 
-In this tutorial we'll see how to
+在本教程中，我们会学习如何
 
-* Create an application targeting JavaScript with Gradle
-* [Configure compiler options](#configuring-compiler-options)
+* 使用 Gradle 创建编译到 JavaScript 的应用程序
+* [配置编译器选项](#配置编译器选项)
 
-In order to use Gradle to target JavaScript, we need to use the `kotlin2js` plugin as opposed to the `kotlin` plugin.
+为了使用 Gradle 编译到 JavaScript，我们需要使用 `kotlin2js` 插件，而不是 `kotlin` 插件。
 
-Our `build.gradle` file should look like the following
+我们的 `build.gradle` 文件应该如下所示：
 
 <div class="sample" markdown="1" theme="idea" mode="groovy">
 ```groovy
@@ -45,14 +45,14 @@ dependencies {
 ```
 </div>
 
-To use an EAP build instead, we need to specify its version in `ext.kotlin_version` and 
-add the corresponding repository to the `buildscript` section (usually EAP builds are located on [Bintray](https://bintray.com/kotlin))
+如果要使用预览版（EAP, Early Access Preview），我们需要在 `ext.kotlin_version` 中指定其版本号，并且
+在 `buildscript` 块中添加相应的仓库（预览版一般发布在 [Bintray](https://bintray.com/kotlin) 上）
 
-On compiling, Gradle will produce the output of our application, which is by default placed under the `build/classes/main` directory. This can be overridden using [the compiler options](#configuring-compiler-options).
+在编译时，Gradle 会生成我们应用程序的输出，默认位于 `build/classes/main` 目录下，这个路径可以使用[编译器选项](#配置编译器选项)配置。
 
-In order to assemble an application, we also need to include the Kotlin standard library, i.e. `kotlin.js`, which was included as a dependency, and the other libraries if any. 
+为了组装一个应用程序，我们还需要包含 Kotlin 标准库，即 `kotlin.js`，它作为依赖项包含在内，以及其他库（如果有的话）。
 
-By default, Gradle does not expand the JARs in the build process, so we need to add an additional step in our build to do so:
+默认情况下，Gradle 不会在构建过程中解压 JAR 包，因此我们需要在构建中添加一个额外的步骤来执行此操作：
 
 <div class="sample" markdown="1" theme="idea" mode="groovy">
 ```groovy
@@ -77,15 +77,15 @@ assemble.dependsOn assembleWeb
 ```
 </div>
 
-This task copies both dependencies runtime files and the compilation output to the `web` directory.
+这个 task 会将运行时的依赖文件和编译输出一起复制到 `web` 目录。
 
-For more information on the output generated and the instructions for running the application, please see [Kotlin to JavaScript](../kotlin-to-javascript/kotlin-to-javascript.html)
+有关生成的文件的更多信息和运行应用程序的说明，请参阅[Kotlin 转 JavaScript](../kotlin-to-javascript/kotlin-to-javascript.html)一节。
 
-## Configuring Compiler Options
+## 配置编译器选项
 
-Similar to when we're using [IntelliJ IDEA build system](../getting-started-idea/getting-started-with-intellij-idea.html) or the command line, we can have the compiler output JavaScript to comply with a specific module system such as AMD, CommonJS or UMD. 
+与使用[IntelliJ IDEA 构建系统](../getting-started-idea/getting-started-with-intellij-idea.html)或命令行类似，我们可以让编译器输出的 JavaScript 符合某个特定的模块系统的标准，例如 AMD、CommonJS 或 UMD。
 
-In order to specify the module kind, we can add a configuration to our plugin as below
+要指定模块的类型，我们可以在插件中添加一条配置，如下所示：
 
 <div class="sample" markdown="1" theme="idea" mode="groovy">
 ```groovy
@@ -97,13 +97,13 @@ compileKotlin2Js {
 ```
 </div>
 
-where `moduleKind` can be
+在这里，`moduleKind` 可以是：
 
-* plain (default)
+* plain（默认）
 * amd
 * commonjs
 * umd
 
-For more information about the different types of module outputs, please see [Working with Modules](../working-with-modules/working-with-modules.html)
+关于不同类型模块输出的更多信息，请参阅[使用模块](../working-with-modules/working-with-modules.html)一节。
 
-We can also see how we can define whether we want the compiler to generate sourcemaps for us by indicating this via the `sourceMap` option. 
+我们还可以看到如何通过配置 `sourceMap` 选项，指示编译器是否为我们生成源码映射文件。

@@ -393,7 +393,7 @@ tutorials:
         - url: /docs/tutorials/native/dynamic-libraries.html
           title: Kotlin/Native 开发动态库
         - url: /docs/tutorials/native/apple-framework.html
-          title: Kotlin/Native 开发 Apple 框架
+          title: Kotlin/Native 开发 Apple Framework
         - url: /docs/tutorials/multiplatform-library.html
           title: 发布 Kotlin/Native 库
         - url: /docs/tutorials/native/curl.html
