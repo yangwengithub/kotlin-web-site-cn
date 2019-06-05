@@ -73,7 +73,7 @@ var ConsoleOutput = function (_, Kotlin) {
 * `function main(args) { ... }`：你的 `main` 函数。
 * `_.main_kand9s$ = main;`：导出声明的 `main` 函数，左侧的名称将用于从模块外部访问该函数。该名称被 `kand9s$` 修饰，<!--
 -->这是因为你可以在 Kotlin 中使用重载函数，而 JavaScript 并不支持重载，所以在翻译为 JavaScript 代码的时候需要以此区分。<!--
--->要自定义生成的函数的名称，请使用 [`@JsName` 注解](/docs/reference/js-to-kotlin-interop.html#jsname-annotation)。
+-->要自定义生成的函数的名称，请使用 [`@JsName` 注解](/docs/reference/js-to-kotlin-interop.html#jsname-注解)。
 * `main([]);`：调用 `main` 函数。
 * `(typeof ConsoleOutput === 'undefined' ? {} : ConsoleOutput, kotlin);`：检查 `ConsoleOutput` 是否存在。如果在作用域中早已存在该变量，则会将新的声明添加到其中。
 
