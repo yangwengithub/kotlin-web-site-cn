@@ -14,14 +14,14 @@ Kotlin 标准库提供了一整套用于管理*集合*的工具，集合是可�
 集合通常包含相同类型的一些（数目也可以为零）对象。集合中的对象称为*元素*或*条目*。例如，一个系的所有学生组成一个集合，可以用于计算他们的平均年龄。
 以下是 Kotlin 相关的集合类型：
 
-* _List_ is an ordered collection with access to elements by indices – integer numbers that reflect their position. Elements can occur more than once in a list. An example of a list is a sentence: it's a group of words, their order is important, and they can repeat. 
-* _Set_ is a collection of unique elements. It reflects the mathematical abstraction of set: a group of objects without repetitions. Generally, the order of set elements has no significance. For example, an alphabet is a set of letters. 
-* _Map_ (or _dictionary_) is a set of key-value pairs. Keys are unique, and each of them maps to exactly one value. The values can be duplicates. Maps are useful for storing logical connections between objects, for example, an employee's ID and their position.
+* _List_ 是一个有序集合，可通过索引（反映元素位置的整数）访问元素。元素可以在 list 中出现多次。列表的一个示例是一句话：有一组字、这些字的顺序很重要并且字可以重复。
+* _Set_ 是唯一元素的集合。它反映了集合（set）的数学抽象：一组无重复的对象。一般来说 set 中元素的顺序并不重要。例如，字母表是字母的集合（set）。
+* _Map_（或者*字典*）是一组键值对。键是唯一的，每个键都刚好映射到一个值。值可以重复。map 对于存储对象之间的逻辑连接非常有用，例如，员工的 ID 与员工的位置。
 
-Kotlin lets you manipulate collections independently of the exact type of objects stored in them. In other words, you add a `String` to a list of `String`s the same way as you would do with `Int`s or a user-defined class.
-So, the Kotlin Standard Library offers generic interfaces, classes, and functions for creating, populating, and managing collections of any type.
+Kotlin 让你可以独立于所存储对象的确切类型来操作集合。换句话说，将 `String` 添加到 `String` list 中的方式与添加 `Int` 或者用户自定义类的到相应 list 中的方式相同。
+因此，Kotlin 标准库为创建、填充、管理任何类型的集合提供了泛型的（通用的，双关）接口、类与函数。
 
-The collection interfaces and related functions are located in the kotlin.collections package. Let's get an overview of its contents.
+这些集合接口与相关函数位于 kotlin.collections 包中。我们来大致了解下其内容。
 
 ## 集合类型
 
