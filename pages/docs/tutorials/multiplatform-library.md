@@ -1,44 +1,44 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Multiplatform Kotlin library"
-description: "Sharing Kotlin library between JVM, JS and Native worlds"
-authors: Vsevolod Tolstopyatov
+title:  "Kotlin 多平台库"
+description: "在 JVM、JS 以及 Native 的世界中共享 Kotlin 库"
+authors: Vsevolod Tolstopyatov，乔禹昂（翻译）
 date: 2018-10-04
-showAuthorInfo: false
+showAuthorInfo: true
 issue: EVAN-6031
 ---
 
-In this tutorial, we will build a small library available from the worlds of JVM, JS, and Native. 
-You will learn step-by-step how to create a multiplatform library which can be used from any other common code (e.g., one shared with Android and iOS), 
-and how to write tests which will be executed on all platforms and use an efficient implementation provided by the concrete platform.
+在本教程中，我们将创建一个在 JVM、JS 以及 Native 世界中可用的库。 
+您将逐步了解如何创建可从任何其他公共代码使用的多平台库（例如，在 Android 与 iOS 之间共享），
+以及如何编写可以在所有平台上执行的测试，并使用具体平台提供的有效实现。
 
-# What are we building?
+# 我们将创建什么？
 
-Our goal is to build a small multiplatform library to demonstrate the ability to share the code between the platforms and its benefits.
-In order to have a small implementation to focus on the multiplatform machinery, we will write a library which
-converts raw data (strings and byte arrays) to the [Base64](https://en.wikipedia.org/wiki/Base64) format which can be used on JVM, JS, and any available K/N platform.
-On JVM implementation will be using [`java.util.Base64`](https://docs.oracle.com/javase/8/docs/api/java/util/Base64.html) which is known to be extremely efficient 
-because JVM is aware of this particular class and compiles it in a special way.
-On JS we will be using the native [Buffer](https://nodejs.org/docs/latest/api/buffer.html) API and on Kotlin/Native we will write our own implementation.
-We will cover this functionality with common tests and then publish the resulting library to Maven.
+我们的目标是构建一个小型多平台库，以展示在平台之间共享代码的能力以及其优势。
+为了有一个小的实现来关注多平台机制，我们将编写一个库<!--
+-->将原始数据（字符串和字节数组）转换为 [Base64](https://en.wikipedia.org/wiki/Base64) 格式，该格式可用于JVM、JS和任何可用的 K/N 平台。
+在 JVM 上的实现我们将使用 [`java.util.Base64`](https://docs.oracle.com/javase/8/docs/api/java/util/Base64.html)，众所周知这是非常有效的，
+因为 JVM 可以识别这个特定的类并以特殊的方式编译它。
+在 JS 上我们将使用原生的 [Buffer](https://nodejs.org/docs/latest/api/buffer.html) API 而在 Kotlin/Native 我们将编写自己的实现。
+我们将使用常见测试来介绍此功能，然后将生成的库发布到Maven。
 
 
-# Setting up the local environment
+# 配置本地环境
 
-We will be using IntelliJ IDEA Community Edition for this tutorial, though using Ultimate edition is possible as well. The Kotlin plugin 1.3.x or higher should be installed in the IDE. 
-This can be verified via the *Language & Frameworks | Kotlin Updates* section in the *Settings* (or *Preferences*) of the IDE.
-Native part of this project is written using Mac OS X, but don't worry if you are using another platform, the platform affects only directory names in this particular tutorial.
+在本教程中我们将使用 IntelliJ IDEA 社区版，而使用终极版也同样可以做到。IDE 应该已经安装了 Kotlin plugin 1.3.x 或者更高的版本。 
+这个可以通过 IDE 的 *Settings*（或 *Preferences*）中的 *Language & Frameworks | Kotlin Updates* 部分来验证。
+此项目的原生部分是使用 Mac OS X 编写的，但如果您使用的是其他平台，请不要担心，该平台仅影响此特定教程中的目录名称。
 
-# Creating a project
+# 创建一个工程
 
-We will be using IntelliJ IDEA Community Edition for the example. You need to make sure you have the latest version of the Kotlin plugin installed, 1.3.x or newer.
-We select *File | New | Project*, select *Kotlin | Kotlin (Multiplatform Library)* and configure the project in the way we want. 
+我们将使用 IntelliJ IDEA 社区版来演示。你需要确保你已经安装了最新版本的 Kotlin plugin，1.3.x 或者更新。
+我们选择 *File | New | Project*，选择 *Kotlin | Kotlin (Multiplatform Library)* 并以我们想要的方式配置工程。
 
 ![Wizard]({{ url_for('tutorial_img', filename='multiplatform/wizard.png') }})
 
-A multiplatform sample library is now created and imported into IntelliJ IDEA. Let's go to any `.kt` file and rename the package with the IntelliJ IDEA action *Refactor | Rename* action to `org.jetbrains.base64`
-Let's just check everything is right with the project so far, the project structure should be:
+现在创建了一个多平台样本库并将其导入 IntelliJ IDEA。让我们将所有的 `.kt` 使用 IntelliJ IDEA 的功能 *Refactor | Rename* 将它们的包名修改为 `org.jetbrains.base64`，
+让我们到目前为止检查项目的一切是否正确，项目结构应该是：
 
 ```
 └── src
@@ -60,12 +60,12 @@ Let's just check everything is right with the project so far, the project struct
         └── kotlin
 ```
 
-And the `kotlin` folder should contain an `org.jetbrains.base64` subfolder.
+`kotlin` 文件夹应包含 `org.jetbrains.base64` 子文件夹。
 
-# Common part
+# 通用部分
 
-Now we need to define the classes and interfaces we want to implement. Create the file `Base64.kt` in the `commonMain/kotlin/jetbrains/base64` folder.
-Core primitive will be the `Base64Encoder` interface which knows how to convert bytes to bytes in `Base64` format:
+现在我们需要定义我们想要实现的类以及接口。在 `commonMain/kotlin/jetbrains/base64` 文件夹下创建文件 `Base64.kt`。
+核心原语将是 `Base64Encoder` 接口，它知道如何将字节转换为 `Base64` 格式的字节：
 
 <div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -77,7 +77,7 @@ interface Base64Encoder {
 
 </div>
 
-But the common code should somehow get an instance of this interface, for that purpose we define the factory object `Base64Factory`:
+但是公共代码应该以某种方式获取此接口的实例，为此我们定义工厂对象 `Base64Factory`：
 
 <div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -89,14 +89,14 @@ expect object Base64Factory {
 
 </div>
 
-Our factory is marked with the `expect` keyword. `expect` is a mechanism to define a requirement, which every platform should provide in order for the common part to work properly.
-So on each platform we should provide the `actual` `Base64Factory` which knows how to create the platform-specific encoder.
-You can read more about platform specific declarations [here](/docs/reference/platform-specific-declarations.html).
+我们的工厂函数被使用 `expect` 关键字标记。`expect` 是一种定义需求的机制，每个平台都应提供这种机制，以使公共部分正常工作。
+所以在每个平台上我们都应该提供 `actual` `Base64Factory`，它知道如何创建特定于平台的编码器。
+你可以在[这里](/docs/reference/platform-specific-declarations.html)阅读更多关于平台特定的声明。
 
 
-# Platform-specific implementations
+# 平台指定实现
 
-Now it is time to provide an `actual` implementation of `Base64Factory` for every platform.
+现在是时候为每个平台提供 `Base64Factory` 的 `actual` 实现了。
 
 
 ## JVM
@@ -193,7 +193,7 @@ object NativeBase64Encoder : Base64Encoder {
 
 Now we have implementations on all the platforms and it is time to move to testing of our library.
 
-# Testing
+# 测试
 
 To make the library complete we should write some tests, but we have three independent implementations and it is a waste of time to write duplicate tests for each one.
 The good thing about common code is that it can be covered with common tests, which later are compiled and executed on *every* platform.
@@ -318,7 +318,7 @@ Now check it with the command `./gradlew publishToMavenLocal` and you should see
 That's it, our library is now successfully published and any Kotlin project can depend on it, whether it is another common library, JVM, JS, or Native application.
 
 
-# Summary
+# 总结
 
 In this tutorial we have:
 - Created a multiplatform library with platform-specific implementations.

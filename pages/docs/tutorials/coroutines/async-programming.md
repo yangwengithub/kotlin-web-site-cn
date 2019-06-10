@@ -3,8 +3,8 @@ type: tutorial
 layout: tutorial
 title: "异步程序设计"
 description: "本教程介绍了实现异步编程的不同方式"
-authors: Hadi Hariri，乔禹昂（中文翻译）
-showAuthorInfo: false
+authors: Hadi Hariri，乔禹昂（翻译）
+showAuthorInfo: true
 ---
 
 几十年以来，作为开发人员，我们面临着需要解决的问题——如何防止我们的应用程序被阻塞。
