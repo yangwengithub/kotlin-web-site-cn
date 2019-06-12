@@ -3,7 +3,7 @@ type: tutorial
 layout: tutorial
 title:  "以 Gradle 入门 Kotlin 和 JavaScript"
 description: "本文介绍如何使用 Gradle 把 Kotlin 编译到 JavaScript"
-authors: Hadi Hariri ，刘文俊（翻译）
+authors: Hadi Hariri，刘文俊（翻译）
 date: 2016-11-04
 showAuthorInfo: true
 ---

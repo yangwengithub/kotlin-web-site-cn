@@ -3,9 +3,9 @@ type: tutorial
 layout: tutorial
 title:  "多平台项目: iOS 与 Android"
 description: "在 iOS 与 Android 之间共享 Kotlin 代码"
-authors: Eugene Petrenko
+authors: Eugene Petrenko，乔禹昂（翻译）
 date: 2018-10-04
-showAuthorInfo: false
+showAuthorInfo: true
 issue: EVAN-6029
 ---
 
@@ -211,7 +211,7 @@ configurations {
 在这个文件中，我们定义了一些平台目标：`common`、`android` 以及 `iOS`。 每一个<!--
 -->都对应它自己的平台。`common` 目标平台包含了 Kotlin 的通用代码，
 它会被导入每一个平台的编译中。它允许拥有 `expect` 声明。
-其它的目标为 `common` 目标中的所有 `expect`-actions 提供了 `actual` 实现。
+其它的目标为 `common` 目标中的所有 `expect` 函数提供了 `actual` 实现。
 关于更多多平台项目的细节说明可以在<!--
 -->[多平台项目](/docs/reference/building-mpp-with-gradle.html)文档页中找到。
 
