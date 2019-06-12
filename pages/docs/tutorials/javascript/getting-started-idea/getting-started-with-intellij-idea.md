@@ -75,7 +75,7 @@ fun main(args: Array<String>) {
 
 `此功能仅在旗舰版中支持。`
 
-要使用 Intellij IDEA 调试应用程序，我们需要执行两个步骤：
+为了使用 Intellij IDEA 调试应用程序，我们需要执行两个步骤：
 
 1. 安装 [JetBrains Chrome 插件](https://chrome.google.com/webstore/detail/jetbrains-ide-support/hmhgeddbohgjknpmjagkdomcpobmllji?hl=en)以支持通过 Chrome 在 Intellij IDEA 中进行调试。<!--
 -->这个插件对于使用 Intellij IDEA 开发的任意类型的 Web 应用程序都有用，而不仅仅是 Kotlin。
