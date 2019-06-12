@@ -18,8 +18,8 @@ showAuthorInfo: false
 你可以在 [JetBrains][jetbrains] 下载免费的  [Community Edition][intellijdownload] 。
 
 ## 创建一个新的项目
-一旦安装了 IntelliJ IDEA，就可以创建第一个 Kotlin 应用程序了。
-1. 从 __File \| New__ 创建一个新的项目。选择 __Kotlin \| JVM \| IDEA__ 作为项目类型。
+安装好 IntelliJ IDEA 之后，就可以创建第一个 Kotlin 应用程序了。
+1. 从 __File \| New__ 开始创建一个新的项目。选择 __Kotlin \| JVM \| IDEA__ 作为项目的类型。
 
    ![新建 Kotlin 项目]({{ url_for('tutorial_img', filename='getting-started/new_project_step1.png') }})
 
@@ -31,11 +31,11 @@ showAuthorInfo: false
 
    ![Kotlin 文件夹解构]({{ url_for('tutorial_img', filename='getting-started/folders.png') }})
 
-3. 在源集文件夹下创建一个新的 Kotlin 文件。 它可以任意命名。 我们称之为 * app *。
+3. 在源集文件夹下创建一个新的 Kotlin 文件。 它可以任意命名。 我们称之为 *app*。
 
    ![新建 Kotlin 文件]({{ url_for('tutorial_img', filename='getting-started/new_file.png') }})
 
-4. 创建文件后，添加 `main` 函数，它是 Kotlin 应用程序的入口点。 IntelliJ IDEA 提供了一个快速完成此操作的模板。 只需输入 * main * 并按 Tab 键即可。
+4. 创建文件后，添加 `main` 函数，它是 Kotlin 应用程序的入口点。 IntelliJ IDEA 提供了一个快速完成此操作的模板。 只需输入 *main* 并按 Tab 键即可。
 
    ![Kotlin Main 函数]({{ url_for('tutorial_img', filename='getting-started/main.png') }})
 
@@ -49,7 +49,7 @@ showAuthorInfo: false
 
    ![Kotlin Run App]({{ url_for('tutorial_img', filename='getting-started/run_default.png') }})
 
-如果一切顺利，您将在 ** Run ** 工具窗口中看到结果。
+如果一切顺利，您将在 **Run** 工具窗口中看到结果。
 
    ![Kotlin Run Output]({{ url_for('tutorial_img', filename='getting-started/run_window.png') }})
 
