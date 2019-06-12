@@ -1,39 +1,39 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Getting Started with Kotlin and JavaScript with IntelliJ IDEA"
-description: "A look at how to use IntelliJ IDEA to target JavaScript."
-authors: Hadi Hariri 
+title:  "以 IntelliJ IDEA 入门 Kotlin 和 JavaScript"
+description: "本文介绍如何使用 IntelliJ IDEA 把 Kotlin 编译到 JavaScript"
+authors: Hadi Hariri，刘文俊（翻译）
 date: 2016-09-30
-showAuthorInfo: false
+showAuthorInfo: true
 ---
 
-In this tutorial we'll see how to
+在本教程中，我们会学习如何
 
-* [Create an application targeting JavaScript](#create-an-application-targeting-javascript)
-* [Debug the application](#debugging-the-application)
-* [Configure compiler options](#configuring-compiler-options)
+* [创建编译到 JavaScript 的应用程序](#创建编译到-javascript-的应用程序)
+* [调试程序](#调试程序)
+* [配置编译器选项](#配置编译器选项)
 
 
-## Create an application targeting JavaScript
+## 创建编译到 JavaScript 的应用程序
 
-When creating a new application or module that targets JavaScript, we need to select `Kotlin - JavaScript` as the target
+在创建面向 JavaScript 的新应用程序或模块时，我们需要选择 `Kotlin - JavaScript` 作为编译目标：
 
  
  ![First Step of Wizard]({{ url_for('tutorial_img', filename='javascript/getting-started-idea/first-step-wizard.png')}})
  
-The next step is going to prompt us on the Kotlin runtime library. By default the plugin selects the one that is associated to the currently installed
-version. Unless we want to create a different one, we can click Finish at this point after
-entering the project name and location.
+下一步会提示我们选择 Kotlin 运行时库。默认情况下，插件会选择与当前安装版本关联的 Kotlin 库。<!--
+-->如果我们不需要修改，在输入项目名称和保存位置后<!--
+-->点击 Finish 即可。
  
 ![Selecting Runtime]({{ url_for('tutorial_img', filename='javascript/getting-started-idea/second-step-wizard.png')}})
  
-Once the IDE has finished creating the new project, we should be left with the following layout
+当 IDE 完成项目创建之后，我们会看到这样的目录结构：
  
 ![Project Structure]({{ url_for('tutorial_img', filename='javascript/getting-started-idea/project-structure.png')}})
 
-At this point we can start writing Kotlin code. For this sample, we're going to write some code that will print a string
-out to the console window.
+此时我们可以开始编写 Kotlin 代码了。在这个示例中，我们会编写一些代码，将字符串<!--
+-->输出到控制台窗口中。
 
 <div class="sample" markdown="1" theme="idea" data-target-platform="js">
 ```kotlin
@@ -44,33 +44,32 @@ fun main(args: Array<String>) {
 ```
 </div>
 
-We now need an HTML page to load the code, so we'll create a file called `index.html`. If you want more information on how Kotlin compiles to JavaScript and the output generated, check out the
-[Kotlin to JavaScript](../kotlin-to-javascript/kotlin-to-javascript.html) tutorial. 
+我们现在需要一个 HTML 页面来加载代码，因此我们将创建一个名为 `index.html` 的文件。如果你想了解 Kotlin 是如何编译到 JavaScript 以及关于输出文件的更多信息，<!--
+-->请查看[Kotlin 转 JavaScript](../kotlin-to-javascript/kotlin-to-javascript.html)教程。
 
 <div class="sample" markdown="1" theme="idea" mode="xml" auto-indent="false">
 ```html 
 <!DOCTYPE html>
-    <html lang="en">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <title>Console Output</title>
     </head>
     <body>
-
-    <script type="text/javascript" src="out/production/sampleapp/lib/kotlin.js"></script>
-    <script type="text/javascript" src="out/production/sampleapp/sampleapp.js"></script>
+        <script type="text/javascript" src="out/production/sampleapp/lib/kotlin.js"></script>
+        <script type="text/javascript" src="out/production/sampleapp/sampleapp.js"></script>
     </body>
 </html>
 ```
 </div>
 
-A couple of important points:
+几个要点：
 
-* The `kotlin.js` file should be referenced first as it is used by our application
-* The path refers to the default output location that IntelliJ IDEA uses when we compile the application. Below we'll see how to change this.
+* 应该先加载 `kotlin.js` 文件，因为我们的程序会使用到它。
+* 路径指向的是 Intellij IDEA 在编译程序时使用的默认输出位置，下面我们会看到如何修改它。
 
-The only thing left to do is compile our application (Build|Build Project), and once the JavaScript files have been generated, we can open the `index.html` file in the browser and see the result
-in the console debug window.
+接下来要做的就是编译我们的程序（通过 Build\|Build Project 菜单），当 JavaScript 文件生成完之后，我们就可以在浏览器中打开 `index.html` 文件，并在<!--
+-->控制台调试窗口中查看结果。
 
 ## Debugging the application
 
