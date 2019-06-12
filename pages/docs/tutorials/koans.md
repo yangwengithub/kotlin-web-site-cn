@@ -6,7 +6,9 @@ authors: Svetlana Isakova johnpoint(翻译)
 showAuthorInfo: true
 description: "这个教程将引导您完成一系列练习以熟悉 Kotlin 的使用。"
 ---
-Kotlin 心印是一系列让您熟悉 Kotlin 语法的练习。每个练习都是一个不能通过的单元测试，你的任务就是完善这个单元测试。您可以通过以下三种方式之一使用 Kotlin 心印。
+Kotlin 心印是一系列让您熟悉 Kotlin 语法的练习。<!----> 
+每个练习都是一个不能通过的单元测试，你的任务就是完善这个单元测试。<!----> 
+您可以通过以下三种方式之一使用 Kotlin 心印。
 
 1. 您可以使用 Kotlin 心印的[在线版本](https://play.kotlinlang.org/koans).
 
