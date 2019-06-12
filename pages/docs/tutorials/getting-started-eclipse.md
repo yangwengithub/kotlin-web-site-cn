@@ -28,8 +28,8 @@ showAuthorInfo: false
 https://dl.bintray.com/jetbrains/kotlin/eclipse-plugin/last/
 ```
 
-安装插件并重新启动 Eclipse 后，请确保插件安装正确：打开菜单 __Window \| Open Perspective \| Other...__ 中的 __Kotlin perspective__
-__Kotlin perspective__
+安装插件并重新启动 Eclipse 后，请确保插件安装正确：打开菜单 __Window \| Open Perspective \| Other...__
+中的 __Kotlin perspective__
     
    ![Kotlin Perspective]({{ url_for('tutorial_img', filename='getting-started-eclipse/open-perspective.png') }})
 
@@ -42,8 +42,8 @@ __Kotlin perspective__
 
    一个空的 Kotlin/JVM 项目创建完成。
    对于 Eclipse IDE，这个项目也是一个 Java 项目但是配置了 Kotlin 特性，意思是他可以构建
-Kotlin 并且可以引用 Kotlin 的运行时库。这个解决方案的好处是你可以添加 Kotlin 和 Java 代码
-到同一个项目。
+Kotlin 并且可以引用 Kotlin 的运行时库。这个解决方案的好处是你可以添加 Kotlin 和 Java 代码<!--
+-->到同一个项目。
    
    项目结构如下所示：
 
@@ -57,8 +57,8 @@ Kotlin 并且可以引用 Kotlin 的运行时库。这个解决方案的好处�
    
    ![New Kotlin File Wizard]({{ url_for('tutorial_img', filename='getting-started-eclipse/file-name.png') }})
 
-3. 你获得源集文件后，添加 `main` 函数 - 作为 Kotlin 应用程序的入口点。你只需
-键入 `main` 并通过点击 `Ctrl + Space` 调用代码完成。
+3. 你获得源集文件后，添加 `main` 函数 - 作为 Kotlin 应用程序的入口点。你只需<!--
+-->键入 `main` 并通过点击 `Ctrl + Space` 调用代码完成。
 
    ![Main Template]({{ url_for('tutorial_img', filename='getting-started-eclipse/main.png') }})
 
