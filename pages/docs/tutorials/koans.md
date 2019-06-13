@@ -1,21 +1,21 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Kotlin Koans"
-authors: Svetlana Isakova
+title:  "Kotlin 心印"
+authors: Svetlana Isakova，johnpoint（翻译）
 showAuthorInfo: true
-description: "This tutorial walks you through a series of exercises to get familiar with Kotlin."
+description: "本教程将引导你通过一系列练习来熟悉 Kotlin。"
 ---
-Kotlin Koans are a series of exercises to get you familiar with the Kotlin Syntax.
-Each exercise is created as a failing unit test and your job is to make it pass.
-You can work with Kotlin Koans in one of three ways.
+Kotlin 心印是一系列让你熟悉 Kotlin 语法的练习。
+每个练习都是不能通过的单元测试，你的任务就是使其通过。
+可以通过以下三种方式之一使用 Kotlin 心印。
 
-1. You can play with [Koans online](https://play.kotlinlang.org/koans).
+1. 可以使用 Kotlin 心印的[在线版](https://play.kotlinlang.org/koans)。
 
-2. You can solve the tasks right inside IntelliJ IDEA or Android Studio by [installing the EduTools plugin](https://www.jetbrains.com/help/education/install-edutools-plugin.html) and [choosing Kotlin Koans course](https://www.jetbrains.com/help/education/learner-start-guide.html?section=Kotlin%20Koans).
+2. 可以通过[安装 EduTools 插件](https://www.jetbrains.com/help/education/install-edutools-plugin.html)并[选择 Kotlin Koans 课程](https://www.jetbrains.com/help/education/learner-start-guide.html?section=Kotlin%20Koans)来完成 IntelliJ IDEA 或 Android Studio 中的任务。
 
-3. You can clone the project on [GitHub](https://github.com/Kotlin/kotlin-koans).
-You can open this project in IntelliJ IDEA, or work with it from the command line using your favourite editor. 
-Note that to work with Koans from Android Studio, use the EduTools plugin.
+3. 可以在 [GitHub](https://github.com/Kotlin/kotlin-koans) 上克隆该项目，
+然后可以在 IntelliJ IDEA 中打开这个项目，或者在命令行中使用你喜欢的编辑器打开。
+请注意，如需在 Android Studio 中使用 Koans，请使用 EduTools 插件。
 
-Whatever way you choose to solve koans, you can see the solution for each task. In the online version and inside EduTools plugin you'll find the button "Show answer". The GitHub repository has two branches, *master* which contains the exercises for you to do and *resolutions* which contains the resolved exercises. We recommend checking the solution after you implement the task to compare your solution with the proposed one. Make sure you don't cheat!
+无论选择何种方式来解 Kotlin 心印，都可以看到每项任务的答案。在在线版与 EduTools 插件内，可以找到“显示答案”按钮。GitHub 版本库有两个分支，*master* 分支包含要做的练习，*resolution* 分支包含已解答的练习（即答案）。我们建议你在完成任务后核对答案，以便将你的解答与标准答案进行比较。请不要作弊！
