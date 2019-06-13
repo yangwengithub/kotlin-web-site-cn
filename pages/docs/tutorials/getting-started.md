@@ -7,7 +7,7 @@ authors: Hadi Hariri, Roman Belov 高金龙（翻译）
 date: 2019-04-23
 showAuthorInfo: false
 ---
-## 设置环境
+## 搭建环境
 在本教程中，我们将使用 IntelliJ IDEA。
 有关如何使用命令行编译器编译和执行 Kotlin 应用程序的说明，请参阅[使用命令行编译器][getting_started_command_line]。
 
