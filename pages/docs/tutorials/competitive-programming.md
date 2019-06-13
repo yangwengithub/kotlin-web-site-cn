@@ -106,7 +106,7 @@ fun main() {
 [readLine()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/read-line.html)
 函数调用之后使用了 Kotlin 的[空断言操作符](/docs/reference/null-safety.html#-操作符) `!!`。
 Kotlin 的 `readLine()` 函数定义成了返回<!--
--->[可空类型](/docs/reference/null-safety.html#可空与非空类型)
+-->[可空类型](/docs/reference/null-safety.html#可空类型与非空类型)
 `String?`，并且会在输入结束时返回 `null`，这样明确迫使开发人员处理<!--
 -->输入缺失的情况。
  
@@ -172,7 +172,7 @@ fun main() {
 </div>
 
 在这段密集的代码中，除了集合转换之外，还可以看到像局部函数<!--
--->以及[elvis 操作符](/docs/reference/null-safety.html#elvis-operator) `?:` 这样灵便的 Kotlin 特性，
+-->以及[elvis 操作符](/docs/reference/null-safety.html#elvis-操作符) `?:` 这样灵便的 Kotlin 特性，
 通过 elvis 操作符，可以用<!--
 -->简洁易读的表达式如 `.takeIf { it >= 0 } ?: s.length`
 来表达类似“如果是正数就取其值，否则取长度”的[惯用法](/docs/reference/idioms.html)，
@@ -221,7 +221,7 @@ Competitive programming problems often have input like this:
 > The first line of the input contains two integers `n` and `k`
 
 In Kotlin this line can be concisely parsed with the following statement using
-[destructuring declaration](/docs/reference/multi-declarations.html#destructuring-declarations) 
+[destructuring declaration](/docs/reference/multi-declarations.html#解构声明)
 from a list of integers:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -241,7 +241,7 @@ natural in Kotlin. However, beware that `java.util.Scanner` is extremely slow. S
 Writing output in Kotlin is usually straightforward with 
 [println(...)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/println.html)
 calls and using Kotlin's 
-[string templates](/docs/reference/basic-types.html#string-templates). However, care must be taken when output 
+[string templates](/docs/reference/basic-types.html#字符串模板). However, care must be taken when output
 contains on order of 10<sup>5</sup> lines or more. Issuing so many `println` calls is too slow, since the output 
 in Kotlin is automatically flushed after each line. 
 A faster way to write many lines from an array or a list is using

@@ -3,7 +3,7 @@ type: tutorial
 layout: tutorial
 title:  "以 Eclipse IDE 入门"
 description: "本教程将引导我们使用 Eclipse IDE 创建一个简单的 Hello World 应用程序"
-authors: Nikolay Krasko 高金龙（翻译）
+authors: Nikolay Krasko，高金龙（翻译）
 date: 2019-04-24
 showAuthorInfo: false
 ---

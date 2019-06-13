@@ -3,7 +3,7 @@ type: tutorial
 layout: tutorial
 title:  "以 IntelliJ IDEA 入门"
 description: "本教程将引导你使用 IntelliJ IDEA 创建一个简单的 Hello World 应用程序。"
-authors: Hadi Hariri, Roman Belov 高金龙（翻译）
+authors: Hadi Hariri，Roman Belov，高金龙（翻译）
 date: 2019-04-23
 showAuthorInfo: false
 ---
