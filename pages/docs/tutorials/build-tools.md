@@ -1,14 +1,14 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Working with Build Tools"
+title:  "使用构建工具"
 description:
-authors: Hadi Hariri
+authors: Hadi Hariri，johnpoint(翻译)
 showAuthorInfo: false
 ---
-In addition to the command line compiler and IntelliJ IDEA, you can also build Kotlin projects with Ant, Maven, and Gradle.
+除了命令行编译器和 IntelliJ IDEA 之外，您还可以使用 Ant、Maven 和 Gradle 构建 Kotlin 项目。
 
-For information on how to do use each of these tutorials refer to the corresponding section:
+有关如何使用这些工具的信息，请参阅相应的部分：
 
 - [Ant](/docs/reference/using-ant.html)
 - [Maven](/docs/reference/using-maven.html)
