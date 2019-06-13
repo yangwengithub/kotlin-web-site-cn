@@ -11,18 +11,18 @@ related:
 ---
 
 有时，您可能需要在项目或应用程序之外快速编写和执行一些代码。例如，在学习 Kotlin 或计算表达式时，这可能很有用。让我们看看快速运行Kotlin代码的两种简便方法:
-* [Scratches](#scratches) 让您在 IDE 中的项目外部的临时文件中编写和运行代码。
+* [代码草稿](#代码草稿) 让您在 IDE 中的项目外部的临时文件中编写和运行代码。
 * [REPL](#repl) (_Read-Eval-Print-Loop_) 在控制台中以交互方式运行代码。     
 
 
-## Scratches
+## 代码草稿
 
-> 目前，Scratches 仅支持 Kotlin/JVM 项目。
+> 目前，代码草稿仅支持 Kotlin/JVM 项目。
 {:.note}
 
-IntelliJ IDEA 的 Kotlin 插件支持 [Scratches](https://www.jetbrains.com/help/idea/scratches.html)。 Scratches 允许您在项目的同一 IDE 窗口中创建代码草稿并即时运行它们。Scratches 与项目无关；您可以从操作系统上的任何 IntelliJ IDEA 窗口访问并运行所有 Scratches。
+IntelliJ IDEA 的 Kotlin 插件支持 [代码草稿](https://www.jetbrains.com/help/idea/scratches.html)。 代码草稿允许您在项目的同一 IDE 窗口中创建代码并即时运行它们。草稿与项目无关；您可以从操作系统上的任何 IntelliJ IDEA 窗口访问并运行任意代码草稿。
 
-要创建 Kotlin 草稿，请单击 __文件 \| 新的 \| 抓取文件__ 并选择 __Kotlin__ 类型。
+要创建 Kotlin 草稿，请单击 __文件 \| 新的 \| 草稿文件__ 并选择 __Kotlin__ 类型。
 
 在您的草稿中，您可以编写任何有效的 Kotlin 代码，包括新的函数和类。IntelliJ IDEA 支持草稿的语法高亮、自动补全和其他代码编辑功能。
 
