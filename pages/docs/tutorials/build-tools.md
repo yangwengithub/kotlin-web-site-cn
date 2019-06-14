@@ -6,7 +6,7 @@ description:
 authors: Hadi Hariri，johnpoint(翻译)
 showAuthorInfo: false
 ---
-除了命令行编译器和 IntelliJ IDEA 之外，您还可以使用 Ant、Maven 和 Gradle 构建 Kotlin 项目。
+除了命令行编译器和 IntelliJ IDEA 之外，还可以使用 Ant、Maven 和 Gradle 构建 Kotlin 项目。
 
 有关如何使用这些工具的信息，请参阅相应的部分：
 
