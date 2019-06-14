@@ -38,7 +38,7 @@ $ sdk install kotlin
 </div>
 
 #### Homebrew
-或者，在 Mac OS X上，您可以通过 [Homebrew](http://brew.sh/) 安装编译器。
+或者，在 OS X上，你可以通过 [Homebrew](http://brew.sh/) 安装编译器。
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -61,7 +61,7 @@ $ sudo port install kotlin
 </div>
 
 #### [Snap](https://snapcraft.io/) package
-如果您使用的是 Ubuntu 16.04 或更高版本，则可以从命令行安装编译器：
+如果你使用的是 Ubuntu 16.04 或更高版本，则可以从命令行安装编译器：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -73,7 +73,7 @@ $ sudo snap install --classic kotlin
 
 ### 创建并运行第一个应用程序
 
-1. 在 Kotlin 中创建一个显示 Hello，World！的简单应用程序。 使用我们最喜欢的编辑器，我们使用以下命令创建一个名为 * hello.kt * 的新文件：
+1. 在 Kotlin 中创建一个显示 Hello，World！的简单应用程序。 使用我们最喜欢的编辑器，我们使用以下命令创建一个名为 *hello.kt* 的新文件：
 
    <div class="sample" markdown="1" theme="idea">
 
@@ -119,7 +119,7 @@ $ sudo snap install --classic kotlin
 
 ### 编译库
 
-如果你正在开发一个供其他 Kotlin 应用程序使用的库，则可以生成 .jar 文件，而不将Kotlin 运行时包含在其中。
+如果你正在开发一个供其他 Kotlin 应用程序使用的库，则可以生成 .jar 文件，而不将 Kotlin 运行时包含在其中。
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -180,7 +180,7 @@ $ kotlinc -script list_folders.kts <path_to_folder_to_inspect>
 -->定义。
 
 正确编写的脚本定义会自动检测会在适当的时候将<!--
--->jars 包含在编译类路径中。 或者，您可以指定使用编译器的<!--
+-->jars 包含在编译类路径中。 或者，你可以指定使用编译器的<!--
 -->`-script-templates` 选项来手动定义：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
