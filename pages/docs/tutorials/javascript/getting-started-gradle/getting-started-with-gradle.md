@@ -79,11 +79,11 @@ assemble.dependsOn assembleWeb
 
 这个 task 会将运行时的依赖文件和编译输出一起复制到 `web` 目录。
 
-有关生成的文件的更多信息和运行应用程序的说明，请参阅[Kotlin 转 JavaScript](../kotlin-to-javascript/kotlin-to-javascript.html)一节。
+有关生成的文件的更多信息和运行应用程序的说明，请参阅 [Kotlin 转 JavaScript](../kotlin-to-javascript/kotlin-to-javascript.html)一节。
 
 ## 配置编译器选项
 
-与使用[IntelliJ IDEA 构建系统](../getting-started-idea/getting-started-with-intellij-idea.html)或命令行类似，我们可以让编译器输出的 JavaScript 符合某个特定的模块系统的标准，例如 AMD、CommonJS 或 UMD。
+与使用 [IntelliJ IDEA 构建系统](../getting-started-idea/getting-started-with-intellij-idea.html)或命令行类似，我们可以让编译器输出的 JavaScript 符合某个特定的模块系统的标准，例如 AMD、CommonJS 或 UMD。
 
 要指定模块的类型，我们可以在插件中添加一条配置，如下所示：
 
