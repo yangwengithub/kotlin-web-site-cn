@@ -66,7 +66,7 @@ fun main(args: Array<String>) {
 几个要点：
 
 * 应该先加载 `kotlin.js` 文件，因为我们的程序会使用到它。
-* 路径指向的是 Intellij IDEA 在编译程序时使用的默认输出位置，下面我们会看到如何修改它。
+* 路径指向的是 IntelliJ IDEA 在编译程序时使用的默认输出位置，下面我们会看到如何修改它。
 
 接下来要做的就是编译我们的程序（通过 Build\|Build Project 菜单），当 JavaScript 文件生成完之后，我们就可以在浏览器中打开 `index.html` 文件，并在<!--
 -->控制台调试窗口中查看结果。
@@ -75,16 +75,16 @@ fun main(args: Array<String>) {
 
 `此功能仅在旗舰版中支持。`
 
-为了使用 Intellij IDEA 调试应用程序，我们需要执行两个步骤：
+为了使用 IntelliJ IDEA 调试应用程序，我们需要执行两个步骤：
 
-1. 安装 [JetBrains Chrome 插件](https://chrome.google.com/webstore/detail/jetbrains-ide-support/hmhgeddbohgjknpmjagkdomcpobmllji?hl=en)以支持通过 Chrome 在 Intellij IDEA 中进行调试。<!--
--->这个插件对于使用 Intellij IDEA 开发的任意类型的 Web 应用程序都有用，而不仅仅是 Kotlin。
+1. 安装 [JetBrains Chrome 插件](https://chrome.google.com/webstore/detail/jetbrains-ide-support/hmhgeddbohgjknpmjagkdomcpobmllji?hl=en)以支持通过 Chrome 在 IntelliJ IDEA 中进行调试。<!--
+-->这个插件对于使用 IntelliJ IDEA 开发的任意类型的 Web 应用程序都有用，而不仅仅是 Kotlin。
 
 2. 配置 Kotlin 编译器，生成源码映射文件（source map），配置项可通过 `Preferences|Kotlin Compiler` 找到。
 
 ![SourceMaps]({{ url_for('tutorial_img', filename='javascript/getting-started-idea/compiler-options-sourcemaps.png')}})
 
-完成后，我们只需右键单击 `index.html` 文件并选择 Debug 选项。这将启动 Chrome，然后代码会停在 Intellij IDEA 我们的代码中定义的断点处，<!--
+完成后，我们只需右键单击 `index.html` 文件并选择 Debug 选项。这将启动 Chrome，然后代码会停在 IntelliJ IDEA 我们的代码中定义的断点处，<!--
 -->在这里我们可以对表达式进行求值，单步执行代码等。
 
 ![Debugger]({{ url_for('tutorial_img', filename='javascript/getting-started-idea/debugger.png')}})
@@ -93,7 +93,7 @@ fun main(args: Array<String>) {
 
 ## 配置编译器选项
 
-Kotlin 提供了一系列的编译器选项，它们也可以在 Intellij IDEA 中进行配置。除了刚刚介绍过的生成源码映射文件的选项，<!--
+Kotlin 提供了一系列的编译器选项，它们也可以在 IntelliJ IDEA 中进行配置。除了刚刚介绍过的生成源码映射文件的选项，<!--
 -->我们还可以设置如下属性：
 
 * **输出文件前缀**：我们可以在编译器生成的输出文件前加上额外的 JavaScript 代码，为此，我们需要使用此选项指明我们想要包含的 JavaScript 文件的名称。
