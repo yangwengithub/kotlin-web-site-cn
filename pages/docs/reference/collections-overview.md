@@ -25,14 +25,14 @@ Kotlin 让你可以独立于所存储对象的确切类型来操作集合。换�
 
 ## 集合类型
 
-The Kotlin Standard Library provides implementations for basic collection types: sets, lists, and maps.
-A pair of interfaces represent each collection type: 
+Kotlin标准库提供了基本集合类型的实现：集合，列表和映射。
+一对接口代表每种集合类型：
 
-* A _read-only_ interface that provides operations for accessing collection elements.
-* A _mutable_ interface that extends the corresponding read-only interface with write operations: adding, removing, and updating its elements.
+* 一个 _只读_ 接口，提供访问集合元素的操作。
+* 一个 _可变_ 接口，通过写操作扩展相应的只读接口：添加、删除和更新其元素。
 
-Note that altering a mutable collection doesn't require it to be a [`var`](basic-syntax.html#定义变量): write operations modify the same mutable collection object, so the reference doesn't change.
-Although, if you try to reassign a `val` collection, you'll get a compilation error.
+请注意，更改可变集合不需要它是以 [`var`](basic-syntax.html#定义变量) 定义的变量：写操作修改同一个可变集合对象，因此引用不会改变。
+但是，如果尝试重新分配 `val` 集合，你将收到编译错误。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -48,21 +48,21 @@ fun main() {
 
 </div>
 
-The read-only collection types are [covariant](generics.html#型变).
-This means that, if a `Rectangle` class inherits from `Shape`, you can use a `List<Rectangle>` anywhere the `List<Shape>` is required.
-In other words, the collection types have the same subtyping relationship as the element types. Maps are covariant on the value type, but not on the key type.
+只读集合类型是[型变](generics.html#型变)的。
+这意味着，如果类 `Rectangle` 继承自 `Shape`，则可以在需要 `List <Shape>` 的任何地方使用 `List <Rectangle>`。
+换句话说，集合类型与元素类型具有相同的子类型关系。 地图在值类型上是型变的，但在键类型上不是。
 
-In turn, mutable collections aren't covariant; otherwise, this would lead to runtime failures. If `MutableList<Rectangle>` was a subtype of `MutableList<Shape>`, you could insert other `Shape` inheritors (for example, `Circle`) into it, thus violating its `Rectangle` type argument.
+反之，可变集合不是型变的; 否则将导致运行时故障。 如果 `MutableList <Rectangle>` 是 `MutableList <Shape>` 的子类型，你可以在其中插入其他 `Shape` 的继承者（例如，`Circle`），从而违反了它的 `Rectangle` 类型参数。
 
-Below is a diagram of the Kotlin collection interfaces:
+下面是 Kotlin 集合接口的图表：
 
 ![Collection interfaces hierarchy]({{ url_for('asset', path='images/reference/collections-overview/collections-diagram.png') }})
 
-Let's walk through the interfaces and their implementations.
+让我们来看看接口及其实现。
 
 ### Collection
 
-[`Collection<T>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html) is the root of the collection hierarchy. This interface represents the common behavior of a read-only collection: retrieving size, checking item membership, and so on.
+[`Collection<T>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html) 是集合层次结构的根。此接口表示一个只读集合的共同行为：检索大小、检查一个项的成员等等。
 `Collection` inherits from the `Iterable<T>` interface that defines the operations for iterating elements. You can use `Collection` as a parameter of a function that applies to different collection types. For more specific cases, use the `Collection`'s inheritors: [`List`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html) and [`Set`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html).
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
