@@ -63,7 +63,7 @@ fun main() {
 ### Collection
 
 [`Collection<T>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html) 是集合层次结构的根。此接口表示一个只读集合的共同行为：检索大小、检查一个项的成员等等。
-`Collection` inherits from the `Iterable<T>` interface that defines the operations for iterating elements. You can use `Collection` as a parameter of a function that applies to different collection types. For more specific cases, use the `Collection`'s inheritors: [`List`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html) and [`Set`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html).
+`Collection` 继承自 `Iterable <T>` 接口，它定义了迭代元素的操作。可以使用 `Collection` 作为适用于不同集合类型的函数的参数。对于更具体的情况，请使用 `Collection` 的继承者： [`List`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html) 与 [`Set`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html)。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -83,7 +83,7 @@ fun main() {
 ```
 </div>
 
-[`MutableCollection`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/index.html) is a `Collection` with write operations, such as `add` and `remove`.
+[`MutableCollection`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/index.html) 是一个具有写操作的 `Collection` 接口，例如 `add` 以及 `remove`。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -107,7 +107,7 @@ fun main() {
 
 ### List
 
-[`List<T>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html) stores elements in a specified order and provides indexed access to them. Indices start from zero – the index of the first element – and go to `lastIndex` which is the `(list.size - 1)`.
+[`List<T>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html) 以指定的顺序存储元素，并提供使用索引访问元素的方法。索引从 0 开始 – 第一个元素的索引 – 直到 `最后一个元素的索引` 即 `(list.size - 1)`。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
