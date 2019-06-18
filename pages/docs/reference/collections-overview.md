@@ -124,8 +124,8 @@ fun main() {
 ```
 </div>
 
-List elements (including nulls) can duplicate: a list can contain any number of equal objects or occurrences of a single object.
-Two lists are considered equal if they have the same sizes and [structurally equal](equality.html#结构相等) elements at the same positions.
+List 元素（包括空值）可以重复：List 可以包含任意数量的相同对象或单个对象的出现。
+如果两个 List 在相同的位置具有相同大小和相同结构的元素，则认为它们是相等的。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -145,7 +145,7 @@ fun main() {
 ```
 </div>
 
-[`MutableList`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html) is a `List` with list-specific write operations, for example, to add or remove an element at a specific position.
+[`MutableList`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html) 是可以进行写操作的 `List`，例如用于在特定位置添加或删除元素。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -163,10 +163,10 @@ fun main() {
 ```
 </div>
 
-As you see, in some aspects lists are very similar to arrays.
-However, there is one important difference:  an array's size is defined upon initialization and is never changed; in turn, a list doesn't have a predefined size; a list's size can be changed as a result of write operations: adding, updating, or removing elements.
+如你所见，在某些方面，List 与数组非常相似。
+但是，有一个重要的区别：数组的大小是在初始化时定义的，永远不会改变; 反之，List 没有预定义的大小; 作为写操作的结果，可以更改 List 的大小：添加，更新或删除元素。
 
-In Kotlin, the default implementation of `List` is [`ArrayList`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/index.html) which you can think of as a resizable array.
+在 Kotlin 中，`List` 的默认实现是 [`ArrayList`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/index.html)，可以将其视为可调整大小的数组。
 
 ### Set
 
