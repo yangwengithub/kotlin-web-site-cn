@@ -52,7 +52,7 @@ fun main() {
 这意味着，如果类 `Rectangle` 继承自 `Shape`，则可以在需要 `List <Shape>` 的任何地方使用 `List <Rectangle>`。
 换句话说，集合类型与元素类型具有相同的子类型关系。 地图在值类型上是型变的，但在键类型上不是。
 
-反之，可变集合不是型变的; 否则将导致运行时故障。 如果 `MutableList <Rectangle>` 是 `MutableList <Shape>` 的子类型，你可以在其中插入其他 `Shape` 的继承者（例如，`Circle`），从而违反了它的 `Rectangle` 类型参数。
+反之，可变集合不是型变的；否则将导致运行时故障。 如果 `MutableList <Rectangle>` 是 `MutableList <Shape>` 的子类型，你可以在其中插入其他 `Shape` 的继承者（例如，`Circle`），从而违反了它的 `Rectangle` 类型参数。
 
 下面是 Kotlin 集合接口的图表：
 
@@ -163,8 +163,8 @@ fun main() {
 ```
 </div>
 
-如你所见，在某些方面，List 与数组非常相似。
-但是，有一个重要的区别：数组的大小是在初始化时定义的，永远不会改变; 反之，List 没有预定义的大小; 作为写操作的结果，可以更改 List 的大小：添加，更新或删除元素。
+如你所见，在某些方面，List 与数组（Array）非常相似。
+但是，有一个重要的区别：数组的大小是在初始化时定义的，永远不会改变; 反之，List 没有预定义的大小；作为写操作的结果，可以更改 List 的大小：添加，更新或删除元素。
 
 在 Kotlin 中，`List` 的默认实现是 [`ArrayList`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/index.html)，可以将其视为可调整大小的数组。
 
@@ -248,7 +248,7 @@ fun main() {
 ```
 </div>
 
-[`MutableMap`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html) 是一个具有写操作的 `Map` 接口，例如，你可以添加一个新的键值对或更新给定键的值。
+[`MutableMap`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html) 是一个具有写操作的 `Map` 接口，可以使用该接口添加一个新的键值对或更新给定键的值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
