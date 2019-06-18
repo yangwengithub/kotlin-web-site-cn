@@ -2,8 +2,8 @@
 type: tutorial
 layout: tutorial
 title: "使用命令行编译器"
-description: "本教程将引导我们使用命令行编译器创建一个 Hello World 应用程序。"
-authors: Hadi Hariri，johnpoint(翻译)
+description: "本教程将引导我们使用命令行编译器创建 Hello World 应用程序。"
+authors: Hadi Hariri，johnpoint、高金龙（翻译）
 showAuthorInfo: true
 related:
     - getting-started.md
@@ -13,10 +13,10 @@ related:
 每个版本都附带一个独立版本的编译器。可以从 [GitHub Releases]({{ site.data.releases.latest.url }})下载。最新版本是 {{ site.data.releases.latest.version }}。
 
 #### 手动安装
-将独立编译器解压缩到一个目录中，可将 `bin` 目录添加到系统路径中。`bin` 目录包含在 Windows、OS X 和 Linux 上编译和运行 Kotlin 所需的脚本。
+将独立的编译器解压缩到一个目录中，并将 `bin` 目录添加到系统路径中。`bin` 目录包含了在 Windows、OS X 及 Linux 上编译与运行 Kotlin 所需的脚本。
 
 #### SDKMAN!
-在基于 UNIX 的系统（如 OS X、Linux、Cygwin、FreeBSD 和 Solaris）上安装 Kotlin 的更简单方法是使用 [SDKMAN!](http://sdkman.io).
+在基于 UNIX 的系统（如 OS X、Linux、Cygwin、FreeBSD 和 Solaris）上安装 Kotlin 的更简单方法是使用 [SDKMAN!](http://sdkman.io)。
 只需在终端中运行以下命令并按照说明操作即可：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
@@ -38,7 +38,7 @@ $ sdk install kotlin
 </div>
 
 #### Homebrew
-或者，在OS X上，可以通过 [Homebrew](http://brew.sh/) 安装编译器。
+或者，在 OS X上，可以通过 [Homebrew](http://brew.sh/) 安装编译器。
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -50,7 +50,7 @@ $ brew install kotlin
 </div>
 
 #### MacPorts
-如果你是 [MacPorts](https://www.macports.org/) 用户，则可以使用以下命令安装编译器：
+如果你是 [MacPorts](https://www.macports.org/) 用户，那么可以使用以下命令安装编译器：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -61,7 +61,7 @@ $ sudo port install kotlin
 </div>
 
 #### [Snap](https://snapcraft.io/) package
-如果使用的是 Ubuntu 16.04 或更高版本，则可以从命令行安装编译器：
+如果使用的是 Ubuntu 16.04 或更高版本，那么可以在命令行安装编译器：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -95,7 +95,7 @@ $ sudo snap install --classic kotlin
 
     </div>
 
-   `-d` 选项表示我们想要编译器的输出被调用，可以是类文件目录名或一个 *.jar* 文件名。`-include-runtime` 选项通过在其中包含 Kotlin 运行时库，使得生成的 *.jar* 文件自包含且可运行。
+   `-d` 选项表示我们想要编译器的输出被调用，可以是类文件目录名或一个 *.jar* 文件名。`-include-runtime` 选项通过在其中包含 Kotlin 运行时库，使得生成的 *.jar* 文件中自包含运行时库且可运行。
    如果要查看所有可用选项，请运行以下命令：
 
     <div class="sample" markdown="1" mode="shell" theme="idea">
@@ -119,7 +119,7 @@ $ sudo snap install --classic kotlin
 
 ### 编译库
 
-如果您正在开发一个供其他 Kotlin 应用程序使用的库，则可以生成 .jar 文件，而不需要将 Kotlin 运行时包含在其中。
+如果你正在开发一个供其他 Kotlin 应用程序使用的库，则可以生成 .jar 文件，而不将 Kotlin 运行时包含在其中。
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -130,8 +130,8 @@ $ kotlinc hello.kt -d hello.jar
 </div>
 
    由于以这种方式编译的二进制文件依赖于 Kotlin 运行时，因此无论何时使用编译库，都应确保后者存在于类路径中。
-   
-   您还可以使用 `kotlin` 脚本来运行 Kotlin 编译器生成的二进制文件：
+
+   还可以使用 `kotlin` 脚本来运行 Kotlin 编译器生成的二进制文件：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -145,13 +145,13 @@ $ kotlin -classpath hello.jar HelloKt
 
 ### 运行 REPL
 
-可以运行没有参数的编译器来拥有交互式 shell。输入任何有效的 Kotlin 代码并查看结果。
+可以运行没有参数的编译器来拥有交互式 shell。可以输入任何有效的 Kotlin 代码并查看结果。
 
 ![Shell]({{ url_for('tutorial_img', filename='command-line/kotlin_shell.png')}})
 
 ### 使用命令行运行脚本
 
-Kotlin 也可以用作脚本语言。脚本是具有顶级可执行代码的 Kotlin 源文件（.kts）。
+Kotlin 也可以用作脚本语言。脚本是具有顶层可执行代码的 Kotlin 源文件（.kts）。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -181,7 +181,7 @@ $ kotlinc -script list_folders.kts <path_to_folder_to_inspect>
 
 当适当的 jar 文件包含在<!--
 -->编译类路径中时，会自动检测并正确应用正确编写的脚本定义。或可以<!--
--->使用编译器的 `-script-templates` 选项手动指定定义：
+-->使用编译器的 `-script-templates` 选项来手动定义：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -191,5 +191,5 @@ $ kotlinc -script-templates org.example.CustomScriptDefinition -script custom.sc
 
 </div>
 
-有关其他详细信息，请参阅 [KEEP-75](https://github.com/Kotlin/KEEP/blob/master/proposals/scripting-support.md)。
+有关其他详细信息，请参阅[KEEP-75](https://github.com/Kotlin/KEEP/blob/master/proposals/scripting-support.md)。
                                                                                           
