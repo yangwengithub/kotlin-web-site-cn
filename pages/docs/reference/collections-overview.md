@@ -170,7 +170,7 @@ fun main() {
 
 ### Set
 
-[`Set<T>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html) stores unique elements; their order is generally undefined. `null` elements are unique as well: a `Set` can contain only one `null`.  Two sets are equal if they have the same size, and for each element of a set there is an equal element in the other set.
+[`Set<T>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html) 存储唯一的元素；它们的顺序通常是未定义的。`null` 元素也是唯一的：一个 `Set` 只能包含一个 `null`。当两个 `set` 具有相同的大小并且对于一个 `set` 中的每个元素都能在另一个  `set` 中存在相同元素，则两个 `set` 相等。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -188,10 +188,10 @@ fun main() {
 ```
 </div>
 
-[`MutableSet`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html) is a `Set` with write operations from `MutableCollection`.
+[`MutableSet`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html) 是一个带有来自 `MutableCollection` 的写操作接口的 `Set`。
 
-The default implementation of `Set` – [`LinkedHashSet`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-linked-hash-set/index.html) – preserves the order of elements insertion.
-Hence, the functions that rely on the order, such as `first()` or `last()`, return predictable results on such sets.
+`Set`的默认实现 -  [`LinkedHashSet`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-linked-hash-set/index.html) – 保留元素插入的顺序。
+因此，依赖于顺序的函数，例如 `first()` 或 `last()`，会在这些 `set` 上返回可预测的结果。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -208,7 +208,7 @@ fun main() {
 ```
 </div>
 
-An alternative implementation – [`HashSet`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-hash-set/index.html) – says nothing about the elements order, so calling such functions on it returns unpredictable results. However, `HashSet` requires less memory to store the same number of elements.
+另一种实现方式 – [`HashSet`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-hash-set/index.html) – 没有说明元素的顺序，所以在它上面调用这些函数会返回不可预测的结果。但是，`HashSet` 只需要较少的内存来存储相同数量的元素。
 
 ### Map
 
