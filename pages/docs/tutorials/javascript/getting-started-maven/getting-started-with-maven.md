@@ -1,46 +1,46 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Getting Started with Kotlin and JavaScript with Maven"
-description: "A look at how to use Maven to target JavaScript."
-authors: Hadi Hariri 
+title:  "以 Maven 入门 Kotlin 和 JavaScript"
+description: "本文介绍如何使用 Maven 把 Kotlin 编译到 JavaScript"
+authors: Hadi Hariri，刘文俊（翻译）
 date: 2016-11-04
-showAuthorInfo: false
+showAuthorInfo: true
 ---
 
-In this tutorial we'll see how to
+在本教程中，我们会学习如何
 
-* [Create an application targeting JavaScript with Maven](#creating-an-application-targeting-javascript)
-* [Configure compiler options](#configuring-compiler-options)
-
-
-## Creating an application targeting JavaScript
+* [使用 Maven 创建编译到 JavaScript 的应用程序](#创建编译到-javascript-的应用程序)
+* [配置编译器选项](#配置编译器选项)
 
 
-### Automatic Configuration
+## 创建编译到 JavaScript 的应用程序
 
-The easiest way to create a new application targeting JavaScript with Maven is to allow IntelliJ IDEA
-to configure the Maven project for us. Simply create a new Maven project in IntelliJ IDEA and once the project is created, add a new 
-folder to host the Kotlin source code, removing the default Java one. The project should end up with the following structure
+
+### 自动配置
+
+创建使用 Maven 的编译到 JavaScript 的新程序，最简单的方法是让 IntelliJ IDEA <!--
+-->为我们配置 Maven 项目。只需在 IntelliJ IDEA 中创建一个新的 Maven 项目，创建完成后，添加一个新的<!--
+-->文件夹来保存 Kotlin 源代码，删除默认的 Java 文件夹。最终该项目应具有如下结构：
  
 ![Project Structure]({{ url_for('tutorial_img', filename='javascript/getting-started-maven/project-structure.png')}})
 
-We can now add our first Kotlin source code file and IntelliJ IDEA will prompt us to configure the project for Kotlin. On doing so, we should select as target
-JavaScript
+我们现在可以添加第一个 Kotlin 源代码文件，IntelliJ IDEA 会提示我们配置项目的 Kotlin 环境，这时我们应该选择编译到 <!--
+-->JavaScript。
 
 
 ![Configure Kotlin]({{ url_for('tutorial_img', filename='javascript/getting-started-maven/configure-kotlin.png')}})
 
 
-IntelliJ IDEA will add the corresponding entries for us in the [Maven configuration](#maven-configuration). 
+IntelliJ IDEA 将会为我们添加 [Maven 配置](#maven-配置)中的相关条目。
 
 
-### Manual Configuration
+### 手动配置
 
-If we're not using IntelliJ IDEA, we can configure the `pom.xml` file manually to target JavaScript, by adding the following entries
+如果我们不使用 IntelliJ IDEA，我们可以通过添加以下条目手动配置 `pom.xml` 文件以编译到 JavaScript：
 
 
-#### Maven configuration
+#### Maven 配置
 
 <div class="sample" markdown="1" theme="idea" mode="xml" auto-indent="false">
 ```xml
@@ -86,14 +86,14 @@ If we're not using IntelliJ IDEA, we can configure the `pom.xml` file manually t
 ```
 </div>
 
-On compiling, Maven will produce the following output
+在编译时，Maven 将产生以下输出：
 
 ![Maven Output]({{ url_for('tutorial_img', filename='javascript/getting-started-maven/maven-output.png')}})
 
-where we can see the output of our application, which is the `kotlinjs-maven.js` file. 
+在这里我们可以看到我们的应用程序的输出，即 `kotlinjs-maven.js` 文件。
 
-In order to use this, we also need to include the Kotlin standard library in our application, i.e. `kotlin.js`, which was included as a dependency. By default,
-Maven does not expand the JAR as part of the build process, so we would need to add an additional step in our build to do so.
+为了使用它，我们还需要在我们的应用程序中包含 Kotlin 的标准库，即 `kotlin.js`，它作为依赖项包含在内。默认情况下，<!--
+-->Maven 不会在构建过程中解压 JAR 包，因此我们需要在构建中添加一个额外的步骤来执行此操作。
 
 <div class="sample" markdown="1" theme="idea" mode="xml" auto-indent="false">
 ```xml
@@ -124,13 +124,13 @@ Maven does not expand the JAR as part of the build process, so we would need to 
 ```
 </div>
 
-For more information on the output generated please see [Kotlin to JavaScript](../kotlin-to-javascript/kotlin-to-javascript.html)
+有关生成的文件的更多信息，请参阅 [Kotlin 转 JavaScript](../kotlin-to-javascript/kotlin-to-javascript.html)一节。
 
-## Configuring Compiler Options
+## 配置编译器选项
 
-Similar to when we're using [IntelliJ IDEA build system](../getting-started-idea/getting-started-with-intellij-idea.html) or the command line, we can have the compiler output JavaScript to comply with a specific module system such as AMD, CommonJS or UMD. 
+与使用 [IntelliJ IDEA 构建系统](../getting-started-idea/getting-started-with-intellij-idea.html)或命令行类似，我们可以让编译器输出的 JavaScript 符合某个特定的模块系统的标准，例如 AMD、CommonJS 或 UMD。
 
-In order to specify the module kind, we can add a configuration to our plugin as below
+为了指定模块的类型，我们可以在插件中添加一条配置，如下所示：
 
 <div class="sample" markdown="1" theme="idea" mode="xml" auto-indent="false">
 ```xml
@@ -144,15 +144,15 @@ In order to specify the module kind, we can add a configuration to our plugin as
 ```
 </div>
 
-where `moduleKind` can be
+在这里，`moduleKind` 可以是：
 
-* plain (default)
+* plain（默认）
 * amd
 * commonjs
 * umd
 
-For more information about the different types of module outputs, please see [Working with Modules](../working-with-modules/working-with-modules.html)
+关于不同类型模块输出的更多信息，请参阅[使用模块](../working-with-modules/working-with-modules.html)一节。
 
-We can also see how we can define whether we want the compiler to generate sourcemaps for us by indicating this via the `sourceMap` parameter.
+我们还可以看到如何通过配置 `sourceMap` 选项，指示编译器是否为我们生成源码映射文件。
 
 

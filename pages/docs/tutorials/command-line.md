@@ -1,23 +1,23 @@
 ---
 type: tutorial
 layout: tutorial
-title: "Working with the Command Line Compiler"
-description: "This tutorial walks us through creating a Hello World application using the command line compiler."
-authors: Hadi Hariri
-showAuthorInfo: false
+title: "使用命令行编译器"
+description: "本教程将引导我们使用命令行编译器创建 Hello World 应用程序。"
+authors: Hadi Hariri，johnpoint、高金龙（翻译）
+showAuthorInfo: true
 related:
     - getting-started.md
 ---
-### Downloading the compiler
+### 下载编译器
 
-Every release ships with a standalone version of the compiler. We can download it from [GitHub Releases]({{ site.data.releases.latest.url }}). The latest release is {{ site.data.releases.latest.version }}.
+每个版本都附带一个独立版本的编译器。可以从 [GitHub Releases]({{ site.data.releases.latest.url }})下载。最新版本是 {{ site.data.releases.latest.version }}。
 
-#### Manual Install
-Unzip the standalone compiler into a directory and optionally add the `bin` directory to the system path. The `bin` directory contains the scripts needed to compile and run Kotlin on Windows, OS X and Linux.
+#### 手动安装
+将独立的编译器解压缩到一个目录中，并将 `bin` 目录添加到系统路径中。`bin` 目录包含了在 Windows、OS X 及 Linux 上编译与运行 Kotlin 所需的脚本。
 
 #### SDKMAN!
-An easier way to install Kotlin on UNIX based systems such as OS X, Linux, Cygwin, FreeBSD and Solaris is by using [SDKMAN!](http://sdkman.io).
-Simply run the following in a terminal and follow any instructions:
+在基于 UNIX 的系统（如 OS X、Linux、Cygwin、FreeBSD 和 Solaris）上安装 Kotlin 的更简单方法是使用 [SDKMAN!](http://sdkman.io)。
+只需在终端中运行以下命令并按照说明操作即可：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -27,7 +27,7 @@ $ curl -s https://get.sdkman.io | bash
 
 </div>
 
-Next open a new terminal and install Kotlin with:
+接下来打开一个新终端并安装 Kotlin：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -38,7 +38,7 @@ $ sdk install kotlin
 </div>
 
 #### Homebrew
-Alternatively, on OS X you can install the compiler via [Homebrew](http://brew.sh/).
+或者，在 OS X上，可以通过 [Homebrew](http://brew.sh/) 安装编译器。
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -50,7 +50,7 @@ $ brew install kotlin
 </div>
 
 #### MacPorts
-If you're a [MacPorts](https://www.macports.org/) user, you can install the compiler with:
+如果你是 [MacPorts](https://www.macports.org/) 用户，那么可以使用以下命令安装编译器：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -61,7 +61,7 @@ $ sudo port install kotlin
 </div>
 
 #### [Snap](https://snapcraft.io/) package
-If you’re on Ubuntu 16.04 or later, you can install the compiler from the command line:
+如果使用的是 Ubuntu 16.04 或更高版本，那么可以在命令行安装编译器：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -71,9 +71,9 @@ $ sudo snap install --classic kotlin
 
 </div>
 
-### Creating and running a first application
+### 创建并运行第一个应用程序
 
-1. Create a simple application in Kotlin that displays Hello, World!. Using our favorite editor, we create a new file called *hello.kt* with the following:
+1. 在 Kotlin 中创建一个显示 Hello，World! 的简单应用程序。使用喜欢的编辑器，创建一个名为 *hello.kt* 的新文件，内容如下：
 
    <div class="sample" markdown="1" theme="idea">
 
@@ -85,7 +85,7 @@ $ sudo snap install --classic kotlin
 
    </div>
 
-2. Compile the application using the Kotlin compiler
+2. 使用 Kotlin 编译器编译应用程序
 
     <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -95,8 +95,8 @@ $ sudo snap install --classic kotlin
 
     </div>
 
-   The `-d` option indicates what we want the output of the compiler to be called and may be either a directory name for class files or a *.jar* file name. The `-include-runtime` option makes the resulting *.jar* file self-contained and runnable by including the Kotlin runtime library in it.
-   If you want to see all available options run
+   `-d` 选项表示我们想要编译器的输出被调用，可以是类文件目录名或一个 *.jar* 文件名。`-include-runtime` 选项通过在其中包含 Kotlin 运行时库，使得生成的 *.jar* 文件中自包含运行时库且可运行。
+   如果要查看所有可用选项，请运行以下命令：
 
     <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -106,7 +106,7 @@ $ sudo snap install --classic kotlin
 
     </div>
 
-3. Run the application.
+3. 运行该应用程序。
 
     <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -117,9 +117,9 @@ $ sudo snap install --classic kotlin
     </div>
 
 
-### Compiling a library
+### 编译库
 
-If you're developing a library to be used by other Kotlin applications, you can produce the .jar file without including the Kotlin runtime into it.
+如果你正在开发一个供其他 Kotlin 应用程序使用的库，则可以生成 .jar 文件，而不将 Kotlin 运行时包含在其中。
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -129,9 +129,9 @@ $ kotlinc hello.kt -d hello.jar
 
 </div>
 
-   Since binaries compiled this way depend on the Kotlin runtime you should make sure the latter is present in the classpath whenever your compiled library is used.
-   
-   You can also use the `kotlin` script to run binaries produced by the Kotlin compiler:
+   由于以这种方式编译的二进制文件依赖于 Kotlin 运行时，因此无论何时使用编译库，都应确保后者存在于类路径中。
+
+   还可以使用 `kotlin` 脚本来运行 Kotlin 编译器生成的二进制文件：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -141,17 +141,17 @@ $ kotlin -classpath hello.jar HelloKt
 
 </div>
 
-   `HelloKt` is the main class name that the Kotlin compiler generates for the file named `hello.kt`.
+   `HelloKt` 是 Kotlin 编译器为名为 `hello.kt` 的文件生成的主类名。
 
-### Running the REPL
+### 运行 REPL
 
-We can run the compiler without parameters to have an interactive shell. We can type any valid Kotlin code and see the results.
+可以运行没有参数的编译器来拥有交互式 shell。可以输入任何有效的 Kotlin 代码并查看结果。
 
 ![Shell]({{ url_for('tutorial_img', filename='command-line/kotlin_shell.png')}})
 
-### Using the command line to run scripts
+### 使用命令行运行脚本
 
-Kotlin can also be used as a scripting language. A script is a Kotlin source file (.kts) with top level executable code.
+Kotlin 也可以用作脚本语言。脚本是具有顶层可执行代码的 Kotlin 源文件（.kts）。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -164,7 +164,7 @@ folders?.forEach { folder -> println(folder) }
 
 </div>
 
-To run a script, we just pass the `-script` option to the compiler with the corresponding script file.
+要运行脚本，我们只需使用相应的脚本文件将 `-script` 选项传递给编译器。
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -174,14 +174,14 @@ $ kotlinc -script list_folders.kts <path_to_folder_to_inspect>
 
 </div>
 
-Since 1.3.0 Kotlin has an experimental support for scripts customization, such as adding external properties, 
-providing static or dynamic dependencies, and so on. Customizations are defined by so-called *Script definitions* - 
-annotated kotlin classes with appropriate support code. The script filename extension is used to select appropriate
-definition.
+自 1.3.0 以来，Kotlin 对脚本定制提供了实验性支持，例如添加外部属性、<!--
+-->提供静态或动态依赖关系等。自定义由所谓的 *脚本定义* <!--
+-->带有适当支持代码的带注释的 kotlin 类定义。脚本文件扩展名用于选择适当的<!--
+-->定义。
 
-Properly prepared script definitions are detected and applied automatically when the appropriate jars are included
-in the compilation classpath. Alternatively, you can specify
-definitions manually using `-script-templates` option to the compiler:
+当适当的 jar 文件包含在<!--
+-->编译类路径中时，会自动检测并正确应用正确编写的脚本定义。或可以<!--
+-->使用编译器的 `-script-templates` 选项来手动定义：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -191,5 +191,5 @@ $ kotlinc -script-templates org.example.CustomScriptDefinition -script custom.sc
 
 </div>
 
-For additional details, please consult the [KEEP-75](https://github.com/Kotlin/KEEP/blob/master/proposals/scripting-support.md). 
+有关其他详细信息，请参阅[KEEP-75](https://github.com/Kotlin/KEEP/blob/master/proposals/scripting-support.md)。
                                                                                           
