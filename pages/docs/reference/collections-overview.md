@@ -40,8 +40,8 @@ Kotlin 标准库提供了基本集合类型的实现： set、list 以及 map。
 fun main() {
 //sampleStart
     val numbers = mutableListOf("one", "two", "three", "four")
-    numbers.add("five")   // this is OK    
-    //numbers = mutableListOf("six", "seven")      // compilation error
+    numbers.add("five")   // 这是可以的
+    //numbers = mutableListOf("six", "seven")      // 编译错误
 //sampleEnd
 }
 ```
@@ -208,12 +208,12 @@ fun main() {
 ```
 </div>
 
-另一种实现方式 – [`HashSet`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-hash-set/index.html) – 没有说明元素的顺序，所以在它上面调用这些函数会返回不可预测的结果。但是，`HashSet` 只需要较少的内存来存储相同数量的元素。
+另一种实现方式 – [`HashSet`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-hash-set/index.html) – 不声明元素的顺序，所以在它上面调用这些函数会返回不可预测的结果。但是，`HashSet` 只需要较少的内存来存储相同数量的元素。
 
 ### Map
 
-[`Map<K, V>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html) is not an inheritor of the `Collection` interface; however, it's a Kotlin collection type as well.
-A `Map` stores _key-value_ pairs (or _entries_); keys are unique, but different keys can be paired with equal values. The `Map` interface provides specific functions, such as access to value by key, searching keys and values, and so on.  
+[`Map<K, V>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html) 不是 `Collection` 接口的继承者；但是它也是 Kotlin 的一种集合类型。
+`Map` 存储 _键-值_ 对 (或 _条目_)；键是唯一的，但是不同的键可以与相同的值配对。`Map` 接口提供特定的函数进行通过键访问值、搜索键和值等操作。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -226,13 +226,13 @@ fun main() {
     println("All values: ${numbersMap.values}")
     if ("key2" in numbersMap) println("Value by key \"key2\": ${numbersMap["key2"]}")    
     if (1 in numbersMap.values) println("The value 1 is in the map")
-    if (numbersMap.containsValue(1)) println("The value 1 is in the map") // same as previous
+    if (numbersMap.containsValue(1)) println("The value 1 is in the map") // 同上
 //sampleEnd
 }
 ```
 </div>
 
-Two maps containing the equal pairs are equal regardless of the pair order.
+无论键值对的顺序如何，包含相同键值对的两个 `Map` 是相等的。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -248,7 +248,7 @@ fun main() {
 ```
 </div>
 
-[`MutableMap`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html) is a `Map` with map write operations, for example, you can add a new key-value pair or update the value associated with the given key.
+[`MutableMap`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html) 是一个具有写操作的 `Map` 接口，例如，你可以添加一个新的键值对或更新给定键的值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -265,5 +265,5 @@ fun main() {
 ```
 </div>
 
-The default implementation of `Map` – [`LinkedHashMap`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-linked-hash-map/index.html) – preserves the order of elements insertion when iterating the map.
-In turn, an alternative implementation – [`HashMap`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-hash-map/index.html) – says nothing about the elements order.
+`Map` 的默认实现 – [`LinkedHashMap`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-linked-hash-map/index.html) – 迭代 Map 时保留元素插入的顺序。
+反之，另一种实现 – [`HashMap`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-hash-map/index.html) – 不声明元素的顺序。
