@@ -7,8 +7,8 @@ title: "区间与数列"
 
 # 区间与数列
 
-Kotlin lets you easily create ranges of values using the [`rangeTo()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/range-to.html) function from the `kotlin.ranges` package and its operator form `..`.
-Usually, `rangeTo()` is complemented by `in` or `!in` functions.
+Kotlin 可以让你很轻松的使用 `Kotln.ranges` 包中的 [`rangeTo()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/range-to.html)  函数创建它的区间操作符。
+通常，`rangeTo()` 是补充 `in` 或 `!in` 的函数。
 
 <div class="sample" markdown="1" theme="idea"  data-highlight-only>
 
@@ -19,9 +19,9 @@ if (i in 1..4) {  // 等同于 1 <= i && i <= 4
 ```
 </div>
 
-Integral type ranges ([`IntRange`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-int-range/index.html), [`LongRange`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-long-range/index.html), [`CharRange`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-char-range/index.html)) have an extra feature: they can be iterated over.
-These ranges are also [progressions](https://en.wikipedia.org/wiki/Arithmetic_progression) of the corresponding integral types.
-Such ranges are generally used for iteration in the `for` loops.
+整数区间 ([`IntRange`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-int-range/index.html), [`LongRange`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-long-range/index.html), [`CharRange`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-char-range/index.html)) 有一个额外的功能：它们可以迭代
+这些区间也是相应整数类型的[数列](https://en.wikipedia.org/wiki/Arithmetic_progression)。
+这些区间通常用于 `for` 循环中的迭代。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
