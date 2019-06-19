@@ -15,8 +15,8 @@ description: "本教程介绍了 Kotlin 在竞技性程序设计中的基本用�
 
 ## 竞技程序设计与 Kotlin
 
-[竞技性程序设计](https://en.wikipedia.org/wiki/Competitive_programming)
-是一项智力运动，参赛选手在严格的限制条件下编写程序精确地解决指定的<!--
+[竞技性程序设计](https://en.wikipedia.org/wiki/Competitive_programming)<!--
+-->是一项智力运动，参赛选手在严格的限制条件下编写程序精确地解决指定的<!--
 -->算法问题。问题可以简单到<!--
 -->任何软件开发人员都能解题、只需很少代码就能得到正确答案，也可以复杂到需要<!--
 -->特殊的算法、数据结构知识以及大量实践。虽然 Kotlin 不是专为竞技性<!--
@@ -46,8 +46,8 @@ description: "本教程介绍了 Kotlin 在竞技性程序设计中的基本用�
 就去掉这个零。
 
 Kotlin 是实用且不拘一格的语言，既支持命令式也支持函数式编程风格，
-不强迫开发人员选择任何一种特定风格。可以按函数式风格实现函数 `f`，使用像
-[尾递归](/docs/reference/functions.html#尾递归函数)这样的 Kotlin 特性：
+不强迫开发人员选择任何一种特定风格。可以按函数式风格实现函数 `f`，使用像<!--
+-->[尾递归](/docs/reference/functions.html#尾递归函数)这样的 Kotlin 特性：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -61,7 +61,7 @@ fun f(x: Int) = removeZeroes(x + 1)
 </div>
 
 也可以编写函数 `f` 的命令式实现，使用传统的
-[while 循环](/docs/reference/control-flow.html) 与可变变量（在 Kotlin 中用
+[while 循环](/docs/reference/control-flow.html)与可变变量（在 Kotlin 中用
 [var](/docs/reference/basic-syntax.html#定义变量) 表示）：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -85,7 +85,7 @@ fun f(x: Int): Int {
 
 默认情况下，Kotlin 在 JVM 上运行，可以直接访问丰富且高效的集合库，其中包含<!--
 -->通用的集合与数据结构，如动态大小的数组（`ArrayList`）、
-基于哈希的 map 与 set（`HashMap`/`HashSet`）、基于树的map 与 set（`TreeMap`/`TreeSet`）等。
+基于哈希的 map 与 set（`HashMap`/`HashSet`）、基于树的 map 与 set（`TreeMap`/`TreeSet`）等。
 使用整数哈希 set 来跟踪应用函数 `f` 时已达到的值，
 该问题解法的一个简单命令式版本可以这样编写：
 
@@ -118,7 +118,7 @@ Kotlin 的 `readLine()` 函数定义成了返回<!--
 函数会抛出异常。
 
 所有在线竞技程序设计活动都允许使用预编写代码，因此可以定义自己的<!--
--->面向竞技性编程的工具函数库，以使实际解题代码更易<!--
+-->面向竞技程序设计的工具函数库，以使实际解题代码更易<!--
 -->于读写。然后，可以使用该代码作为解题模板。例如，可以定义<!--
 -->以下辅助函数来读取竞技程序设计中的输入：
 
@@ -172,7 +172,7 @@ fun main() {
 </div>
 
 在这段密集的代码中，除了集合转换之外，还可以看到像局部函数<!--
--->以及[elvis 操作符](/docs/reference/null-safety.html#elvis-操作符) `?:` 这样灵便的 Kotlin 特性，
+-->以及 [elvis 操作符](/docs/reference/null-safety.html#elvis-操作符) `?:` 这样灵便的 Kotlin 特性，
 通过 elvis 操作符，可以用<!--
 -->简洁易读的表达式如 `.takeIf { it >= 0 } ?: s.length`
 来表达类似“如果是正数就取其值，否则取长度”的[惯用法](/docs/reference/idioms.html)，
@@ -211,18 +211,18 @@ private fun readInts() = readStrings().map { it.toInt() } // 整数列表
 当然，这些名称通常仍然是助记手段——数组用 `a`，
 索引用 `i`、`j`，表格的行列号用 `r`、`c`，坐标用 `x`、`y` 等。
 输入数据的名称保持与问题陈述中所给出的名称相同也更容易。
-当然，越复杂的问题就越需要更多的代码来解，既而变量名与函数名就会<!--
+当然，越复杂的问题就越需要更多的代码来解，进而变量名与函数名就会<!--
 -->越长、越具有自解释性。
 
-## 更多提示和技巧
+## 更多提示与技巧
 
-Competitive programming problems often have input like this:
+竞技程序设计通常有这样的输入：
 
-> The first line of the input contains two integers `n` and `k`
+> 输入的第一行包含两个整数 `n` 与 `k`
 
-In Kotlin this line can be concisely parsed with the following statement using
-[destructuring declaration](/docs/reference/multi-declarations.html#解构声明)
-from a list of integers:
+在 Kotlin 中，这一行可以通过使用对整型列表进行<!--
+-->[解构声明](/docs/reference/multi-declarations.html#解构声明)<!--
+-->的下列语句简明地解析：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -232,43 +232,43 @@ val (n, k) = readInts()
 
 </div>
 
-It might be temping to use JVM's `java.util.Scanner` class to parse less structured 
-input formats. Kotlin is designed to interoperate well with JVM libraries, so that their use feels quite
-natural in Kotlin. However, beware that `java.util.Scanner` is extremely slow. So slow, in fact, that parsing
-10<sup>5</sup> or more integers with it might not fit into a typical 2 second time-limit, which a simple Kotlin's 
-`split(" ").map { it.toInt() }` would handle. 
+很多人习惯使用 JVM 的 `java.util.Scanner` 类来解析结构较少的<!--
+-->输入格式。Kotlin 已设计成能与 JVM 库很好互操作，因此在
+Kotlin 中使用它们会很自然。然而请注意，`java.util.Scanner` 极其慢。事实上，速度慢得以至用它解析
+10<sup>5</sup> 个或更多整数时，很可能不满足典型的 2 秒限制，而这是一个简单的 Kotlin
+`split(" ").map { it.toInt() }` 就能做到的。
 
-Writing output in Kotlin is usually straightforward with 
+在 Kotlin 中写输出通常很简单，调用
 [println(...)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/println.html)
-calls and using Kotlin's 
-[string templates](/docs/reference/basic-types.html#字符串模板). However, care must be taken when output
-contains on order of 10<sup>5</sup> lines or more. Issuing so many `println` calls is too slow, since the output 
-in Kotlin is automatically flushed after each line. 
-A faster way to write many lines from an array or a list is using
-[joinToString()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html) function
-with `"\n"` as separator, like this:
+以及使用 Kotlin 的<!--
+-->[字符串模板](/docs/reference/basic-types.html#字符串模板)。然而，当输出<!--
+-->包含大约 10<sup>5</sup> 或更多行时，必须小心。调用这么多次 `println` 太慢了，因为
+Kotlin 中的该输出会在每行后自动刷新写缓冲。
+从数组或 list 中写多行的更快方式是使用
+[joinToString()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html) 函数<!--
+-->以 `"\n"` 作为分隔符，如下所示：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-println(a.joinToString("\n")) // each element of array/list of a separate line
+println(a.joinToString("\n")) // 数组/list 中的每个元素占一行
 ```
 
 </div>
 
 ## 学习 Kotlin
 
-Kotlin is designed to be easy to learn for people who already know Java.
-A quick overview of differences is given on [the official comparison page](/docs/reference/comparison-to-java.html). 
-A short introduction to the basic syntax of Kotlin language for software developers can be found directly in the
-reference section of the web site starting from [basic syntax](/docs/reference/basic-syntax.html). 
+Kotlin 旨在让已经了解 Java 的人易于学习。
+在[官方比较页](/docs/reference/comparison-to-java.html)上给出了二者差异的快速概述。
+对于软件开发人员来说，关于 Kotlin 语言的基本语法的简短介绍可以直接在<!--
+-->以[基本语法](/docs/reference/basic-syntax.html)开始的网站参考部分中直接找。
 
-IDEA has built-in 
-[Java-to-Kotlin converter](https://www.jetbrains.com/help/idea/converting-a-java-file-to-kotlin-file.html). 
-It can be used by people familiar with Java to learn the corresponding Kotlin syntactic constructions, but it
-is not perfect and it is still worth familiarizing yourself with Kotlin and learning the 
-[Kotlin idioms](/docs/reference/idioms.html).
+IDEA 已内置
+[Java-to-Kotlin 转换器](https://www.jetbrains.com/help/idea/converting-a-java-file-to-kotlin-file.html)。
+熟悉 Java 的人可以用它来学习相应的 Kotlin 语法结构，但它<!--
+-->并不完美，并且你仍然需要自己熟悉 Kotlin 并学习
+[Kotlin 惯用法](/docs/reference/idioms.html)。
 
-A great resource to study Kotlin syntax and API of the Kotlin standard library are
-[Kotlin Koans](/docs/tutorials/koans.html).
+学习 Kotlin 语法以及 Kotlin 标准库 API 的一个很好的资源是
+[Kotlin 心印](/docs/tutorials/koans.html)。
 
