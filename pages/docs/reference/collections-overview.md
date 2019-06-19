@@ -213,7 +213,7 @@ fun main() {
 ### Map
 
 [`Map<K, V>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html) 不是 `Collection` 接口的继承者；但是它也是 Kotlin 的一种集合类型。
-`Map` 存储 _键-值_ 对 (或 _条目_)；键是唯一的，但是不同的键可以与相同的值配对。`Map` 接口提供特定的函数进行通过键访问值、搜索键和值等操作。
+`Map` 存储 _键-值_ 对（或 _条目_）；键是唯一的，但是不同的键可以与相同的值配对。`Map` 接口提供特定的函数进行通过键访问值、搜索键和值等操作。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
