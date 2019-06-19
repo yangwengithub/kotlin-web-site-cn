@@ -15,8 +15,8 @@ description: "本教程介绍了 Kotlin 在竞技性程序设计中的基本用�
 
 ## 竞技程序设计与 Kotlin
 
-[竞技性程序设计](https://en.wikipedia.org/wiki/Competitive_programming)
-是一项智力运动，参赛选手在严格的限制条件下编写程序精确地解决指定的<!--
+[竞技性程序设计](https://en.wikipedia.org/wiki/Competitive_programming)<!--
+-->是一项智力运动，参赛选手在严格的限制条件下编写程序精确地解决指定的<!--
 -->算法问题。问题可以简单到<!--
 -->任何软件开发人员都能解题、只需很少代码就能得到正确答案，也可以复杂到需要<!--
 -->特殊的算法、数据结构知识以及大量实践。虽然 Kotlin 不是专为竞技性<!--
@@ -46,8 +46,8 @@ description: "本教程介绍了 Kotlin 在竞技性程序设计中的基本用�
 就去掉这个零。
 
 Kotlin 是实用且不拘一格的语言，既支持命令式也支持函数式编程风格，
-不强迫开发人员选择任何一种特定风格。可以按函数式风格实现函数 `f`，使用像
-[尾递归](/docs/reference/functions.html#尾递归函数)这样的 Kotlin 特性：
+不强迫开发人员选择任何一种特定风格。可以按函数式风格实现函数 `f`，使用像<!--
+-->[尾递归](/docs/reference/functions.html#尾递归函数)这样的 Kotlin 特性：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -61,7 +61,7 @@ fun f(x: Int) = removeZeroes(x + 1)
 </div>
 
 也可以编写函数 `f` 的命令式实现，使用传统的
-[while 循环](/docs/reference/control-flow.html) 与可变变量（在 Kotlin 中用
+[while 循环](/docs/reference/control-flow.html)与可变变量（在 Kotlin 中用
 [var](/docs/reference/basic-syntax.html#定义变量) 表示）：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -85,7 +85,7 @@ fun f(x: Int): Int {
 
 默认情况下，Kotlin 在 JVM 上运行，可以直接访问丰富且高效的集合库，其中包含<!--
 -->通用的集合与数据结构，如动态大小的数组（`ArrayList`）、
-基于哈希的 map 与 set（`HashMap`/`HashSet`）、基于树的map 与 set（`TreeMap`/`TreeSet`）等。
+基于哈希的 map 与 set（`HashMap`/`HashSet`）、基于树的 map 与 set（`TreeMap`/`TreeSet`）等。
 使用整数哈希 set 来跟踪应用函数 `f` 时已达到的值，
 该问题解法的一个简单命令式版本可以这样编写：
 
@@ -118,7 +118,7 @@ Kotlin 的 `readLine()` 函数定义成了返回<!--
 函数会抛出异常。
 
 所有在线竞技程序设计活动都允许使用预编写代码，因此可以定义自己的<!--
--->面向竞技性编程的工具函数库，以使实际解题代码更易<!--
+-->面向竞技程序设计的工具函数库，以使实际解题代码更易<!--
 -->于读写。然后，可以使用该代码作为解题模板。例如，可以定义<!--
 -->以下辅助函数来读取竞技程序设计中的输入：
 
@@ -172,7 +172,7 @@ fun main() {
 </div>
 
 在这段密集的代码中，除了集合转换之外，还可以看到像局部函数<!--
--->以及[elvis 操作符](/docs/reference/null-safety.html#elvis-操作符) `?:` 这样灵便的 Kotlin 特性，
+-->以及 [elvis 操作符](/docs/reference/null-safety.html#elvis-操作符) `?:` 这样灵便的 Kotlin 特性，
 通过 elvis 操作符，可以用<!--
 -->简洁易读的表达式如 `.takeIf { it >= 0 } ?: s.length`
 来表达类似“如果是正数就取其值，否则取长度”的[惯用法](/docs/reference/idioms.html)，
@@ -211,7 +211,7 @@ private fun readInts() = readStrings().map { it.toInt() } // 整数列表
 当然，这些名称通常仍然是助记手段——数组用 `a`，
 索引用 `i`、`j`，表格的行列号用 `r`、`c`，坐标用 `x`、`y` 等。
 输入数据的名称保持与问题陈述中所给出的名称相同也更容易。
-当然，越复杂的问题就越需要更多的代码来解，既而变量名与函数名就会<!--
+当然，越复杂的问题就越需要更多的代码来解，进而变量名与函数名就会<!--
 -->越长、越具有自解释性。
 
 ## 更多提示与技巧
@@ -234,8 +234,8 @@ val (n, k) = readInts()
 
 很多人习惯使用 JVM 的 `java.util.Scanner` 类来解析结构较少的<!--
 -->输入格式。Kotlin 已设计成能与 JVM 库很好互操作，因此在
-Kotlin 中使用它们会很自然。然而请注意，`java.util.Scanner` 极其慢。事实上，速度慢得以至用它解析<!--
--->10<sup>5</sup> 个或更多整数时，很可能不满足典型的 2 秒限制，而这是一个简单的 Kotlin
+Kotlin 中使用它们会很自然。然而请注意，`java.util.Scanner` 极其慢。事实上，速度慢得以至用它解析
+10<sup>5</sup> 个或更多整数时，很可能不满足典型的 2 秒限制，而这是一个简单的 Kotlin
 `split(" ").map { it.toInt() }` 就能做到的。
 
 在 Kotlin 中写输出通常很简单，调用
