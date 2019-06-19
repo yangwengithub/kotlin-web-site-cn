@@ -220,9 +220,9 @@ private fun readInts() = readStrings().map { it.toInt() } // 整数列表
 
 > 输入的第一行包含两个整数 `n` 与 `k`
 
-在 Kotlin 中，这一行可以通过使用对整型列表的<!--
+在 Kotlin 中，这一行可以通过使用对整型列表进行<!--
 -->[解构声明](/docs/reference/multi-declarations.html#解构声明)<!--
--->的下述语句简明地解析：
+-->的下列语句简明地解析：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -258,17 +258,17 @@ println(a.joinToString("\n")) // 数组/list 中的每个元素占一行
 
 ## 学习 Kotlin
 
-Kotlin is designed to be easy to learn for people who already know Java.
-A quick overview of differences is given on [the official comparison page](/docs/reference/comparison-to-java.html). 
-A short introduction to the basic syntax of Kotlin language for software developers can be found directly in the
-reference section of the web site starting from [basic syntax](/docs/reference/basic-syntax.html). 
+Kotlin 旨在让已经了解 Java 的人易于学习。
+在[官方比较页](/docs/reference/comparison-to-java.html)上给出了二者差异的快速概述。
+对于软件开发人员来说，关于 Kotlin 语言的基本语法的简短介绍可以直接在<!--
+-->以[基本语法](/docs/reference/basic-syntax.html)开始的网站参考部分中直接找。
 
-IDEA has built-in 
-[Java-to-Kotlin converter](https://www.jetbrains.com/help/idea/converting-a-java-file-to-kotlin-file.html). 
-It can be used by people familiar with Java to learn the corresponding Kotlin syntactic constructions, but it
-is not perfect and it is still worth familiarizing yourself with Kotlin and learning the 
-[Kotlin idioms](/docs/reference/idioms.html).
+IDEA 已内置
+[Java-to-Kotlin 转换器](https://www.jetbrains.com/help/idea/converting-a-java-file-to-kotlin-file.html)。
+熟悉 Java 的人可以用它来学习相应的 Kotlin 语法结构，但它<!--
+-->并不完美，并且你仍然需要自己熟悉 Kotlin 并学习
+[Kotlin 惯用法](/docs/reference/idioms.html)。
 
-A great resource to study Kotlin syntax and API of the Kotlin standard library are
-[Kotlin Koans](/docs/tutorials/koans.html).
+学习 Kotlin 语法以及 Kotlin 标准库 API 的一个很好的资源是
+[Kotlin 心印](/docs/tutorials/koans.html)。
 
