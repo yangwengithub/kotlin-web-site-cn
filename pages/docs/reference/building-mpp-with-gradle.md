@@ -28,7 +28,7 @@ title: "使用 Gradle 构建多平台项目"
 * [默认项目布局](#默认项目布局)
 * [运行测试](#运行测试)
 * [发布多平台库](#发布多平台库)
-* [ Java Support in JVM Targets](#java-support-in-jvm-targets)
+* [JVM 目标平台中的 Java 支持](#jvm-目标平台中的-java-支持)
 * [Android 支持](#android-支持)
     * [发布 Android 库](#发布-android-库)
 * [使用 Kotlin/Native 目标平台](#使用-kotlinnative-目标平台)
@@ -1488,7 +1488,7 @@ configurations {
 </div>
 </div>
 
-## Java Support in JVM Targets
+## JVM 目标平台中的 Java 支持
 
 This feature is available since Kotlin 1.3.40.
 
