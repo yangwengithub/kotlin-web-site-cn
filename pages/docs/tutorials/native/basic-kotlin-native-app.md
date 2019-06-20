@@ -1,56 +1,56 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "A Basic Kotlin/Native Application"
-description: "A look at how to compile our first Kotlin/Native application and open it in an IDE"
+title:  "基本 Kotlin/Native 应用程序"
+description: "来看看如何编译我们的第一个 Kotlin/Native 应用程序并且在 IDE 中打开它"
 authors:
   - Hadi Hariri
-  - Eugene Petrenko
+  - Eugene Petrenko，乔禹昂（翻译）
 date: 2019-04-15
 ---
 
 
-In this tutorial, we'll look at how to
+在本教程中，我们将看到如何：
 
-* [Obtain the Kotlin/Native compiler](#obtaining-the-compiler)
-* [Write the application](#creating-hello-kotlin)
-* [Create build files](#creating-a-kotlinnative-gradle-project)
-* [Set up an IDE](#open-in-ide)
-* [Run the application](#running-the-application)
+* [获取 Kotlin/Native 编译器](#获取编译器)
+* [编写应用程序](#创建-hello-kotlin)
+* [创建构建文件](#创建一个-kotlinnative-gradle-工程)
+* [配置 IDE](#在-ide-中打开这个工程)
+* [运行应用程序](#运行应用程序)
 
 
 ## 获取编译器
 
-The Kotlin/Native compiler is available for macOS, Linux, and Windows. It supports
-different targets including iOS (arm32, arm64, simulator x86_64), Windows (mingw32 and x86_64),
-Linux (x86_64, arm64, MIPS), macOS (x86_64), Raspberry PI, SMT32, WASM. For the full list of targets
-we can refer to the [Kotlin/Native overview](/docs/reference/native-overview.html).
-While cross-platform compilation is possible
-(i.e., using one platform to compile for another), in this first tutorial
-we are only compiling for the operating system we're running on.
+Kotlin/Native 编译器可以被用于 macOS、Linux 以及 Windows。它支持<!--
+-->不同的目标平台包括 iOS（arm32、arm64、simulator x86_64），Windows（mingw32 以及 x86_64），
+Linux（x86_64, arm64, MIPS），macOS（x86_64），Raspberry PI、SMT32、WASM。所有的目标平台列表<!--
+-->我们可以在 [Kotlin/Native overview](/docs/reference/native-overview.html) 中查看。
+虽然跨平台的编译是可能的，
+(即，使用一个平台为另一个平台编译)，但在这个第一篇教程中<!--
+-->我们仅仅为我们当前运行的系统进行编译。
 
-The best way to use the Kotlin/Native compiler is with a build system.
-It helps by downloading and caching the Kotlin/Native compiler binaries and libraries with
-transitive dependencies, and running the compiler and tests.
-It caches the compilation results too.
-A build system can also be used by an IDE to understand the project layout.
+使用 Kotlin/Native 编译器的最好的方式是去构建一个系统。
+它有助于下载和缓存 Kotlin/Native 编译器二进制文件与库
+传递依赖，并运行编译器以及测试。
+它同样缓存编译结果。
+IDE 还可以使用构建系统来了解项目布局。
 
-Kotlin/Native uses the [Gradle](https://gradle.org) build system through the
-[kotlin-multiplatform](/docs/reference/building-mpp-with-gradle.html) plugin.
-We'll look at how to configure a Gradle build below.
-For some corner cases, a Kotlin/Native compiler can still be obtained manually (not recommended)
-from the [Kotlin releases page on GitHub](https://github.com/JetBrains/kotlin/releases).
-In the tutorial, we are focusing on using the Gradle builds.
+Kotlin/Native 通过 [Gradle](https://gradle.org) 的
+[kotlin-multiplatform](/docs/reference/building-mpp-with-gradle.html) 插件来使用构建系统。
+我们将在下面介绍如何配置 Gradle 构建。
+对于某些极端情况，Kotlin/Native 编译器仍然可以从
+[GitHub Kotlin 发行版页面](https://github.com/JetBrains/kotlin/releases)手动获取（不推荐）。
+在本教程中，我们将专注于使用 Gradle 进行构建。
 
-While the output of the compiler does not have any dependencies or virtual machine requirements,
-the compiler itself and the Gradle build system require a Java 1.8 or 11 runtime. Check out the
-[https://jdk.java.net/11](https://jdk.java.net/11/) or another resource
-for the best JRE, OpenJDK, or JDK distribution.
+虽然编译器的输出没有任何依赖项或虚拟机要求，
+但编译器本身以及 Gradle 构建系统需要 Java 1.8 或 11 runtime。在网页
+[https://jdk.java.net/11](https://jdk.java.net/11/) 或另外的源<!--
+-->检查，JRE、OpenJDK 或 JDK 发行版。
 
 ## 创建 Hello Kotlin
 
-Our first application is simply going to print some text on the standard output. In our case, this text is "Hello Kotlin/Native".
-We can open up our favorite IDE or editor and write the following code in a file named `hello.kt`:
+我们的第一个应用程序只简单的使用标准输出打印一些文本。在我们的案例中文本是“Hello Kotlin/Native”。
+我们可以打开自己最喜欢的 IDE 或编辑器并在名为 `hello.kt` 的文件中编写下面的代码：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -61,23 +61,23 @@ fun main() {
 ```
 </div>
 
-## Compiling the code from the console
+## 使用命令行编译代码
 
-To manually compile the application call the [downloaded](https://github.com/JetBrains/kotlin/releases)
-compiler and generate a `hello.kexe` (Linux and macOS) or `hello.exe` (Windows)
-binary file:
+通过[下载](https://github.com/JetBrains/kotlin/releases)的<!--
+-->编译器手动生成一个 `hello.kexe`（Linux 以及 macOS）或 `hello.exe`（Windows）
+二进制文件
 
 ```bash
 kotlinc-native hello.kt -o hello
 ```
 
-While compilation from the console seems to be easy and clear, we should notice, that it
-does not scale well for bigger projects with hundreds of files and libraries.
-In addition to this, the command line approach does not explain to an IDE how to open such a project,
-where the sources are located, what dependencies are used, or how the dependencies are downloaded and so on.
+虽然从控制台编译似乎很简单，但我们应该注意到它<!--
+-->对于包含数百个文件和库的大型项目来说，不能很好地扩展。
+除此之外，命令行方法没有向 IDE 解释如何打开这样的项目，
+源所在的位置，使用的依赖项，或依赖项的下载方式等。
 
 <a name="create-gradle-project"></a>
-## Creating a Kotlin/Native Gradle project
+## 创建一个 Kotlin/Native Gradle 工程
 
 The _New Project_ wizard in IntelliJ IDEA can be used to start a new Kotlin/Native project with just one click.
 Check out the _Kotlin_ section and select the _Native | Gradle_ option to generate the project.
@@ -149,7 +149,7 @@ Running the `gradle wrapper` command will complete the project creation.
 explains in detail how to start using Gradle projects.
 
 <a name="open-in-ide"></a>
-## Opening the Project in IDE
+## 在 IDE 中打开这个工程
 
 We are using [IntelliJ IDEA](https://jetbrains.com/idea) for this tutorial.
 Both the [free and open source](https://www.jetbrains.com/idea/features/editions_comparison_matrix.html)
@@ -190,7 +190,7 @@ Use the path to the Java runtime version 1.8 or 11 for the _Gradle JVM_ field. C
 for the best JRE, OpenJDK, or JDK distribution.
 
 <a name="run-in-ide"></a>
-## Running the application
+## 运行应用程序
 
 Usually, a native binary can be compiled as _debug_ with more debug information and fewer optimizations, and _release_
 where optimizations are enabled and there is no (or at least less) debug information available.
@@ -262,7 +262,7 @@ Hello Kotlin/Native!
 BUILD SUCCESSFUL
 ```
 
-## Next Steps
+## 接下来
 
 Kotlin/Native can be used for many
 [targets](targeting-multiple-platforms.html) and applications,
