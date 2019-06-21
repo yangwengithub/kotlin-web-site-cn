@@ -28,7 +28,8 @@ title: "使用 Gradle 构建多平台项目"
 * [默认项目布局](#默认项目布局)
 * [运行测试](#运行测试)
 * [发布多平台库](#发布多平台库)
-* [ Android 支持](#android-支持)
+* [JVM 目标平台中的 Java 支持](#jvm-目标平台中的-java-支持)
+* [Android 支持](#android-支持)
     * [发布 Android 库](#发布-android-库)
 * [使用 Kotlin/Native 目标平台](#使用-kotlinnative-目标平台)
     * [构建最终原生二进制文件](#构建最终原生二进制文件)
@@ -387,7 +388,7 @@ kotlin {
 There are target presets that one can apply using the preset functions, as shown above, for the
 following target platforms:
 
-* `jvm` for Kotlin/JVM. Note: `jvm` targets do not compile Java;
+* `jvm` for Kotlin/JVM;
 * `js` for Kotlin/JS;
 * `android` for Android applications and libraries. Note that one of the Android Gradle 
    plugins should be applied before the target is created;
@@ -1131,8 +1132,7 @@ plugins {
 
 </div>
 
-Once this plugin is applied, default publications are created for each of the targets that can be built on the current host.
-This requires `group` and `version` to be set in the project:
+A library also needs `group` and `version` to be set in the project:
 
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
@@ -1145,8 +1145,13 @@ version = "0.0.1"
 
 </div>
 
-Android library targets, however, don't have any artifacts published by default and need an additional step to configure
+Compared to publishing a plain Kotlin/JVM or Java project, there is no need to create publications manually
+via the `publishing { ... }` DSL. The publications are automatically created for each of the targets that can be
+built on the current host, except for the Android target, which needs an additional step to configure
 publishing, see [发布 Android 库](#发布-android-库).
+
+The repositories where the library will be published are added via the `repositories` block in the `publishing { ... }`
+DSL, as explained in [Maven Publish Plugin. Repositories](https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven:repositories).
 
 The default artifact IDs follow the pattern `<projectName>-<targetNameToLowerCase>`, for example `sample-lib-nodejs`
 for a target named `nodeJs` in a project `sample-lib`.
@@ -1158,9 +1163,10 @@ below.
 
 Also, an additional publication under the name `metadata` is added by default which contains serialized Kotlin
 declarations and is used by the IDE to analyze multiplatform libraries.
+The default artifact ID of this publication is formed as `<projectName>-metadata`.
 
-The Maven coordinates can be altered and additional artifact files may be added to the publication within the
-`targets { ... }` block or using the `publishing { ... }` DSL:
+The Maven coordinates can be altered and additional artifact files may be added to the publications within the
+`targets { ... }` block or the `publishing { ... }` DSL:
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -1220,7 +1226,10 @@ As assembling Kotlin/Native artifacts requires several builds to run on differen
 multiplatform library that includes Kotlin/Native targets needs to be done with that same set of host machines. To avoid
 duplicate publications of modules that can be built on more than one of the platforms
 (like JVM, JS, Kotlin metadata, WebAssembly), the publishing tasks for these modules may be configured to run
-conditionally, for example:
+conditionally.
+
+This simplified example ensures that the JVM, JS, and Kotlin metadata publications are only uploaded when
+`-PisLinux=true` is passed to the build in the command line:
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -1232,17 +1241,13 @@ kotlin {
     mingwX64()
     linuxX64()
 
-    // Given that `-PisLinux=true` command line argument is passed when running on Linux,
-    // these targets get published only from a Linux machine.
     // Note that the Kotlin metadata is here, too.
     // The mingwx64() target is automatically skipped as incompatible in Linux builds.
     configure([targets["metadata"], jvm(), js()]) {
-        mavenPublication { linuxOnlyPublication ->
-            tasks.withType(AbstractPublishToMaven).all {
-                onlyIf {
-                    publication != linuxOnlyPublication || findProperty("isLinux") == "true"
-                }
-            }
+        mavenPublication { targetPublication ->
+            tasks.withType(AbstractPublishToMaven)
+                .matching { it.publication == targetPublication }
+                .all { onlyIf { findProperty("isLinux") == "true" } }
         }
     }
 }
@@ -1261,18 +1266,14 @@ kotlin {
     mingwX64()
     linuxX64()
 
-    // Given that `-PisLinux=true` command line argument is passed when running on Linux,
-    // these targets get published only from a Linux machine.
     // Note that the Kotlin metadata is here, too.
     // The mingwx64() target is automatically skipped as incompatible in Linux builds.
     configure(listOf(metadata(), jvm(), js())) {
         mavenPublication {
-            val linuxOnlyPublication = this@mavenPublication
-            tasks.withType<AbstractPublishToMaven>().all {
-                onlyIf {
-                    publication != linuxOnlyPublication || findProperty("isLinux") == "true"
-                }
-            }
+            val targetPublication = this@mavenPublication
+            tasks.withType<AbstractPublishToMaven>()
+                .matching { it.publication == targetPublication }
+                .all { onlyIf { findProperty("isLinux") == "true" } }
         }
     }
 }
@@ -1283,22 +1284,69 @@ kotlin {
 
 ### Experimental metadata publishing mode
 
-An experimental publishing and dependency consumption mode can be enabled by adding 
-`enableFeaturePreview("GRADLE_METADATA")` to the root project's `settings.gradle` file.
+Gradle module metadata provides rich publishing and dependency resolution features that are used in Kotlin
+multiplatform projects to simplify dependencies configuration for build authors. In particular, the publications of a
+multiplatform library may include a special 'root' module that stands for the whole library and is automatically
+resolved to the appropriate platform-specific artifacts when added as a dependency, as described below.
 
-With Gradle metadata enabled, an additional publication `kotlinMultiplatform` is added which references the target
-publications as its variants. The default artifact ID of this publication matches the project name.
- 
-> Gradle metadata publishing is an experimental Gradle feature which is not guaranteed to be backward-compatible. 
-Future Gradle versions may fail to resolve a dependency to a library published with current versions of Gradle metadata.
-Library authors are recommended to use it to publish experimental versions of the library alongside with the stable publishing mechanism
-until the feature is considered stable. 
+In Gradle 5.3 and above, the module metadata is always used during dependency resolution, but publications don't
+include any module metadata by default. To enable module metadata publishing, add
+`enableFeaturePreview("GRADLE_METADATA")` to the root project's `settings.gradle` file. With older Gradle versions,
+this is also required for module metadata consumption.
+
+> Note that the module metadata published by Gradle 5.3 and above cannot be read by Gradle versions older
+> than 5.3.
 {:.note}
- 
-If a library is published with Gradle metadata enabled and a consumer enables the metadata as well, the consumer may specify a
- single dependency on the library in a common source set, and a corresponding platform-specific variant will be chosen, if available, 
- for each of the compilations. Consider a `sample-lib` library built for the JVM and JS and published with experimental Gradle metadata.
- Then it is enough for the consumers to add `enableFeaturePreview('GRADLE_METADATA')` and specify a single dependency:
+
+With Gradle metadata enabled, an additional 'root' publication named `kotlinMultiplatform` is added to the project's
+publications. The default artifact ID of this publication matches the project name without any additional suffix.
+To configure this publication, access it via the `publishing { ... }` DSL of the `maven-publish` plugin:
+
+<div class="multi-language-sample" data-lang="groovy">
+<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
+```groovy
+kotlin { /* ... */ }
+
+publishing {
+    publications {
+        kotlinMultiplatform {
+            artifactId = "foo"
+        }
+    }
+}
+```
+
+</div>
+</div>
+
+<div class="multi-language-sample" data-lang="kotlin">
+<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+```kotlin
+kotlin { /* ... */ }
+
+publishing {
+    publications {
+        val kotlinMultiplatform by getting {
+            artifactId = "foo"
+        }
+    }
+}
+```
+
+</div>
+</div>
+
+This publication does not include any artifacts and only references the other publications as its variants. However, it
+may need the sources and documentation artifacts if that is required by the repository. In that case, add those artifacts
+by using [`artifact(...)`](https://docs.gradle.org/current/javadoc/org/gradle/api/publish/maven/MavenPublication.html#artifact-java.lang.Object-)
+in the publication's scope, which is accessed as shown above.
+
+If a library has a 'root' publication, the consumer may specify a single dependency on the library as a whole in a
+ common source set, and a corresponding platform-specific variant will be chosen, if available, for each of the
+ compilations that include this dependency. Consider a `sample-lib` library built for the JVM and JS and published with
+ a 'root' publication:
  
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -1311,7 +1359,7 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                // Resolved to the appropriate target modules,
+                // This single dependency is resolved to the appropriate target modules,
                 // for example, `sample-lib-jvm6` for JVM, `sample-lib-js` for JS:
                 api 'com.example:sample-lib:1.0'
             }
@@ -1334,7 +1382,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                // Resolved to the appropriate target modules,
+                // This single dependency is resolved to the appropriate target modules,
                 // for example, `sample-lib-jvm6` for JVM, `sample-lib-js` for JS:
                 api("com.example:sample-lib:1.0")
             }
@@ -1345,6 +1393,9 @@ kotlin {
 
 </div>
 </div>
+
+This requires that the consumer's Gradle build can read Gradle module metadata, either using Gradle 5.3+ or explicitly
+enabling it by `enableFeaturePreview("GRADLE_METADATA")` in `settings.gradle`.
 
 ### Disambiguating targets
 
@@ -1437,10 +1488,61 @@ configurations {
 </div>
 </div>
 
-Alternatively, if a dependency library is published with experimental Gradle metadata, one can still replace the
-single dependency with unambiguous dependencies on its separate target modules, as if it had no experimental
-Gradle metadata. This way, the dependency will also be published in the specified way, so the consumers won't encounter
-any ambiguity.
+## JVM 目标平台中的 Java 支持
+
+This feature is available since Kotlin 1.3.40.
+
+By default, a JVM target ignores Java sources and only compiles Kotlin source files.
+To include Java sources in the compilations of a JVM target, or to apply a Gradle plugin that requires the
+`java` plugin to work, you need to explicitly enable Java support for the target:
+
+<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+```kotlin
+kotlin {
+    jvm {
+        withJava()
+    }
+}
+```
+
+</div>
+
+This will apply the Gradle `java` plugin and configure the target to cooperate with it.
+Note that just applying the Java plugin without specifying `withJava()` in a JVM
+target will have no effect on the target.
+
+The file system locations for the Java sources are different from  the `java` plugin's defaults.
+The Java source files need to be placed in the sibling directories of the Kotlin source
+roots. For example, if the JVM target has the default name `jvm`, the paths are:
+
+<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+```
+src
+├── jvmMain
+│   ├── java // production Java sources
+│   ├── kotlin
+│   └── resources
+├── jvmTest
+│   ├── java // test Java sources
+│   ├── kotlin
+…   └── resources
+```
+
+</div>
+
+The common source sets cannot include Java sources.
+
+Due to the current limitations, some tasks configured by the Java plugin are disabled, and the corresponding tasks added
+by the Kotlin plugin are used instead:
+
+* `jar` is disabled in favor of the target's JAR task (e.g. `jvmJar`)
+* `test` is disabled, and the target's test task is used (e.g. `jvmTest`)
+* `*ProcessResources` tasks are disabled, and the resources are processed by the equivalent tasks of the compilations
+
+The publication of this target is handled by the Kotlin plugin and doesn't require the steps that are specific to the
+Java plugin, such as manually creating a publication and configuring it as `from(components.java)`.
 
 ##  Android 支持
 
@@ -1636,7 +1738,8 @@ all native platforms):
 
 |**Factory method**|**Binary kind**|**Available for**|
 | --- | --- | --- |
-|`executable` |an executable program    |all native targets|
+|`executable` |a product executable    |all native targets|
+|`test`       |a test executable       |all native targets| 
 |`sharedLib`  |a shared native library |all native targets except `wasm32`|
 |`staticLib`  |a static native library  |all native targets except `wasm32`|
 |`framework`  |an Objective-C framework |macOS and iOS targets only|
@@ -1750,57 +1853,12 @@ binaries {
 The first argument in this example allows one to set a name prefix for the created binaries which is used to access them in the buildscript (see the ["Accessing binaries"](#accessing-binaries) section).
 Also this prefix is used as a default name for the binary file. For example on Windows the sample above produces files `foo.exe` and `bar.exe`.
 
-#### Using binary declaration APIs introduced in 1.3
-
-> __Important:__ The approach described in this section is deprecated in Kotlin 1.3.30 and will not be available since Kotlin 1.3.40. Consider using the [`binaries`](#declaring-binaries) block instead.
-
-It is possible to use the binary declaration APIs introduced in 1.3 in addition to the binaries DSL. One can specify one or more of
-the `outputKinds` for a compilation using these APIs. The following output kinds are available:
-
-* `executable` for an executable program;
-* `dynamic` for a dynamic library;
-* `static` for a static library;
-* `framework` for an Objective-C framework (only supported for macOS and iOS targets)
-
-This can be done as follows:
-
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
-
-```groovy
-kotlin {
-    linuxX64 { // Use your target instead
-        compilations.main.outputKinds("executable") // could also be "static", "dynamic" or "framework".
-    }
-}
-```
-
-</div>
-</div>
-
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
-
-```kotlin
-kotlin {
-    linuxX64 { // Use your target instead
-        compilations["main"].outputKinds("executable") // could also be "static", "dynamic" or "framework".
-    }
-}
-```
-
-</div>
-</div>
-
-This creates binaries with corresponding types and the compilation name as name prefixes in the `binaries` container. But note that such
-binaries are created after project evaluation so they are available only in an `afterEvaluate` code block.
-
 #### Accessing binaries
 
 The binaries DSL allows not only creating binaries but also accessing already created ones to configure them or get their properties
 (e.g. path to an output file). The `binaries` collection implements the
 [`DomainObjectSet`](https://docs.gradle.org/current/javadoc/org/gradle/api/DomainObjectSet.html) interface and provides methods like
-`all` or `matching` allowing configuring groups of elements .
+`all` or `matching` allowing configuring groups of elements.
 
 Also it's possible to get a certain element of the collection. There are two ways to do this. First, each binary has a unique
 name. This name is based on the name prefix (if it's specified), build type and binary kind according to the following pattern:
@@ -1849,7 +1907,8 @@ The second way is using typed getters. These getters allow one to access a binar
 ```groovy
 // Fails if there is no such a binary.
 binaries.getExecutable('foo', DEBUG)
-binaries.getExecutable('', DEBUG)    // Use an empty string if the name prefix isn't set.
+binaries.getExecutable(DEBUG)          // Skip the first argument if the name prefix isn't set.
+binaries.getExecutable('bar', 'DEBUG') // You also can use a string for build type.
 
 // Similar getters are available for other binary kinds:
 // getFramework, getStaticLib and getSharedLib.
@@ -1870,7 +1929,8 @@ binaries.findExecutable('foo', DEBUG)
 ```kotlin
 // Fails if there is no such a binary.
 binaries.getExecutable("foo", DEBUG)
-binaries.getExecutable("", DEBUG)    // Use an empty string if the name prefix isn't set.
+binaries.getExecutable(DEBUG)          // Skip the first argument if the name prefix isn't set.
+binaries.getExecutable("bar", "DEBUG") // You also can use a string for build type.
 
 // Similar getters are available for other binary kinds:
 // getFramework, getStaticLib and getSharedLib.
@@ -1885,13 +1945,23 @@ binaries.findExecutable("foo", DEBUG)
 </div>
 </div>
 
+> Note: Before 1.3.40, both test and product executables were represented by the same binary type. Thus to access the default test binary created by the plugin, the following line was used:
+> ```
+> binaries.getExecutable("test", "DEBUG")
+> ``` 
+> Since 1.3.40, test executables are represented by a separate binary type and have their own getter. To access the default test binary, use:
+> ```
+> binaries.getTest("DEBUG")
+> ```
+{:.note}
+ 
 
 #### Configuring binaries
 
 Binaries have a set of properties allowing one to configure them. The following options are available:
 
- - **Compilation.** Each binary is built on basis of some compilation available in the same target. The `main` compilation is used by
- default but a user can specify another one.
+ - **Compilation.** Each binary is built on basis of some compilation available in the same target. The default value of this parameter depends
+ on the binary type: `Test` binaries are based on the `test` compilation while other binaries - on the `main` compilation.
  - **Linker options.** Options passed to a system linker during binary building. One can use this setting to link against some native library.
  - **Output file name.** By default the output file name is based on binary name prefix or, if the name prefix isn't specified, on a project name.
  But it's possible to configure the output file name independently using the `baseName` property. Note that final file name will be formed
@@ -1914,7 +1984,7 @@ The following example shows how to use these settings.
 
 ```groovy
 binaries {
-    executable('test', [RELEASE]) {
+    executable('my_executable', [RELEASE]) {
         // Build a binary on the basis of the test compilation.
         compilation = compilations.test
 
@@ -1943,13 +2013,6 @@ binaries {
         isStatic = true
     }
 }
-
-// Note that the test task created by default is also a run task.
-// So you can access it using the same property.
-def testTask = binaries.getExecutable("test", DEBUG).runTask
-task processTests {
-    dependsOn(testTask)
-}
 ```
 
 </div>
@@ -1960,7 +2023,7 @@ task processTests {
 
 ```kotlin
 binaries {
-    executable("test", listOf(RELEASE)) {
+    executable("my_executable", listOf(RELEASE)) {
         // Build a binary on the basis of the test compilation.
         compilation = compilations["test"]
 
@@ -1989,12 +2052,6 @@ binaries {
         isStatic = true
     }
 }
-
-// Note that the test task created by default is also a run task.
-// So you can access it using the same property.
-val testTask = binaries.getExecutable("test", DEBUG).runTask
-val processTests by tasks.creating
-processTests.dependsOn(testTask)
 ```
 
 </div>
