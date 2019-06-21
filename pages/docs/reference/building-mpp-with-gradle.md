@@ -1302,8 +1302,8 @@ With Gradle metadata enabled, an additional 'root' publication named `kotlinMult
 publications. The default artifact ID of this publication matches the project name without any additional suffix.
 To configure this publication, access it via the `publishing { ... }` DSL of the `maven-publish` plugin:
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
+> Groovy DSL
 
 ```groovy
 kotlin { /* ... */ }
@@ -1317,11 +1317,11 @@ publishing {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+
+
+> Kotlin DSL
 
 ```kotlin
 kotlin { /* ... */ }
@@ -1335,8 +1335,8 @@ publishing {
 }
 ```
 
-</div>
-</div>
+
+
 
 This publication does not include any artifacts and only references the other publications as its variants. However, it
 may need the sources and documentation artifacts if that is required by the repository. In that case, add those artifacts
@@ -1496,7 +1496,7 @@ By default, a JVM target ignores Java sources and only compiles Kotlin source fi
 To include Java sources in the compilations of a JVM target, or to apply a Gradle plugin that requires the
 `java` plugin to work, you need to explicitly enable Java support for the target:
 
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
 
 ```kotlin
 kotlin {
@@ -1506,7 +1506,7 @@ kotlin {
 }
 ```
 
-</div>
+
 
 This will apply the Gradle `java` plugin and configure the target to cooperate with it.
 Note that just applying the Java plugin without specifying `withJava()` in a JVM
@@ -1516,7 +1516,7 @@ The file system locations for the Java sources are different from  the `java` pl
 The Java source files need to be placed in the sibling directories of the Kotlin source
 roots. For example, if the JVM target has the default name `jvm`, the paths are:
 
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
 
 ```
 src
@@ -1530,7 +1530,7 @@ src
 …   └── resources
 ```
 
-</div>
+
 
 The common source sets cannot include Java sources.
 
