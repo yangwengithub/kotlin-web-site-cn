@@ -12,14 +12,14 @@ title: "使用 Gradle"
 ## 插件与版本
 
 使用 [Gradle 插件 DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block) 应用 Kotlin Gradle 插件。
-Kotlin Gradle 插件 1.3.31 适用于 Gradle 4.1 及更高版本。
+Kotlin Gradle 插件 1.3.40 适用于 Gradle 4.1 及更高版本。
 
 > Groovy DSL
 
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.＜……＞' version '1.3.31'
+    id 'org.jetbrains.kotlin.＜……＞' version '1.3.40'
 }
 ```
 
@@ -31,7 +31,7 @@ plugins {
 
 ```kotlin
 plugins {
-    kotlin("＜……＞") version "1.3.31"
+    kotlin("＜……＞") version "1.3.40"
 }
 ```
 
@@ -52,12 +52,12 @@ buildscript {
     }
 
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.31"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.40"
     }
 }
 
 plugins {
-    id "org.jetbrains.kotlin.＜……＞" version "1.3.31"
+    id "org.jetbrains.kotlin.＜……＞" version "1.3.40"
 }
 ```
 
@@ -74,7 +74,7 @@ buildscript {
     }
 
     dependencies {
-        classpath(kotlin("gradle-plugin", version = "1.3.31"))
+        classpath(kotlin("gradle-plugin", version = "1.3.40"))
     }
 }
 plugins {
@@ -101,7 +101,7 @@ plugins {
 
 ```groovy
 plugins {
-    id "org.jetbrains.kotlin.jvm" version "1.3.31"
+    id "org.jetbrains.kotlin.jvm" version "1.3.40"
 }
 ```
 
@@ -113,7 +113,7 @@ plugins {
 
 ```kotlin
 plugins {
-    kotlin("jvm") version "1.3.31"
+    kotlin("jvm") version "1.3.40"
 }
 ```
 
@@ -187,7 +187,7 @@ sourceSets["main"].withConvention(KotlinSourceSet::class) {
 
 ``` groovy
 plugins {
-    id 'kotlin2js' version '1.3.31'
+    id 'kotlin2js' version '1.3.40'
 }
 ```
 
@@ -199,7 +199,7 @@ plugins {
 
 ```kotlin
 plugins {
-    id("kotlin2js") version "1.3.31"
+    id("kotlin2js") version "1.3.40"
 }
 ```
 
@@ -290,7 +290,7 @@ Android 的 Gradle 模型与普通 Gradle 有点不同，所以如果我们要�
 
 ```groovy
 buildscript {
-    ext.kotlin_version = '1.3.31'
+    ext.kotlin_version = '1.3.40'
 
     ……
 
@@ -316,7 +316,7 @@ plugins {
 buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:3.2.1")
-        classpath(kotlin("gradle-plugin", version = "1.3.31"))
+        classpath(kotlin("gradle-plugin", version = "1.3.40"))
     }
 }
 plugins {
@@ -328,7 +328,7 @@ plugins {
 
 
 
-Kotlin Gradle 插件 1.3.31 适用于 Android Gradle 插件 3.0 及更高版本。
+Kotlin Gradle 插件 1.3.40 适用于 Android Gradle 插件 3.0 及更高版本。
 
 不要忘记配置[标准库依赖关系](#配置依赖)。
 
