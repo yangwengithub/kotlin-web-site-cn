@@ -97,7 +97,7 @@ Groovy 语言是被 Gradle 脚本支持时间最长的语言，
 -->通过 Groovy 的动态特性来提供有用的预测或<!--
 -->代码补全。
 
-Kotlin 作为一种静态类型的编程语言非常适合写作
+Kotlin 作为一种静态类型的编程语言非常适合编写
 Gradle 构建脚本。
 由于静态类型推断，Kotlin 编译器可以更早地检测到错误<!--
 -->以及显示重要的编译错误消息和警告。
@@ -151,52 +151,52 @@ Gradle 构建文件中添加下面的内容：
 <a name="open-in-ide"></a>
 ## 在 IDE 中打开这个工程
 
-We are using [IntelliJ IDEA](https://jetbrains.com/idea) for this tutorial.
-Both the [free and open source](https://www.jetbrains.com/idea/features/editions_comparison_matrix.html)
-IntelliJ IDEA [Community Edition](https://www.jetbrains.com/idea/download) and
-IntelliJ IDEA Ultimate Edition work for this tutorial.
-We can download and install both of them from [https://jetbrains.com/idea/download](https://jetbrains.com/idea/download) if necessary.
-The Kotlin plugin is included with IntelliJ IDEA by default, but still, we need to make sure the Kotlin plugin version
-is {{ site.data.releases.latest.version }} (or newer) in the _Settings_ or _Preferences_ dialog, under
-the Language & Frameworks | Kotlin section.
+在本教程中我们使用 [IntelliJ IDEA](https://jetbrains.com/idea)。
+同时包括[自由与开源](https://www.jetbrains.com/idea/features/editions_comparison_matrix.html)的
+IntelliJ IDEA [社区版本](https://www.jetbrains.com/idea/download)以及
+IntelliJ IDEA 终极版。
+如果有必要的话我们可以在 [https://jetbrains.com/idea/download](https://jetbrains.com/idea/download) 同时下载并安装它们两者。
+在 IntelliJ IDEA 中 Kotlin 插件已经被默认包含，但是我们仍然需要确保在 Language & Frameworks | Kotlin 选项下的
+_Settings_ 或 _Preferences_ 的弹窗中 Kotlin 插件的版本是
+{{ site.data.releases.latest.version }}（或者更新）。
 
 
-At this point, we should have a Gradle project that is ready to be opened in an IDE.
-IntelliJ IDEA (CLion, AppCode, or AndroidStudio) helps us to generate the
+此时，我们应该有一个可以在 IDE 中打开的 Gradle 工程。
+IntelliJ IDEA（CLion、AppCode 或 AndroidStudio）将帮助我们的工程生成一个
 [Gradle Wrapper](https://docs.gradle.org/current/userguide/gradle_wrapper.html)
-scripts for our project.
+脚本。
 
-Now let's open the project in IntelliJ IDEA. For that we click on the File | Open... and select
-our
+现在让我们在 IntelliJ IDEA 中打开这个工程。为此我们点击 File | Open... 并选择
+我们的
 <span class="multi-language-span" data-lang="kotlin">
 `build.gradle.kts`
 </span><span class="multi-language-span" data-lang="groovy">
 `build.gradle`
 </span>
-project file.
+工程文件。
 
-![Open Project Dialog]({{ url_for('tutorial_img', filename='native/basic-kotlin-native/idea-open-as-project.png')}}){: width="70%"}
+![打开工程弹窗]({{ url_for('tutorial_img', filename='native/basic-kotlin-native/idea-open-as-project.png')}}){: width="70%"}
 
-Confirm to open the file _as Project_.
+确认 _作为工程_ 打开文件。
 
-![Gradle Import Dialog]({{ url_for('tutorial_img', filename='native/basic-kotlin-native/idea-import-gradle.png')}})
+![Gradle 导入弹窗]({{ url_for('tutorial_img', filename='native/basic-kotlin-native/idea-import-gradle.png')}})
 
-Select _Use gradle 'wrapper' task configuration_ option in the Gradle import dialog to complete the import.
-For existing projects, which already have Gradle wrapper scripts, the _Use default Gradle wrapper_
-option should be selected instead.
+在 Gradle 导入弹窗中选择 _Use gradle 'wrapper' task configuration_ 选项来完成导入。
+对于已有 Gradle wrapper 脚本的现有项目，则应该选择 _Use default Gradle wrapper_
+选项替代之。
 
-Use the path to the Java runtime version 1.8 or 11 for the _Gradle JVM_ field. Check out the
-[https://jdk.java.net/11](https://jdk.java.net/11/) or [https://adoptopenjdk.net/](https://adoptopenjdk.net/)
-for the best JRE, OpenJDK, or JDK distribution.
+为 _Gradle JVM_ 属性使用 Java 运行时版本 1.8 或 11 的路径。查看
+[https://jdk.java.net/11](https://jdk.java.net/11/) 或者 [https://adoptopenjdk.net/](https://adoptopenjdk.net/)
+来确认最优的 JRE、OpenJDK 或 JDK 发行版的版本。
 
 <a name="run-in-ide"></a>
 ## 运行应用程序
 
-Usually, a native binary can be compiled as _debug_ with more debug information and fewer optimizations, and _release_
-where optimizations are enabled and there is no (or at least less) debug information available.
-The binary files are created in the `build/bin/native/debugExecutable` or `build/bin/native/releaseExecutable`
-folders respectively. The file has a `.kexe` extension on Linux and macOS and an `.exe` extension on Windows. Use the following command
-to instruct the build to produce binaries:
+通常，一个原生可以被编译为 _debug_ 版本，这时它拥有更多的调试信息以及更少的优化，而 _release_
+会有更多的优化被启用并且没有（或者至少是更少的）调试信息。
+二进制文件会在 `build/bin/native/debugExecutable` 以及 `build/bin/native/releaseExecutable`
+目录下分别被创建。该文件在 Linux 以及 macOS 上会拥有一个 `.kexe` 扩展名，而在 Windows 上的扩展名则是 `.exe`。使用以下命令<!--
+-->指示构建生成二进制文件：
 
 <div class="multi-language-sample" data-os="linux">
 <div class="sample" markdown="1" theme="idea" mode='bash' data-highlight-only>
@@ -225,35 +225,35 @@ gradlew.bat build
 </div>
 </div>
 
-It's important to understand that this is now a native application, and no
-runtime or virtual machine is required.
-We can now run the compiled binary from the console:
+重要的是要了解这是一个原生应用程序，所以不需要<!--
+-->运行时环境或虚拟机。
+我们现在可以从控制台运行已编译的二进制文件：
 
 ```
 Hello Kotlin/Native!
 ```
 
-In addition to the build tasks, the Gradle build includes helpful
-tasks to run the application directly via
-`runDebugExecutableNative` and `runReleaseExecutableNative`.
+除了构建任务之外，Gradle 构建还包括帮助<!--
+-->通过直接运行应用程序的任务
+`runDebugExecutableNative` 以及 `runReleaseExecutableNative`。
 
-The names of these tasks were created from the formula:
-`run[Debug|Release]Executable<target name>`,
-where `target name` is the capitalized target name that we specified in the
+这些任务的名称是根据公式创建的：
+`run[Debug|Release]Executable<target name>`，
+其中 `target name` 我们在构建脚本中指定的大写目标名称：
 <span class="multi-language-span" data-lang="kotlin">
 `build.gradle.kts`
 </span><span class="multi-language-span" data-lang="groovy">
 `build.gradle`
 </span>
-file out of our build, `"native"` in our case.
-Let's run the task in the IDE. For that, let's open the Gradle Tool Window
-and find the task in the list:
+在我们的案例中，`"native"` 是构建后输出的文件。
+让我们在 IDE 中运行任务。 为此，让我们打开 Gradle Tool 窗口
+并在列表中找到任务：
 ![Gradle Import Dialog]({{ url_for('tutorial_img', filename='native/basic-kotlin-native/idea-run-gradle-task.png')}})
 
-Alternatively, we may call the following command from the console:
+或者，我们可以从控制台调用以下命令：
 [[include pages-includes/docs/tutorials/native/runDebugExecutableNative.md]]
 
-The output should be:
+输出应该是：
 
 ```
 > Task :runDebugExecutableNative
@@ -264,17 +264,17 @@ BUILD SUCCESSFUL
 
 ## 接下来
 
-Kotlin/Native can be used for many
-[targets](targeting-multiple-platforms.html) and applications,
-including, but not limited to
-macOS, Windows, Linux, and [iOS](/docs/tutorials/native/mpp-ios-android.html).
+Kotlin/Native 可以被用于许多<!--
+-->[目标平台](targeting-multiple-platforms.html)或应用程序，
+包括但不限于
+macOS、Windows、Linux 以及 [iOS](/docs/tutorials/native/mpp-ios-android.html)。
 
-Calling C, Objective-C, or Swift from Kotlin/Native is easy. Take a look at
-the [C Interop documentation](/docs/reference/native/c_interop.html) or
-[Objective-C and Swift](/docs/reference/native/objc_interop.html) interop
-documentation or check out one of our tutorials.
+调用 C、Objective-C 或 Swift 在 Kotlin/Native 中是非常简单的。只需要查看<!--
+-->我们的文档中的 [C 互操作文档](/docs/reference/native/c_interop.html)或
+[Objective-C 与 Swift](/docs/reference/native/objc_interop.html) 互操作<!--
+-->文档。
 
-With Kotlin [multiplatform](/docs/reference/multiplatform.html) projects, it is possible to
-share the same Kotlin code between all the supported platforms.
-Check out the tutorial on [sharing Kotlin code between iOS and Android](/docs/tutorials/native/mpp-ios-android.html)
-or have a look at how to build your own [multiplatform library](/docs/tutorials/multiplatform-library.html).
+至于 Kotlin [多平台](/docs/reference/multiplatform.html)项目，它可以用于<!--
+-->将 Kotlin 代码共享至所有支持的平台。
+查看文档[在 iOS 与 Android 之间共享 Kotlin 代码](/docs/tutorials/native/mpp-ios-android.html)
+或者查看如何构建自己的[多平台库](/docs/tutorials/multiplatform-library.html)。
