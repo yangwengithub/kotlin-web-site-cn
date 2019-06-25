@@ -79,74 +79,74 @@ kotlinc-native hello.kt -o hello
 <a name="create-gradle-project"></a>
 ## 创建一个 Kotlin/Native Gradle 工程
 
-The _New Project_ wizard in IntelliJ IDEA can be used to start a new Kotlin/Native project with just one click.
-Check out the _Kotlin_ section and select the _Native | Gradle_ option to generate the project.
-For a better understanding and to explain what's happening, in this tutorial we'll create the project manually.
+我们只需点击 IntelliJ IDEA 中的 _New Project_ 引导项，就可以创建一个新的 Kotlin/Native 工程。
+点击 _Kotlin_ 选项，并选择 _Native | Gradle_ 配置项来生成工程。
+为了更好地理解和解释正在发生的事情，在本教程中我们将手动创建工程。
 
-Let's first create a project folder. All the paths in this tutorial will be relative to this folder. Sometimes
-the missing directories will have to be created before new files are added.
+让我们首先创建一个工程文件夹。本教程中的所有路径都与此文件夹相关。有时<!--
+-->在添加新文件之前，必须创建缺少的目录。
 
-Gradle supports two languages for the build scripts. We have the following
-options:
-- Groovy scripts in `build.gradle` files
-- Kotlin scripts in `build.gradle.kts` files
+Gradle 的构建脚本支持两种语言。我们有以下的两种<!--
+-->选项：
+- `build.gradle` 文件中的 Groovy 脚本
+- `build.gradle.kts` 文件中的 Kotlin 脚本
 
-Groovy language is the oldest supported scripting language for Gradle,
-it leverages the power of the dynamic typing and runtime features of the language.
-Sometimes it can be harder to maintain Groovy build scripts. IDEs are struggling
-to get through the dynamism of Groovy to provide helpful insights or
-code completion.
+Groovy 语言是被 Gradle 脚本支持时间最长的语言，
+它利用了语言的动态类型以及运行时特性的强大功能。
+有时维护 Groovy 构建脚本可能会更困难。IDE 正在苦苦挣扎于<!--
+-->通过 Groovy 的动态特性来提供有用的预测或<!--
+-->代码补全。
 
-Kotlin as a statically typed programming language plays well for writing
-Gradle build scripts.
-Thanks to the static type inference, the Kotlin compiler detects errors earlier and
-shows important compilation error messages and warnings.
-Both an IDE and the compiler can use the information about types to infer
-the available functions and properties in a given scope.
+Kotlin 作为一种静态类型的编程语言非常适合写作
+Gradle 构建脚本。
+由于静态类型推断，Kotlin 编译器可以更早地检测到错误<!--
+-->以及显示重要的编译错误消息和警告。
+IDE 与编译器都可以使用有关类型的信息进行推断<!--
+-->给定范围内的可用函数与属性。
 
-We create
+我们创建
 <span class="multi-language-span" data-lang="groovy">
 `build.gradle`
 </span>
 <span class="multi-language-span" data-lang="kotlin">
 `build.gradle.kts`
 </span>
-Gradle build file with the following contents:
+Gradle 构建文件中添加下面的内容：
 [[include pages-includes/docs/tutorials/native/basic-kotlin-native-app-codeblocks-code.md]]
 
-The prepared project sources can be directly downloaded from
+准备好的工程源可以直接下载
 [[include pages-includes/docs/tutorials/native/basic-kotlin-native-app-codeblocks-link.md]]
 
-Now need to create an empty
+现在需要在工程根目录创建一个空的
 <span class="multi-language-span" data-lang="kotlin">
 `settings.gradle.kts`
 </span><span class="multi-language-span" data-lang="groovy">
 `settings.gradle`
 </span>
-file in the project root directory.
+文件
 
-Depending on the target platform, we use different [functions](/docs/reference/building-mpp-with-gradle.html),
-e.g. `macosX64`, `mingwX64`, `linuxX64`, `iosX64`,
-to create the Kotlin target. The function name is the platform which we are compiling our code for.
-These functions optionally take the target name as a parameter, which is `"native"` in our case.
-The specified _target name_ is used to generate the source paths and task names in the project.
+根据目标平台，我们使用不同的[函数](/docs/reference/building-mpp-with-gradle.html)，
+例如 `macosX64`、`mingwX64`、`linuxX64`、`iosX64`，
+来创建一个 Kotlin 目标。函数名称是我们编译代码的平台。
+这些函数可选地将目标名称作为参数，在我们的例子中是 `"native"`。
+指定的 _目标平台名称_ 用于在项目中生成源路径以及任务名称。
 
-By the convention, all sources are located in the `src/<target name>[Main|Test]/kotlin` folders.
-It creates _main_ and _test_ source sets for every target. Let's place the `hello.kt`
-we previously created into the _main_ source set folder, which is `src/nativeMain/kotlin`.
-The `nativeMain` folder comes from the `"native"` target name, which we specified in the build script above.
+按照惯例，所有的源都位于 `src/<target name>[Main|Test]/kotlin` 文件夹。
+它为每个目标平台都创建了 _main_ 以及 _test_ 源集。让我们将 `hello.kt` 放置到<!--
+-->我们之前在 `src/nativeMain/kotlin` 中创建的 _main_ 源集文件夹。
+该 `nativeMain` 文件夹名称来源于我们在上面的构建脚本中指明的 `"native"` 目标平台名称。
 
-The project is ready. The next step is to open it in IntelliJ IDEA. For advanced build scenarios,
-it is recommended to refer to the
-[more detailed](/docs/reference/building-mpp-with-gradle.html#setting-up-a-multiplatform-project)
-documentation.
+工程已经准备好了。下一步是在 IntelliJ IDEA 中打开它。关于高级的构建场景，
+建议参考<!--
+-->[更多细节](/docs/reference/building-mpp-with-gradle.html#setting-up-a-multiplatform-project)<!--
+-->文档。
 
-Anyone wanting to continue on without an IDE, will need to download and install the
-[Gradle](https://gradle.org) build tool.
-Make sure to use the right version of Gradle (e.g. {{ site.data.releases.tutorials.native.gradle_version }} or newer).
-Running the `gradle wrapper` command will complete the project creation.
-[Getting Started with Gradle](https://docs.gradle.org/current/userguide/getting_started.html)
-explains in detail how to start using Gradle projects.
+任何想要在没有 IDE 的情况下继续使用的人都需要下载并安装
+[Gradle](https://gradle.org) 构建工具。
+确保使用正确的 Gradle 版本（例如 {{ site.data.releases.tutorials.native.gradle_version }} 或者更新）。
+当工程完成创建时运行 `gradle wrapper` 命令。
+[从 Gradle 开始](https://docs.gradle.org/current/userguide/getting_started.html)
+有更多关于如何开始使用 Gradle 工程的说明。
 
 <a name="open-in-ide"></a>
 ## 在 IDE 中打开这个工程
