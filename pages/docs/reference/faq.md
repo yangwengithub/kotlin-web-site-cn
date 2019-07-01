@@ -117,7 +117,7 @@ Kotlin 主要由 JetBrains 的一个工程师团队开发（目前团队规模�
 
 ### 有没有关于 Kotlin 的书？
 
-已经有[一些](/docs/books.html)关于 Kotlin 的书籍。其中包括由 Kotlin 团队成员 Dmitry Jemerov 和 Svetlana Isakova 合著的 [Kotlin in Action](https://www.manning.com/books/kotlin-in-action)、
+已经有[一些](/docs/books.html)关于 Kotlin 的图书。其中包括由 Kotlin 团队成员 Dmitry Jemerov 和 Svetlana Isakova 合著的 [Kotlin in Action](https://www.manning.com/books/kotlin-in-action)、
 面向 Android 开发人员的 [Kotlin for Android Developers](https://leanpub.com/kotlin-for-android-developers)。
 
 ### Kotlin 有没有在线课程？

@@ -49,8 +49,8 @@ title: "Reference"
           </ul>
       </div>
       <div style="padding: 5px;">
-          <h3 style="font-weight: bold">书籍</h3>
-          <p><a href="/docs/books.html">这些书</a>很好地覆盖了 Kotlin 的各个方面，可以看这些书来学习：</p>
+          <h3 style="font-weight: bold">图书</h3>
+          <p><a href="/docs/books.html">这些图书</a>很好地覆盖了 Kotlin 的各个方面，可以看这些书来学习：</p>
           <ul>
               <li class="start"> <a style="text-decoration: none;" href="https://www.amazon.com/Kotlin-Programming-Nerd-Ranch-Guide/dp/0135161630">Kotlin Programming: The Big Nerd Ranch Guide</a> </li>
               <li class="migrate"> <a style="text-decoration: none;" href="https://leanpub.com/kotlin-for-android-developers">Kotlin for Android Developers</a> </li>
