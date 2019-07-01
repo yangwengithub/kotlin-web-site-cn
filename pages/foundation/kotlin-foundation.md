@@ -20,7 +20,7 @@ Kotlin 基金会的主要职能是：
 
 **商标**。Kotlin 商标以及相关标志、徽标与域名都属于 Kotlin 基金会。
 基金会允许根据<!--
--->[《Kotlin 品牌使用指南》](http://kotlinlang.org/foundation/guidelines.html)使用商标。所有<!--
+-->[《Kotlin 品牌使用指南》](/foundation/guidelines.html)使用商标。所有<!--
 -->不允许自动使用的用途都需要得到基金会的明确书面许可。
 
 <a name="lead-designer"></a>
