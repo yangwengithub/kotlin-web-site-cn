@@ -35,6 +35,7 @@ Kotlin 新手？可以看看[入门](basic-syntax.html)页。
 推荐的教程：
 - [你的第一个 Kotlin 协程程序](../tutorials/coroutines/coroutines-basic-jvm.html)
 - [异步程序设计](../tutorials/coroutines/async-programming.html)
+- [协程与通道简介](https://play.kotlinlang.org/hands-on/Introduction%20to%20Coroutines%20and%20Channels/01_Introduction)动手实验室
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
     <img src="/assets/images/landing/native/try.png" height="38p" width="55" style="margin-right: 10px;">
