@@ -33,8 +33,8 @@ fun MutableList<Int>.swap(index1: Int, index2: Int) {
 
 
 ```kotlin
-val l = mutableListOf(1, 2, 3)
-l.swap(0, 2) // “swap()”内部的“this”得到“l”的值
+val list = mutableListOf(1, 2, 3)
+list.swap(0, 2) // “swap()”内部的“this”会保存“list”的值
 ```
 
 

@@ -35,7 +35,7 @@ issue: EVAN-6029
 
 # 搭建本地环境
 
-* 我们将使用 [Android Studio](https://developer.android.com/studio/) 来讲解 Android 部分的内容. 
+* 我们将使用 [Android Studio](https://developer.android.com/studio/) 来讲解 Android 部分的内容.
 当然也可以使用 [IntelliJ IDEA](https://jetbrains.com/idea) 社区版或终级版。
 
 * IDE 应该安装了 Kotlin 插件 1.3.21 或更高版本。这个可以通过
@@ -49,13 +49,13 @@ IDE 的 *Settings*（或*Preferences*）中的 *Language & Frameworks | Kotlin U
 
 # 创建一个 Android 工程
 
-我们将通过 *Start New Android Project* 来创建一个 Android 工程。如果使用 IntelliJ IDEA，我们需要在左边的 *New Project* 
+我们将通过 *Start New Android Project* 来创建一个 Android 工程。如果使用 IntelliJ IDEA，我们需要在左边的 *New Project*
 向导面板中选择 *Android*。
 
 重要的一点是你需要确保勾选了 *Include Kotlin support* 选择框。现在我们可以在向导的下一步中<!--
 -->保留默认设置。我们接下来选择 *Empty Activity* 选项并点击 *Next*，最后点击 *Finish*。
 
-**注意** 如果使用早期发行版或者 EAP 版本的 Kotlin plugin，IDE 在生成工程的时候可能会失败， 
+**注意** 如果使用早期发行版或者 EAP 版本的 Kotlin plugin，IDE 在生成工程的时候可能会失败，
 给 Gradle 抛出 [error](https://youtrack.jetbrains.com/issue/KT-18835#focus=streamItem-27-2718879-0-0)。
 这是因为 `build.gradle` 文件中没有引用正确的 Maven 库，可以通过将以下代码 *两次* 添加到每个 `repositories { .. }`
 块中来解决。
@@ -82,7 +82,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-4.7-all.zip
 # 创建共享模块
 
 这部分教程的目标是演示在 Android 与 iOS 之间复用 Kotlin 源码。让我们从在
-Gradle 工程中创建一个 `SharedCode` 子工程开始。`SharedCode` 工程中的源码<!--
+Gradle 工程中手动创建一个 `SharedCode` 子工程开始。`SharedCode` 工程中的源码<!--
 -->将被在两个平台之间共享。
 我们将在工程中创建几个新文件来实现这个目标。
 
@@ -90,7 +90,8 @@ Gradle 工程中创建一个 `SharedCode` 子工程开始。`SharedCode` 工程�
 
 我们想要使每个平台都根据平台自身展示相似的文本：`Kotlin Rocks on Android` 以及
 `Kotlin Rocks on iOS`。我们将复用生成消息的方式。
-让我们在 `SharedCode/src/commonMain/kotlin/common.kt` 下创建一个 main 文件。
+Let's create the file (and missing directories) `SharedCode/src/commonMain/kotlin/common.kt` with the following contents
+under the project root directory
 
 <div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -110,7 +111,7 @@ fun createApplicationScreenMessage() : String {
 -->提供来自 `expect fun platformName（）：String` 函数的平台名称。我们将同时在
 Android 与 iOS 应用中使用 `createApplicationScreenMessage`。
 
-现在，我们需要在 `SharedCode/src/androidMain/kotlin/actual.kt` 中为 Android 创建相应的实现：
+现在，我们需要在 `SharedCode/src/androidMain/kotlin/actual.kt` 中为 Android 创建相应的实现文件（与缺失的目录）：
 <div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only="1" auto-indent="false">
 
 ```kotlin
@@ -123,7 +124,7 @@ actual fun platformName(): String {
 ```
 </div>
 
-我们为 iOS 也创建了一个相似的文件 `SharedCode/src/iosMain/kotlin/actual.kt`：
+我们为 iOS 也创建了一个相似的实现文件（与缺失的目录） `SharedCode/src/iosMain/kotlin/actual.kt`：
 <div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only="1" auto-indent="false">
 
 ```kotlin
@@ -147,13 +148,13 @@ Objective-C 与 Swift 互操作的细节被包含在这篇[文档](/docs/referen
 
 ## 更新 Gradle 脚本
 
-`SharedCode` 应该为我们生成一系列构件：
+`SharedCode` 子项目应该为我们生成一系列构件：
  - 在 `androidMain` 源集中为 Android 工程生成 JAR 文件
  - Apple framework 
    - 面向 iOS 设备以及 App Store（`arm64` 目标平台）
    - 面向 iOS 模拟器（`x86_64` 目标平台）
 
-让我们更新该 Gradle 脚本。
+Let's update the Gradle scripts now to implement that and configure our IDE.
 
 首先，我们将一个新工程添加到 `settings.gradle` 文件，只需要将下面这行代码添加到文件末尾：
 <div class="sample" markdown="1" mode="groovy" theme="idea" data-highlight-only="1" auto-indent="false">
@@ -204,7 +205,7 @@ configurations {
 ```
 </div>
 
-## 多平台 Gradle 工程  
+## 多平台 Gradle 工程
 
 `SharedCode/build.gradle` 文件使用了 `kotlin-multiplatform` 插件来实现<!--
 -->我们所需的功能。
@@ -235,7 +236,7 @@ configurations {
 `SharedCode` 工程的普通依赖。
 也可以直接在 Android Gradle 工程中使用 `kotlin-multiplatform`
 插件，来代替 `kotlin-android` 插件。关于更多信息，请参考<!--
--->[多平台项目](/docs/reference/multiplatform.html)文档。  
+-->[多平台项目](/docs/reference/multiplatform.html)文档。
 
 让我们将对 `SharedCode` 工程的依赖引入 Android 工程。我们需要修改
 `app/build.gradle` 文件并在 `dependencies { .. }` 块中引入下面这行代码：
@@ -296,7 +297,7 @@ import org.kotlin.mpp.mobile.createApplicationScreenMessage
 -->该对话框中，我们选择 iOS 选项并选择 *Single View App*。下一页全部使用默认选项，
 然后使用 `KotlinIOS`（或其它的）作为 *Product Name*。让我们选择 Swift 作为编程语言（也可以选择使用
 Objective-C）。我们应该指示 Xcode 将工程放入我们工程下的 `native` 文件夹中，稍后我们<!--
--->将在配置文件中使用相对路径。 
+-->将在配置文件中使用相对路径。
 
 这个已经被创建好的 iOS 应用已经准备好可以运行在 iOS 模拟器或者 iOS 设备上。在设备上运行<!--
 -->也许需要一个 Apple 开发者账号并申请一个开发者证书。Xcode
@@ -452,7 +453,7 @@ class ViewController: UIViewController {
 在本篇教程中我们：
  - 在 Android Studio 中创建了一个 Android 应用程序
  - 在 Xcode 中创建了一个 iOS 应用程序
- - 添加了 Kotlin 多平台项目子工程 
+ - 添加了 Kotlin 多平台项目子工程
    - 共享 Kotlin 代码
    - 将它编译成 Android Jar
    - 将它编译成 iOS Framework
