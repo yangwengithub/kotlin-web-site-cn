@@ -276,7 +276,7 @@ val sum: (Int, Int) -> Int = { x, y -> x + y }
 
 ### 将 lambda 表达式传给最后一个参数
 
-在 Kotlin 中有一个约定：如果函数的最后一个参数接受函数，那么作为相应参数<!--
+在 Kotlin 中有一个约定：如果函数的最后一个参数是函数，那么作为相应参数<!--
 -->传入的 lambda 表达式可以放在圆括号之外：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -286,6 +286,8 @@ val product = items.fold(1) { acc, e -> acc * e }
 ```
 
 </div>
+
+Such syntax is also known as _trailing lambda_.
 
 如果该 lambda 表达式是调用时唯一的参数，那么圆括号可以完全省略：
 
