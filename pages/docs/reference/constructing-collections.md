@@ -83,11 +83,11 @@ val presizedSet = HashSet<Int>(32)
 
 ## 复制
 
-To create a collection with the same elements as an existing collection, you can use copying operations. Collection copying operations from the standard library create _shallow_ copy collections with references to the same elements.
-Thus, a change made to a collection element reflects in all its copies. 
+要创建与现有集合具有相同元素的集合，可以使用复制操作。Collection copying operations from the standard library create _shallow_ copy collections with references to the same elements.
+因此，对集合元素所做的更改会反映在其所有副本中。
 
-Collection copying functions, such as [`toList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-list.html), [`toMutableList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-mutable-list.html), [`toSet()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-set.html) and others, create a snapshot of a collection at a specific moment.
-Their result is a new collection of the same elements.
+在特定时刻通过集合复制函数，例如[`toList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-list.html)、[`toMutableList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-mutable-list.html)、[`toSet()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-set.html) 等等。创建了集合的 snapshot。
+结果是创建了一个具有相同元素的新集合
 If you add or remove elements from the original collection, this won't affect the copies. Copies may be changed independently of the source as well.
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
