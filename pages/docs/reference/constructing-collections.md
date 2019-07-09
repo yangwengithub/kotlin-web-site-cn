@@ -20,7 +20,7 @@ val emptySet = mutableSetOf<String>()
 ```
 </div>
 
-同样的，Map 也有这样的函数 [`mapOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-of.html) 与 [`mutableMapOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/mutable-map-of.html)。映射的键和值作为 `Pair`对象传递（通常在函数中插入 `to` 创建）。
+同样的，Map 也有这样的函数 [`mapOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-of.html) 与 [`mutableMapOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/mutable-map-of.html)。映射的键和值作为 `Pair` 对象传递（通常使用中缀函数 `to` 创建）。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -70,8 +70,8 @@ fun main() {
 
 ## 具体类型构造函数
 
-要创建具体的类型集合，例如 `ArrayList` 或 `LinkedList`，可以使用这些类型的构造函数。
-类似的构造函数在 `Set` 与 `Map` 中均有实现。
+要创建具体类型的集合，例如 `ArrayList` 或 `LinkedList`，可以使用这些类型的构造函数。
+类似的构造函数对于 `Set` 与 `Map` 的各实现中均有提供。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
