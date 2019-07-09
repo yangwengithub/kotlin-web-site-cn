@@ -287,7 +287,7 @@ val product = items.fold(1) { acc, e -> acc * e }
 
 </div>
 
-Such syntax is also known as _trailing lambda_.
+这种语法也称为*拖尾 lambda 表达式*。
 
 如果该 lambda 表达式是调用时唯一的参数，那么圆括号可以完全省略：
 
