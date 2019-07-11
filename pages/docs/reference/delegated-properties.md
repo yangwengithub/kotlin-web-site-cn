@@ -256,7 +256,7 @@ fun example(computeFoo: () -> Foo) {
  
 * `thisRef` —— 同 `getValue()`；
 * `property` —— 同 `getValue()`；
-* new value —— 必须与属性同类型或者是它的超类型。
+* new value —— 必须与属性同类型或者是它的子类型。
  
 `getValue()` 或/与 `setValue()` 函数可以通过委托类的成员函数提供或者由扩展函数提供。
 当你需要委托属性到原本未提供的这些函数的对象时后者会更便利。
