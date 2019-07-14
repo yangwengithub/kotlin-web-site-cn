@@ -311,7 +311,7 @@ fun main() {
 赋值给 `Array<Any>`，以防止可能的运行时失败（但是你可以使用 `Array<out Any>`,
 参见[类型投影](generics.html#类型投影)）。
 
-### Primitive type arrays
+### 原生类型数组
 
 Kotlin 也有无装箱开销的专门的类来表示原生类型数组: `ByteArray`、
 `ShortArray`、`IntArray` 等等。这些类与 `Array` 并没有继承关系，但是<!--
