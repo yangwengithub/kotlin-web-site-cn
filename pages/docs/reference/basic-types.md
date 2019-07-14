@@ -311,6 +311,8 @@ fun main() {
 赋值给 `Array<Any>`，以防止可能的运行时失败（但是你可以使用 `Array<out Any>`,
 参见[类型投影](generics.html#类型投影)）。
 
+### Primitive type arrays
+
 Kotlin 也有无装箱开销的专门的类来表示原生类型数组: `ByteArray`、
 `ShortArray`、`IntArray` 等等。这些类与 `Array` 并没有继承关系，但是<!--
 -->它们有同样的方法属性集。它们也都有相应的工厂方法:
@@ -323,6 +325,24 @@ x[0] = x[1] + x[2]
 ```
 
 </div>
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```kotlin
+// Array of int of size 5 with values [0, 0, 0, 0, 0]
+val arr = IntArray(5)
+
+// e.g. initialise the values in the array with a constant
+// Array of int of size 5 with values [42, 42, 42, 42, 42]
+val arr = IntArray(5, { 42 })
+
+// e.g. initialise the values in the array using a lambda
+// Array of int of size 5 with values [0, 1, 2, 3, 4] (values initialised to their index value)
+var arr = IntArray(5, { it * 1 })
+```
+
+</div>
+
 
 ## 无符号整型
 
