@@ -326,7 +326,7 @@ x[0] = x[1] + x[2]
 
 
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 // Array of int of size 5 with values [0, 0, 0, 0, 0]
@@ -341,7 +341,7 @@ val arr = IntArray(5, { 42 })
 var arr = IntArray(5, { it * 1 })
 ```
 
-</div>
+
 
 
 ## 无符号整型
