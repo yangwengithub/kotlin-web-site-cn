@@ -1,40 +1,40 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Kotlin/Native as a Dynamic Library"
-description: "Compiling Kotlin/Native code to a dynamic library"
-authors: Eugene Petrenko
+title:  "Kotlin/Native 开发动态库"
+description: "将 Kotlin/Native 编译为动态库"
+authors: Eugene Petrenko，乔禹昂（翻译）
 date: 2019-04-15
-showAuthorInfo: false
+showAuthorInfo: true
 issue: EVAN-5371
 ---
 
-In this tutorial, we look at how we can use the Kotlin/Native code from
-existing native applications or libraries. For this, we need to
-compile our Kotlin code into a dynamic library, `.so`, `.dylib`, and `.dll`.
+在本教程中，我们将看到如何使用位于已经存在的<!--
+-->原生应用程序或库中的代码。为此，我们需要将
+Kotlin 代码编译为动态库，例如 `.so`、`.dylib` 以及 `.dll`。
 
-Kotlin/Native also has tight integration with Apple technologies.
-The [Kotlin/Native as an Apple Framework](apple-framework.html)
-tutorial explains how to compile Kotlin code into a framework for Swift and Objective-C.
+Kotlin/Native 也可以与 Apple 技术紧密集成。
+这篇 [Kotlin/Native 开发 Apple Framework](apple-framework.html)
+教程解释了如何将代码编译成 Swift 与 Objective-C framework。
 
-In this tutorial, we will:
- - [Compile a Kotlin code to a dynamic library](#creating-a-kotlin-library)
+在这篇教程中，我们将：
+ - [将 Kotlin 代码编译为动态库](#创建-kotlin-库)
  - [Examine generated C headers](#generated-headers-file)
- - [Use the Kotlin dynamic library from C](#using-generated-headers-from-c)
- - Compile and run the example on [Linux and Mac](#compiling-and-running-the-example-on-linux-and-macos)
-   and [Windows](#compiling-and-running-the-example-on-windows)
+ - [在 C 中调用 Kotlin 动态库](#using-generated-headers-from-c)
+ - 将示例代码编译并运行于 [Linux 与 Mac](#compiling-and-running-the-example-on-linux-and-macos)
+   以及 [Windows](#compiling-and-running-the-example-on-windows)
   
-## Creating a Kotlin Library
+## 创建 Kotlin 库
 
-Kotlin/Native compiler can produce a dynamic
-library out of the Kotlin code we have.
-A dynamic library often comes with a header file, a `.h` file,
-which we will use to call compiled code from C.
+Kotlin/Native 编译器可以将我们的 Kotlin
+代码编译为一个动态库。
+动态库常常带有一个头文件，即 `.h` 文件，
+我们将通过它来调用编译后的 C 代码。
 
-The best way to understand these techniques is to try them out. 
-Let's create a first tiny Kotlin library and use it from a C program. 
+理解这些技术的最佳方法是尝试它们。
+让我们创建第一个小型的 Kotlin 库，并在 C 程序中使用它。
 
-We can start by creating a library file in Kotlin and save it as `hello.kt`:
+我们可以先在 Kotlin 中创建一个库文件，然后将其保存为 `hello.kt`：
 
 <div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -63,14 +63,14 @@ val globalString = "A global String"
 [[include pages-includes/docs/tutorials/native/lets-create-gradle-build.md]]
 [[include pages-includes/docs/tutorials/native/dynamic-library-code.md]]
 
-The prepared project sources can be directly downloaded from 
+这个已经准备好的工程源文件可以从这里直接下载：
 [[include pages-includes/docs/tutorials/native/dynamic-library-link.md]]
 
-Let's move the sources file into the `src/nativeMain/kotlin` folder under
-the project. This is the default path, for where sources are located, when
-the [kotlin-multiplatform](/docs/reference/building-mpp-with-gradle.html)
-plugin is used. We use the following block to instruct and configure the project
-to generate a dynamic or shared library for us: 
+让我们移除工程目录下的源文件移动到 `src/nativeMain/kotlin`
+文件夹下。当使用 [kotlin 多平台](/docs/reference/building-mpp-with-gradle.html)<!--
+-->插件的时候，对于源文件的位置，
+这就是默认路径。我们使用以下代码块来指导和配置工程<!--
+-->为我们生成动态或共享库：
 
 <div class="multi-language-sample" data-os="macos">
 <div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
@@ -109,31 +109,31 @@ binaries {
 </div>
 </div>
 
-The `libnative` is used as the library name, the generated
-header file name prefix. It is also prefixes all declarations in the
-header file.
+`libnative` 被用作库名，即生成的<!--
+-->头文件名前缀。 它也是前缀中的所有声明的前缀<!--
+-->头文件。
 
-Now we are ready to
-[open the project in IntelliJ IDEA](basic-kotlin-native-app.html#open-in-ide)
-and to see how to fix the example project. While doing this,
-we'll examine how C functions are mapped into Kotlin/Native declarations.
+现在我们已经准备好<!--
+-->[在 IntelliJ IDEA 中打开这个工程](basic-kotlin-native-app.html#open-in-ide)<!--
+-->并且可以看到如何修正这个示例工程。在我们这样做的时候，
+我们将会研究 C 函数如何映射为 Kotlin/Native 声明。
 
-Let's run the `linkNative` Gradle task to build the library 
-[in the IDE](basic-kotlin-native-app.html#run-in-ide) 
-or by calling the following console command:
+让我们运行这个 `linkNative` Gradle 任务来<!--
+-->[在 IDE 中](basic-kotlin-native-app.html#run-in-ide)构建该库。
+或者运行下面这行控制台命令：
 [[include pages-includes/docs/tutorials/native/linkNative.md]]
 
-The build generates the following files under the `build/bin/native/debugShared`
-folder, depending on the host OS:
-- macOS: `libnative_api.h` and `libnative.dylib`
-- Linux: `libnative_api.h` and `libnative.so`
-- Windows: `libnative_api.h`, `libnative_symbols.def` and `libnative.dll`
+构建将会在 `build/bin/native/debugShared` 文件夹下生成
+以下文件，并取决于目标操作系统：
+- macOS: `libnative_api.h` 与 `libnative.dylib`
+- Linux: `libnative_api.h` 与 `libnative.so`
+- Windows: `libnative_api.h`、`libnative_symbols.def` 以及 `libnative.dll`
 
-The same rules are used by the Kotlin/Native compiler
-to generate the `.h` file for all platforms.  
-Let's check out the C API of our Kotlin library.` 
+相似的规则被 Kotlin/Native 编译器用于在<!--
+-->所有的平台上生成 `.h` 文件。  
+来看看我们的 Kotlin 库的 C API。
 
-## Generated Headers File
+## 生成头文件
 
 In the `libnative_api.h`, we'll find the following code. 
 We will discuss the code in parts to make it easier to understand.
