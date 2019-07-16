@@ -125,8 +125,8 @@ fun main() {
 ```
 </div>
 
-Alternatively, you can create new references to the same collection instance. New references are created when you initialize a collection variable with an existing collection.
-So, when the collection instance is altered through a reference, the changes are reflected in all its references.
+或者，可以创建对同一集合实例的新引用。
+因此，当通过引用更改集合实例时，更改将反映在其所有引用中。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -142,7 +142,7 @@ fun main() {
 ```
 </div>
 
-Collection initialization can be used for restricting mutability. For example, if you create a `List` reference to a `MutableList`, the compiler will produce errors if you try to modify the collection through this reference.
+集合的初始化可用于限制其可变性。例如，如果构建了一个 `MutableList` 的 `List` 引用，当你试图通过此引用修改集合的时候，编译器会抛出错误。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -151,9 +151,9 @@ fun main() {
 //sampleStart 
     val sourceList = mutableListOf(1, 2, 3)
     val referenceList: List<Int> = sourceList
-    //referenceList.add(4)            //compilation error
+    //referenceList.add(4)            // 编译异常
     sourceList.add(4)
-    println(referenceList) // shows the current state of sourceList
+    println(referenceList) // 显示 sourceList 当前状态
 //sampleEnd
 }
 ```
