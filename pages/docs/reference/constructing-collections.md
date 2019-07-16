@@ -83,12 +83,12 @@ val presizedSet = HashSet<Int>(32)
 
 ## 复制
 
-要创建与现有集合具有相同元素的集合，可以使用复制操作。Collection copying operations from the standard library create _shallow_ copy collections with references to the same elements.
+要创建与现有集合具有相同元素的集合，可以使用复制操作。标准库中的集合复制操作创建了具有相同元素引用的 __浅__ 复制集合。
 因此，对集合元素所做的更改会反映在其所有副本中。
 
-在特定时刻通过集合复制函数，例如[`toList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-list.html)、[`toMutableList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-mutable-list.html)、[`toSet()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-set.html) 等等。创建了集合的 snapshot。
+在特定时刻通过集合复制函数，例如[`toList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-list.html)、[`toMutableList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-mutable-list.html)、[`toSet()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-set.html) 等等。创建了集合的快照。
 结果是创建了一个具有相同元素的新集合
-If you add or remove elements from the original collection, this won't affect the copies. Copies may be changed independently of the source as well.
+如果在源集合中添加或删除元素，则不会影响副本。副本也可以独立于源集合进行更改。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -101,14 +101,14 @@ fun main() {
     sourceList.add(4)
     println("Copy size: ${copyList.size}")   
     
-    //readOnlyCopyList.add(4)             // compilation error
+    //readOnlyCopyList.add(4)             // 编译异常
     println("Read-only copy size: ${readOnlyCopyList.size}")
 //sampleEnd
 }
 ```
 </div>
 
-These functions can also be used for converting collections to other types, for example, build a set from a list or vice versa.
+这些函数还可用于将集合转换为其他类型，例如根据 List 构建 Set，反之亦然。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
