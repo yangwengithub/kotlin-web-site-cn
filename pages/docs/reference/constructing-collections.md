@@ -54,7 +54,7 @@ val empty = emptyList<String>()
 
 ## list 的初始化函数
 
-对于 List，有一个构造函数接受 List 的大小并初始化函数，它根据索引定义元素值。
+对于 List，有一个接受 List 的大小与初始化函数的构造函数，该初始化函数根据索引定义元素的值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
