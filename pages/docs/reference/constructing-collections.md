@@ -125,7 +125,7 @@ fun main() {
 ```
 </div>
 
-或者，可以创建对同一集合实例的新引用。
+或者，可以创建对同一集合实例的新引用。使用现有集合初始化集合变量时，将创建新引用。
 因此，当通过引用更改集合实例时，更改将反映在其所有引用中。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
