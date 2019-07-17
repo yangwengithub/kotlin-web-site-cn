@@ -15,11 +15,11 @@ Kotlin 代码编译为动态库，例如 `.so`、`.dylib` 以及 `.dll`。
 
 Kotlin/Native 也可以与 Apple 技术紧密集成。
 这篇 [Kotlin/Native 开发 Apple Framework](apple-framework.html)
-教程解释了如何将代码编译成 Swift 与 Objective-C framework。
+教程解释了如何将代码编译为 Swift 与 Objective-C framework。
 
 在这篇教程中，我们将：
  - [将 Kotlin 代码编译为动态库](#创建-kotlin-库)
- - [Examine generated C headers](#generated-headers-file)
+ - [生成 C 的头文件](#生成头文件)
  - [在 C 中调用 Kotlin 动态库](#using-generated-headers-from-c)
  - 将示例代码编译并运行于 [Linux 与 Mac](#compiling-and-running-the-example-on-linux-and-macos)
    以及 [Windows](#compiling-and-running-the-example-on-windows)
@@ -66,7 +66,7 @@ val globalString = "A global String"
 这个已经准备好的工程源文件可以从这里直接下载：
 [[include pages-includes/docs/tutorials/native/dynamic-library-link.md]]
 
-让我们移除工程目录下的源文件移动到 `src/nativeMain/kotlin`
+让我们将工程目录下的源文件移动到 `src/nativeMain/kotlin`
 文件夹下。当使用 [kotlin 多平台](/docs/reference/building-mpp-with-gradle.html)<!--
 -->插件的时候，对于源文件的位置，
 这就是默认路径。我们使用以下代码块来指导和配置工程<!--
@@ -110,8 +110,8 @@ binaries {
 </div>
 
 `libnative` 被用作库名，即生成的<!--
--->头文件名前缀。 它也是前缀中的所有声明的前缀<!--
--->头文件。
+-->头文件名前缀。它同样也是所有被声明的<!--
+-->头文件的前缀。
 
 现在我们已经准备好<!--
 -->[在 IntelliJ IDEA 中打开这个工程](basic-kotlin-native-app.html#open-in-ide)<!--
@@ -123,8 +123,8 @@ binaries {
 或者运行下面这行控制台命令：
 [[include pages-includes/docs/tutorials/native/linkNative.md]]
 
-构建将会在 `build/bin/native/debugShared` 文件夹下生成
-以下文件，并取决于目标操作系统：
+构建将会在 `build/bin/native/debugShared` 文件夹下生成<!--
+-->以下文件，并取决于目标操作系统：
 - macOS: `libnative_api.h` 与 `libnative.dylib`
 - Linux: `libnative_api.h` 与 `libnative.so`
 - Windows: `libnative_api.h`、`libnative_symbols.def` 以及 `libnative.dll`
@@ -138,7 +138,7 @@ binaries {
 在 `libnative_api.h` 中，我们将发现如下代码。
 我们将探讨其中部分代码，以便更容易理解。
 
-注意，Kotlin/Native 的外部符号如有变更，将不会另外通知。
+注意，Kotlin/Native 的外部符号如有变更，将不会另外说明。
 
 第一部分包含了标准的 C/C++ 头文件的首尾：
 
@@ -190,7 +190,7 @@ Kotlin 在被创建的 `libnative_api.h` 文件中为<!--
 -->更容易阅读的方式来查看类型的映射：
 
 
-|Kotlin Define          | C Type               |
+|Kotlin 定义。           | C 类型               |
 |-----------------------|----------------------|
 |`libnative_KBoolean`   | `bool` 或 `_Bool`    |
 |`libnative_KChar`      |  `unsigned short`    |
@@ -230,13 +230,13 @@ typedef struct {
 </div>
 
 `typedef struct { .. } TYPE_NAME` 语法在 C 语言中被用于声明一个结构体。
-[这个问题](https://stackoverflow.com/questions/1675351/typedef-struct-vs-struct-definitions)
-提供了对该模式的更多解释。
+[这个问题](https://stackoverflow.com/questions/1675351/typedef-struct-vs-struct-definitions)<!--
+-->提供了对该模式的更多解释。
 
 我们可以看到其中定义了 Kotlin 的 `Object` 类被映射到了
-`libnative_kref_example_Object`，并且 `Clazz` 被映射到了 `libnative_kref_example_Clazz`。
+`libnative_kref_example_Object`，而 `Clazz` 被映射到了 `libnative_kref_example_Clazz`。
 这两个结构体都没有包含任何东西，但是 `pinned` 字段是一个指针，该字段类型
-`libnative_KNativePtr` 被定义为 `void*`。
+`libnative_KNativePtr` 被定义与 `void*` 之上。
 
 C 语言中没有支持命名空间，所以 Kotlin/Native 编译器生成了<!--
 -->长名称，以避免与现有原生工程中的其他符号发生任何可能的冲突。
@@ -285,7 +285,7 @@ typedef struct {
 
 C 语言同样也不支持对象。人们使用函数指针来模仿<!--
 -->对象语义。一个函数指针被声明在 `RETURN_TYPE (* FIELD_NAME)(PARAMETERS)` 后面。
-它的阅读性很差，但我们应该能够从上面的结构中看到函数指针字段。
+它的阅读性很差，但我们应该能够从上面的结构体中看到函数指针字段。
 
 ### 运行时函数
 
@@ -306,8 +306,8 @@ libnative_KBoolean (*IsInstance)(libnative_KNativePtr ref, const libnative_KType
 </div>
 
 这些函数被用于处理 Kotlin/Native 的对象。调用
-`DisposeStablePointer` 来释放一个 Kotlin 对象，而 `DisposeString` 被用于释放一个 Kotlin String, 
-which has the `char*` type in C. `IsInstance` 函数可以被用于检查一个
+`DisposeStablePointer` 来释放一个 Kotlin 对象，而 `DisposeString` 被用于释放一个 Kotlin 字符串， 
+该字符串具有 C 中的 `char*` 类型。`IsInstance` 函数可以被用于检查一个
 Kotlin 类型或者一个 `libnative_KNativePtr` 是否是某个类型的实例。实际的<!--
 -->生成操作取决于实际的使用情况。
  
