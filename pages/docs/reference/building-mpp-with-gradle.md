@@ -399,7 +399,7 @@ following target platforms:
     * `iosArm32`, `iosArm64`, `iosX64` for iOS;
     * `linuxArm32Hfp`, `linuxMips32`, `linuxMipsel32`, `linuxX64` for Linux;
     * `macosX64` for MacOS;
-    * `mingwX64` for Windows;
+    * `mingwX64` and `mingwX86` for Windows;
     * `wasm32` for WebAssembly.
     
     Note that some of the Kotlin/Native targets require an [appropriate host machine](#使用-kotlinnative-目标平台) to build on.
