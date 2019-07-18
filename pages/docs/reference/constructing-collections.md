@@ -151,7 +151,7 @@ fun main() {
 //sampleStart 
     val sourceList = mutableListOf(1, 2, 3)
     val referenceList: List<Int> = sourceList
-    //referenceList.add(4)            // 编译异常
+    //referenceList.add(4)            // 编译错误
     sourceList.add(4)
     println(referenceList) // 显示 sourceList 当前状态
 //sampleEnd
