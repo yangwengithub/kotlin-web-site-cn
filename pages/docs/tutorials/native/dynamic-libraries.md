@@ -109,7 +109,7 @@ binaries {
 </div>
 </div>
 
-`libnative` 被用作库名，即生成的<!--
+`libnative` 用作库名，即生成的<!--
 -->头文件名前缀。它同样也是该头文件中<!--
 -->所有声明的前缀。
 
@@ -129,7 +129,7 @@ binaries {
 - Linux: `libnative_api.h` 与 `libnative.so`
 - Windows: `libnative_api.h`、`libnative_symbols.def` 以及 `libnative.dll`
 
-相似的规则被 Kotlin/Native 编译器用于在<!--
+Kotlin/Native 编译器用相似的规则在<!--
 -->所有的平台上生成 `.h` 文件。  
 来看看我们的 Kotlin 库的 C 语言 API。
 
@@ -185,7 +185,7 @@ typedef void*              libnative_KNativePtr;
 ``` 
 </div>
 
-Kotlin 在被创建的 `libnative_api.h` 文件中为<!--
+Kotlin 在已创建的 `libnative_api.h` 文件中为<!--
 -->所有的声明都添加了 `libnative_` 前缀。让我们以<!--
 -->更容易阅读的方式来查看类型的映射：
 
@@ -229,14 +229,14 @@ typedef struct {
 ```
 </div>
 
-`typedef struct { .. } TYPE_NAME` 语法在 C 语言中被用于声明一个结构体。
+`typedef struct { .. } TYPE_NAME` 语法在 C 语言中用于声明一个结构体。
 [这个问题](https://stackoverflow.com/questions/1675351/typedef-struct-vs-struct-definitions)<!--
 -->提供了对该模式的更多解释。
 
-我们可以看到其中定义了 Kotlin 的 `Object` 类被映射到了
-`libnative_kref_example_Object`，而 `Clazz` 被映射到了 `libnative_kref_example_Clazz`。
+我们可以看到其中定义了 Kotlin 的 `Object` 类映射为
+`libnative_kref_example_Object`，而 `Clazz` 映射到了 `libnative_kref_example_Clazz`。
 这两个结构体都没有包含任何东西，但是 `pinned` 字段是一个指针，该字段类型
-`libnative_KNativePtr` 被定义与 `void*` 之上。
+`libnative_KNativePtr` 定义在 `void*` 之上。
 
 C 语言中没有支持命名空间，所以 Kotlin/Native 编译器生成了<!--
 -->长名称，以避免与现有原生工程中的其他符号发生任何可能的冲突。
@@ -305,9 +305,9 @@ libnative_KBoolean (*IsInstance)(libnative_KNativePtr ref, const libnative_KType
 ```
 </div>
 
-这些函数被用于处理 Kotlin/Native 的对象。调用
-`DisposeStablePointer` 来释放一个 Kotlin 对象，而 `DisposeString` 被用于释放一个 Kotlin 字符串， 
-该字符串具有 C 中的 `char*` 类型。`IsInstance` 函数可以被用于检查一个
+这些函数用于处理 Kotlin/Native 的对象。调用
+`DisposeStablePointer` 来释放一个 Kotlin 对象，而 `DisposeString` 用于释放一个 Kotlin 字符串， 
+该字符串具有 C 中的 `char*` 类型。`IsInstance` 函数可以用于检查一个
 Kotlin 类型或者一个 `libnative_KNativePtr` 是否是某个类型的实例。实际的<!--
 -->生成操作取决于实际的使用情况。
  
