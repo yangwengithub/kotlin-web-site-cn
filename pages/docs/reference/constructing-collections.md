@@ -9,8 +9,8 @@ title: "构造集合"
 
 ## 由元素构造
 
-The most common way to create a collection is with the standard library functions [`listOf<T>()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/list-of.html), [`setOf<T>()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/set-of.html), [`mutableListOf<T>()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/mutable-list-of.html), [`mutableSetOf<T>()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/mutable-set-of.html).
-If you provide a comma-separated list of collection elements as arguments, the compiler detects the element type automatically.  When creating empty collections, specify the type explicitly.
+创建集合的最常用方法是使用标准库函数 [`listOf<T>()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/list-of.html)、[`setOf<T>()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/set-of.html)、[`mutableListOf<T>()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/mutable-list-of.html)、[`mutableSetOf<T>()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/mutable-set-of.html)。
+如果以逗号分隔的集合元素列表作为参数，编译器会自动检测元素类型。创建空集合时，须明确指定类型。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -20,7 +20,7 @@ val emptySet = mutableSetOf<String>()
 ```
 </div>
 
-The same is available for maps with the functions [`mapOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-of.html) and [`mutableMapOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/mutable-map-of.html). The map's keys and values are passed as `Pair` objects (usually created with `to` infix function).
+同样的，Map 也有这样的函数 [`mapOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-of.html) 与 [`mutableMapOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/mutable-map-of.html)。映射的键和值作为 `Pair` 对象传递（通常使用中缀函数 `to` 创建）。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -29,9 +29,9 @@ val numbersMap = mapOf("key1" to 1, "key2" to 2, "key3" to 3, "key4" to 1)
 ```
 </div>
 
-Note that the `to` notation creates a short-living `Pair` object, so it's recommended that you use it only if performance isn't critical.
-To avoid excessive memory usage, use alternative ways. For example, you can create a mutable map and populate it using the write operations.
-The [`apply()`](scope-functions.html#apply) function can help to keep the initialization fluent here.
+注意，`to` 符号创建了一个短时存活的 `Pair` 对象，因此建议仅在性能不重要时才使用它。
+为避免过多的内存使用，请使用其他方法。例如，可以创建可写 Map 并使用写入操作填充它。
+[`apply()`](scope-functions.html#apply) 函数可以帮助保持初始化流畅。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -42,8 +42,8 @@ val numbersMap = mutableMapOf<String, String>().apply { this["one"] = "1"; this[
 
 ## 空集合
 
-There are also functions for creating collections without any elements: [`emptyList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/empty-list.html), [`emptySet()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/empty-set.html), and [`emptyMap()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/empty-map.html).
-When creating empty collections, you should specify the type of elements that the collection will hold.
+还有用于创建没有任何元素的集合的函数：[`emptyList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/empty-list.html)、[`emptySet()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/empty-set.html) 与 [`emptyMap()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/empty-map.html)。
+创建空集合时，应指定集合将包含的元素类型。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -54,14 +54,14 @@ val empty = emptyList<String>()
 
 ## list 的初始化函数
 
-For lists, there is a constructor that takes the list size and the initializer function that defines the element value based on its index.
+对于 List，有一个接受 List 的大小与初始化函数的构造函数，该初始化函数根据索引定义元素的值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ```kotlin
 fun main() {
 //sampleStart
-    val doubled = List(3, { it * 2 })  // or MutableList if you want to change its content later
+    val doubled = List(3, { it * 2 })  // 如果你想操作这个集合，应使用 MutableList
     println(doubled)
 //sampleEnd
 }
@@ -70,8 +70,8 @@ fun main() {
 
 ## 具体类型构造函数
 
-To create a concrete type collection, such as an `ArrayList` or `LinkedList`, you can use the available constructors for these types.
-Similar constructors are available for implementations of `Set` and `Map`.
+要创建具体类型的集合，例如 `ArrayList` 或 `LinkedList`，可以使用这些类型的构造函数。
+类似的构造函数对于 `Set` 与 `Map` 的各实现中均有提供。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -83,12 +83,12 @@ val presizedSet = HashSet<Int>(32)
 
 ## 复制
 
-To create a collection with the same elements as an existing collection, you can use copying operations. Collection copying operations from the standard library create _shallow_ copy collections with references to the same elements.
-Thus, a change made to a collection element reflects in all its copies. 
+要创建与现有集合具有相同元素的集合，可以使用复制操作。标准库中的集合复制操作创建了具有相同元素引用的 __浅__ 复制集合。
+因此，对集合元素所做的更改会反映在其所有副本中。
 
-Collection copying functions, such as [`toList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-list.html), [`toMutableList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-mutable-list.html), [`toSet()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-set.html) and others, create a snapshot of a collection at a specific moment.
-Their result is a new collection of the same elements.
-If you add or remove elements from the original collection, this won't affect the copies. Copies may be changed independently of the source as well.
+在特定时刻通过集合复制函数，例如[`toList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-list.html)、[`toMutableList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-mutable-list.html)、[`toSet()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-set.html) 等等。创建了集合的快照。
+结果是创建了一个具有相同元素的新集合
+如果在源集合中添加或删除元素，则不会影响副本。副本也可以独立于源集合进行更改。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -101,14 +101,14 @@ fun main() {
     sourceList.add(4)
     println("Copy size: ${copyList.size}")   
     
-    //readOnlyCopyList.add(4)             // compilation error
+    //readOnlyCopyList.add(4)             // 编译异常
     println("Read-only copy size: ${readOnlyCopyList.size}")
 //sampleEnd
 }
 ```
 </div>
 
-These functions can also be used for converting collections to other types, for example, build a set from a list or vice versa.
+这些函数还可用于将集合转换为其他类型，例如根据 List 构建 Set，反之亦然。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -125,8 +125,8 @@ fun main() {
 ```
 </div>
 
-Alternatively, you can create new references to the same collection instance. New references are created when you initialize a collection variable with an existing collection.
-So, when the collection instance is altered through a reference, the changes are reflected in all its references.
+或者，可以创建对同一集合实例的新引用。使用现有集合初始化集合变量时，将创建新引用。
+因此，当通过引用更改集合实例时，更改将反映在其所有引用中。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -142,7 +142,7 @@ fun main() {
 ```
 </div>
 
-Collection initialization can be used for restricting mutability. For example, if you create a `List` reference to a `MutableList`, the compiler will produce errors if you try to modify the collection through this reference.
+集合的初始化可用于限制其可变性。例如，如果构建了一个 `MutableList` 的 `List` 引用，当你试图通过此引用修改集合的时候，编译器会抛出错误。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -151,9 +151,9 @@ fun main() {
 //sampleStart 
     val sourceList = mutableListOf(1, 2, 3)
     val referenceList: List<Int> = sourceList
-    //referenceList.add(4)            //compilation error
+    //referenceList.add(4)            // 编译错误
     sourceList.add(4)
-    println(referenceList) // shows the current state of sourceList
+    println(referenceList) // 显示 sourceList 当前状态
 //sampleEnd
 }
 ```
