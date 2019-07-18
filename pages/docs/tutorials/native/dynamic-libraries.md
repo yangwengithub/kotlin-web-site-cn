@@ -110,8 +110,8 @@ binaries {
 </div>
 
 `libnative` 被用作库名，即生成的<!--
--->头文件名前缀。它同样也是所有被声明的<!--
--->头文件的前缀。
+-->头文件名前缀。它同样也是该头文件中<!--
+-->所有声明的前缀。
 
 现在我们已经准备好<!--
 -->[在 IntelliJ IDEA 中打开这个工程](basic-kotlin-native-app.html#open-in-ide)<!--
