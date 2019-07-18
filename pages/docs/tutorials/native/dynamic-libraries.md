@@ -336,10 +336,10 @@ C 语言不支持对象，所以这是为什么明确使用
 Kotlin `object Object` 是可以被 `kotlin.root.example.Object` 访问的。这里的
 `_instance` 函数可以获取到该对象的唯一实例。
 
-属性转换为函数。`get_` 与 `set_` 前缀
-被分别用于命名 getter 以及 setter 函数。举例来说，
+属性会转换为函数。`get_` 与 `set_` 前缀<!--
+-->分别用于命名 getter 以及 setter 函数。举例来说，
 Kotlin 中的只读属性 `globalString` 在 C
-中被转换为 `get_globalString` 函数。 
+中会转换为 `get_globalString` 函数。 
 
 全局函数 `forInts`、`forFloats` 以及 `strings`
 在 `kotlin.root.example` 匿名结构体中被转换为函数指针。
@@ -365,7 +365,7 @@ extern libnative_ExportedSymbols* libnative_symbols(void);
 
 ## 使用 C 中生成的头文件
 
-使用 C 中的头文件是非常直截了当和简单的。我们通过下面的代码创建了一个 `main.c`
+使用 C 中的头文件是非常简单明了的。我们通过下面的代码创建了一个 `main.c`
 文件：
 
 <div class="sample" markdown="1" mode="C" theme="idea" data-highlight-only="1" auto-indent="false">
@@ -426,7 +426,7 @@ Microsoft Visual Studio。
 -->在开始菜单中打开控制台的快捷方式。它附带一个 Microsoft Visual Studio
 包。
 
-在 Windows 上，动态库可以被通过生成的静态库包装器<!--
+在 Windows 上，动态库可以通过生成的静态库包装器<!--
 -->以及手动编写代码的形式导入，使用 [LoadLibrary](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684175.aspx)
 处理或类似的 Win32API 功能。我们将使用第一种选项并为我们自己的
 `libnative.dll` 生成静态包装器。
