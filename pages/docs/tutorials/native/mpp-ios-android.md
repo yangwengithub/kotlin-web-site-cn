@@ -90,8 +90,8 @@ Gradle 工程中手动创建一个 `SharedCode` 子工程开始。`SharedCode` �
 
 我们想要使每个平台都根据平台自身展示相似的文本：`Kotlin Rocks on Android` 以及
 `Kotlin Rocks on iOS`。我们将复用生成消息的方式。
-Let's create the file (and missing directories) `SharedCode/src/commonMain/kotlin/common.kt` with the following contents
-under the project root directory
+让我们在项目根目录下用以下内容创建文件（以及缺少的目录）：
+`SharedCode/src/commonMain/kotlin/common.kt`。
 
 <div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -154,7 +154,7 @@ Objective-C 与 Swift 互操作的细节被包含在这篇[文档](/docs/referen
    - 面向 iOS 设备以及 App Store（`arm64` 目标平台）
    - 面向 iOS 模拟器（`x86_64` 目标平台）
 
-Let's update the Gradle scripts now to implement that and configure our IDE.
+让我们现在更新 Gradle 脚本来实现这些并配置我们的 IDE。
 
 首先，我们将一个新工程添加到 `settings.gradle` 文件，只需要将下面这行代码添加到文件末尾：
 <div class="sample" markdown="1" mode="groovy" theme="idea" data-highlight-only="1" auto-indent="false">
