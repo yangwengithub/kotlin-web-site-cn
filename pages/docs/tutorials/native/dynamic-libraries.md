@@ -365,7 +365,7 @@ extern libnative_ExportedSymbols* libnative_symbols(void);
 
 ## 使用 C 中生成的头文件
 
-使用 C 中的头文件是非常简单明了的。我们通过下面的代码创建了一个 `main.c`
+使用 C 中的头文件非常简单明了。我们通过下面的代码创建了一个 `main.c`
 文件：
 
 <div class="sample" markdown="1" mode="C" theme="idea" data-highlight-only="1" auto-indent="false">
