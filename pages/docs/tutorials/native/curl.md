@@ -1,11 +1,11 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Using C Interop and libcurl for an App"
-description: "Using C library from Kotlin/Native"
-authors: Hadi Hariri 
+title:  "在 App 中使用 C 互操作以及 libcurl"
+description: "在 Kotlin/Native 中使用 C 库"
+authors: Hadi Hariri，乔禹昂（翻译）
 date: 2019-04-15
-showAuthorInfo: false
+showAuthorInfo: true
 ---
 
 
