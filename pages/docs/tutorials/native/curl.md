@@ -1,7 +1,7 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "在 App 中使用 C 互操作以及 libcurl"
+title: "在应用中使用 C 语言互操作与 libcurl"
 description: "在 Kotlin/Native 中使用 C 库"
 authors: Hadi Hariri，乔禹昂（翻译）
 date: 2019-04-15
