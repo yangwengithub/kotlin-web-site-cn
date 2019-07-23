@@ -46,7 +46,7 @@ description: "本教程介绍了 Kotlin 在竞技性程序设计中的基本用�
 就去掉这个零。
 
 Kotlin 是一门实用且不拘一格的语言，既支持命令式也支持函数式编程风格，
-不将开发人员推向任何一种风格。可以按函数式风格实现函数 `f`，使用像<!--
+而不会将开发人员推向任何一种风格。可以按函数式风格实现函数 `f`，使用像<!--
 -->[尾递归](/docs/reference/functions.html#尾递归函数)这样的 Kotlin 特性：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
