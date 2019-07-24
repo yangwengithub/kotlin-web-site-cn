@@ -59,7 +59,7 @@ void doubles(float a, double b);
 对于每组 `.h` 文件，
 我们将使用来自 Kotlin/Native 的 `cinterop` [C 库](/docs/reference/native/c_interop.html)<!--
 -->来生成 Kotlin/Native 库，
-或者 `.klib`。生成的库将会桥接调用 Kotlin/Native 与 C。这包括<!--
+或者 `.klib`。生成的库将会桥接 Kotlin/Native 到 C 语言的调用。这包括<!--
 -->在 `.h` 文件中各定义的 Kotlin 声明。
 只需要一个 `.h` 文件来运行 `cinterop` 工具。并且我们不需要创建一个
 `lib.c` 文件，除非我们想编译并运行该示例。
