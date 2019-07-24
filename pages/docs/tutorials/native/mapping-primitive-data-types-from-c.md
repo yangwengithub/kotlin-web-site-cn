@@ -51,16 +51,16 @@ void doubles(float a, double b);
 ```
 </div>
 
-该文件丢弃了此示例不需要的 `extern "C"` 块，但是如果
-我们在使用 C++ 的重载函数的时候这也许是必要的。该
+该文件缺少了此示例不需要的 `extern "C"` 块，但是如果<!--
+-->我们在使用 C++ 的重载函数的时候这也许是必要的。该
 [C++ 兼容性](https://stackoverflow.com/questions/1041866/what-is-the-effect-of-extern-c-in-c)
 问答包含了更多关于此内容的细节。
 
 对于每组 `.h` 文件，
-我们将使用来自 Kotlin/Native 的 `cinterop` [C 库](/docs/reference/native/c_interop.html)
-来生成 Kotlin/Native 库，
-或者 `.klib`。生成的库将会桥接调用 Kotlin/Native 与 C。这包括
-在 `.h` 文件中各定义的 Kotlin 声明。
+我们将使用来自 Kotlin/Native 的 `cinterop` [C 库](/docs/reference/native/c_interop.html)<!--
+-->来生成 Kotlin/Native 库，
+或者 `.klib`。生成的库将会桥接调用 Kotlin/Native 与 C。这包括<!--
+-->在 `.h` 文件中各定义的 Kotlin 声明。
 只需要一个 `.h` 文件来运行 `cinterop` 工具。并且我们不需要创建一个
 `lib.c` 文件，除非我们想编译并运行该示例。
 更多关于这些内容的细节被涵盖在 [C 库](/docs/reference/native/c_interop.html)页面。这篇教程<!--
@@ -117,8 +117,8 @@ fun main() {
 ```
 </div>
 
-现在我们已经准备好
-[在 IntelliJ IDEA 中打开这个工程](basic-kotlin-native-app.html#open-in-ide)<!--
+现在我们已经准备好<!--
+-->[在 IntelliJ IDEA 中打开这个工程](basic-kotlin-native-app.html#open-in-ide)<!--
 -->并且看看如何修正这个示例工程。当我们做完这些之后，
 我们将检查 C 的原始类型是如何映射到 Kotlin/Native 的。
 
