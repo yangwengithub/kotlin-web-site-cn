@@ -21,7 +21,7 @@ issue: EVAN-5343
 [C 数据类型](https://en.wikipedia.org/wiki/C_data_types)维基百科上的文章作为基础。
 在 C 语言中有如下这些类型：
 - 基本类型 `char、int、float、double` 以及带修饰符的 `signed、unsigned、short、long` 
-- 结构体、联合、数组
+- 结构体、联合体、数组
 - 指针
 - 函数指针
 
@@ -53,8 +53,8 @@ void doubles(float a, double b);
 
 该文件缺少了此示例不需要的 `extern "C"` 块，但是如果<!--
 -->我们在使用 C++ 的重载函数的时候这也许是必要的。该
-[C++ 兼容性](https://stackoverflow.com/questions/1041866/what-is-the-effect-of-extern-c-in-c)
-问答包含了更多关于此内容的细节。
+[C++ 兼容性](https://stackoverflow.com/questions/1041866/what-is-the-effect-of-extern-c-in-c)<!--
+-->问答包含了更多关于此内容的细节。
 
 对于每组 `.h` 文件，
 我们将使用来自 Kotlin/Native 的 `cinterop` [C 库](/docs/reference/native/c_interop.html)<!--
