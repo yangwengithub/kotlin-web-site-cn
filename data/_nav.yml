@@ -265,7 +265,7 @@ reference:
         path: kotlin-native
         nav: _nav_reference.yml
         base: /docs/reference/native
-        repo: https://github.com/hltj/kotlin-native-cn.git
+        repo: https://github.com/hltj/kotlin-native-cn
         branch: v1.3.0-fixes
 
     - title: 协程

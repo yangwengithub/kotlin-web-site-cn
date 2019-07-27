@@ -20,9 +20,9 @@ Kotlin/Native 也可以与 Apple 技术紧密集成。
 在这篇教程中，我们将：
  - [将 Kotlin 代码编译为动态库](#创建-kotlin-库)
  - [生成 C 的头文件](#生成头文件)
- - [在 C 中调用 Kotlin 动态库](#using-generated-headers-from-c)
- - 将示例代码编译并运行于 [Linux 与 Mac](#compiling-and-running-the-example-on-linux-and-macos)
-   以及 [Windows](#compiling-and-running-the-example-on-windows)
+ - [在 C 中调用 Kotlin 动态库](#使用-c-中生成的头文件)
+ - 将示例代码编译并运行于 [Linux 与 Mac](#将示例编译并运行于-linux-以及-macos-上)
+   以及 [Windows](#将示例编译并运行于-windows)
   
 ## 创建 Kotlin 库
 
@@ -318,55 +318,55 @@ Swift 进行互操作，并且结合了它们的引用计数。
 包含了更多关于此内容的细节。当然，也可以参考<!--
 -->这篇 [Kotlin/Native 开发 Apple Framework](apple-framework.html) 文档。
 
-### Our Library Functions
+### 库函数
 
-Let's take a look at the `kotlin.root.example` field, it
-mimics the package structure of our Kotlin code with a `kotlin.root.` prefix.
+让我们来看看 `kotlin.root.example` 字段，它<!--
+-->使用 `kotlin.root.` 前缀模仿 Kotlin 代码的包结构。
 
-There is a `kotlin.root.example.Clazz` field that 
-represents the `Clazz` from Kotlin. The `Clazz#memberFunction` is
-accessible with the `memberFunction` field. The only difference is that 
-the `memberFunction` accepts a `this` reference as the first parameter. 
-The C language does not support objects, and this is the reason to pass a
-`this` pointer explicitly.
+这里有一个 `kotlin.root.example.Clazz` 字段用来<!--
+-->表示 Kotlin 中的 `Clazz`。这个 `Clazz#memberFunction` 是<!--
+-->可以使用 `memberFunction` 字段访问的。唯一的区别是
+`memberFunction` 接受 `this` 引用作为第一个参数。
+C 语言不支持对象，所以这是为什么明确使用
+`this` 指针访问的原因。
 
-There is a constructor in the `Clazz` field (aka `kotlin.root.example.Clazz.Clazz`),
-which is the constructor function to create an instance of the `Clazz`.
+`Clazz` 字段中有一个构造函数（又名 `kotlin.root.example.Clazz.Clazz`），
+这是创建 `Clazz` 实例的构造函数。
 
-Kotlin `object Object` is accessible as `kotlin.root.example.Object`. There is 
-the `_instance` function to get the only instance of the object.
+Kotlin `object Object` 是可以被 `kotlin.root.example.Object` 访问的。这里的
+`_instance` 函数可以获取到该对象的唯一实例。
 
-Properties are translated into functions. The `get_` and `set_` prefix
-is used to name the getter and the setter functions respectively. For example, 
-the read-only property `globalString` from Kotlin is turned 
-into a `get_globalString` function in C. 
+属性会转换为函数。`get_` 与 `set_` 前缀<!--
+-->分别用于命名 getter 以及 setter 函数。举例来说，
+Kotlin 中的只读属性 `globalString` 在 C
+中会转换为 `get_globalString` 函数。 
 
-Global functions `forInts`, `forFloats`, or `strings` are turned into the functions pointers in
-the `kotlin.root.example` anonymous struct.
+全局函数 `forInts`、`forFloats` 以及 `strings`
+在 `kotlin.root.example` 匿名结构体中被转换为函数指针。
  
-### The Entry Point
+### 入口点
 
-We can see how the API is created. To start with, we need to initialize the 
-`libnative_ExportedSymbols` structure. Let's take a look at the latest part 
-of the `libnative_api.h` for this:
+我们可以看到 API 是如何创建的。首先，我们需要初始化
+`libnative_ExportedSymbols` 结构体。让我们来看看
+`libnative_api.h` 的最新部分：
 
 ```c
 extern libnative_ExportedSymbols* libnative_symbols(void);
 ```
 
-The function `libnative_symbols` allows us to open the way from the native 
-code to the Kotlin/Native library. This is the entry point we use. The 
-library name is used as a prefix for the function name. 
+函数 `libnative_symbols` 允许我们在原生代码中<!--
+-->打开 Kotlin/Native 库。这是我们看到的入口点。该<!--
+-->库名称被用作函数名称的前缀。
 
 
-Note, Kotlin/Native object references do not support multi-threaded access. 
-Hosting the returned `libnative_ExportedSymbols*` pointer
-per thread might be necessary.
+注意，Kotlin/Native 对象引用不支持多线程访问。
+可能有必要为每个线程托管返回的
+`libnative_ExportedSymbols*` 指针。
 
-## Using Generated Headers from C
+## 使用 C 中生成的头文件
 
-The usage from C is straightforward and uncomplicated. We create a `main.c` file with the following 
-code: 
+使用 C 中的头文件非常简单明了。我们通过下面的代码创建了一个 `main.c`
+文件：
 
 <div class="sample" markdown="1" mode="C" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -375,19 +375,19 @@ code:
 #include "stdio.h"
 
 int main(int argc, char** argv) {
-  //obtain reference for calling Kotlin/Native functions
+  //获取调用 Kotlin/Native 函数的引用
   libnative_ExportedSymbols* lib = libnative_symbols();
 
   lib->kotlin.root.example.forIntegers(1, 2, 3, 4);
   lib->kotlin.root.example.forFloats(1.0f, 2.0);
 
-  //use C and Kotlin/Native strings
+  //使用 C 与 Kotlin/Native 的字符串
   const char* str = "Hello from Native!";
   const char* response = lib->kotlin.root.example.strings(str);
   printf("in: %s\nout:%s\n", str, response);
   lib->DisposeString(response);
 
-  //create Kotlin object instance
+  //创建 Kotlin 对象实例
   libnative_kref_example_Clazz newInstance = lib->kotlin.root.example.Clazz.Clazz();
   long x = lib->kotlin.root.example.Clazz.memberFunction(newInstance, 42);
   lib->DisposeStablePointer(newInstance.pinned);
@@ -399,60 +399,60 @@ int main(int argc, char** argv) {
 ```
 </div>
 
-## Compiling and Running the Example on Linux and macOS
+## 将示例编译并运行于 Linux 以及 macOS
 
-On macOS 10.13 with Xcode, we compile the C code and link it with the dynamic library
-with the following command:
+在 macOS 10.13 的 Xcode 上，我们使用如下命令将 C 代码<!--
+-->编译并链接到动态库：
 ```bash
 clang main.c libnative.dylib
 ```
 
-On Linux we call a similar command: 
+在 Linux 上我们也使用相似的命令：
 ```bash
 gcc main.c libnative.so
 ```
 
-The compiler generates an executable called `a.out`. We need to run it to see in action the Kotlin code
-being executed from C library. On Linux, we'll need to include `.` into the `LD_LIBRARY_PATH`
-to let the application know to load the `libnative.so` library from the current folder.
+编译器生成一个名为 `a.out` 的可执行文件。我们需要运行它来查看 Kotlin 代码
+是如何调用 C 库来运行的。在 Linux 上，我们将需要将 `.` 引入到 `LD_LIBRARY_PATH`
+来使应用程序知晓从当前文件夹加载 `libnative.so` 库。
 
-## Compiling and Running the Example on Windows
+## 将示例编译并运行于 Windows
 
-To start with, we'll need a Microsoft Visual C++ compiler installed that supports a x64_64 
-target. The easiest way to do this is to have a version of Microsoft Visual Studio installed on 
-a Windows machine. 
+首先，我们需要安装一个支持 64 位目标操作系统的 Microsoft Visual C++
+编译器。最简单的方法是在我们的 Windows 机器上安装相同版本的
+Microsoft Visual Studio。
 
-We will be using the `x64 Native Tools Command Prompt <VERSION>` console. We'll see the 
-shortcut to open the console in the start menu. It comes with a Microsoft Visual Studio
-package.  
+我们将使用 `x64 Native Tools Command Prompt <VERSION>` 控制台。我们会看到<!--
+-->在开始菜单中打开控制台的快捷方式。它附带一个 Microsoft Visual Studio
+包。
 
-On Windows, Dynamic libraries are included either via a generated static library wrapper
-or with manual code, which deals with the [LoadLibrary](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684175.aspx)
-or similar Win32API functions. We will follow the first option and generate the static wrapper library
-for the `libnative.dll` on our own.
+在 Windows 上，动态库可以通过生成的静态库包装器<!--
+-->以及手动编写代码的形式导入，使用 [LoadLibrary](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684175.aspx)
+处理或类似的 Win32API 功能。我们将使用第一种选项并为我们自己的
+`libnative.dll` 生成静态包装器。
  
-We call `lib.exe` from the toolchain to generate the static library 
-wrapper `libnative.lib` that automates the DLL usage from the code:
+我们使用工具链中的 `lib.exe` 来生成静态库<!--
+-->包装器 `libnative.lib`，它可以在代码中自动使用 DLL：
 ```bash
 lib /def:libnative_symbols.def /out:libnative.lib
 ```
 
-Now we are ready to compile our `main.c` into an executable. We include the generated `libnative.lib` into
-the build command and start:
+现在我们已经准备好将 `main.c` 编译为可执行文件。我们将生成的 `libnative.lib`
+导入到构建命令并启动：
 ```bash
 cl.exe main.c libnative.lib
 ```
 
-The command produces the `main.exe` file, which we can run.
+这行命令生成了 `main.exe` 文件供我们执行。
  
 
-## Next Steps
+## 接下来
 
-Dynamic libraries are the main way to use Kotlin code from existing programs. 
-We can use them to share our code with many platforms or languages, including JVM,
-[Python](https://github.com/JetBrains/kotlin-native/blob/master/samples/python_extension/src/main/c/kotlin_bridge.c),
-iOS, Android, and others.
+动态库是从现有程序使用 Kotlin 代码的主要方式。
+我们可以使用它们来共享我们的代码到许多平台以及其他语言，包括 JVM、
+[Python](https://github.com/JetBrains/kotlin-native/blob/master/samples/python_extension/src/main/c/kotlin_bridge.c)、
+iOS、Android 以及其他平台。
 
-Kotlin/Native also has tight integration with Objective-C and Swift.
-It is covered in the [Kotlin/Native as an Apple Framework](apple-framework.html)
-tutorial.
+Kotlin/Native 同样也可以与 Objective-C 以及 Swift 紧密集成。
+这部分内容被包含在 [Kotlin/Native 开发 Apple Framework](apple-framework.html)
+教程中。
