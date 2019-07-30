@@ -22,7 +22,7 @@ issue: EVAN-5343
 这篇<!--
 -->[基本 Kotlin 应用程序](basic-kotlin-native-app.html#obtaining-the-compiler)<!--
 -->教程涵盖了这一步骤。
-我们假定我们拥有控制台，其中 `kotlinc-native`、`cinterop` 与 `klib` 命令均可用。
+我们假定拥有一个控制台，其中 `kotlinc-native`、`cinterop` 与 `klib` 命令均可用。
 
 ## 映射 C 语言的结构与联合类型
 
