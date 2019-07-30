@@ -11,8 +11,8 @@ issue: EVAN-5343
 
 这是本系列的第二篇教程。本系列的第一篇教程是<!--
 -->[映射来自 C 语言的原始数据类型](mapping-primitive-data-types-from-c.html)。
-There are also the [Mapping Struct and Union Types from C](mapping-struct-union-types-from-c.html) and 
-[映射来自 C 语言的字符串](mapping-strings-from-c.html)。
+系列其余教程包括[映射来自 C 语言的函数指针](mapping-function-pointers-from-c.html)与<!--
+-->[映射来自 C 语言的字符串](mapping-strings-from-c.html)。
 
 在本教程中我们将学习到
 - [如何映射结构与联合类型](#映射-c-语言的结构与联合类型)
@@ -22,7 +22,7 @@ There are also the [Mapping Struct and Union Types from C](mapping-struct-union-
 这篇<!--
 -->[基本 Kotlin 应用程序](basic-kotlin-native-app.html#obtaining-the-compiler)<!--
 -->教程涵盖了这一步骤。
-我们假设，我们拥有一个 `kotlinc-native`、`cinterop` 以及 `klib` 命令行工具都已经准备好控制台。
+我们假定我们拥有控制台，其中 `kotlinc-native`、`cinterop` 与 `klib` 命令均可用。
 
 ## 映射 C 语言的结构与联合类型
 
