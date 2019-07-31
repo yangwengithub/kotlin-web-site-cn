@@ -148,7 +148,7 @@ class MyUnion constructor(rawPtr: NativePtr /* = NativePtr */) : CStructVar {
 让我们看一看生成的函数，它将 `MyStruct` 与 `MyUnion` 作为参数。我们看到了<!--
 -->值类型参数表示为 `kotlinx.cinterop.CValue<T>`。而指针类型参数表示为
 `kotlinx.cinterop.CValuesRef<T>`。
-Kotlin 给我们提供了 API 来使处理这两者都非常简单，让我们尝试一下并看看结果。
+Kotlin 给我们提供了 API 使得处理这两者都非常简单，让我们尝试一下并看看结果。
 
 ### 创建一个 `CValue<T>`
 
@@ -240,8 +240,8 @@ fun callRef() {
 ```
 </div>
 
-注意，我们使用来自 `memScoped` 带接收者类型的 lambda 的扩展属性 `ptr`，
-将 `MyStruct` 与 `MyUnion` 实例转换到原生指针。
+注意，我们使用的扩展属性 `ptr` 来自 `memScoped` lambda 表达式的接收者类型，
+将 `MyStruct` 与 `MyUnion` 实例转换为原生指针。
 
 `MyStruct` 与 `MyUnion` 类具有指向原生内存的指针。当 `memScoped` 函数结束的时候，
 即 `block` 结尾的时候，内存将释放。请小心确保指针<!--
@@ -271,7 +271,7 @@ fun callMix_ref() {
 ```  
 </div>
 
-我们使用来自 `memScoped` 的接受者类型 lambda 的扩展属性 `ptr`
+我们使用的扩展属性 `ptr` 来自 `memScoped` lambda 表达式的接收者类型，
 将 `MyStruct` 与 `MyUnion` 实例转换为原生指针。这些指针只在
 `memScoped` 块内是有效的。
 
