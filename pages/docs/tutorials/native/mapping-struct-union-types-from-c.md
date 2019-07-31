@@ -139,9 +139,9 @@ class MyUnion constructor(rawPtr: NativePtr /* = NativePtr */) : CStructVar {
 
 ## 在 Kotlin 中使用结构与联合类型
 
-在 Kotlin 中使用为 C 的 `struct` 与 `union` 类型生成的包装器是非常简单的。感谢生成的<!--
--->属性，在 Kotlin 代码中使用它们是非常自然的。只有一个问题，至今为止，我们是如何在这些类上创建新<!--
--->实例的。我们看看 `MyStruct` 与 `MyUnion` 的声明，它们的构造函数需要一个 `NativePtr`。
+在 Kotlin 中使用为 C 的 `struct` 与 `union` 类型生成的包装器非常简单。由于生成了<!--
+-->属性，使得在 Kotlin 代码中使用它们是非常自然的。迄今为止唯一的问题是，如何为这些类创建新<!--
+-->的实例。正如我们在 `MyStruct` 与 `MyUnion` 的声明中所见，它们的构造函数需要一个 `NativePtr`。
 当然，我们不愿意手动处理指针。作为替代，我们可以使用 Kotlin API
 来为我们实例化这些对象。 
 
@@ -152,7 +152,7 @@ Kotlin 给我们提供了 API 来使处理这两者都非常简单，让我们�
 
 ### 创建一个 `CValue<T>`
 
-`CValue<T>` 类型被用来传递一个值类型的参数道 C 函数调用。
+`CValue<T>` 类型用来传递一个值类型的参数到 C 函数调用。
 我们使用 `cValue` 函数来创建 `CValue<T>` 对象实例。该函数需要一个<!--
 -->[带接收者的 lambda 函数字面值](../../reference/lambdas.html#带有接收者的函数字面值)<!--
 -->来就地初始化底层 C 类型。该函数的声明如下所示：
@@ -187,7 +187,7 @@ fun callValue() {
 
 ### 使用 `CValuesRef<T>` 创建结构体与联合体
 
-`CValuesRef<T>` 类型被用来在 Kotlin 中将指针类型的参数传递给 C
+`CValuesRef<T>` 类型用于在 Kotlin 中将指针类型的参数传递给 C
 函数。首先，我们需要
 `MyStruct` 与 `MyUnion` 类的实例。这次我们直接在原生内存中创建它们。
 让我们使用
@@ -213,7 +213,7 @@ fun <R> memScoped(block: kotlinx.cinterop.MemScope.() -> R): R
 ```
 </div>
 
-函数。它创建一个短声明周期的内存分配作用域，
+函数。它创建一个短生命周期的内存分配作用域，
 并且所有的分配都将在 `block` 结束之后自动清理。
 
 我们的代码调用带指针类型参数的函数将会是这个样子：
@@ -244,14 +244,14 @@ fun callRef() {
 将 `MyStruct` 与 `MyUnion` 实例转换到原生指针。
 
 `MyStruct` 与 `MyUnion` 类具有指向原生内存的指针。当 `memScoped` 函数结束的时候，
-即 `block` 结尾的时候，内存将被释放。请小心确保指针<!--
--->没有被用在 `memScoped` 调用的外面。我们可以使用 `Arena()` 或 `nativeHeap`
-代替指针，应该可以使用更长时间，或者缓存在 C 库中。
+即 `block` 结尾的时候，内存将释放。请小心确保指针<!--
+-->没有在 `memScoped` 调用的外部使用。我们可以为指针使用 `Arena()` 或 `nativeHeap`
+这样应该有更长的可用时间，或者缓存在 C 库中。
 
 ### 在 `CValue<T>` 与 `CValuesRef<T>` 之间转换
 
 当然，这里有一些用例：一种是我们需要将一个结构体作为值传递给一个调用，另一种是<!--
--->将相同的结构体并作为引用传递给另一个调用。这在 Kotlin/Native 同样也是可行的。这里将<!--
+-->将同一个结构体作为引用传递给另一个调用。这在 Kotlin/Native 中同样也是可行的。这里将<!--
 -->需要一个 `NativePlacement`。
 
 让我们看看现在首先将 `CValue<T>` 转换为一个指针：
@@ -275,7 +275,7 @@ fun callMix_ref() {
 将 `MyStruct` 与 `MyUnion` 实例转换为原生指针。这些指针只在
 `memScoped` 块内是有效的。
 
-对于反向的转换，即将指针转换为值类型变量，
+对于反向转换，即将指针转换为值类型变量，
 我们可以调用 `readValue()` 扩展函数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only="1" auto-indent="false">
@@ -349,5 +349,5 @@ fun main() {
 - [映射来自 C 语言的字符串](mapping-strings-from-c.html)
 
 这篇[C 互操作文档](https://github.com/JetBrains/kotlin-native/blob/master/INTEROP.md)
-涵盖了互操作的更高级方案
+涵盖了互操作的更高级场景
 
