@@ -139,23 +139,23 @@ class MyUnion constructor(rawPtr: NativePtr /* = NativePtr */) : CStructVar {
 
 ## 在 Kotlin 中使用结构与联合类型
 
-It is easy to use the generated wrapper classes for C `struct` and `union` types from Kotlin. Thanks to the generated
-properties, it feels natural to use them in Kotlin code. The only question, so far, is how do we create a new instance on those
-classes. As we see from the declarations of `MyStruct` and `MyUnion`, their constructors require a `NativePtr`.
-Of course, we are not willing to deal with pointers manually. Instead, we can use Kotlin API to have those 
-objects instantiated for us. 
+在 Kotlin 中使用为 C 的 `struct` 与 `union` 类型生成的包装器是非常简单的。感谢生成的<!--
+-->属性，在 Kotlin 代码中使用它们是非常自然的。只有一个问题，至今为止，我们是如何在这些类上创建新<!--
+-->实例的。我们看看 `MyStruct` 与 `MyUnion` 的声明，它们的构造函数需要一个 `NativePtr`。
+当然，我们不愿意手动处理指针。作为替代，我们可以使用 Kotlin API
+来为我们实例化这些对象。 
 
-Let's take a look at the generated functions that take our `MyStruct` and `MyUnion` as parameters. We see that 
-by-value parameters are represented as `kotlinx.cinterop.CValue<T>`. And for typed pointer parameters we 
-see `kotlinx.cinterop.CValuesRef<T>`.
-Kotlin provides us with an API to deal with both types easily, let's try it and see.
+让我们看一看生成的函数，它将 `MyStruct` 与 `MyUnion` 作为参数。我们看到了<!--
+-->值类型参数表示为 `kotlinx.cinterop.CValue<T>`。而指针类型参数表示为
+`kotlinx.cinterop.CValuesRef<T>`。
+Kotlin 给我们提供了 API 来使处理这两者都非常简单，让我们尝试一下并看看结果。
 
-### Creating a `CValue<T>`
+### 创建一个 `CValue<T>`
 
-`CValue<T>` type is used to pass by-value parameters to a C function call.
-We use `cValue` function to create `CValue<T>` object instance. The function requires a
-[lambda function with a receiver](../../reference/lambdas.html#带有接收者的函数字面值)
-to initialize the underlying C type in-place. The function is declared as follows:
+`CValue<T>` 类型被用来传递一个值类型的参数道 C 函数调用。
+我们使用 `cValue` 函数来创建 `CValue<T>` 对象实例。该函数需要一个<!--
+-->[带接收者的 lambda 函数字面值](../../reference/lambdas.html#带有接收者的函数字面值)<!--
+-->来就地初始化底层 C 类型。该函数的声明如下所示：
 <div class="sample" markdown="1" theme="idea" data-highlight-only="1" auto-indent="false">
 
 ```kotlin
@@ -163,7 +163,7 @@ fun <reified T : CStructVar> cValue(initialize: T.() -> Unit): CValue<T>
 ```
 </div>
 
-Now it is time to see how to use `cValue` and pass by-value parameters:
+现在是时候来看看如何使用 `cValue` 并传递值类型参数：
 <div class="sample" markdown="1" theme="idea" data-highlight-only="1" auto-indent="false">
 
 ```kotlin
@@ -185,12 +185,12 @@ fun callValue() {
 ```
 </div>
 
-### Creating Struct and Union as `CValuesRef<T>`
+### 使用 `CValuesRef<T>` 创建结构体与联合体
 
-`CValuesRef<T>` type is used in Kotlin to pass a typed pointer parameter of a C 
-function. First, we need an instance of 
-`MyStruct` and `MyUnion` classes. This time we create them directly in the native memory. 
-Let's use the    
+`CValuesRef<T>` 类型被用来在 Kotlin 中将指针类型的参数传递给 C
+函数。首先，我们需要
+`MyStruct` 与 `MyUnion` 类的实例。这次我们直接在原生内存中创建它们。
+让我们使用
 <div class="sample" markdown="1" theme="idea" data-highlight-only="1" auto-indent="false">
 
 ```kotlin
@@ -198,14 +198,14 @@ fun <reified T : kotlinx.cinterop.CVariable> alloc(): T
 ```
 </div>
 
-extension function on `kotlinx.cinterop.NativePlacement`
-type for this.
+`kotlinx.cinterop.NativePlacement` 上的扩展函数来<!--
+-->做这个。
 
-`NativePlacement` represents native memory with functions similar to `malloc` and `free`. 
-There are several implementations of `NativePlacement`. The global one is called with `kotlinx.cinterop.nativeHeap`
-and don't forget to call the `nativeHeap.free(..)` function to free the memory after use.
+`NativePlacement` 代表原生内存，类似于 `malloc` 与 `free` 函数。
+这里有几个 `NativePlacement` 的实现。其中全局的那个是调用 `kotlinx.cinterop.nativeHeap`
+并且不要忘记在使用过后调用 `nativeHeap.free(..)` 函数来释放内存。
  
-Another option is to use the
+另一个配置是使用
 <div class="sample" markdown="1" theme="idea" data-highlight-only="1" auto-indent="false">
 
 ```kotlin
@@ -213,10 +213,10 @@ fun <R> memScoped(block: kotlinx.cinterop.MemScope.() -> R): R
 ```
 </div>
 
-function. It creates a short-lived memory allocation scope,
-and all allocations will be cleaned up automatically at the end of the `block`.
+函数。它创建一个短声明周期的内存分配作用域，
+并且所有的分配都将在 `block` 结束之后自动清理。
 
-Our code to call functions with pointers will look like this:
+我们的代码调用带指针类型参数的函数将会是这个样子：
 <div class="sample" markdown="1" theme="idea" data-highlight-only="1" auto-indent="false">
 
 ```kotlin
@@ -240,21 +240,21 @@ fun callRef() {
 ```
 </div>
 
-Note, we use the extension property `ptr` which comes from a `memScoped` lambda receiver type, 
-to turn `MyStruct` and `MyUnion` instances into native pointers.
+注意，我们使用来自 `memScoped` 带接收者类型的 lambda 的扩展属性 `ptr`，
+将 `MyStruct` 与 `MyUnion` 实例转换到原生指针。
 
-The `MyStruct` and `MyUnion` classes have the pointer to the native memory underneath. The memory will be released
-when a `memScoped` function ends, which is equal to the end of its `block`. Be careful to make sure that a
-pointer is not used outside of the `memScoped` call. We may use `Arena()` or `nativeHeap` for pointers that 
-should be available longer, or are cached inside a C library.  
+`MyStruct` 与 `MyUnion` 类具有指向原生内存的指针。当 `memScoped` 函数结束的时候，
+即 `block` 结尾的时候，内存将被释放。请小心确保指针<!--
+-->没有被用在 `memScoped` 调用的外面。我们可以使用 `Arena()` 或 `nativeHeap`
+代替指针，应该可以使用更长时间，或者缓存在 C 库中。
 
-### Conversion between `CValue<T>` and `CValuesRef<T>`
+### 在 `CValue<T>` 与 `CValuesRef<T>` 之间转换
 
-Of course, there are use cases, where we need to pass a struct as a value to one call, and then, to 
-pass the same struct as a reference to another call. This is possible in Kotlin/Native too. A 
-`NativePlacement` will be needed here. 
+当然，这里有一些用例：一种是我们需要将一个结构体作为值传递给一个调用，另一种是<!--
+-->将相同的结构体并作为引用传递给另一个调用。这在 Kotlin/Native 同样也是可行的。这里将<!--
+-->需要一个 `NativePlacement`。
 
-Let's see now `CValue<T>` is turned to a pointer first:
+让我们看看现在首先将 `CValue<T>` 转换为一个指针：
 <div class="sample" markdown="1" theme="idea" data-highlight-only="1" auto-indent="false">
 
 ```kotlin
@@ -271,12 +271,12 @@ fun callMix_ref() {
 ```  
 </div>
 
-We use the extension property `ptr` which comes from `memScoped` lambda receiver type 
-to turn `MyStruct` and `MyUnion` instances into native pointers. Those pointers are only valid
-inside the `memScoped` block.
+我们使用来自 `memScoped` 的接受者类型 lambda 的扩展属性 `ptr`
+将 `MyStruct` 与 `MyUnion` 实例转换为原生指针。这些指针只在
+`memScoped` 块内是有效的。
 
-For the opposite conversion, to turn a pointer into a by-value variable, 
-we call the `readValue()` extension function:
+对于反向的转换，即将指针转换为值类型变量，
+我们可以调用 `readValue()` 扩展函数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -293,16 +293,16 @@ fun callMix_value() {
 ```
 </div>
 
-## Running the Code
+## 运行代码
 
-Now we have learned how to use C declarations in our code, we are ready to try
-it out on a real example. Let's fix our code and see how it runs by calling the 
-`runDebugExecutableNative` Gradle task [in the IDE](basic-kotlin-native-app.html#run-in-ide)
-or by using the following console command:
+现在我们应学习了如何在我们的代码中使用 C 声明，我们已经准备好<!--
+-->在一个真实的示例中尝试它的输出。让我们修改代码并看看如何<!--
+-->[在 IDE 中](basic-kotlin-native-app.html#run-in-ide)调用 `runDebugExecutableNative` Gradle 任务来运行它。
+或者使用下面的控制台命令：
 [[include pages-includes/docs/tutorials/native/runDebugExecutableNative.md]]
 
 
-The final code in the `hello.kt` file may look like this:
+`hello.kt` 文件中的最终代码看起来会是这样：
  
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -341,13 +341,13 @@ fun main() {
 </div>
 
 
-## Next Steps
+## 接下来
 
-Join us to continue exploring the C language types and their representation in Kotlin/Native in the related tutorials:
-- [Mapping Primitive Data Types from C](mapping-primitive-data-types-from-c.html)
-- [Mapping Function Pointers from C](mapping-function-pointers-from-c.html)
-- [Mapping Strings from C](mapping-strings-from-c.html)
+加入我们的行列，在几篇相关的教程中继续浏览 C 语言的类型以及它们在 Kotlin/Native 中的表示：
+- [映射来自 C 语言的原始数据类型](mapping-primitive-data-types-from-c.html)
+- [映射来自 C 语言的函数指针](mapping-function-pointers-from-c.html)
+- [映射来自 C 语言的字符串](mapping-strings-from-c.html)
 
-The [C Interop documentation](https://github.com/JetBrains/kotlin-native/blob/master/INTEROP.md)
-documentation covers more advanced scenarios of the interop
+这篇[C 互操作文档](https://github.com/JetBrains/kotlin-native/blob/master/INTEROP.md)
+涵盖了互操作的更高级方案
 
