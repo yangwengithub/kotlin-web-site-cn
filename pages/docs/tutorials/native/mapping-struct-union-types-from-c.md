@@ -96,8 +96,8 @@ fun main() {
 
 ## Kotlin 中的原始类型
 
-通过 IntelliJ IDEA 的 _Goto Declaration_ 或
-编译器错误的帮助，我们会看到如下的为 C  函数、`struct` 以及 `union` 生成的 API：
+通过 IntelliJ IDEA 的 _Goto Declaration_ 或<!--
+-->编译器错误的帮助，我们会看到如下的为 C  函数、`struct` 以及 `union` 生成的 API：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only="1" auto-indent="false">
 
