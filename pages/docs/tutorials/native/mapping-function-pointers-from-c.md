@@ -35,8 +35,8 @@ Kotlin/Native 附带 `cinterop` 工具；该工具可以生成 C 语言与 Kotli
 它使用一个 .def 文件指定一个 C 库来导入。更多的细节将在<!--
 -->[与 C 库互操作](/docs/reference/native/c_interop.html)教程中讨论。
  
-The quickest way to try out C API mapping is to have all C declarations in the
-`interop.def` file, without creating any `.h` of `.c` files at all.在 `.def` 文件中，
+最快速的尝试 C API 映射的方法是将所有的 C 声明写到
+`interop.def` 文件，而不用创建任何 `.h` 或 `.c` 文件。在 `.def` 文件中，
 所有的 C 声明都在特殊的 `---` 分割行之后。
 
 <div class="sample" markdown="1" mode="c" theme="idea" data-highlight-only="1" auto-indent="false">
@@ -88,8 +88,8 @@ fun main() {
 </div>
 
 现在我们已经准备好<!--
--->[在 IntelliJ IDEA 中打开这个工程](basic-kotlin-native-app.html#open-in-ide)
-并且看看如何修正这个示例工程。当我们做了这些之后，
+-->[在 IntelliJ IDEA 中打开这个工程](basic-kotlin-native-app.html#open-in-ide)<!--
+-->并且看看如何修正这个示例工程。当我们做了这些之后，
 我们将观察 C 函数是如何映射到 Kotlin/Native 声明的。
 
 ## Kotlin 中的 C 函数指针
