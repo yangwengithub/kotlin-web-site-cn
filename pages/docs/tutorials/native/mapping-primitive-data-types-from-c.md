@@ -2,7 +2,7 @@
 type: tutorial
 layout: tutorial
 title:  "映射来自 C 语言的原始数据类型"
-description: "如何在 Kotlin/Native 中观察来自 C 语言的原始数据类型"
+description: "来自 C 语言的原始数据类型及其在 Kotlin/Native 中的样子"
 authors: Eugene Petrenko，乔禹昂（翻译）
 date: 2019-04-15
 showAuthorInfo: true
