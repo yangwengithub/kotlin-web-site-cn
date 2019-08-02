@@ -2,7 +2,7 @@
 type: tutorial
 layout: tutorial
 title:  "映射来自 C 语言的函数指针"
-description: "如何在 Kotlin/Native 中观察 C 语言的函数指针"
+description: "来自 C 的函数指针以及它们在 Kotlin/Native 中的样子"
 authors: Eugene Petrenko，乔禹昂（翻译）
 date: 2019-04-15
 showAuthorInfo: true
@@ -66,7 +66,7 @@ MyFun supply_fun() {
 现在是时候创建工程文件，并在
 [IntelliJ IDEA](https://jetbrains.com/idea) 中打开这个工程，然后运行它。
 
-## 为 C 库检查生成的 Kotlin API
+## 探查为 C 库生成的 Kotlin API
 
 [[include pages-includes/docs/tutorials/native/mapping-primitive-data-types-gradle.md]]
 
