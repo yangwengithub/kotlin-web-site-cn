@@ -348,6 +348,6 @@ fun main() {
 - [映射来自 C 语言的函数指针](mapping-function-pointers-from-c.html)
 - [映射来自 C 语言的字符串](mapping-strings-from-c.html)
 
-这篇[C 互操作文档](https://github.com/JetBrains/kotlin-native/blob/master/INTEROP.md)
-涵盖了互操作的更高级场景
+这篇[C 互操作文档](https://github.com/JetBrains/kotlin-native/blob/master/INTEROP.md)<!--
+-->涵盖了更多的高级互操作场景
 
