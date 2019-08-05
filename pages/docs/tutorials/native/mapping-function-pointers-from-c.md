@@ -165,7 +165,7 @@ Kotlin 将函数指针返回类型转换到一个可空的 `CPointer<CFunction<.
 -->或使用下面的命令来运行代码：
 [[include pages-includes/docs/tutorials/native/runDebugExecutableNative.md]]
 
-`hello.kt` 文件中的代码看起来会是这样的：
+`hello.kt` 文件中的代码最终看起来会是这样的：
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
@@ -193,5 +193,5 @@ fun main() {
 - [映射来自 C 语言的结构与联合类型](mapping-struct-union-types-from-c.html)
 - [映射来自 C 语言的字符串](mapping-strings-from-c.html)
 
-这篇 [C 互操作文档](https://github.com/JetBrains/kotlin-native/blob/master/INTEROP.md)
-涵盖了更多的高级互操作场景
+这篇 [C 互操作文档](https://github.com/JetBrains/kotlin-native/blob/master/INTEROP.md)<!--
+-->涵盖了更多的高级互操作场景
