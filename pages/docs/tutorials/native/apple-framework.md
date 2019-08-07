@@ -23,15 +23,15 @@ Kotlin 模块同样可以在 Swift/Objective-C 代码中使用。
 
 在本教程中我们将：
 - [创建一个 Kotlin 库](#创建一个-kotlin-库)并将它编译为 framework
-- 检查生成的 [Objective-C 与 Swift API](#生成framework-头) 代码
+- 探查生成的 [Objective-C 与 Swift API](#生成framework-头) 代码
 - 在 [Objective-C](#using-the-code-from-objective-c) 与 [Swift](#using-the-code-from-swift) 中使用 framework
 - 为 [macOS](#xcode-for-macos-target) 与 [iOS](#xcode-for-ios-targets) [配置 Xcode](#xcode-and-framework-dependencies) 以使用 framework
    
 ## 创建一个 Kotlin 库
 
-Kotlin/Native 编译器可以为 macOS 与 iOS
-生产一个 framework 的 Kotlin 代码输出。生成的 framework 包含所有在 Objective-C 与 Swift
-中使用所需的声明与二进制文件。
+Kotlin/Native 编译器可以使 Kotlin 代码为 macOS 与 iOS
+生产一个 framework 的输出。生成的 framework 包含在 Objective-C 与 Swift
+中所有使用所需的声明与二进制文件。
 理解这项技术的最佳方式是自己进行一下尝试。
 让我们首先创建一个小型的 Kotlin 库，并在 Objective-C 程序中使用它。
 
@@ -70,13 +70,13 @@ fun supplyFun() : (String) -> String? = { "$it is cool!" }
 [[include pages-includes/docs/tutorials/native/lets-create-gradle-build.md]]
 [[include pages-includes/docs/tutorials/native/apple-framework-code.md]]
 
-已经准备好的工程源代码可以直接下载：
+已经准备好的工程源代码可以在这里直接下载：
 [[include pages-includes/docs/tutorials/native/apple-framework-link.md]]
 
 让我们将源文件移动到工程下的
 `src/nativeMain/kotlin` 文件夹。当使用 [kotlin-多平台](/docs/reference/building-mpp-with-gradle.html)<!--
 -->插件的时候这是定位文件的默认路径。
-使用插件。我们使用以下块来指示配置项目<!--
+使用插件。我们使用以下代码块来指示配置项目<!--
 -->为我们生成动态或共享库：
 
 <div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
@@ -102,7 +102,7 @@ binaries {
 | iOS Simulator (x86_64) | `iosX64()`      |
 {:.zebra}
  
-让我们运行 `linkNative` Gradle 任务，来[在 IDE 中](basic-kotlin-native-app.html#run-in-ide)<!--
+让我们运行 `linkNative` Gradle 任务，以[在 IDE 中](basic-kotlin-native-app.html#run-in-ide)<!--
 -->构建该库。
 或者使用如下的控制台命令：
 [[include pages-includes/docs/tutorials/native/linkNative.md]]
@@ -125,8 +125,8 @@ binaries {
 
 ### Kotlin/Native 运行时声明
 
-让我们
-首先看看 Kotlin 的运行时声明：
+让我们<!--
+-->首先看看 Kotlin 的运行时声明：
 
 <div class="sample" markdown="1" mode="obj-c" theme="idea" data-highlight-only auto-indent="false">
 
@@ -196,7 +196,7 @@ Kotlin 类在 Objective-C 中拥有一个 `KotlinBase` 基类，该类在这里�
 {:.wide.zebra}
 
 每个数字类型都有一个类方法，用于从相关的简单类型创建新实例。此外，还有一个实例方法<!--
--->用于提取一个简单的值。原理上，声明是起来像这样：
+-->用于提取一个简单的值。原理上，声明看起来像这样：
 
 <div clacss="sample" markdown="1" mode="obj-c" theme="idea" data-highlight-only auto-indent="false">
 
@@ -210,7 +210,7 @@ __attribute__((swift_name("Kotlin__TYPE__")))
 ```
 
 </div>
-其中 `__TYPE__` 是简单类型名称之一，而 `__CTYPE__` 是相关的 Objective-C 类型，例如 `initWithChar(char)`。
+其中 `__TYPE__` 是简单类型的名称之一，而 `__CTYPE__` 是相关的 Objective-C 类型，例如 `initWithChar(char)`。
 
 这些类型用于将盒装的 Kotlin 数字类型映射到 Objective-C 与 Swift。
 在 Swift 中，我们可以简单的调用构造函数来创建一个示例，例如 `KotlinLong(value: 42)`。
@@ -257,7 +257,7 @@ Objective-C 与 Swift 语言中使用该 framework 的帮助。
 `Object`。`Interface` 被转换为 `@protocol`，同样 `class` 与 `object` 被分别表示为
 `@interface`。
 `Demo` 前缀来自于 `kotlinc-native`
-编译器的 `-output` 参数与 framework 名称。
+编译器的 `-output` 参数与 framework 的名称。
 我们看到这里的可空的返回值类型 `ULong?` 被转换到 Objective-C 中的 `DemoLong*`。
 
 ### Kotlin 中的全局声明
