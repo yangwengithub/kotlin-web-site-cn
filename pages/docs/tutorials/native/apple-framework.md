@@ -1,41 +1,41 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Kotlin/Native as an Apple Framework"
-description: "Compiling Kotlin/Native code and use it from Objective-C and Swift"
-authors: Eugene Petrenko
+title:  "Kotlin/Native 开发 Apple Framework"
+description: "编译 Kotlin/Native 代码并在 Objective-C 与 Swift 中使用它"
+authors: Eugene Petrenko，乔禹昂（翻译）
 date: 2019-04-15
-showAuthorInfo: false
+showAuthorInfo: true
 issue: EVAN-5132
 ---
 
-Kotlin/Native provides bi-directional interoperability with Objective-C/Swift. 
-Objective-C frameworks and libraries can be used in Kotlin code.
-Kotlin modules can be used in Swift/Objective-C code too.
-Besides that, Kotlin/Native has
-[C Interop](https://github.com/JetBrains/kotlin-native/blob/master/INTEROP.md).
-There is also the [Kotlin/Native as a Dynamic Library](dynamic-libraries.html)
-tutorial for more information.
+Kotlin/Native 提供与 Objective-C/Swift 的双向互操作性。
+Objective-C frameworks 与库可以在 Kotlin 代码中使用。
+Kotlin 模块同样可以在 Swift/Objective-C 代码中使用。
+除此之外，Kotlin/Native 也拥有
+[C 互操作性](https://github.com/JetBrains/kotlin-native/blob/master/INTEROP.md)。
+这篇 [Kotlin/Native 开发动态库](dynamic-libraries.html)<!--
+-->教程包含了更多信息。
 
-In this tutorial, we will look at how to use Kotlin/Native code from
-Objective-C and Swift applications on macOS and iOS.
-We will build a framework from Kotlin code.
+在本教程中，我们将看到如何在 Objective-C 与 Swift
+编写的 macOS 与 iOS 应用程序中使用 Kotlin/Native 代码。
+我们将使用 Kotlin 代码构建一个 framework。
 
-In this tutorial we'll: 
-- [create a Kotlin Library](#creating-a-kotlin-library) and compile it to a framework
-- examine the generated [Objective-C and Swift API](#generated-framework-headers) code
-- use the framework from [Objective-C](#using-the-code-from-objective-c) and [Swift](#using-the-code-from-swift)
-- [Configure Xcode](#xcode-and-framework-dependencies) to use the framework for [macOS](#xcode-for-macos-target) and [iOS](#xcode-for-ios-targets)
+在本教程中我们将：
+- [创建一个 Kotlin 库](#创建一个-kotlin-库)并将它编译为 framework
+- 检查生成的 [Objective-C 与 Swift API](#生成framework-头) 代码
+- 在 [Objective-C](#using-the-code-from-objective-c) 与 [Swift](#using-the-code-from-swift) 中使用 framework
+- 为 [macOS](#xcode-for-macos-target) 与 [iOS](#xcode-for-ios-targets) [配置 Xcode](#xcode-and-framework-dependencies) 以使用 framework
    
-## Creating a Kotlin Library
+## 创建一个 Kotlin 库
 
-Kotlin/Native compiler can produce a framework for macOS and iOS
-out of the Kotlin code. The created framework contains all declarations
-and binaries needed to use it with Objective-C and Swift.
-The best way to understand the techniques is to try it for ourselves. 
-Let's create a tiny Kotlin library first and use it from an Objective-C program.
+Kotlin/Native 编译器可以为 macOS 与 iOS
+生产一个 framework 的 Kotlin 代码输出。生成的 framework 包含所有在 Objective-C 与 Swift
+中使用所需的声明与二进制文件。
+理解这项技术的最佳方式是自己进行一下尝试。
+让我们首先创建一个小型的 Kotlin 库，并在 Objective-C 程序中使用它。
 
-We create the `hello.kt` file with the library contents:
+我们创建该 `hello.kt` 文件，并在其中编写库的内容：
 
 <div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -70,14 +70,14 @@ fun supplyFun() : (String) -> String? = { "$it is cool!" }
 [[include pages-includes/docs/tutorials/native/lets-create-gradle-build.md]]
 [[include pages-includes/docs/tutorials/native/apple-framework-code.md]]
 
-The prepared project sources can be directly downloaded from 
+已经准备好的工程源代码可以直接下载：
 [[include pages-includes/docs/tutorials/native/apple-framework-link.md]]
 
-Let's move the sources file into the `src/nativeMain/kotlin` folder under
-the project. That is the default path, where sources are located, when
-the [kotlin-multiplatform](/docs/reference/building-mpp-with-gradle.html)
-plugin is used. We use the following block to instruct configure the project
-to generate a dynamic or shared library for us: 
+让我们将源文件移动到工程下的
+`src/nativeMain/kotlin` 文件夹。当使用 [kotlin-多平台](/docs/reference/building-mpp-with-gradle.html)<!--
+-->插件的时候这是定位文件的默认路径。
+使用插件。我们使用以下块来指示配置项目<!--
+-->为我们生成动态或共享库：
 
 <div class="sample" markdown="1" theme="idea" mode="kotlin" data-highlight-only>
 
@@ -90,11 +90,11 @@ binaries {
 ```
 </div>
 
-Along with `macOS X64`, Kotlin/Native supports iOS `arm32`, `arm64` and `X64`
-targets. We may replace the `macosX64` with respective functions as shown
-in the table:
+`macOS X64` 是单独的，Kotlin/Native 支持 iOS `arm32`、`arm64` 与 `X64`
+目标平台。我们可以使用各自的函数替代 `macosX64`，
+如表所示：
 
-| Target platform/device | Gradle function |
+| 目标 平台/设备           | Gradle 函数      |
 |------------------------|-----------------|
 | macOS x86_64           | `macosX64()`    | 
 | iOS ARM 32             | `iosArm32()`    | 
@@ -102,31 +102,31 @@ in the table:
 | iOS Simulator (x86_64) | `iosX64()`      |
 {:.zebra}
  
-Let's run the `linkNative` Gradle task to build the library 
-[in the IDE](basic-kotlin-native-app.html#run-in-ide) 
-or by calling the following console command:
+让我们运行 `linkNative` Gradle 任务，来[在 IDE 中](basic-kotlin-native-app.html#run-in-ide)<!--
+-->构建该库。
+或者使用如下的控制台命令：
 [[include pages-includes/docs/tutorials/native/linkNative.md]]
 
-Depending on the variant, the build generates the framework
-into the
+依据配置的不同，构建生成的 framework
+位于
 `build/bin/native/debugFramework`
-and
+或
 `build/bin/native/releaseFramework`
-folders.
-Let's see what is inside
+文件夹。
+让我们看看里面是什么
 
-## Generated Framework Headers
+## 生成 Framework 头
 
-Each of the created frameworks contains the header file in `<Framework>/Headers/Demo.h`.
-The headers do not depend on the target platform (at least with Kotlin/Native v.0.9.2).
-It contains the definitions for our Kotlin code and a few Kotlin-wide declarations.
+每个被创建的 frameworks 头文件被包含在 `<Framework>/Headers/Demo.h` 中。
+这个头文件不依赖目标平台（最新版本 Kotlin/Native v.0.9.2）。
+它包含我们的 Kotlin 代码的定义与一些 Kotlin 范围的声明。
 
-Note, the way Kotlin/Native exports symbols is subject to change without notice.
+注意，Kotlin/Native 向外暴露符号的方式如有变更，恕不另行通知。
 
-### Kotlin/Native Runtime Declarations
+### Kotlin/Native 运行时声明
 
-Let's
-take a look at Kotlin runtime declarations first:
+让我们
+首先看看 Kotlin 的运行时声明：
 
 <div class="sample" markdown="1" mode="obj-c" theme="idea" data-highlight-only auto-indent="false">
 
@@ -158,9 +158,9 @@ __attribute__((swift_name("KotlinMutableDictionary")))
 ```
 </div>
 
-Kotlin classes have a `KotlinBase` base class in Objective-C, the class extends
-the `NSObject` class there. We also have wrappers for collections and exceptions. 
-Most of the collection types are mapped to similar collection types from the other side:
+Kotlin 类在 Objective-C 中拥有一个 `KotlinBase` 基类，该类在这里继承自
+`NSObject` 类。我们同样也有集合与异常的包装器。
+大多数的集合类型都从另一边映射到了相似的集合类型：
 
 |Kotlin|Swift|Objective-C|
 -------|-----|-----------|
@@ -172,12 +172,12 @@ Most of the collection types are mapped to similar collection types from the oth
 {:.wide.zebra}
 
 
-### Kotlin Numbers and NSNumber
+### Kotlin Numbers 与 NSNumber
 
-The next part of the `<Framework>/Headers/Demo.h` contains number type mappings
-between Kotlin/Native and `NSNumber`. We have the base class called `DemoNumber` in Objective-C
-and `KotlinNumber` in Swift. It extends `NSNumber`.
-There are also child classes per Kotlin number type:
+下一步，`<Framework>/Headers/Demo.h` 包含了 Kotlin/Native 数字类型与 `NSNumber`
+之间的映射。我们在 Objective-C 中拥有一个基类名为 `DemoNumber`，
+而在 Swift 中是 `KotlinNumber`。它继承自 `NSNumber`。
+这里有每个作为子类的 Kotlin 数字类型：
 
 |Kotlin|Swift|Objective-C| Simple type |
 -------|-----|-----------|
@@ -195,8 +195,8 @@ There are also child classes per Kotlin number type:
 |`Boolean`|`KotlinBoolean`|`<Package>Boolean`| `BOOL/Bool` |
 {:.wide.zebra}
 
-Every number type has a class method to create a new instance from the related simple type. Also, there is an instance method
-to extract a simple value back. Schematically, declarations look like that:
+每个数字类型都有一个类方法，用于从相关的简单类型创建新实例。此外，还有一个实例方法<!--
+-->用于提取一个简单的值。原理上，声明是起来像这样：
 
 <div clacss="sample" markdown="1" mode="obj-c" theme="idea" data-highlight-only auto-indent="false">
 
@@ -210,16 +210,16 @@ __attribute__((swift_name("Kotlin__TYPE__")))
 ```
 
 </div>
-Where `__TYPE__` is one of the simple type names and `__CTYPE__` is the related Objective-C type, e.g. `initWithChar(char)`.
+其中 `__TYPE__` 是简单类型名称之一，而 `__CTYPE__` 是相关的 Objective-C 类型，例如 `initWithChar(char)`。
 
-These types are used to map boxed Kotlin number types into Objective-C and Swift.
-In Swift, we may simply call the constructor to create an instance, e.g. `KotlinLong(value: 42)`.
+这些类型用于将盒装的 Kotlin 数字类型映射到 Objective-C 与 Swift。
+在 Swift 中，我们可以简单的调用构造函数来创建一个示例，例如 `KotlinLong(value: 42)`。
 
-### Classes and Objects from Kotlin
+### Kotlin 中的类与对象
 
-Let's see how `class` and `object` are mapped to Objective-C and Swift. 
-The generated `<Framework>/Headers/Demo.h` file contains the exact definitions for 
-`Class`, `Interface`, and `Object`:
+让我们看看如何将 `class` 与 `object` 映射到 Objective-C 与 Swift。 
+生成的 `<Framework>/Headers/Demo.h` 文件包含
+`Class`、`Interface` 与 `Object` 的确切定义：
 
 <div class="sample" markdown="1" mode="obj-c" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -251,20 +251,20 @@ __attribute__((swift_name("Clazz")))
 ```
 </div>
 
-The code is full of Objective-C attributes, which are intended to help
-the use of the framework from both Objective-C and Swift languages.
-`DemoClazz`, `DemoInterface`, and `DemoObject` are created for `Clazz`, `Interface`, and `Object` 
-respectively. The `Interface` is turned into `@protocol`, both a `class` and an `object` are represented as
-`@interface`.
-The `Demo` prefix comes from the `-output` parameter
-of the `kotlinc-native` compiler and the framework name. 
-We see here that the nullable return type `ULong?` is turned into `DemoLong*` in Objective-C.
+这段代码有各种 Objective-C attribute，旨在提供在
+Objective-C 与 Swift 语言中使用该 framework 的帮助。
+`DemoClazz`、`DemoInterface`、`DemoObject` 被分别创建为 `Clazz`、`Interface` 与
+`Object`。`Interface` 被转换为 `@protocol`，同样 `class` 与 `object` 被分别表示为
+`@interface`。
+`Demo` 前缀来自于 `kotlinc-native`
+编译器的 `-output` 参数与 framework 名称。
+我们看到这里的可空的返回值类型 `ULong?` 被转换到 Objective-C 中的 `DemoLong*`。
 
-### Global Declarations from Kotlin
+### Kotlin 中的全局声明
 
-All global functions from Kotlin
-are turned into `DemoLibKt` in Objective-C and into `LibKt` in Swift, where `Demo` is the framework name and set by
-the `-output` parameter of `kotlinc-native`.
+在 `Demo` 作为 framework 名称的地方且为 `kotlinc-native` 设置了 `-output` 参数时，
+所有 Kotlin 中的全局声明<!--
+-->都被转化为 Objective-C 中的 `DemoLibKt` 以及 Swift 中的 `LibKt`。
 
 <div class="sample" markdown="1" mode="obj-c" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -283,16 +283,16 @@ __attribute__((swift_name("LibKt")))
 ```
 </div>
 
-We see that Kotlin `String` and Objective-C `NSString*` are mapped transparently.
-Similarly, `Unit` type from Kotlin is mapped to `void`. We see primitive types
-are mapped directly. Non-nullable primitive types are mapped transparently.
-Nullable primitive types are mapped into `Kotlin<TYPE>*` types, as shown in the table [above](#kotlin-numbers-and-nsnumber). 
-Both higher order functions `acceptFunF` and `supplyFun` are included,
-and accept Objective-C blocks.
+我们看到 Kotlin `String` 与 Objective-C `NSString *` 是透明映射的。
+类似地，Kotlin 的 `Unit` 类型被映射到 `void`。我们看到原始类型<!--
+-->直接映射。不可空的原始类型透明地映射。
+可空的原始类型被映射到 `Kotlin<TYPE>*` 类型，如[上](#kotlin-numbers-and-nsnumber)表所示。
+包括高阶函数 `acceptFunF` 与 `supplyFun`，
+都接收一个 Objective-C 块。
 
-More information about all other types mapping details can be found in the
-[Objective-C Interop](/docs/reference/native/objc_interop.html)
-documentation article
+更多的关于所有其它类型的映射细节可以在这篇
+[Objective-C 互操作](/docs/reference/native/objc_interop.html)<!--
+-->文档中找到。
 
 ## Garbage Collection and Reference Counting
 
