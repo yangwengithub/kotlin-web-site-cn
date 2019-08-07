@@ -254,8 +254,8 @@ __attribute__((swift_name("Clazz")))
 这段代码有各种 Objective-C attribute，旨在提供在
 Objective-C 与 Swift 语言中使用该 framework 的帮助。
 `DemoClazz`、`DemoInterface`、`DemoObject` 被分别创建为 `Clazz`、`Interface` 与
-`Object`。`Interface` 被转换为 `@protocol`，同样 `class` 与 `object` 被表示为
-`@interface`。
+`Object`。`Interface` 被转换为 `@protocol`，同样 `class` 与 `object` 都以
+`@interface` 表示。
 `Demo` 前缀来自于 `kotlinc-native`
 编译器的 `-output` 参数与 framework 的名称。
 我们看到这里的可空的返回值类型 `ULong?` 被转换到 Objective-C 中的 `DemoLong*`。
@@ -426,7 +426,7 @@ framework 的相对路径。
 iOS 模拟器需要一个为 `ios_x64` 目标平台编译的 framework，它位于我们案例中的
 `iOS_sim` 文件夹。
 
-[这篇 Stack Overflow 流](https://stackoverflow.com/questions/30963294/creating-ios-osx-frameworks-is-it-necessary-to-codesign-them-before-distributin)<!--
+[这个 Stack Overflow 主题](https://stackoverflow.com/questions/30963294/creating-ios-osx-frameworks-is-it-necessary-to-codesign-them-before-distributin)<!--
 -->包含了一些更多的建议。同样，
 [CocoaPods](https://cocoapods.org/) 包管理器也可能有助于自动化该过程。
 
@@ -438,7 +438,7 @@ Kotlin 对象集成了 Objective-C/Swift 的引用计数。Kotlin
 这篇 [Objective-C 互操作](https://github.com/JetBrains/kotlin-native/blob/master/OBJC_INTEROP.md)<!--
 -->文档包含了更多关于互操作实现细节的信息。
 当然，也可以导入一个外部的 framework 并在 Kotlin 中使用它。Kotlin/Native
-附带一套良好的预导入系统 framework模式。
+附带一套良好的预导入系统 framework。
 
 Kotlin/Native 同样支持 C 互操作。查看这篇
 [Kotlin/Native 开发动态库](dynamic-libraries.html)<!--
