@@ -10,7 +10,7 @@ issue: EVAN-5132
 ---
 
 Kotlin/Native 提供与 Objective-C/Swift 的双向互操作性。
-Objective-C frameworks 与库可以在 Kotlin 代码中使用。
+Objective-C framework 与库可以在 Kotlin 代码中使用。
 Kotlin 模块同样可以在 Swift/Objective-C 代码中使用。
 除此之外，Kotlin/Native 也拥有
 [C 互操作性](https://github.com/JetBrains/kotlin-native/blob/master/INTEROP.md)。
@@ -24,8 +24,8 @@ Kotlin 模块同样可以在 Swift/Objective-C 代码中使用。
 在本教程中我们将：
 - [创建一个 Kotlin 库](#创建一个-kotlin-库)并将它编译为 framework
 - 检查生成的 [Objective-C 与 Swift API](#生成framework-头) 代码
-- 在 [Objective-C](#using-the-code-from-objective-c) 与 [Swift](#using-the-code-from-swift) 中使用 framework
-- 为 [macOS](#xcode-for-macos-target) 与 [iOS](#xcode-for-ios-targets) [配置 Xcode](#xcode-and-framework-dependencies) 以使用 framework
+- 在 [Objective-C](#在-objective-c-中使用代码) 与 [Swift](#在-swift-中使用代码) 中使用 framework
+- 为 [macOS](#xcode-与-macos-目标平台) 与 [iOS](#xcode-与-ios-目标平台) [配置 Xcode](#xcode-and-framework-dependencies) 以使用 framework
    
 ## 创建一个 Kotlin 库
 
@@ -117,7 +117,7 @@ binaries {
 
 ## 生成 Framework 头文件
 
-每个创建的 frameworks 头文件都包含在 `<Framework>/Headers/Demo.h` 中。
+每个创建的 framework 头文件都包含在 `<Framework>/Headers/Demo.h` 中。
 这个头文件不依赖目标平台（至少需要 Kotlin/Native v.0.9.2）。
 它包含我们的 Kotlin 代码的定义与一些 Kotlin 级的声明。
 
@@ -294,17 +294,17 @@ __attribute__((swift_name("LibKt")))
 [Objective-C 互操作](/docs/reference/native/objc_interop.html)<!--
 -->文档中找到。
 
-## Garbage Collection and Reference Counting
+## 垃圾回收与引用计数
 
-Objective-C and Swift use reference counting. Kotlin/Native has its own garbage collection too.
-Kotlin/Native garbage collection is integrated with Objective-C/Swift reference
-counting. We do not need to use anything special to control the lifetime of Kotlin/Native instances
-from Swift or Objective-C.
+Objective-C 与 Swift 使用引用计数。Kotlin/Native 也同样拥有自己的垃圾回收。
+Kotlin/Native 的垃圾回收与 Objective-C/Swift
+引用计数相集成。我们不需要在 Swift 或 Objective-C 中使用任何其它特别的方式去控制
+Kotlin/Native 实例的生命周期。
 
-## Using the Code from Objective-C
+## 在 Objective-C 中使用代码
 
-Let's call the framework from Objective-C. For that we create the `main.m` file with 
-the following content:
+让我们在 Objective-C 中调用代码。为此我们使用下面的内容创建
+`main.m` 文件：
 
 <div class="sample" markdown="1" mode="obj-c" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -336,22 +336,22 @@ int main(int argc, const char * argv[]) {
 ```
 </div>
 
-We call Kotlin classes directly from Objective-C code. A Kotlin `object` has the class method 
-function `object`, which allows us to get the only instance of the object and to call 
-`Object` methods on it. 
-The widespread pattern is used to create an instance of the `Clazz` class. We call
-the `[[ DemoClazz alloc] init]` on Objective-C. We may also use `[DemoClazz new]`
-for constructors without parameters.
-Global declarations from the Kotlin sources are scoped under the `DemoLibKt` class in Objective-C.
-All methods are turned into class methods of that class.
-The `strings` function is turned into `DemoLibKt.stringsStr` function in Objective-C, we can
-pass `NSString` directly to it. The return is visible as `NSString` too.
+我们直接在 Objective-C 代码中调用 Kotlin 类。一个 Kotlin `object` 拥有类<!--
+-->方法函数 `object`，这使我们在想获取对象的唯一实例时调用
+`object` 方法就可以了。
+广泛使用的用于创建 `Clazz` 类实例的模式。我们在
+Objective-C 上调用 `[[ DemoClazz alloc] init]`。我们也可以使用<!--
+-->没有参数的构造函数 `[DemoClazz new]`。
+Kotlin 源中的全局声明的作用域位于 Objective-C 中的 `DemoLibKt` 类之下。
+所有的方法都被转化为该类的类方法。
+`strings` 函数转化为 Objective-C 中的 `DemoLibKt.stringsStr`函数，我们可以<!--
+-->给它直接传递 `NSString`。而返回值也同样可以看作 `NSString`。
 
-## Using the Code from Swift
+## 在 Swift 中使用代码
 
-The framework that we compiled with Kotlin/Native has helper attributes to make it
-easier to use with Swift. Let's convert the previous Objective-C example
-into Swift. As a result, we'll have the following code in `main.swift`:
+这个使用 Kotlin/Native 编译的 framework 拥有辅助 attribute
+来使它在 Swift 中的使用更为容易。让我们将之前的 Objective-C 示例覆盖为
+Swift。其结果是，我们将在 `main.swift` 中包含下面的代码：
 
 <div class="sample" markdown="1" mode="swift" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -377,71 +377,71 @@ if (ret != nil) {
 ``` 
 </div>
 
-The Kotlin code is turned into very similar looking
-code in Swift. There are some small differences, though. In Kotlin any `object` has 
-only one instance. Kotlin `object Object` now has a
-constructor in Swift, and we use the `Object()` syntax to access the only instance of it.
-The instance is always the same in Swift, so that 
-`Object() === Object()` is true. 
-Methods and property names are translated as-is. Kotlin `String` is turned into Swift `String` too.
-Swift hides `NSNumber*` boxing from us too. We pass Swift closure to Kotlin and call a Kotlin 
-lambda function from Swift too. 
+这段 Kotlin 代码被转换为看起来非常相似的
+Swift 代码。但是它们有一些小差异。在 Kotlin 中任何 `object`
+只拥有一个实例。Kotlin `object Object` 现在在
+Swift 中拥有一个构造函数，我们使用 `Object()` 语法来访问它唯一的实例。
+在 Swift 中该实例总是相同的，所以 
+`Object() === Object()` 为 true。 
+方法与属性名称按原样转换。即 Kotlin `String` 被转换为 Swift `String`。
+Swift 同样隐藏了 `NSNumber*` 的装箱。我们传递 Swift 闭包给 Kotlin，
+与在 Swift 中调用 Kotlin lambda 函数是相同的。
 
-More documentation on the types mapping can be found in the 
-[Objective-C Interop](/docs/reference/native/objc_interop.html)
-article.
+更多关于类型映射的信息可以在这篇
+[Objective-C 互操作](/docs/reference/native/objc_interop.html)<!--
+-->文档中找到。
 
-# Xcode and Framework Dependencies
+# Xcode 与 Framework 依赖
 
-We need to configure an Xcode project to use our framework. The configuration depends on the
-target platform. 
+我们需要配置一个 Xcode 工程来使用我们的 framework。这个配置依赖于<!--
+-->目标平台。
 
-## Xcode for MacOS Target
+## Xcode 与 MacOS 目标平台
 
-First, we need to include the framework in the `General` section of the *target*
-configuration. There is the `Linked Frameworks and Libraries` section to include
-our framework. This will make Xcode look at our framework and resolve imports both
-from Objective-C and Swift.
+首先，我们需要导入该 framework 到 `General` 选项的 *target*
+配置。选择 `Linked Frameworks and Libraries` 选项来导入<!--
+-->我们的 framework。这将使 Xcode 查看我们的 framework 并同时解决来自
+Objective-C 与 Swift 的导入。
 
-The second step is to configure the framework search path of the produced
-binary. It is also known as `rpath` or [run-time search path](https://en.wikipedia.org/wiki/Rpath).
-The binary uses the path to look for the required frameworks. We do not recommend
-installing additional frameworks to the OS if it is not needed. We should understand the layout
-of our future application, for example, 
-we may have the `Frameworks` folder under the application bundle with all the frameworks we use. 
-The `@rpath` parameter can be configured in Xcode. We need to open
-the *project* configuration and find the `Runpath Search Paths` section. Here we specify
-the relative path to the compiled framework.
+第二步是配置 framework 生产的二进制文件的<!--
+-->搜索路径。它也被称作 `rpath` 或[运行时搜索路径](https://en.wikipedia.org/wiki/Rpath)。
+二进制文件使用路径来查找所需的 framework。我们不推荐，
+在不需要的时候在操作系统中去安装其它 framework。我们应该了解<!--
+-->未来应用程序的布局，举例来说，
+我们可能在应用程序包下有 `Frameworks` 文件夹，其中包含我们所使用的所有 framework。
+`@rpath` 参数可以被配置到 Xcode。我们需要打开
+*project* 配置项并找到 `Runpath Search Paths` 选项。在这里我们指定编译
+framework 的相对路径。
 
-## Xcode for iOS Targets
+## Xcode 与 iOS 目标平台
 
-First, we need to include the compiled framework into the Xcode project. For
-this we add the framework to the `Embedded Binaries` block of the `General` section of
-the *target* configuration page. 
+首先，我们需要导入编译好的 framework 到 Xcode 工程。为此<!--
+-->我们将 framework 添加到 *target* 配置页的 `General` 选项的
+`Embedded Binaries` 块。
 
-The second step is to then include the framework path into the `Framework Search Paths` block
-of the `Build Settings` section of the *target* configuration page. It is possible to use `$(PROJECT_DIR)`
-macro to simplify the setup.
+第二步是将 framework 路径导入到 *target* 配置页的 `Build Settings` 选项下的
+`Framework Search Paths` 块。它可以使用 `$(PROJECT_DIR)`
+宏来简化设置。
  
-The iOS simulator requires a framework compiled for the `ios_x64` target, the `iOS_sim` folder
-in our case.
+iOS 模拟器需要一个为 `ios_x64` 目标平台编译的 framework，它位于我们案例中的
+`iOS_sim` 文件夹。
 
-[The Stack Overflow thread](https://stackoverflow.com/questions/30963294/creating-ios-osx-frameworks-is-it-necessary-to-codesign-them-before-distributin)
-contains few more recommendations. Also, 
-[CocoaPods](https://cocoapods.org/) package manager may be helpful to automate the process too.
+[这篇 Stack Overflow 流](https://stackoverflow.com/questions/30963294/creating-ios-osx-frameworks-is-it-necessary-to-codesign-them-before-distributin)<!--
+-->包含了一些更多的建议。同样，
+[CocoaPods](https://cocoapods.org/) 包管理器也可能有助于自动化该过程。
 
-# Next Steps
+# 接下来
 
-Kotlin/Native has bidirectional interop with Objective-C and Swift languages. 
-Kotlin objects integrate with Objective-C/Swift reference counting. Unused Kotlin
-objects are automatically removed. 
-The [Objective-C Interop](https://github.com/JetBrains/kotlin-native/blob/master/OBJC_INTEROP.md)
-article contains more information on the interop implementation details.
-Of course, it is possible to import an existing framework and use it from Kotlin. Kotlin/Native
-comes with a good set of pre-imported system frameworks.
+Kotlin/Native 与 Objective-C 以及 Swift 语言之间拥有双向互操作性。
+Kotlin 对象集成了 Objective-C/Swift 的引用计数。Kotlin
+对象可以被自动释放。
+这篇 [Objective-C 互操作](https://github.com/JetBrains/kotlin-native/blob/master/OBJC_INTEROP.md)<!--
+-->文档包含了更多关于互操作实现细节的信息。
+当然，也可以导入一个外部的 framework 并在 Kotlin 中使用它。Kotlin/Native
+附带一套良好的预导入系统 framework模式。
 
-Kotlin/Native supports C interop too. Check out the
-[Kotlin/Native as a Dynamic Library](dynamic-libraries.html)
-tutorial for that, or have a look at the
-[C Interop](/docs/reference/native/c_interop.html) documentation article
+Kotlin/Native 同样支持 C 互操作。查看这篇
+[Kotlin/Native 开发动态库](dynamic-libraries.html)<!--
+-->教程，或者查看这篇
+[C 互操作](/docs/reference/native/c_interop.html)文档
 
