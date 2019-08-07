@@ -23,7 +23,7 @@ Kotlin 模块同样可以在 Swift/Objective-C 代码中使用。
 
 在本教程中我们将：
 - [创建一个 Kotlin 库](#创建一个-kotlin-库)并将它编译为 framework
-- 探查生成的 [Objective-C 与 Swift API](#生成framework-头) 代码
+- 检查生成的 [Objective-C 与 Swift API](#生成framework-头) 代码
 - 在 [Objective-C](#using-the-code-from-objective-c) 与 [Swift](#using-the-code-from-swift) 中使用 framework
 - 为 [macOS](#xcode-for-macos-target) 与 [iOS](#xcode-for-ios-targets) [配置 Xcode](#xcode-and-framework-dependencies) 以使用 framework
    
@@ -115,13 +115,13 @@ binaries {
 文件夹。
 让我们看看里面是什么
 
-## 生成 Framework 头
+## 生成 Framework 头文件
 
-每个被创建的 frameworks 头文件被包含在 `<Framework>/Headers/Demo.h` 中。
-这个头文件不依赖目标平台（最新版本 Kotlin/Native v.0.9.2）。
-它包含我们的 Kotlin 代码的定义与一些 Kotlin 范围的声明。
+每个创建的 frameworks 头文件都包含在 `<Framework>/Headers/Demo.h` 中。
+这个头文件不依赖目标平台（至少需要 Kotlin/Native v.0.9.2）。
+它包含我们的 Kotlin 代码的定义与一些 Kotlin 级的声明。
 
-注意，Kotlin/Native 向外暴露符号的方式如有变更，恕不另行通知。
+注意，Kotlin/Native 导出符号的方式如有变更，恕不另行通知。
 
 ### Kotlin/Native 运行时声明
 
@@ -212,7 +212,7 @@ __attribute__((swift_name("Kotlin__TYPE__")))
 </div>
 其中 `__TYPE__` 是简单类型的名称之一，而 `__CTYPE__` 是相关的 Objective-C 类型，例如 `initWithChar(char)`。
 
-这些类型用于将盒装的 Kotlin 数字类型映射到 Objective-C 与 Swift。
+这些类型用于将装箱的 Kotlin 数字类型映射到 Objective-C 与 Swift。
 在 Swift 中，我们可以简单的调用构造函数来创建一个示例，例如 `KotlinLong(value: 42)`。
 
 ### Kotlin 中的类与对象
@@ -254,7 +254,7 @@ __attribute__((swift_name("Clazz")))
 这段代码有各种 Objective-C attribute，旨在提供在
 Objective-C 与 Swift 语言中使用该 framework 的帮助。
 `DemoClazz`、`DemoInterface`、`DemoObject` 被分别创建为 `Clazz`、`Interface` 与
-`Object`。`Interface` 被转换为 `@protocol`，同样 `class` 与 `object` 被分别表示为
+`Object`。`Interface` 被转换为 `@protocol`，同样 `class` 与 `object` 被表示为
 `@interface`。
 `Demo` 前缀来自于 `kotlinc-native`
 编译器的 `-output` 参数与 framework 的名称。
