@@ -24,7 +24,7 @@ date: 2019-04-15
 Kotlin/Native 编译器可以被用于 macOS、Linux 以及 Windows。它支持<!--
 -->不同的目标平台包括 iOS（arm32、arm64、simulator x86_64），Windows（mingw32 以及 x86_64），
 Linux（x86_64、arm64、MIPS），macOS（x86_64），Raspberry PI、SMT32、WASM。所有的目标平台列表<!--
--->我们可以在 [Kotlin/Native 总览](/docs/reference/native-overview.html) 中查看。
+-->我们可以在 [Kotlin/Native 总览](/docs/reference/native-overview.html)中查看。
 虽然跨平台编译是可行的，
 (即，使用一个平台为另一个平台编译)，但在这个第一篇教程中<!--
 -->我们仅仅为当前运行的系统进行编译。
