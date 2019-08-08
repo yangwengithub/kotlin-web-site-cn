@@ -24,15 +24,15 @@ date: 2019-04-15
 Kotlin/Native 编译器可以被用于 macOS、Linux 以及 Windows。它支持<!--
 -->不同的目标平台包括 iOS（arm32、arm64、simulator x86_64），Windows（mingw32 以及 x86_64），
 Linux（x86_64、arm64、MIPS），macOS（x86_64），Raspberry PI、SMT32、WASM。所有的目标平台列表<!--
--->我们可以在 [Kotlin/Native overview](/docs/reference/native-overview.html) 中查看。
-虽然跨平台的编译是可能的，
+-->我们可以在 [Kotlin/Native 总览](/docs/reference/native-overview.html) 中查看。
+虽然跨平台编译是可行的，
 (即，使用一个平台为另一个平台编译)，但在这个第一篇教程中<!--
--->我们仅仅为我们当前运行的系统进行编译。
+-->我们仅仅为当前运行的系统进行编译。
 
 使用 Kotlin/Native 编译器的最好的方式是去构建一个系统。
-它有助于下载和缓存 Kotlin/Native 编译器二进制文件与库<!--
+它有助于下载与缓存 Kotlin/Native 编译器二进制文件与库<!--
 -->传递依赖，并运行编译器以及测试。
-它同样缓存编译结果。
+它同样也缓存编译结果。
 IDE 还可以使用构建系统来了解项目布局。
 
 Kotlin/Native 通过 [Gradle](https://gradle.org) 的
@@ -43,7 +43,7 @@ Kotlin/Native 通过 [Gradle](https://gradle.org) 的
 在本教程中，我们将专注于使用 Gradle 进行构建。
 
 虽然编译器的输出没有任何依赖项或虚拟机要求，
-但编译器本身以及 Gradle 构建系统需要 Java 1.8 或 11 runtime。在网页
+但编译器本身以及 Gradle 构建系统需要 Java 1.8 或 11 运行时。在网页
 [https://jdk.java.net/11](https://jdk.java.net/11/) 或另外的源<!--
 -->检查，JRE、OpenJDK 或 JDK 发行版。
 
@@ -64,7 +64,7 @@ fun main() {
 ## 使用命令行编译代码
 
 通过[下载](https://github.com/JetBrains/kotlin/releases)的<!--
--->编译器手动生成一个 `hello.kexe`（Linux 以及 macOS）或 `hello.exe`（Windows）<!--
+-->编译器手动生成一个 `hello.kexe`（Linux 与 macOS）或 `hello.exe`（Windows）<!--
 -->二进制文件
 
 ```bash
@@ -72,7 +72,7 @@ kotlinc-native hello.kt -o hello
 ```
 
 虽然从控制台编译似乎很简单，但我们应该注意到它<!--
--->对于包含数百个文件和库的大型项目来说，不能很好地扩展。
+-->对于包含数百个文件与库的大型项目来说，不能很好地扩展。
 除此之外，命令行方法没有向 IDE 解释如何打开这样的项目、
 源所在的位置、使用的依赖项、或依赖项的下载方式等。
 
@@ -81,7 +81,7 @@ kotlinc-native hello.kt -o hello
 
 我们只需点击 IntelliJ IDEA 中的 _New Project_ 引导项，就可以创建一个新的 Kotlin/Native 工程。
 点击 _Kotlin_ 选项，并选择 _Native | Gradle_ 配置项来生成工程。
-为了更好地理解和解释正在发生的事情，在本教程中我们将手动创建工程。
+为了更好地理解与解释正在发生的事情，在本教程中我们将手动创建工程。
 
 让我们首先创建一个工程文件夹。本教程中的所有路径都与此文件夹相关。有时<!--
 -->在添加新文件之前，必须创建缺少的目录。
@@ -100,7 +100,7 @@ Groovy 语言是被 Gradle 脚本支持时间最长的语言，
 Kotlin 作为一种静态类型的编程语言非常适合编写
 Gradle 构建脚本。
 由于静态类型推断，Kotlin 编译器可以更早地检测到错误<!--
--->以及显示重要的编译错误消息和警告。
+-->并显示重要的编译错误消息和警告。
 IDE 与编译器都可以使用有关类型的信息进行推断<!--
 -->给定范围内的可用函数与属性。
 
@@ -166,8 +166,8 @@ IntelliJ IDEA（CLion、AppCode 或 AndroidStudio）将帮助我们的工程生�
 [Gradle Wrapper](https://docs.gradle.org/current/userguide/gradle_wrapper.html)
 脚本。
 
-现在让我们在 IntelliJ IDEA 中打开这个工程。为此我们点击 File | Open... 并选择
-我们的
+现在让我们在 IntelliJ IDEA 中打开这个工程。为此我们点击 File | Open... 并选择<!--
+-->我们的
 <span class="multi-language-span" data-lang="kotlin">
 `build.gradle.kts`
 </span><span class="multi-language-span" data-lang="groovy">
@@ -246,8 +246,8 @@ Hello Kotlin/Native!
 `build.gradle`
 </span>
 在我们的案例中，`"native"` 是构建后输出的文件。
-让我们在 IDE 中运行任务。 为此，让我们打开 Gradle Tool 窗口
-并在列表中找到任务：
+让我们在 IDE 中运行任务。为此，让我们打开 Gradle Tool 窗口<!--
+-->并在列表中找到任务：
 ![Gradle Import Dialog]({{ url_for('tutorial_img', filename='native/basic-kotlin-native/idea-run-gradle-task.png')}})
 
 或者，我们可以从控制台调用以下命令：

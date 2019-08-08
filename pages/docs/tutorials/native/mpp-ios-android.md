@@ -39,7 +39,7 @@ issue: EVAN-6029
 当然也可以使用 [IntelliJ IDEA](https://jetbrains.com/idea) 社区版或终级版。
 
 * IDE 应该安装了 Kotlin 插件 1.3.21 或更高版本。这个可以通过
-IDE 的 *Settings*（或*Preferences*）中的 *Language & Frameworks | Kotlin Updates* 部分验证。
+IDE 的 *Settings*（或 *Preferences*）中的 *Language & Frameworks | Kotlin Updates* 部分验证。
 
 * 编译 iOS 以及 macOS 设备的代码需要 masOS 系统。我们需要安装以及配置
 [Xcode](https://developer.apple.com/xcode/) 工具。查看
