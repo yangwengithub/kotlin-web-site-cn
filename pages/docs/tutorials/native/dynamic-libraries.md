@@ -314,8 +314,8 @@ Kotlin 类型或者一个 `libnative_KNativePtr` 是否是某个类型的实例�
 Kotlin/Native 拥有垃圾回收机制，但是它不能帮助我们处理<!--
 -->来源于 C 的 Kotlin 对象。Kotlin/Native 可以与 Objective-C 以及
 Swift 进行互操作，并且结合了它们的引用计数。 
-这篇 [Objective-C 互操作](/docs/reference/native/objc_interop.html)
-包含了更多关于此内容的细节。当然，也可以参考<!--
+这篇 [Objective-C 互操作](/docs/reference/native/objc_interop.html)<!--
+-->包含了更多关于此内容的细节。当然，也可以参考<!--
 -->这篇 [Kotlin/Native 开发 Apple Framework](apple-framework.html) 文档。
 
 ### 库函数
@@ -412,8 +412,8 @@ clang main.c libnative.dylib
 gcc main.c libnative.so
 ```
 
-编译器生成一个名为 `a.out` 的可执行文件。我们需要运行它来查看 Kotlin 代码
-是如何调用 C 库来运行的。在 Linux 上，我们将需要将 `.` 引入到 `LD_LIBRARY_PATH`
+编译器生成一个名为 `a.out` 的可执行文件。我们需要运行它来查看 Kotlin 代码<!--
+-->是如何调用 C 库来运行的。在 Linux 上，我们将需要将 `.` 引入到 `LD_LIBRARY_PATH`
 来使应用程序知晓从当前文件夹加载 `libnative.so` 库。
 
 ## 将示例编译并运行于 Windows
