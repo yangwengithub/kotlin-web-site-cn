@@ -4,31 +4,28 @@ layout: tutorial
 title:  "多平台项目: iOS 与 Android"
 description: "在 iOS 与 Android 之间共享 Kotlin 代码"
 authors: Eugene Petrenko，乔禹昂（翻译）
-date: 2018-10-04
+date: 2019-08-11
 showAuthorInfo: true
 issue: EVAN-6029
 ---
 
-在本教程中我们将通过创建一个 iOS 与一个 Android 应用，来展示 Kotlin 代码的共享功能。
-在 Android 上我们将使用 Kotlin/JVM，而在 iOS 上将是 Kotlin/Native。
+在本教程中，我们会创建一个 iOS 与 Android 两用的应用，来展示 Kotlin 代码的共享能力。
+对于 Android，我们会使用 Kotlin/JVM，而对于 iOS 会使用 Kotlin/Native。
 
 我们将学习到如何：
- - 使用 Android Studio 创建一个 [Android app](#创建一个-Android-工程)
+ - 使用 Android Studio 创建一个 [Android app](#创建一个-Android-项目)
  - 创建一个共享的 [Kotlin library](#创建共享模块)
-   - 在 [Android app](#在-android-中使用共享代码) 中使用它
+   - 在 [Android app](#在-android-中使用共享代码) 中使用 Kotlin 库
    - 运行 [Android 应用程序](#运行-android-应用程序)
  - 使用 Xcode 创建一个 [iOS app](#创建-ios-应用程序)
    - 在 [iOS app](#在-xcode-中配置-framework-依赖) 上使用共享的 Kotlin 库
-   - 在 [Swift 中使用 Kotlin](#在-swift-中调用-kotlin-代码)
+   - 在 [Swift 中调用 Kotlin](#在-swift-中调用-kotlin-代码)
    - 运行 [iOS 应用程序](#运行-ios-应用程序)
 
-本教程的目标是展示 Kotlin 共享代码的能力以及它带来的优势。
-我们将会看到的是一个简化的应用程序，但这里展示的内容可以用于真实的应用，
-而与它的大小或复杂度无关。
-
-我们要创建的应用程序将只在 Android 上显示
-`Kotlin Rocks on Android` 或在 iOS 上显示 `Kotlin Rocks on iOS <version>`。
-我们希望共享生成此消息的代码。
+我们即将创建的应用程序会在 Android 设备上显示
+`Kotlin Rocks on Android` 而在 iOS 设备上显示 `Kotlin Rocks on iOS <version>`。
+Our goal is to demonstrate the ability to share Kotlin code between the platforms, the project setup, and the benefits that
+this provides. While we'll be demonstrating this with a simple application, what is shown here can be applied to real-world applications, no matter their size or complexity.
 
 通用的代码是 `"Kotlin Rocks on ${platformName()}"`，`platformName()`
 是一个使用 `expect` 关键字声明的函数。而 `actual` 的实现将根据特定的平台而异。
@@ -38,53 +35,130 @@ issue: EVAN-6029
 * 我们将使用 [Android Studio](https://developer.android.com/studio/) 来讲解 Android 部分的内容.
 当然也可以使用 [IntelliJ IDEA](https://jetbrains.com/idea) 社区版或终级版。
 
-* IDE 应该安装了 Kotlin 插件 1.3.21 或更高版本。这个可以通过
-IDE 的 *Settings*（或*Preferences*）中的 *Language & Frameworks | Kotlin Updates* 部分验证。
+* IDE 应该安装了 Kotlin 插件 {{ site.data.releases.latest.version }} 或更高版本。这个可以通过
+*Settings*（或 *Preferences*）窗口中的 *Language & Frameworks | Kotlin Updates* 部分验证。
 
 * 编译 iOS 以及 macOS 设备的代码需要 masOS 系统。我们需要安装以及配置
 [Xcode](https://developer.apple.com/xcode/) 工具。查看
 [Apple 开发者网站](https://developer.apple.com/xcode/)来获取更多细节。
 
-*注意：我们将使用 IntelliJ IDEA 2018.3 EAP、Android Studio 3.2、Kotlin 1.3.21、Xcode 10.0、macOS 10.14、Gradle 4.7*
+*注意：我们会使用 IntelliJ IDEA 2019.2、Android Studio 3.4、
+Kotlin {{ site.data.releases.latest.version }}、Xcode 10.3、macOS 10.14、Gradle 5.5.1*
 
-# 创建一个 Android 工程
+# 创建一个 Android 项目
 
-我们将通过 *Start New Android Project* 来创建一个 Android 工程。如果使用 IntelliJ IDEA，我们需要在左边的 *New Project*
-向导面板中选择 *Android*。
+We need Android Studio for the tutorial. We can download and install it from the
+[https://developer.android.com/studio/](https://developer.android.com/studio/). Let's open
+the IDE and check that we see the newest Kotlin version, namely 
+{{ site.data.releases.latest.version }}
+or newer under the Kotlin section _Languages & Frameworks_ | _Kotlin_
+in the _Settings_ (or _Preferences_) dialog of Android Studio.
 
-重要的一点是你需要确保勾选了 *Include Kotlin support* 选择框。现在我们可以在向导的下一步中<!--
--->保留默认设置。我们接下来选择 *Empty Activity* 选项并点击 *Next*，最后点击 *Finish*。
+Our first step is to create a new Android project via the *Start a new Android project* item on the Android Studio home screen. 
+We then proceed to select the *Empty Activity* option and click *Next*. It's important to pick the _Kotlin_
+language in the wizard. Let's use the `com.jetbrains.handson.mpp.mobile` package
+for the tutorial. Now we can press the *Finish* button and create our new Android project.
 
-**注意** 如果使用早期发行版或者 EAP 版本的 Kotlin plugin，IDE 在生成工程的时候可能会失败，
-给 Gradle 抛出 [error](https://youtrack.jetbrains.com/issue/KT-18835#focus=streamItem-27-2718879-0-0)。
-这是因为 `build.gradle` 文件中没有引用正确的 Maven 库，可以通过将以下代码 *两次* 添加到每个 `repositories { .. }`
-块中来解决。
-
-<div class="sample" markdown="1" mode="groovy" theme="idea" data-highlight-only="1" auto-indent="false">
-
-```groovy
-maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
-```
-</div>
-
-<a name="gradle-upgrade"/>
-Kotlin/Native 插件需要更新版本的 Gradle，让我们修改 `gradle/wrapper/gradle-wrapper.properties`
-并且使用下面的 `distrubutionUrl`：
-```
-distributionUrl=https\://services.gradle.org/distributions/gradle-4.7-all.zip
-```
-
-我们需要通过刷新 Gradle Project 来让其接受设置变更。点击 `Sync Now` 链接或者<!--
--->在 Gradle 根工程的上下文菜单中使用 *Gradle* 工具窗口并且点击刷新按钮。
-
-此刻，我们应该可以编译并运行这个 Android 应用了
+At this point, we should be able to compile and run the Android application. Let's check that it works!
 
 # 创建共享模块
 
-这部分教程的目标是演示在 Android 与 iOS 之间复用 Kotlin 源码。让我们从在
-Gradle 工程中手动创建一个 `SharedCode` 子工程开始。`SharedCode` 工程中的源码<!--
--->将被在两个平台之间共享。
-我们将在工程中创建几个新文件来实现这个目标。
+本教程的目标是演示在 Android 与 iOS 之间 Kotlin 代码的复用性。我们了来以在
+Gradle 项目中手动创建一个 `SharedCode` 子项目开始。`SharedCode` 项目的源代码<!--
+-->会在两个平台之间共享。
+我们会在项目中创建几个新文件来实现这个目标。
+
+## Updating Gradle Scripts
+
+The `SharedCode` sub-project should generate several artifacts for us:
+ - A JAR file for the Android project, from the `androidMain` source set
+ - The Apple framework 
+   - for iOS device and App Store (`arm64` target)
+   - for iOS simulator (`x86_64` target)
+
+Let's update the Gradle scripts now to implement this and configure our IDE.
+First, we add the new project to the `settings.gradle` file, simply by adding the following line to the end of the file:
+<div class="sample" markdown="1" mode="groovy" theme="idea" data-highlight-only="1" auto-indent="false">
+
+```groovy
+include ':SharedCode'
+```
+</div>
+
+Next,
+we need to create a `SharedCode/build.gradle.kts` file with the following content:
+ 
+<div class="sample" markdown="1" mode="groovy" theme="idea" data-highlight-only="1" auto-indent="false">
+
+```kotlin
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+
+plugins {
+    kotlin("multiplatform")
+}
+
+kotlin {
+    //select iOS target platform depending on the Xcode environment variables
+    val iOSTarget: (String, KotlinNativeTarget.() -> Unit) -> KotlinNativeTarget =
+        if (System.getenv("SDK_NAME")?.startsWith("iphoneos") == true)
+            ::iosArm64
+        else
+            ::iosX64
+
+    iOSTarget("ios") {
+        binaries {
+            framework {
+                baseName = "SharedCode"
+            }
+        }
+    }
+
+    jvm("android")
+
+    sourceSets["commonMain"].dependencies {
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-common")
+    }
+
+    sourceSets["androidMain"].dependencies {
+        implementation("org.jetbrains.kotlin:kotlin-stdlib")
+    }
+}
+
+val packForXcode by tasks.creating(Sync::class) {
+    val targetDir = File(buildDir, "xcode-frameworks")
+
+    /// selecting the right configuration for the iOS 
+    /// framework depending on the environment
+    /// variables set by Xcode build
+    val mode = System.getenv("CONFIGURATION") ?: "DEBUG"
+    val framework = kotlin.targets
+                          .getByName<KotlinNativeTarget>("ios")
+                          .binaries.getFramework(mode)
+    inputs.property("mode", mode)
+    dependsOn(framework.linkTask)
+
+    from({ framework.outputDirectory })
+    into(targetDir)
+
+    /// generate a helpful ./gradlew wrapper with embedded Java path
+    doLast {
+        val gradlew = File(targetDir, "gradlew")
+        gradlew.writeText("#!/bin/bash\n" 
+            + "export 'JAVA_HOME=${System.getProperty("java.home")}'\n" 
+            + "cd '${rootProject.rootDir}'\n" 
+            + "./gradlew \$@\n")
+        gradlew.setExecutable(true)
+    }
+}
+
+tasks.getByName("build").dependsOn(packForXcode)
+```
+</div>
+
+We need to refresh the Gradle project to apply these changes. Click on the `Sync Now` link or 
+use the *Gradle* tool window and click the refresh action from the context menu on the root Gradle project.
+The `packForXcode` Gradle task is used for Xcode project integration. We will discuss this later in the
+tutorial.  
 
 ## 添加 Kotlin 源码
 
@@ -96,7 +170,7 @@ Gradle 工程中手动创建一个 `SharedCode` 子工程开始。`SharedCode` �
 <div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only="1" auto-indent="false">
 
 ```kotlin
-package org.kotlin.mpp.mobile
+package com.jetbrains.handson.mpp.mobile
 
 expect fun platformName(): String
 
@@ -107,15 +181,15 @@ fun createApplicationScreenMessage() : String {
 ```
 </div>
 
-这是通用的部分。这段代码生成了最终的消息。它 `expect` 平台<!--
--->提供来自 `expect fun platformName（）：String` 函数的平台名称。我们将同时在
+这是通用的部分。这段代码生成了最终的消息。它期待（`expect`）平台部分<!--
+-->提供来自 `expect fun platformName（）：String` 函数的平台相关名称。我们会同时在
 Android 与 iOS 应用中使用 `createApplicationScreenMessage`。
 
-现在，我们需要在 `SharedCode/src/androidMain/kotlin/actual.kt` 中为 Android 创建相应的实现文件（与缺失的目录）：
+现在我们需要在 `SharedCode/src/androidMain/kotlin/actual.kt` 中为 Android 创建相应的实现文件（与缺失的目录）：
 <div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only="1" auto-indent="false">
 
 ```kotlin
-package org.kotlin.mpp.mobile
+package com.jetbrains.handson.mpp.mobile
 
 actual fun platformName(): String {
   return "Android"
@@ -128,7 +202,7 @@ actual fun platformName(): String {
 <div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only="1" auto-indent="false">
 
 ```kotlin
-package org.kotlin.mpp.mobile
+package com.jetbrains.handson.mpp.mobile
 
 import platform.UIKit.UIDevice
 
@@ -142,75 +216,16 @@ actual fun platformName(): String {
 
 这里我们可以使用 Apple UIKit Framework 中的 [UIDevice](https://developer.apple.com/documentation/uikit/uidevice?language=objc)
 类，这是一个仅仅在 Swift 以及 Objective-C 中使用而在 Java 中没有的类。
-Kotlin/Native 编译器带有一组预先导入的框架，所以我们可以无需额外步骤的<!--
--->使用 UIKit Framework。
-Objective-C 与 Swift 互操作的细节被包含在这篇[文档](/docs/reference/native/objc_interop.html)中
+Kotlin/Native 编译器带有一组预先导入的 framework，所以我们可以<!--
+-->使用 UIKit Framework 而无需任何额外步骤。
+Objective-C 与 Swift 互操作在这篇[文档](/docs/reference/native/objc_interop.html)中有详细介绍
 
-## 更新 Gradle 脚本
+## 多平台 Gradle 项目
 
-`SharedCode` 子项目应该为我们生成一系列构件：
- - 在 `androidMain` 源集中为 Android 工程生成 JAR 文件
- - Apple framework 
-   - 面向 iOS 设备以及 App Store（`arm64` 目标平台）
-   - 面向 iOS 模拟器（`x86_64` 目标平台）
-
-让我们现在更新 Gradle 脚本来实现这些并配置我们的 IDE。
-
-首先，我们将一个新工程添加到 `settings.gradle` 文件，只需要将下面这行代码添加到文件末尾：
-<div class="sample" markdown="1" mode="groovy" theme="idea" data-highlight-only="1" auto-indent="false">
-
-```groovy
-include ':SharedCode'
-```
-</div>
-
-接下来，
-我们需要使用下面的内容来创建 `SharedCode/build.gradle` 文件：
- 
-<div class="sample" markdown="1" mode="groovy" theme="idea" data-highlight-only="1" auto-indent="false">
-
-```groovy
-apply plugin: 'kotlin-multiplatform'
-
-kotlin {
-    targets {
-        final def iOSTarget = System.getenv('SDK_NAME')?.startsWith("iphoneos") \
-                              ? presets.iosArm64 : presets.iosX64
-
-        fromPreset(iOSTarget, 'ios') {
-             binaries {
-                framework('SharedCode')
-            }
-        }
-
-        fromPreset(presets.jvm, 'android')
-    }
-
-    sourceSets {
-        commonMain.dependencies {
-            api 'org.jetbrains.kotlin:kotlin-stdlib-common'
-        }
-
-        androidMain.dependencies {
-            api 'org.jetbrains.kotlin:kotlin-stdlib'
-        }
-    }
-}
-
-// workaround for https://youtrack.jetbrains.com/issue/KT-27170
-configurations {
-    compileClasspath
-}
-
-```
-</div>
-
-## 多平台 Gradle 工程
-
-`SharedCode/build.gradle` 文件使用了 `kotlin-multiplatform` 插件来实现<!--
+`SharedCode/build.gradle.kts` 文件使用了 `kotlin-multiplatform` 插件来实现<!--
 -->我们所需的功能。
 在这个文件中，我们定义了一些平台目标：`common`、`android` 以及 `iOS`。 每一个<!--
--->都对应它自己的平台。`common` 目标平台包含了 Kotlin 的通用代码，
+-->都对应它自己的平台。`common` 目标平台包含了公共 Kotlin 代码，
 它会被导入每一个平台的编译中。它允许拥有 `expect` 声明。
 其它的目标为 `common` 目标中的所有 `expect` 函数提供了 `actual` 实现。
 关于更多多平台项目的细节说明可以在<!--
@@ -221,25 +236,31 @@ configurations {
 | 名称 | 源路径 | 目标 | 构件 |
 |---|---|---|---|
 | common | `SharedCode/commonMain/kotlin` |  - | Kotlin metadata |
-| android | `SharedCode/androidMain/kotlin` | JVM 6 | `.jar` file 或 `.class` files |
+| android | `SharedCode/androidMain/kotlin` | JVM 1.6 | `.jar` file 或 `.class` files |
 | iOS | `SharedCode/iosMain` | iOS arm64 or x86_64| Apple framework |
 
-现在是时候再次在 Android Studio 中刷新这个 Gradle 工程了。在黄色条目上点击 *Sync Now*
-或者在根 Gradle 工程的上下文菜单中使用 *Gradle* 工具窗口并点击 `Refresh` 按钮。
-现在 `:SharedCode` 工程应该被 IDE 识别了。
+现在是时候再次在 Android Studio 中刷新这个 Gradle 项目了。在黄色条目上点击 *Sync Now*
+或者在根 Gradle 项目的上下文菜单中使用 *Gradle* 工具窗口并点击 `Refresh` 按钮。
+现在 `:SharedCode` 项目应该被 IDE 识别了。
 
-我们已经准备好在我们的 Android 与 iOS 应用中使用 `SharedCode` 库了。
+We can use the `step-004` branch from the 
+[github.com/kotlin-hands-on/mpp-ios-android](https://github.com/kotlin-hands-on/mpp-ios-android/tree/step-004)
+repository as a solution for the tasks that we've done above. We can also download the
+[archive](https://github.com/kotlin-hands-on/mpp-ios-android/archive/step-004.zip) from GitHub directly
+or check out the repository and select the branch.
+
+Let's use the `SharedCode` library from our Android and iOS applications.
 
 # 在 Android 中使用共享代码
 
-在这部分教程中，我想将 Android 工程的改动降到最低，所以我们在主工程中添加了对
-`SharedCode` 工程的普通依赖。
-也可以直接在 Android Gradle 工程中使用 `kotlin-multiplatform`
+在这部分教程中，我想将 Android 项目的改动降到最低，所以我们在主项目中添加了对
+`SharedCode` 项目的普通依赖。
+也可以直接在 Android Gradle 项目中使用 `kotlin-multiplatform`
 插件，来代替 `kotlin-android` 插件。关于更多信息，请参考<!--
 -->[多平台项目](/docs/reference/multiplatform.html)文档。
 
-让我们将对 `SharedCode` 工程的依赖引入 Android 工程。我们需要修改
-`app/build.gradle` 文件并在 `dependencies { .. }` 块中引入下面这行代码：
+让我们将对 `SharedCode` 项目的依赖引入 Android 项目。我们需要修改
+`app/build.gradle` 文件并在 `dependencies { .. }` 块中加入以下这行代码：
 
 <div class="sample" markdown="1" mode="groovy" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -252,7 +273,8 @@ configurations {
 -->给 `TextView` 指定 `id` 以用来在我们控制它的 activity 的代码中访问它。
 让我们修改
 `app/src/main/res/layout/activity_main.xml` 文件<!--
--->（如果我们在新项目向导中更改了名称，则名称可能会有所不同）
+-->（如果我们在新项目向导中更改了名称，则名称可能会有所不同）。
+Select the _Text_ tab at the bottom of the preview to switch it to XML
 并且为 `<TextView>` 元素添加几个更多的属性：
 ```
         android:id="@+id/main_text"
@@ -261,23 +283,31 @@ configurations {
         android:textAlignment="center"
 ```
 
-接下来，让我们在 `/app/src/main/java/<package>/MainActivity.kt` 文件的 `MainActivity`
-类中将下面这行代码添加到
-`onCreate` 方法的末尾：
+Next, let's add the following line of code to the end of the `onCreate` method from the `MainActivity` class
+in the `/app/src/main/java/com/jetbrains/handson/mpp/mobile/MainActivity.kt` file, :
 
 ```
 findViewById<TextView>(R.id.main_text).text = createApplicationScreenMessage()
 ```
 
-使用 IDE 中的联想功能来引入缺少的导入行：
+You will need to add the import for the `android.widget.TextView` class. Android Studio
+will automatically suggest adding the import. Depending on the Android application package,
+we may also need to add the import for the `createApplicationScreenMessage()` function too.
+We should see these two lines at the beginning of the `MainActivity.kt` file:
 ```kotlin
-import org.kotlin.mpp.mobile.createApplicationScreenMessage
+import com.jetbrains.handson.mpp.mobile.createApplicationScreenMessage
+import android.widget.TextView
 ```
-到这个文件中。
 
 现在我们拥有一个 `TextView`，它将使用可共享的函数 `createApplicationScreenMessage()`
 为我们展示文本。它将显示 `Kotlin Rocks on Android`。
-让我们看看它是如何工作的。
+我们通过运行该 Android 程序来看下它是如何工作的。
+
+We can use the `step-005` branch of the 
+[github.com/kotlin-hands-on/mpp-ios-android](https://github.com/kotlin-hands-on/mpp-ios-android/tree/step-005)
+repository as a solution for the tasks we've done above. We can also download the
+[archive](https://github.com/kotlin-hands-on/mpp-ios-android/archive/step-005.zip) from GitHub directly
+or check out the repository and select the branch.
 
 ## 运行 Android 应用程序
 
@@ -293,96 +323,80 @@ import org.kotlin.mpp.mobile.createApplicationScreenMessage
 
 # 创建 iOS 应用程序
 
-我们打开 Xcode 并选择 *Create a new Xcode project* 选项。在<!--
--->该对话框中，我们选择 iOS 选项并选择 *Single View App*。下一页全部使用默认选项，
-然后使用 `KotlinIOS`（或其它的）作为 *Product Name*。让我们选择 Swift 作为编程语言（也可以选择使用
-Objective-C）。我们应该指示 Xcode 将工程放入我们工程下的 `native` 文件夹中，稍后我们<!--
--->将在配置文件中使用相对路径。
+We can start by opening Xcode and selecting the *Create a new Xcode project* option. In 
+the dialog, we need to choose the iOS target and select the *Single View App* and click next. Fill in the next page with the defaults, 
+and use `KotlinIOS` as the *Product Name*. Let's select _Swift_ as the language (it is possible to use
+Objective-C too). Use the `com.jetbrains.handson.mpp.mobile` string for the _Organization Identifier_ field.
+Now the _Next_ button should be available, let's click it to move on.
+In the file dialog, shown after clicking the _Next_ button, we need to select the root folder
+of our project, click the _New Folder_ button and create a folder called `native` in it. 
+The folder should be selected now, and we can click the _Create_
+button to complete the dialog. We will use relative paths in the configuration files later in this tutorial. 
 
-这个已经被创建好的 iOS 应用已经准备好可以运行在 iOS 模拟器或者 iOS 设备上。在设备上运行<!--
--->也许需要一个 Apple 开发者账号并申请一个开发者证书。Xcode
-会引导我们完成整个流程。
+The created iOS application is ready to run on the iOS simulator or iOS device. For the device to run
+it may require an Apple developer account and a developer certificate. Xcode does its
+best to get us through the process. 
 
-让我们确保我们可以在 iPhone 模拟器或真实设备上运行该应用程序。
+Let's make sure we can run the application on the iPhone simulator or device by clicking the play button
+from the XCode window title bar. 
 
+The `step-006` branch of the 
+[github.com/kotlin-hands-on/mpp-ios-android](https://github.com/kotlin-hands-on/mpp-ios-android/tree/step-006)
+repository contains a possible solution for the tasks that we have done above.  We can also download the
+[archive](https://github.com/kotlin-hands-on/mpp-ios-android/archive/step-006.zip) from GitHub directly or
+check out the repository and select the branch.
 
 # 在 Xcode 中配置 Framework 依赖
 
-`SharedCode` 构建生成用于 Xcode 工程的 iOS frameworks。
-所有的 framework 都位于 `SharedCode/build/bin` 文件夹。
-它为每个 framework 目标都创建了 *debug* 和 *release* 版本。
-这些 frameworks 都位于下面的路径：
-```
-SharedCode/build/bin/iOS/main/debug/framework/SharedCode.framework
-SharedCode/build/bin/iOS/main/release/framework/SharedCode.framework
-```
+Let's run the `packForXcode` Gradle task of the `SharedCode` project. We can do it either from
+the _Gradle_ tab in AndroidStudio or by running the `./gradlew :SharedCode:packForXcode` command
+from console. This task is designed to help to simplify the setup of our iOS Framework
+in the Xcode project model.
 
-我们在 Gradle 脚本中使用条件来选择 framework 的目标平台。
-根据环境变量，它可能是 `iOS arm64` 或者 `iOS x86_64`。
+We need several binaries from the framework to use it with Xcode:
+- `iOS arm64 debug` --- the binary to run the iOS device in debug mode
+- `iOS arm64 release` --- the binary to include into a release version of an app
+- `iOS x64 debug` --- the binary for iOS simulator, which uses the desktop mac CPU
 
-## 修改 Gradle 构建脚本
-我们需要根据 Xcode 中选定的目标从这四个中提供正确的 Framewrok
-工程。它取决于在 Xcode 中选择的目标配置。当然，
-我们想让 Xcode 在构建之前为我们编译 Framework。
-我们需要在 `SharedCode/build.gradle` Gradle 文件的末尾包含附加 task：
+The easiest way to configure Xcode to use a custom-built framework is to
+place the framework under the same folder for all configurations and targets.
+Then add a custom step to the Xcode project build to update or build the
+framework before the actual Xcode build is started. Xcode sets several environment
+variables for custom steps; we can use these variables in the Gradle script to select
+the requested target platform and the configuration. For more details,
+please refer to the `packForXcode` task sources in the `SharedCode/build.gradle.kts` file. 
 
-<div class="sample" markdown="1" mode="groovy" theme="idea" data-highlight-only="1" auto-indent="false">
-
-```groovy
-task packForXCode(type: Sync) {
-    final File frameworkDir = new File(buildDir, "xcode-frameworks")
-    final String mode = project.findProperty("XCODE_CONFIGURATION")?.toUpperCase() ?: 'DEBUG'
-    final def framework = kotlin.targets.ios.binaries.getFramework("SharedCode", mode)
-
-    inputs.property "mode", mode
-    dependsOn framework.linkTask
-
-    from { framework.outputFile.parentFile }
-    into frameworkDir
-
-    doLast {
-        new File(frameworkDir, 'gradlew').with {
-            text = "#!/bin/bash\nexport 'JAVA_HOME=${System.getProperty("java.home")}'\ncd '${rootProject.rootDir}'\n./gradlew \$@\n"
-            setExecutable(true)
-        }
-    }
-}
-tasks.build.dependsOn packForXCode
-```
-</div>
-
-注意，如果你使用 Gradle 4.10 之前的版本，
-这个任务也许不能[正确地](https://github.com/gradle/gradle/issues/6330)工作。
-在这篇教程中我们已经[升级到 4.7](#gradle-upgrade)。
-
-让我们切换回 Android Studio 并在 `SharedCode` 工程的 *Gradle* 工具窗口中执行
-`build` 目标。该 task 查找在 `SharedCode/build/xcode-frameworks` 文件夹下的由
-Xcode 构建以及 framework 的正确变体设置的环境变量。接下来我们导入
-build 文件夹下的 framework。
+Let's now switch back to Android Studio and execute the `build` target of the `SharedCode` project from
+the *Gradle* tool window. The task looks for environment variables set by the Xcode build and copies
+the right variant of the framework to the `SharedCode/build/xcode-frameworks` folder. We can then include the
+framework from that folder into the build
 
 ## 配置 Xcode
 
-我们将 `SharedCode` framework 添加到 Xcode 工程中。
-为此我们点击 *project navigator* 的根节点并选择 *target* 设置。
-接下来，我们在 *Embedded Binaries* 中的 `+`，在弹窗中点击 *Add Other...* 按钮<!--
--->来在硬盘中选择 framework。我们可以指向以下文件夹：
+We need to add the `SharedCode` framework to the Xcode project.
+To do this we can double-click on the `KotlinIOS` node (or root node) of the *project navigator (⌘1)* tree
+to open the *target* settings.
+Next we then click on the `+` in the *Embedded Binaries* section, click *Add Other...* button in the dialog
+to choose the framework from the disk. We can then point to the following folder: 
 ```
 SharedCode/build/xcode-frameworks/SharedCode.framework
 ```
 
-接下来我们会看到如下的界面：
+In the next dialog, we need to select the _Create folder references_ option and make sure that the _Copy items if needed_
+checkbox isn't checked. We should then see something like this: 
 ![Xcode General Screen]({{ url_for('tutorial_img', filename='native/mpp-ios-android/xcode-general.png') }})
 
-现在我们需要向 Xcode 说明去哪里寻找 frameworks。我们需要添加 *相对* 路径
-`$(SRCROOT)/../../SharedCode/build/xcode-frameworks` 到 *Search Paths | Framework Search Paths*。
-再次打开 *Build Settings* 选项卡，选择 *All* 子选项卡，并输入 *Framework Search Paths*
-搜索字段可以轻松找到该选项。
-然后 Xcode 将在 UI 中显示替换路径。
+Now we need to explain to Xcode, where to look for the framework.
+For this, we open the *Build Settings* tab again, pick the *All* sub-tab below, and type the *Framework Search Paths* into
+the search field to find the option easily. We need to add the *relative* path 
+`$(SRCROOT)/../../SharedCode/build/xcode-frameworks` to the *Search Paths | Framework Search Paths* section.
+Xcode will then show the substituted path in the UI for it.
 
 ![Xcode Build Settings]({{ url_for('tutorial_img', filename='native/mpp-ios-android/xcode-search-path.png') }})
 
 最后一步是让 Xcode 调用我们的 Gradle build 任务在每次运行前准备 `SharedCode` framework。
-我们打开 *Build Phases* 选项卡并点击 `+` 来添加 *New Run Script Phase* 并且将下面的代码添加进去：
+We can open the *Build Phases* tab and click `+` to add the *New Run Script Phase*, drag that step to the very
+first position, and add the following code to the shell script text:
 
 <div class="sample" markdown="1" mode="bash" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -392,11 +406,17 @@ cd "$SRCROOT/../../SharedCode/build/xcode-frameworks"
 ```
 </div>
 
-注意，这里我们使用 `$SRCROOT/../..` 作为我们的 Gradle 工程的根路径。
-它取决于 Xcode 工程的创建方式。另外，我们使用生成的
+注意，这里我们使用 `$SRCROOT/../..` 作为我们的 Gradle 项目的根路径。
+它取决于 Xcode 项目的创建方式。另外，我们使用生成的
 `SharedCode/build/xcode-frameworks/gradlew` 脚本，
-`packForXCode` 任务会生成它。在新机器上打开 Xcode 工程之前，
+`packForXCode` 任务会生成它。在新机器上打开 Xcode 项目*之前*，
 我们假设 Gradle 的 build 任务至少执行一次。
+
+The `step-007` branch of the 
+[github.com/kotlin-hands-on/mpp-ios-android](https://github.com/kotlin-hands-on/mpp-ios-android/tree/step-007)
+repository contains a possible solution for the tasks that we have done above. We can also download the
+[archive](https://github.com/kotlin-hands-on/mpp-ios-android/archive/step-007.zip) from GitHub directly or
+check out the repository and select the branch.
 
 ![Xcode Build Phases]({{ url_for('tutorial_img', filename='native/mpp-ios-android/xcode-run-script.png') }})
 
@@ -404,14 +424,14 @@ cd "$SRCROOT/../../SharedCode/build/xcode-frameworks"
 
 ![Xcode Build Phases]({{ url_for('tutorial_img', filename='native/mpp-ios-android/xcode-run-script-order.png') }})
 
-我们现在已经准备好编写 iOS 应用程序并在其中使用 Kotlin 代码
+We are now ready to start coding the iOS application with Kotlin
 
 ## 在 Swift 中调用 Kotlin 代码
 
 请牢记，我们的目标是在屏幕上展示这条信息。我们可以看到，我们的 iOS 应用没有在屏幕上<!--
 -->绘制任何内容。让我们使用 `UILabel` 展示这条消息。
-我们需要使用下面的代码替换
-`ViewController.swift` 文件中的内容：
+Let's open the `ViewController.swift` file from the *project navigator (⌘1)* tree.
+我们需要使用下面的代码替换 `ViewController.swift` 文件中的内容：
  
 <div class="sample" markdown="1" mode="swift" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -431,7 +451,6 @@ class ViewController: UIViewController {
         view.addSubview(label)
     }
 }
-
 ```
 </div>
  
@@ -439,6 +458,12 @@ class ViewController: UIViewController {
 接下来，我们调用库中的 Kotlin 函数作为`CommonKt.createApplicationScreenMessage()`。然后
 [Kotlin/Native 开发 Apple Framework](/docs/tutorials/native/apple-framework.html) 教程中<!--
 -->有更多关于 Kotlin/Native 与 Swift（或 Objective-C）互操作的细节。
+
+The `step-008` branch of the 
+[github.com/kotlin-hands-on/mpp-ios-android](https://github.com/kotlin-hands-on/mpp-ios-android/tree/step-008)
+repository contains a possible solution for the tasks that we have done above. We can also download the
+[archive](https://github.com/kotlin-hands-on/mpp-ios-android/archive/step-008.zip) from GitHub directly or
+check out the repository and select the branch.
 
 现在，我们已准备好在模拟器或 iOS 设备上启动应用程序。
 
@@ -453,7 +478,7 @@ class ViewController: UIViewController {
 在本篇教程中我们：
  - 在 Android Studio 中创建了一个 Android 应用程序
  - 在 Xcode 中创建了一个 iOS 应用程序
- - 添加了 Kotlin 多平台项目子工程
+ - 添加了 Kotlin 多平台项目子项目
    - 共享 Kotlin 代码
    - 将它编译成 Android Jar
    - 将它编译成 iOS Framework
@@ -463,15 +488,14 @@ class ViewController: UIViewController {
 
 # 接下来
 
-这只是一个开始，并且仅仅是一个关于在
-iOS 与 Android（以及其它平台）上使用 Kotlin、Kotlin/Native
-以及 Kotlin 多平台项目的小示例。相同的方法适用于真实的应用程序，
-而与它们的大小以及复杂度无关。
+This small example of Kotlin code sharing between iOS and Android (and other platforms) 
+with Kotlin, Kotlin/Native, and Kotlin multiplatform projects is only the beginning. 
+The same approach can work for real applications, independent of their size or complexity.
 
 Kotlin/Native 与 Swift 以及 Objective-C 的互操作被包含在这篇<!--
--->[文档](/docs/reference/native/objc_interop.html)中。另外，
-类似的话题被包含在 [Kotlin/Native 开发 Apple Framework](apple-framework.html)
-教程中。
+-->[文档](/docs/reference/native/objc_interop.html)中。
+[Kotlin/Native 开发 Apple Framework](apple-framework.html) 教程也涵盖这个主题<!--
+-->。
 
 多平台项目以及多平台库在这篇[文档](/docs/reference/multiplatform.html)中讨论。
 
