@@ -2,7 +2,7 @@
 type: tutorial
 layout: tutorial
 title:  "映射来自 C 语言的原始数据类型"
-description: "如何在 Kotlin/Native 中观察来自 C 语言的原始数据类型"
+description: "来自 C 语言的原始数据类型及其在 Kotlin/Native 中的样子"
 authors: Eugene Petrenko，乔禹昂（翻译）
 date: 2019-04-15
 showAuthorInfo: true
@@ -161,7 +161,7 @@ C 类型按照我们期望的方式进行了映射，注意，`char` 类型映�
 -->或使用下面的命令来运行代码：
 [[include pages-includes/docs/tutorials/native/runDebugExecutableNative.md]]
 
-The final code in the `hello.kt` file may look like that:
+`hello.kt` 文件中的代码最终看起来会是这样的：
  
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -182,9 +182,9 @@ fun main() {
 
 我们将在接下来的几篇教程中继续探索更复杂的
 C 语言类型及其在 Kotlin/Native 中的表示：
-- [Mapping Struct and Union Types from C](mapping-struct-union-types-from-c.html)
-- [Mapping Function Pointers from C](mapping-function-pointers-from-c.html)
-- [Mapping Strings from C](mapping-strings-from-c.html)
+- [映射来自 C 语言的结构与联合类型](mapping-struct-union-types-from-c.html)
+- [映射来自 C 语言的函数指针](mapping-function-pointers-from-c.html)
+- [映射来自 C 语言的字符串](mapping-strings-from-c.html)
 
 这篇 [C 互操作文档](/docs/reference/native/c_interop.html)<!--
 -->涵盖了更多的高级互操作场景
