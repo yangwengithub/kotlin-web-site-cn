@@ -161,7 +161,7 @@ fun main() {
 
 ## 调用其他集合的函数
 
-可以在其他集合各种操作的结果上创建集合。例如，过滤列表会创建与 [过滤器](collection-filtering.html) 匹配的新元素列表：
+可以通过其他集合各种操作的结果来创建集合。例如，[过滤](collection-filtering.html)列表会创建与过滤器匹配的新元素列表：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -176,7 +176,7 @@ fun main() {
 ```
 </div>
 
-[映射](collection-transformations.html#映射) 生成转换结果列表：
+[映射](collection-transformations.html#映射)生成转换结果列表：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -191,7 +191,7 @@ fun main() {
 ```
 </div>
 
-[关联](collection-transformations.html#关联) 生成 Map:
+[关联](collection-transformations.html#关联)生成 Map:
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -205,4 +205,4 @@ fun main() {
 ```
 </div>
 
-有关 Kotlin 中集合操作的更多信息，参看 [集合操作概述](collection-operations.html).
+有关 Kotlin 中集合操作的更多信息，参见[集合操作概述](collection-operations.html).
