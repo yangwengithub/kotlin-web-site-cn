@@ -32,7 +32,7 @@ Kotlin/Native 编译器可以将我们的 Kotlin
 我们将通过它来调用编译后的 C 代码。
 
 理解这些技术的最佳方法是尝试它们。
-让我们创建第一个小型的 Kotlin 库，并在 C 程序中使用它。
+我们来创建第一个小型的 Kotlin 库，并在 C 程序中使用它。
 
 我们可以先在 Kotlin 中创建一个库文件，然后将其保存为 `hello.kt`：
 
@@ -66,7 +66,7 @@ val globalString = "A global String"
 这个已经准备好的工程源文件可以从这里直接下载：
 [[include pages-includes/docs/tutorials/native/dynamic-library-link.md]]
 
-让我们将工程目录下的源文件移动到 `src/nativeMain/kotlin`
+我们将工程目录下的源文件移动到 `src/nativeMain/kotlin`
 文件夹下。当使用 [kotlin 多平台](/docs/reference/building-mpp-with-gradle.html)<!--
 -->插件的时候，对于源文件的位置，
 这就是默认路径。我们使用以下代码块来指导和配置工程<!--
@@ -118,7 +118,7 @@ binaries {
 -->并且可以看到如何修正这个示例工程。在我们这样做的时候，
 我们将会研究 C 函数如何映射为 Kotlin/Native 声明。
 
-让我们运行这个 `linkNative` Gradle 任务来<!--
+我们来运行这个 `linkNative` Gradle 任务来<!--
 -->[在 IDE 中](basic-kotlin-native-app.html#run-in-ide)构建该库。
 或者运行下面这行控制台命令：
 [[include pages-includes/docs/tutorials/native/linkNative.md]]
@@ -320,7 +320,7 @@ Swift 进行互操作，并且结合了它们的引用计数。
 
 ### 库函数
 
-让我们来看看 `kotlin.root.example` 字段，它<!--
+我们来看看 `kotlin.root.example` 字段，它<!--
 -->使用 `kotlin.root.` 前缀模仿 Kotlin 代码的包结构。
 
 这里有一个 `kotlin.root.example.Clazz` 字段用来<!--
@@ -347,7 +347,7 @@ Kotlin 中的只读属性 `globalString` 在 C
 ### 入口点
 
 我们可以看到 API 是如何创建的。首先，我们需要初始化
-`libnative_ExportedSymbols` 结构体。让我们来看看
+`libnative_ExportedSymbols` 结构体。我们来看看
 `libnative_api.h` 的最新部分：
 
 ```c

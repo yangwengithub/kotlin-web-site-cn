@@ -33,7 +33,7 @@ Kotlin/Native 编译器可以使 Kotlin 代码为 macOS 与 iOS
 生产一个 framework 的输出。生成的 framework 包含在 Objective-C 与 Swift
 中所有使用所需的声明与二进制文件。
 理解这项技术的最佳方式是自己进行一下尝试。
-让我们首先创建一个小型的 Kotlin 库，并在 Objective-C 程序中使用它。
+我们首先来创建一个小型的 Kotlin 库，并在 Objective-C 程序中使用它。
 
 我们创建该 `hello.kt` 文件，并在其中编写库的内容：
 
@@ -73,7 +73,7 @@ fun supplyFun() : (String) -> String? = { "$it is cool!" }
 已经准备好的工程源代码可以在这里直接下载：
 [[include pages-includes/docs/tutorials/native/apple-framework-link.md]]
 
-让我们将源文件移动到工程下的
+我们将源文件移动到工程下的
 `src/nativeMain/kotlin` 文件夹。当使用 [kotlin-多平台](/docs/reference/building-mpp-with-gradle.html)<!--
 -->插件的时候这是定位文件的默认路径。
 使用插件。我们使用以下代码块来指示配置项目<!--
@@ -102,7 +102,7 @@ binaries {
 | iOS Simulator (x86_64) | `iosX64()`      |
 {:.zebra}
  
-让我们运行 `linkNative` Gradle 任务，以[在 IDE 中](basic-kotlin-native-app.html#run-in-ide)<!--
+我们运行 `linkNative` Gradle 任务，以[在 IDE 中](basic-kotlin-native-app.html#run-in-ide)<!--
 -->构建该库。
 或者使用如下的控制台命令：
 [[include pages-includes/docs/tutorials/native/linkNative.md]]
@@ -113,7 +113,7 @@ binaries {
 或
 `build/bin/native/releaseFramework`
 文件夹。
-让我们看看里面是什么
+我们来看看里面是什么
 
 ## 生成 Framework 头文件
 
@@ -125,8 +125,8 @@ binaries {
 
 ### Kotlin/Native 运行时声明
 
-让我们<!--
--->首先看看 Kotlin 的运行时声明：
+我们<!--
+-->首先来看看 Kotlin 的运行时声明：
 
 <div class="sample" markdown="1" mode="obj-c" theme="idea" data-highlight-only auto-indent="false">
 
@@ -217,7 +217,7 @@ __attribute__((swift_name("Kotlin__TYPE__")))
 
 ### Kotlin 中的类与对象
 
-让我们看看如何将 `class` 与 `object` 映射到 Objective-C 与 Swift。 
+我们来看看如何将 `class` 与 `object` 映射到 Objective-C 与 Swift。 
 生成的 `<Framework>/Headers/Demo.h` 文件包含
 `Class`、`Interface` 与 `Object` 的确切定义：
 
@@ -350,7 +350,7 @@ Kotlin 源中的全局声明的作用域位于 Objective-C 中的 `DemoLibKt` �
 ## 在 Swift 中使用代码
 
 这个使用 Kotlin/Native 编译的 framework 拥有辅助 attribute
-来使它在 Swift 中的使用更为容易。让我们将之前的 Objective-C 示例覆盖为
+来使它在 Swift 中的使用更为容易。我们来将之前的 Objective-C 示例覆盖为
 Swift。其结果是，我们将在 `main.swift` 中包含下面的代码：
 
 <div class="sample" markdown="1" mode="swift" theme="idea" data-highlight-only="1" auto-indent="false">
