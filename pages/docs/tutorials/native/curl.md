@@ -44,7 +44,7 @@ linkerOpts.linux = -L/usr/lib/x86_64-linux-gnu -lcurl
 ```
 </div>
 
-这个文件中正在进行一些操作，让我们逐个浏览它们。第一个条目是 `headers`，它是我们想要生成的头文件列表的
+这个文件中正在进行一些操作，我们来逐个浏览它们。第一个条目是 `headers`，它是我们想要生成的头文件列表的
 Kotlin 存根。我们可以在这个条目中添加多个文件，用新行上的 `\` 分隔每个文件。在我们的例子中，我们只想要`curl.h`。我们引用的文件
 需要相对于定义文件所在的文件夹，或者在系统路径上可用（在我们的例子中它将是 `/usr/include/curl`）。
 
@@ -138,7 +138,7 @@ fun main(args: Array<String>) {
 
 下一步是编译我们的应用程序。[基本 Kotlin/Native 应用程序](basic-kotlin-native-app.html)这篇教程涵盖了使用命令行编译 Kotlin/Native 应用程序的基础知识。
 在本案例中唯一不同的地方是 `cinterop` 生成的部分隐式包含在构建中：
-让我们输入下面的命令：
+我们输入下面的命令：
 [[include pages-includes/docs/tutorials/native/runDebugExecutableNative.md]]
 
 如果在编译期间没有错误，我们应该看到程序执行的<!--

@@ -37,8 +37,8 @@ issue: EVAN-6031
 
 ![Wizard]({{ url_for('tutorial_img', filename='multiplatform/wizard.png') }})
 
-现在创建了一个多平台样本库并将其导入 IntelliJ IDEA。让我们将所有的 `.kt` 使用 IntelliJ IDEA 的功能 *Refactor | Rename* 将它们的包名修改为 `org.jetbrains.base64`，
-让我们到目前为止检查项目的一切是否正确，项目结构应该是：
+现在创建了一个多平台样本库并将其导入 IntelliJ IDEA。我们来将所有的 `.kt` 使用 IntelliJ IDEA 的功能 *Refactor | Rename* 将它们的包名修改为 `org.jetbrains.base64`，
+我们来检查项目到目前为止的一切是否正确，项目结构应该是：
 
 ```
 └── src
@@ -100,7 +100,7 @@ expect object Base64Factory {
 
 
 ## JVM
-我们开始编写 JVM 上的实现。让我们在 `jvmMain/kotlin/jetbrains/base64` 文件夹下创建一个文件——`Base64.kt`，委托给 `java.util.Base64` 来提供一个简单的实现：
+我们开始编写 JVM 上的实现。我们在 `jvmMain/kotlin/jetbrains/base64` 文件夹下创建一个文件——`Base64.kt`，委托给 `java.util.Base64` 来提供一个简单的实现：
 
 <div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -199,10 +199,10 @@ object NativeBase64Encoder : Base64Encoder {
 通用代码的好处在于它可以通过通用的测试来覆盖，然后在*每个*平台上编译和执行。
 所有用于测试的位都已由工程向导生成。
 
-让我们在 `commonTest/kotlin/jetbrains/base64` 文件夹下创建类 `Base64Test`，并为 Base64 编写一个基本的测试。
+我们在 `commonTest/kotlin/jetbrains/base64` 文件夹下创建类 `Base64Test`，并为 Base64 编写一个基本的测试。
 
 但是，您还记得，我们的 API 将字节数组转换为不同格式的字节数组，并且测试字节数组并不容易。
-所以在我们编写测试代码之前，让我们为 `Base64Encoder` 接口的 `encodeToString` 添加一个默认实现：
+所以在我们编写测试代码之前，我们来为 `Base64Encoder` 接口的 `encodeToString` 添加一个默认实现：
 
 <div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only="1" auto-indent="false">
 

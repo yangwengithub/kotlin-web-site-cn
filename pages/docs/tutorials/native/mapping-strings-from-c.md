@@ -99,7 +99,7 @@ int copy_string(char* str, int size) {
 
 [[include pages-includes/docs/tutorials/native/mapping-primitive-data-types-gradle.md]]
 
-让我们使用下面的内容创建一个 `src/nativeMain/kotlin/hello.kt` 存根文件，
+我们使用下面的内容创建一个 `src/nativeMain/kotlin/hello.kt` 存根文件，
 以用来观察 C 中的原始类型是如何在 Kotlin 中可见的：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -145,7 +145,7 @@ fun copy_string(str: CValuesRef<ByteVar /* = ByteVarOf<Byte> */>?, size: Int): I
 
 ## 将 Kotlin 字符串传递给 C
 
-让我们尝试在 Kotlin 中使用这些 API。首先我们调用 `pass_string`：
+我们来尝试在 Kotlin 中使用这些 API。首先我们调用 `pass_string`：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -198,7 +198,7 @@ fun CPointer<ShortVar>.toKString(): String
 这次我们将要求 C 函数将 C 字符串写入给定的缓冲区。这个函数<!--
 -->被称为 `copy_string`。它需要一个指针来定位写入字符的位置并<!--
 -->分配缓冲区的大小。该函数返回一些内容以指示它是成功还是失败。
-让我们假设 `0` 表示成功，并且提供的缓冲区足够大：
+我们假设 `0` 表示成功，并且提供的缓冲区足够大：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -229,7 +229,7 @@ fun sendString() {
 ## 修改代码
 
 我们已经看到了所有的定义并且是时候来修改代码了。
-让我们[在 IDE 中](basic-kotlin-native-app.html#run-in-ide)运行 `runDebugExecutableNative` Gradle 任务<!--
+我们[在 IDE 中](basic-kotlin-native-app.html#run-in-ide)运行 `runDebugExecutableNative` Gradle 任务<!--
 -->或使用下面的命令来运行代码：
 [[include pages-includes/docs/tutorials/native/runDebugExecutableNative.md]]
 

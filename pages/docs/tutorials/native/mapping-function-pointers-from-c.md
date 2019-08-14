@@ -70,7 +70,7 @@ MyFun supply_fun() {
 
 [[include pages-includes/docs/tutorials/native/mapping-primitive-data-types-gradle.md]]
 
-让我们使用下面的内容创建一个 `src/nativeMain/kotlin/hello.kt` 存根文件，
+我们使用下面的内容创建一个 `src/nativeMain/kotlin/hello.kt` 存根文件，
 以用来观察 C 中的原始类型是如何在 Kotlin 中可见的：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -118,7 +118,7 @@ typealias MyFunVar = kotlinx.cinterop.CPointerVarOf<lib.MyFun>
 
 ## 将 Kotlin 函数作为 C 函数指针传递
 
-是时候尝试在我们的 Kotlin 程序中使用 C 函数了。让我们调用 `accept_fun`
+是时候尝试在我们的 Kotlin 程序中使用 C 函数了。我们调用 `accept_fun`
 函数并传递 C 函数指针到一个 Kotlin lambda：
 <div class="sample" markdown="1" theme="idea" data-highlight-only="1" auto-indent="false">
 
@@ -161,7 +161,7 @@ Kotlin 将函数指针返回类型转换到一个可空的 `CPointer<CFunction<.
 ## 修改代码
 
 我们已经看到了所有的声明，所以是时候修改并运行代码了。
-让我们[在 IDE 中](basic-kotlin-native-app.html#run-in-ide)运行 `runDebugExecutableNative` Gradle 任务<!--
+我们[在 IDE 中](basic-kotlin-native-app.html#run-in-ide)运行 `runDebugExecutableNative` Gradle 任务<!--
 -->或使用下面的命令来运行代码：
 [[include pages-includes/docs/tutorials/native/runDebugExecutableNative.md]]
 
