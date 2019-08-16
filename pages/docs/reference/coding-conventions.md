@@ -973,7 +973,7 @@ when (x) {
 
 ### 区间上循环
 
-使用 `until` 函数在一个区间上循环：
+使用 `until` 函数在一个开区间上循环：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
