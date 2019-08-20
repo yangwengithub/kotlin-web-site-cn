@@ -29,9 +29,9 @@ import kotlin.text.*
 
 参见[包](packages.html)。
 
-## Program entry point
+## 程序入口点
 
-An entry point of a Kotlin application is the `main` function.
+Kotlin 应用程序的入口点是 `main` 函数。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -187,7 +187,7 @@ fun main() {
 
 ## 注释
 
-Just like most modern languages, Kotlin supports single-line (or _end-of-line_) and multi-line (_block_) comments.
+与大多数现代语言一样，Kotlin 支持单行（或*行末*）与多行（*块*）注释。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -205,9 +205,9 @@ Block comments in Kotlin can be nested.
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-/* The comment starts here
-/* contains a nested comment */     
-and ends here. */
+/* 注释从这里开始
+/* 包含嵌套的注释 */     
+并且在这里结束。 */
 ```
 
 </div>
@@ -264,7 +264,7 @@ fun main() {
 </div>
 
 
-In Kotlin, *if*{: .keyword } can also be used as an expression:
+在 Kotlin 中，*if*{: .keyword } 也可以用作表达式：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -314,7 +314,7 @@ fun printProduct(arg1: String, arg2: String) {
     val x = parseInt(arg1)
     val y = parseInt(arg2)
 
-    // 直接使用 `x * y` 会导致编译错误，因为他们可能为 null
+    // 直接使用 `x * y` 会导致编译错误，因为它们可能为 null
     if (x != null && y != null) {
         // 在空检测后，x 与 y 会自动转换为非空值（non-nullable）
         println(x * y)
@@ -705,7 +705,7 @@ fun main() {
 
 </div>
 
- 参见[集合概述](collections-overview.html)。
+参见[集合概述](collections-overview.html)。
 
 ## 创建基本类及其实例
 
