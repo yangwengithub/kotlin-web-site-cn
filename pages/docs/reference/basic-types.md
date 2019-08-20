@@ -14,19 +14,19 @@ title: "基本类型：数字、字符串、数组"
 
 ## 数字
 
-Kotlin provides a set of built-in types that represent numbers.  
-For integer numbers, there are four types with different sizes and, hence, value ranges.
+Kotlin 提供了一组表示数字的内置类型。
+对于整数，有四种不同大小的类型，因此值的范围也不同。
 
-| Type	 |Size (bits)| Min value| Max value|
-|--------|-----------|----------|--------- |
-| Byte	 | 8         |-128      |127       |
-| Short	 | 16        |-32768    |32767     |
-| Int	 | 32        |-2,147,483,648 (-2<sup>32</sup>)| 2,147,483,647 (2<sup>32</sup> - 1)|
-| Long	 | 64        |-9,223,372,036,854,775,808 (-2<sup>64</sup>)|9,223,372,036,854,775,807 (2<sup>64</sup> - 1)|
+| 类型	 | 大小（比特数）| 最小值 | 最大值 |
+|--------|---------------|--------|------- |
+| Byte	 | 8             |-128    |127     |
+| Short	 | 16            |-32768  |32767   |
+| Int	 | 32            |-2,147,483,648 (-2<sup>32</sup>)| 2,147,483,647 (2<sup>32</sup> - 1)|
+| Long	 | 64            |-9,223,372,036,854,775,808 (-2<sup>64</sup>)|9,223,372,036,854,775,807 (2<sup>64</sup> - 1)|
 
-All variables initialized with integer values not exceeding the maximum value of `Int`
-have the inferred type `Int`. If the initial value exceeds this value, then the type is `Long`.
-To specify the `Long` value explicitly, append the suffix `l` or `L` to the value.
+所有以未超出 `Int` 最大值的整型值初始化的变量<!--
+-->都会推断为 `Int` 类型。如果初始值超过了其最大值，那么推断为 `Long` 类型。
+如需显式指定 `Long` 型值，请在该值后追加 `l` 或 `L` 后缀。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -39,34 +39,34 @@ val oneByte: Byte = 1
 
 </div>
 
-For floating-point numbers, Kotlin provides types `Float` and `Double`.
-According to the [IEEE 754 standard](https://en.wikipedia.org/wiki/IEEE_754),
-floating point types differ by their _decimal place_, that is, how many decimal digits they can store.
-`Float` reflects the IEEE 754 _single precision_, while `Double` provides _double precision_.  
+对于浮点数，Kotlin 提供了 `Float` 与 `Double` 类型。
+根据 [IEEE 754 标准](https://zh.wikipedia.org/wiki/IEEE_754)，
+两种浮点类型的*十进制位数*（即可以存储多少位十进制数）不同。
+`Float` 反映了 IEEE 754 *单精度*，而 `Double` 提供了*双精度*。
  
 
-| Type	 |Size (bits)|Significant bits|Exponent bits|Decimal digits|
-|--------|-----------|--------------- |-------------|--------------|
-| Float	 | 32        |24              |8            |6-7            |
-| Double | 64        |53              |11           |15-16          |    
+| 类型	 | 大小（比特数）| 有效数字比特数 | 指数比特数 | 十进制位数 |
+|--------|---------------|--------------- |------------|------------|
+| Float	 | 32            |24              |8           |6-7         |
+| Double | 64            |53              |11          |15-16       |    
   
-For variables initialized with fractional numbers, the compiler infers the `Double` type.
-To explicitly specify the `Float` type for a value, add the suffix `f` or `F`.
-If such a value contains more that 6-7 decimal digits, it will be rounded. 
+对于以小数初始化的变量，编译器会推断为 `Double` 类型。
+如需将一个值显式指定为 `Float` 类型，请添加 `f` 或 `F` 后缀。
+如果这样的值包含多于 6～7 位十进制数，那么会将其舍入。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 val pi = 3.14 // Double
 val e = 2.7182818284 // Double
-val eFloat = 2.7182818284f // Float, actual value is 2.7182817
+val eFloat = 2.7182818284f // Float，实际值为 2.7182817
 ```
 
 </div>
 
-Note that unlike some other languages, there are no implicit widening conversions for numbers in Kotlin.
-For example, a function with a `Double` parameter can be called only on `Double` values, but not `Float`, 
-`Int`, or other numeric values.  
+请注意，与一些其他语言不同，Kotlin 中的数字没有隐式拓宽转换。
+例如，具有 `Double` 参数的函数只能对 `Double` 值调用，而不能对 `Float`、
+`Int` 或者其他数字值调用。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -79,13 +79,13 @@ fun main() {
     val f = 1.1f 
 
     printDouble(d)
-//    printDouble(i) // Error: Type mismatch
-//    printDouble(f) // Error: Type mismatch
+//    printDouble(i) // 错误：类型不匹配
+//    printDouble(f) // 错误：类型不匹配
 }
 ```
 </div>
 
-To convert numeric values to different types, use [Explicit conversions](#explicit-conversions).
+如需将数值转换为不同的类型，请使用[显示转换](#显式转换)。
 
 ### 字面常量
 
