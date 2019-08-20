@@ -30,7 +30,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 If the transformation produces `null` on certain elements, you can filter out the `null`s from the result collection by calling the [`mapNotNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html) function instead of `map()`, or [`mapIndexedNotNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed-not-null.html) instead of `mapIndexed()`.
 
@@ -45,7 +45,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 When transforming maps, you have two options: transform keys leaving values unchanged and vice versa.
 To apply a given transformation to keys, use [`mapKeys()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-keys.html); in turn, [`mapValues()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-values.html) transforms values.
@@ -62,7 +62,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 ## 双路合并
 
@@ -87,7 +87,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 You can also call `zip()` with a transformation function that takes two parameters: the receiver element and the argument element.
 In this case, the result `List` contains the return values of the transformation function called on pairs of the receiver and the argument elements with the same positions.
@@ -104,7 +104,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 When you have a `List` of `Pair`s, you can do the reverse transformation – _unzipping_ – that builds two lists from these pairs:
 
@@ -123,7 +123,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 ## 关联
 
@@ -143,7 +143,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 For building maps with collection elements as values, there is the function [`associateBy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate-by.html).
 It takes a function that returns a key based on an element's value. If two elements are equal, only the last one remains in the map. 
@@ -161,7 +161,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 Another way to build maps in which both keys and values are somehow produced from collection elements is the function [`associate()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate.html).
 It takes a lambda function that returns a `Pair`: the key and the value of the corresponding map entry.
@@ -190,7 +190,7 @@ fun parseFullName(fullName: String): FullName {
 //sampleEnd
 }
 ```
-</div>
+
 
 Here we call a transform function on an element first, and then build a pair from the properties of that function's result.
 
@@ -212,7 +212,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 Another function – [`flatMap()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/flat-map.html) provides a flexible way to process nested collections.
 It takes a function that maps a collection element to another collection.
@@ -235,7 +235,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 ## 字符串表示
 
@@ -262,7 +262,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 To build a custom string representation, you can specify its parameters in function arguments `separator`, `prefix`, and `postfix`.
 The resulting string will start with the `prefix` and end with the `postfix`. The `separator` will come after each element except the last.
@@ -277,7 +277,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 For bigger collections, you may want to specify the `limit` – a number of elements that will be included into result.
 If the collection size exceeds the `limit`, all the other elements will be replaced with a single value of the `truncated` argument.
@@ -292,7 +292,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 Finally, to customize the representation of elements themselves, provide the `transform` function. 
 
@@ -306,4 +306,4 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+

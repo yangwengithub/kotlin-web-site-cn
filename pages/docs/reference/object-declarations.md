@@ -8,19 +8,19 @@ title: "对象表达式、对象声明与伴生对象"
 # 对象表达式与对象声明
 
 有时候，我们需要创建一个对某个类做了轻微改动的类的对象，而不用为之显式声明新的子类。
-Java 用*匿名内部类* 处理这种情况。
-Kotlin 用*对象表达式*和*对象声明*对这个概念稍微概括了下。
+Kotlin 用*对象表达式*和*对象声明*处理这种情况。
 
 ## 对象表达式
 
 要创建一个继承自某个（或某些）类型的匿名类的对象，我们会这么写：
 
 
+
 ```kotlin
 window.addMouseListener(object : MouseAdapter() {
-    override fun mouseClicked(e: MouseEvent) { …… }
+    override fun mouseClicked(e: MouseEvent) { /*……*/ }
 
-    override fun mouseEntered(e: MouseEvent) { …… }
+    override fun mouseEntered(e: MouseEvent) { /*……*/ }
 })
 ```
 
@@ -29,12 +29,13 @@ window.addMouseListener(object : MouseAdapter() {
 多个超类型可以由跟在冒号后面的逗号分隔的列表指定：
 
 
+
 ```kotlin
 open class A(x: Int) {
     public open val y: Int = x
 }
 
-interface B { …… }
+interface B { /*……*/ }
 
 val ab: A = object : A(1), B {
     override val y = 15
@@ -43,6 +44,7 @@ val ab: A = object : A(1), B {
 
 
 任何时候，如果我们只需要“一个对象而已”，并不需要特殊超类型，那么我们可以简单地写：
+
 
 
 ```kotlin
@@ -60,6 +62,7 @@ fun foo() {
 -->返回类型或者用作公有属性的类型，那么该函数或属性的实际类型<!--
 -->会是匿名对象声明的超类型，如果你没有声明任何超类型，就会是 `Any`。在匿名对象<!--
 -->中添加的成员将无法访问。
+
 
 
 ```kotlin
@@ -82,8 +85,8 @@ class C {
 ```
 
 
-就像 Java 匿名内部类一样，对象表达式中的代码可以访问来自包含它的作用域的变量。
-（与 Java 不同的是，这不仅限于 final 或实际相当于 final 的变量。）
+对象表达式中的代码可以访问来自包含它的作用域的变量。
+
 
 
 ```kotlin
@@ -111,6 +114,7 @@ fun countClicks(window: JComponent) {
 而 Kotlin（继 Scala 之后）使单例声明变得很容易：
 
 
+
 ```kotlin
 object DataProviderManager {
     fun registerDataProvider(provider: DataProvider) {
@@ -131,12 +135,14 @@ object DataProviderManager {
 如需引用该对象，我们直接使用其名称即可：
 
 
+
 ```kotlin
 DataProviderManager.registerDataProvider(……)
 ```
 
 
 这些对象可以有超类型：
+
 
 
 ```kotlin
@@ -156,6 +162,7 @@ object DefaultListener : MouseAdapter() {
 类内部的对象声明可以用 *companion*{: .keyword } 关键字标记：
 
 
+
 ```kotlin
 class MyClass {
     companion object Factory {
@@ -168,12 +175,14 @@ class MyClass {
 该伴生对象的成员可通过只使用类名作为限定符来调用：
 
 
+
 ```kotlin
 val instance = MyClass.create()
 ```
 
 
 可以省略伴生对象的名称，在这种情况下将使用名称 `Companion`：
+
 
 
 ```kotlin
@@ -187,6 +196,7 @@ val x = MyClass.Companion
 
 其自身所用的类的名称（不是另一个名称的限定符）可用作对该类的伴生对象
 （无论是否命名）的引用：
+
 
 
 ```kotlin
@@ -206,6 +216,7 @@ val y = MyClass2
 
 请注意，即使伴生对象的成员看起来像其他语言的静态成员，在运行时他们<!--
 -->仍然是真实对象的实例成员，而且，例如还可以实现接口：
+
 
 
 ```kotlin

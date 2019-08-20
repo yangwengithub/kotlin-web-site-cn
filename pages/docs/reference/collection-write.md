@@ -26,7 +26,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 [`addAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/add-all.html) adds every element of the argument object to a list or a set. The argument can be an `Iterable`, a `Sequence`, or an `Array`.
 The types of the receiver and the argument may be different, for example, you can add all items from a `Set` to a `List`.
@@ -49,7 +49,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 You can also add elements using the in-place version of the [`plus` operator](collection-plus-minus.html) - [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) (`+=`)
  When applied to a mutable collection, `+=` appends the second operand (an element or another collection) to the end of the collection.
@@ -67,7 +67,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 ## 删除元素
 
@@ -87,7 +87,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 For removing multiple elements at once, there are the following functions :
 
@@ -115,7 +115,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 Another way to remove elements from a collection is with the [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) operator – the in-place version of [`minus`](collection-plus-minus.html).
 The second argument can be a single instance of the element type or another collection.
@@ -138,7 +138,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 ## 更新元素
 

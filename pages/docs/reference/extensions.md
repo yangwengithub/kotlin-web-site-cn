@@ -7,8 +7,13 @@ title: "扩展"
 
 # 扩展
 
-Kotlin 同 C# 与 Gosu 类似，能够扩展一个类的新功能而无需继承该类或使用像装饰者这样的任何类型的设计模式。
-这通过叫做 _扩展_ 的特殊声明完成。Kotlin 支持 _扩展函数_ 与 _扩展属性_。
+Kotlin 能够扩展一个类的新功能<!--
+-->而无需继承该类或者使用像装饰者这样的设计模式。
+这通过叫做 _扩展_ 的特殊声明完成。
+For example, you can write new functions for a class from a third-party library that you can't modify.
+Such functions are available for calling in the usual way as if they were methods of the original class. 
+This mechanism is called _extension functions_. There are also _extension properties_ that let you define
+new properties for existing classes.
 
 ## 扩展函数
 
@@ -68,58 +73,69 @@ fun <T> MutableList<T>.swap(index1: Int, index2: Int) {
 
 
 ```kotlin
-open class C
-
-class D: C()
-
-fun C.foo() = "c"
-
-fun D.foo() = "d"
-
-fun printFoo(c: C) {
-    println(c.foo())
+fun main() {
+//sampleStart
+    open class Shape
+    
+    class Rectangle: Shape()
+    
+    fun Shape.getName() = "Shape"
+    
+    fun Rectangle.getName() = "Rectangle"
+    
+    fun printClassName(s: Shape) {
+        println(s.getName())
+    }    
+    
+    printClassName(Rectangle())
+//sampleEnd
 }
-
-printFoo(D())
 ```
 
 
+这个例子会输出 "_Shape_"，因为调用的扩展函数只取决于<!--
+-->参数 `s` 的声明类型，该类型是 `Shape` 类。
 
-这个例子会输出 "c"，因为调用的扩展函数只取决于<!--
--->参数 `c` 的声明类型，该类型是 `C` 类。
-
-如果一个类定义有一个成员函数与一个扩展函数，而这两个函数又有相同的接收者类型、相同的名字，都适用给定的参数，这种情况**总是取成员函数**。
+如果一个类定义有一个成员函数与一个扩展函数，而这两个函数又有相同的接收者类型、
+相同的名字，并且都适用给定的参数，这种情况**总是取成员函数**。
 例如：
 
 
 
 ```kotlin
-class C {
-    fun foo() { println("member") }
+fun main() {
+//sampleStart
+    class Example {
+        fun printFunctionType() { println("Class method") }
+    }
+    
+    fun Example.printFunctionType() { println("Extension function") }
+    
+    Example().printFunctionType()
+//sampleEnd
 }
-
-fun C.foo() { println("extension") }
 ```
 
 
-
-如果我们调用 `C` 类型 `c`的 `c.foo()`，它将输出“member”，而不是“extension”。
+This code prints "_Class method_".
 
 当然，扩展函数重载同样名字但不同签名成员函数也完全可以：
 
 
 
 ```kotlin
-class C {
-    fun foo() { println("member") }
+fun main() {
+//sampleStart
+    class Example {
+        fun printFunctionType() { println("Class method") }
+    }
+    
+    fun Example.printFunctionType(i: Int) { println("Extension function") }
+    
+    Example().printFunctionType(1)
+//sampleEnd
 }
-
-fun C.foo(i: Int) { println("extension") }
 ```
-
-
-
-调用 `C().foo(1)` 将输出 "extension"。
 
 
 ## 可空接收者
@@ -163,7 +179,7 @@ val <T> List<T>.lastIndex: Int
 
 
 ```kotlin
-val Foo.bar = 1 // 错误：扩展属性不能有初始化器
+val House.number = 1 // 错误：扩展属性不能有初始化器
 ```
 
 
@@ -171,7 +187,8 @@ val Foo.bar = 1 // 错误：扩展属性不能有初始化器
 ## 伴生对象的扩展
 
 如果一个类定义有一个[伴生对象](object-declarations.html#伴生对象) ，你也可以为伴生对象定义<!--
--->扩展函数与属性：
+-->扩展函数与属性。Just like regular members of the companion object,
+they can be called using only the class name as the qualifier:
 
 
 
@@ -180,17 +197,11 @@ class MyClass {
     companion object { }  // 将被称为 "Companion"
 }
 
-fun MyClass.Companion.foo() { …… }
-```
+fun MyClass.Companion.printCompanion() { println("companion") }
 
-
-
-就像伴生对象的其他普通成员，只需用类名作为限定符去调用他们
-
-
-
-```kotlin
-MyClass.foo()
+fun main() {
+    MyClass.printCompanion()
+}
 ```
 
 
@@ -198,16 +209,15 @@ MyClass.foo()
 
 ## 扩展的作用域
 
-大多数时候我们在顶层定义扩展，即直接在包里：
+大多数时候我们在顶层定义扩展——直接在包里：
 
 
 
 ```kotlin
-package foo.bar
-
-fun Baz.goo() { …… }
+package org.example.declarations
+ 
+fun List<String>.getLongestString() { /*……*/}
 ```
-
 
 
 要使用所定义包之外的一个扩展，我们需要在调用方导入它：
@@ -215,18 +225,15 @@ fun Baz.goo() { …… }
 
 
 ```kotlin
-package com.example.usage
+package org.example.usage
 
-import foo.bar.goo // 导入所有名为“goo”的扩展
-                   // 或者
-import foo.bar.*   // 从“foo.bar”导入一切
+import org.example.declarations.getLongestString
 
-fun usage(baz: Baz) {
-    baz.goo()
+fun main() {
+    val list = listOf("red", "green", "blue")
+    list.getLongestString()
 }
-
 ```
-
 
 
 更多信息参见[导入](packages.html#导入)
@@ -240,21 +247,28 @@ _分发接收者_，扩展方法调用所在的接收者类型的实例称为 _�
 
 
 ```kotlin
-class D {
-    fun bar() { …… }
+class Host(val hostname: String) {
+    fun printHostname() { print(hostname) }
 }
 
-class C {
-    fun baz() { …… }
+class Connection(val host: Host, val port: Int) {
+     fun printPort() { print(port) }
 
-    fun D.foo() {
-        bar()   // 调用 D.bar
-        baz()   // 调用 C.baz
-    }
+     fun Host.printConnectionString(p: Int) {
+         printHostname()   // calls Host.printHostname()
+         print(":")
+         printPort()   // calls Connection.printPort()
+     }
 
-    fun caller(d: D) {
-        d.foo()   // 调用扩展函数
-    }
+     fun connect() {
+         /*……*/
+         host.printConnectionString(port)   // calls the extension function
+     }
+}
+
+fun main() {
+    Connection(Host("kotl.in"), 443).connect()
+    //Host("kotl.in").printConnectionString(443)  // error, the extension function is unavailable outside Connection
 }
 ```
 
@@ -266,14 +280,13 @@ class C {
 
 
 ```kotlin
-class C {
-    fun D.foo() {
-        toString()         // 调用 D.toString()
-        this@C.toString()  // 调用 C.toString()
+class Connection {
+    fun Host.getConnectionString() {
+        toString()         // 调用 Host.toString()
+        this@Connection.toString()  // 调用 Connection.toString()
     }
 }
 ```
-
 
 
 声明为成员的扩展可以声明为 `open` 并在子类中覆盖。这意味着这些函数的分发<!--
@@ -282,41 +295,40 @@ class C {
 
 
 ```kotlin
-open class D { }
+open class Base { }
 
-class D1 : D() { }
+class Derived : Base() { }
 
-open class C {
-    open fun D.foo() {
-        println("D.foo in C")
+open class BaseCaller {
+    open fun Base.printFunctionInfo() {
+        println("Base extension function in BaseCaller")
     }
 
-    open fun D1.foo() {
-        println("D1.foo in C")
+    open fun Derived.printFunctionInfo() {
+        println("Derived extension function in BaseCaller")
     }
 
-    fun caller(d: D) {
-        d.foo()   // 调用扩展函数
+    fun call(b: Base) {
+        b.printFunctionInfo()   // 调用扩展函数
     }
 }
 
-class C1 : C() {
-    override fun D.foo() {
-        println("D.foo in C1")
+class DerivedCaller: BaseCaller() {
+    override fun Base.printFunctionInfo() {
+        println("Base extension function in DerivedCaller")
     }
 
-    override fun D1.foo() {
-        println("D1.foo in C1")
+    override fun Derived.printFunctionInfo() {
+        println("Derived extension function in DerivedCaller")
     }
 }
 
 fun main() {
-    C().caller(D())   // 输出 "D.foo in C"
-    C1().caller(D())  // 输出 "D.foo in C1" —— 分发接收者虚拟解析
-    C().caller(D1())  // 输出 "D.foo in C" —— 扩展接收者静态解析
+    BaseCaller().call(Base())   // "Base extension function in BaseCaller"
+    DerivedCaller().call(Base())  // "Base extension function in DerivedCaller" - dispatch receiver is resolved virtually
+    DerivedCaller().call(Derived())  // "Base extension function in DerivedCaller" - extension receiver is resolved statically
 }
 ```
-
 
 
 ## 关于可见性的说明
@@ -325,42 +337,3 @@ fun main() {
 
 * 在文件顶层声明的扩展可以访问同一文件中的其他 `private` 顶层声明；
 * 如果扩展是在其接收者类型外部声明的，那么该扩展不能访问接收者的 `private` 成员。
-
-## 动机
-
-在Java中，我们将类命名为“\*Utils”：`FileUtils`、`StringUtils` 等，著名的 `java.util.Collections` 也属于同一种命名方式。
-关于这些 Utils-类的不愉快的部分是代码写成这样：
-
-
-
-```java
-// Java
-Collections.swap(list, Collections.binarySearch(list,
-    Collections.max(otherList)),
-    Collections.max(list));
-```
-
-
-
-这些类名总是碍手碍脚的，我们可以通过静态导入达到这样效果：
-
-
-
-```java
-// Java
-swap(list, binarySearch(list, max(otherList)), max(list));
-```
-
-
-
-这会变得好一点，但是我们并没有从 IDE 强大的自动补全功能中得到帮助。如果能这样就更好了：
-
-
-
-```java
-// Java
-list.swap(list.binarySearch(otherList.max()), list.max());
-```
-
-
-但是我们不希望在 `List` 类内实现这些所有可能的方法，对吧？这时候扩展将会帮助我们。

@@ -30,7 +30,7 @@ To create a sequence, call the [`sequenceOf()`](https://kotlinlang.org/api/lates
 ```kotlin
 val numbersSequence = sequenceOf("four", "three", "two", "one")
 ```
-</div>
+
 
 ### 由 `Iterable`
 If you already have an `Iterable` object (such as a `List` or a `Set`), you can create a sequence from it by calling [`asSequence()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/as-sequence.html).
@@ -42,7 +42,7 @@ val numbers = listOf("one", "two", "three", "four")
 val numbersSequence = numbers.asSequence()
 
 ```
-</div>
+
 
 ### 由函数
 One more way to create a sequence is by building it with a function that calculates its elements.
@@ -61,7 +61,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 To create a finite sequence with `generateSequence()`, provide a function that returns `null` after the last element you need.
 
@@ -75,7 +75,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 ### 由组块
 
@@ -98,7 +98,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 ## 序列操作
 
@@ -136,7 +136,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 When you run this code, you'll see that the `filter()` and `map()` functions are executed in the same order as they appear in the code.
 First, you see `filter:` for all elements, then `length:` for the elements left after filtering, and then the output of the two last lines. 
@@ -167,7 +167,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 The output of this code shows that the `filter()` and `map()` functions are called only when building the result list.
 So, you first see the line of text `“Lengths of..”` and then the sequence processing starts.

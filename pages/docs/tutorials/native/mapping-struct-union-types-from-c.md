@@ -70,7 +70,7 @@ void union_by_pointer(MyUnion* u) {}
 
 [[include pages-includes/docs/tutorials/native/mapping-primitive-data-types-gradle.md]]
 
-让我们使用下面的内容创建一个 `src/nativeMain/kotlin/hello.kt` 存根文件，
+我们使用下面的内容创建一个 `src/nativeMain/kotlin/hello.kt` 存根文件，
 以用来观察我们的 C 声明是如何在 Kotlin 中可见的：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -145,10 +145,10 @@ class MyUnion constructor(rawPtr: NativePtr /* = NativePtr */) : CStructVar {
 当然，我们不愿意手动处理指针。作为替代，我们可以使用 Kotlin API
 来为我们实例化这些对象。 
 
-让我们看一看生成的函数，它将 `MyStruct` 与 `MyUnion` 作为参数。我们看到了<!--
+我们来看一看生成的函数，它将 `MyStruct` 与 `MyUnion` 作为参数。我们看到了<!--
 -->值类型参数表示为 `kotlinx.cinterop.CValue<T>`。而指针类型参数表示为
 `kotlinx.cinterop.CValuesRef<T>`。
-Kotlin 给我们提供了 API 使得处理这两者都非常简单，让我们尝试一下并看看结果。
+Kotlin 给我们提供了 API 使得处理这两者都非常简单，我们来尝试一下并看看结果。
 
 ### 创建一个 `CValue<T>`
 
@@ -190,7 +190,7 @@ fun callValue() {
 `CValuesRef<T>` 类型用于在 Kotlin 中将指针类型的参数传递给 C
 函数。首先，我们需要
 `MyStruct` 与 `MyUnion` 类的实例。这次我们直接在原生内存中创建它们。
-让我们使用
+我们使用
 <div class="sample" markdown="1" theme="idea" data-highlight-only="1" auto-indent="false">
 
 ```kotlin
@@ -254,7 +254,7 @@ fun callRef() {
 -->将同一个结构体作为引用传递给另一个调用。这在 Kotlin/Native 中同样也是可行的。这里将<!--
 -->需要一个 `NativePlacement`。
 
-让我们看看现在首先将 `CValue<T>` 转换为一个指针：
+我们看看现在首先将 `CValue<T>` 转换为一个指针：
 <div class="sample" markdown="1" theme="idea" data-highlight-only="1" auto-indent="false">
 
 ```kotlin
@@ -296,7 +296,7 @@ fun callMix_value() {
 ## 运行代码
 
 现在我们应学习了如何在我们的代码中使用 C 声明，我们已经准备好<!--
--->在一个真实的示例中尝试它的输出。让我们修改代码并看看如何<!--
+-->在一个真实的示例中尝试它的输出。我们来修改代码并看看如何<!--
 -->[在 IDE 中](basic-kotlin-native-app.html#run-in-ide)调用 `runDebugExecutableNative` Gradle 任务来运行它。
 或者使用下面的控制台命令：
 [[include pages-includes/docs/tutorials/native/runDebugExecutableNative.md]]
@@ -348,6 +348,6 @@ fun main() {
 - [映射来自 C 语言的函数指针](mapping-function-pointers-from-c.html)
 - [映射来自 C 语言的字符串](mapping-strings-from-c.html)
 
-这篇[C 互操作文档](https://github.com/JetBrains/kotlin-native/blob/master/INTEROP.md)<!--
+这篇 [C 互操作文档](https://github.com/JetBrains/kotlin-native/blob/master/INTEROP.md)<!--
 -->涵盖了更多的高级互操作场景
 

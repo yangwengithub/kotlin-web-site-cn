@@ -10,6 +10,7 @@ title: "枚举类"
 枚举类的最基本的用法是实现类型安全的枚举：
 
 
+
 ```kotlin
 enum class Direction {
     NORTH, SOUTH, WEST, EAST
@@ -24,6 +25,7 @@ enum class Direction {
 因为每一个枚举都是枚举类的实例，所以他们可以是这样初始化过的：
 
 
+
 ```kotlin
 enum class Color(val rgb: Int) {
         RED(0xFF0000),
@@ -35,7 +37,8 @@ enum class Color(val rgb: Int) {
 
 ## 匿名类
 
-枚举常量也可以声明自己的匿名类：
+枚举常量还可以声明其带有相应方法以及覆盖了基类方法的匿名类。
+
 
 
 ```kotlin
@@ -53,9 +56,7 @@ enum class ProtocolState {
 ```
 
 
-及相应的方法、以及覆盖基类的方法。注意，如果枚举类定义任何<!--
--->成员，要使用分号将成员定义中的枚举常量定义分隔开，就像<!--
--->在 Java 中一样。
+如果枚举类定义任何成员，那么使用分号将成员定义中的枚举常量定义分隔开。
 
 枚举条目不能包含内部类以外的嵌套类型（已在 Kotlin 1.2 中弃用）。
 
@@ -91,11 +92,13 @@ fun main() {
 }
 ```
 
+
 ## 使用枚举常量
 
-就像在 Java 中一样，Kotlin 中的枚举类也有合成方法允许列出<!--
+Kotlin 中的枚举类也有合成方法允许列出<!--
 -->定义的枚举常量以及通过名称获取枚举常量。这些方法的<!--
 -->签名如下（假设枚举类的名称是 `EnumClass`）：
+
 
 
 ```kotlin
@@ -110,6 +113,7 @@ EnumClass.values(): Array<EnumClass>
 ：
 
 
+
 ```kotlin
 enum class RGB { RED, GREEN, BLUE }
 
@@ -122,6 +126,7 @@ printAllValues<RGB>() // 输出 RED, GREEN, BLUE
 
 
 每个枚举常量都具有在枚举类声明中获取其名称与位置的属性：
+
 
 
 ```kotlin

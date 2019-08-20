@@ -36,7 +36,7 @@ fun main() {
 }
 
 ```
-</div>
+
 
 To perform operations on all keys or all values of a map, you can retrieve them from the properties `keys` and `values` accordingly. `keys` is a set of all map keys and `values` is a collection of all map values.
 
@@ -52,7 +52,7 @@ fun main() {
 }
 
 ```
-</div>
+
 
 ## 过滤
 
@@ -72,7 +72,7 @@ fun main() {
 }
 
 ```
-</div>
+
 
 There are also two specific ways for filtering maps: by keys and by values.
 For each way, there is a function: [`filterKeys()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-keys.html) and [`filterValues()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-values.html).
@@ -94,7 +94,7 @@ fun main() {
 }
 
 ```
-</div>
+
 
 ## `plus` 与 `minus` 操作
 
@@ -115,7 +115,7 @@ fun main() {
 }
 
 ```
-</div>
+
 
 `minus` creates a `Map` from entries of a `Map` on the left except those with keys from the right-hand side operand.
 So, the right-hand side operand can be either a single key or a collection of keys: list, set, and so on.
@@ -132,7 +132,7 @@ fun main() {
 }
 
 ```
-</div>
+
 
 For details on using [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) (`+=`) and [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) operators on mutable maps, see [Map write operations](#map-写操作) below.
 
@@ -166,7 +166,7 @@ fun main() {
 }
 
 ```
-</div>
+
 
 To add multiple entries at a time, use [`putAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/put-all.html). Its argument can be a `Map` or a group of `Pair`s: `Iterable`, `Sequence`, or `Array`.
 
@@ -182,7 +182,7 @@ fun main() {
 }
 
 ```
-</div>
+
 
 Both `put()` and `putAll()` overwrite the values if the given keys already exist in the map. Thus, you can use them to update values of map entries.
 
@@ -199,7 +199,7 @@ fun main() {
 }
 
 ```
-</div>
+
 
 You can also add new entries to maps using the shorthand operator form. There are two ways:
 
@@ -219,7 +219,7 @@ fun main() {
 }
 
 ```
-</div>
+
 
 When called with the key present in the map, operators overwrite the values of the corresponding entries. 
 
@@ -243,7 +243,7 @@ fun main() {
 }
 
 ```
-</div>
+
 
 You can also remove entries from a mutable map by their keys or values.
 To do this, call `remove()` on the map's keys or values providing the key or the value of an entry.
@@ -263,7 +263,7 @@ fun main() {
 }
 
 ```
-</div>
+
 
 
 The [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) operator is also available for mutable maps.
@@ -282,5 +282,5 @@ fun main() {
 }
 
 ```
-</div>
+
 

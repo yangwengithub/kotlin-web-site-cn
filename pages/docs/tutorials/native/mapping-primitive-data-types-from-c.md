@@ -17,7 +17,7 @@ issue: EVAN-5343
 
 ## C 语言中的类型
 
-我们如何在 C 语言中拥有类型？让我们先列出所有这些类型。我引用了这篇
+我们如何在 C 语言中拥有类型？我们先来列出所有这些类型。我引用了这篇
 [C 数据类型](https://en.wikipedia.org/wiki/C_data_types)维基百科上的文章作为基础。
 在 C 语言中有如下这些类型：
 - 基本类型 `char、int、float、double` 以及带修饰符的 `signed、unsigned、short、long` 
@@ -74,7 +74,7 @@ headers = lib.h
 
 我们可以在 `---` 分隔符之后将所有声明直接包含在 `.def` 文件中。
 将宏或其他 C 定义包含在 `cinterop` 工具生成的代码中会很有帮助。
-方法体同样被编译以及完全包含到二进制文件中。让我们使用<!--
+方法体同样被编译以及完全包含到二进制文件中。我们使用<!--
 -->这个功能并且在不使用 C 编译器的情况下来得到一个可运行的示例。
 为了实现这个，我们需要在 `lib.h` 文件中添加 C 函数的实现，
 并将这些函数放入 `.def` 文件中。
@@ -99,7 +99,7 @@ void doubles(float a, double b) { }
 
 [[include pages-includes/docs/tutorials/native/mapping-primitive-data-types-gradle.md]]
 
-让我们使用以下内容创建一个 `src/nativeMain/kotlin/hello.kt` 存根文件<!--
+我们使用以下内容来创建一个 `src/nativeMain/kotlin/hello.kt` 存根文件<!--
 -->来查看 C 的原始类型声明是如何在 Kotlin 中可见的：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -157,7 +157,7 @@ C 类型按照我们期望的方式进行了映射，注意，`char` 类型映�
 ## 修改代码
 
 我们已经看到了所有的定义并且是时候来修改代码了。
-让我们[在 IDE 中](basic-kotlin-native-app.html#run-in-ide)运行 `runDebugExecutableNative` Gradle 任务<!--
+我们[在 IDE 中](basic-kotlin-native-app.html#run-in-ide)运行 `runDebugExecutableNative` Gradle 任务<!--
 -->或使用下面的命令来运行代码：
 [[include pages-includes/docs/tutorials/native/runDebugExecutableNative.md]]
 

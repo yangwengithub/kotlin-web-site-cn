@@ -7,7 +7,9 @@ title: "基本语法"
 
 # 基本语法
 
-## 定义包
+{:#defining-packages}
+
+## 包的定义与导入
 
 包的声明应处于源文件顶部：
 
@@ -16,7 +18,7 @@ title: "基本语法"
 ```kotlin
 package my.demo
 
-import java.util.*
+import kotlin.text.*
 
 // ……
 ```
@@ -27,7 +29,23 @@ import java.util.*
 
 参见[包](packages.html)。
 
-## 定义函数
+## 程序入口点
+
+Kotlin 应用程序的入口点是 `main` 函数。
+
+
+
+```kotlin
+fun main() {
+    println("Hello world!")
+}
+```
+
+
+
+{:#defining-functions}
+
+## 函数
 
 带有两个 `Int` 参数、返回 `Int` 的函数：
 
@@ -102,7 +120,9 @@ fun main() {
 
 参见[函数](functions.html)。
 
-## 定义变量
+{:#defining-variables}
+
+## 变量
 
 定义只读局部变量使用关键字 `val` 定义。只能为其赋值一次。
 
@@ -167,7 +187,7 @@ fun main() {
 
 ## 注释
 
-正如 Java 与 JavaScript，Kotlin 支持行注释及块注释。
+与大多数现代语言一样，Kotlin 支持单行（或*行末*）与多行（*块*）注释。
 
 
 
@@ -180,11 +200,23 @@ fun main() {
 
 
 
-与 Java 不同的是，Kotlin 的块注释可以嵌套。
+Block comments in Kotlin can be nested.
+
+
+
+```kotlin
+/* 注释从这里开始
+/* 包含嵌套的注释 */     
+并且在这里结束。 */
+```
+
+
 
 参见[编写 Kotlin 代码文档](kotlin-doc.html) 查看关于文档注释语法的信息。
 
-## 使用字符串模板
+{:#using-string-templates}
+
+## 字符串模板
 
 
 
@@ -207,8 +239,9 @@ fun main() {
 
 参见[字符串模板](basic-types.html#字符串模板)。
 
-## 使用条件表达式
+{:#using-conditional-expressions}
 
+## 条件表达式
 
 
 
@@ -231,7 +264,7 @@ fun main() {
 
 
 
-使用 *if*{: .keyword } 作为表达式:
+在 Kotlin 中，*if*{: .keyword } 也可以用作表达式：
 
 
 
@@ -249,7 +282,9 @@ fun main() {
 
 参见[*if*{: .keyword } 表达式](control-flow.html#if-表达式)。
 
-## 使用可空值及 *null*{: .keyword } 检测
+{:#using-nullable-values-and-checking-for-null}
+
+## 空值与 *null*{: .keyword } 检测
 
 当某个变量的值可以为 *null*{: .keyword } 的时候，必须在声明处的类型后添加 `?` 来标识该引用可为空。
 
@@ -269,7 +304,6 @@ fun parseInt(str: String): Int? {
 
 
 
-
 ```kotlin
 fun parseInt(str: String): Int? {
     return str.toIntOrNull()
@@ -280,13 +314,13 @@ fun printProduct(arg1: String, arg2: String) {
     val x = parseInt(arg1)
     val y = parseInt(arg2)
 
-    // 直接使用 `x * y` 会导致编译错误，因为他们可能为 null
+    // 直接使用 `x * y` 会导致编译错误，因为它们可能为 null
     if (x != null && y != null) {
         // 在空检测后，x 与 y 会自动转换为非空值（non-nullable）
         println(x * y)
     }
     else {
-        println("either '$arg1' or '$arg2' is not a number")
+        println("'$arg1' or '$arg2' is not a number")
     }    
 }
 //sampleEnd
@@ -342,7 +376,9 @@ fun main() {
 
 参见[空安全](null-safety.html)。
 
-## 使用类型检测及自动类型转换
+{:#using-type-checks-and-automatic-casts}
+
+## 类型检测与自动类型转换
 
 *is*{: .keyword } 运算符检测一个表达式是否某类型的一个实例。
 如果一个不可变的局部变量或属性已经判断出为某类型，那么检测后的分支中可以直接当作该类型使用，无需显式转换：
@@ -434,7 +470,9 @@ fun main() {
 
 参见[类](classes.html)以及[类型转换](typecasts.html)。
 
-## 使用 `for` 循环
+{:#using-a-for-loop}
+
+## `for` 循环
 
 
 
@@ -471,7 +509,9 @@ fun main() {
 
 参见 [for 循环](control-flow.html#for-循环)。
 
-## 使用 `while` 循环
+{:#using-a-while-loop}
+
+## `while` 循环
 
 
 
@@ -493,7 +533,9 @@ fun main() {
 
 参见 [while 循环](control-flow.html#while-循环)。
 
-## 使用 `when` 表达式
+{:#using-when-expression}
+
+## `when` 表达式
 
 
 
@@ -522,6 +564,8 @@ fun main() {
 
 
 参见 [when 表达式](control-flow.html#when-表达式)。
+
+{:#using-ranges}
 
 ## 使用区间（range）
 
@@ -565,7 +609,6 @@ fun main() {
 
 
 
-
 区间迭代:
 
 
@@ -604,7 +647,9 @@ fun main() {
 
 参见[区间](ranges.html)。
 
-## 使用集合
+{:#using-collections}
+
+## Collections
 
 对集合进行迭代:
 
@@ -620,7 +665,6 @@ fun main() {
 //sampleEnd
 }
 ```
-
 
 
 
@@ -642,9 +686,7 @@ fun main() {
 
 
 
-
 使用 lambda 表达式来过滤（filter）与映射（map）集合：
-
 
 
 
@@ -663,9 +705,9 @@ fun main() {
 
 
 
-参见[高阶函数及Lambda表达式](lambdas.html)。
+参见[集合概述](collections-overview.html)。
 
-## 创建基本类及其实例：
+## 创建基本类及其实例
 
 
 

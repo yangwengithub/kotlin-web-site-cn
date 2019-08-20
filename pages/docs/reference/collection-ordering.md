@@ -47,7 +47,7 @@ fun main() {
     println(Version(2, 0) > Version(1, 5))
 }
 ```
-</div>
+
 
 _Custom_ orders let you sort instances of any type in a way you like.
 Particularly, you can define an order for non-comparable objects or define an order other than natural for a comparable type.
@@ -66,7 +66,7 @@ fun main() {
 }
 
 ```
-</div>
+
 
 Having the `lengthComparator`, you are able to arrange strings by their length instead of the default lexicographical order.
 
@@ -84,7 +84,7 @@ println(listOf("aaa", "bb", "c").sortedWith(compareBy { it.length }))
 }
 
 ```
-</div>
+
 
 The Kotlin collections package provides functions for sorting collections in natural, custom, and even random orders.
 On this page, we'll describe sorting functions that apply to [read-only](collections-overview.html#集合类型) collections.
@@ -109,7 +109,7 @@ fun main() {
 }
 
 ```
-</div>
+
 
 ## 自定义顺序
  
@@ -131,7 +131,7 @@ fun main() {
 }
 
 ```
-</div>
+
 
 To define a custom order for the collection sorting, you can provide your own `Comparator`.
 To do this, call the [`sortedWith()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sorted-with.html) function passing in your `Comparator`.
@@ -148,7 +148,7 @@ fun main() {
 }
 
 ```
-</div>
+
 
 ## 倒序
 
@@ -165,7 +165,7 @@ fun main() {
 }
 
 ```
-</div>
+
 
 `reversed()` returns a new collection with the copies of the elements.
 So, if you change the original collection later, this won't affect the previously obtained results of `reversed()`.
@@ -184,7 +184,7 @@ fun main() {
 }
 
 ```
-</div>
+
 
 If the original list is mutable, all its changes reflect in its reversed views and vice versa.
 
@@ -202,7 +202,7 @@ fun main() {
 }
 
 ```
-</div>
+
 
 However, if the mutability of the list is unknown or the source is not a list at all, `reversed()` is more preferable since its result is a copy that won't change in the future.
 
@@ -222,4 +222,4 @@ fun main() {
 }
 
 ```
-</div>
+

@@ -32,7 +32,7 @@ fun main() {
 //sampleEnd
 }
 ```
-</div>
+
 
 Note that set operations are supported by `List` as well.
 However, the result of set operations on lists is still a `Set`, so all the duplicate elements are removed.
