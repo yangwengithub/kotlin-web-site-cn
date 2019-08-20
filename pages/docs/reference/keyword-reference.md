@@ -55,7 +55,7 @@ title: "关键字与操作符"
  * `true` 指定[布尔类型](basic-types.html#布尔)的“真”值
  * `try` [开始一个异常处理块](exceptions.html)
  * `typealias` 声明一个[类型别名](type-aliases.html)
- * `typeof` reserved for future use
+ * `typeof` 保留以供未来使用
  * `val` 声明一个只读[属性](properties.html)或[局部变量](basic-syntax.html#defining-variables)
  * `var` 声明一个可变[属性](properties.html)或[局部变量](basic-syntax.html#defining-variables)
  * `when` 开始一个 [when 表达式](control-flow.html#when-表达式)（执行其中一个给定分支）

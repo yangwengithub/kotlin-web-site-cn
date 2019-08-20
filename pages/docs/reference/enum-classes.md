@@ -37,7 +37,7 @@ enum class Color(val rgb: Int) {
 
 ## 匿名类
 
-Enum constants can also declare their own anonymous classes with their corresponding methods, as well as overriding base methods.
+枚举常量还可以声明其带有相应方法以及覆盖了基类方法的匿名类。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
