@@ -51,7 +51,7 @@ val positives = list.filter { it > 0 }
 ```
 </div>
 
-### Checking element presence in a collection.
+### 检测元素是否存在于集合中
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
