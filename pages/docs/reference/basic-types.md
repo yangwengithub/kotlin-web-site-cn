@@ -14,20 +14,78 @@ title: "基本类型：数字、字符串、数组"
 
 ## 数字
 
-Kotlin 处理数字在某种程度上接近 Java，但是并不完全相同。例如，对于数字没有隐式拓宽转换（如 Java 中 `int` 可以隐式转换为`long`——译者注)，另外有些情况的字面值略有不同。
+Kotlin provides a set of built-in types that represent numbers.  
+For integer numbers, there are four types with different sizes and, hence, value ranges.
 
-Kotlin 提供了如下的内置类型来表示数字（与 Java 很相近）：
+| Type	 |Size (bits)| Min value| Max value|
+|--------|-----------|----------|--------- |
+| Byte	 | 8         |-128      |127       |
+| Short	 | 16        |-32768    |32767     |
+| Int	 | 32        |-2,147,483,648 (-2<sup>32</sup>)| 2,147,483,647 (2<sup>32</sup> - 1)|
+| Long	 | 64        |-9,223,372,036,854,775,808 (-2<sup>64</sup>)|9,223,372,036,854,775,807 (2<sup>64</sup> - 1)|
 
-| Type	 | Bit width|
-|--------|----------|
-| Double | 64       |
-| Float	 | 32       |
-| Long	 | 64       |
-| Int	 | 32       |
-| Short	 | 16       |
-| Byte	 | 8        |
+All variables initialized with integer values not exceeding the maximum value of `Int`
+have the inferred type `Int`. If the initial value exceeds this value, then the type is `Long`.
+To specify the `Long` value explicitly, append the suffix `l` or `L` to the value.
 
-注意在 Kotlin 中字符不是数字
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```kotlin
+val one = 1 // Int
+val threeBillion = 3000000000 // Long
+val oneLong = 1L // Long
+val oneByte: Byte = 1
+```
+
+</div>
+
+For floating-point numbers, Kotlin provides types `Float` and `Double`.
+According to the [IEEE 754 standard](https://en.wikipedia.org/wiki/IEEE_754),
+floating point types differ by their _decimal place_, that is, how many decimal digits they can store.
+`Float` reflects the IEEE 754 _single precision_, while `Double` provides _double precision_.  
+ 
+
+| Type	 |Size (bits)|Significant bits|Exponent bits|Decimal digits|
+|--------|-----------|--------------- |-------------|--------------|
+| Float	 | 32        |24              |8            |6-7            |
+| Double | 64        |53              |11           |15-16          |    
+  
+For variables initialized with fractional numbers, the compiler infers the `Double` type.
+To explicitly specify the `Float` type for a value, add the suffix `f` or `F`.
+If such a value contains more that 6-7 decimal digits, it will be rounded. 
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```kotlin
+val pi = 3.14 // Double
+val e = 2.7182818284 // Double
+val eFloat = 2.7182818284f // Float, actual value is 2.7182817
+```
+
+</div>
+
+Note that unlike some other languages, there are no implicit widening conversions for numbers in Kotlin.
+For example, a function with a `Double` parameter can be called only on `Double` values, but not `Float`, 
+`Int`, or other numeric values.  
+
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
+
+```kotlin
+fun main() {
+    fun printDouble(d: Double) { print(d) }
+
+    val i = 1    
+    val d = 1.1
+    val f = 1.1f 
+
+    printDouble(d)
+//    printDouble(i) // Error: Type mismatch
+//    printDouble(f) // Error: Type mismatch
+}
+```
+</div>
+
+To convert numeric values to different types, use [Explicit conversions](#explicit-conversions).
 
 ### 字面常量
 
@@ -189,12 +247,12 @@ val x = (1 shl 2) and 0x000FF000
 
 这是完整的位运算列表（只用于 `Int` 与 `Long`）：
 
-* `shl(bits)` – 有符号左移 (Java 的 `<<`)
-* `shr(bits)` – 有符号右移 (Java 的 `>>`)
-* `ushr(bits)` – 无符号右移 (Java 的 `>>>`)
-* `and(bits)` – 位与
-* `or(bits)` – 位或
-* `xor(bits)` – 位异或
+* `shl(bits)` – 有符号左移
+* `shr(bits)` – 有符号右移
+* `ushr(bits)` – 无符号右移
+* `and(bits)` – 位**与**
+* `or(bits)` – 位**或**
+* `xor(bits)` – 位**异或**
 * `inv()` – 位非
 
 ### 浮点数比较
@@ -307,7 +365,7 @@ fun main() {
 
 如上所述，`[]` 运算符代表调用成员函数 `get()` 与 `set()`。
 
-注意: 与 Java 不同的是，Kotlin 中数组是不型变的（invariant）。这意味着 Kotlin 不让我们把 `Array<String>`
+Kotlin 中数组是*不型变的（invariant）*。这意味着 Kotlin 不让我们把 `Array<String>`
 赋值给 `Array<Any>`，以防止可能的运行时失败（但是你可以使用 `Array<out Any>`,
 参见[类型投影](generics.html#类型投影)）。
 
@@ -462,7 +520,8 @@ println(s + "def")
 
 ### 字符串字面值
 
-Kotlin 有两种类型的字符串字面值: 转义字符串可以有转义字符，以及原始字符串可以包含换行以及任意文本。转义字符串很像 Java 字符串:
+Kotlin 有两种类型的字符串字面值: 转义字符串可以有转义字符，
+以及原始字符串可以包含换行以及任意文本。以下是转义字符串的一个示例:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 

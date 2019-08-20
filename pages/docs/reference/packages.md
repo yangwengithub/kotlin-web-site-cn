@@ -10,18 +10,20 @@ title: "包与导入"
 源文件通常以包声明开头:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
-```kotlin
-package foo.bar
 
-fun baz() { ... }
-class Goo { ... }
+```kotlin
+package org.example
+
+fun printMessage() { /*...*/ }
+class Message { /*...*/ }
 
 // ……
 ```
 </div>
 
 源文件所有内容（无论是类还是函数）都包含在声明的包内。
-所以上例中 `baz()` 的全名是 `foo.bar.baz`、`Goo` 的全名是 `foo.bar.Goo`。
+所以上例中 `printMessage()` 的全名是 `org.example.printMessage`，
+而 `Message` 的全名是 `org.example.Message`。
 
 如果没有指明包，该文件的内容属于无名字的默认包。
 
@@ -55,25 +57,28 @@ class Goo { ... }
 可以导入一个单独的名字，如.
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
-import foo.Bar // 现在 Bar 可以不用限定符访问
+import org.example.Message // 现在 Message 可以不用限定符访问
 ```
 </div>
 
 也可以导入一个作用域下的所有内容（包、类、对象等）:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
-import foo.* // “foo”中的一切都可访问
+import org.example.* // “org.example”中的一切都可访问
 ```
 </div>
 
 如果出现名字冲突，可以使用 *as*{: .keyword } 关键字在本地重命名冲突项来消歧义：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
-import foo.Bar // Bar 可访问
-import bar.Bar as bBar // bBar 代表“bar.Bar”
+import org.example.Message // Message 可访问
+import org.test.Message as testMessage // testMessage 代表“org.test.Message”
 ```
 </div>
 
@@ -82,8 +87,6 @@ import bar.Bar as bBar // bBar 代表“bar.Bar”
   * 顶层函数及属性；
   * 在[对象声明](object-declarations.html#对象声明)中声明的函数和属性;
   * [枚举常量](enum-classes.html)。
-
-与 Java 不同，Kotlin 没有单独的[“import static”](https://docs.oracle.com/javase/8/docs/technotes/guides/language/static-import.html)语法； 所有这些声明都用 `import` 关键字导入。
 
 ## 顶层声明的可见性
 

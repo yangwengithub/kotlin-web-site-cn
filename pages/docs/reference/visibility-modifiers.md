@@ -19,12 +19,13 @@ title: "可见性修饰符"
 函数、属性和类、对象和接口可以在顶层声明，即直接在包内：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 // 文件名：example.kt
 package foo
 
-fun baz() { ... }
-class Bar { ... }
+fun baz() { …… }
+class Bar { …… }
 ```
 </div>
 
@@ -39,6 +40,7 @@ class Bar { ... }
 例如:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 // 文件名：example.kt
 package foo
@@ -61,13 +63,14 @@ internal val baz = 6    // 相同模块内可见
 * `internal` —— 能见到类声明的 *本模块内* 的任何客户端都可见其 `internal` 成员；
 * `public` ——  能见到类声明的任何客户端都可见其 `public` 成员。
 
-*注意* 对于Java用户：Kotlin 中外部类不能访问内部类的 private 成员。
+请注意在 Kotlin 中，外部类不能访问内部类的 private 成员。
 
 如果你覆盖一个 `protected` 成员并且没有显式指定其可见性，该成员还会是 `protected` 可见性。
 
 例子:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 open class Outer {
     private val a = 1
@@ -102,6 +105,7 @@ class Unrelated(o: Outer) {
 -->显式 *constructor*{:.keyword} 关键字）：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class C private constructor(a: Int) { …… }
 ```

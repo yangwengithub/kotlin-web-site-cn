@@ -20,25 +20,25 @@ title: "编码规范"
 ### 应用风格指南
 
 如需根据本风格指南配置 IntelliJ 格式化程序，请安装 Kotlin 插件
-1.2.20 或更高版本，转到“Settings | Editor | Code Style | Kotlin”，点击右<!--
--->上角的“Set from...”链接，并从菜单中选择“Predefined style / Kotlin style guide”。
+1.2.20 或更高版本，转到 __Settings | Editor | Code Style | Kotlin__，点击右<!--
+-->上角的 __Set from...__ 链接，并从菜单中选择 __Predefined style | Kotlin style guide__。
 
 如需验证代码已按风格指南格式化，请转到探查设置（Inspections）并启用
-“Kotlin | Style issues | File is not formatted according to project settings”探查项。
+__Kotlin | Style issues | File is not formatted according to project settings__ 探查项。
 验证风格指南中描述的其他问题（如命名约定）的附加探查项默认已启用。
 
 ## 源代码组织
 
 ### 目录结构
 
-在混合语言项目中，Kotlin 源文件应当与 Java 源文件位于同一源文件根目录下，
-并遵循相同的目录结构（每个文件应存储在与其 package 语句对应的目录中
-）。
+在纯 Kotlin 项目中，推荐的目录结构遵循<!--
+-->省略了公共根包的包结构。例如，如果项目中的所有代码都位于 `org.example.kotlin` 包及其<!--
+-->子包中，那么 `org.example.kotlin` 包的文件应该直接放在源代码根目录下，而
+`org.example.kotlin.network.socket` 中的文件应该放在源代码根目录下的 `network/socket` 子目录中。
 
-在纯 Kotlin 项目中，推荐的目录结构遵循省略了公共根包的包结构
-（例如，如果项目中的所有代码都位于“org.example.kotlin”包及其<!--
--->子包中，那么“org.example.kotlin”包的文件应该直接放在源代码根目录下，而
-“org.example.kotlin.foo.bar”中的文件应该放在源代码根目录下的“foo/bar”子目录中）。
+> **On the JVM**: Kotlin 源文件应当与 Java 源文件位于同一源文件根目录下，
+并遵循相同的目录结构（每个文件应存储在与其 package 语句对应的目录中<!--
+-->。
 
 ### 源文件名称
 
@@ -89,13 +89,13 @@ title: "编码规范"
 
 ## 命名规则
 
-Kotlin 遵循 Java 命名约定。尤其是：
+Package and class naming rules in Kotlin are quite simple:
 
-包的名称总是小写且不使用下划线（`org.example.myproject`）。
+* 包的名称总是小写且不使用下划线（`org.example.project`）。
 通常不鼓励使用多个词的名称，但是如果确实需要使用多个词，可以将它们连接在一起<!--
 -->或使用驼峰（`org.example.myProject`）。
 
-类与对象的名称以大写字母开头并使用驼峰：
+* 类与对象的名称以大写字母开头并使用驼峰：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -224,8 +224,6 @@ class C {
 
 ## 格式化
 
-在大多数情况下，Kotlin 遵循 Java 编码规范。
-
 使用 4 个空格缩进。不要使用 tab。
 
 对于花括号，将左花括号放在结构起始处的行尾，而将右花括号<!--
@@ -261,7 +259,7 @@ Java 风格的花括号格式，如果尝试使用不同的格式化风格，那
 ```kotlin
 class A(val x: Int)
 
-fun foo(x: Int) { ... }
+fun foo(x: Int) { …… }
 
 fun bar() {
     foo(1)

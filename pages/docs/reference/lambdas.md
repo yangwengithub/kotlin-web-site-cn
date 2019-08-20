@@ -424,7 +424,7 @@ Lambda表达式与匿名函数之间的另一个区别是<!--
 ### 闭包
 
 Lambda 表达式或者匿名函数（以及[局部函数](functions.html#局部函数)和[对象表达式](object-declarations.html#对象表达式)）
-可以访问其 _闭包_ ，即在外部作用域中声明的变量。 与 Java 不同的是可以修改闭包中捕获的变量：
+可以访问其 _闭包_ ，即在外部作用域中声明的变量。 在 lambda 表达式中可以修改闭包中捕获的变量：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 

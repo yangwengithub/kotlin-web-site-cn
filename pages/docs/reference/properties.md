@@ -15,16 +15,16 @@ Kotlin 类中的属性既可以用关键字 *var*{: .keyword } 声明为可变�
 
 ```kotlin
 class Address {
-    var name: String = ……
-    var street: String = ……
-    var city: String = ……
-    var state: String? = ……
-    var zip: String = ……
+    var name: String = "Holmes, Sherlock"
+    var street: String = "Baker"
+    var city: String = "London"
+    var state: String? = null
+    var zip: String = "123456"
 }
 ```
 </div>
 
-要使用一个属性，只要用名称引用它即可，就像 Java 中的字段：
+要使用一个属性，只要用名称引用它即可：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -170,7 +170,8 @@ public val table: Map<String, Int>
 ```
 </div>
 
-从各方面看，这正是与 Java 相同的方式。因为通过默认 getter 和 setter 访问私有属性会被优化，所以不会引入函数调用开销。
+> **On the JVM**: 通过默认 getter 和 setter 访问私有属性会被优化，
+所以本例不会引入函数调用开销。
 
 
 ## 编译期常量

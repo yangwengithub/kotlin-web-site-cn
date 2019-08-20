@@ -62,7 +62,7 @@ fun f(x: Int) = removeZeroes(x + 1)
 
 也可以编写函数 `f` 的命令式实现，使用传统的
 [while 循环](/docs/reference/control-flow.html)与可变变量（在 Kotlin 中用
-[var](/docs/reference/basic-syntax.html#定义变量) 表示）：
+[var](/docs/reference/basic-syntax.html#defining-variables) 表示）：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
