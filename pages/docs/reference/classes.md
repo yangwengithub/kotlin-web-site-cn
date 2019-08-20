@@ -259,7 +259,7 @@ class Example // 从 Any 隐式继承
 
 </div>
 
-`Any` has three methods: `equals()`, `hashCode()` and `toString()`. Thus, they are defined for all Kotlin classes. 
+`Any` 有三个方法：`equals()`、 `hashCode()` 与 `toString()`。因此，为所有 Kotlin 类都定义了这些方法。 
 
 如需声明一个显式的超类型，请在类头中把超类型放到冒号之后：
 
@@ -361,10 +361,10 @@ interface Shape {
     val vertexCount: Int
 }
 
-class Rectangle(override val vertexCount: Int = 4) : Shape // Always has 4 vertices
+class Rectangle(override val vertexCount: Int = 4) : Shape // 总是有 4 个顶点
 
 class Polygon : Shape {
-    override var vertexCount: Int = 0  // Can be set to any number later
+    override var vertexCount: Int = 0  // 以后可以设置为任何数
 }
 ```
 
@@ -444,9 +444,9 @@ class FilledRectangle: Rectangle() {
     inner class Filler {
         fun fill() { /* …… */ }
         fun drawAndFill() {
-            super@FilledRectangle.draw() // Calls Rectangle's implementation of draw()
+            super@FilledRectangle.draw() // 调用 Rectangle 的 draw() 实现
             fill()
-            println("Drawn a filled rectangle with color ${super@FilledRectangle.borderColor}") // Uses Rectangle's implementation of borderColor's get()
+            println("Drawn a filled rectangle with color ${super@FilledRectangle.borderColor}") // 使用 Rectangle 所实现的 borderColor 的 get()
         }
     }
 }
@@ -482,9 +482,9 @@ class Square() : Rectangle(), Polygon {
 
 </div>
 
-It's fine to inherit from both `Rectangle` and `Polygon`,
-but both of them have their implementations of `draw()`, so we have to override `draw()` in `Square`
-and provide its own implementation that eliminates the ambiguity.
+可以同时继承 `Rectangle` 与 `Polygon`，
+但是二者都有各自的 `draw()` 实现，所以我们必须在 `Square` 中覆盖 `draw()`，
+并提供其自身的实现以消除歧义。
 
 ## 抽象类
 
