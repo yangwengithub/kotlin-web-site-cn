@@ -52,6 +52,8 @@ title: "Reference"
           <h3 style="font-weight: bold">图书</h3>
           <p><a href="/docs/books.html">这些图书</a>很好地覆盖了 Kotlin 的各个方面，可以看这些书来学习：</p>
           <ul>
+              <li class="start migrate"> <a style="text-decoration: none;" href="https://item.jd.com/12519581.html">Kotlin核心编程</a> </li>
+              <li class="start migrate"> <a style="text-decoration: none;" href="https://www.phei.com.cn/module/goods/wssd_content.jsp?bookid=50191">Kotlin 实战（Kotlin in Action 中文版）</a> </li>
               <li class="start"> <a style="text-decoration: none;" href="https://www.amazon.com/Kotlin-Programming-Nerd-Ranch-Guide/dp/0135161630">Kotlin Programming: The Big Nerd Ranch Guide</a> </li>
               <li class="migrate"> <a style="text-decoration: none;" href="https://leanpub.com/kotlin-for-android-developers">Kotlin for Android Developers</a> </li>
               <li class="start"> <a style="text-decoration: none;" href="https://www.atomickotlin.com/atomickotlin/">Atomic Kotlin</a> </li>
@@ -62,6 +64,9 @@ title: "Reference"
           <h3 style="font-weight: bold">在线教程</h3>
           <p>在线课程对 Kotlin 有很好地覆盖，可在这里查看推荐的课程：</p>
           <ul>
+            <li class="start migrate"> <a style="text-decoration: none;" href="https://coding.imooc.com/class/232.html">全网首门——Kotlin入门与进阶</a></li>
+            <li class="start migrate"> <a style="text-decoration: none;" href="https://coding.imooc.com/class/108.html">基于GitHub App业务深度讲解 Kotlin高级特性与框架设计</a></li>
+            <li class="start migrate"> <a style="text-decoration: none;" href="https://kaixue.io/">码上开学：给 Android 工程师的 Kotlin 上手指南</a></li>
             <li class="start">   <a style="text-decoration: none;" href="http://shop.oreilly.com/product/0636920052982.do">Introduction to Kotlin Programming</a></li>
             <li class="migrate"> <a style="text-decoration: none;" href="http://shop.oreilly.com/product/0636920052999.do">Advanced Kotlin Programming</a></li>
             <li class="start">   <a style="text-decoration: none;" href="https://www.coursera.org/learn/vvedenie-v-yazyk-kotlin">Introduction to Kotlin (in Russian)</a></li>
