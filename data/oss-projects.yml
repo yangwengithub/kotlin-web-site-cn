@@ -203,11 +203,6 @@
   type: 库
   link: https://github.com/hotchemi/khronos
 
-- name: TornadoFX
-  description: Kotlin 的轻量级 JavaFX 框架
-  type: 库
-  link: https://github.com/edvin/tornadofx
-
 - name: Hexagon
   description: Kotlin 的微服务框架
   type: 框架
