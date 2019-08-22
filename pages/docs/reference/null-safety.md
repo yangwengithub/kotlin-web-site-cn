@@ -71,9 +71,9 @@ val l = b.length // 错误：变量“b”可能为空
 
 但是我们还是需要访问该属性，对吧？有几种方式可以做到。
 
-## 在条件中检查 *null*{: .keyword }
+## 在条件中检测 *null*{: .keyword }
 
-首先，你可以显式检查 `b` 是否为 *null*{: .keyword }，并分别处理两种可能：
+首先，你可以显式检测 `b` 是否为 *null*{: .keyword }，并分别处理两种可能：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -81,7 +81,7 @@ val l = if (b != null) b.length else -1
 ```
 </div>
 
-编译器会跟踪所执行检查的信息，并允许你在 *if*{: .keyword } 内部调用 `length`。
+编译器会跟踪所执行检测的信息，并允许你在 *if*{: .keyword } 内部调用 `length`。
 同时，也支持更复杂（更智能）的条件：
 
 <div class="sample" markdown="1" theme="idea">
@@ -100,9 +100,9 @@ fun main() {
 ```
 </div>
 
-请注意，这只适用于 `b` 是不可变的情况（即在检查和使用之间没有修改过的局部变量
+请注意，这只适用于 `b` 是不可变的情况（即在检测和使用之间没有修改过的局部变量
 ，或者不可覆盖并且有幕后字段的 *val*{: .keyword } 成员），因为否则可能会发生<!--
--->在检查之后 `b` 又变为 *null*{: .keyword } 的情况。
+-->在检测之后 `b` 又变为 *null*{: .keyword } 的情况。
 
 ## 安全的调用
 
@@ -180,7 +180,7 @@ val l = b?.length ?: -1
 请注意，当且仅当左侧为空时，才会对右侧表达式求值。
 
 请注意，因为 *throw*{: .keyword } 和 *return*{: .keyword } 在 Kotlin 中都是表达式，所以它们也可以用在
- elvis 操作符右侧。这可能会非常方便，例如，检查函数参数：
+ elvis 操作符右侧。这可能会非常方便，例如，检测函数参数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin

@@ -306,10 +306,10 @@ The preset functions return an existing target if there is one. This can be used
 
 ```groovy
 kotlin {
-    /* ... */
+    /* …… */
 
     // Configure the attributes of the 'jvm6' target:
-    jvm("jvm6").attributes { /* ... */ }
+    jvm("jvm6").attributes { /* …… */ }
 }
 ```
 
@@ -333,7 +333,7 @@ kotlin {
 
     // Configure all targets, including those which will be added later:
     targets.all {
-        compilations["main"].defaultSourceSet { /* ... */ }
+        compilations["main"].defaultSourceSet { /* …… */ }
     }
 }
 ```
@@ -368,7 +368,7 @@ kotlin {
 ```kotlin
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetPreset
 
-/* ... */
+/* …… */
 
 kotlin {
     presets.withType<KotlinNativeTargetPreset>().forEach {
@@ -492,13 +492,13 @@ kotlin {
     sourceSets {
         // The default source set for the 'main` compilation of the 'jvm' target:
         jvmMain {
-            /* ... */
+            /* …… */
         }
     }
 
     // Alternatively, access it from the target's compilation:
     jvm().compilations.main.defaultSourceSet {
-        /* ... */
+        /* …… */
     }
 }
 ```
@@ -516,13 +516,13 @@ kotlin {
     sourceSets {
         // The default source set for the 'main` compilation of the 'jvm' target:
         val jvmMain by getting {
-            /* ... */
+            /* …… */
         }
     }
 
     // Alternatively, access it from the target's compilation:
     jvm().compilations["main"].defaultSourceSet {
-        /* ... */
+        /* …… */
     }
 }
 ```
@@ -551,7 +551,7 @@ kotlin {
                     // Compile against the main compilation's compile classpath and outputs:
                     implementation(main.compileDependencyFiles + main.output.classesDirs)
                     implementation kotlin('test-junit')
-                    /* ... */
+                    /* …… */
                 }
             }
 
@@ -587,7 +587,7 @@ kotlin {
                         // Compile against the main compilation's compile classpath and outputs:
                         implementation(main.compileDependencyFiles + main.output.classesDirs)
                         implementation(kotlin("test-junit"))
-                        /* ... */
+                        /* …… */
                     }
                 }
 
@@ -633,8 +633,8 @@ The source sets are configured within a `sourceSets { ... }` block of the `kotli
 ```groovy
 kotlin {
     sourceSets { 
-        foo { /* ... */ } // create or configure a source set by the name 'foo' 
-        bar { /* ... */ }
+        foo { /* …… */ } // create or configure a source set by the name 'foo' 
+        bar { /* …… */ }
     }
 }
 ``` 
@@ -648,8 +648,8 @@ kotlin {
 ```kotlin
 kotlin {
     sourceSets {
-        val foo by creating { /* ... */ } // create a new source set by the name 'foo'
-        val bar by getting { /* ... */ } // configure an existing source set by the name 'bar'
+        val foo by creating { /* …… */ } // create a new source set by the name 'foo'
+        val bar by getting { /* …… */ } // configure an existing source set by the name 'bar'
     }
 }
 ```
@@ -733,10 +733,10 @@ The source sets DSL can be used to define these connections between the source s
 ```groovy
 kotlin {
     sourceSets {
-        commonMain { /* ... */ }
+        commonMain { /* …… */ }
         allJvm {
             dependsOn commonMain
-            /* ... */
+            /* …… */
         }
     }
 }
@@ -751,10 +751,10 @@ kotlin {
 ```kotlin
 kotlin {
     sourceSets {
-        val commonMain by getting { /* ... */ }
+        val commonMain by getting { /* …… */ }
         val allJvm by creating {
             dependsOn(commonMain)
-            /* ... */
+            /* …… */
         }
     }
 }
@@ -782,17 +782,17 @@ kotlin {
         // custom source set with tests for the two targets
         desktopTest {
             dependsOn commonTest
-            /* ... */
+            /* …… */
         }
         // Make the 'windows' default test source set for depend on 'desktopTest'
         mingwX64().compilations.test.defaultSourceSet {
             dependsOn desktopTest
-            /* ... */
+            /* …… */
         }
         // And do the same for the other target:
         linuxX64().compilations.test.defaultSourceSet {
             dependsOn desktopTest
-            /* ... */
+            /* …… */
         }
     }
 }
@@ -813,17 +813,17 @@ kotlin {
         // custom source set with tests for the two targets
         val desktopTest by creating {
             dependsOn(getByName("commonTest"))
-            /* ... */
+            /* …… */
         }
         // Make the 'windows' default test source set for depend on 'desktopTest'
         mingwX64().compilations["test"].defaultSourceSet {
             dependsOn(desktopTest)
-            /* ... */
+            /* …… */
         }
         // And do the same for the other target:
         linuxX64().compilations["test"].defaultSourceSet {
             dependsOn(desktopTest)
-            /* ... */
+            /* …… */
         }
     }
 }
@@ -1125,7 +1125,7 @@ follows:
 
 ```groovy
 plugins {
-    /* ... */
+    /* …… */
     id("maven-publish")
 }
 ```
@@ -1137,7 +1137,7 @@ A library also needs `group` and `version` to be set in the project:
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
 ```groovy
-plugins { /* ... */ }
+plugins { /* …… */ }
 
 group = "com.example.my.library"
 version = "0.0.1"
@@ -1306,7 +1306,7 @@ To configure this publication, access it via the `publishing { ... }` DSL of the
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
 ```groovy
-kotlin { /* ... */ }
+kotlin { /* …… */ }
 
 publishing {
     publications {
@@ -1324,7 +1324,7 @@ publishing {
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
 
 ```kotlin
-kotlin { /* ... */ }
+kotlin { /* …… */ }
 
 publishing {
     publications {
@@ -1559,7 +1559,7 @@ plugins {
     id("org.jetbrains.kotlin.multiplatform").version("{{ site.data.releases.latest.version }}")
 }
 
-android { /* ... */ }
+android { /* …… */ }
 
 kotlin {
     android { // Create the Android target
@@ -1580,7 +1580,7 @@ plugins {
     kotlin("multiplatform").version("{{ site.data.releases.latest.version }}")
 }
 
-android { /* ... */ }
+android { /* …… */ }
 
 kotlin {
     android { // Create the Android target
@@ -1613,7 +1613,7 @@ to be done in a top-level `dependencies { ... }` block rather than within Kotlin
 // ...
 
 kotlin {
-    android { /* ... */ }
+    android { /* …… */ }
 }
 
 dependencies {
@@ -2281,7 +2281,7 @@ kotlin {
                     includeDirs("include/directory", "another/directory")
                 }
 
-                anotherInterop { /* ... */ }
+                anotherInterop { /* …… */ }
             }
         }
     }
@@ -2322,7 +2322,7 @@ kotlin {
                 includeDirs("include/directory", "another/directory")
             }
 
-            val anotherInterop by cinterops.creating { /* ... */ }
+            val anotherInterop by cinterops.creating { /* …… */ }
         }
     }
 }

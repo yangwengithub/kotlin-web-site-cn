@@ -317,9 +317,9 @@ Kotlin 编译器在参数中提供了关于 `prop` 的所有必要信息：第�
 如果 `by` 右侧所使用的对象将 `provideDelegate` 定义为成员或扩展函数，那么会调用该函数来<!--
 -->创建属性委托实例。
 
-`provideDelegate` 的一个可能的使用场景是在创建属性时（而不仅在其 getter 或 setter 中）检查属性一致性。
+`provideDelegate` 的一个可能的使用场景是在创建属性时（而不仅在其 getter 或 setter 中）检测属性一致性。
 
-例如，如果要在绑定之前检查属性名称，可以这样写：
+例如，如果要在绑定之前检测属性名称，可以这样写：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -364,7 +364,7 @@ class MyUI {
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-// 检查属性名称而不使用“provideDelegate”功能
+// 检测属性名称而不使用“provideDelegate”功能
 class MyUI {
     val image by bindResource(ResourceID.image_id, "image")
     val text by bindResource(ResourceID.text_id, "text")

@@ -2,14 +2,14 @@
 type: doc
 layout: reference
 category: "Syntax"
-title: "类型的检查与转换：“is”与“as”"
+title: "类型检测与类型转换：“is”与“as”"
 ---
 
-# 类型的检查与转换“is”与“as”
+# 类型检测与类型转换：“is”与“as”
 
 ## `is` 与 `!is` 操作符
 
-我们可以在运行时通过使用 `is` 操作符或其否定形式 `!is` 来检查对象是否符合给定类型：
+我们可以在运行时通过使用 `is` 操作符或其否定形式 `!is` 来检测对象是否符合给定类型：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -30,7 +30,7 @@ else {
 ## 智能转换
 
 在许多情况下，不需要在 Kotlin 中使用显式转换操作符，因为编译器跟踪<!--
--->不可变值的 `is`-检查以及[显式转换](#不安全的转换操作符)，并在需要时自动插入（安全的）转换：
+-->不可变值的 `is`-检测以及[显式转换](#不安全的转换操作符)，并在需要时自动插入（安全的）转换：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -43,7 +43,7 @@ fun demo(x: Any) {
 ```
 </div>
 
-编译器足够聪明，能够知道如果反向检查导致返回那么该转换是安全的：
+编译器足够聪明，能够知道如果反向检测导致返回那么该转换是安全的：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -83,12 +83,12 @@ when (x) {
 ```
 </div>
 
-请注意，当编译器不能保证变量在检查和使用之间不可改变时，智能转换不能用。
+请注意，当编译器不能保证变量在检测和使用之间不可改变时，智能转换不能用。
 更具体地，智能转换能否适用根据以下规则：
 
   * *val*{: .keyword } 局部变量——总是可以，[局部委托属性除外](delegated-properties.html#局部委托属性自-11-起)；
-  * *val*{: .keyword } 属性——如果属性是 private 或 internal，或者该检查在声明属性的同一[模块](visibility-modifiers.html#模块)中执行。智能转换不适用于 open 的属性或者具有自定义 getter 的属性；
-  * *var*{: .keyword } 局部变量——如果变量在检查和使用之间没有修改、没有在会修改它的 lambda 中捕获、并且不是局部委托属性；
+  * *val*{: .keyword } 属性——如果属性是 private 或 internal，或者该检测在声明属性的同一[模块](visibility-modifiers.html#模块)中执行。智能转换不适用于 open 的属性或者具有自定义 getter 的属性；
+  * *var*{: .keyword } 局部变量——如果变量在检测和使用之间没有修改、没有在会修改它的 lambda 中捕获、并且不是局部委托属性；
   * *var*{: .keyword } 属性——决不可能（因为该变量可以随时被其他代码修改）。
 
 {:#不安全的转换操作符}
@@ -107,7 +107,7 @@ val x: String = y as String
 
 请注意，*null*{: .keyword } 不能转换为 `String` 因该类型不是[可空的](null-safety.html)，
 即如果 `y` 为空，上面的代码会抛出一个异常。
-To make such code correct for null values, use the nullable type on the right hand side of the cast:
+为了让这样的代码用于可空值，请在类型转换的右侧使用可空类型：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 

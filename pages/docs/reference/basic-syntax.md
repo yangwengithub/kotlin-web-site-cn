@@ -200,7 +200,7 @@ fun main() {
 
 </div>
 
-Block comments in Kotlin can be nested.
+Kotlin 中的块注释可以嵌套。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 

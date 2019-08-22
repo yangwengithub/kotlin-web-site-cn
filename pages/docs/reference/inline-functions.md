@@ -161,7 +161,7 @@ fun <T> TreeNode.findParentOfType(clazz: Class<T>): T? {
 ```
 </div>
 
-在这里我们向上遍历一棵树并且检查每个节点是不是特定的类型。
+在这里我们向上遍历一棵树并且检测每个节点是不是特定的类型。
 这都没有问题，但是调用处不是很优雅：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -254,5 +254,5 @@ inline var bar: Bar
 
 为了消除这种由**非**公有 API 变更引入的不兼容的风险，公有 API 内联函数体内不允许使用非公有声明，即，不允许使用 `private` 与 `internal` 声明以及其部件。
 
-一个 `internal` 声明可以由 `@PublishedApi` 标注，这会允许它在公有 API 内联函数中使用。当一个 `internal` 内联函数标记有 `@PublishedApi` 时，也会像公有函数一样检查其函数体。
+一个 `internal` 声明可以由 `@PublishedApi` 标注，这会允许它在公有 API 内联函数中使用。当一个 `internal` 内联函数标记有 `@PublishedApi` 时，也会像公有函数一样检测其函数体。
  

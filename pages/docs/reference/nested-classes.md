@@ -62,7 +62,7 @@ window.addMouseListener(object : MouseAdapter() {
 
 </div>
 
-_Note_: on the JVM, 如果对象是函数式 Java 接口（即具有单个抽象方法的 Java 接口）的实例，
+_注_：对于 JVM 平台, 如果对象是函数式 Java 接口（即具有单个抽象方法的 Java 接口）的实例，
 你可以使用带接口类型前缀的lambda表达式创建它：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>

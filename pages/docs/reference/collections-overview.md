@@ -62,7 +62,7 @@ fun main() {
 
 ### Collection
 
-[`Collection<T>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html) 是集合层次结构的根。此接口表示一个只读集合的共同行为：检索大小、检查一个项的成员等等。
+[`Collection<T>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html) 是集合层次结构的根。此接口表示一个只读集合的共同行为：检索大小、检测是否为成员等等。
 `Collection` 继承自 `Iterable <T>` 接口，它定义了迭代元素的操作。可以使用 `Collection` 作为适用于不同集合类型的函数的参数。对于更具体的情况，请使用 `Collection` 的继承者： [`List`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html) 与 [`Set`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html)。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">

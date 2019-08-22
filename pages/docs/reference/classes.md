@@ -464,11 +464,11 @@ class FilledRectangle: Rectangle() {
 
 ```kotlin
 open class Rectangle {
-    open fun draw() { /* ... */ }
+    open fun draw() { /* …… */ }
 }
 
 interface Polygon {
-    fun draw() { /* ... */ } // 接口成员默认就是“open”的
+    fun draw() { /* …… */ } // 接口成员默认就是“open”的
 }
 
 class Square() : Rectangle(), Polygon {

@@ -114,7 +114,7 @@ fun main(args: Array<String>) {
 
 </div>
 
-### 检查 lateinit 变量是否已初始化
+### 检测 lateinit 变量是否已初始化
 
 现在可以通过属性引用的 `isInitialized` 来检测该 lateinit var 是否已初始化：
 
