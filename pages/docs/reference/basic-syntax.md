@@ -200,7 +200,7 @@ fun main() {
 
 
 
-Block comments in Kotlin can be nested.
+Kotlin 中的块注释可以嵌套。
 
 
 

@@ -36,7 +36,7 @@ __Kotlin | Style issues | File is not formatted according to project settings__ 
 -->子包中，那么 `org.example.kotlin` 包的文件应该直接放在源代码根目录下，而
 `org.example.kotlin.network.socket` 中的文件应该放在源代码根目录下的 `network/socket` 子目录中。
 
-> **On the JVM**: Kotlin 源文件应当与 Java 源文件位于同一源文件根目录下，
+> **对于 JVM 平台**：Kotlin 源文件应当与 Java 源文件位于同一源文件根目录下，
 并遵循相同的目录结构（每个文件应存储在与其 package 语句对应的目录中<!--
 -->。
 
@@ -89,7 +89,7 @@ __Kotlin | Style issues | File is not formatted according to project settings__ 
 
 ## 命名规则
 
-Package and class naming rules in Kotlin are quite simple:
+在 Kotlin 中，包名与类名的命名规则非常简单：
 
 * 包的名称总是小写且不使用下划线（`org.example.project`）。
 通常不鼓励使用多个词的名称，但是如果确实需要使用多个词，可以将它们连接在一起<!--

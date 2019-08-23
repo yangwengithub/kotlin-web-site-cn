@@ -9,7 +9,7 @@ title: "Kotlin 中调用 JavaScript"
 
 Kotlin 已被设计为能够与 Java 平台轻松互操作。它将 Java 类视为 Kotlin 类，并且
 Java 也将 Kotlin 类视为 Java 类。但是，JavaScript 是一种动态类型语言，这意味着<!--
--->它不会在编译期检查类型。你可以通过[动态](dynamic-type.html)类型在
+-->它不会在编译期检测类型。你可以通过[动态](dynamic-type.html)类型在
 Kotlin 中自由地与 JavaScript 交流，但是如果你想要 Kotlin 类型系统的全部威力
 ，你可以为 JavaScript 库创建 Kotlin 头文件。
 
@@ -197,7 +197,7 @@ fun sendQuery() {
 
 外部接口有一些限制：
 
-1. 它们不能在 `is` 检查的右侧使用。
+1. 它们不能在 `is` 检测的右侧使用。
 2. `as` 转换为外部接口总是成功（并在编译时产生警告）。
 3. 它们不能作为具体化类型参数传递。
 4. 它们不能用在类的字面值表达式（即 `I::class`）中。

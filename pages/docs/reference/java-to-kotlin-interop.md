@@ -82,7 +82,7 @@ package org.example
 
 class Util
 
-fun getTime() { /*...*/ }
+fun getTime() { /*……*/ }
 
 ```
 
@@ -110,7 +110,7 @@ org.example.DemoUtils.getTime();
 
 package org.example
 
-fun getTime() { /*...*/ }
+fun getTime() { /*……*/ }
 ```
 
 
@@ -123,7 +123,7 @@ fun getTime() { /*...*/ }
 
 package org.example
 
-fun getDate() { /*...*/ }
+fun getDate() { /*……*/ }
 ```
 
 
@@ -571,7 +571,7 @@ void draw(String label) { }
 package demo
 
 fun writeToFile() {
-    /*...*/
+    /*……*/
     throw IOException()
 }
 ```
@@ -600,7 +600,7 @@ catch (IOException e) { // 错误：writeToFile() 未在 throws 列表中声明 
 ```kotlin
 @Throws(IOException::class)
 fun writeToFile() {
-    /*...*/
+    /*……*/
     throw IOException()
 }
 ```

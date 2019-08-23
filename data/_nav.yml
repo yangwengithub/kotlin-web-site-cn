@@ -81,7 +81,7 @@ reference:
       description: 开始熟悉 Kotlin 基础包括操作、编码习惯与习惯用法。
       content:
         - url: /docs/reference/basic-syntax.html
-          title: 基础语法
+          title: 基本语法
         - url: /docs/reference/idioms.html
           title: 习惯用法
         - url: /docs/reference/coding-conventions.html
@@ -197,7 +197,7 @@ reference:
         - url: /docs/reference/multi-declarations.html
           title: 解构声明
         - url: /docs/reference/typecasts.html
-          title: 类型检查与转换
+          title: 类型检测与转换
         - url: /docs/reference/this-expressions.html
           title: This 表达式
         - url: /docs/reference/equality.html

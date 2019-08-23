@@ -170,7 +170,7 @@ public val table: Map<String, Int>
 ```
 
 
-> **On the JVM**: 通过默认 getter 和 setter 访问私有属性会被优化，
+> **对于 JVM 平台**：通过默认 getter 和 setter 访问私有属性会被优化，
 所以本例不会引入函数调用开销。
 
 
@@ -200,7 +200,7 @@ const val SUBSYSTEM_DEPRECATED: String = "This subsystem is deprecated"
 一般地，属性声明为非空类型必须在构造函数中初始化。
 然而，这经常不方便。例如：属性可以通过依赖注入来初始化，
 或者在单元测试的 setup 方法中初始化。 这种情况下，你不能在构造函数内提供一个非空初始器。
-但你仍然想在类体中引用该属性时避免空检查。
+但你仍然想在类体中引用该属性时避免空检测。
 
 为处理这种情况，你可以用 `lateinit` 修饰符标记该属性：
 

@@ -14,8 +14,8 @@ title: "包与导入"
 ```kotlin
 package org.example
 
-fun printMessage() { /*...*/ }
-class Message { /*...*/ }
+fun printMessage() { /*……*/ }
+class Message { /*……*/ }
 
 // ……
 ```
