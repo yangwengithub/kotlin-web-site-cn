@@ -54,6 +54,7 @@ val positives = list.filter { it > 0 }
 ### 检测元素是否存在于集合中
 
 
+
 ```kotlin
 if ("john@example.com" in emailsList) { …… }
 

@@ -192,15 +192,15 @@ fun main() {
 
 内联类的设计目前是实验性的，这就是说此特性是正在 *快速变化*的，并且不保证其兼容性。在 Kotlin 1.3+ 中使用内联类时，将会得到一个警告，来表明此特性还是实验性的。
 
-要想移除警告，你必须通过对 `kotlinc` 指定 `-XXLanguage:+InlineClasses`参数来选择使用该实验性的特性。
+如需移除警告，必须通过指定编译器参数 `-Xinline-classes` 来选择使用这项实验性的特性。
 
-### 在 Gradle 中启用内联类：
+### 在 Gradle 中启用内联类
 
 
 ``` groovy
 
 compileKotlin {
-    kotlinOptions.freeCompilerArgs += ["-XXLanguage:+InlineClasses"]
+    kotlinOptions.freeCompilerArgs += ["Xinline-classes"]
 }
 ```
 
@@ -215,7 +215,7 @@ compileKotlin {
 ```xml
 <configuration>
     <args>
-        <arg>-XXLanguage:+InlineClasses</arg> 
+        <arg>-Xinline-classes</arg> 
     </args>
 </configuration>
 ```
