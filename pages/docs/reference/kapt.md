@@ -23,7 +23,7 @@ title: "使用 kapt"
 
 ```groovy
 plugins {
-    id "org.jetbrains.kotlin.kapt" version "1.3.41"
+    id "org.jetbrains.kotlin.kapt" version "1.3.50"
 }
 ```
 
@@ -35,7 +35,7 @@ plugins {
 
 ```kotlin
 plugins {
-    kotlin("kapt") version "1.3.41"
+    kotlin("kapt") version "1.3.50"
 }
 ```
 
