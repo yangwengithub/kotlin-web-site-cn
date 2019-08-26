@@ -290,17 +290,17 @@ plugins {
 
 ``` groovy
 kotlin {
-    jvm() // 用默认名称 ‘jvm’ 创建一个 JVM 目标
-    js("nodeJs") // 用自定义名称 ‘nodeJs’ 创建一个 JS 目标
+    jvm() // 用默认名称 “jvm” 创建一个 JVM 目标
+    js("nodeJs") // 用自定义名称 “nodeJs” 创建一个 JS 目标
         
     linuxX64("linux") {
-        /* 在此处指定 ‘linux’ 的其他设置 */
+        /* 在此处指定 “linux” 的其他设置 */
     }
 }
 ``` 
 </div>
 
-如果存在，这些预置函数将返回一个现有的目标。这可以被用于配置一个现有的目标：
+如果存在，这些预置函数将返回一个现有的目标。这可以用于配置一个现有的目标：
 
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
@@ -308,18 +308,18 @@ kotlin {
 kotlin {
     /* …… */
 
-    // 配置 ‘jvm6’ 目标的属性
+    // 配置 “jvm6” 目标的属性
     jvm("jvm6").attributes { /* …… */ }
 }
 ```
 
 </div>
 
-注意目标平台与命名都很重要：如果一个目标被作为 `jvm('jvm6')` 创建，使用 `jvm()` 将会<!--
+注意目标平台与命名都很重要：如果一个目标作为 `jvm('jvm6')` 创建，使用 `jvm()` 将会<!--
 -->创建一个单独的目标（使用默认名称 `jvm`）。如果用于创建该名称下的预设函数<!--
 -->不同，将会报告一个错误。
 
-从预置函数创建的目标将被添加到域对象集合 `kotlin.targets` 中，这可以被用于<!--
+从预置函数创建的目标将被添加到域对象集合 `kotlin.targets` 中，这可以用于<!--
 -->通过名称访问它们或者配置所有目标：
 
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
