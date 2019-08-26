@@ -79,7 +79,7 @@ Kotlin 多平台项目的布局由以下构建块构成：
 -->来创建一个多平台项目。
 
 例如，如果选择了“Kotlin (Multiplatform Library)”，会创建一个包含三个<!--
--->[设置目标](#设置目标)的库项目，其中一个用于 JVM，一个用于 JS，还有一个用于您正在使用的原生平台。
+-->[目标](#设置目标)的库项目，其中一个用于 JVM，一个用于 JS，还有一个用于您正在使用的原生平台。
 这些是在 `build.gradle` <!--
 -->脚本中以下列方式配置的：
 
@@ -275,32 +275,32 @@ plugins {
 
 ## 设置目标
 
-A target is a part of the build responsible for compiling, testing, and packaging a piece of software aimed for
-one of the [supported platforms](#已支持平台).
+目标构建的一部分，负责编译，测试与打包针对<!--
+-->一个[已支持平台](#已支持平台)的软件。
 
-All of the targets may share some of the sources and may have platform-specific sources as well.
+所有的目标可能共享一些源代码，也可能拥有平台专用的源代码。
 
-As the platforms are different, targets are built in different ways as well and have various platform-specific
-settings. The Gradle plugin bundles a number of presets for the supported platforms.
+由于平台的不同，目标也以不同的方式构建，并且拥有各个平台专用的<!--
+-->设置。Gradle 插件捆绑了一些已支持平台的预设。
 
-To create a target, use one of the preset functions, which are named according to the target platforms and optionally
-accept the target name and a configuring code block:
+要创建一个目标，请使用其中一个预设函数，这些预置函数根据目标平台命名，并可选择<!--
+-->接收一个目标名称与一个配置代码块：
 
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
 ``` groovy
 kotlin {
-    jvm() // Create a JVM target with the default name 'jvm'
-    js("nodeJs") // Create a JS target with a custom name 'nodeJs'
+    jvm() // 用默认名称 “jvm” 创建一个 JVM 目标
+    js("nodeJs") // 用自定义名称 “nodeJs” 创建一个 JS 目标
         
     linuxX64("linux") {
-        /* Specify additional settings for the 'linux' target here */
+        /* 在此处指定 “linux” 的其他设置 */
     }
 }
 ``` 
 </div>
 
-The preset functions return an existing target if there is one. This can be used to configure an existing target:
+如果存在，这些预置函数将返回一个现有的目标。这可以用于配置一个现有的目标：
 
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
@@ -308,19 +308,19 @@ The preset functions return an existing target if there is one. This can be used
 kotlin {
     /* …… */
 
-    // Configure the attributes of the 'jvm6' target:
+    // 配置 “jvm6” 目标的属性
     jvm("jvm6").attributes { /* …… */ }
 }
 ```
 
 </div>
 
-Note that both the target platform and the name matter: if a target was created as `jvm('jvm6')`, using `jvm()` will
-create a separate target (with the default name `jvm`). If the preset function used to create the target under that name
-was different, an error is reported.
+注意目标平台与命名都很重要：如果一个目标作为 `jvm('jvm6')` 创建，使用 `jvm()` 将会<!--
+-->创建一个单独的目标（使用默认名称 `jvm`）。如果用于创建该名称下的预设函数<!--
+-->不同，将会报告一个错误。
 
-The targets created from presets are added to the `kotlin.targets` domain object collection, which can be used to
-access them by their names or configure all targets:
+从预置函数创建的目标将被添加到域对象集合 `kotlin.targets` 中，这可以用于<!--
+-->通过名称访问它们或者配置所有目标：
 
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
@@ -329,9 +329,9 @@ kotlin {
     jvm()
     js("nodeJs")
 
-    println(targets.names) // Prints: [jvm, metadata, nodeJs]
+    println(targets.names) // 打印：[jvm, metadata, nodeJs]
 
-    // Configure all targets, including those which will be added later:
+    // 配置所有的目标，包括稍后添加的目标
     targets.all {
         compilations["main"].defaultSourceSet { /* …… */ }
     }
@@ -340,11 +340,10 @@ kotlin {
 
 </div>
 
-To create or access several targets from multiple presets dynamically, you can use the `targetFromPreset` function which
-accepts a preset (those are contained in the `kotlin.presets` domain object collection) and, optionally, a target name
-and a configuration code block.
+要从动态创建或访问多个预设中的多个目标，你可以使用 `targetFromPreset` 函数，
+它接收一个接收预设（那些被包含在 `kotlin.presets` 域对象集合中的），以及可选的目标名称与配置的代码块。
 
-For example, to create a target for each of the Kotlin/Native supported platforms (see below), use this code:
+例如，要为每一个 Kotlin/Native 支持的平台（见下文）创建目标，使用以下代码：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -353,7 +352,7 @@ For example, to create a target for each of the Kotlin/Native supported platform
 kotlin {
     presets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetPreset).each {
         targetFromPreset(it) {
-            /* Configure each of the created targets */
+            /* 配置每个已创建的目标 */
         }
     }
 }
@@ -373,7 +372,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetPreset
 kotlin {
     presets.withType<KotlinNativeTargetPreset>().forEach {
         targetFromPreset(it) {
-            /* Configure each of the created targets */
+            /* 配置每个已创建的目标 */
         }
     }
 }
