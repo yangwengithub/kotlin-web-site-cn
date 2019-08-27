@@ -1,13 +1,15 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "多平台项目: iOS 与 Android"
+title:  "多平台项目: iOS 与 Android【官网已删】"
 description: "在 iOS 与 Android 之间共享 Kotlin 代码"
 authors: Eugene Petrenko，乔禹昂（翻译）
 date: 2019-08-11
 showAuthorInfo: true
 issue: EVAN-6029
 ---
+> 官方英文站的本教程已迁移至新动手实践：
+[Targeting iOS and Android with Kotlin Multiplatform](https://play.kotlinlang.org/hands-on/Targeting%20iOS%20and%20Android%20with%20Kotlin%20Multiplatform/01_Introduction)。
 
 在本教程中，我们会创建一个 iOS 与 Android 两用的应用，来展示 Kotlin 代码的共享能力。
 对于 Android，我们会使用 Kotlin/JVM，而对于 iOS 会使用 Kotlin/Native。
