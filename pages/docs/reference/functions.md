@@ -346,7 +346,7 @@ Kotlin 支持局部函数，即一个函数在另一个函数内部：
 
 ```kotlin
 fun dfs(graph: Graph) {
-    fun dfs(current: Vertex, visited: Set<Vertex>) {
+    fun dfs(current: Vertex, visited: MutableSet<Vertex>) {
         if (!visited.add(current)) return
         for (v in current.neighbors)
             dfs(v, visited)
