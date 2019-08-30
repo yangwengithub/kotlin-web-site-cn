@@ -255,7 +255,7 @@ Lambda 表达式的完整语法形式如下：
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-val sum = { x: Int, y: Int -> x + y }
+val sum: (Int, Int) -> Int = { x: Int, y: Int -> x + y }
 ```
 
 </div>
@@ -269,7 +269,7 @@ lambda 表达式总是括在花括号中，
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-val sum: (Int, Int) -> Int = { x, y -> x + y }
+val sum = { x, y -> x + y }
 ```
 
 </div>
