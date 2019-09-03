@@ -714,7 +714,7 @@ fun main() {
 ```kotlin
 fun main() {
 //sampleStart
-    val rectangle = Rectangle(5.0, 2.0) // 不需要“new”关键字
+    val rectangle = Rectangle(5.0, 2.0)
     val triangle = Triangle(3.0, 4.0, 5.0)
 //sampleEnd
     println("Area of rectangle is ${rectangle.calculateArea()}, its perimeter is ${rectangle.perimeter}")
