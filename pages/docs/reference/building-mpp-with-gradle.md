@@ -384,27 +384,27 @@ kotlin {
 
 ### 已支持平台
 
-There are target presets that one can apply using the preset functions, as shown above, for the
-following target platforms:
+如上所示，对于以下目标平台，可以使用预设函数应用目标平台预设<!--
+-->：
 
-* `jvm` for Kotlin/JVM;
-* `js` for Kotlin/JS;
-* `android` for Android applications and libraries. Note that one of the Android Gradle 
-   plugins should be applied before the target is created;
+* `jvm` 用于 Kotlin/JVM；
+* `js` 用于 Kotlin/JS；
+* `android` 用于 Android 应用程序与库。请注意在创建目标之前， 
+   应该应用其中之一的 Android Gradle 插件；
   
-*  Kotlin/Native target presets (see the [notes](#使用-kotlinnative-目标平台) below):
+*  Kotlin/Native 目标平台预设（参见下文[备注](#使用-kotlinnative-目标平台)）：
   
-    * `androidNativeArm32` and `androidNativeArm64` for Android NDK;
-    * `iosArm32`, `iosArm64`, `iosX64` for iOS;
-    * `linuxArm32Hfp`, `linuxMips32`, `linuxMipsel32`, `linuxX64` for Linux;
-    * `macosX64` for MacOS;
-    * `mingwX64` and `mingwX86` for Windows;
-    * `wasm32` for WebAssembly.
+    * `androidNativeArm32` 与 `androidNativeArm64` 用于 Android NDK；
+    * `iosArm32`、 `iosArm64`、 `iosX64` 用于 iOS；
+    * `linuxArm32Hfp`、 `linuxMips32`、 `linuxMipsel32`、 `linuxX64` 用于 Linux；
+    * `macosX64` 用于 MacOS；
+    * `mingwX64` 与 `mingwX86` 用于 Windows；
+    * `wasm32` 用于 WebAssembly。
     
-    Note that some of the Kotlin/Native targets require an [appropriate host machine](#使用-kotlinnative-目标平台) to build on.
+    请注意，某些 Kotlin/Native 目标平台需要[适宜的主机](#使用-kotlinnative-目标平台)来构建。
     
-Some targets may require additional configuration. For Android and iOS examples, see
-the [Multiplatform Project: iOS and Android](/docs/tutorials/native/mpp-ios-android.html) tutorial.
+某些目标平台可能需要附加配置。Android 与 iOS 示例请参见<!--
+-->[多平台项目：iOS 与 Android](/docs/tutorials/native/mpp-ios-android.html) 教程。
 
 ### 配置编译项
 
