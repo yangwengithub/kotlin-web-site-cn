@@ -412,7 +412,7 @@ tutorials:
         - url: /docs/tutorials/coroutines/coroutines-basic-jvm.html
           title: JVM 平台的 Kotlin 协程简介
         - url: /docs/tutorials/coroutines/intro-to-coroutines-and-channels.html
-          title: Intro to Coroutines and Channels
+          title: 协程与通道简介
 
     - title: Web 开发
       content:
