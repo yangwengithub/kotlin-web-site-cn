@@ -374,7 +374,7 @@ tutorials:
     - title: 多平台项目
       content:
         - url: /docs/tutorials/mpp/intro-to-kotlin-mpp.html
-          title: "Intro to MPP"
+          title: 多平台项目简介
         - url: /docs/tutorials/native/mpp-ios-android.html
           title: iOS 与 Android
         - url: /docs/tutorials/mpp/multiplatform-library.html
@@ -383,7 +383,7 @@ tutorials:
     - title: 原生
       content:
         - url: /docs/tutorials/native/intro-to-kotlin-native.html
-          title: Introduction to Kotlin/Native
+          title: Kotlin/Native 简介
         - url: /docs/tutorials/native/basic-kotlin-native-app.html
           title: 基本 Kotlin/Native 应用程序
         - url: /docs/tutorials/native/mapping-primitive-data-types-from-c.html
