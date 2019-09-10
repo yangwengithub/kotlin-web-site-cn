@@ -398,7 +398,7 @@ tutorials:
           title: Kotlin/Native 开发动态库
         - url: /docs/tutorials/native/apple-framework.html
           title: Kotlin/Native 开发 Apple Framework
-        - url: /docs/tutorials/multiplatform-library.html
+        - url: /docs/tutorials/mpp/multiplatform-library.html
           title: 发布 Kotlin/Native 库
         - url: /docs/tutorials/native/curl.html
           title: 在应用中使用 C 语言互操作与 libcurl
