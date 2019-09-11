@@ -1,8 +1,8 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "使用注释处理的 Android 框架"
-description: "本教程介绍如何在 Kotlin 中使用依赖于注释处理的流行的 Android 框架和库。"
+title:  "使用注解处理的 Android 框架"
+description: "本教程介绍如何在 Kotlin 中使用依赖于注解处理的流行的 Android 框架和库。"
 authors: Svetlana Isakova
 showAuthorInfo: false
 source:
