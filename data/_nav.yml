@@ -370,6 +370,8 @@ tutorials:
           title: 与 JavaScript 合用
         - url: /docs/tutorials/javascript/debugging-javascript/debugging-javascript.html
           title: 在浏览器中调试 Kotlin
+        - url: /docs/tutorials/javascript/react-and-kotlin-js.html
+          title: Building Web Applications with React and Kotlin/JS
 
     - title: 多平台项目
       content:
