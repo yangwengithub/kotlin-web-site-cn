@@ -123,7 +123,7 @@ Kotlin 新手？可以看看[入门][Getting Started](basic-syntax.html)页。
 - [平台相关声明](platform-specific-declarations.html)
 
 推荐的教程：
-- [多平台 Kotlin 库](https://www.kotlincn.net/docs/tutorials/multiplatform-library.html)
+- [多平台 Kotlin 库](https://www.kotlincn.net/docs/tutorials/mpp/multiplatform-library.html)
 - [多平台项目：iOS 与 Android](https://www.kotlincn.net/docs/tutorials/native/mpp-ios-android.html)
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">

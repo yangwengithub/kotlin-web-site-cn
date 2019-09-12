@@ -277,4 +277,4 @@ macOS、Windows、Linux 以及 [iOS](/docs/tutorials/native/mpp-ios-android.html
 至于 Kotlin [多平台](/docs/reference/multiplatform.html)项目，它可以用于<!--
 -->将 Kotlin 代码共享至所有支持的平台。
 查看文档[在 iOS 与 Android 之间共享 Kotlin 代码](/docs/tutorials/native/mpp-ios-android.html)<!--
--->或者查看如何构建自己的[多平台库](/docs/tutorials/multiplatform-library.html)。
+-->或者查看如何构建自己的[多平台库](/docs/tutorials/mpp/multiplatform-library.html)。

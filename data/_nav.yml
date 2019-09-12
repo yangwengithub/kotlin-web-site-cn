@@ -370,16 +370,22 @@ tutorials:
           title: 与 JavaScript 合用
         - url: /docs/tutorials/javascript/debugging-javascript/debugging-javascript.html
           title: 在浏览器中调试 Kotlin
+        - url: /docs/tutorials/javascript/react-and-kotlin-js.html
+          title: 用 React 与 Kotlin/JS 构建 Web 应用程序
 
     - title: 多平台项目
       content:
+        - url: /docs/tutorials/mpp/intro-to-kotlin-mpp.html
+          title: 多平台项目简介
         - url: /docs/tutorials/native/mpp-ios-android.html
           title: iOS 与 Android
-        - url: /docs/tutorials/multiplatform-library.html
+        - url: /docs/tutorials/mpp/multiplatform-library.html
           title: 多平台库
 
     - title: 原生
       content:
+        - url: /docs/tutorials/native/intro-to-kotlin-native.html
+          title: Kotlin/Native 简介
         - url: /docs/tutorials/native/basic-kotlin-native-app.html
           title: 基本 Kotlin/Native 应用程序
         - url: /docs/tutorials/native/mapping-primitive-data-types-from-c.html
@@ -394,7 +400,7 @@ tutorials:
           title: Kotlin/Native 开发动态库
         - url: /docs/tutorials/native/apple-framework.html
           title: Kotlin/Native 开发 Apple Framework
-        - url: /docs/tutorials/multiplatform-library.html
+        - url: /docs/tutorials/mpp/multiplatform-library.html
           title: 发布 Kotlin/Native 库
         - url: /docs/tutorials/native/curl.html
           title: 在应用中使用 C 语言互操作与 libcurl
@@ -407,7 +413,8 @@ tutorials:
           title: 异步程序设计
         - url: /docs/tutorials/coroutines/coroutines-basic-jvm.html
           title: JVM 平台的 Kotlin 协程简介
-
+        - url: /docs/tutorials/coroutines/intro-to-coroutines-and-channels.html
+          title: 协程与通道简介
 
     - title: Web 开发
       content:
