@@ -33,13 +33,13 @@ showAuthorInfo: false
 
    ![Project configuration]({{ url_for('tutorial_img', filename='kotlin-android/1-create-new-project.png') }})
 
-完成这些步骤后，Android Studio 会创建一个项目。 该项目已包含用于构建可在Android设备或模拟器上运行的应用程序的所有代码和资源。
+完成这些步骤后，Android Studio 会创建一个项目。 该项目已包含用于构建可在Android设备或模拟器上运<!---->行的应用程序的所有代码和资源。
 
 ### 构建和运行应用程序
 
 在 Android Studio 中构建和运行 Kotlin 应用程序的过程与 Java 完全相同。
 
-在模拟器上构建和运行应用程序：
+如需在模拟器上构建和运行应用程序：
 1. 点击工具栏上的 __Run__ 或者 __Run \| Run 'app'__ ，运行预定义配置的应用程序。
 
 2. 选择 __Create New Virtual Device__。
