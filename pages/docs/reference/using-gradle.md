@@ -187,7 +187,7 @@ sourceSets["main"].withConvention(KotlinSourceSet::class) {
 
 ``` groovy
 plugins {
-    id 'kotlin2js' version '{{ site.data.releases.latest.version }}'
+    id 'org.jetbrains.kotlin.js' version '{{ site.data.releases.latest.version }}'
 }
 ```
 
@@ -199,27 +199,11 @@ plugins {
 
 ```kotlin
 plugins {
-    id("kotlin2js") version "{{ site.data.releases.latest.version }}"
+    kotlin("js") version "{{ site.data.releases.latest.version }}"
 }
 ```
 
 </div>
-</div>
-
-请注意，这种应用 Kotlin/JS 插件的方式需要将以下代码添加到 Gradle 设置文件（`settings.gradle`）中：
-<div class="sample" markdown="1" mode="groovy" theme="idea" auto-indent="false">
-
-```groovy
-pluginManagement {
-    resolutionStrategy {
-        eachPlugin {
-            if (requested.id.id == "kotlin2js") {
-                useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${requested.version}")
-            }
-        }
-    }
-}
-```
 </div>
 
 这个插件只适用于 Kotlin 文件，因此建议将 Kotlin 和 Java 文件分开（如果是同一项目包含 Java 文件的情况）。与<!--
@@ -520,6 +504,9 @@ Kotlin/JVM 与 Kotlin/JS 项目均支持增量编译。对于 Kotlin 1.1.1 起�
 * 在 Gradle 命令行参数中：添加带有反应增量编译用法的布尔值的 `-Pkotlin.incremental` or `-Pkotlin.incremental.js` 参数。请注意，这样用法中，该参数必须添加到后续每个子构建，并且任何具有禁用增量编译的构建将使增量缓存失效。
 
 请注意，任何情况下首次构建都不会是增量的。
+
+
+## Gradle 构建缓存支持（自 1.2.20 起）
 
 Kotlin 插件支持 [Gradle 构建缓存](https://guides.gradle.org/using-build-cache/)（需要 Gradle 4.3 及以上版本；低版本则禁用缓存）。
 
