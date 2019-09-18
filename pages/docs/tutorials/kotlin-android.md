@@ -7,9 +7,9 @@ authors:
 showAuthorInfo: false
 ---
 
-使用 Kotlin 进行 Android 开发非常简单。在本教程中，我们将按照 Android Studio 的熟悉流程，
+使用 Kotlin 进行 Android 开发非常简单。
 
-如果你使用 Intellij IDEA 进行 Android 开发，这个过程几乎是一样的。
+在本教程中，我们将按照 Android Studio 的熟悉流程。如果你使用 Intellij IDEA 进行 Android 开发，这个过程几乎是一样的。
 
 ### 创建一个工程
 
@@ -33,14 +33,14 @@ showAuthorInfo: false
 
    ![Project configuration]({{ url_for('tutorial_img', filename='kotlin-android/1-create-new-project.png') }})
 
-完成这些步骤后，Android Studio 会创建一个项目。 该项目已包含用于构建可在Android设备或模拟器上运<!---->行的应用程序的所有代码和资源。
+完成这些步骤后，Android Studio 会创建一个项目。 该项目已包含用于构建可在 Android 设备或模拟器上运<!---->行的应用程序的所有代码和资源。
 
 ### 构建和运行应用程序
 
 在 Android Studio 中构建和运行 Kotlin 应用程序的过程与 Java 完全相同。
 
 如需在模拟器上构建和运行应用程序：
-1. 点击工具栏上的 __Run__ 或者 __Run \| Run 'app'__ ，运行预定义配置的应用程序。
+1. 点击工具栏上的 __Run__ 运行预定义的 __app__ 配置，或者 __Run \| Run 'app'__。
 
 2. 选择 __Create New Virtual Device__。
 
@@ -56,7 +56,7 @@ showAuthorInfo: false
 
 5. 验证模拟器配置，然后点击 __Finish__。
 
-6. 点击 __OK__，这就是- 你的第一个Android版Kotlin应用程序！
+6. 点击 __OK__，这就是—— 你的第一个 Android 版 Kotlin 应用程序！
 
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
@@ -70,7 +70,7 @@ Kotlin有着极小的运行时文件体积：整个库的大小约 {{ site.data.
 
 就对比 Kotlin 与 Java所编写的程序而言，Kotlin 编译器所生成的字节码看上去几乎毫无差异。
 
-如果要自定义构建或运行配置，请参考 Android Studio [documentation](https://developer.android.com/studio/run)。
+如果要自定义构建或运行配置，请参考 Android Studio [文档](https://developer.android.com/studio/run)。
 
 ### 后续？
 
