@@ -8,23 +8,19 @@ showAuthorInfo: false
 ---
 
 使用 Kotlin 进行 Android 开发非常简单。
-
 在本教程中，我们将按照 Android Studio 的熟悉流程。如果你使用 Intellij IDEA 进行 Android 开发，这个过程几乎是一样的。
 
 ### 创建一个工程
 
 首先，为你的应用创建一个新的 Kotlin Android 工程。
 
-1. 打开 Android Studio，在欢迎页面点击 **Start a new Android Studio project**  或者 **File \| New \| New project**.
+1. 打开 Android Studio，在欢迎页面点击 **Start a new Android Studio project**  或者 **File \| New \| New project**。
 
-2. 选择一个定义应用程序行为的 [activity](https://developer.android.com/guide/components/activities/intro-activities) 。对于第一个 "Hello world" 应用程序，
-
-   选择仅显示空白屏幕的 __Empty Activity__，然后点击 __Next__。
+2. 选择一个定义应用程序行为的 [activity](https://developer.android.com/guide/components/activities/intro-activities) 。对于第一个 "Hello world" 应用程序，选择仅显示空白屏幕的 __Empty Activity__，然后点击 __Next__。
 
    ![Choosing empty activity]({{ url_for('tutorial_img', filename='kotlin-android/0-create-new-project.png') }})
 
 3. 在下一个对话框中，填写工程的详细信息：
-
    - 名字和包名
    - 位置
    - 开发语音：选择 __Kotlin__
@@ -41,12 +37,11 @@ showAuthorInfo: false
 
 如需在模拟器上构建和运行应用程序：
 1. 点击工具栏上的 __Run__ 运行预定义的 __app__ 配置，或者 __Run \| Run 'app'__。
-
 2. 选择 __Create New Virtual Device__。
 
    ![Select target]({{ url_for('tutorial_img', filename='kotlin-android/select-target.png') }})
 
-3. 选择你喜欢的设备，然后点击 __Next__.
+3. 选择你喜欢的设备，然后点击 __Next__。
 
    ![Select device]({{ url_for('tutorial_img', filename='kotlin-android/select-device.png') }})
 

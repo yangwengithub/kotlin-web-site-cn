@@ -11,12 +11,11 @@ related:
 ---
 
 我们将使用 IntelliJ IDEA（终极版或社区版）。 如需了解如何在 IntelliJ IDEA 中开始一个新的Kotlin项目，
-参见， [以 IntellJ IDEA 入门 ](getting-started.html)。 
-
-如果你使用的是构建工具，请参阅相应的[构建工具](build-tools.html)下的条目。
+参见[以 IntellJ IDEA 入门](getting-started.html)。 如果你使用的是构建工具，请参阅相应的
+[构建工具](build-tools.html)下的条目。
 
 ## 将 Java 源代码添加到现有 Kotlin 项目中
-将Java类添加到 Kotlin 工程中非常简单。 你需要做的就是在正确的目录或包中创建一个新的 Java 文件 (__Alt + Insert__/__Cmd + N__)
+将Java类添加到 Kotlin 工程中非常简单。 你需要做的就是在正确的目录或包中创建一个新的 Java 文件 (__Alt + Insert__/__Cmd + N__)。
 
 ![New Java Class]({{ url_for('tutorial_img', filename='mixing-java-kotlin-intellij/new-java-class.png') }})
 
@@ -72,9 +71,8 @@ println(customer.placeOrder())
 如果这是你第一次将 Kotlin 文件添加到此工程中，IntelliJ IDEA 会提示你添加所需的Kotlin运行时。
 对于 Java 工程，将 Kotlin 运行时配置为 __Kotlin Java 模块__。
 
-下一步是决定要配置哪些模块（如果工程有多个模块）以及是否需要将运行时库添加到工程中或使用当前 Kotlin
-
-插件提供的那些库。
+下一步是决定要配置哪些模块（如果工程有多个模块）以及是否想要
+将运行时库添加到工程中或使用当前 Kotlin 插件提供的那些库。
 
 ![Bundling Kotlin Runtime]({{ url_for('tutorial_img', filename='mixing-java-kotlin-intellij/bundling-kotlin-option.png') }})
 
@@ -83,7 +81,6 @@ println(customer.placeOrder())
 ## 使用 J2K 将现有 Java 文件转换为 Kotlin 文件
 
 Kotlin 插件还附带了 Java 到 Kotlin 的转换器 (_J2K_)，自动把 Java 文件转换为 Kotlin 文件。
-
 要在文件上使用 J2K，请在该文件的上下文菜单或 IntelliJ IDEA 的 __Code__ 菜单中点击 __Convert Java File to Kotlin File__。
 
 ![Convert Java to Kotlin Menu]({{ url_for('tutorial_img', filename='mixing-java-kotlin-intellij/convert-java-to-kotlin.png') }})
