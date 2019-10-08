@@ -30,6 +30,7 @@ annotation class Fancy
     -->生成的 API 文档中显示的类或方法的签名中。
 
 
+
 ```kotlin
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION,
         AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.EXPRESSION)
@@ -40,6 +41,7 @@ annotation class Fancy
 
 
 ### 用法
+
 
 
 ```kotlin
@@ -55,12 +57,14 @@ annotation class Fancy
 ，并将注解添加到其前面：
 
 
+
 ```kotlin
 class Foo @Inject constructor(dependency: MyDependency) { …… }
 ```
 
 
 你也可以标注属性访问器：
+
 
 
 ```kotlin
@@ -74,6 +78,7 @@ class Foo {
 ### 构造函数
 
 注解可以有接受参数的构造函数。
+
 
 
 ```kotlin
@@ -98,6 +103,7 @@ annotation class Special(val why: String)
 如果注解用作另一个注解的参数，则其名称不以 @ 字符为前缀：
 
 
+
 ```kotlin
 annotation class ReplaceWith(val expression: String)
 
@@ -111,8 +117,9 @@ annotation class Deprecated(
 
 如果需要将一个类指定为注解的参数，请使用 Kotlin 类
 （[KClass](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html)）。Kotlin 编译器会<!--
--->自动将其转换为 Java 类，以便 Java 代码能够正常看到该注解及参数
+-->自动将其转换为 Java 类，以便 Java 代码能够正常访问该注解与参数
 。
+
 
 
 ```kotlin
@@ -132,6 +139,7 @@ annotation class Ann(val arg1: KClass<*>, val arg2: KClass<out Any>)
 该框架使用注解进行并发控制。
 
 
+
 ```kotlin
 annotation class Suspendable
 
@@ -146,6 +154,7 @@ val f = @Suspendable { Fiber.sleep(10) }
 。如果要指定精确地指定应该如何生成该注解，请使用以下语法：
 
 
+
 ```kotlin
 class Example(@field:Ann val foo,    // 标注 Java 字段
               @get:Ann val bar,      // 标注 Java getter
@@ -157,6 +166,7 @@ class Example(@field:Ann val foo,    // 标注 Java 字段
 -->文件的顶层、package 指令之前或者在所有导入之前（如果文件在默认包中的话）：
 
 
+
 ```kotlin
 @file:JvmName("Foo")
 
@@ -166,6 +176,7 @@ package org.jetbrains.demo
 
 如果你对同一目标有多个注解，那么可以这样来避免目标重复——在目标后面添加方括号<!--
 -->并将所有注解放在方括号内：
+
 
 
 ```kotlin
@@ -191,6 +202,7 @@ class Example {
 要标注扩展函数的接收者参数，请使用以下语法：
 
 
+
 ```kotlin
 fun @receiver:Fancy String.myExtension() { ... }
 ```
@@ -203,10 +215,10 @@ fun @receiver:Fancy String.myExtension() { ... }
   * `property`;
   * `field`.
 
-
 ## Java 注解
 
 Java 注解与 Kotlin 100% 兼容：
+
 
 
 ```kotlin
@@ -231,6 +243,7 @@ class Tests {
 -->语法来传递参数。相反，你需要使用命名参数语法：
 
 
+
 ``` java
 // Java
 public @interface Ann {
@@ -238,6 +251,7 @@ public @interface Ann {
     String stringValue();
 }
 ```
+
 
 
 
@@ -250,12 +264,14 @@ public @interface Ann {
 就像在 Java 中一样，一个特殊的情况是 `value` 参数；它的值无需显式名称指定：
 
 
+
 ``` java
 // Java
 public @interface AnnWithValue {
     String value();
 }
 ```
+
 
 
 
@@ -270,12 +286,14 @@ public @interface AnnWithValue {
 如果 Java 中的 `value` 参数具有数组类型，它会成为 Kotlin 中的一个 `vararg` 参数：
 
 
+
 ``` java
 // Java
 public @interface AnnWithArrayValue {
     String[] value();
 }
 ```
+
 
 
 
@@ -289,12 +307,14 @@ public @interface AnnWithArrayValue {
 `arrayOf(……)`：
 
 
+
 ``` java
 // Java
 public @interface AnnWithArrayMethod {
     String[] names();
 }
 ```
+
 
 
 
@@ -314,12 +334,14 @@ class D
 注解实例的值会作为属性暴露给 Kotlin 代码：
 
 
+
 ``` java
 // Java
 public @interface Ann {
     int value();
 }
 ```
+
 
 
 

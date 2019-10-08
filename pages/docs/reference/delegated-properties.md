@@ -124,7 +124,8 @@ fun main() {
 
 ### 可观察属性 Observable
 
-[`Delegates.observable()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-delegates/observable.html) 接受两个参数：初始值与修改时处理程序（handler）。
+[`Delegates.observable()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-delegates/observable.html)
+接受两个参数：初始值与修改时处理程序（handler）。
 每当我们给属性赋值时会调用该处理程序（在赋值*后*执行）。它有三个<!--
 -->参数：被赋值的属性、旧值与新值：
 
@@ -149,7 +150,7 @@ fun main() {
 
 
 
-如果你想能够截获一个赋值并“否决”它，就使用 [`vetoable()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-delegates/vetoable.html) 取代 `observable()`。
+如果你想截获赋值并“否决”它们，那么使用 [`vetoable()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-delegates/vetoable.html) 取代 `observable()`。
 在属性被赋新值生效*之前*会调用传递给 `vetoable` 的处理程序。
 
 ## 把属性储存在映射中

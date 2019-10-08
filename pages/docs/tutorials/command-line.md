@@ -60,13 +60,24 @@ $ sudo port install kotlin
 
 </div>
 
-#### [Snap](https://snapcraft.io/) package
+#### [Snap](https://snapcraft.io/) 包
 如果使用的是 Ubuntu 16.04 或更高版本，那么可以在命令行安装编译器：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
 ```bash
 $ sudo snap install --classic kotlin
+```
+
+</div>
+
+#### Chocolatey 包
+如果你是 Windows [Chocolatey](https://chocolatey.org/) 用户，那么你可以在命令行轻松安装编译器：
+
+<div class="sample" markdown="1" theme="idea">
+
+```cmd
+C:\> choco install kotlinc
 ```
 
 </div>
