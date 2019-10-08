@@ -71,6 +71,17 @@ $ sudo snap install --classic kotlin
 
 </div>
 
+#### Chocolatey package
+If you’re a [Chocolatey](https://chocolatey.org/) user on Windows, you can easily install the compiler from the command line:
+
+<div class="sample" markdown="1" theme="idea">
+
+```cmd
+C:\> choco install kotlinc
+```
+
+</div>
+
 ### 创建并运行第一个应用程序
 
 1. 在 Kotlin 中创建一个显示 Hello，World! 的简单应用程序。使用喜欢的编辑器，创建一个名为 *hello.kt* 的新文件，内容如下：

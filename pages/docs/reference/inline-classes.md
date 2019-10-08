@@ -200,7 +200,7 @@ fun main() {
 ``` groovy
 
 compileKotlin {
-    kotlinOptions.freeCompilerArgs += ["Xinline-classes"]
+    kotlinOptions.freeCompilerArgs += ["-Xinline-classes"]
 }
 ```
 

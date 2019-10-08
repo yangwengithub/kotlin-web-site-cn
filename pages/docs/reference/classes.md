@@ -515,4 +515,4 @@ abstract class Rectangle : Polygon() {
 -->中的一员。
 
 更具体地讲，如果在你的类内声明了一个[伴生对象](object-declarations.html#伴生对象)，
-你就可以调用其成员，只是以类名作为限定符。
+你就可以访问其成员，只是以类名作为限定符。

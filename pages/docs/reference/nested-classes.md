@@ -26,7 +26,7 @@ val demo = Outer.Nested().foo() // == 2
 
 ## 内部类
 
-类可以标记为 *inner*{: .keyword } 以便能够访问外部类的成员。内部类会带有一个对外部类的对象的引用：
+标记为 *inner*{: .keyword } 的嵌套类能够访问其外部类的成员。内部类会带有一个对外部类的对象的引用：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
