@@ -31,7 +31,7 @@ Kotlin 新手？可以看看[入门](basic-syntax.html)页。
 - [通道](coroutines/channels.html)
 - [协程上下文与调度器](coroutines/coroutine-context-and-dispatchers.html)
 - [共享的可变状态与并发](coroutines/shared-mutable-state-and-concurrency.html)
-- [Asynchronous Flow](/docs/reference/coroutines/flow.html)
+- [异步流](/docs/reference/coroutines/flow.html)
 
 推荐的教程：
 - [你的第一个 Kotlin 协程程序](../tutorials/coroutines/coroutines-basic-jvm.html)
