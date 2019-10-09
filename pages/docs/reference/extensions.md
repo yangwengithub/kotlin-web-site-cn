@@ -10,10 +10,8 @@ title: "扩展"
 Kotlin 能够扩展一个类的新功能<!--
 -->而无需继承该类或者使用像装饰者这样的设计模式。
 这通过叫做 _扩展_ 的特殊声明完成。
-For example, you can write new functions for a class from a third-party library that you can't modify.
-Such functions are available for calling in the usual way as if they were methods of the original class. 
-This mechanism is called _extension functions_. There are also _extension properties_ that let you define
-new properties for existing classes.
+比如，你可以为一个来自第三方库中的类写一个新的函数，而不改动这个第三方库。这个新增的函数可以像普通函数一样调用，就好像那个类原本就有这个函数一样。
+这种机制称为 _扩展函数_ 。此外，也有 _扩展属性_ ，允许你为一个已经存在的类添加新的属性。
 
 ## 扩展函数
 
