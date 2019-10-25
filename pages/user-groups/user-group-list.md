@@ -7,7 +7,7 @@ Kotlin User Groups are a great place to share your experience with the community
 
 The most common way to begin one is to find a few like-minded people and to get together and organize regular meetups for spreading knowledge on software development with Kotlin. If you feel like you need more ideas or advice on launching a user group, contact [alina@jetbrains.com](mailto:alina@jetbrains.com).
 
-## Kotlin User Groups (186)
+## Kotlin User Groups (185)
 
 <div class="g-grid">
 <div class="g-6" markdown="1">
@@ -58,7 +58,6 @@ The most common way to begin one is to find a few like-minded people and to get 
  * [Moscow Kotlin User Group](https://vk.com/kotlinmoscow), Russia
  * [Munich Kotlin User Group](https://www.meetup.com/Kotlin-User-Group-Munich/), Germany
  * [Nizhny Novgorod Kotlin User Group](https://www.meetup.com/kotlin_nn/), Russia
- * [Novosibirsk Kotlin User Group](https://vk.com/kotlin54), Russia
  * [Oslo Kotlin User Group](https://www.meetup.com/meetup-group-nWeRbyMu/), Norway
  * [Paris Kotlin User Group](https://www.meetup.com/Kotlin-Paris-Meetup/), France
  * [Rhein-Main Kotlin](https://www.meetup.com/de-DE/Kotlin-Rhein-Main/), Germany
