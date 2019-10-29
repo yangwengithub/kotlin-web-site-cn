@@ -218,7 +218,7 @@ value?.let {
 val value = ……
 
 val mapped = value?.let { transformValue(it) } ?: defaultValue 
-// defaultValue is returned if the value or the transform result is null.
+// 如果该值或其转换结果为空，那么返回 defaultValue。
 ```
 </div>
 
@@ -382,14 +382,14 @@ a = b.also { b = a }
 ```
 </div>
 
-### TODO(): Marking code as incomplete
+### TODO()：将代码标记为不完整
  
-Kotlin's standard library has a `TODO()` function that will always throw a `NotImplementedError`.
-Its return type is `Nothing` so it can be used regardless of expected type.
-There's also an overload that accepts a reason parameter:
+Kotlin 的标准库有一个 `TODO()` 函数，该函数总是抛出一个 `NotImplementedError`。
+其返回类型为 `Nothing`，因此无论预期类型是什么都可以使用它。
+还有一个接受原因参数的重载：
 ```kotlin
 fun calcTaxes(): BigDecimal = TODO("Waiting for feedback from accounting")
 ```
 
-IntelliJ IDEA's kotlin plugin understands the semantics of `TODO()` and automatically adds a code pointer in the TODO toolwindow. 
+IntelliJ IDEA 的 kotlin 插件理解 `TODO()` 的语言，并且会自动在 TODO 工具窗口中添加代码指示。 
 
