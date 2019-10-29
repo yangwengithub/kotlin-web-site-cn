@@ -595,7 +595,6 @@ tasks.withType<KotlinCompile> {
 </div>
 
 对于 Gradle 任务的完整选项列表如下：
-
 ### JVM、JS 与 JS DCE 的公共属性
 
 | 名称 | 描述        | 可能的值        |默认值        |
@@ -610,35 +609,34 @@ tasks.withType<KotlinCompile> {
 | Name | Description | Possible values |Default value |
 |------|-------------|-----------------|--------------|
 | `apiVersion` | 只允许使用来自捆绑库的指定版本中的声明 | "1.0"、 "1.1"、 "1.2"、 "1.3"、 "1.4 (EXPERIMENTAL)" |  |
-| `languageVersion` | 提供与指定语言版本源代码兼容性 | "1.0"、 "1.1"、 "1.2"、 "1.3"、 "1.4 (EXPERIMENTAL)" |  |
+| `languageVersion` | 提供与指定 Kotlin 版本源代码级兼容 | "1.0"、 "1.1"、 "1.2"、 "1.3"、 "1.4 (EXPERIMENTAL)" |  |
 
 ### JVM 特有的属性
 
 | 名称 | 描述        | 可能的值        |默认值        |
 |------|-------------|-----------------|--------------|
 | `javaParameters` | 为方法参数生成 Java 1.8 反射的元数据 |  | false |
-| `jdkHome` | 要包含到 classpath 中的 JDK 主目录路径，如果与默认 JAVA_HOME 不同的话 |  |  |
+| `jdkHome` | 将来自指定位置的自定义 JDK 而不是默认的 JAVA_HOME 包含到类路径中 |  |  |
 | `jvmTarget` | 生成的 JVM 字节码的目标版本（1.6、 1.8、 9、 10、 11 或 12），默认为 1.6 | "1.6"、 "1.8"、 "9"、 "10"、 "11"、 "12" | "1.6" |
-| `noJdk` | 不要在 classpath 中包含 Java 运行时 |  | false |
-| `noReflect` | 不要在 classpath 中包含 Kotlin 反射实现 |  | true |
-| `noStdlib` | 不要在 classpath 中包含 Kotlin 运行时 |  | true |
+| `noJdk` | 不要自动在类路径中包含 Java 运行时 |  | false |
+| `noReflect` | 不要自动在类路径中包含 Kotlin 反射实现 |  | true |
+| `noStdlib` | 不要自动在类路径中包含 Kotlin 运行时与 Kotlin 反射 |  | true |
 
 ### JS 特有的属性
 
 | 名称 | 描述        | 可能的值        |默认值        |
 |------|-------------|-----------------|--------------|
 | `friendModulesDisabled` | 禁用内部声明导出 |  | false |
-| `main` | 是否要调用 main 函数 | "call"、 "noCall" | "call" |
+| `main` | 定义是否在执行时调用 `main` 函数 | "call"、 "noCall" | "call" |
 | `metaInfo` | 使用元数据生成 .meta.js 与 .kjsm 文件。用于创建库 |  | true |
-| `moduleKind` | 编译器生成的模块类型 | "plain"、 "amd"、 "commonjs"、 "umd" | "plain" |
-| `noStdlib` | 不使用捆绑的 Kotlin stdlib |  | true |
-| `outputFile` | 输出文件路径 |  |  |
+| `moduleKind` | 编译器生成的 JS 模块类型 | "plain"、 "amd"、 "commonjs"、 "umd" | "plain" |
+| `noStdlib` | 不要自动将默认的 Kotlin/JS stdlib 包含到编译依赖项中 |  | true |
+| `outputFile` | 编译结果的目标 *.js 文件 |  |  |
 | `sourceMap` | 生成源代码映射（source map） |  | false |
 | `sourceMapEmbedSources` | 将源代码嵌入到源代码映射中 | "never"、 "always"、 "inlining" | |
-| `sourceMapPrefix` | 源代码映射中路径的前缀 |  |  |
+| `sourceMapPrefix` | 将指定前缀添加到源代码映射中的路径 |  |  |
 | `target` | 生成指定 ECMA 版本的 JS 文件 | "v5" | "v5" |
 | `typedArrays` | 将原生数组转换为 JS 带类型数组 |  | true |
-
 
 ## 生成文档
 
