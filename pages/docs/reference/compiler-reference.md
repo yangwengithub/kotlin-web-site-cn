@@ -1,10 +1,10 @@
 ---
 type: doc
 layout: reference
-title: "Kotlin Compiler Options"
+title: "Kotlin 编译器选项"
 ---
 
-# Kotlin Compiler Options
+# Kotlin 编译器选项
 
 Each release of Kotlin includes compilers for the supported targets: 
 JVM, JavaScript, and native binaries for [supported platforms](native-overview.html#target-platforms).
@@ -22,7 +22,7 @@ $ kotlinc hello.kt -include-runtime -d hello.jar
 
 </div>
  
-## Compiler options
+## 编译器选项
 
 Kotlin compilers have a number of options for tailoring the compiling process.
 Compiler options for different targets are listed on this page together with a description of each one.
@@ -36,7 +36,7 @@ For details, see [Using Gradle](using-gradle.html#compiler-options).
 For details, see [Using Maven](using-maven.html#specifying-compiler-options).
 - If you run a command-line compiler, add the options directly to the utility call or write them into an [argfile](#argfile).
 
-## Common options
+##  公共选项
 
 The following options are common for all Kotlin compilers.
 
@@ -117,7 +117,7 @@ and paths to the source files. For example:
     </div>
 
     
-## JVM compiler options
+## JVM 编译器选项
 
 The Kotlin compiler for JVM compiles Kotlin source files into Java class files. 
 The command-line tools for Kotlin to JVM compilation are `kotlinc` and `kotlinc-jvm`.
@@ -167,7 +167,7 @@ file among the given arguments.
 * Script definition template classes. Use fully qualified class names and separate them with commas (**,**).
 
 
-## Kotlin/JS compiler options
+## Kotlin/JS 编译器选项
 
 The Kotlin compiler for JS compiles Kotlin source files into JavaScript code. 
 The command-line tool for Kotlin to JS compilation is `kotlinc-js`.
@@ -230,7 +230,7 @@ In addition to the [common options](#common-options), Kotlin/JS compiler has the
 - Add the specified prefix to paths in the source map.
 
 
-## Kotlin/Native compiler options
+## Kotlin/Native 编译器选项
 
 Kotlin/Native compiler compiles Kotlin source files into native binaries for the [supported platforms](native-overview.html#target-platforms). 
 The command-line tool for Kotlin/Native compilation is `kotlinc-native`.

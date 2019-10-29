@@ -286,7 +286,7 @@ reference:
         - url: /docs/reference/kapt.html
           title: 使用 Kapt
         - url: /docs/reference/compiler-reference.html
-          title: Kotlin Сompiler Options
+          title: Kotlin 编译器选项
         - url: /docs/reference/using-gradle.html
           title: 使用 Gradle
         - url: /docs/reference/using-maven.html
