@@ -14,13 +14,13 @@ These compilers are used by the IDE when you push the __Compile__ or __Run__ but
 You can also run Kotlin compilers manually from the command line as described 
 in the [Working with command-line compiler](/docs/tutorials/command-line.html) tutorial. For example: 
 
-<div class="sample" markdown="1" mode="shell" theme="idea">
+
 
 ```bash
 $ kotlinc hello.kt -include-runtime -d hello.jar
 ```
 
-</div>
+
  
 ## 编译器选项
 
@@ -87,34 +87,34 @@ Available plugins and their options are listed in [Compiler plugins](compiler-pl
 * Read the compiler options from the given file. A file passed in this option can contain compiler options with values 
 and paths to the source files. For example:
 
-    <div class="sample" markdown="1" mode="shell" theme="idea">
+    
     
     ```
     -d hello.jar -include-runtime
     hello.kt
     ```
     
-    </div>
+    
 
     You can also separate compiler options from source file names and pass multiple argument files.
 
-    <div class="sample" markdown="1" mode="shell" theme="idea">
+    
     
     ```bash
     $ kotlinc @compiler.options @classes
     ```
     
-    </div>
+    
     
     If the files reside in locations different from the current directory, use relative paths. 
     
-    <div class="sample" markdown="1" mode="shell" theme="idea">
+    
     
     ```bash
     $ kotlinc @options/compiler.options hello.kt
     ```
     
-    </div>
+    
 
     
 ## JVM 编译器选项
