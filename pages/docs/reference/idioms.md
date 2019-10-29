@@ -217,7 +217,8 @@ value?.let {
 ```kotlin
 val value = ……
 
-val mapped = value?.let { transformValue(it) } ?: defaultValueIfValueIsNull
+val mapped = value?.let { transformValue(it) } ?: defaultValue 
+// 如果该值或其转换结果为空，那么返回 defaultValue。
 ```
 
 
@@ -380,4 +381,15 @@ var b = 2
 a = b.also { b = a }
 ```
 
+
+### TODO()：将代码标记为不完整
+ 
+Kotlin 的标准库有一个 `TODO()` 函数，该函数总是抛出一个 `NotImplementedError`。
+其返回类型为 `Nothing`，因此无论预期类型是什么都可以使用它。
+还有一个接受原因参数的重载：
+```kotlin
+fun calcTaxes(): BigDecimal = TODO("Waiting for feedback from accounting")
+```
+
+IntelliJ IDEA 的 kotlin 插件理解 `TODO()` 的语言，并且会自动在 TODO 工具窗口中添加代码指示。 
 
