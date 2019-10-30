@@ -15,7 +15,7 @@ Kotlin 代码编译为动态库，例如 `.so`、`.dylib` 以及 `.dll`。
 
 Kotlin/Native 也可以与 Apple 技术紧密集成。
 这篇 [Kotlin/Native 开发 Apple Framework](apple-framework.html)
-教程解释了如何将代码编译为 Swift 与 Objective-C framework。
+教程解释了如何将代码编译为 Swift 或 Objective-C framework。
 
 在这篇教程中，我们将：
  - [将 Kotlin 代码编译为动态库](#创建-kotlin-库)
@@ -285,7 +285,7 @@ typedef struct {
 
 C 语言同样也不支持对象。人们使用函数指针来模仿<!--
 -->对象语义。一个函数指针被声明在 `RETURN_TYPE (* FIELD_NAME)(PARAMETERS)` 后面。
-它的阅读性很差，但我们应该能够从上面的结构体中看到函数指针字段。
+它的可读性很差，但我们应该能够从上面的结构体中看到函数指针字段。
 
 ### 运行时函数
 
