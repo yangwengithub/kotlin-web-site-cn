@@ -90,7 +90,7 @@ fun main() {
 现在我们已经准备好<!--
 -->[在 IntelliJ IDEA 中打开这个工程](basic-kotlin-native-app.html#open-in-ide)<!--
 -->并且看看如何修正这个示例工程。当我们做了这些之后，
-我们将观察 C 函数是如何映射到 Kotlin/Native 声明的。
+我们将观察到 C 函数是如何映射到 Kotlin/Native 声明的。
 
 ## Kotlin 中的 C 函数指针
 

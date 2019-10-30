@@ -63,8 +63,8 @@ void union_by_pointer(MyUnion* u) {}
 </div>
 
 该 `interop.def` 文件足够用来编译并运行应用程序，或在 IDE 中打开它。
-现在是时候创建工程文件，并在
-[IntelliJ IDEA](https://jetbrains.com/idea) 中打开这个工程，然后运行它。
+现在我们创建工程文件，并在
+[IntelliJ IDEA](https://jetbrains.com/idea) 中打开该工程，然后运行它。
 
 ## 为 C 库检查生成的 Kotlin API
 
@@ -246,7 +246,7 @@ fun callRef() {
 `MyStruct` 与 `MyUnion` 类具有指向原生内存的指针。当 `memScoped` 函数结束的时候，
 即 `block` 结尾的时候，内存将释放。请小心确保指针<!--
 -->没有在 `memScoped` 调用的外部使用。我们可以为指针使用 `Arena()` 或 `nativeHeap`
-这样应该有更长的可用时间，或者缓存在 C 库中。
+这样应该有更长的可用时间，或者将它们缓存在 C 库中。
 
 ### 在 `CValue<T>` 与 `CValuesRef<T>` 之间转换
 

@@ -4,7 +4,7 @@
 对于拥有数百个文件以及库的大型项目来说，这不能很好地扩展。
 所以最好使用附带构建系统的 Kotlin/Native 编译器，它可以<!--
 -->帮助下载与缓存 Kotlin/Native 编译器二进制文件与库<!--
--->传递依赖，并运行编译器与测试。
+-->传递依赖，以及运行该编译器并测试。
 Kotlin/Native 可以通过 [kotlin 多平台](/docs/reference/building-mpp-with-gradle.html)<!--
 -->插件来使用 [Gradle](https://gradle.org) 构建系统。
 
@@ -12,7 +12,7 @@ Kotlin/Native 可以通过 [kotlin 多平台](/docs/reference/building-mpp-with-
 -->这篇教程涵盖了使用 Gradle 创建 IDE 兼容工程的<!--
 -->基础知识。如果你正在寻找关于第一步的更多细节<!--
 -->以及如何开始一个新的 Kotlin/Native 项目并在 IntelliJ IDEA 中打开它的说明，则请你阅读<!--
--->这篇教程，我们将看看关于在 Kotlin/Native 中进行高级的 C 互操作的相关用法<!--
+-->这篇教程，我们将看到关于在 Kotlin/Native 中进行高级的 C 互操作的相关用法<!--
 -->以及使用
 [multiplatform](/docs/reference/building-mpp-with-gradle.html)<!--
 -->（Kotlin 多平台插件）及 Gradle 进行构建。
