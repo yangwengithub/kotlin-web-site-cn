@@ -334,7 +334,7 @@ with(myTurtle) { // 画一个 100 像素的正方形
 ```
 </div>
 
-### Configuring properties of an object (`apply`)
+### 配置对象的属性（`apply`）
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 val myRectangle = Rectangle().apply {
@@ -345,7 +345,7 @@ val myRectangle = Rectangle().apply {
 ```
 </div>
 
-This is useful for configuring properties that aren't present in the object constructor.
+这对于配置未出现在对象构造函数中的属性非常有用。
 
 ### Java 7 的 try with resources
 
