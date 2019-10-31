@@ -13,7 +13,7 @@ source:
 
 ### 背景
 
-相信每一位安卓开发人员对 `findViewById()` 这个方法再熟悉不过了，毫无疑问，潜在的 bug 和脏乱的代码令后续开发无从下手的。尽管存在一系列的开源库能够为这个问题带来解决方案，这些库需要为每个公开的 'view' 添加注解字段。
+相信每一位安卓开发人员对 `findViewById()` 这个方法再熟悉不过了，毫无疑问，潜在的 bug 以及脏乱的代码令后续开发无从下手的。尽管存在一系列的开源库能够为这个问题带来解决方案，这些库需要为每个公开的 'view' 添加注解字段。
 
 现在 Kotlin 安卓扩展插件能够提供与这些开源库功能相同的体验，不需要添加任何额外代码。
 
@@ -22,7 +22,7 @@ source:
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-// 从 'main'来源集中使用 R.layout.activity_main 
+// 从 "main" 源集中使用 R.layout.activity_main 
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MyActivity : Activity() {
@@ -95,7 +95,7 @@ activity.hello.text = "Hello World!"
 
 ### `LayoutContainer` 支持
 
-Android 扩展插件支持不同类型的容器。 最基本的是 [`Activity`]（https://developer.android.com/reference/android/app/Activity.html），[`Fragment`]（https://developer.android.com/reference/ android / support / v4 / app / Fragment.html）和 [`View`]（https://developer.android.com/reference/android/view/View.html），但是你可以（实际上）通过实现 `LayoutContainer` 接口将任何类转换为 Android 扩展容器，例如：
+Android 扩展插件支持不同类型的容器。最基本的是[`Activity`](https://developer.android.com/reference/android/app/Activity.html)、[`Fragment`](https://developer.android.com/reference/ android / support / v4 / app / Fragment.html) 以及 [`View`](https://developer.android.com/reference/android/view/View.html)，但是你可以（实际上）通过实现 `LayoutContainer` 接口将任何类转换为 Android 扩展容器，例如：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -111,7 +111,7 @@ class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(con
 ```
 </div>
 
-请注意，你需要打开 [实验性标志]（＃enabling-experimental-features）才能使用 `LayoutContainer`。
+请注意，你需要打开[实验性标志](＃enabling-experimental-features)才能使用 `LayoutContainer`。
 
 
 ### 多渠道支持
@@ -140,16 +140,16 @@ import kotlinx.android.synthetic.free.activity_free.*
 ```
 </div>
 
-在 [实验模式]（＃enabling-experimental-features）中，你可以指定任何变体名称（不仅是渠道），例如 freeDebug 或 freeRelease 也可以使用。
+在[实验模式](＃enabling-experimental-features)中，你可以指定任何变体名称（不仅是渠道），例如 `freeDebug` 或者 `freeRelease` 也可以使用。
 
 
 ### 视图缓存
 
-调用 `findViewById（）`可能会很慢，尤其是在视图层次结构庞大的情况下，因此 Android 扩展程序试图通过在容器中缓存视图来使 `findViewById（）` 的调用次数达到最少。
+调用 `findViewById()`可能会很慢，尤其是在视图层次结构庞大的情况下，因此 Android 扩展程序试图通过在容器中缓存视图来使 `findViewById()` 的调用次数达到最少。
 
-默认情况下，Android 扩展给每个用 kotlin 编写的容器（[`Activity`](https://developer.android.com/reference/android/app/Activity.html)，[`Fragment`](https://developer.android.com/reference/android/support/v4/app/Fragment.html)，[`view`](https://developer.android.com/reference/android/view/View.html) 或着 `LayoutContainer` 的实现）添加了一个隐藏的函数和一个存储字段。 该函数很小，因此不会增加APK的大小。
+默认情况下，Android 扩展给每个用 kotlin 编写的容器（[`Activity`](https://developer.android.com/reference/android/app/Activity.html)、[`Fragment`](https://developer.android.com/reference/android/support/v4/app/Fragment.html)、[`view`](https://developer.android.com/reference/android/view/View.html) 或者 "LayoutContainer" 的实现）添加了一个隐藏的缓存函数以及一个存储字段。该方法很小，因此不会增加APK的大小。
 
-在下面的示例中，`findViewById（）` 仅被调用一次：
+在下面的示例中，`findViewById()` 仅被调用一次：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -175,7 +175,7 @@ fun Activity.b() {
 ```
 </div>
 
-我们不知道这个函数会仅在用 kotlin 编写的 activities 中被调用还是会在普通的 Java activities 中被调用。 因此，即使将上一个示例中的 MyActivity 实例作为接收者进行传递，我们也不会在此处使用缓存。
+我们不知道这个函数会仅在用 kotlin 编写的 activity 中被调用还是会在普通的 Java activity 中被调用。 因此，即使将上一个示例中的 `MyActivity` 实例作为接收者进行传递，我们也不会在此处使用缓存。
 
 
 #### 更改视图缓存策略
@@ -188,7 +188,7 @@ fun Activity.b() {
 
 ```groovy
 androidExtensions {
-    defaultCacheImplementation = "HASH_MAP" // also SPARSE_ARRAY, NONE
+    defaultCacheImplementation = "HASH_MAP" // 也可以是 SPARSE_ARRAY、NONE
 }
 ```
 </div>
@@ -260,14 +260,14 @@ data class User(val firstName: String, val lastName: String, val age: Int) : Par
 `@Parcelize` 支持多种类型：
 
 - 基本类型（及其装箱版本）；
-- objects 和 enums；
-- `String`，`CharSequence`；
+- objects 与 enums；
+- `String`、`CharSequence`；
 - `Exception`；
-- `Size`，`SizeF`，`Bundle`，`IBinder`，`IInterface`，`FileDescriptor`；
-- `SparseArray`，`SparseIntArray`，`SparseLongArray`，`SparseBooleanArray`；
-- 所有 `Serializable` (包括 `Date`) 和 `Parcelable` 的实现；
-  - 所有受支持类型的集合：`List`（映射到 `ArrayList`），`Set`（映射到 `LinkedHashSet`），`Map`（映射到 `LinkedHashMap`）；
-      + 还有一些具体的实现：`ArrayList`，`LinkedList`，`SortedSet`，`NavigableSet`，`HashSet`，`LinkedHashSet`，`TreeSet`，`SortedMap`，`NavigableMap`，`HashMap`，`LinkedHashMap`，`TreeMap`，`ConcurrentHashMap`；
+- `Size`、`SizeF`、`Bundle`、`IBinder`、`IInterface`、`FileDescriptor`；
+- `SparseArray`、`SparseIntArray`、`SparseLongArray`、`SparseBooleanArray`；
+- 所有 `Serializable` (包括 `Date`) 以及 `Parcelable` 的实现；
+  - 所有受支持类型的集合：`List`（映射到 `ArrayList`）、`Set`（映射到 `LinkedHashSet`）、`Map`（映射到 `LinkedHashMap`）；
+      + 还有一些具体的实现：`ArrayList`、`LinkedList`、`SortedSet`、`NavigableSet`、`HashSet`、`LinkedHashSet`、`TreeSet`、`SortedMap`、`NavigableMap`、`HashMap`、`LinkedHashMap`、`TreeMap`、`ConcurrentHashMap`；
 - 所有受支持类型的数组；
 - 所有受支持类型的可空版本。
 
@@ -296,16 +296,16 @@ object ExternalClassParceler : Parceler<ExternalClass> {
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-// 本地类的 parceler
+// 局部类的 parceler
 @Parcelize
 @TypeParceler<ExternalClass, ExternalClassParceler>()
 class MyClass(val external: ExternalClass)
 
-// 本地属性的 parceler
+// 局部属性的 parceler
 @Parcelize
 class MyClass(@TypeParceler<ExternalClass, ExternalClassParceler>() val external: ExternalClass)
 
-// 本地类型的 parceler
+// 局部类型的 parceler
 @Parcelize
 class MyClass(val external: @WriteWith<ExternalClassParceler>() ExternalClass)
 ```
