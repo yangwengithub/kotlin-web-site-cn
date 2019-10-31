@@ -334,6 +334,18 @@ with(myTurtle) { // 画一个 100 像素的正方形
 ```
 
 
+### 配置对象的属性（`apply`）
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+```kotlin
+val myRectangle = Rectangle().apply {
+    length = 4
+    breadth = 5
+    color = 0xFAFAFA
+}
+```
+</div>
+
+这对于配置未出现在对象构造函数中的属性非常有用。
 
 ### Java 7 的 try with resources
 
