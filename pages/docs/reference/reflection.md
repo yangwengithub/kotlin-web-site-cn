@@ -193,7 +193,7 @@ fun main() {
 ```       
 </div>            
 
-属性引用可以用在不需要参数的函数处：
+属性引用可以用在预期具有单个泛型参数的函数的地方：
 
 <div class="sample" markdown="1" theme="idea">
 ```kotlin

@@ -27,7 +27,7 @@ showAuthorInfo: true
 ```groovy
 dependencies {
     ...
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:{{ site.data.releases.latest.coroutines.version }}"
 }
 ```
 
@@ -83,7 +83,7 @@ repositories {
     <dependency>
         <groupId>org.jetbrains.kotlinx</groupId>
         <artifactId>kotlinx-coroutines-core</artifactId>
-        <version>1.0.1</version>
+        <version>{{ site.data.releases.latest.coroutines.version }}</version>
     </dependency>
 </dependencies>
 ```
