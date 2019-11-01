@@ -7,11 +7,11 @@ title: "作用域函数"
 
 # 作用域函数
 
-The Kotlin standard library contains several functions whose sole purpose is to execute a block of code within the context of an object. When you call such a function on an object with a [lambda expression](lambdas.html) provided, it forms a temporary scope. In this scope, you can access the object without its name. Such functions are called _scope functions_. There are five of them: `let`, `run`, `with`, `apply`, and `also`.
+Kotlin 标准库包含几个函数，它们的唯一目的是在对象的上下文中执行代码块。在提供了 [lambda 表达式](lambdas.html)的对象上调用这样的函数时，它会形成一个临时作用域。在此作用域中，可以访问没有名称的对象。这些函数称为“作用域函数”。共有以下五种: `let`、`run`、`with`、`apply` 以及 `also`。
 
-Basically, these functions do the same: execute a block of code on an object. What's different is how this object becomes available inside the block and what is the result of the whole expression.
+这些函数基本上做了同样的事情：在一个对象上执行一个代码块。不同的是这个对象在块中如何使用，以及整个表达式的结果是什么。
 
-Here's a typical usage of a scope function:
+下面是作用域函数的典型用法:
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -35,7 +35,7 @@ fun main() {
 
 </div>
 
-If you write the same without `let`, you'll have to introduce a new variable and repeat its name whenever you use it. 
+如果不使用 `let` 来写这段代码, 就必须引入一个新变量，并在每次使用它时重复其名称。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -58,9 +58,9 @@ fun main() {
 
 </div>
 
-The scope functions do not introduce any new technical capabilities, but they can make your code more concise and readable.
+作用域函数没有引入任何新的技术，但是它们可以使你的代码更加简洁易读。
 
-Due to the similar nature of scope functions, choosing the right one for your case can be a bit tricky. The choice mainly depends on your intent and the consistency of use in your project. Below we'll provide detailed descriptions of the distinctions between scope functions and the conventions on their usage.
+由于作用域函数的相似性质，为您的案例选择正确的函数可能有点棘手。选择主要取决于你的意图和项目中使用的一致性。下面我们将详细描述作用域函数和它们的用法之间的区别。
 
 ## 区别
 
