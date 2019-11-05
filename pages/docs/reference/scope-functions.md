@@ -94,7 +94,7 @@ fun main() {
 
 #### this
 
-`run`、`with` 以及 `apply` 通过关键字 `this` 引用上下文对象。因此，在它们的 lambda 表达式中可以像在普通的类函数中一样访问上下文对象。在大多数场景，当你访问接收者对象时你可以省略 `this`，来让你的代码更简短。相对地，如果省略了 `this`，就很难区分接收者对象的成员和外部对象或函数。因此，对于主要对对象成员进行操作的 lambda，建议将上下文对象作为接收者（`this`）：调用其函数或赋值其属性。
+`run`、`with` 以及 `apply` 通过关键字 `this` 引用上下文对象。因此，在它们的 lambda 表达式中可以像在普通的类函数中一样访问上下文对象。在大多数场景，当你访问接收者对象时你可以省略 `this`，来让你的代码更简短。相对地，如果省略了 `this`，就很难区分接收者对象的成员及外部对象或函数。因此，对于主要对对象成员进行操作的 lambda，建议将上下文对象作为接收者（`this`）：调用其函数或赋值其属性。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -115,7 +115,7 @@ fun main() {
 
 #### it
 
-反过来，`let` 和 `also` 将上下文对象作为 lambda 表达式参数。如果没有指定参数名，对象可以用隐式默认名称 `it` 访问。`it` 比 `this` 简短，带有 `it` 的表达通常更容易阅读。然而，当调用对象函数或属性时，不能像 `this` 这样隐式地访问对象。因此，当上下文对象在作用域中主要用作函数调用中的参数时，使用 `it` 作为上下文对象会更好。如果在代码块中使用多个变量，则 `it` 也更好。
+反过来，`let` 及 `also` 将上下文对象作为 lambda 表达式参数。如果没有指定参数名，对象可以用隐式默认名称 `it` 访问。`it` 比 `this` 简短，带有 `it` 的表达通常更容易阅读。然而，当调用对象函数或属性时，不能像 `this` 这样隐式地访问对象。因此，当上下文对象在作用域中主要用作函数调用中的参数时，使用 `it` 作为上下文对象会更好。如果在代码块中使用多个变量，则 `it` 也更好。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -173,11 +173,15 @@ The scope functions differ by the result they return:
 * `apply` and `also` return the context object.
 * `let`, `run`, and `with` return the lambda result.
 
-These two options let you choose the proper function depending on what you do next in your code.
+根据返回结果，作用域函数可以分为以下两类：
+* `apply` 及 `also` 返回上下文对象。
+* `let`、`run` 及 `with` 返回 lambda 表达式结果.
+
+这两个选项使你可以根据将要在代码中的做什么来选择适当的函数。
 
 #### 上下文对象
 
-The return value of `apply` and `also` is the context object itself. Hence, they can be included into call chains as _side steps_: you can continue chaining function calls on the same object after them.  
+`apply` 及 `also` 的返回值是上下文对象本身。因此，它们可以作为辅助步骤包含在调用链中：你可以继续在同一个对象上进行链式函数调用。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -200,7 +204,7 @@ fun main() {
 
 </div>
 
-They also can be used in return statements of functions returning the context object.
+它们还可以用在返回上下文对象的函数的return语句中。
 
 <div class="sample" markdown="1" theme="idea">
 
