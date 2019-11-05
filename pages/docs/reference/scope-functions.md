@@ -115,7 +115,7 @@ fun main() {
 
 #### it
 
-In turn, `let` and `also` have the context object as a lambda argument. If the argument name is not specified, the object is accessed by the implicit default name `it`. `it` is shorter than `this` and expressions with `it` are usually easier for reading. However, when calling the object functions or properties you don't have the object available implicitly like `this`. Hence, having the context object as `it` is better when the object is mostly used as an argument in function calls. `it` is also better if you use multiple variables in the code block.
+反过来，`let` 和 `also` 将上下文对象作为 lambda 表达式参数。如果没有指定参数名，对象可以用隐式默认名称 `it` 访问。`it` 比 `this` 简短，带有 `it` 的表达通常更容易阅读。然而，当调用对象函数或属性时，不能像 `this` 这样隐式地访问对象。因此，当上下文对象在作用域中主要用作函数调用中的参数时，使用 `it` 作为上下文对象会更好。如果在代码块中使用多个变量，则 `it` 也更好。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -141,7 +141,7 @@ fun main() {
 
 </div>
 
-Additionally, when you pass the context object as an argument, you can provide a custom name for the context object inside the scope.
+此外，当将上下文对象作为参数传递时，可以为上下文对象指定在作用域内的自定义名称。
 
 <div class="sample" markdown="1" theme="idea">
 
