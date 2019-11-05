@@ -64,14 +64,13 @@ fun main() {
 
 ## 区别
 
-Because the scope functions are all quite similar in nature, it's important to understand the differences between them. There are two main differences between each scope function: 
-* The way to refer to the context object
-* The return value.
+由于作用域函数本质上都非常相似，因此了解它们之间的区别很重要。每个作用域函数之间有两个主要区别：
+* 引用上下文对象的方式
+* 返回值
 
 ### 上下文对象：`this` 还是 `it`
 
-Inside the lambda of a scope function, the context object is available by a short reference instead of its actual name. Each scope function uses one of two ways to access the context object: as a lambda [receiver](lambdas.html#带有接收者的函数字面值) (`this`) or as a lambda argument (`it`). Both provide the same capabilities, so we'll describe the pros and cons of each for different cases and provide recommendations on their use.
-
+在作用域函数的 lambda 表达式里，上下文对象可以不使用其实际名称而是使用一个更简短的引用来访问。每个作用域函数都使用以下两种方式之一来访问上下文对象：作为 lambda 的[接收者](lambdas.html#带有接收者的函数字面值)（`this`）或者作为 lambda 的参数（`it`）。两者都提供了同样的功能，因此我们将针对不同的场景描述两者的优缺点，并提供使用建议。
 <div class="sample" markdown="1" theme="idea">
 
 ```kotlin
@@ -80,7 +79,7 @@ fun main() {
     // this
     str.run {
         println("The receiver string length: $length")
-        //println("The receiver string length: ${this.length}") // does the same
+        //println("The receiver string length: ${this.length}") // 和上句效果相同
     }
 
     // it
@@ -94,7 +93,7 @@ fun main() {
 
 #### this
 
-`run`, `with`, and `apply` refer to the context object as a lambda receiver - by keyword `this`. Hence, in their lambdas, the object is available as it would be in ordinary class functions. In most cases, you can omit `this` when accessing the members of the receiver object, making the code shorter. On the other hand, if `this` is omitted, it can be hard to distinguish between the receiver members and external objects or functions. So, having the context object as a receiver (`this`) is recommended for lambdas that mainly operate on the object members: call its functions or assign properties.
+`run`、`with` 以及 `apply` 通过关键字 `this` 引用上下文对象。因此，在它们的 lambda 表达式中可以像在普通的类函数中一样访问上下文对象。在大多数场景，当你访问接收者对象时你可以省略 `this`，来让你的代码更简短。相对地，如果省略了 `this`，就很难区分接收者对象的成员和外部对象或函数。因此，对于主要对对象成员进行操作的 lambda，建议将上下文对象作为接收者（`this`）：调用其函数或赋值其属性
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -104,7 +103,7 @@ data class Person(var name: String, var age: Int = 0, var city: String = "")
 fun main() {
 //sampleStart
     val adam = Person("Adam").apply { 
-        age = 20                       // same as this.age = 20 or adam.age = 20
+        age = 20                       // 和 this.age = 20 或者 adam.age = 20 一样
         city = "London"
     }
 //sampleEnd
