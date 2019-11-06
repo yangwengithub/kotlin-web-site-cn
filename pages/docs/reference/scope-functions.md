@@ -115,7 +115,7 @@ fun main() {
 
 #### it
 
-反过来，`let` 及 `also` 将上下文对象作为 lambda 表达式参数。如果没有指定参数名，对象可以用隐式默认名称 `it` 访问。`it` 比 `this` 简短，带有 `it` 的表达式通常更容易阅读。然而，当调用对象函数或属性时，不能像 `this` 这样隐式地访问对象。因此，当上下文对象在作用域中主要用作函数调用中的参数时，使用 `it` 作为上下文对象会更好。如果在代码块中使用多个变量，则 `it` 也更好。
+反过来，`let` 及 `also` 将上下文对象作为 lambda 表达式参数。如果没有指定参数名，对象可以用隐式默认名称 `it` 访问。`it` 比 `this` 简短，带有 `it` 的表达式通常更容易阅读。然而，当调用对象函数或属性时，不能像 `this` 这样隐式地访问对象。因此，当上下文对象在作用域中主要用作函数调用中的参数时，使用 `it` 作为上下文对象会更好。若在代码块中使用多个变量，则 `it` 也更好。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -228,7 +228,7 @@ fun main() {
 
 #### Lambda 表达式结果
 
-`let`, `run`, and `with` return the lambda result. So, you can use them when assigning the result to a variable, chaining operations on the result, and so on.
+`let`、`run` 及 `with` 返回 lambda 表达式的结果。所以，在需要使用其结果给一个变量赋值，或者在需要对其结果进行链式操作等情况下，可以使用它们。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -248,7 +248,7 @@ fun main() {
 
 </div>
 
-Additionally, you can ignore the return value and use a scope function to create a temporary scope for variables. 
+此外，还可以忽略返回值，仅使用作用域函数为变量创建一个临时作用域。
 
 <div class="sample" markdown="1" theme="idea">
 
