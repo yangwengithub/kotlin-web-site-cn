@@ -169,10 +169,6 @@ fun main() {
 
 ### 返回值
 
-The scope functions differ by the result they return:
-* `apply` and `also` return the context object.
-* `let`, `run`, and `with` return the lambda result.
-
 根据返回结果，作用域函数可以分为以下两类：
 * `apply` 及 `also` 返回上下文对象。
 * `let`、`run` 及 `with` 返回 lambda 表达式结果.
