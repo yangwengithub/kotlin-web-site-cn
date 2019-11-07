@@ -97,5 +97,5 @@ runDceTestKotlinJs.dceOptions.devMode = true
   它只适用于开发应用程序（可能使用共享库）时。
   原因是：DCE 不知道库的哪些部分会被用户的应用程序所使用。
 * DCE 不会通过删除不必要的空格及缩短标识符来执行代码压缩（丑化）。
-  对于此目的，你应该使用现有的工具，如 UglifyJS（https://github.com/mishoo/UglifyJS2 ）<!--
-  -->或者 Google Closure Compiler（https://developers.google.com/closure/compiler/ ）。
+  对于此目的，你应该使用现有的工具，如 [UglifyJS](https://github.com/mishoo/UglifyJS2)<!--
+  -->或者 [Google Closure Compiler](https://developers.google.com/closure/compiler/)。

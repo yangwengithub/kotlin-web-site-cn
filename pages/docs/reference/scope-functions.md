@@ -7,11 +7,11 @@ title: "作用域函数"
 
 # 作用域函数
 
-The Kotlin standard library contains several functions whose sole purpose is to execute a block of code within the context of an object. When you call such a function on an object with a [lambda expression](lambdas.html) provided, it forms a temporary scope. In this scope, you can access the object without its name. Such functions are called _scope functions_. There are five of them: `let`, `run`, `with`, `apply`, and `also`.
+Kotlin 标准库包含几个函数，它们的唯一目的是在对象的上下文中执行代码块。当对一个对象调用这样的函数并提供一个 [lambda 表达式](lambdas.html)时，它会形成一个临时作用域。在此作用域中，可以访问该对象而无需其名称。这些函数称为*作用域函数*。共有以下五种：`let`、`run`、`with`、`apply` 以及 `also`。
 
-Basically, these functions do the same: execute a block of code on an object. What's different is how this object becomes available inside the block and what is the result of the whole expression.
+这些函数基本上做了同样的事情：在一个对象上执行一个代码块。不同的是这个对象在块中如何使用，以及整个表达式的结果是什么。
 
-Here's a typical usage of a scope function:
+下面是作用域函数的典型用法:
 
 
 
@@ -35,7 +35,7 @@ fun main() {
 
 
 
-If you write the same without `let`, you'll have to introduce a new variable and repeat its name whenever you use it. 
+如果不使用 `let` 来写这段代码, 就必须引入一个新变量，并在每次使用它时重复其名称。
 
 
 
@@ -58,19 +58,19 @@ fun main() {
 
 
 
-The scope functions do not introduce any new technical capabilities, but they can make your code more concise and readable.
+作用域函数没有引入任何新的技术，但是它们可以使你的代码更加简洁易读。
 
-Due to the similar nature of scope functions, choosing the right one for your case can be a bit tricky. The choice mainly depends on your intent and the consistency of use in your project. Below we'll provide detailed descriptions of the distinctions between scope functions and the conventions on their usage.
+由于作用域函数的相似性质，为你的案例选择正确的函数可能有点棘手。选择主要取决于你的意图和项目中使用的一致性。下面我们将详细描述各种作用域函数及其约定用法之间的区别。
 
 ## 区别
 
-Because the scope functions are all quite similar in nature, it's important to understand the differences between them. There are two main differences between each scope function: 
-* The way to refer to the context object
-* The return value.
+由于作用域函数本质上都非常相似，因此了解它们之间的区别很重要。每个作用域函数之间有两个主要区别：
+* 引用上下文对象的方式
+* 返回值
 
 ### 上下文对象：`this` 还是 `it`
 
-Inside the lambda of a scope function, the context object is available by a short reference instead of its actual name. Each scope function uses one of two ways to access the context object: as a lambda [receiver](lambdas.html#带有接收者的函数字面值) (`this`) or as a lambda argument (`it`). Both provide the same capabilities, so we'll describe the pros and cons of each for different cases and provide recommendations on their use.
+在作用域函数的 lambda 表达式里，上下文对象可以不使用其实际名称而是使用一个更简短的引用来访问。每个作用域函数都使用以下两种方式之一来访问上下文对象：作为 lambda 的[接收者](lambdas.html#带有接收者的函数字面值)（`this`）或者作为 lambda 的参数（`it`）。两者都提供了同样的功能，因此我们将针对不同的场景描述两者的优缺点，并提供使用建议。
 
 
 
@@ -80,7 +80,7 @@ fun main() {
     // this
     str.run {
         println("The receiver string length: $length")
-        //println("The receiver string length: ${this.length}") // does the same
+        //println("The receiver string length: ${this.length}") // 和上句效果相同
     }
 
     // it
@@ -94,7 +94,7 @@ fun main() {
 
 #### this
 
-`run`, `with`, and `apply` refer to the context object as a lambda receiver - by keyword `this`. Hence, in their lambdas, the object is available as it would be in ordinary class functions. In most cases, you can omit `this` when accessing the members of the receiver object, making the code shorter. On the other hand, if `this` is omitted, it can be hard to distinguish between the receiver members and external objects or functions. So, having the context object as a receiver (`this`) is recommended for lambdas that mainly operate on the object members: call its functions or assign properties.
+`run`、`with` 以及 `apply` 通过关键字 `this` 引用上下文对象。因此，在它们的 lambda 表达式中可以像在普通的类函数中一样访问上下文对象。在大多数场景，当你访问接收者对象时你可以省略 `this`，来让你的代码更简短。相对地，如果省略了 `this`，就很难区分接收者对象的成员及外部对象或函数。因此，对于主要对对象成员进行操作（调用其函数或赋值其属性）的 lambda，建议将上下文对象作为接收者（`this`）。
 
 
 
@@ -104,7 +104,7 @@ data class Person(var name: String, var age: Int = 0, var city: String = "")
 fun main() {
 //sampleStart
     val adam = Person("Adam").apply { 
-        age = 20                       // same as this.age = 20 or adam.age = 20
+        age = 20                       // 和 this.age = 20 或者 adam.age = 20 一样
         city = "London"
     }
 //sampleEnd
@@ -115,7 +115,7 @@ fun main() {
 
 #### it
 
-In turn, `let` and `also` have the context object as a lambda argument. If the argument name is not specified, the object is accessed by the implicit default name `it`. `it` is shorter than `this` and expressions with `it` are usually easier for reading. However, when calling the object functions or properties you don't have the object available implicitly like `this`. Hence, having the context object as `it` is better when the object is mostly used as an argument in function calls. `it` is also better if you use multiple variables in the code block.
+反过来，`let` 及 `also` 将上下文对象作为 lambda 表达式参数。如果没有指定参数名，对象可以用隐式默认名称 `it` 访问。`it` 比 `this` 简短，带有 `it` 的表达式通常更容易阅读。然而，当调用对象函数或属性时，不能像 `this` 这样隐式地访问对象。因此，当上下文对象在作用域中主要用作函数调用中的参数时，使用 `it` 作为上下文对象会更好。若在代码块中使用多个变量，则 `it` 也更好。
 
 
 
@@ -141,7 +141,7 @@ fun main() {
 
 
 
-Additionally, when you pass the context object as an argument, you can provide a custom name for the context object inside the scope.
+此外，当将上下文对象作为参数传递时，可以为上下文对象指定在作用域内的自定义名称。
 
 
 
@@ -169,15 +169,15 @@ fun main() {
 
 ### 返回值
 
-The scope functions differ by the result they return:
-* `apply` and `also` return the context object.
-* `let`, `run`, and `with` return the lambda result.
+根据返回结果，作用域函数可以分为以下两类：
+* `apply` 及 `also` 返回上下文对象。
+* `let`、`run` 及 `with` 返回 lambda 表达式结果.
 
-These two options let you choose the proper function depending on what you do next in your code.
+这两个选项使你可以根据在代码中的后续操作来选择适当的函数。
 
 #### 上下文对象
 
-The return value of `apply` and `also` is the context object itself. Hence, they can be included into call chains as _side steps_: you can continue chaining function calls on the same object after them.  
+`apply` 及 `also` 的返回值是上下文对象本身。因此，它们可以作为辅助步骤包含在调用链中：你可以继续在同一个对象上进行链式函数调用。
 
 
 
@@ -200,7 +200,7 @@ fun main() {
 
 
 
-They also can be used in return statements of functions returning the context object.
+它们还可以用在返回上下文对象的函数的 return 语句中。
 
 
 
@@ -228,7 +228,7 @@ fun main() {
 
 #### Lambda 表达式结果
 
-`let`, `run`, and `with` return the lambda result. So, you can use them when assigning the result to a variable, chaining operations on the result, and so on.
+`let`、`run` 及 `with` 返回 lambda 表达式的结果。所以，在需要使用其结果给一个变量赋值，或者在需要对其结果进行链式操作等情况下，可以使用它们。
 
 
 
@@ -248,7 +248,7 @@ fun main() {
 
 
 
-Additionally, you can ignore the return value and use a scope function to create a temporary scope for variables. 
+此外，还可以忽略返回值，仅使用作用域函数为变量创建一个临时作用域。
 
 
 

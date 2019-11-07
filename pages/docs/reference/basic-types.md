@@ -387,16 +387,16 @@ x[0] = x[1] + x[2]
 
 
 ```kotlin
-// Array of int of size 5 with values [0, 0, 0, 0, 0]
+// 大小为 5、值为 [0, 0, 0, 0, 0] 的整型数组
 val arr = IntArray(5)
 
-// e.g. initialise the values in the array with a constant
-// Array of int of size 5 with values [42, 42, 42, 42, 42]
+// 例如：用常量初始化数组中的值
+// 大小为 5、值为 [42, 42, 42, 42, 42] 的整型数组
 val arr = IntArray(5) { 42 }
 
-// e.g. initialise the values in the array using a lambda
-// Array of int of size 5 with values [0, 1, 2, 3, 4] (values initialised to their index value)
-var arr = IntArray(5, { it * 1 })
+// 例如：使用 lambda 表达式初始化数组中的值
+// 大小为 5、值为 [0, 1, 2, 3, 4] 的整型数组（值初始化为其索引值）
+var arr = IntArray(5) { it * 1 } 
 ```
 
 

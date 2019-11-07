@@ -302,13 +302,13 @@ infix fun Int.shl(x: Int): Int { …… }
 
 > 中缀函数调用的优先级低于算术操作符、类型转换以及 `rangeTo` 操作符。
 > 以下表达式是等价的：
-> * `1 shl 2 + 3` 与 `1 shl (2 + 3)`
-> * `0 until n * 2` 与 `0 until (n * 2)`
-> * `xs union ys as Set<*>` 与 `xs union (ys as Set<*>)`
+> * `1 shl 2 + 3` 等价于 `1 shl (2 + 3)`
+> * `0 until n * 2` 等价于 `0 until (n * 2)`
+> * `xs union ys as Set<*>` 等价于 `xs union (ys as Set<*>)`
 >
 > 另一方面，中缀函数调用的优先级高于布尔操作符 `&&` 与 `||`、`is-` 与 `in-` 检测以及其他一些操作符。这些表达式也是等价的：
-> * `a && b xor c` 与 `a && (b xor c)`
-> * `a xor b in c` 与 `(a xor b) in c`
+> * `a && b xor c` 等价于 `a && (b xor c)`
+> * `a xor b in c` 等价于 `(a xor b) in c`
 > 
 > 完整的优先级层次结构请参见其[语法参考](grammar.html#expressions)。
 {:.note}
