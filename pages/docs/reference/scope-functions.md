@@ -273,9 +273,9 @@ fun main() {
 
 ### `let`
 
-**上下文对象**作为 lambda 表达式的参数（`it`）来访问。 **返回值**是 lambda 表达式的结果。
+**上下文对象**作为 lambda 表达式的参数（`it`）来访问。**返回值**是 lambda 表达式的结果。
 
-`let` 可用于在调用链的结果上调用一个或多个函数。 例如，以下代码打印对集合的两个操作的结果：
+`let` 可用于在调用链的结果上调用一个或多个函数。例如，以下代码打印对集合的两个操作的结果：
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -284,7 +284,7 @@ fun main() {
 //sampleStart
     val numbers = mutableListOf("one", "two", "three", "four", "five")
     val resultList = numbers.map { it.length }.filter { it > 3 }
-    println(resultList)    
+    println(resultList)
 //sampleEnd
 }
 ```
@@ -333,10 +333,10 @@ fun processNonNullString(str: String) {}
 
 fun main() {
 //sampleStart
-    val str: String? = "Hello"   
+    val str: String? = "Hello" 
     //processNonNullString(str)       // 编译错误：str 可能为空
     val length = str?.let { 
-        println("let() called on $it")        
+        println("let() called on $it")
         processNonNullString(it)      // 编译通过：'it' 在 '?.let { }' 中必不为空
         it.length
     }
@@ -545,7 +545,7 @@ fun main() {
 
 ## `takeIf` 与 `takeUnless`
 
-除了范围函数外，标准库还包含函数 `takeIf` 及 `takeUnless`。这些功能使你可以将对象状态检查嵌入到调用链中。
+除了作用域函数外，标准库还包含函数 `takeIf` 及 `takeUnless`。这些功能使你可以将对象状态检查嵌入到调用链中。
 
 当以提供的谓词在对象上进行调用时，若该对象与谓词匹配，则 `takeIf` 返回此对象。否则返回 `null`。因此，`takeIf` 是单个对象的过滤函数。反之，`takeUnless`如果不匹配谓词，则返回对象，如果匹配则返回 `null`。该对象作为 lambda 表达式参数（`it`）来访问。
 
