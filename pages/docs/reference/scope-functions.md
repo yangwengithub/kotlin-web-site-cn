@@ -269,13 +269,13 @@ fun main() {
 
 ## 几个函数
 
-To help you choose the right scope function for your case, we'll describe them in detail and provide usage recommendations. Technically, functions are interchangeable in many cases, so the examples show the conventions that define the common usage style. 
+为了帮助你为你的场景选择合适的作用域函数，我们会详细地描述它们并且提供一些使用建议。从技术角度来说，作用域函数在很多场景里是可以互换的，所以这些示例展示了定义通用使用风格的约定用法。
 
 ### `let`
 
-**The context object** is available as an argument (`it`). **The return value** is the lambda result.
+**上下文对象**作为 lambda 表达式的参数（`it`）来访问。 **返回值**是 lambda 表达式的结果。
 
-`let` can be used to invoke one or more functions on results of call chains. For example, the following code prints the results of two operations on a collection:
+`let` 可用于在调用链的结果上调用一个或多个函数。 例如，以下代码打印对集合的两个操作的结果：
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -291,7 +291,7 @@ fun main() {
 
 </div>
 
-With `let`, you can rewrite it:
+使用 `let`,可以写成这样：
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -301,7 +301,7 @@ fun main() {
     val numbers = mutableListOf("one", "two", "three", "four", "five")
     numbers.map { it.length }.filter { it > 3 }.let { 
         println(it)
-        // and more function calls if needed
+        // 如果需要可以调用更多函数
     } 
 //sampleEnd
 }
@@ -309,7 +309,7 @@ fun main() {
 
 </div>
 
-If the code block contains a single function with `it` as an argument, you can use the method reference (`::`) instead of the lambda:
+若代码块仅包含以 `it` 作为参数的单个函数，则可以使用方法引用(`::`)代替 lambda 表达式：
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -324,7 +324,7 @@ fun main() {
 
 </div>
 
-`let` is often used for executing a code block only with non-null values. To perform actions on a non-null object, use the safe call operator `?.` on it and call `let` with the actions in its lambda.
+`let` 经常用于仅使用非空值执行代码块。如需对非空对象执行操作，可对其使用安全调用操作符 `?.` 并调用 `let` 在 lambda 表达式中执行操作。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -334,10 +334,10 @@ fun processNonNullString(str: String) {}
 fun main() {
 //sampleStart
     val str: String? = "Hello"   
-    //processNonNullString(str)       // compilation error: str can be null
+    //processNonNullString(str)       // 编译错误：str 可能为空
     val length = str?.let { 
         println("let() called on $it")        
-        processNonNullString(it)      // OK: 'it' is not null inside '?.let { }'
+        processNonNullString(it)      // 编译通过：'it' 在 '?.let { }' 中必不为空
         it.length
     }
 //sampleEnd
@@ -346,7 +346,7 @@ fun main() {
 
 </div>
 
-Another case for using `let` is introducing local variables with a limited scope for improving code readability. To define a new variable for the context object, provide its name as the lambda argument so that it can be used instead of the default `it`.
+使用 `let` 的另一种情况是引入范围有限的局部变量以提高代码的可读性。如需为上下文对象定义一个新变量，可提供其名称作为 lambda 表达式参数来替默认的 `it`。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -367,9 +367,9 @@ fun main() {
 
 ### `with`
 
-A non-extension function: **the context object** is passed as an argument, but inside the lambda, it's available as a receiver (`this`). **The return value** is the lambda result. 
+一个非扩展函数：**上下文对象**作为参数传递，但是在 lambda 表达式内部，它可以作为接收者（`this`）使用。 **返回值**是 lambda 表达式结果。
 
-We recommend `with` for calling functions on the context object without providing the lambda result. In the code, `with` can be read as “_with this object, do the following._”
+我们建议使用 `with` 来调用上下文对象上的函数，而不使用 lambda 表达式结果。 在代码中，`with` 可以理解为“*对于这个对象，执行以下操作。*”
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -387,7 +387,7 @@ fun main() {
 
 </div>
 
-Another use case for `with` is introducing a helper object whose properties or functions will be used for calculating a value.
+`with` 的另一个使用场景是引入一个辅助对象，其属性或函数将用于计算一个值。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -408,11 +408,11 @@ fun main() {
 
 ### `run`
 
-**The context object** is available as a receiver (`this`). **The return value** is the lambda result.
+**上下文对象** 作为接收者（`this`）来访问。 **返回值** 是 lambda 表达式结果。
 
-`run` does the same as `with` but invokes as `let` - as an extension function of the context object.
+`run` 和 `with` 做同样的事情，但是调用方式和 `let` 一样——作为上下文对象的扩展函数.
 
-`run` is useful when your lambda contains both the object initialization and the computation of the return value.
+当 lambda 表达式同时包含对象初始化和返回值的计算时，`run` 很有用。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -431,7 +431,7 @@ fun main() {
         query(prepareRequest() + " to port $port")
     }
     
-    // the same code written with let() function:
+    // 同样的代码如果用 let() 函数来写:
     val letResult = service.let {
         it.port = 8080
         it.query(it.prepareRequest() + " to port ${it.port}")
@@ -444,7 +444,7 @@ fun main() {
 
 </div>
 
-Besides calling `run` on a receiver object, you can use it as a non-extension function. Non-extension `run` lets you execute a block of several statements where an expression is required.
+除了在接收者对象上调用 `run` 之外，还可以将其用作非扩展函数。 非扩展 `run` 可以使你在需要表达式的地方执行一个由多个语句组成的块。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -470,9 +470,9 @@ fun main() {
 
 ### `apply`
 
-**The context object** is available as a receiver (`this`). **The return value** is the object itself.
+**上下文对象** 作为接收者（`this`）来访问。 **返回值** 是上下文对象本身。
 
-Use `apply` for code blocks that don't return a value and mainly operate on the members of the receiver object. The common case for `apply` is the object configuration. Such calls can be read as “_apply the following assignments to the object._”
+对于不返回值且主要在接收者（`this`）对象的成员上运行的代码块使用 `apply`。`apply` 的常见情况是对象配置。这样的调用可以理解为“*将以下赋值操作应用于对象*”。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -491,15 +491,15 @@ fun main() {
 
 </div>
 
-Having the receiver as the return value, you can easily include `apply` into call chains for more complex processing.
+将接收者作为返回值，你可以轻松地将 `apply` 包含到调用链中以进行更复杂的处理。
 
 ### `also`
 
-**The context object** is available as an argument (`it`). **The return value** is the object itself.
+**上下文对象**作为 lambda 表达式的参数（`it`）来访问。 **返回值**是上下文对面本身。
 
-`also` is good for performing some actions that take the context object as an argument. Use `also` for additional actions that don't alter the object, such as logging or printing debug information. Usually, you can remove the calls of `also` from the call chain without breaking the program logic. 
+`also` 对于执行一些将上下文对象作为参数的操作很有用。 对于不会改变上下文对象的操作，可使用 `also`，例如记录或打印调试信息。 通常，你可以在不破坏程序逻辑的情况下从调用链中删除 `also` 的调用。
 
-When you see `also` in the code, you can read it as “_and also do the following_”.
+当你在代码中看到 `also` 时，可以将其理解为“*并且执行以下操作*”。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -518,36 +518,36 @@ fun main() {
 
 ## 函数选择
 
-To help you choose the right scope function for your purpose, we provide the table of key differences between them. 
+为了帮助你选择合适的作用域函数，我们提供了它们之间的主要区别表。
 
-|Function|Object reference|Return value|Is extension function|
+|函数|对象引用|返回值|是否是扩展函数|
 |---|---|---|---|
-|`let`|`it`|Lambda result|Yes|
-|`run`|`this`|Lambda result|Yes|
-|`run`|-|Lambda result|No: called without the context object|
-|`with`|`this`|Lambda result|No: takes the context object as an argument.|
-|`apply`|`this`|Context object|Yes|
-|`also`|`it`|Context object|Yes|
+|`let`|`it`|Lambda 表达式结果|是|
+|`run`|`this`|Lambda 表达式结果|是|
+|`run`|-|Lambda 表达式结果|不是：调用无需上下文对象|
+|`with`|`this`|Lambda 表达式结果|不是：把上下文对象当做参数|
+|`apply`|`this`|上下文对象|是|
+|`also`|`it`|上下文对象|是|
 
-Here is a short guide for choosing scope functions depending on the intended purpose:
+以下是根据预期目的选择作用域函数的简短指南：
 
-* Executing a lambda on non-null objects: `let`
-* Introducing an expression as a variable in local scope: `let`
-* Object configuration: `apply`
-* Object configuration and computing the result: `run`
-* Running statements where an expression is required: non-extension `run`
-* Additional effects: `also`
-* Grouping function calls on an object: `with`
+* 对一个非空（non-null）对象执行 lambda 表达式：`let`
+* 将表达式作为变量引入为局部作用域中：`let`
+* 对象配置：`apply`
+* 对象配置并且计算结果：`run`
+* 在需要表达式的地方运行语句：非扩展的 `run`
+* 附加效果：`also`
+* 一个对象的一组函数调用：`with`
 
-The use cases of different functions overlap, so that you can choose the functions based on the specific conventions used in your project or team.
+不同函数的使用场景存在重叠，你可以根据项目或团队中使用的特定约定选择函数。
 
-Although the scope functions are a way of making the code more concise, avoid overusing them: it can decrease your code readability and lead to errors. Avoid nesting scope functions and be careful when chaining them: it's easy to get confused about the current context object and the value of `this` or `it`.
+尽管作用域函数是使代码更简洁的一种方法，但请避免过度使用它们：这会降低代码的可读性并可能导致错误。避免嵌套作用域函数，同时链式调用它们时要小心：此时很容易对当前上下文对象及 `this` 或 `it` 的值感到困惑。
 
 ## `takeIf` 与 `takeUnless`
 
-In addition to scope functions, the standard library contains the functions `takeIf` and `takeUnless`. These functions let you embed checks of the object state in call chains. 
+除了范围函数外，标准库还包含函数 `takeIf` 及 `takeUnless`。这些功能使你可以将对象状态检查嵌入到调用链中。
 
-When called on an object with a predicate provided, `takeIf` returns this object if it matches the predicate. Otherwise, it returns `null`. So, `takeIf` is a filtering function for a single object. In turn, `takeUnless` returns the object if it doesn't match the predicate and `null` if it does. The object is available as a lambda argument (`it`).
+当以提供的谓词在对象上进行调用时，若该对象与谓词匹配，则 `takeIf` 返回此对象。否则返回 `null`。因此，`takeIf` 是单个对象的过滤函数。反之，`takeUnless`如果不匹配谓词，则返回对象，如果匹配则返回 `null`。该对象作为 lambda 表达式参数（`it`）来访问。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -567,7 +567,7 @@ fun main() {
 
 </div>
 
-When chaining other functions after `takeIf` and `takeUnless`, don't forget to perform the null check or the safe call (`?.`) because their return value is nullable.
+当在 `takeIf` 及 `takeUnless` 之后链式调用其他函数，不要忘记执行空检查或安全调用（`？.`），因为他们的返回值是可为空的。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -576,7 +576,7 @@ fun main() {
 //sampleStart
     val str = "Hello"
     val caps = str.takeIf { it.isNotEmpty() }?.toUpperCase()
-   //val caps = str.takeIf { it.isNotEmpty() }.toUpperCase() //compilation error
+   //val caps = str.takeIf { it.isNotEmpty() }.toUpperCase() // 编译错误
     println(caps)
 //sampleEnd
 }
@@ -584,7 +584,7 @@ fun main() {
 
 </div>
 
-`takeIf` and `takeUnless` are especially useful together with scope functions. A good case is chaining them with `let` for running a code block on objects that match the given predicate. To do this, call `takeIf` on the object and then call `let` with a safe call (`?`). For objects that don't match the predicate, `takeIf` returns `null` and `let` isn't invoked.
+`takeIf` 及 `takeUnless` 与作用域函数一起特别有用。 一个很好的例子是用 `let` 链接它们，以便在与给定谓词匹配的对象上运行代码块。 为此，请在对象上调用 `takeIf`，然后通过安全调用（`？.`）调用 `let`。对于与谓词不匹配的对象，`takeIf` 返回 `null`，并且不调用 `let`。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -606,7 +606,7 @@ fun main() {
 
 </div>
 
-This is how the same function looks without the standard library functions:
+没有标准库函数时，相同的函数看起来是这样的：
 
 <div class="sample" markdown="1" theme="idea">
 
