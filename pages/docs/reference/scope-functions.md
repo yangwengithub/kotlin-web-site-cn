@@ -291,7 +291,7 @@ fun main() {
 
 </div>
 
-使用 `let`,可以写成这样：
+使用 `let`，可以写成这样：
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -346,7 +346,7 @@ fun main() {
 
 </div>
 
-使用 `let` 的另一种情况是引入范围有限的局部变量以提高代码的可读性。如需为上下文对象定义一个新变量，可提供其名称作为 lambda 表达式参数来替默认的 `it`。
+使用 `let` 的另一种情况是引入作用域受限的局部变量以提高代码的可读性。如需为上下文对象定义一个新变量，可提供其名称作为 lambda 表达式参数来替默认的 `it`。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -545,7 +545,7 @@ fun main() {
 
 ## `takeIf` 与 `takeUnless`
 
-除了作用域函数外，标准库还包含函数 `takeIf` 及 `takeUnless`。这些功能使你可以将对象状态检查嵌入到调用链中。
+除了作用域函数外，标准库还包含函数 `takeIf` 及 `takeUnless`。这俩函数使你可以将对象状态检查嵌入到调用链中。
 
 当以提供的谓词在对象上进行调用时，若该对象与谓词匹配，则 `takeIf` 返回此对象。否则返回 `null`。因此，`takeIf` 是单个对象的过滤函数。反之，`takeUnless`如果不匹配谓词，则返回对象，如果匹配则返回 `null`。该对象作为 lambda 表达式参数（`it`）来访问。
 
@@ -567,7 +567,7 @@ fun main() {
 
 </div>
 
-当在 `takeIf` 及 `takeUnless` 之后链式调用其他函数，不要忘记执行空检查或安全调用（`？.`），因为他们的返回值是可为空的。
+当在 `takeIf` 及 `takeUnless` 之后链式调用其他函数，不要忘记执行空检查或安全调用（`?.`），因为他们的返回值是可为空的。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -584,7 +584,7 @@ fun main() {
 
 </div>
 
-`takeIf` 及 `takeUnless` 与作用域函数一起特别有用。 一个很好的例子是用 `let` 链接它们，以便在与给定谓词匹配的对象上运行代码块。 为此，请在对象上调用 `takeIf`，然后通过安全调用（`？.`）调用 `let`。对于与谓词不匹配的对象，`takeIf` 返回 `null`，并且不调用 `let`。
+`takeIf` 及 `takeUnless` 与作用域函数一起特别有用。 一个很好的例子是用 `let` 链接它们，以便在与给定谓词匹配的对象上运行代码块。 为此，请在对象上调用 `takeIf`，然后通过安全调用（`?.`）调用 `let`。对于与谓词不匹配的对象，`takeIf` 返回 `null`，并且不调用 `let`。
 
 <div class="sample" markdown="1" theme="idea">
 
