@@ -276,7 +276,7 @@ val sum = { x, y -> x + y }
 
 {:#passing-a-lambda-to-the-last-parameter}
 
-### Passing trailing lambdas
+### 传递末尾的 lambda 表达式
 
 在 Kotlin 中有一个约定：如果函数的最后一个参数是函数，那么作为相应参数<!--
 -->传入的 lambda 表达式可以放在圆括号之外：
