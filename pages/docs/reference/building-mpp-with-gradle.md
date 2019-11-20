@@ -32,7 +32,7 @@ title: "使用 Gradle 构建多平台项目"
 * [Android 支持](#android-支持)
     * [发布 Android 库](#发布-android-库)
 * [使用 Kotlin/Native 目标平台](#使用-kotlinnative-目标平台)
-    * [Target shortcuts](#target-shortcuts)
+    * [目标快捷方式](#目标快捷方式)
     * [构建最终原生二进制文件](#构建最终原生二进制文件)
 
 ## 项目结构
@@ -1723,7 +1723,7 @@ It is important to note that some of the [Kotlin/Native targets](#已支持平�
 A target that is not supported by the current host is ignored during build and therefore not published. A library author may want to set up
 builds and publishing from different hosts as required by the library target platforms.
 
-### Target shortcuts
+### 目标快捷方式
 
 Some native targets are often created together and use the same sources. For example, building for an iOS device and a simulator
 is represented by different targets (`iosArm64` and `iosX64` respectively) but their source codes are usually the same.
