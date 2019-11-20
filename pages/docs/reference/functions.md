@@ -93,7 +93,7 @@ foo(baz = 1) // 使用默认值 bar = 0
 ```
 
 
-如果在默认参数之后的最后一个参数是 [lambda 表达式](lambdas.html#lambda-表达式语法)，那么它既可以作为命名参数在括号内传入，也可以在[括号外](lambdas.html#将-lambda-表达式传给最后一个参数)传入：
+如果在默认参数之后的最后一个参数是 [lambda 表达式](lambdas.html#lambda-表达式语法)，那么它既可以作为命名参数在括号内传入，也可以在[括号外](lambdas.html#passing-a-lambda-to-the-last-parameter)传入：
 
 
 
