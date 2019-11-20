@@ -32,6 +32,7 @@ title: "使用 Gradle 构建多平台项目"
 * [Android 支持](#android-支持)
     * [发布 Android 库](#发布-android-库)
 * [使用 Kotlin/Native 目标平台](#使用-kotlinnative-目标平台)
+    * [Target shortcuts](#target-shortcuts)
     * [构建最终原生二进制文件](#构建最终原生二进制文件)
 
 ## 项目结构
@@ -396,6 +397,8 @@ kotlin {
   
     * `androidNativeArm32` 与 `androidNativeArm64` 用于 Android NDK；
     * `iosArm32`、 `iosArm64`、 `iosX64` 用于 iOS；
+    * `watchosArm32`、 `watchosArm64`、 `watchosX86` 用于 watchOS；
+    * `tvosArm64`、 `tvosX64` 用于 tvOS；
     * `linuxArm32Hfp`、 `linuxMips32`、 `linuxMipsel32`、 `linuxX64` 用于 Linux；
     * `macosX64` 用于 MacOS；
     * `mingwX64` 与 `mingwX86` 用于 Windows；
@@ -1720,6 +1723,74 @@ It is important to note that some of the [Kotlin/Native targets](#已支持平�
 A target that is not supported by the current host is ignored during build and therefore not published. A library author may want to set up
 builds and publishing from different hosts as required by the library target platforms.
 
+### Target shortcuts
+
+Some native targets are often created together and use the same sources. For example, building for an iOS device and a simulator
+is represented by different targets (`iosArm64` and `iosX64` respectively) but their source codes are usually the same.
+A canonical way to express such shared code in the multiplatform project model is creating an intermediate
+source set (`iosMain`) and configuring links between it and the platform source sets:
+
+<div class="multi-language-sample" data-lang="groovy">
+<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
+```groovy
+sourceSets{
+    iosMain {
+        dependsOn(commonMain)
+        iosDeviceMain.dependsOn(it)
+        iosSimulatorMain.dependsOn(it)
+    }
+}
+```
+
+</div>
+</div>
+
+<div class="multi-language-sample" data-lang="kotlin">
+<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+```kotlin
+val commonMain by sourceSets.getting
+val iosDeviceMain by sourceSets.getting
+val iosSimulatorMain by sourceSets.getting
+
+val iosMain by sourceSets.creating {
+    dependsOn(commonMain)
+    iosDeviceMain.dependsOn(this)
+    iosSimulatorMain.dependsOn(this)
+}
+```
+
+</div>
+</div>
+
+Since 1.3.60, the `kotlin-multiplaform` plugin provides shortcuts that automate such a configuration: they let users
+create a group of targets along with a common source set for them with a single DSL method.
+
+The following shortcuts are available:
+
+ * `ios` creates targets for `iosArm64` and `iosX64`.
+ * `watchos` creates targets for  `watchosArm32`, `watchosArm64`, and `watchosX86`.
+ * `tvos` creates targets for  `tvosArm64` and `tvosX64`. 
+
+<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+```kotlin
+// Create two targets for iOS.
+// Create common source sets: iosMain and iosTest.
+ios {
+    // Configure targets.
+    // Note: this lambda will be called for each target.
+}
+
+// You can also specify a name prefix for created targets.
+// Common source sets will also have this prefix:
+// anotherIosMain and anotherIosTest.
+ios("anotherIos")
+```
+
+</div>
+
 ### 构建最终原生二进制文件
 
 By default, a Kotlin/Native target is compiled down to a `*.klib` library artifact, which can be consumed by Kotlin/Native itself as a
@@ -1944,7 +2015,7 @@ binaries.findExecutable("foo", DEBUG)
 </div>
 </div>
 
-> Note: Before 1.3.40, both test and product executables were represented by the same binary type. Thus to access the default test binary created by the plugin, the following line was used:
+> Before 1.3.40, both test and product executables were represented by the same binary type. Thus to access the default test binary created by the plugin, the following line was used:
 > ```
 > binaries.getExecutable("test", "DEBUG")
 > ``` 
