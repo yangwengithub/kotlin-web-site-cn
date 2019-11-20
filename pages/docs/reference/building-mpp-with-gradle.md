@@ -1730,8 +1730,8 @@ is represented by different targets (`iosArm64` and `iosX64` respectively) but t
 A canonical way to express such shared code in the multiplatform project model is creating an intermediate
 source set (`iosMain`) and configuring links between it and the platform source sets:
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
+> Groovy DSL
 
 ```groovy
 sourceSets{
@@ -1743,11 +1743,11 @@ sourceSets{
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+
+
+> Kotlin DSL
 
 ```kotlin
 val commonMain by sourceSets.getting
@@ -1761,8 +1761,8 @@ val iosMain by sourceSets.creating {
 }
 ```
 
-</div>
-</div>
+
+
 
 Since 1.3.60, the `kotlin-multiplaform` plugin provides shortcuts that automate such a configuration: they let users
 create a group of targets along with a common source set for them with a single DSL method.
@@ -1773,7 +1773,7 @@ The following shortcuts are available:
  * `watchos` creates targets for  `watchosArm32`, `watchosArm64`, and `watchosX86`.
  * `tvos` creates targets for  `tvosArm64` and `tvosX64`. 
 
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
 
 ```kotlin
 // Create two targets for iOS.
@@ -1789,7 +1789,7 @@ ios {
 ios("anotherIos")
 ```
 
-</div>
+
 
 ### 构建最终原生二进制文件
 
