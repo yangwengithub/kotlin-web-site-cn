@@ -249,12 +249,12 @@ val deferred = (1..1_000_000).map { n ->
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-val sum = deferred.sumBy { it.await() }
+val sum = deferred.map { it.await().toLong() }.sum()
 ```
 
 </div>
 
-这里我们简单从每个协程等待并取得它的执行结果，接下来将使用标准库的 `sumBy()` 函数来将所有结果叠加到一起。但编译器理所当然地抱怨道：
+这里我们简单从每个协程等待并取得它的执行结果，接下来将使用标准库的 `sum()` 函数来将所有结果叠加到一起。但编译器理所当然地抱怨道：
 
 > 挂起函数只被允许在协程或另一个挂起函数中调用
 
@@ -264,14 +264,14 @@ val sum = deferred.sumBy { it.await() }
 
 ```kotlin
 runBlocking {
-    val sum = deferred.sumBy { it.await() }
+    val sum = deferred.map { it.await().toLong() }.sum()
     println("Sum: $sum")
 }
 ```
 
 </div>
 
-现在它打印了一些合理的东西：`1784293664`，因为所有的协程都执行完毕了。
+现在它打印了一些合理的东西：`500000500000`，因为所有的协程都执行完毕了。
 
 让我们也确保我们的协程是实际并行运行的。如果我们在每个 `async` 中添加了 1 秒钟的 `delay()`，程序将不会运行 1'000'000 秒（超过 11.5 天）：
 
