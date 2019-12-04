@@ -116,7 +116,7 @@ internal actual fun writeLogMessage(message: String, logLevel: LogLevel) {
 
 <div style="display: flex; align-items: center; margin-bottom: 20px">
     <img src="{{ url_for('asset', path='images/landing/native/book.png') }}" height="38p" width="55" style="margin-right: 10px;">
-    <b>Tutorials and Documentation</b>
+    <b>教程与文档</b>
 </div>
 
 Kotlin 新手？可以看看[入门][Getting Started](basic-syntax.html)页。
