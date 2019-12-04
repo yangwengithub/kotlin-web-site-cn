@@ -260,7 +260,7 @@ fun main() {
 
 
 
-参见[*for*{: .keyword } 语法](grammar.html#forStatement)。
+参见 [*for*{: .keyword } 语法](grammar.html#forStatement)。
 
 ## While 循环
 
@@ -280,7 +280,7 @@ do {
 
 
 
-参见[*while*{: .keyword } 语法](grammar.html#whileStatement).
+参见 [*while*{: .keyword } 语法](grammar.html#whileStatement).
 
 ## 循环中的 Break 与 continue
 
