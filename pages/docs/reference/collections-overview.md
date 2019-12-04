@@ -50,7 +50,7 @@ fun main() {
 
 只读集合类型是[型变](generics.html#型变)的。
 这意味着，如果类 `Rectangle` 继承自 `Shape`，则可以在需要 `List <Shape>` 的任何地方使用 `List <Rectangle>`。
-换句话说，集合类型与元素类型具有相同的子类型关系。 地图在值类型上是型变的，但在键类型上不是。
+换句话说，集合类型与元素类型具有相同的子类型关系。 map 在值（value）类型上是型变的，但在键（key）类型上不是。
 
 反之，可变集合不是型变的；否则将导致运行时故障。 如果 `MutableList <Rectangle>` 是 `MutableList <Shape>` 的子类型，你可以在其中插入其他 `Shape` 的继承者（例如，`Circle`），从而违反了它的 `Rectangle` 类型参数。
 

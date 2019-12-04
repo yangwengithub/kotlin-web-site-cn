@@ -1,32 +1,45 @@
 ---
 type: tutorial
 layout: tutorial
-title: "运行代码片段"
-description: "本教程展示了在不创建或修改整个项目的情况下以轻量级方式运行 Kotlin 代码片段的方法。"
+title: "Running Code Snippets "
+description: "This tutorial shows the ways to write and run Kotlin code snippets in a lightweight manner without creating
+entire applications."
 authors: Pavel Semyonov，johnpoint(翻译)
-date: 2018-12-24
+date: 2019-11-13
 showAuthorInfo: false
 related:
     - command-line.md
 ---
 
-有时，你可能需要在项目或应用程序之外快速编写和执行一些代码。例如，在学习 Kotlin 或计算表达式时，这可能很有用。让我们看看快速运行 Kotlin 代码的两种简便方法:
-* [代码草稿](#代码草稿) 让你在 IDE 中的项目外部的临时文件中编写和运行代码。
-* [REPL](#repl) (_读取-求值-输出-循环_) 在控制台中以交互方式运行代码。     
+There may be times when you need to quickly write and execute code outside of a project or application. 
+This may be useful, for example, when learning Kotlin or evaluating expressions.
+Let's have a look at three handy ways we can use to run Kotlin code quickly:
+* [Scratches](#scratches-and-worksheets) let us write and run code in a temporary file outside of our project in the IDE.
+* [Worksheets](#scratches-and-worksheets) are like scratches, but they reside within projects.
+* [REPL](#repl) (_Read-Eval-Print-Loop_) runs code in an interactive console.     
 
+## Scratches and worksheets
 
-## 代码草稿
+The Kotlin plugin for IntelliJ IDEA supports [_scratches_](https://www.jetbrains.com/help/idea/scratches.html) and _worksheets._
+ 
+Scratches let us create code drafts in the same IDE window as our project and run them on the fly. 
+Scratches are not tied to projects; you can access and run all your scratches from any IntelliJ IDEA window on your OS. 
 
-> 目前，代码草稿仅支持 Kotlin/JVM 项目。
-{:.note}
+To create a Kotlin scratch, click __File \| New \| Scratch file__ and select the __Kotlin__ type.
 
-IntelliJ IDEA 的 Kotlin 插件支持 [代码草稿](https://www.jetbrains.com/help/idea/scratches.html)。 代码草稿允许你在项目的同一 IDE 窗口中创建代码并即时运行它们。草稿与项目无关；你可以从操作系统上的任何 IntelliJ IDEA 窗口访问并运行任意代码草稿。
+In turn, worksheets are project files: they are stored in project directories and tied to the project modules.
+Worksheets are useful for writing code parts that don't actually make a software unit but should still be stored together 
+in a project. For example, you can use worksheets for education or demo materials.
 
-要创建 Kotlin 草稿，请单击 __文件 \| 新的 \| 草稿文件__ 并选择 __Kotlin__ 类型。
+To create a Kotlin worksheet in a project directory, right-click the directory in the project tree and select
+__New \| Kotlin Worksheet__.
 
-在草稿中，可以编写任何有效的 Kotlin 代码，包括新的函数和类。IntelliJ IDEA 支持草稿的语法高亮、自动补全和其他代码编辑功能。
+In scratches and worksheets, you can write any valid Kotlin code. Syntax highlighting, auto-completion, and the other IntelliJ IDEA code 
+editing features are all supported too. Note that there's no need for declaring the `main` function: all the 
+code you write is executed as if it would be in the body of `main`.
 
-开始编写代码，然后单击 __运行__ 。执行结果将出现在代码行的对面。
+Once you have finished writing your code in a scratch or a worksheet, click __Run__. 
+The execution results will appear in the lines opposite your code.
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
     <img
@@ -37,7 +50,8 @@ IntelliJ IDEA 的 Kotlin 插件支持 [代码草稿](https://www.jetbrains.com/h
 
 ### 交互模式
 
-IntelliJ IDEA 可以自动运行你的草稿代码。要在短时间停止键入后获得执行结果，请打开 __交互模式__ 。
+IntelliJ IDEA can run the code from scratches and worksheets automatically. To get the execution results when you stop 
+typing, switch on the __Interactive mode__.
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
     <img
@@ -48,25 +62,38 @@ IntelliJ IDEA 可以自动运行你的草稿代码。要在短时间停止键入
 
 ### 调用模块
 
-要在草稿中使用项目中的类或函数，请像往常一样使用 `import` 语句将它们导入到临时文件中。然后编写代码并在 __Use classpath of module__ 中选择的相应模块。要在运行草稿之前自动重建模块，请选择 __Make before Run__。
+We can use classes or functions from a Kotlin project, in our scratches and worksheets.
+
+Worksheets automatically get access to classes and functions from the module where they reside.
+
+To use classes or functions from a project in a scratch, import them into the scratch file as usual with the 
+`import` statement. Then write your code and run it with the appropriate module selected in __Use classpath of module__ list.
+ 
+Both scratches and worksheets use the compiled versions of connected modules. So, if you modify a module's source files,
+the changes will propagate to scratches and worksheets when you rebuild the module.
+To rebuild the module automatically before each run of a scratch or a worksheet, select __Make before Run__.
 
 ![Scratch select module]({{ url_for('tutorial_img', filename='quick-run/scratch-select-module.png') }})
 
 ### 像 REPL 那样运行
 
-若要计算草稿中的每个特定表达式，请在选择 __Use REPL__ 的情况下运行它。草稿的执行方式与 [REPL](#repl) 相同：代码行将随后运行，提供每次调用的结果。稍后，你可以通过相应行中显示的名称 `res*` 来引用结果。
+To evaluate each particular expression in a scratch or a worksheet, run it with __Use REPL__ selected. The code will be 
+executed the same way as in [REPL](#repl): the code lines will run sequentially, providing results of each call. 
+You can later refer to the results by the names `res*` shown in the corresponding lines.
 
 ![Scratch REPL]({{ url_for('tutorial_img', filename='quick-run/scratch-repl.png') }})
 
 ## REPL
 
-_REPL_ (_读取-求值-输出-循环_) 是一个交互式运行 Kotlin 代码的工具。REPL 允许你运行表达式和代码块，而无需创建项目或函数(如果你不需要的话)。
+_REPL_ (_读取-求值-输出-循环_) 是一个交互式运行 Kotlin 代码的工具。REPL 允许你运行表达式与<!--
+-->代码块，而无需创建项目或函数(如果你不需要的话)。
 
 如需在 IntelliJ IDEA 中运行 REPL，请打开 __工具 \| Kotlin \| Kotlin REPL__ 。
 
 如需在操作系统命令行中运行REPL，请从 Kotlin 独立编译器的目录中打开 __/bin/Kotlic-JVM __ 。
 
-打开 REPL 命令行界面后。你可以输入任何有效的 Kotlin 代码并查看运行结果。结果以变量的形式输出，自动生成的变量名称如 `res*`。你可以稍后在REPL 运行的代码中使用这些变量。
+The REPL command line interface will open. You can enter any valid Kotlin code and see the result. The results are printed as 
+variables with auto-generated names like `res*`. You can later use such variables in the code you run in REPL.
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
     <img
@@ -75,7 +102,7 @@ _REPL_ (_读取-求值-输出-循环_) 是一个交互式运行 Kotlin 代码的
     class="gif-image">
 </div>
 
-REPL 也支持多行输入。多行输入的结果是其最后一个表达式的值。
+REPL supports multiline input as well. The result of the multiline input is the value of its last expression. 
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
     <img

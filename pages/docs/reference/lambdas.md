@@ -274,7 +274,9 @@ val sum = { x, y -> x + y }
 
 </div>
 
-### 将 lambda 表达式传给最后一个参数
+{:#passing-a-lambda-to-the-last-parameter}
+
+### 传递末尾的 lambda 表达式
 
 在 Kotlin 中有一个约定：如果函数的最后一个参数是函数，那么作为相应参数<!--
 -->传入的 lambda 表达式可以放在圆括号之外：
@@ -339,7 +341,7 @@ ints.filter {
 
 </div>
 
-这一约定连同[在圆括号外传递 lambda 表达式](#将-lambda-表达式传给最后一个参数)一起支持
+这一约定连同[在圆括号外传递 lambda 表达式](#passing-a-lambda-to-the-last-parameter)一起支持
 [LINQ-风格](http://msdn.microsoft.com/en-us/library/bb308959.aspx) 的代码：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>

@@ -34,15 +34,11 @@ Kotlin 已被一些大公司成功采用，其中一些公司分享了他们的�
   * Keepsafe 的 App Lock 应用程序也[已转换为 100％ Kotlin](https://medium.com/keepsafe-engineering/lessons-from-converting-an-app-to-100-kotlin-68984a05dcb6)，
     使源代码行数减少 30％、方法数减少 10％。
 
-## 用于 Android 开发的工具
+## Kotlin Android 扩展
 
-Kotlin 团队为 Android 开发提供了一套超越标准语言功能的工具：
-
- * [Kotlin Android 扩展](https://www.kotlincn.net/docs/tutorials/android-plugin.html)是一个编译器扩展，
+[Kotlin Android 扩展](https://www.kotlincn.net/docs/tutorials/android-plugin.html)是一个编译器扩展，
 可以让你摆脱代码中的 `findViewById()` 调用，并将其替换为合成的编译器生成的<!--
 -->属性。
- * [Anko](http://github.com/kotlin/anko) 是一个提供围绕 Android API 的 Kotlin 友好的包装器的库
-   ，以及一个可以用 Kotlin 代码替换布局 .xml 文件的 DSL。
 
 ## 下一步
 
