@@ -95,7 +95,7 @@ void doubles(float a, double b) { }
 现在是时候创建工程文件，且在
 [IntelliJ IDEA](https://jetbrains.com/idea) 中打开并运行它。
 
-## 在 C 库中查看生成的 Kotlin API
+## 探查为 C 库生成的 Kotlin API
 
 [[include pages-includes/docs/tutorials/native/mapping-primitive-data-types-gradle.md]]
 

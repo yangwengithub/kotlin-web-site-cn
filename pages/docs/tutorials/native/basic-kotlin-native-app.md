@@ -145,8 +145,8 @@ Gradle 构建文件中添加下面的内容：
 [Gradle](https://gradle.org) 构建工具。
 确保使用正确的 Gradle 版本（例如 {{ site.data.releases.tutorials.native.gradle_version }} 或者更新）。
 当工程完成创建时运行 `gradle wrapper` 命令。
-[从 Gradle 开始](https://docs.gradle.org/current/userguide/getting_started.html)
-有更多关于如何开始使用 Gradle 工程的说明。
+[从 Gradle 开始](https://docs.gradle.org/current/userguide/getting_started.html)<!--
+-->有更多关于如何开始使用 Gradle 工程的说明。
 
 <a name="open-in-ide"></a>
 ## 在 IDE 中打开这个工程
