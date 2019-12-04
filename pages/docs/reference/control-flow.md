@@ -33,7 +33,7 @@ val max = if (a > b) a else b
 
 
 
-*if*{: .keyword }的分支可以是代码块，最后的表达式作为该块的值：
+*if*{: .keyword } 的分支可以是代码块，最后的表达式作为该块的值：
 
 
 
@@ -153,7 +153,7 @@ when {
 
 
 
-Since Kotlin 1.3, it is possible to capture *when*{: .keyword} subject in a variable using following syntax:
+自 Kotlin 1.3 起，可以使用以下语法将 *when*{: .keyword} 的主语（subject，译注：指 `when` 所判断的表达式）捕获到变量中：
 
 
 
@@ -167,7 +167,7 @@ fun Request.getBody() =
 
 
 
-Scope of variable, introduced in *when*{: .keyword} subject, is restricted to *when*{: .keyword} body.
+在 *when*{: .keyword} 主语中引入的变量的作用域仅限于 *when*{: .keyword} 主体。
 
 参见 [*when*{: .keyword } 语法](grammar.html#whenExpression)。
 

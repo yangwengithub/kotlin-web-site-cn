@@ -7,7 +7,7 @@ title: "Kotlin 编译器选项"
 # Kotlin 编译器选项
 
 Each release of Kotlin includes compilers for the supported targets: 
-JVM, JavaScript, and native binaries for [supported platforms](native-overview.html#target-platforms).
+JVM, JavaScript, and native binaries for [supported platforms](native-overview.html#目标平台).
 
 These compilers are used by the IDE when you click the __Compile__ or __Run__ button for your Kotlin project.  
 
@@ -31,9 +31,9 @@ There are several ways to set the compiler options and their values (_compiler a
 - In IntelliJ IDEA, write in the compiler arguments in the __Additional command-line parameters__ text box in 
 __Settings | Build, Execution, Deployment | Compilers | Kotlin Compiler__
 - If you're using Gradle, specify the compiler arguments in the `kotlinOptions` property of the Kotlin compilation task.
-For details, see [Using Gradle](using-gradle.html#compiler-options).
+For details, see [Using Gradle](using-gradle.html#编译器选项).
 - If you're using Maven, specify the compiler arguments in the `<configuration>` element of the Maven plugin node. 
-For details, see [Using Maven](using-maven.html#specifying-compiler-options).
+For details, see [Using Maven](using-maven.html#指定编译器选项).
 - If you run a command-line compiler, add the compiler arguments directly to the utility call or write them into an [argfile](#argfile).
 
 ##  公共选项
@@ -95,7 +95,7 @@ Allow using declarations only from the specified version of Kotlin bundled libra
 
 ### `-progressive`
 
-Enable the [progressive mode](whatsnew13.html#progressive-mode) for the compiler.
+Enable the [progressive mode](whatsnew13.html#渐进模式) for the compiler.
 {:.details-group}
 In the progressive mode, deprecations and bug fixes for unstable code take effect immediately,
 instead of going through a graceful migration cycle.
@@ -160,7 +160,7 @@ The Kotlin compiler for JVM compiles Kotlin source files into Java class files.
 The command-line tools for Kotlin to JVM compilation are `kotlinc` and `kotlinc-jvm`.
 You can also use them for executing Kotlin script files.
 
-In addition to the [common options](#common-options), Kotlin/JVM compiler has the options listed below.
+In addition to the [common options](#公共选项), Kotlin/JVM compiler has the options listed below.
 
 ### `-classpath <path>` (`-cp <path>`)
 
@@ -233,7 +233,7 @@ Script definition template classes. Use fully qualified class names and separate
 The Kotlin compiler for JS compiles Kotlin source files into JavaScript code. 
 The command-line tool for Kotlin to JS compilation is `kotlinc-js`.
 
-In addition to the [common options](#common-options), Kotlin/JS compiler has the options listed below.
+In addition to the [common options](#公共选项), Kotlin/JS compiler has the options listed below.
 
 ### `-libraries <path>`
 
@@ -306,10 +306,10 @@ Add the specified prefix to paths in the source map.
 
 ## Kotlin/Native 编译器选项
 
-Kotlin/Native compiler compiles Kotlin source files into native binaries for the [supported platforms](native-overview.html#target-platforms). 
+Kotlin/Native compiler compiles Kotlin source files into native binaries for the [supported platforms](native-overview.html#目标平台). 
 The command-line tool for Kotlin/Native compilation is `kotlinc-native`.
 
-In addition to the [common options](#common-options), Kotlin/Native compiler has the options listed below.
+In addition to the [common options](#公共选项), Kotlin/Native compiler has the options listed below.
 
 
 ### `-enable-assertions` (`-ea`)
@@ -328,7 +328,7 @@ Produce an application for running unit tests from the project.
 {:.details-group}    
 ### `-generate-worker-test-runner` (`-trw`)
 
-Produce an application for running unit tests in a [worker thread](native/concurrency.html#workers).
+Produce an application for running unit tests in a [worker thread](native/concurrency.html#worker).
 {:.details-group}
     
 ### `-generate-no-exit-test-runner` (`-trn`)
@@ -432,7 +432,7 @@ Specify output file kind:
 
 ### `-repo <path>` (`-r <path>`)
 
-Library search path. For more information, see [Library search sequence](native/libraries.html#library-search-sequence).
+Library search path. For more information, see [Library search sequence](native/libraries.html#库搜索顺序).
 {:.details-group}
 
 ### `-target <target>`
