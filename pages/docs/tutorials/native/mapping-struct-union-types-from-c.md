@@ -66,7 +66,7 @@ void union_by_pointer(MyUnion* u) {}
 现在我们创建工程文件，并在
 [IntelliJ IDEA](https://jetbrains.com/idea) 中打开该工程，然后运行它。
 
-## 为 C 库检查生成的 Kotlin API
+## 探查为 C 库生成的 Kotlin API
 
 [[include pages-includes/docs/tutorials/native/mapping-primitive-data-types-gradle.md]]
 

@@ -17,7 +17,7 @@ issue: EVAN-5343
 在本教程中我们将看到如何在 Kotlin/Native 中处理 C 语言的字符串。
 我们将学习到如何：
 - [传递一个 Kotlin 字符串给 C](#将-kotlin-字符串传递给-c)
-- [在 Kotlin 中读取一个 C 字符串](#在-kotlin-中读取一个-c-字符串)
+- [在 Kotlin 中读取一个 C 字符串](#在-kotlin-中读取-c-字符串)
 - [接收 C 字符串字节并转换为 Kotlin 字符串](#在-kotlin-中接收-c-字符串字节)
 
 我们需要在自己的机器上已经安装了 Kotlin 编译器。
