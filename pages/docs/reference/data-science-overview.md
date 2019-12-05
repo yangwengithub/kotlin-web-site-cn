@@ -48,13 +48,13 @@ The Kotlin kernel requires Java 8 to be installed.
 
 To install the kernel, use [Conda](https://docs.conda.io/projects/conda/en/latest/):
 
-<div class="sample" markdown="1" mode="shell" theme="idea">
+
 
 ```bash
 conda install kotlin-jupyter-kernel -c jetbrains
 ```
 
-</div>
+
 
 Once the kernel is installed, feel free to run the Jupyter notebook and switch to the Kotlin kernel.
 And that’s all there is to it, you can then write and run Kotlin in your notebook! 
@@ -88,39 +88,39 @@ To build a custom version of Zeppelin, you will need:
 
 First, checkout the master branch from the Zeppelin repository:
 
-<div class="sample" markdown="1" mode="shell" theme="idea">
+
 
 ```bash
 git clone --depth=1 git@github.com:apache/zeppelin.git
 ```
-</div>
+
 
 or
 
-<div class="sample" markdown="1" mode="shell" theme="idea">
+
 
 ```bash
 git clone --depth=1 https://github.com/apache/zeppelin.git
 ```
-</div>
+
 
 To build Zeppelin with Maven, go to the Zeppelin directory and run the following command:
 
-<div class="sample" markdown="1" mode="shell" theme="idea">
+
 
 ```bash
 mvn clean package -DskipTests -Pspark-2.4 -Pscala-2.11
 ```
-</div>
+
 
 Then run Zeppelin with the following command:
 
-<div class="sample" markdown="1" mode="shell" theme="idea">
+
 
 ```bash
 ./bin/zeppelin-daemon.sh start
 ```
-</div>
+
 
 Now the Zeppelin UI is available on `http://localhost:8089`.
 
@@ -195,12 +195,12 @@ and later implemented in the [ggplot2](https://ggplot2.tidyverse.org/) package f
 Lets-Plot for Kotlin is tightly integrated with the [Kotlin kernel for Jupyter notebooks](#jupyter-kernel).
 Once you have the Kotlin kernel installed and enabled, add the following line to a Jupyter notebook:
 
-<div class="sample" markdown="1" mode="shell" theme="idea">
+
 
 ```
 %use lets-plot
 ```
-</div>
+
 
 That’s it, now you can call functions from Lets-Plot and see the results.
 
@@ -216,7 +216,7 @@ KNumpy provides statically typed wrappers for NumPy functions. Thanks to the fun
 the API of KNumpy is very similar to the one for NumPy. This lets developers that are experienced with NumPy easily switch to KNumpy.
 Here are two equal code samples:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```python
 # Python
@@ -230,9 +230,9 @@ print(a.dtype.name)             # 'int64'
 
 b = (np.arange(15) ** 2).reshape(3, 5)
 ```
-</div>
 
-<div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only>
+
+
 
 ```kotlin
 // Kotlin 
@@ -250,12 +250,12 @@ fun main() {
     val b = (arange(15) `**` 2).reshape(3, 5)
 }
 ```
-</div>
+
 
 Unlike Python, Kotlin is a statically typed language. This lets you avoid entire classes of runtime errors with KNumpy:
 the Kotlin compiler detects them at earlier stages.
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```python
 # Python
@@ -270,9 +270,9 @@ b = np.random.random((3, 3))
 b *= a # Success
 a *= b # TypeError at runtime 
 ```
-</div>
 
-<div class="sample" markdown="1" mode="kotlin" theme="idea" data-highlight-only>
+
+
 
 ```kotlin
 // Kotlin 
@@ -286,5 +286,5 @@ b *= a // Success
 a *= b // Compilation error: 
 // Type mismatch: inferred type is KtNDArray<Double> but KtNDArray<Int> was expected
 ```
-</div>
+
 
