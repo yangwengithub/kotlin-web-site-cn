@@ -2,10 +2,10 @@
 type: doc
 layout: reference
 category: "Introduction"
-title: "Kotlin for Data Science"
+title: "Kotlin 用于数据科学"
 ---
 
-# Kotlin for Data Science
+# Kotlin 用于数据科学
 
 ![Kotlin for data science]({{ url_for('asset', path='images/landing/data-science/data-science-overview.png')}})
 
@@ -20,7 +20,7 @@ specifically for data analysis and mathematical research.
 General-purpose languages can also be applied to data science, Kotlin is already being adopted to data science.
 Here we’ll introduce you to some things that are useful to know about when using Kotlin for data science.
 
-## Tools
+## 工具
 
 Modern software developers very rarely write their code in plain text editors and run it from the command line anymore.
 Instead, they tend to use integrated development environments (IDE) that can handle all the development tasks in a single tool.
@@ -31,7 +31,7 @@ format that you need: output text, tables, data visualization, and so on.
 Kotlin provides integration with two popular notebooks: Jupyter and Apache Zeppelin, which both allow you to write and
 run Kotlin code blocks.
 
-### Jupyter kernel
+### Jupyter 内核
 
 The open-source project [Jupyter](https://jupyter.org/) offers the well-known web-based development environment **Jupyter Notebook**.
 For code execution, Jupyter uses the concept of _kernels_ - components that run separately and execute the code upon request,
@@ -42,7 +42,7 @@ However, there are other community-maintained kernels for different languages.
 Among them is the **Kotlin kernel for Jupyter notebooks**. With this kernel, you can write and run Kotlin code in Jupyter 
 notebooks and use third-party data science frameworks written in Java and Kotlin.
 
-#### Setting up the Kotlin kernel
+#### 设置 Kotlin 内核
 
 The Kotlin kernel requires Java 8 to be installed.
 
@@ -63,7 +63,7 @@ And that’s all there is to it, you can then write and run Kotlin in your noteb
 
 You can find more information about the Kotlin kernel for Jupyter [here](https://github.com/cheptsov/kotlin-jupyter-demo/blob/master/index.ipynb).
 
-### Zeppelin interpreter
+### Zeppelin 解释器
 
 [Apache Zeppelin](http://zeppelin.apache.org/) is a popular web-based solution for interactive data analytics.
 Zeppelin provides strong support for the [Apache Spark](http://zeppelin.apache.org/docs/latest/interpreter/spark.html)
@@ -73,7 +73,7 @@ The language support in Zeppelin is provided by _interpreters_ - plugins that en
 There are numerous community-maintained interpreters for different programming languages.
 The one we offer you is the **Kotlin interpreter for Apache Zeppelin** that adds the Kotlin support.
 
-#### Setting up Zeppelin with Kotlin interpreter
+#### 设置带 Kotlin 解释器的 Zeppelin
 
 Currently, the latest release of Zeppelin (0.8.2) doesn’t come with bundled Kotlin interpreter.
 But anyway, it’s available in the master branch of Zeppelin. 
@@ -126,7 +126,7 @@ Now the Zeppelin UI is available on `http://localhost:8089`.
 
 To learn about how to deploy Zeppelin with Kotlin support in a Spark cluster, see [this instruction](/docs/tutorials/zeppelin-spark-cluster.html).
 
-## Libraries
+## 相关库
 
 For software engineering, an important part of any domain is the availability of frameworks for related areas.
 For data science, this includes such areas as machine learning, data analysis, visualization, and many others.
@@ -135,7 +135,7 @@ There are even more frameworks written in Java, which is perfect as they can be 
 
 Below are two short lists of libraries that you may find useful for data science.
 
-### Kotlin libraries
+### Kotlin 库
 * [kotlin-statistics](https://github.com/thomasnield/kotlin-statistics) is a library providing extension functions for 
 exploratory and production statistics. It supports basic numeric list/sequence/array functions (from `sum` to `skewness`),
 slicing operators (such as `countBy`, `simpleRegressionBy`), binning operations, discrete PDF sampling,
@@ -156,7 +156,7 @@ Lets-Plot is multiplatform and can be used not only with JVM, but also with JS a
 * [kravis](https://github.com/holgerbrandl/kravis) is another library for the visualization of tabular data inspired by
 Python's [ggplot](https://ggplot2.tidyverse.org/).
 
-### Java libraries
+### Java 库
 
 Since Kotlin provides first-class interop with Java, you can also use Java libraries for data science in your Kotlin code.
 Here are some examples of such libraries:
@@ -206,7 +206,7 @@ That’s it, now you can call functions from Lets-Plot and see the results.
 
 ![Lets-Plot diagram]({{ url_for('asset', path='images/landing/data-science/lets-plot.png')}})
 
-### Kotlin bindings for NumPy
+### NumPy 的 Kotlin 绑定
 
 [**KNumpy**](https://github.com/kotlin/kotlin-numpy/) (**Kotlin Bindings for NumPy**) is a Kotlin library that enables calling NumPy functions from the Kotlin code.
 [NumPy](https://numpy.org/) is a popular package for scientific computing with Python. It provides powerful capabilities
