@@ -7,7 +7,7 @@ title: "Kotlin 用于数据科学"
 
 # Kotlin 用于数据科学
 
-![Kotlin for data science]({{ url_for('asset', path='images/landing/data-science/data-science-overview.png')}})
+![Kotlin for data science](/assets/images/landing/data-science/data-science-overview.png)
 
 Data science has a special place in information technology: it includes aspects of both software development and
 scientific research at the same time. As a discipline, data science covers a broad range of areas: data engineering,
@@ -59,7 +59,7 @@ conda install kotlin-jupyter-kernel -c jetbrains
 Once the kernel is installed, feel free to run the Jupyter notebook and switch to the Kotlin kernel.
 And that’s all there is to it, you can then write and run Kotlin in your notebook! 
 
-![Kotlin in Jupyter notebook]({{ url_for('asset', path='images/landing/data-science/jupyter-kotlin.png')}})
+![Kotlin in Jupyter notebook](/assets/images/landing/data-science/jupyter-kotlin.png)
 
 You can find more information about the Kotlin kernel for Jupyter [here](https://github.com/cheptsov/kotlin-jupyter-demo/blob/master/index.ipynb).
 
@@ -204,7 +204,7 @@ Once you have the Kotlin kernel installed and enabled, add the following line to
 
 That’s it, now you can call functions from Lets-Plot and see the results.
 
-![Lets-Plot diagram]({{ url_for('asset', path='images/landing/data-science/lets-plot.png')}})
+![Lets-Plot diagram](/s/images/landing/data-science/lets-plot.png)
 
 ### NumPy 的 Kotlin 绑定
 
