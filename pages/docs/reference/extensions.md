@@ -117,7 +117,7 @@ fun main() {
 ```
 </div>
 
-This code prints "_Class method_".
+这段代码输出“*Class method*”。
 
 当然，扩展函数重载同样名字但不同签名成员函数也完全可以：
 
@@ -187,8 +187,8 @@ val House.number = 1 // 错误：扩展属性不能有初始化器
 ## 伴生对象的扩展
 
 如果一个类定义有一个[伴生对象](object-declarations.html#伴生对象) ，你也可以为伴生对象定义<!--
--->扩展函数与属性。Just like regular members of the companion object,
-they can be called using only the class name as the qualifier:
+-->扩展函数与属性。就像伴生对象的常规成员一样，
+可以只使用类名作为限定符来调用伴生对象的扩展成员：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
