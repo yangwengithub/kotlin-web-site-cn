@@ -21,8 +21,8 @@ To create a Kotlin/JS project in IntelliJ IDEA, go to **File | New | Project** a
 Alternatively, you can apply the `org.jetbrains.kotlin.js` plugin to a Gradle project manually in the `build.gradle` file.
 If you use the Gradle Kotlin DSL, you can apply the plugin with `kotlin(“js”)`.
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
+// Groovy DSL
  
 ```groovy
 plugins {
@@ -30,11 +30,11 @@ plugins {
 }
 ```
  
-</div>
-</div>
+
+
  
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+// Kotlin DSL
  
 ```kotlin
 plugins {
@@ -42,12 +42,12 @@ plugins {
 }
  ```
  
-</div>
-</div>
+
+
 
 The Kotlin/JS plugin lets you manage aspects of your project in the `kotlin` section of the build script.
 
-<div class="sample" markdown="1" mode="groovy" theme="idea">
+
 
 ```groovy
 kotlin {
@@ -55,7 +55,7 @@ kotlin {
 }
 ```
 
-</div>
+
  
 Inside the `kotlin` section, you can manage the following aspects:
 
@@ -74,7 +74,7 @@ Kotlin/JS projects can target two different execution environments:
 
 To define the target execution environment for a Kotlin/JS project, add the `target` section with `browser {}` or `nodejs {}` inside.
 
-<div class="sample" markdown="1" mode="groovy" theme="idea">
+
 
 ```groovy
 kotlin {
@@ -85,7 +85,7 @@ kotlin {
 }    
 ```
 
-</div>
+
 
 The Kotlin/JS plugin automatically configures its tasks for working with the selected environment.
 This includes downloading and installing dependencies required for running and testing the application, and therefore
@@ -96,8 +96,8 @@ lets developers  build, run, and test simple projects without additional configu
 Like any other Gradle projects, Kotlin/JS projects support traditional Gradle [dependency declarations](https://docs.gradle.org/current/userguide/declaring_dependencies.html)
 in the `dependencies` section of the build script.
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
+
+// Groovy DSL
 
 ```groovy
 dependencies {
@@ -105,11 +105,11 @@ dependencies {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" mode="kotlin" theme="idea" data-lang="kotlin" data-highlight-only>
+
+
+
+// Kotlin DSL
 
 ```kotlin
 dependencies {
@@ -117,14 +117,14 @@ dependencies {
 }
 ```
 
-</div>
-</div>
+
+
 
 The Kotlin/JS Gradle plugin also supports dependency declarations for particular source sets in the `kotlin` section 
 of the build script.
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
+
+// Groovy DSL
 
 ```groovy
 kotlin {
@@ -138,11 +138,11 @@ kotlin {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" mode="kotlin" theme="idea" data-lang="kotlin" data-highlight-only>
+
+
+
+// Kotlin DSL
 
 ```kotlin
 kotlin {
@@ -152,8 +152,8 @@ kotlin {
 }
 ```
 
-</div>
-</div>
+
+
 
 
 ### Kotlin 标准库
@@ -162,8 +162,8 @@ The dependency on the Kotlin/JS [standard library](https://kotlinlang.org/api/la
 for all Kotlin/JS projects. If your project contains tests written in Kotlin, you should also add the dependency on the
 [kotlin.test](https://kotlinlang.org/api/latest/kotlin.test/index.html) library.
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
+
+// Groovy DSL
 
 ```groovy
 dependencies {
@@ -172,11 +172,11 @@ dependencies {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" mode="kotlin" theme="idea" data-lang="kotlin" data-highlight-only>
+
+
+
+// Kotlin DSL
 
 ```kotlin
 dependencies {
@@ -185,8 +185,8 @@ dependencies {
 }
 ```
 
-</div>
-</div>
+
+
 
 ### NPM 依赖
 
@@ -199,8 +199,8 @@ the common location for NPM dependencies of a JavaScript project.
 
 To declare an NPM dependency, use the `npm()` function inside the `dependencies` section of a source set.
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
+
+// Groovy DSL
 
 ```groovy
 kotlin {
@@ -214,11 +214,11 @@ kotlin {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" mode="kotlin" theme="idea" data-lang="kotlin" data-highlight-only>
+
+
+
+// Kotlin DSL
 
 ```kotlin
 kotlin {
@@ -228,8 +228,8 @@ kotlin {
 }
 ```
 
-</div>
-</div>
+
+
 
 Once an NPM dependency is installed, you can use its API in your code as described in 
 [Calling JS from Kotlin](js-interop.html).
@@ -242,34 +242,34 @@ If you want to customize the DevServer configuration, for example, change its po
 
 To run the project, execute the standard lifecycle `run` task:
 
-<div class="sample" markdown="1" mode="shell" theme="idea">
+
 
 ```bash
 ./gradlew run
 ```
 
-</div>
+
 
 To see the source file changes in browser without restarting the DevServer, use 
 the Gradle [continuous build](https://docs.gradle.org/current/userguide/command_line_interface.html#sec:continuous_build):
 
-<div class="sample" markdown="1" mode="shell" theme="idea">
+
 
 ```bash
 ./gradlew run --continuous
 ```
 
-</div>
+
 
 or 
 
-<div class="sample" markdown="1" mode="shell" theme="idea">
+
 
 ```bash
 ./gradlew run -t
 ```
 
-</div>
+
 
 ## 配置 test 任务
 
@@ -287,7 +287,7 @@ By default, the plugin uses [Headless Chrome](https://chromium.googlesource.com/
 for running browser tests. You can also run them in other browsers by adding the corresponding entries inside the
 `useKarma` section of the build script:
 
-<div class="sample" markdown="1" mode="groovy" theme="idea">
+
 
 ```groovy
 kotlin {
@@ -310,11 +310,11 @@ kotlin {
 }
 ```
 
-</div>
+
 
 If you want to skip tests, add the line `enabled = false` to the `testTask`.
 
-<div class="sample" markdown="1" mode="groovy" theme="idea">
+
 
 ```groovy
 kotlin {
@@ -328,17 +328,17 @@ kotlin {
 }
 ```
 
-</div>
+
 
 To run tests, execute the standard lifecycle `check` task:
 
-<div class="sample" markdown="1" mode="shell" theme="idea">
+
 
 ```bash
 ./gradlew check
 ```
 
-</div>
+
 
 ## 配置 Webpack 绑定
 
@@ -346,10 +346,9 @@ For building executable JavaScript artifacts, the Kotlin/JS plugins contains the
 
 To build a project artifact using Webpack, execute the `build` Gradle task:
 
-<div class="sample" markdown="1" mode="shell" theme="idea">
+
 
 ```bash
 ./gradlew build
 ```
 
-</div>
