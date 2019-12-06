@@ -249,7 +249,7 @@ reference:
       description: Kotlin 与 JavaScript 合用
       content:
        - url: /docs/reference/js-project-setup.html
-         title: Setting Up a Project
+         title: 搭建项目
        - url: /docs/reference/dynamic-type.html
          title: 动态类型
        - url: /docs/reference/js-interop.html
