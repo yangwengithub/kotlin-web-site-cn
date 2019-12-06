@@ -22,7 +22,7 @@ Alternatively, you can apply the `org.jetbrains.kotlin.js` plugin to a Gradle pr
 If you use the Gradle Kotlin DSL, you can apply the plugin with `kotlin(“js”)`.
 
 
-// Groovy DSL
+> Groovy DSL
  
 ```groovy
 plugins {
@@ -34,7 +34,7 @@ plugins {
 
  
 
-// Kotlin DSL
+> Kotlin DSL
  
 ```kotlin
 plugins {
@@ -97,7 +97,7 @@ Like any other Gradle projects, Kotlin/JS projects support traditional Gradle [d
 in the `dependencies` section of the build script.
 
 
-// Groovy DSL
+> Groovy DSL
 
 ```groovy
 dependencies {
@@ -109,7 +109,7 @@ dependencies {
 
 
 
-// Kotlin DSL
+> Kotlin DSL
 
 ```kotlin
 dependencies {
@@ -124,7 +124,7 @@ The Kotlin/JS Gradle plugin also supports dependency declarations for particular
 of the build script.
 
 
-// Groovy DSL
+> Groovy DSL
 
 ```groovy
 kotlin {
@@ -142,7 +142,7 @@ kotlin {
 
 
 
-// Kotlin DSL
+> Kotlin DSL
 
 ```kotlin
 kotlin {
@@ -163,7 +163,7 @@ for all Kotlin/JS projects. If your project contains tests written in Kotlin, yo
 [kotlin.test](https://kotlinlang.org/api/latest/kotlin.test/index.html) library.
 
 
-// Groovy DSL
+> Groovy DSL
 
 ```groovy
 dependencies {
@@ -176,7 +176,7 @@ dependencies {
 
 
 
-// Kotlin DSL
+> Kotlin DSL
 
 ```kotlin
 dependencies {
@@ -200,7 +200,7 @@ the common location for NPM dependencies of a JavaScript project.
 To declare an NPM dependency, use the `npm()` function inside the `dependencies` section of a source set.
 
 
-// Groovy DSL
+> Groovy DSL
 
 ```groovy
 kotlin {
@@ -218,7 +218,7 @@ kotlin {
 
 
 
-// Kotlin DSL
+> Kotlin DSL
 
 ```kotlin
 kotlin {
