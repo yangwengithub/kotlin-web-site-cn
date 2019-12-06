@@ -192,7 +192,7 @@ an open-source plotting library for statistical data written entirely in Kotlin.
 layered graphics first described in Leland Wilkinson's work [The Grammar of Graphics](https://www.goodreads.com/book/show/2549408.The_Grammar_of_Graphics)
 and later implemented in the [ggplot2](https://ggplot2.tidyverse.org/) package for R.
 
-Lets-Plot for Kotlin is tightly integrated with the [Kotlin kernel for Jupyter notebooks](#jupyter-kernel).
+Lets-Plot for Kotlin is tightly integrated with the [Kotlin kernel for Jupyter notebooks](#jupyter-内核).
 Once you have the Kotlin kernel installed and enabled, add the following line to a Jupyter notebook:
 
 
