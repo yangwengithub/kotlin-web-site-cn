@@ -15,7 +15,7 @@ for managing NPM dependencies in background and builds a JavaScript bundle from 
 To create a Kotlin/JS project in IntelliJ IDEA, go to **File | New | Project** and select **Gradle | Kotlin/JS for browser**
  or **Kotlin/JS for Node.js**. Be sure to clear the **Java** checkbox.
  
-![New project wizard]({{ url_for('asset', path='images/reference/js-project-setup/wizard.png') }})
+![New project wizard](/assets/images/reference/js-project-setup/wizard.png)
 
 
 Alternatively, you can apply the `org.jetbrains.kotlin.js` plugin to a Gradle project manually in the `build.gradle` file.
