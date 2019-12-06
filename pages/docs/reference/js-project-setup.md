@@ -2,10 +2,10 @@
 type: doc
 layout: reference
 category: "JavaScript"
-title: "Setting Up Kotlin/JS Project"
+title: "搭建 Kotlin/JS 项目"
 ---
 
-# Setting up a Kotlin/JS project
+# 搭建 Kotlin/JS 项目
 
 Kotlin/JS projects use Gradle as a build system. To let developers easily manage their Kotlin/JS projects, we offer
 the Kotlin/JS Gradle plugin that provides project configuration tools together with helper tasks for automating routines
@@ -59,13 +59,13 @@ kotlin {
  
 Inside the `kotlin` section, you can manage the following aspects:
 
-* [Target execution environment](#choosing-execution-environment): browser or Node.js 
-* [Project dependencies](#managing-dependencies): Maven and NPM
-* [Run configuration](#configuring-run-task)
-* [Test configuration](#configuring-test-task)
-* [Bundling](#configuring-webpack-bundling) for browser projects.
+* [Target execution environment](#选择执行环境): browser or Node.js 
+* [Project dependencies](#管理依赖): Maven and NPM
+* [Run configuration](#配置-run-任务)
+* [Test configuration](#配置-test-任务)
+* [Bundling](#配置-webpack-绑定) for browser projects.
 
-## Choosing execution environment
+## 选择执行环境
 
 Kotlin/JS projects can target two different execution environments: 
 
@@ -91,7 +91,7 @@ The Kotlin/JS plugin automatically configures its tasks for working with the sel
 This includes downloading and installing dependencies required for running and testing the application, and therefore
 lets developers  build, run, and test simple projects without additional configuration. 
 
-## Managing dependencies
+## 管理依赖
 
 Like any other Gradle projects, Kotlin/JS projects support traditional Gradle [dependency declarations](https://docs.gradle.org/current/userguide/declaring_dependencies.html)
 in the `dependencies` section of the build script.
@@ -156,7 +156,7 @@ kotlin {
 </div>
 
 
-### Kotlin standard libraries
+### Kotlin 标准库
 
 The dependency on the Kotlin/JS [standard library](https://kotlinlang.org/api/latest/jvm/stdlib/index.html) is mandatory
 for all Kotlin/JS projects. If your project contains tests written in Kotlin, you should also add the dependency on the
@@ -188,7 +188,7 @@ dependencies {
 </div>
 </div>
 
-### NPM dependencies
+### NPM 依赖
 
 In the JavaScript world, the common way to manage dependencies is [NPM](https://www.npmjs.com/).
 It offers the biggest public [repository](https://www.npmjs.com/)of JavaScript modules and a tool for downloading them.
@@ -234,7 +234,7 @@ kotlin {
 Once an NPM dependency is installed, you can use its API in your code as described in 
 [Calling JS from Kotlin](js-interop.html).
 
-## Configuring run task
+## 配置 run 任务
 
 The Kotlin/JS plugin provides a run task that lets you run projects without additional configuration.
 For running Kotlin/JS projects, it uses [Webpack DevServer](https://webpack.js.org/configuration/dev-server/).
@@ -271,7 +271,7 @@ or
 
 </div>
 
-## Configuring test task
+## 配置 test 任务
 
 The Kotin/JS Gradle plugin automatically sets up a test infrastructure for projects. For browser projects, it downloads
 and installs the [Karma](https://karma-runner.github.io/) test runner with other required dependencies;
@@ -340,7 +340,7 @@ To run tests, execute the standard lifecycle `check` task:
 
 </div>
 
-## Configuring Webpack bundling
+## 配置 Webpack 绑定
 
 For building executable JavaScript artifacts, the Kotlin/JS plugins contains the `webpackTask`.
 
