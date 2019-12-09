@@ -8,7 +8,7 @@ title: "Map 相关操作"
 # Map 相关操作
 
 在 [map](collections-overview.html#map) 中，键和值的类型都是用户定义的。
-对 map 条目的基于键的访问启用了各种特定于 map 的处理函数，从键获取值到对键和值进行单独过滤。
+对基于键的访问启用了各种特定于 map 的处理函数，从键获取值到对键和值进行单独过滤。
 在此页面上，我们提供了来自标准库的 map 处理功能的描述。
 
 ## 取键与值
@@ -117,7 +117,7 @@ fun main() {
 ```
 </div>
 
- `minus` 将根据左侧 `Map` 条目创建一个 `Map` ，右侧操作数带有键的条目将被剔除。
+ `minus` 将根据左侧 `Map` 条目创建一个新 `Map` ，右侧操作数带有键的条目将被剔除。
 因此，右侧操作数可以是单个键或键的集合：list, set 等。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
@@ -138,7 +138,7 @@ fun main() {
 
 ## Map 写操作
 
-[Mutable](collections-overview.html#集合类型) Map 提供特定的 Map 写操作。
+[Mutable](collections-overview.html#集合类型) Map （可变 Map ）提供特定的 Map 写操作。
 这些操作使你可以使用键来访问或更改 Map 值。
 
  Map 写操作的一些规则：
