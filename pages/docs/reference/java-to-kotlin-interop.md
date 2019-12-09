@@ -8,10 +8,10 @@ title: "Java 中调用 Kotlin"
 # Java 中调用 Kotlin
 
 Java 可以轻松调用 Kotlin 代码。
-For example, instances of a Kotlin class can be seamlessly created and operated in Java methods.
-However, there are certain differences between Java and Kotlin that require attention when
-integrating Kotlin code into Java.
-On this page, we'll describe the ways to tailor the interop of your Kotlin code with its Java clients.
+例如，可以在 Java 方法中无缝创建与操作 Kotlin 类的实例。
+然而，在将 Kotlin 代码集成到 Java 中时，
+需要注意 Java 与 Kotlin 之间的一些差异。
+在本页，我们会描述定制 Kotlin 代码与其 Java 客户端的互操作的方法。
 
 
 ## 属性
@@ -308,9 +308,9 @@ Obj.INSTANCE.callStatic(); // 也没问题
 ```
 </div>
 
-Starting from Kotlin 1.3, `@JvmStatic` applies to functions defined in companion objects of interfaces as well.
-Such functions compile to static methods in interfaces. Note that static method in interfaces were introduced in Java 1.8,
-so be sure to use the corresponding targets.
+自 Kotlin 1.3 起，`@JvmStatic` 也适用于在接口的伴生对象中定义的函数。
+这类函数会编译为接口中的静态方法。请注意，接口中的静态方法是 Java 1.8 中引入的，
+因此请确保使用相应的编译目标。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
