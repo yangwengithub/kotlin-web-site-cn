@@ -38,7 +38,7 @@ fun main() {
 ```
 </div>
 
-要对 map 的所有键或所有值执行操作，可以从属性 `key` 和 `value` 中相应地检索它们。 `key` 是所有映射键的集合， `value` 是所有映射值的集合。
+要对 map 的所有键或所有值执行操作，可以从属性 `keys` 和 `values` 中相应地检索它们。 `keys` 是所有映射键的集合， `values` 是所有映射值的集合。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -56,9 +56,9 @@ fun main() {
 
 ## 过滤
 
-You can [filter](collection-filtering.html) maps with the [`filter()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html) function as well as other collections.
-When calling `filter()` on a map, pass to it a predicate with a `Pair` as an argument.
-This enables you to use both the key and the value in the filtering predicate.
+可以使用 [`filter()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html) 函数来[过滤](collection-filtering.html) map 或其他集合。
+对 map 使用 `filter()` 函数时， `Pair` 将作为参数的谓词传递给它。
+它将使用谓词同时过滤其中的键和值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -74,10 +74,10 @@ fun main() {
 ```
 </div>
 
-There are also two specific ways for filtering maps: by keys and by values.
-For each way, there is a function: [`filterKeys()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-keys.html) and [`filterValues()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-values.html).
-Both return a new map of entries which match the given predicate.
-The predicate for `filterKeys()` checks only the element keys, the one for `filterValues()` checks only values.
+还有两种用于过滤 map 的特定函数：按键或按值。
+这两种方式，都有对应的函数： [`filterKeys()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-keys.html) 和 [`filterValues()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-values.html) 。
+两者都将返回与给定谓词匹配的新条目映射。
+ `filterKeys()` 的谓词仅检查元素键， `filterValues()` 的谓词仅检查值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
