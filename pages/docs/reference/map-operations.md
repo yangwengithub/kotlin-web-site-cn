@@ -7,19 +7,19 @@ title: "Map 相关操作"
 
 # Map 相关操作
 
-In [maps](collections-overview.html#map), types of both keys and values are user-defined.
-Key-based access to map entries enables various map-specific processing capabilities from getting a value by key to separate filtering of keys and values.
-On this page, we provide descriptions of the map processing functions from the standard library.
+在[maps](collections-overview.html#map)中，键和值的类型都是用户定义的。
+对maps条目的基于键的访问启用了各种特定于maps的处理功能，从键获取值到对键和值进行单独过滤。
+在此页面上，我们提供了来自标准库的maps处理功能的描述。
 
 ## 取键与值
 
-For retrieving a value from a map, you must provide its key as an argument of the [`get()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/get.html) function.
-The shorthand `[key]` syntax is also supported. If the given key is not found, it returns `null`.
-There is also the function [`getValue()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-value.html) which has slightly different behavior: it throws an exception if the key is not found in the map.
-Additionally, you have two more options to handle the key absence: 
+要从映射中检索值，必须提供其键作为[`get()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/get.html) 函数的参数。
+还支持简写`[key]`语法。 如果找不到给定的键，则返回`null`。
+还有一个功能[`getValue()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-value.html)，它的行为略有不同：如果在映射中找不到键，则抛出异常。
+此外，还有两个选项可以解决键缺失的问题：
 
-* [`getOrElse()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-else.html) works the same way as for lists: the values for non-existent keys are returned from the given lambda function.
-* [`getOrDefault()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-default.html) returns the specified default value if the key is not found.
+* [`getOrElse()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-else.html)与列表的工作方式相同：不存在的键的值从给定的lambda函数返回。
+* [`getOrDefault()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-default.html)如果找不到密钥，则返回指定的默认值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -38,7 +38,7 @@ fun main() {
 ```
 </div>
 
-To perform operations on all keys or all values of a map, you can retrieve them from the properties `keys` and `values` accordingly. `keys` is a set of all map keys and `values` is a collection of all map values.
+要对map的所有键或所有值执行操作，可以从属性`键`和`值`中相应地检索它们。 `keys`是所有映射键的集合，`value`是所有映射值的集合。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
