@@ -150,9 +150,9 @@ fun main() {
 
 ### 添加与更新条目
 
-To  add a new key-value pair to a mutable map, use [`put()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/put.html).
-When a new entry is put into a `LinkedHashMap` (the default map implementation), it is added so that it comes last when iterating the map.
-In sorted maps, the positions of new elements are defined by the order of their keys. 
+要将新的键值对添加到 Mutable Map ，请使用 [`put()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/put.html) 。
+将新条目放入 `LinkedHashMap` （Map的默认实现）后，会添加该条目，以便在 Map 迭代时排在最后。
+在 Map 类中，新元素的位置由其键顺序定义。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -168,7 +168,7 @@ fun main() {
 ```
 </div>
 
-To add multiple entries at a time, use [`putAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/put-all.html). Its argument can be a `Map` or a group of `Pair`s: `Iterable`, `Sequence`, or `Array`.
+要一次添加多个条目，请使用 [`putAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/put-all.html) 。它的参数可以是 `Map` 或多个 `Pair` ： `Iterable` ， `Sequence` 或 `Array` 。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -184,7 +184,7 @@ fun main() {
 ```
 </div>
 
-Both `put()` and `putAll()` overwrite the values if the given keys already exist in the map. Thus, you can use them to update values of map entries.
+如果给定键已存在于 Map 中，则 `put()` 与 `putAll()` 都将覆盖值。 因此，可以使用它们来更新 Map 条目的值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -201,10 +201,10 @@ fun main() {
 ```
 </div>
 
-You can also add new entries to maps using the shorthand operator form. There are two ways:
+还可以使用快速操作符将新条目添加到 Map。 有两种方式：
 
-* [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) (`+=`) operator.
-* the `[]` operator alias for `put()`.  
+* [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) (`+=`) 操作符。
+*  `[]` 操作符为 `put()` 的别名。  
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -212,7 +212,7 @@ You can also add new entries to maps using the shorthand operator form. There ar
 fun main() {
 //sampleStart
     val numbersMap = mutableMapOf("one" to 1, "two" to 2)
-    numbersMap["three"] = 3     // calls numbersMap.put("three", 3)
+    numbersMap["three"] = 3     // 同 numbersMap.put("three", 3)
     numbersMap += mapOf("four" to 4, "five" to 5)
     println(numbersMap)
 //sampleEnd
@@ -221,7 +221,7 @@ fun main() {
 ```
 </div>
 
-When called with the key present in the map, operators overwrite the values of the corresponding entries. 
+使用 Map 中存在的键进行操作时，将覆盖相应条目的值。
 
 ### 删除条目
 
