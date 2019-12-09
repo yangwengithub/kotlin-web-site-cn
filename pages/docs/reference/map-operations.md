@@ -98,9 +98,9 @@ fun main() {
 
 ## `plus` 与 `minus` 操作
 
-Due to the key access to elements, [`plus`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus.html) (`+`) and [`minus`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus.html) (`-`) operators work for maps differently than for other collections.
-`plus` returns a `Map` that contains elements of its both operands: a `Map` on the left and a `Pair` or another `Map` on the right.
-When the right-hand side operand contains entries with keys present in the left-hand side `Map`, the result map contains the entries from the right side.
+由于需要访问元素的键，[`plus`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus.html) (`+`) 与 [`minus`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus.html) (`-`) 运算符对 map 的作用与其他集合不同。
+ `plus` 返回包含两个操作数元素的 `Map` ：左侧的 Map 与右侧的 Pair 或另一个 Map 。
+当右侧操作数包含在左侧 `Map` 中具有键的条目时，将会映射右侧条目的值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -117,8 +117,8 @@ fun main() {
 ```
 </div>
 
-`minus` creates a `Map` from entries of a `Map` on the left except those with keys from the right-hand side operand.
-So, the right-hand side operand can be either a single key or a collection of keys: list, set, and so on.
+ `minus` 将根据左侧 `Map` 条目创建一个 `Map` ，右侧操作数带有键的条目将被剔除。
+因此，右侧操作数可以是单个键或键的集合：list, set 等。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -134,7 +134,7 @@ fun main() {
 ```
 </div>
 
-For details on using [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) (`+=`) and [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) operators on mutable maps, see [Map write operations](#map-写操作) below.
+有关在可变地图上使用 [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) (`+=`) 与 [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) 运算符的详细信息，请参见[ Map 写操作](#map-写操作)。
 
 ## Map 写操作
 
