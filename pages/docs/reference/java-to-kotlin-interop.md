@@ -8,10 +8,10 @@ title: "Java 中调用 Kotlin"
 # Java 中调用 Kotlin
 
 Java 可以轻松调用 Kotlin 代码。
-For example, instances of a Kotlin class can be seamlessly created and operated in Java methods.
-However, there are certain differences between Java and Kotlin that require attention when
-integrating Kotlin code into Java.
-On this page, we'll describe the ways to tailor the interop of your Kotlin code with its Java clients.
+例如，可以在 Java 方法中无缝创建与操作 Kotlin 类的实例。
+然而，在将 Kotlin 代码集成到 Java 中时，
+需要注意 Java 与 Kotlin 之间的一些差异。
+在本页，我们会描述定制 Kotlin 代码与其 Java 客户端的互操作的方法。
 
 
 ## 属性
@@ -168,7 +168,7 @@ class JavaClient {
 
 ## 静态字段
 
-在命名对象或伴生对象中声明的 Kotlin 属性会在该命名对象或包含伴生对象的类中<!--
+在具名对象或伴生对象中声明的 Kotlin 属性会在该具名对象或包含伴生对象的类中<!--
 -->具有静态幕后字段。
 
 通常这些字段是私有的，但可以通过以下方式之一暴露出来：
@@ -200,7 +200,7 @@ Key.COMPARATOR.compare(key1, key2);
 ```
 
 
-在命名对象或者伴生对象中的一个[延迟初始化的](properties.html#延迟初始化属性与变量)属性<!--
+在具名对象或者伴生对象中的一个[延迟初始化的](properties.html#延迟初始化属性与变量)属性<!--
 -->具有与属性 setter 相同可见性的静态幕后字段。
 
 
@@ -256,7 +256,7 @@ int version = C.VERSION;
 ## 静态方法
 
 如上所述，Kotlin 将包级函数表示为静态方法。
-Kotlin 还可以为命名对象或伴生对象中定义的函数生成静态方法，如果你将这些函数标注为 [`@JvmStatic`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-static/index.html) 的话。
+Kotlin 还可以为具名对象或伴生对象中定义的函数生成静态方法，如果你将这些函数标注为 [`@JvmStatic`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-static/index.html) 的话。
 如果你使用该注解，编译器既会在相应对象的类中生成静态方法，也会在对象自身中生成实例方法。
 例如：
 
@@ -284,7 +284,7 @@ C.Companion.callNonStatic(); // 唯一的工作方式
 ```
 
 
-对于命名对象也同样：
+对于具名对象也同样：
 
 
 
@@ -308,9 +308,9 @@ Obj.INSTANCE.callStatic(); // 也没问题
 ```
 
 
-Starting from Kotlin 1.3, `@JvmStatic` applies to functions defined in companion objects of interfaces as well.
-Such functions compile to static methods in interfaces. Note that static method in interfaces were introduced in Java 1.8,
-so be sure to use the corresponding targets.
+自 Kotlin 1.3 起，`@JvmStatic` 也适用于在接口的伴生对象中定义的函数。
+这类函数会编译为接口中的静态方法。请注意，接口中的静态方法是 Java 1.8 中引入的，
+因此请确保使用相应的编译目标。
 
 
 
@@ -328,18 +328,18 @@ interface ChatBot {
 `@JvmStatic`　注解也可以应用于对象或伴生对象的属性，
 使其 getter 和 setter 方法在该对象或包含该伴生对象的类中是静态成员。
 
-## Default methods in interfaces
+## 接口中的默认方法
 
-> Default methods are available only for targets JVM 1.8 and above.
+> 默认方法仅适用于面向 JVM 1.8 及更高版本。
 {:.note}
 
-> The `@JvmDefault` annotation is experimental in Kotlin 1.3. Its name and behavior may change, leading to future incompatibility.
+> `@JvmDefault` 注解在 Kotlin 1.3 中是实验性的。其名称与行为都可能发生变化，导致将来不兼容。
 {:.note}
 
-Starting from JDK 1.8, interfaces in Java can contain [default methods](https://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html).
-You can declare a non-abstract member of a Kotlin interface as default for the Java classes implementing it.
-To make a member default, mark it with the [`@JvmDefault`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html) annotation.
-Here is an example of a Kotlin interface with a default method:
+自 JDK 1.8 起，Java 中的接口可以包含[默认方法](https://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html)。
+可以将 Kotlin 接口的非抽象成员为实现它的 Java 类声明为默认。
+如需将一个成员声明为默认，请使用 [`@JvmDefault`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html) 注解标记之。
+这是一个带有默认方法的 Kotlin 接口的一个示例：
 
 
 
@@ -351,14 +351,14 @@ interface Robot {
 ```
 
 
-The default implementation is available for Java classes implementing the interface.
+默认实现对于实现该接口的 Java 类都可用。
 
 
 
 ```java
-//Java implementation
+//Java 实现
 public class C3PO implements Robot {
-    // move() implementation from Robot is available implicitly
+    // 来自 Robot 的 move() 实现隐式可用
     @Override
     public void speak() {
         System.out.println("I beg your pardon, sir");
@@ -371,19 +371,19 @@ public class C3PO implements Robot {
 
 ```java
 C3PO c3po = new C3PO();
-c3po.move(); // default implementation from the Robot interface
+c3po.move(); // 来自 Robot 接口的默认实现
 c3po.speak();
 ```
 
 
-Implementations of the interface can override default methods.
+接口的实现者可以覆盖默认方法。
 
 
 
 ```java
 //Java
 public class BB8 implements Robot {
-    //own implementation of the default method
+    //自己实现默认方法
     @Override
     public void move() {
         System.out.println("~rolling~");
