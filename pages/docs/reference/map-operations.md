@@ -7,19 +7,19 @@ title: "Map 相关操作"
 
 # Map 相关操作
 
-In [maps](collections-overview.html#map), types of both keys and values are user-defined.
-Key-based access to map entries enables various map-specific processing capabilities from getting a value by key to separate filtering of keys and values.
-On this page, we provide descriptions of the map processing functions from the standard library.
+在 [map](collections-overview.html#map) 中，键和值的类型都是用户定义的。
+对 map 条目的基于键的访问启用了各种特定于 map 的处理函数，从键获取值到对键和值进行单独过滤。
+在此页面上，我们提供了来自标准库的 map 处理功能的描述。
 
 ## 取键与值
 
-For retrieving a value from a map, you must provide its key as an argument of the [`get()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/get.html) function.
-The shorthand `[key]` syntax is also supported. If the given key is not found, it returns `null`.
-There is also the function [`getValue()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-value.html) which has slightly different behavior: it throws an exception if the key is not found in the map.
-Additionally, you have two more options to handle the key absence: 
+要从映射中检索值，必须提供其键作为 [`get()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/get.html) 函数的参数。
+还支持简写 `[key]` 语法。 如果找不到给定的键，则返回 `null` 。
+还有一个函数 [`getValue()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-value.html) ，它的行为略有不同：如果在映射中找不到键，则抛出异常。
+此外，还有两个选项可以解决键缺失的问题：
 
-* [`getOrElse()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-else.html) works the same way as for lists: the values for non-existent keys are returned from the given lambda function.
-* [`getOrDefault()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-default.html) returns the specified default value if the key is not found.
+* [`getOrElse()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-else.html) 与列表的工作方式相同：对于不存在的键，其值由给定的 lambda 表达式返回。
+* [`getOrDefault()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-default.html) 如果找不到键，则返回指定的默认值。
 
 
 
@@ -38,7 +38,7 @@ fun main() {
 ```
 
 
-To perform operations on all keys or all values of a map, you can retrieve them from the properties `keys` and `values` accordingly. `keys` is a set of all map keys and `values` is a collection of all map values.
+要对 map 的所有键或所有值执行操作，可以从属性 `keys` 和 `values` 中相应地检索它们。 `keys` 是所有映射键的集合， `values` 是所有映射值的集合。
 
 
 
@@ -56,9 +56,9 @@ fun main() {
 
 ## 过滤
 
-You can [filter](collection-filtering.html) maps with the [`filter()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html) function as well as other collections.
-When calling `filter()` on a map, pass to it a predicate with a `Pair` as an argument.
-This enables you to use both the key and the value in the filtering predicate.
+可以使用 [`filter()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html) 函数来[过滤](collection-filtering.html) map 或其他集合。
+对 map 使用 `filter()` 函数时， `Pair` 将作为参数的谓词传递给它。
+它将使用谓词同时过滤其中的键和值。
 
 
 
@@ -74,10 +74,10 @@ fun main() {
 ```
 
 
-There are also two specific ways for filtering maps: by keys and by values.
-For each way, there is a function: [`filterKeys()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-keys.html) and [`filterValues()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-values.html).
-Both return a new map of entries which match the given predicate.
-The predicate for `filterKeys()` checks only the element keys, the one for `filterValues()` checks only values.
+还有两种用于过滤 map 的特定函数：按键或按值。
+这两种方式，都有对应的函数： [`filterKeys()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-keys.html) 和 [`filterValues()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-values.html) 。
+两者都将返回与给定谓词匹配的新条目映射。
+ `filterKeys()` 的谓词仅检查元素键， `filterValues()` 的谓词仅检查值。
 
 
 
