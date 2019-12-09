@@ -225,9 +225,9 @@ fun main() {
 
 ### 删除条目
 
-To remove an entry from a mutable map, use the [`remove()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/remove.html) function.
-When calling `remove()`, you can pass either a key or a whole key-value-pair.
-If you specify both the key and value, the element with this key will be removed only if its value matches the second argument. 
+要从 Mutable Map 中删除条目，请使用 [`remove()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/remove.html) 函数。
+调用 `remove()` 时，可以传递键或整个键值对。
+如果同时指定键和值，则仅当键值都匹配时，才会删除此的元素。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -237,7 +237,7 @@ fun main() {
     val numbersMap = mutableMapOf("one" to 1, "two" to 2, "three" to 3)
     numbersMap.remove("one")
     println(numbersMap)
-    numbersMap.remove("three", 4)            //doesn't remove anything
+    numbersMap.remove("three", 4)            //不会删除任何条目
     println(numbersMap)
 //sampleEnd
 }
@@ -245,9 +245,9 @@ fun main() {
 ```
 </div>
 
-You can also remove entries from a mutable map by their keys or values.
-To do this, call `remove()` on the map's keys or values providing the key or the value of an entry.
-When called on values, `remove()` removes only the first entry with the given value.
+还可以通过键或值从 Mutable Map 中删除条目。
+在 Map 的 `.keys` 或 `.values` 中调用 `remove()` 并提供键或值来删除条目。
+在 `.values` 中调用时， `remove()` 仅删除给定值匹配到的的第一个条目。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -266,7 +266,7 @@ fun main() {
 </div>
 
 
-The [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) operator is also available for mutable maps.
+ [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) 操作符也可用于 Mutable Map 。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -276,7 +276,7 @@ fun main() {
     val numbersMap = mutableMapOf("one" to 1, "two" to 2, "three" to 3)
     numbersMap -= "two"
     println(numbersMap)
-    numbersMap -= "five"             //doesn't remove anything
+    numbersMap -= "five"             //不会删除任何条目
     println(numbersMap)
 //sampleEnd
 }
