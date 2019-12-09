@@ -7,19 +7,19 @@ title: "Map 相关操作"
 
 # Map 相关操作
 
-在[maps](collections-overview.html#map)中，键和值的类型都是用户定义的。
-对maps条目的基于键的访问启用了各种特定于maps的处理功能，从键获取值到对键和值进行单独过滤。
-在此页面上，我们提供了来自标准库的maps处理功能的描述。
+在 [map](collections-overview.html#map) 中，键和值的类型都是用户定义的。
+对 map 条目的基于键的访问启用了各种特定于 map 的处理函数，从键获取值到对键和值进行单独过滤。
+在此页面上，我们提供了来自标准库的 map 处理功能的描述。
 
 ## 取键与值
 
-要从映射中检索值，必须提供其键作为[`get()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/get.html) 函数的参数。
-还支持简写`[key]`语法。 如果找不到给定的键，则返回`null`。
-还有一个功能[`getValue()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-value.html)，它的行为略有不同：如果在映射中找不到键，则抛出异常。
+要从映射中检索值，必须提供其键作为 [`get()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/get.html) 函数的参数。
+还支持简写 `[key]` 语法。 如果找不到给定的键，则返回 `null` 。
+还有一个函数 [`getValue()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-value.html) ，它的行为略有不同：如果在映射中找不到键，则抛出异常。
 此外，还有两个选项可以解决键缺失的问题：
 
-* [`getOrElse()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-else.html)与列表的工作方式相同：不存在的键的值从给定的lambda函数返回。
-* [`getOrDefault()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-default.html)如果找不到密钥，则返回指定的默认值。
+* [`getOrElse()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-else.html) 与列表的工作方式相同：对于不存在的键，其值由给定的 lambda 表达式返回。
+* [`getOrDefault()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-default.html) 如果找不到键，则返回指定的默认值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -38,7 +38,7 @@ fun main() {
 ```
 </div>
 
-要对map的所有键或所有值执行操作，可以从属性`键`和`值`中相应地检索它们。 `keys`是所有映射键的集合，`value`是所有映射值的集合。
+要对 map 的所有键或所有值执行操作，可以从属性 `key` 和 `value` 中相应地检索它们。 `key` 是所有映射键的集合， `value` 是所有映射值的集合。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
