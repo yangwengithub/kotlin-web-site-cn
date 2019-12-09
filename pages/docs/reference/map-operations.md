@@ -13,12 +13,12 @@ title: "Map 相关操作"
 
 ## 取键与值
 
-要从映射中检索值，必须提供其键作为 [`get()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/get.html) 函数的参数。
+要从 Map 中检索值，必须提供其键作为 [`get()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/get.html) 函数的参数。
 还支持简写 `[key]` 语法。 如果找不到给定的键，则返回 `null` 。
-还有一个函数 [`getValue()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-value.html) ，它的行为略有不同：如果在映射中找不到键，则抛出异常。
+还有一个函数 [`getValue()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-value.html) ，它的行为略有不同：如果在 Map 中找不到键，则抛出异常。
 此外，还有两个选项可以解决键缺失的问题：
 
-* [`getOrElse()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-else.html) 与列表的工作方式相同：对于不存在的键，其值由给定的 lambda 表达式返回。
+* [`getOrElse()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-else.html) 与 list 的工作方式相同：对于不存在的键，其值由给定的 lambda 表达式返回。
 * [`getOrDefault()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-default.html) 如果找不到键，则返回指定的默认值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
@@ -38,7 +38,7 @@ fun main() {
 ```
 </div>
 
-要对 map 的所有键或所有值执行操作，可以从属性 `keys` 和 `values` 中相应地检索它们。 `keys` 是所有映射键的集合， `values` 是所有映射值的集合。
+要对 map 的所有键或所有值执行操作，可以从属性 `keys` 和 `values` 中相应地检索它们。 `keys` 是 Map 中所有键的集合， `values` 是 Map 中所有值的集合。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -76,7 +76,7 @@ fun main() {
 
 还有两种用于过滤 map 的特定函数：按键或按值。
 这两种方式，都有对应的函数： [`filterKeys()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-keys.html) 和 [`filterValues()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-values.html) 。
-两者都将返回与给定谓词匹配的新条目映射。
+两者都将返回一个新 Map ，其中包含与给定谓词相匹配的条目。
  `filterKeys()` 的谓词仅检查元素键， `filterValues()` 的谓词仅检查值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
@@ -100,7 +100,7 @@ fun main() {
 
 由于需要访问元素的键，[`plus`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus.html) (`+`) 与 [`minus`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus.html) (`-`) 运算符对 map 的作用与其他集合不同。
  `plus` 返回包含两个操作数元素的 `Map` ：左侧的 Map 与右侧的 Pair 或另一个 Map 。
-当右侧操作数包含在左侧 `Map` 中具有键的条目时，将会映射右侧条目的值。
+当右侧操作数中有左侧 `Map` 中已存在的键时，该条目将使用右侧的值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -138,15 +138,15 @@ fun main() {
 
 ## Map 写操作
 
-[Mutable](collections-overview.html#集合类型) maps offer map-specific write operations.
-These operations let you change the map content using the key-based access to the values.
+[Mutable](collections-overview.html#集合类型) Map 提供特定的 Map 写操作。
+这些操作使你可以使用键来访问或更改 Map 值。
 
-There are certain rules that define write operations on maps:
+ Map 写操作的一些规则：
 
-* Values can be updated. In turn, keys never change: once you add an entry, its key is constant.
-* For each key, there is always a single value associated with it. You can add and remove whole entries.
+* 值可以被更新。 相反，键也永远不会被改变：添加条目后，键将是不可变的。
+* 每个键都有一个与之关联的值。也可以添加和删除整个条目。
 
-Below are descriptions of the standard library functions for write operations available on mutable maps.
+下面是对 Mutable Map 中可用写操作的标准库函数的描述。
 
 ### 添加与更新条目
 
