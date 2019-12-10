@@ -14,7 +14,7 @@ Kotlin 集合包中包含 set 常用操作的扩展函数：查找交集、并�
 
 要查找两个集合中都存在的元素（交集），请使用 [`intersect()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/intersect.html) 。
 要查找另一个集合中不存在的集合元素（差集），请使用 [`subtract()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/subtract.html) 。
-这两个函数也可以操作符的形式调用，例如， `a intersect b` 。
+这两个函数也能以中缀形式调用，例如， `a intersect b` 。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
