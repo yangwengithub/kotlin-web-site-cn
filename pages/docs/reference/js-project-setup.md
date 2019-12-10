@@ -181,7 +181,7 @@ dependencies {
 ```kotlin
 dependencies {
     implementation(kotlin("stdlib-js"))
-    testImplementation("org.jetbrains.kotlin:kotlin-test-js")
+    testImplementation(kotlin("test-js"))
 }
 ```
 
@@ -351,4 +351,5 @@ To build a project artifact using Webpack, execute the `build` Gradle task:
 ```bash
 ./gradlew build
 ```
+
 
