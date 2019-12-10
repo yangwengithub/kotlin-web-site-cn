@@ -7,12 +7,12 @@ title: "List 相关操作"
 
 # List 相关操作
 
- [`List`](collections-overview.html#list) 是 Kotlin 标准库中最受欢迎的集合类型。对列表元素的索引访问为 List 提供了一组强大的操作。
+[`List`](collections-overview.html#list) 是 Kotlin 标准库中最受欢迎的集合类型。对列表元素的索引访问为 List 提供了一组强大的操作。
 
 ## 按索引取元素
 
- List 支持按索引取元素的所有常用操作： `elementAt()`, `first()`, `last()` 与 [取单个元素](collection-elements.html) 中列出的其他操作。
- List 的特点是能通过索引访问特定元素，因此读取元素的最简单方法是按索引检索它。
+List 支持按索引取元素的所有常用操作： `elementAt()` 、 `first()`, `last()` 与 [取单个元素](collection-elements.html) 中列出的其他操作。
+List 的特点是能通过索引访问特定元素，因此读取元素的最简单方法是按索引检索它。
 这是通过 [`get()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/get.html) 函数或简写语法 `[index]` 来传递索引参数完成的。
 
 如果 List 长度小于指定的索引，则抛出异常。
@@ -40,8 +40,8 @@ fun main() {
 
 ## 取列表的一部分
 
-In addition to common operations for [Retrieving Collection Parts](collection-parts.html), lists provide the [`subList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/sub-list.html) function that returns a view of the specified elements range as a list.
-Thus, if an element of the original collection changes, it also changes in the previously created sublists and vice versa.
+除了 [取集合的一部分](collection-parts.html) 中常用的操作， List 还提供 [`subList()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/sub-list.html) 该函数将指定元素范围的视图作为列表返回。
+因此，如果原始集合的元素发生变化，则它在先前创建的子列表中也会发生变化，反之亦然。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
