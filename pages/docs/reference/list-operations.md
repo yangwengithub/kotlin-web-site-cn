@@ -11,7 +11,7 @@ title: "List 相关操作"
 
 ## 按索引取元素
 
-List 支持按索引取元素的所有常用操作： `elementAt()` 、 `first()`, `last()` 与 [取单个元素](collection-elements.html) 中列出的其他操作。
+List 支持按索引取元素的所有常用操作： `elementAt()` 、 `first()` 、 `last()` 与 [取单个元素](collection-elements.html) 中列出的其他操作。
 List 的特点是能通过索引访问特定元素，因此读取元素的最简单方法是按索引检索它。
 这是通过 [`get()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/get.html) 函数或简写语法 `[index]` 来传递索引参数完成的。
 

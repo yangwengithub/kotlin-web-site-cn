@@ -7,9 +7,9 @@ title: "Set 相关操作"
 
 # Set 相关操作
 
- Kotlin Collections 包中包含常用的扩展函数 Set 可用于：查找交集，并集或差集。
+Kotlin 集合包中包含 set 常用操作的扩展函数：查找交集、并集或差集。
 
-要将两个集合合并为一个，可使用 [`union()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/union.html) 函数。也可以当作操作符使用 `a union b`。
+要将两个集合合并为一个（并集），可使用 [`union()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/union.html) 函数。也能以中缀形式使用 `a union b`。
 注意，对于有序集合，操作数的顺序很重要：在结果集合中，左侧操作数在前。
 
 要查找两个集合中都存在的元素（交集），请使用 [`intersect()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/intersect.html) 。
