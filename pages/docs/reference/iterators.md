@@ -7,11 +7,11 @@ title: "迭代器"
 
 # 迭代器
 
-对于遍历集合元素， Kotlin 标准库支持 _iterators（迭代器）_ 的常用机制——对象可按顺序提供对元素的访问权限，而不会暴露集合的底层结构。
-当您需要一对一处理集合的所有元素（例如打印值或对其进行类似更新）时，迭代器非常有用。
+对于遍历集合元素， Kotlin 标准库支持 _迭代器_ 的常用机制——对象可按顺序提供对元素的访问权限，而不会暴露集合的底层结构。
+当需要逐个处理集合的所有元素（例如打印值或对其进行类似更新）时，迭代器非常有用。
 
-迭代器可以通过调用 [`Iterable<T>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/index.html) 接口继承获得，为 `Set` 与 `List` 调用 [`iterator()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/iterator.html) 函数。
-一旦获得迭代器它就指向集合的第一个元素；调用 [`next()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterator/next.html) 函数将返回此元素，并将迭代器指向下个如果存在的元素。
+[`Iterable<T>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/index.html) 接口的继承者（包括 `Set` 与 `List`）可以通过调用 [`iterator()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/iterator.html) 函数获得迭代器。
+一旦获得迭代器它就指向集合的第一个元素；调用 [`next()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterator/next.html) 函数将返回此元素，并将迭代器指向下一个元素（如果下一个元素存在）。
 一旦迭代器通过了最后一个元素，它就不能再用于检索元素；也无法重新指向到以前的任何位置。要再次遍历集合，请创建一个新的迭代器。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
@@ -63,8 +63,8 @@ fun main() {
 
 ## List 迭代器
 
-对于列表，有一个特殊的迭代器实现： [`ListIterator`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list-iterator/index.html) 它支持列表双向迭代：向前与向后。
-向后迭代由 [`hasPrevious()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list-iterator/has-previous.html) 和 [`previous()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list-iterator/previous.html) 函数实现。
+对于列表，有一个特殊的迭代器实现： [`ListIterator`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list-iterator/index.html) 它支持列表双向迭代：正向与反向。
+反向迭代由 [`hasPrevious()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list-iterator/has-previous.html) 和 [`previous()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list-iterator/previous.html) 函数实现。
 此外， `ListIterator` 通过 [`nextIndex()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list-iterator/next-index.html) 与 [`previousIndex()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list-iterator/previous-index.html) 函数提供有关元素索引的信息。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
@@ -89,7 +89,7 @@ fun main() {
 
 ## 可变迭代器
 
-为了迭代可变集合，于是有了 [`MutableIterator`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-iterator/index.html) 来拓展 `Iterator` 使其具有元素删除函数 [`remove()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-iterator/remove.html) 。因此，可以在迭代时从集合中删除元素。
+为了迭代可变集合，于是有了 [`MutableIterator`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-iterator/index.html) 来扩展 `Iterator` 使其具有元素删除函数 [`remove()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-iterator/remove.html) 。因此，可以在迭代时从集合中删除元素。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
