@@ -102,7 +102,9 @@ internal actual fun writeLogMessage(message: String, logLevel: LogLevel) {
 -->可以通过在 Android 与 iOS 之间共享部分代码（如业务逻辑、连接等）
 来构建移动应用。
 
-参见：[多平台项目：iOS 与 Android](https://www.kotlincn.net/docs/tutorials/native/mpp-ios-android.html)
+See: 
+- [Mobile Multiplatform features, case studies and examples](https://www.jetbrains.com/lp/mobilecrossplatform/)
+- [Setting up a Mobile Multiplatform Project](/docs/tutorials/native/mpp-ios-android.html)
 
 ### 客户端——服务端
 
