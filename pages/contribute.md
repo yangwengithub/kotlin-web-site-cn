@@ -119,3 +119,4 @@ Kotlin 编程语言中文站翻译贡献者如下（排名不分先后）：
 * [star0224](https://github.com/star0224)
 * [yourzeromax](https://github.com/yourzeromax)
 * [Yue-plus](https://github.com/Yue-plus)
+* [CZKGO](https://github.com/CZKGO)
