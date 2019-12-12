@@ -479,8 +479,8 @@ kotlin {
 
 
 
-Each compilation is accompanied by a default [source set](#配置源集), which is created automatically
-and should be used for sources and dependencies that are specific to that compilation. The default source set for a
+Each compilation is accompanied by a default [source set](#配置源集) that stores sources and dependencies 
+ specific to that compilation. The default source set for a
 compilation `foo` of a target `bar` has the name `barFoo`. It can also be accessed from a compilation using
 `defaultSourceSet`:
 
@@ -674,8 +674,17 @@ common code shared between the platforms or platform-specific code.
 Each source set has a default source directory for Kotlin sources: `src/<source set name>/kotlin`. To add Kotlin source
 directories and resources to a source set, use its `kotlin` and `resources` `SourceDirectorySet`s:
 
-> Groovy DSL
+By default, the files of a source set are stored in the following directories:
 
+* source files: `src/<source set name>/kotlin`
+* resources files: `src/<source set name>/resources`
+
+You should create these directories manually. 
+
+To add custom Kotlin source directories and resources to a source set, use its `kotlin` and `resources` `SourceDirectorySet`s:
+
+
+> Groovy DSL
 
 ```groovy
 kotlin { 

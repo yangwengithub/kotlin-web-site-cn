@@ -8,7 +8,7 @@ description: "本教程将引导你通过一系列练习来熟悉 Kotlin。"
 ---
 Kotlin 心印是一系列让你熟悉 Kotlin 语法的练习。
 每个练习都是不能通过的单元测试，你的任务就是使其通过。
-可以通过下列辆种方式之一使用 Kotlin 心印：
+可以通过下列两种方式之一使用 Kotlin 心印：
 
 1. 可以使用 Kotlin 心印的[在线版](https://play.kotlinlang.org/koans)。
 
