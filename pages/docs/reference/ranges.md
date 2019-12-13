@@ -83,12 +83,12 @@ fun main() {
 
 ## 区间
 
-A range defines a closed interval in the mathematical sense: it is defined by its two endpoint values which are both included in the range.
-Ranges are defined for comparable types: having an order, you can define whether an arbitrary instance is in the range between two given instances.
-The main operation on ranges is `contains`, which is usually used in the form of `in` and `!in` operators.
+区间从数学意义上定义了一个封闭的间隔：它由两个端点值定义，这两个端点值都包含在该区间内。
+区间是为可比较类型定义的：具有顺序，可以定义任意实例是否在两个给定实例之间的区间内。
+区间的主要操作是 `contains`，通常以 `in` 与 `!in` 操作符的形式使用。
 
-To create a range for your class, call the `rangeTo()` function on the range start value and provide the end value as an argument.
-`rangeTo()` is often called in its operator form `..`.
+要为类创建一个区间，请在区间起始值上调用 `rangeTo()` 函数，并提供结束值作为参数。
+`rangeTo()` 通常以操作符 `..` 形式调用。
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ```kotlin
