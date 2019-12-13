@@ -175,7 +175,7 @@ fun main() {
 ```
 </div>
 
-数列实现 `Iterable<N>`，其中 `N` 分别是 `Int`、`Long` 或 `Char`，因此您可以在各种[集合函数](collection-operations.html)（如 `map`、`filter` 与其他）中使用它们。
+数列实现 `Iterable<N>`，其中 `N` 分别是 `Int`、`Long` 或 `Char`，因此可以在各种[集合函数](collection-operations.html)（如 `map`、`filter` 与其他）中使用它们。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
