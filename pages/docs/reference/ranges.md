@@ -117,10 +117,10 @@ fun main() {
 如上个示例所示，整数类型的区间（例如 `Int`、`Long` 与 `Char`）可视为[等差数列](https://zh.wikipedia.org/wiki/%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97)。
 在 Kotlin 中，这些数列由特殊类型定义：[`IntProgression`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-int-progression/index.html)、[`LongProgression`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-long-progression/index.html) 与 [`CharProgression`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-char-progression/index.html)。
 
-数列具有三个基本属性：`first` 元素，`last` 元素和一个非零的 `step`。
+数列具有三个基本属性：`first` 元素、`last` 元素和一个非零的 `step`。
 首个元素为 `first`，后续元素是前一个元素加上一个 `step`。
 除非数列为空，否则最后一个元素总是被迭代命中。
-以确定的步长在数列上进行迭代等效于 Java/JavaScript 中的 `for` 循环。
+以确定的步长在数列上进行迭代等效于 Java/JavaScript 中基于索引的 `for` 循环。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -131,7 +131,7 @@ for (int i = first; i <= last; i += step) {
 ```
 </div>
 
-通过迭代数列隐式创建区间时，此数列的 `first` 与 `last` 元素是范围的端点，`step` 为 1 。
+通过迭代数列隐式创建区间时，此数列的 `first` 与 `last` 元素是区间的端点，`step` 为 1 。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
