@@ -397,19 +397,19 @@ public class BB8 implements Robot {
 ```
 </div>
 
-For the `@JvmDefault` annotation to take effect, the interface must be compiled with an `-Xjvm-default` argument.
-Depending on the case of adding the annotation, specify one of the argument values:
+为了让 `@JvmDefault` 生效，编译该接口必须带有 `-Xjvm-default` 参数。
+根据添加注解的情况，指定下列值之一：
 
-* `-Xjvm-default=enabled` should be used if you add only new methods with the `@JvmDefault` annotation.
-   This includes adding the entire interface for your API.
-* `-Xjvm-default=compatibility` should be used if you are adding a `@JvmDefault` to the methods that were available in the API before.
-   This mode helps avoid compatibility breaks: all the interface implementations written for the previous versions will be fully compatible with the new version.
-   However, the compatibility mode may add some overhead to the resulting bytecode size and affect the performance.
+* `-Xjvm-default=enabled` 只添加带有 `@JvmDefault` 注解的新方法时使用。
+   这包括为 API 添加整个接口。
+* `-Xjvm-default=compatibility` 将 `@JvmDefault` 添加到以往 API 中就有的方法时使用。
+   这种模式有助于避免兼容性破坏：为先前版本编写的所有接口实现都会与新版本完全兼容。
+   然而，兼容模式可能会增大生成字节码的规模并且影响性能。
 
-For more details about compatibility issues, see the `@JvmDefault` [reference page](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html).
+关于兼容性的更多详情请参见 `@JvmDefault` [参考页](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html)。
 
-Note that if an interface with `@JvmDefault` methods is used as a [delegate](/docs/reference/delegation.html),
-the default method implementations are called even if the actual delegate type provides its own implementations.
+请注意，如果将带有 `@JvmDefault` 的方法的接口用作[委托](/docs/reference/delegation.html)，
+那么即是实际的委托类型提供了自己的实现，也会调用默认方法的实现。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -431,12 +431,12 @@ class DelegatedProducer(val p: Producer): Producer by p {
 
 fun main() {
     val prod = ProducerImpl()
-    DelegatedProducer(prod).produce() // prints "interface method"
+    DelegatedProducer(prod).produce() // 输出“interface method”
 }
 ```
 </div>
 
-For more details about interface delegation in Kotlin, see [Delegation](/docs/reference/delegation.html).
+关于 Kotlin 中接口委托的更多详情，请参见[委托](/docs/reference/delegation.html)。
 
 
 ## 可见性
