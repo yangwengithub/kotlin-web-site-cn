@@ -83,12 +83,12 @@ fun main() {
 
 ## 区间
 
-A range defines a closed interval in the mathematical sense: it is defined by its two endpoint values which are both included in the range.
-Ranges are defined for comparable types: having an order, you can define whether an arbitrary instance is in the range between two given instances.
-The main operation on ranges is `contains`, which is usually used in the form of `in` and `!in` operators.
+区间从数学意义上定义了一个封闭的间隔：它由两个端点值定义，这两个端点值都包含在该区间内。
+区间是为可比较类型定义的：具有顺序，可以定义任意实例是否在两个给定实例之间的区间内。
+区间的主要操作是 `contains`，通常以 `in` 与 `!in` 操作符的形式使用。
 
-To create a range for your class, call the `rangeTo()` function on the range start value and provide the end value as an argument.
-`rangeTo()` is often called in its operator form `..`.
+要为类创建一个区间，请在区间起始值上调用 `rangeTo()` 函数，并提供结束值作为参数。
+`rangeTo()` 通常以操作符 `..` 形式调用。
 
 
 ```kotlin
@@ -114,13 +114,13 @@ fun main() {
 
 ## 数列
 
-As shown in the examples above, the ranges of integral types, such as `Int`, `Long`, and `Char`, can be treated as [arithmetic progressions](https://en.wikipedia.org/wiki/Arithmetic_progression) of them.
-In Kotlin, these progressions are defined by special types: [`IntProgression`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-int-progression/index.html), [`LongProgression`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-long-progression/index.html), and [`CharProgression`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-char-progression/index.html).
+如上个示例所示，整数类型的区间（例如 `Int`、`Long` 与 `Char`）可视为[等差数列](https://zh.wikipedia.org/wiki/%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97)。
+在 Kotlin 中，这些数列由特殊类型定义：[`IntProgression`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-int-progression/index.html)、[`LongProgression`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-long-progression/index.html) 与 [`CharProgression`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-char-progression/index.html)。
 
-Progressions have three essential properties: the `first` element, the `last` element, and a non-zero `step`.
-The first element is `first`, subsequent elements are the previous element plus a `step`.
-The last element is always hit by iteration unless the progression is empty.
-Iteration over a progression with a positive step is equivalent to an indexed `for` loop in Java/JavaScript.
+数列具有三个基本属性：`first` 元素、`last` 元素和一个非零的 `step`。
+首个元素为 `first`，后续元素是前一个元素加上一个 `step`。
+除非数列为空，否则最后一个元素总是被迭代命中。
+以确定的步长在数列上进行迭代等效于 Java/JavaScript 中基于索引的 `for` 循环。
 
 
 
@@ -131,7 +131,7 @@ for (int i = first; i <= last; i += step) {
 ```
 
 
-When you create a progression implicitly by iterating a range, this progression's `first` and `last` elements are the range's endpoints, and the `step` is 1.
+通过迭代数列隐式创建区间时，此数列的 `first` 与 `last` 元素是区间的端点，`step` 为 1 。
 
 
 
@@ -145,7 +145,7 @@ fun main() {
 ```
 
 
-To define a custom progression step, use the `step` function on a range.
+要指定数列步长，请在区间上使用 `step` 函数。
 
 
 
@@ -159,9 +159,9 @@ fun main() {
 ```
 
 
-The last element of the progression is calculated to find the maximum value not greater than the end value for a positive step or the minimum value not less than the end value for a negative step such that `(last - first) % step == 0`.
+计算该数列的最后一个元素，以找到正步长的最大值不大于最终值，或负步长的最小值不小于最终值，使得 `(last - first) % step == 0`.
 
-To create a progression for iterating in reverse order, use `downTo` instead of `..` when defining the range for it.
+要创建反向迭代的数列，请在定义其区间时使用 `downTo` 而不是 `..`。
 
 
 
@@ -175,7 +175,7 @@ fun main() {
 ```
 
 
-Progressions implement `Iterable<N>`, where `N` is `Int`, `Long`, or `Char` respectively, so you can use them in various [collection functions](collection-operations.html) like `map`, `filter`, and other.
+数列实现 `Iterable<N>`，其中 `N` 分别是 `Int`、`Long` 或 `Char`，因此可以在各种[集合函数](collection-operations.html)（如 `map`、`filter` 与其他）中使用它们。
 
 
 
