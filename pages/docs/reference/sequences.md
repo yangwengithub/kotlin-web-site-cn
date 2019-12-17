@@ -102,24 +102,24 @@ fun main() {
 
 ## 序列操作
 
-The sequence operations can be classified into the following groups regarding their state requirements:
+关于序列操作，根据其状态要求可以分为以下几类：
 
-* _Stateless_ operations require no state and process each element independently, for example, [`map()`](collection-transformations.html#映射) or [`filter()`](collection-filtering.html).
-   Stateless operations can also require a small constant amount of state to process an element, for example, [`take()` or `drop()`](collection-parts.html).
-* _Stateful_ operations require a significant amount of state, usually proportional to the number of elements in a sequence.
+* _无状态_ 操作不需要状态，并且可以独立处理每个元素，例如 [`map()`](collection-transformations.html#映射) 或 [`filter()`](collection-filtering.html)。
+   无状态操作还可能需要少量恒定的状态来处理元素，例如 [`take()` 与 `drop()`](collection-parts.html)。
+* _有状态_ 操作需要大量状态，通常与序列中元素的数量成比例。
 
-If a sequence operation returns another sequence, which is produced lazily, it's called _intermediate_.
-Otherwise, the operation is _terminal_. Examples of terminal operations are [`toList()`](constructing-collections.html#复制) or [`sum()`](collection-aggregate.html). Sequence elements can be retrieved only with terminal operations.
+如果序列操作返回延迟生成的另一个序列，则称为 _中间序列_。
+否则，该操作为 _终端_ 操作。 终端操作的示例为 [`toList()`](constructing-collections.html#复制) 或 [`sum()`](collection-aggregate.html)。只能通过终端操作才能检索顺序元素。
 
-Sequences can be iterated multiple times; however some sequence implementations might constrain themselves to be iterated only once. That is mentioned specifically in their documentation.
+序列可以多次迭代；但是，某些序列实现可能会约束自己仅迭代一次。其文档中特别提到了这一点。
 
 ## 序列处理示例
 
-Let's take a look at the difference between `Iterable` and `Sequence` with an example. 
+观察一个示例，了解 `Iterable` 与 `Sequence` 之间的区别。
 
 ### Iterable
 
-Assume that you have a list of words. The code below filters the words longer than three characters and prints the lengths of first four such words.
+有一个单词列表。下面的代码过滤长于三个字符的单词，并打印前四个单词的长度。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -138,15 +138,15 @@ fun main() {
 ```
 </div>
 
-When you run this code, you'll see that the `filter()` and `map()` functions are executed in the same order as they appear in the code.
-First, you see `filter:` for all elements, then `length:` for the elements left after filtering, and then the output of the two last lines. 
-This is how the list processing goes:
+运行此代码时，会看到 `filter()` 与 `map()` 函数的执行顺序与代码中出现的顺序相同。
+首先，将看到 `filter`：对于所有元素，然后是 `length`：对于在过滤之后剩余的元素，然后是最后两行的输出。
+列表处理如下图：
 
 ![List processing]({{ url_for('asset', path='images/reference/sequences/list-processing.png') }})
 
 ### Sequence
 
-Now let's write the same with sequences:
+现在用序列写相同的东西：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -154,7 +154,7 @@ Now let's write the same with sequences:
 fun main() {
 //sampleStart
     val words = "The quick brown fox jumps over the lazy dog".split(" ")
-    //convert the List to a Sequence
+    // 将列表转换为序列
     val wordsSequence = words.asSequence()
 
     val lengthsSequence = wordsSequence.filter { println("filter: $it"); it.length > 3 }
@@ -162,20 +162,20 @@ fun main() {
         .take(4)
 
     println("Lengths of first 4 words longer than 3 chars")
-    // terminal operation: obtaining the result as a List
+    // 终端操作：以列表形式获取结果。
     println(lengthsSequence.toList())
 //sampleEnd
 }
 ```
 </div>
 
-The output of this code shows that the `filter()` and `map()` functions are called only when building the result list.
-So, you first see the line of text `“Lengths of..”` and then the sequence processing starts.
-Note that for elements left after filtering, the map executes before filtering the next element.
-When the result size reaches 4, the processing stops because it's the largest possible size that `take(4)` can return.
+此代码的输出表明，仅在构建结果列表时才调用 `filter()` 与 `map()` 函数。
+因此，首先看到文本 `“Lengths of..”` 的行，然后开始进行序列处理。
+请注意，对于过滤后剩余的元素，映射在过滤下一个元素之前执行。
+当结果大小达到 4 时，处理将停止，因为它是 `take(4)` 可以返回的最大大小。
 
-The sequence processing goes like this:
+序列处理如下图：
 
 ![Sequences processing]({{ url_for('asset', path='images/reference/sequences/sequence-processing.png') }})
 
-In this example, the sequence processing takes 18 steps instead of 23 steps for doing the same with lists.
+在此示例中，序列处理需要18个步骤，而不是23个步骤来执行列表操作。
