@@ -34,12 +34,12 @@
   link: https://github.com/cheptsov/kotlin-nosql
 
 - name: Arrow
-  description: A functional companion to Kotlin's Standard Library
+  description: Kotlin 标准库的函数式“伴侣”
   type: 库
   link: https://arrow-kt.io
 
 - name: Arrow Meta
-  description: A functional companion to Kotlin's Compiler and IDE
+  description: Kotlin 编译器与 IDE 的函数式“伴侣”
   type: 库
   link: http://meta.arrow-kt.io
 
