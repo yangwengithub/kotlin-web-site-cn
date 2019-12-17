@@ -33,10 +33,15 @@
   type: 库
   link: https://github.com/cheptsov/kotlin-nosql
 
-- name: FunKtionale
-  description: Kotlin 的函数式助手
+- name: Arrow
+  description: A functional companion to Kotlin's Standard Library
   type: 库
-  link: https://github.com/MarioAriasC/funKTionale
+  link: https://arrow-kt.io
+
+- name: Arrow Meta
+  description: A functional companion to Kotlin's Compiler and IDE
+  type: 库
+  link: http://meta.arrow-kt.io
 
 - name: KotlinPrimavera
   description: Spring 框架的 Kotlin 包装
