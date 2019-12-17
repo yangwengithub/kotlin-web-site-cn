@@ -7,23 +7,23 @@ title: "序列"
 
 # 序列
 
-Along with collections, the Kotlin standard library contains another container type – _sequences_ ([`Sequence<T>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence/index.html)).
-Sequences offer the same functions as [`Iterable`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/index.html) but implement another approach to multi-step collection processing.
+除了集合之外，Kotlin 标准库还包含另一种容器类型——_序列_（[`Sequence<T>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence/index.html)）。
+序列提供与 [`Iterable`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/index.html) 相同的函数，但实现另一种方法来进行多步骤集合处理。
 
-When the processing of an `Iterable` includes multiple steps, they are executed eagerly: each processing step completes and returns its result – an intermediate collection.
-The following step executes on this collection. In turn, multi-step processing of sequences is executed lazily when possible: actual computing happens only when the result of the whole processing chain is requested. 
+当 `Iterable` 的处理包含多个步骤时，它们会优先执行：每个处理步骤完成并返回其结果——中间集合。
+在此集合上执行以下步骤。反过来，序列的多步处理在可能的情况下会延迟执行：仅当请求整个处理链的结果时才进行实际计算。
 
-The order of operations execution is different as well: `Sequence` performs all the processing steps one-by-one for every single element.
-In turn, `Iterable` completes each step for the whole collection and then proceeds to the next step. 
+操作执行的顺序也不同：`Sequence` 对每个元素逐个执行所有处理步骤。
+反过来，`Iterable` 完成整个集合的每个步骤，然后进行下一步。
 
-So, the sequences let you avoid building results of intermediate steps, therefore improving the performance of the whole collection processing chain.
-However, the lazy nature of sequences adds some overhead which may be significant when processing smaller collections or doing simpler computations.
-Hence, you should consider both `Sequence` and `Iterable` and decide which one is better for your case.
+因此，这些序列可避免生成中间步骤的结果，从而提高了整个集合处理链的性能。
+但是，序列的延迟性质增加了一些开销，这些开销在处理较小的集合或进行更简单的计算时可能很重要。
+因此，应该同时考虑使用 `Sequence` 与 `Iterable`，并确定在哪种情况更适合。
 
 ## 构造
 
 ### 由元素
-To create a sequence, call the [`sequenceOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/sequence-of.html) function listing the elements as its arguments.
+要创建一个序列，请调用 [`sequenceOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/sequence-of.html) 函数，列出元素作为其参数。
 
 
 
@@ -33,7 +33,7 @@ val numbersSequence = sequenceOf("four", "three", "two", "one")
 
 
 ### 由 `Iterable`
-If you already have an `Iterable` object (such as a `List` or a `Set`), you can create a sequence from it by calling [`asSequence()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/as-sequence.html).
+如果已经有一个 `Iterable` 对象（例如 `List` 或 `Set`），则可以通过调用 [`asSequence()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/as-sequence.html) 从而创建一个序列。
 
 
 
@@ -45,25 +45,25 @@ val numbersSequence = numbers.asSequence()
 
 
 ### 由函数
-One more way to create a sequence is by building it with a function that calculates its elements.
-To build a sequence based on a function, call [`generateSequence()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/generate-sequence.html) with this function as an argument.
-Optionally, you can specify the first element as an explicit value or a result of a function call.
-The sequence generation stops when the provided function returns `null`. So, the sequence in the example below is infinite.
+创建序列的另一种方法是通过使用计算其元素的函数来构建序列。
+要基于函数构建序列，请以该函数作为参数调用 [`generateSequence()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/generate-sequence.html)。
+（可选）可以将第一个元素指定为显式值或函数调用的结果。
+当提供的函数返回 `null` 时，序列生成停止。因此，以下示例中的序列是无限的。
 
 
 
 ```kotlin
 fun main() {
 //sampleStart
-    val oddNumbers = generateSequence(1) { it + 2 } // `it` is the previous element
+    val oddNumbers = generateSequence(1) { it + 2 } // `it` 是上一个元素
     println(oddNumbers.take(5).toList())
-    //println(oddNumbers.count())     // error: the sequence is infinite
+    //println(oddNumbers.count())     // 错误：此序列是无限的。
 //sampleEnd
 }
 ```
 
 
-To create a finite sequence with `generateSequence()`, provide a function that returns `null` after the last element you need.
+要使用 `generateSequence()` 创建有限序列，请提供一个函数，该函数在需要的最后一个元素之后返回 `null`。
 
 
 
@@ -79,10 +79,10 @@ fun main() {
 
 ### 由组块
 
-Finally, there is a function that lets you produce sequence elements one by one or by chunks of arbitrary sizes – the [`sequence()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/sequence.html) function.
-This function takes a lambda expression containing calls of [`yield()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence-scope/yield.html) and [`yieldAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence-scope/yield-all.html) functions.
-They return an element to the sequence consumer and suspend the execution of `sequence()` until the next element is requested by the consumer.
-`yield()` takes a single element as an argument; `yieldAll()` can take an `Iterable` object, an `Iterator`, or another `Sequence`. A `Sequence` argument of `yieldAll()` can be infinite. However, such a call must be the last: all subsequent calls will never be executed.
+最后，有一个函数可以逐个或按任意大小的组块生成序列元素——[`sequence()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/sequence.html) 函数。
+此函数采用一个 lambda 表达式，其中包含 [`yield()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence-scope/yield.html) 与 [`yieldAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence-scope/yield-all.html) 函数的调用。
+它们将一个元素返回给序列使用者，并暂停 `sequence()` 的执行，直到使用者请求下一个元素。
+`yield()` 使用单个元素作为参数；`yieldAll()` 中可以采用 `Iterable` 对象、`Iterable` 或其他 `Sequence`。`yieldAll()` 的 `Sequence` 参数可以是无限的。 总之，这样的调用必须是最后一个：之后的所有调用将永远不会执行。
 
 
 
