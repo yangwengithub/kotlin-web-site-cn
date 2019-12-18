@@ -105,21 +105,21 @@ fun main() {
 关于序列操作，根据其状态要求可以分为以下几类：
 
 * _无状态_ 操作不需要状态，并且可以独立处理每个元素，例如 [`map()`](collection-transformations.html#映射) 或 [`filter()`](collection-filtering.html)。
-   无状态操作还可能需要少量恒定的状态来处理元素，例如 [`take()` 与 `drop()`](collection-parts.html)。
+   无状态操作还可能需要少量常数个状态来处理元素，例如 [`take()` 与 `drop()`](collection-parts.html)。
 * _有状态_ 操作需要大量状态，通常与序列中元素的数量成比例。
 
 如果序列操作返回延迟生成的另一个序列，则称为 _中间序列_。
-否则，该操作为 _终端_ 操作。 终端操作的示例为 [`toList()`](constructing-collections.html#复制) 或 [`sum()`](collection-aggregate.html)。只能通过终端操作才能检索顺序元素。
+否则，该操作为 _末端_ 操作。 末端操作的示例为 [`toList()`](constructing-collections.html#复制) 或 [`sum()`](collection-aggregate.html)。只能通过末端操作才能检索序列元素。
 
 序列可以多次迭代；但是，某些序列实现可能会约束自己仅迭代一次。其文档中特别提到了这一点。
 
 ## 序列处理示例
 
-观察一个示例，了解 `Iterable` 与 `Sequence` 之间的区别。
+我们通过一个示例来看 `Iterable` 与 `Sequence` 之间的区别。
 
 ### Iterable
 
-有一个单词列表。下面的代码过滤长于三个字符的单词，并打印前四个单词的长度。
+假定有一个单词列表。下面的代码过滤长于三个字符的单词，并打印前四个单词的长度。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -146,7 +146,7 @@ fun main() {
 
 ### Sequence
 
-现在用序列写相同的东西：
+现在用序列写相同的逻辑：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -162,7 +162,7 @@ fun main() {
         .take(4)
 
     println("Lengths of first 4 words longer than 3 chars")
-    // 终端操作：以列表形式获取结果。
+    // 末端操作：以列表形式获取结果。
     println(lengthsSequence.toList())
 //sampleEnd
 }
@@ -178,4 +178,4 @@ fun main() {
 
 ![Sequences processing]({{ url_for('asset', path='images/reference/sequences/sequence-processing.png') }})
 
-在此示例中，序列处理需要18个步骤，而不是23个步骤来执行列表操作。
+在此示例中，序列处理需要 18 个步骤，而不是 23 个步骤来执行列表操作。
