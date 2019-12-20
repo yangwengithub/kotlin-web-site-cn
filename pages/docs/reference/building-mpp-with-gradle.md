@@ -423,7 +423,7 @@ kotlin {
 kotlin {
     jvm {
         compilations.main.kotlinOptions {
-            // 为"主要"编译设置 Kotlin 编译器选项：
+            // 为 "主编译" 设置 Kotlin 编译器选项：
             jvmTarget = "1.8"
         }
 
@@ -454,7 +454,7 @@ kotlin {
     jvm {
         val main by compilations.getting {
             kotlinOptions {
-                // 为"主要"编译设置 Kotlin 编译器选项：
+                // 为 "主编译" 设置 Kotlin 编译器选项：
                 jvmTarget = "1.8"
             }
 
@@ -492,7 +492,7 @@ kotlin {
     jvm() // 使用默认名称 "jvm" 创建一个 JVM 目标
 
     sourceSets {
-        // "jvm" 目标的 "main" 编译的默认源集：
+        // "jvm" 目标的 "主编译" 的默认源集：
         jvmMain {
             /* …… */
         }
@@ -516,7 +516,7 @@ kotlin {
     jvm() // 使用默认名称 "jvm" 创建一个 JVM 目标
 
     sourceSets {
-        // "jvm" 目标的 "main" 编译的默认源集：
+        // "jvm" 目标的 "主编译" 的默认源集：
         val jvmMain by getting {
             /* …… */
         }
@@ -559,7 +559,7 @@ kotlin {
 
             // 创建一个测试任务来运行此编译产生的测试：
             tasks.create('jvmIntegrationTest', Test) {
-                // 使用包含编译依赖项（包括 "main"）的类路径运行测试，
+                // 使用包含编译依赖项（包括 "主编译"）的类路径运行测试，
                 // 运行时依赖项以及此编译的输出：
                 classpath = compileDependencyFiles + runtimeDependencyFiles + output.allOutputs
 
@@ -595,7 +595,7 @@ kotlin {
 
                 // 创建一个测试任务来运行此编译产生的测试：
                 tasks.create<Test>("integrationTest") {
-                    // 使用包含编译依赖项（包括 "main"）的类路径运行测试，
+                    // 使用包含编译依赖项（包括 "主编译"）的类路径运行测试，
                     // 运行时依赖项以及此编译的输出：
                     classpath = compileDependencyFiles + runtimeDependencyFiles + output.allOutputs
 
