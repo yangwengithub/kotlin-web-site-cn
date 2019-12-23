@@ -64,7 +64,7 @@ title: "Reference"
           <h3 style="font-weight: bold">在线教程</h3>
           <p>在线课程对 Kotlin 有很好地覆盖，可在这里查看推荐的课程：</p>
           <ul>
-            <li class="start migrate"> <a style="text-decoration: none;" href="https://coding.imooc.com/class/108.html">全网首门——Kotlin入门与进阶</a></li>
+            <li class="start migrate"> <a style="text-decoration: none;" href="https://coding.imooc.com/class/398.html">新版Kotlin从入门到精通 —— 基于 Kotlin 1.3.50</a></li>
             <li class="start migrate"> <a style="text-decoration: none;" href="https://coding.imooc.com/class/232.html">基于GitHub App业务深度讲解 Kotlin高级特性与框架设计</a></li>
             <li class="start migrate"> <a style="text-decoration: none;" href="https://kaixue.io/">码上开学：给 Android 工程师的 Kotlin 上手指南</a></li>
             <li class="start">   <a style="text-decoration: none;" href="http://shop.oreilly.com/product/0636920052982.do">Introduction to Kotlin Programming</a></li>

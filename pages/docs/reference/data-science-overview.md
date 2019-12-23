@@ -14,7 +14,7 @@ title: "Kotlin 用于数据科学"
 数据分析、机器学习、可视化等等。
 
 为了涵盖所有这些不同领域，软件行业有许多用于数据科学的技术与工具。
-其中包含框架、特定的 IDE（称为 *notebooks*）、绘图工具以及<!--
+其中包含框架、特定的 IDE（称为 *notebook*）、绘图工具以及<!--
 -->专为数据分析与数学研究设计的编程语言。
 
 通用语言也可以应用于数据科学领域，而 Kotlin 已经为数据科学所采用。
@@ -22,25 +22,25 @@ title: "Kotlin 用于数据科学"
 
 ## 工具
 
-Modern software developers very rarely write their code in plain text editors and run it from the command line anymore.
-Instead, they tend to use integrated development environments (IDE) that can handle all the development tasks in a single tool.
-Data scientists have similar tools called _notebooks_. Notebooks let users conduct research and store it in a single environment.
-In a notebook, you can write narrative text next to a code block, execute the code block, and see the results in any
-format that you need: output text, tables, data visualization, and so on.
+现代软件开发人员很少会在纯文本编辑器中编写代码并在命令行运行。
+相反，大家倾向于使用可以在一个工具中处理所有开发任务的集成开发环境（IDE，Integrated Development Environment）。
+数据科学家也有类似的工具，称为 *notebook*。notebook 让用户可以进行研究并将其存储在单个环境中。
+在一个 notebook 中，可以在代码旁编写叙述性文本、执行代码块及以任何<!--
+-->所需格式（输出文本、表格、数据可视化等等）查看结果。
 
-Kotlin provides integration with two popular notebooks: Jupyter and Apache Zeppelin, which both allow you to write and
-run Kotlin code blocks.
+Kotlin 提供了与两个流行的 notebook 的集成：Jupyter 与 Apache Zeppelin，它们都支持编写及<!--
+-->运行 Kotlin 代码块。
 
 ### Jupyter 内核
 
-The open-source project [Jupyter](https://jupyter.org/) offers the well-known web-based development environment **Jupyter Notebook**.
-For code execution, Jupyter uses the concept of _kernels_ - components that run separately and execute the code upon request,
-for example, when you click **Run** in a notebook.
+开源项目 [Jupyter](https://jupyter.org/) 提供了著名的基于 web 的开发环境 **Jupyter Notebook**。
+对于代码执行，Jupyter 使用*内核*的概念——独立运行的不同组件，并且这些组件根据请求执行代码，
+例如，当在一个 notebook 中点击 **Run** 时。
 
-There is a kernel that the Jupyter team maintains themselves - IPython for running the Python code.
-However, there are other community-maintained kernels for different languages.
-Among them is the **Kotlin kernel for Jupyter notebooks**. With this kernel, you can write and run Kotlin code in Jupyter 
-notebooks and use third-party data science frameworks written in Java and Kotlin.
+Jupyter 团队维护了一个内核——运行 Python 代码的 IPython。
+但是，还有其他社区维护的用于不同语言的各种内核。
+其中包括**用于 Jupyter notbook 的 Kotlin 内核**。有了这个内核，就可以在 Jupyter
+notebook 中编写并运行 Kotlin 代码，以及使用以 Java 或 Kotlin 编写的第三方数据科学框架。
 
 #### 设置 Kotlin 内核
 

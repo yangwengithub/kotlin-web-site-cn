@@ -60,7 +60,7 @@ data class User(val name: String = "", val age: Int = 0)
 
 ## 在类体中声明的属性
 
-请注意，对于那些自动生成的函数，编译器只使用在主构造函数内部定义的属性。如需在生成的实现中排出一个属性，请将其声明在类体中：
+请注意，对于那些自动生成的函数，编译器只使用在主构造函数内部定义的属性。如需在生成的实现中排除一个属性，请将其声明在类体中：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
