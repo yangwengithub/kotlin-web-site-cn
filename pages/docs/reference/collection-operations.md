@@ -22,19 +22,19 @@ Kotlin 标准库提供了用于对集合执行操作的多种函数。这包括�
 
 ## 公共操作
 
-Common operations are available for both [read-only and mutable collections](collections-overview.html#集合类型). Common operations fall into these groups:
+公共操作可用于[只读集合与可变集合](collections-overview.html#集合类型)。 常见操作分为以下几类：
 
-* [Transformations](collection-transformations.html)
-* [Filtering](collection-filtering.html)
-* [`plus` and `minus` operators](collection-plus-minus.html)
-* [Grouping](collection-grouping.html)
-* [Retrieving collection parts](collection-parts.html)
-* [Retrieving single elements](collection-elements.html)
-* [Ordering](collection-ordering.html)
-* [Aggregate operations](collection-aggregate.html)
+* [集合转换](collection-transformations.html)
+* [集合过滤](collection-filtering.html)
+* [`plus` 与 `minus` 操作符](collection-plus-minus.html)
+* [分组](collection-grouping.html)
+* [取集合的一部分](collection-parts.html)
+* [取单个元素](collection-elements.html)
+* [集合排序](collection-ordering.html)
+* [集合聚合操作](collection-aggregate.html)
 
-Operations described on these pages return their results without affecting the original collection. For example, a filtering operation produces a _new collection_ that contains all the elements matching the filtering predicate.
-Results of such operations should be either stored in variables, or used in some other way, for example, passed in other functions.
+这些页面中描述的操作将返回其结果，而不会影响原始集合。例如，一个过滤操作产生一个_新集合_，其中包含与过滤谓词匹配的所有元素。
+此类操作的结果应存储在变量中，或以其他方式使用，例如，通过其他函数传递。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -42,9 +42,9 @@ Results of such operations should be either stored in variables, or used in some
 fun main() {
 //sampleStart
     val numbers = listOf("one", "two", "three", "four")  
-    numbers.filter { it.length > 3 }  // nothing happens with `numbers`, result is lost
+    numbers.filter { it.length > 3 }  // `numbers` 没有任何改变，结果丢失
     println("numbers are still $numbers")
-    val longerThan3 = numbers.filter { it.length > 3 } // result is stored in `longerThan3`
+    val longerThan3 = numbers.filter { it.length > 3 } // 结果存储在 `longerThan3` 中
     println("numbers longer than 3 chars are $longerThan3")
 //sampleEnd
 }
@@ -52,10 +52,10 @@ fun main() {
 ```
 </div>
 
-For certain collection operations, there is an option to specify the _destination_ object.
-Destination is a mutable collection to which the function appends its resulting items instead of returning them in a new object.
-For performing operations with destinations, there are separate functions with the `To` postfix in their names, for example, [`filterTo()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-to.html) instead of [`filter()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html)  or [`associateTo()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate-to.html) instead of [`associate()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate.html).
-These functions take the destination collection as an additional parameter.
+对于某些集合操作，有一个选项可以指定 _目标_ 对象。
+目标是一个可变集合，该函数将其结果项附加到该可变项中，而不是在新对象中返回它们。
+为了对目标执行操作，有单独的函数，其名称中带有 `To` 后缀，例如，用 [`filterTo()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-to.html) 代替 [`filter()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html) 以及用 [`associateTo()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate-to.html) 代替 [`associate()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate.html)。
+这些函数将目标集合作为附加参数。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -63,16 +63,16 @@ These functions take the destination collection as an additional parameter.
 fun main() {
 //sampleStart
     val numbers = listOf("one", "two", "three", "four")
-    val filterResults = mutableListOf<String>()  //destination object
+    val filterResults = mutableListOf<String>()  // 目标对象
     numbers.filterTo(filterResults) { it.length > 3 }
     numbers.filterIndexedTo(filterResults) { index, _ -> index == 0 }
-    println(filterResults) // contains results of both operations
+    println(filterResults) // 包含两个操作的结果
 //sampleEnd
 }
 ```
 </div>
 
-For convenience, these functions return the destination collection back, so you can create it right in the corresponding argument of the function call:
+为了方便起见，这些函数将目标集合返回了，因此您可以在函数调用的相应参数中直接创建它：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -80,8 +80,8 @@ For convenience, these functions return the destination collection back, so you 
 fun main() {
     val numbers = listOf("one", "two", "three", "four")
 //sampleStart
-    // filter numbers right into a new hash set, 
-    // thus eliminating duplicates in the result
+    // 将数字直接过滤到新的哈希集中，
+    // 从而消除结果中的重复项
     val result = numbers.mapTo(HashSet()) { it.length }
     println("distinct item lengths are $result")
 //sampleEnd
@@ -89,7 +89,7 @@ fun main() {
 ```
 </div>
 
-Functions with destination are available for filtering, association, grouping, flattening, and other operations. For the complete list of destination operations see the [Kotlin collections reference](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index.html).
+具有目标的函数可用于过滤、关联、分组、展平以及其他操作。 有关目标操作的完整列表，请参阅 [Kotlin collections reference](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index.html)。
 
 ## 写操作
 
