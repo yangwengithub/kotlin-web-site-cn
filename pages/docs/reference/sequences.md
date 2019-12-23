@@ -82,7 +82,7 @@ fun main() {
 最后，有一个函数可以逐个或按任意大小的组块生成序列元素——[`sequence()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/sequence.html) 函数。
 此函数采用一个 lambda 表达式，其中包含 [`yield()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence-scope/yield.html) 与 [`yieldAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence-scope/yield-all.html) 函数的调用。
 它们将一个元素返回给序列使用者，并暂停 `sequence()` 的执行，直到使用者请求下一个元素。
-`yield()` 使用单个元素作为参数；`yieldAll()` 中可以采用 `Iterable` 对象、`Iterable` 或其他 `Sequence`。`yieldAll()` 的 `Sequence` 参数可以是无限的。 总之，这样的调用必须是最后一个：之后的所有调用将永远不会执行。
+`yield()` 使用单个元素作为参数；`yieldAll()` 中可以采用 `Iterable` 对象、`Iterable` 或其他 `Sequence`。`yieldAll()` 的 `Sequence` 参数可以是无限的。 当然，这样的调用必须是最后一个：之后的所有调用都永远不会执行。
 
 
 
