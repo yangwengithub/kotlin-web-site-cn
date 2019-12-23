@@ -423,11 +423,11 @@ kotlin {
 kotlin {
     jvm {
         compilations.main.kotlinOptions {
-            // 为 “main” 编译项设置 Kotlin 编译器选项：
+            // 为“main”编译项设置 Kotlin 编译器选项：
             jvmTarget = "1.8"
         }
 
-        compilations.main.compileKotlinTask // 获取 Kotlin 任务 “compileKotlinJvm”
+        compilations.main.compileKotlinTask // 获取 Kotlin 任务“compileKotlinJvm”
         compilations.main.output // 获取 main 编译项输出
         compilations.test.runtimeDependencyFiles // 获取测试运行时路径
     }
@@ -454,11 +454,11 @@ kotlin {
     jvm {
         val main by compilations.getting {
             kotlinOptions {
-                // 为 “main” 编译项设置 Kotlin 编译器选项：
+                // 为“main”编译项设置 Kotlin 编译器选项：
                 jvmTarget = "1.8"
             }
 
-            compileKotlinTask // 获取 Kotlin 任务 “compileKotlinJvm”
+            compileKotlinTask // 获取 Kotlin 任务“compileKotlinJvm”
             output // 获取 main 编译项输出
         }
 
@@ -489,10 +489,10 @@ kotlin {
 
 ```groovy
 kotlin {
-    jvm() // 使用默认名称 “jvm” 创建一个 JVM 目标
+    jvm() // 使用默认名称“jvm”创建一个 JVM 目标
 
     sourceSets {
-        // “jvm” 目标的 “main” 编译项的默认源集：
+        // “jvm”目标的“main”编译项的默认源集：
         jvmMain {
             /* …… */
         }
@@ -513,10 +513,10 @@ kotlin {
 
 ```kotlin
 kotlin {
-    jvm() // 使用默认名称 “jvm” 创建一个 JVM 目标
+    jvm() // 使用默认名称“jvm”创建一个 JVM 目标
 
     sourceSets {
-        // “jvm” 目标的 “main” 编译项的默认源集：
+        // “jvm”目标的“main”编译项的默认源集：
         val jvmMain by getting {
             /* …… */
         }
@@ -559,7 +559,7 @@ kotlin {
 
             // 创建一个测试任务来运行此编译项产生的测试：
             tasks.create('jvmIntegrationTest', Test) {
-                // 使用包含编译依赖项（包括 “main”）的类路径运行测试，
+                // 使用包含编译依赖项（包括“main”）的类路径运行测试，
                 // 运行时依赖项以及此编译项的输出：
                 classpath = compileDependencyFiles + runtimeDependencyFiles + output.allOutputs
 
@@ -595,7 +595,7 @@ kotlin {
 
                 // 创建一个测试任务来运行此编译项产生的测试：
                 tasks.create<Test>("integrationTest") {
-                    // 使用包含编译依赖项（包括 “main”）的类路径运行测试，
+                    // 使用包含编译依赖项（包括“main”）的类路径运行测试，
                     // 运行时依赖项以及此编译项的输出：
                     classpath = compileDependencyFiles + runtimeDependencyFiles + output.allOutputs
 
@@ -608,7 +608,7 @@ kotlin {
 }
 ```
 
-</div>  
+</div>
 </div>
 
 还要注意，默认情况下，自定义编译项的默认源集既不依赖于 `commonMain` 也不依赖于
