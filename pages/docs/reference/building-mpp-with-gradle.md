@@ -48,12 +48,12 @@ Kotlin 多平台项目的布局由以下构建块构成：
 
 * Kotlin 源代码会放到[源集](#配置源集)中。除了 Kotlin 源文件与<!--
 -->资源外，每个源集都可能有自己的依赖项。源集之间以<!--
--->*“依赖于”*关系构成了层次结构。源集本身是平台无关的，但是<!--
+-->*“依赖”*关系构成了层次结构。源集本身是平台无关的，但是<!--
 -->如果一个源集只面向单一平台编译，那么它可能包含平台相关代码与依赖项。
 
 每个编译项都有一个默认源集，是放置该编译项的源代码与依赖项的地<!--
 -->方。默认源集还用于通过<!--
--->“依赖于”关系将其他源集引到该编译项中。
+-->“依赖”关系将其他源集引到该编译项中。
 
 以下是一个面向 JVM 与 JS 的项目的图示：
 
@@ -64,7 +64,7 @@ Kotlin 多平台项目的布局由以下构建块构成：
 -->：都是为相应目标[默认创建](#默认项目布局)的。
 
 在上述示例中，JVM 目标的生产源代码由其 `main` 编译项编译，其中<!--
--->包括来自 `jvmMain` 与 `commonMain`（由于*依赖于*关系）的源代码与依赖项：
+-->包括来自 `jvmMain` 与 `commonMain`（由于*依赖*关系）的源代码与依赖项：
 
 ![源集与编译项]({{ url_for('asset', path='images/reference/building-mpp-with-gradle/mpp-one-compilation.png') }})
 
@@ -276,7 +276,7 @@ plugins {
 
 ## 设置目标
 
-目标构建的一部分，负责编译，测试与打包针对<!--
+目标是构建的一部分，负责编译，测试与打包针对<!--
 -->一个[已支持平台](#已支持平台)的软件。
 
 所有的目标可能共享一些源代码，也可能拥有平台专用的源代码。
@@ -411,10 +411,10 @@ kotlin {
 
 ### 配置编译项
 
-Building a target requires compiling Kotlin once or multiple times. Each Kotlin compilation of a target may serve a
-different purpose (e.g. production code, tests) and incorporate different [source sets](#配置源集).
-The compilations of a target may be accessed in the DSL, for example, to get the tasks, configure
-[the Kotlin compiler options](using-gradle.html#编译器选项) or get the dependency files and compilation outputs:
+构建目标需要一次或多次编译 Kotlin。目标的每次 Kotlin 编译项都可以用于<!--
+-->不同的目的（例如生产代码，测试），并包含不同的[源集](#配置源集)。
+可以在 DSL 中访问目标的编译项，例如，配置<!--
+-->[Kotlin 编译器选项](using-gradle.html#编译器选项)或者获取依赖项文件和编译项输出用来获取任务。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -423,16 +423,16 @@ The compilations of a target may be accessed in the DSL, for example, to get the
 kotlin {
     jvm {
         compilations.main.kotlinOptions {
-            // Setup the Kotlin compiler options for the 'main' compilation:
+            // 为 “main” 编译项设置 Kotlin 编译器选项：
             jvmTarget = "1.8"
         }
 
-        compilations.main.compileKotlinTask // get the Kotlin task 'compileKotlinJvm'
-        compilations.main.output // get the main compilation output
-        compilations.test.runtimeDependencyFiles // get the test runtime classpath
+        compilations.main.compileKotlinTask // 获取 Kotlin 任务 “compileKotlinJvm”
+        compilations.main.output // 获取 main 编译项输出
+        compilations.test.runtimeDependencyFiles // 获取测试运行时路径
     }
 
-    // Configure all compilations of all targets:
+    // 配置所有目标的所有编译项：
     targets.all {
         compilations.all {
             kotlinOptions {
@@ -454,18 +454,18 @@ kotlin {
     jvm {
         val main by compilations.getting {
             kotlinOptions {
-                // Setup the Kotlin compiler options for the 'main' compilation:
+                // 为 “main” 编译项设置 Kotlin 编译器选项：
                 jvmTarget = "1.8"
             }
 
-            compileKotlinTask // get the Kotlin task 'compileKotlinJvm'
-            output // get the main compilation output
+            compileKotlinTask // 获取 Kotlin 任务 “compileKotlinJvm”
+            output // 获取 main 编译项输出
         }
 
-        compilations["test"].runtimeDependencyFiles // get the test runtime classpath
+        compilations["test"].runtimeDependencyFiles // 获取测试运行时路径
     }
 
-    // Configure all compilations of all targets:
+    // 配置所有目标的所有编译项：
     targets.all {
         compilations.all {
             kotlinOptions {
@@ -479,26 +479,26 @@ kotlin {
 </div>
 </div>
 
-Each compilation is accompanied by a default [source set](#配置源集) that stores sources and dependencies 
- specific to that compilation. The default source set for a
-compilation `foo` of a target `bar` has the name `barFoo`. It can also be accessed from a compilation using
-`defaultSourceSet`:
+每个编译项都附带一个[默认源集](#配置源集)，该默认源集<!--
+-->存储特定于该编译项的源和依赖项。目标 `bar` 的编译项 `foo` 的默认源集的<!--
+-->名称为 `barFoo`。也可以使用 `defaultSourceSet` 
+从编译项中访问它：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
 ```groovy
 kotlin {
-    jvm() // Create a JVM target with the default name 'jvm'
+    jvm() // 使用默认名称 “jvm” 创建一个 JVM 目标
 
     sourceSets {
-        // The default source set for the 'main` compilation of the 'jvm' target:
+        // “jvm” 目标的 “main” 编译项的默认源集：
         jvmMain {
             /* …… */
         }
     }
 
-    // Alternatively, access it from the target's compilation:
+    // 或者，从目标的编译项中访问它：
     jvm().compilations.main.defaultSourceSet {
         /* …… */
     }
@@ -513,16 +513,16 @@ kotlin {
 
 ```kotlin
 kotlin {
-    jvm() // Create a JVM target with the default name 'jvm'
+    jvm() // 使用默认名称 “jvm” 创建一个 JVM 目标
 
     sourceSets {
-        // The default source set for the 'main` compilation of the 'jvm' target:
+        // “jvm” 目标的 “main” 编译项的默认源集：
         val jvmMain by getting {
             /* …… */
         }
     }
 
-    // Alternatively, access it from the target's compilation:
+    // 或者，从目标的编译项中访问它：
     jvm().compilations["main"].defaultSourceSet {
         /* …… */
     }
@@ -532,13 +532,13 @@ kotlin {
 </div>
 </div>
 
-To collect all source sets participating in a compilation, including those added via the depends-on relation, one can
-use the property `allKotlinSourceSets`.
+为了收集参与编译项的所有源集，包括通过依赖关系添加的源集，可以<!--
+-->使用属性 `allKotlinSourceSets`。
 
-For some specific use cases, creating a custom compilation may be required. This can be done within the target's `compilations`
-domain object collection. Note that the dependencies need to be set up manually for all custom compilations, and the
-usage of a custom compilation's outputs is up to the build author. For example, consider a custom compilation for integration tests
-of a `jvm()` target:
+对于某些特定用例，可能需要创建自定义编译项。这可以在目标的 `compilations` 领域对象集合
+中完成。请注意，需要为所有自定义编译项手动设置依赖项，并且
+自定义编译项输出的使用取决于构建所有者。例如，对目标 `jvm()` 的集成测试的
+自定义编译项：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -550,20 +550,20 @@ kotlin {
             defaultSourceSet {
                 dependencies {
                     def main = compilations.main
-                    // Compile against the main compilation's compile classpath and outputs:
+                    // 根据 main 编译项的编译类路径和输出进行编译：
                     implementation(main.compileDependencyFiles + main.output.classesDirs)
                     implementation kotlin('test-junit')
                     /* …… */
                 }
             }
 
-            // Create a test task to run the tests produced by this compilation:
+            // 创建一个测试任务来运行此编译项产生的测试：
             tasks.create('jvmIntegrationTest', Test) {
-                // Run the tests with the classpath containing the compile dependencies (including 'main'),
-                // runtime dependencies, and the outputs of this compilation:
+                // 使用包含编译依赖项（包括 “main”）的类路径运行测试，
+                // 运行时依赖项以及此编译项的输出：
                 classpath = compileDependencyFiles + runtimeDependencyFiles + output.allOutputs
 
-                // Run only the tests from this compilation's outputs:
+                // 仅运行此编译项输出中的测试：        
                 testClassesDirs = output.classesDirs
             }
         }
@@ -586,20 +586,20 @@ kotlin {
             val integrationTest by compilations.creating {
                 defaultSourceSet {
                     dependencies {
-                        // Compile against the main compilation's compile classpath and outputs:
+                        // 根据 main 编译项的编译类路径和输出进行编译：
                         implementation(main.compileDependencyFiles + main.output.classesDirs)
                         implementation(kotlin("test-junit"))
                         /* …… */
                     }
                 }
 
-                // Create a test task to run the tests produced by this compilation:
+                // 创建一个测试任务来运行此编译项产生的测试：
                 tasks.create<Test>("integrationTest") {
-                    // Run the tests with the classpath containing the compile dependencies (including 'main'),
-                    // runtime dependencies, and the outputs of this compilation:
+                    // 使用包含编译依赖项（包括 “main”）的类路径运行测试，
+                    // 运行时依赖项以及此编译项的输出：
                     classpath = compileDependencyFiles + runtimeDependencyFiles + output.allOutputs
 
-                    // Run only the tests from this compilation's outputs:
+                    // 仅运行此编译项输出中的测试：
                     testClassesDirs = output.classesDirs
                 }
             }
@@ -608,11 +608,11 @@ kotlin {
 }
 ```
 
-</div>
+</div>  
 </div>
 
-Also note that the default source set of a custom compilation depends on neither `commonMain` nor `commonTest` by
-default.
+还要注意，默认情况下，自定义编译项的默认源集既不依赖于 `commonMain` 也不依赖于
+`commonTest`。
 
 ## 配置源集
 
