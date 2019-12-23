@@ -33,14 +33,14 @@ Kotlin 提供了与两个流行的 notebook 的集成：Jupyter 与 Apache Zeppe
 
 ### Jupyter 内核
 
-The open-source project [Jupyter](https://jupyter.org/) offers the well-known web-based development environment **Jupyter Notebook**.
-For code execution, Jupyter uses the concept of _kernels_ - components that run separately and execute the code upon request,
-for example, when you click **Run** in a notebook.
+开源项目 [Jupyter](https://jupyter.org/) 提供了著名的基于 web 的开发环境 **Jupyter Notebook**。
+对于代码执行，Jupyter 使用*内核*的概念——独立运行的不同组件，并且这些组件根据请求执行代码，
+例如，当在一个 notebook 中点击 **Run** 时。
 
-There is a kernel that the Jupyter team maintains themselves - IPython for running the Python code.
-However, there are other community-maintained kernels for different languages.
-Among them is the **Kotlin kernel for Jupyter notebooks**. With this kernel, you can write and run Kotlin code in Jupyter 
-notebooks and use third-party data science frameworks written in Java and Kotlin.
+Jupyter 团队维护了一个内核——运行 Python 代码的 IPython。
+但是，还有其他社区维护的用于不同语言的各种内核。
+其中包括**用于 Jupyter notbook 的 Kotlin 内核**。有了这个内核，就可以在 Jupyter
+notebook 中编写并运行 Kotlin 代码，以及使用以 Java 或 Kotlin 编写的第三方数据科学框架。
 
 #### 设置 Kotlin 内核
 
