@@ -17,7 +17,7 @@ _映射_ 转换从另一个集合的元素上的函数结果创建一个集合�
 基本的映射函数是 [`map()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map.html)。
 它将给定的 lambda 函数应用于每个后续元素，并返回 lambda 结果列表。
 结果的顺序与元素的原始顺序相同。
-要应用另外使用元素索引作为参数的转换，请使用 [`mapIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed.html)。
+如需应用还要用到元素索引作为参数的转换，请使用 [`mapIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed.html)。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -32,7 +32,7 @@ fun main() {
 ```
 </div>
 
-如果转换在某些元素上产生 `null` 值，则可以通过调用 [`mapNotNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html) 函数而不是 `map()` 或 [`mapIndexedNotNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed-not-null.html) 而不是 `mapIndexed()` 来从结果集中过滤出 `null` 值。
+如果转换在某些元素上产生 `null` 值，则可以通过调用 [`mapNotNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html) 函数取代 `map()` 或 [`mapIndexedNotNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed-not-null.html) 取代 `mapIndexed()` 来从结果集中过滤掉 `null` 值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -49,7 +49,7 @@ fun main() {
 
 映射转换时，有两个选择：转换键，使值保持不变，反之亦然。
 要将指定转换应用于键，请使用 [`mapKeys()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-keys.html)；反过来，[`mapValues()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-values.html) 转换值。
-这两个函数都使用将映射条目作为参数的转换，因此可以操作其键和值。
+这两个函数都使用将映射条目作为参数的转换，因此可以操作其键与值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 

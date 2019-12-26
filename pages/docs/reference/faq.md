@@ -89,9 +89,11 @@ vert.x 或 JSF。另外还有一些 Kotlin 写的特定框架，例如 [Ktor](ht
 当面向JVM 平台时，Kotlin 生成 Java 兼容的字节码。当面向 JavaScript 时，Kotlin 会转译到 ES5.1，并生成与<!--
 -->包括 AMD 和 CommonJS 在内的模块系统相兼容的代码。当面向原生平台时，Kotlin 会（通过 LLVM）生成平台相关的代码。
 
-### Kotlin 只面向 Java 6 吗？
+### Which versions of JVM does Kotlin target?
 
-不是。Kotlin 可以让你选择生成 Java 6 或者 Java 8 兼容的字节码。可以为较高版本的平台生成更优化的字节码。
+Kotlin lets you choose the version of JVM for execution. By default, the Kotlin/JVM compiler produces Java 6 compatible bytecode.
+If you want to make use of optimizations available in newer versions of Java, you can explicitly specify the target Java version from 8 to 12.
+Note that in this case the resulting bytecode might not run on lower versions. 
 
 ### Kotlin 难吗？
 
@@ -106,7 +108,7 @@ Kotlin 是受 Java、C#、JavaScript、Scala 以及 Groovy 等现有语言的启
 
 ### 谁开发 Kotlin？
 
-Kotlin 主要由 JetBrains 的一个工程师团队开发（目前团队规模为 50+）。其首席语言设计师是
+Kotlin 主要由 JetBrains 的一个工程师团队开发（目前团队规模为 90+）。其首席语言设计师是
 [Andrey Breslav](https://twitter.com/abreslav)。除了核心团队，GitHub 上还有 250 多个外部贡献者。
 
 ### 在哪里可以了解关于 Kotlin 更多？

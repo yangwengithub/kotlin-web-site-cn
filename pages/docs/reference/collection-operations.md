@@ -93,7 +93,7 @@ fun main() {
 
 ## 写操作
 
-对于可变集合，还存在可更改集合状态的 _写操作_ 。这些操作包括添加、删除和更新元素。写操作在[集合写操作](collection-write.html)以及[List 写操作](list-operations.html#list-写操作)与[Map 写操作](map-operations.html#map-写操作)的相应部分中列出。
+对于可变集合，还存在可更改集合状态的 _写操作_ 。这些操作包括添加、删除和更新元素。写操作在[集合写操作](collection-write.html)以及 [List 写操作](list-operations.html#list-写操作)与 [Map 写操作](map-operations.html#map-写操作)的相应部分中列出。
 
 对于某些操作，有成对的函数可以执行相同的操作：一个函数就地应用该操作，另一个函数将结果作为单独的集合返回。
 例如， [`sort()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sort.html) 就地对可变集合进行排序，因此其状态发生了变化； [`sorted()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sorted.html) 创建一个新集合，该集合包含按排序顺序相同的元素。
