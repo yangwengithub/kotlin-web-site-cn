@@ -267,6 +267,8 @@ class Base64Test {
 
 </div>
 
+Use gradle 4.7 and above to generate wrapper (`gradle wrapper`) in project root directoy to generate gradlew, gradlew.bat and gradle/wrapper/gradle-wrapper.jar.
+
 执行 `./gradlew check` 并且你将看到测试代码在 JVM、JS 以及 Native 平台上共运行了三次！
 
 如果我们想要，我们可以将测试代码添加到指定平台，接下来只执行这个平台部分的测试。
