@@ -44,9 +44,9 @@ notebook 中编写并运行 Kotlin 代码，以及使用以 Java 或 Kotlin 编�
 
 #### 设置 Kotlin 内核
 
-The Kotlin kernel requires Java 8 to be installed.
+Kotlin 内核需要安装 Java 8。
 
-To install the kernel, use [Conda](https://docs.conda.io/projects/conda/en/latest/):
+请使用 [Conda](https://docs.conda.io/projects/conda/en/latest/) 安装该内核：
 
 
 
@@ -56,22 +56,22 @@ conda install kotlin-jupyter-kernel -c jetbrains
 
 
 
-Once the kernel is installed, feel free to run the Jupyter notebook and switch to the Kotlin kernel.
-And that’s all there is to it, you can then write and run Kotlin in your notebook! 
+一旦内核安装完毕，就可以运行 Jupyter notebook 并切换到 Kotlin 内核。
+仅此而已，然后就可以在 notebook 中编写并运行 Kotlin 了！ 
 
 ![Kotlin in Jupyter notebook](/assets/images/landing/data-science/jupyter-kotlin.png)
 
-You can find more information about the Kotlin kernel for Jupyter [here](https://github.com/cheptsov/kotlin-jupyter-demo/blob/master/index.ipynb).
+可以在[这里](https://github.com/cheptsov/kotlin-jupyter-demo/blob/master/index.ipynb)找到关于 Jupyter 的 Kotlin 内核的更多信息。
 
 ### Zeppelin 解释器
 
-[Apache Zeppelin](http://zeppelin.apache.org/) is a popular web-based solution for interactive data analytics.
-Zeppelin provides strong support for the [Apache Spark](http://zeppelin.apache.org/docs/latest/interpreter/spark.html)
-cluster computing system, which is particularly useful for data engineering. Spark provides a high-level API in multiple languages.
+[Apache Zeppelin](http://zeppelin.apache.org/) 是一个流行的基于 web 的交互式数据分析解决方案。
+Zeppelin 为 [Apache Spark](http://zeppelin.apache.org/docs/latest/interpreter/spark.html)
+集群计算系统提供了强大的支持，这对于数据工程特别有用。Spark 提供了多种语言的高级 API。
  
-The language support in Zeppelin is provided by _interpreters_ - plugins that enable users to use a specific language or data-processing-backend.
-There are numerous community-maintained interpreters for different programming languages.
-The one we offer you is the **Kotlin interpreter for Apache Zeppelin** that adds the Kotlin support.
+Zeppelin 中的语言支持由*解释器*提供，解释器是让用户能够使用指定语言或者数据处理后端的插件。
+对于不同的编程语言有许多社区维护的解释器。
+我们提供了增加 Kotlin 支持的**用于 Apache Zeppelin 的 Kotlin 解释器**。
 
 #### 设置带 Kotlin 解释器的 Zeppelin
 
