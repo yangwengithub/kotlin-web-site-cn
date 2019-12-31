@@ -65,13 +65,13 @@ conda install kotlin-jupyter-kernel -c jetbrains
 
 ### Zeppelin 解释器
 
-[Apache Zeppelin](http://zeppelin.apache.org/) is a popular web-based solution for interactive data analytics.
-Zeppelin provides strong support for the [Apache Spark](http://zeppelin.apache.org/docs/latest/interpreter/spark.html)
-cluster computing system, which is particularly useful for data engineering. Spark provides a high-level API in multiple languages.
+[Apache Zeppelin](http://zeppelin.apache.org/) 是一个流行的基于 web 的交互式数据分析解决方案。
+Zeppelin 为 [Apache Spark](http://zeppelin.apache.org/docs/latest/interpreter/spark.html)
+集群计算系统提供了强大的支持，这对于数据工程特别有用。Spark 提供了多种语言的高级 API。
  
-The language support in Zeppelin is provided by _interpreters_ - plugins that enable users to use a specific language or data-processing-backend.
-There are numerous community-maintained interpreters for different programming languages.
-The one we offer you is the **Kotlin interpreter for Apache Zeppelin** that adds the Kotlin support.
+Zeppelin 中的语言支持由*解释器*提供，解释器是让用户能够使用指定语言或者数据处理后端的插件。
+对于不同的编程语言有许多社区维护的解释器。
+我们提供了增加 Kotlin 支持的**用于 Apache Zeppelin 的 Kotlin 解释器**。
 
 #### 设置带 Kotlin 解释器的 Zeppelin
 
