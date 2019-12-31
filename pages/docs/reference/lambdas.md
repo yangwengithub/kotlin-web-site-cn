@@ -342,7 +342,7 @@ ints.filter {
 </div>
 
 这一约定连同[在圆括号外传递 lambda 表达式](#passing-a-lambda-to-the-last-parameter)一起支持
-[LINQ-风格](http://msdn.microsoft.com/en-us/library/bb308959.aspx) 的代码：
+[LINQ-风格](https://docs.microsoft.com/en-us/previous-versions/dotnet/articles/bb308959(v=msdn.10)) 的代码：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
