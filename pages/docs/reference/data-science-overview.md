@@ -204,7 +204,7 @@ Once you have the Kotlin kernel installed and enabled, add the following line to
 
 That’s it, now you can call functions from Lets-Plot and see the results.
 
-![Lets-Plot diagram](/s/images/landing/data-science/lets-plot.png)
+![Lets-Plot diagram](/assets/images/landing/data-science/lets-plot.png)
 
 ### NumPy 的 Kotlin 绑定
 
