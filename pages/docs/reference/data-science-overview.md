@@ -44,9 +44,9 @@ notebook 中编写并运行 Kotlin 代码，以及使用以 Java 或 Kotlin 编�
 
 #### 设置 Kotlin 内核
 
-The Kotlin kernel requires Java 8 to be installed.
+Kotlin 内核需要安装 Java 8。
 
-To install the kernel, use [Conda](https://docs.conda.io/projects/conda/en/latest/):
+请使用 [Conda](https://docs.conda.io/projects/conda/en/latest/) 安装该内核：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -56,12 +56,12 @@ conda install kotlin-jupyter-kernel -c jetbrains
 
 </div>
 
-Once the kernel is installed, feel free to run the Jupyter notebook and switch to the Kotlin kernel.
-And that’s all there is to it, you can then write and run Kotlin in your notebook! 
+一旦内核安装完毕，就可以运行 Jupyter notebook 并切换到 Kotlin 内核。
+仅此而已，然后就可以在 notebook 中编写并运行 Kotlin 了！ 
 
 ![Kotlin in Jupyter notebook]({{ url_for('asset', path='images/landing/data-science/jupyter-kotlin.png')}})
 
-You can find more information about the Kotlin kernel for Jupyter [here](https://github.com/cheptsov/kotlin-jupyter-demo/blob/master/index.ipynb).
+可以在[这里](https://github.com/cheptsov/kotlin-jupyter-demo/blob/master/index.ipynb)找到关于 Jupyter 的 Kotlin 内核的更多信息。
 
 ### Zeppelin 解释器
 
