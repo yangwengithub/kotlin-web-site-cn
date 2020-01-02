@@ -616,16 +616,16 @@ kotlin {
 
 ## 配置源集
 
-Kotlin 源集是 Kotlin 源及其资源，依赖关系和语言设置的集合，
+Kotlin 源集是 Kotlin 源代码及其资源、依赖关系以及语言设置的集合，
 一个源集可能会参与一个或多个[目标](#设置目标)的 Kotlin 编译项。
 
 源集不限于平台特定的或“共享的”；允许包含的内容取决于其用法：
-添加到多个编译项中的源集仅限于通用语言功能和依赖项，仅由单个目标使用的源集<!--
+添加到多个编译项中的源集仅限于通用语言特性及依赖项，仅由单个目标使用的源集<!--
 -->可以具有平台特定的依赖项，并且其代码可能使用目标平台<!--
--->特定的语言功能。
+-->特定的语言特性。
 
-默认情况下会创建和配置一些源集：`commonMain`、`commonTest` 和编译项的<!--
--->默认源集。 请参阅[默认项目布局](#默认项目布局)。
+默认情况下会创建并配置一些源集：`commonMain`、`commonTest` 和编译项的<!--
+-->默认源集。 请参见[默认项目布局](#默认项目布局)。
 
 源集在 `kotlin { ... }` 扩展的 `sourceSets { ... }` 块内配置：
 
@@ -661,7 +661,7 @@ kotlin {
 
 > 注意：创建源集不会将其链接到任何目标。一些源集是[预定义的](#默认项目布局)
 因此默认情况下进行编译。但是，始终需要将自定义源集明确地定向到编译项。
-请参阅：[关联源集](#关联源集)。
+请参见：[关联源集](#关联源集)。
 {:.note}
 
 源集名称区分大小写。在通过名称引用默认源集时，请确保源集的名称前缀<!--
@@ -669,19 +669,19 @@ kotlin {
 
 源集本身是平台无关的，但是<!--
 -->如果仅针对单个平台进行编译，则可以将其视为特定于平台的。因此，源集可以包含<!--
--->平台之间共享的通用代码或平台特定的代码。
+-->平台之间共享的公共代码或平台特定的代码。
 
-每个源集都有 Kotlin 源的默认源目录：`src/<源集名称>/kotlin`。 要将 Kotlin 源目录<!--
--->以及资源添加到源集中，请使用其 `kotlin` 与 `resources` `SourceDirectorySet`s：
+每个源集都有 Kotlin 源代码的默认源目录：`src/<源集名称>/kotlin`。要将 Kotlin 源目录<!--
+-->以及资源添加到源集中，请使用其 `kotlin` 与 `resources` `SourceDirectorySet`：
 
 默认情况下，源集的文件存储在以下目录中：
 
-* 源文件: `src/<source set name>/kotlin`
-* 资源文件: `src/<source set name>/resources`
+* 源文件：`src/<source set name>/kotlin`
+* 资源文件：`src/<source set name>/resources`
 
 应该手动创建这些目录。
 
-要将自定义 Kotlin 源目录和资源添加到源集中，请使用其 `kotlin` 与 `resources` `SourceDirectorySet`s：
+要将自定义 Kotlin 源目录和资源添加到源集中，请使用其 `kotlin` 与 `resources` `SourceDirectorySet`：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
