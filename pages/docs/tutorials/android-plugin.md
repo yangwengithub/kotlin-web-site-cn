@@ -59,13 +59,13 @@ apply plugin: 'kotlin-android-extensions'
 
 ### 启用实验功能
 
-Android扩展插件包括几个实验功能：
+Android 扩展插件包括几个实验功能：
 
 - [LayoutContainer 支持](#layoutcontainer-支持)
 - [多渠道支持](#多渠道支持)
 - [Parcelable 实现生成器](#parcelable-实现生成器)
 
-这些功能尚未被考虑用于生产环境，因此你需要在`build.gradle`中打开*实验模式*才能使用它们：
+这些功能尚未被考虑用于生产环境，因此你需要在 `build.gradle` 中打开 *实验模式* 才能使用它们：
 
 <div class="sample" markdown="1" theme="idea" mode="groovy">
 
