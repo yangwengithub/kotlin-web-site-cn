@@ -75,18 +75,18 @@ Zeppelin 中的语言支持由*解释器*提供，解释器是让用户能够使
 
 #### 设置带 Kotlin 解释器的 Zeppelin
 
-Currently, the latest release of Zeppelin (0.8.2) doesn’t come with bundled Kotlin interpreter.
-But anyway, it’s available in the master branch of Zeppelin. 
-So, to add Kotlin support to Zeppelin, you need to build your own version from the sources.
+目前，最新版本的 Zeppelin（0.8.2）并未内置 Kotlin 解释器。
+不过，在 Zeppelin 的 master 分支中有。
+因此，为了向 Zeppelin 添加 Kotlin 支持，需要从源代码构建自己的版本。
 
-To build a custom version of Zeppelin, you will need:
+构建 Zeppelin 的定制版需要：
 
 * [Git](https://git-scm.com/)
 * [Maven](https://maven.apache.org/install.html),
 * [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-* The dependencies listed [here](https://zeppelin.apache.org/docs/latest/setup/basics/how_to_build.html#build-requirements)
+* 列在[此处](https://zeppelin.apache.org/docs/latest/setup/basics/how_to_build.html#build-requirements)各项依赖
 
-First, checkout the master branch from the Zeppelin repository:
+首先，从 Zeppelin 版本库中检出 master 分支：
 
 
 
@@ -95,7 +95,7 @@ git clone --depth=1 git@github.com:apache/zeppelin.git
 ```
 
 
-or
+或者
 
 
 
@@ -104,7 +104,7 @@ git clone --depth=1 https://github.com/apache/zeppelin.git
 ```
 
 
-To build Zeppelin with Maven, go to the Zeppelin directory and run the following command:
+使用 Maven 构建 Zeppelin，请切换到 Zeppelin 目录并运行以下命令：
 
 
 
@@ -113,7 +113,7 @@ mvn clean package -DskipTests -Pspark-2.4 -Pscala-2.11
 ```
 
 
-Then run Zeppelin with the following command:
+然后使用以下命令运行 Zeppelin：
 
 
 
@@ -122,9 +122,9 @@ Then run Zeppelin with the following command:
 ```
 
 
-Now the Zeppelin UI is available on `http://localhost:8089`.
+现在可以在 `http://localhost:8089` 打开 Zeppelin UI 了。
 
-To learn about how to deploy Zeppelin with Kotlin support in a Spark cluster, see [this instruction](/docs/tutorials/zeppelin-spark-cluster.html).
+如需了解如何在 Spark 集群中部署带 Kotlin 支持的 Zeppelin，请参见[这个说明](/docs/tutorials/zeppelin-spark-cluster.html)。
 
 ## 相关库
 
