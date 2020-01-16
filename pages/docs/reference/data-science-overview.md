@@ -128,12 +128,12 @@ mvn clean package -DskipTests -Pspark-2.4 -Pscala-2.11
 
 ## 相关库
 
-For software engineering, an important part of any domain is the availability of frameworks for related areas.
-For data science, this includes such areas as machine learning, data analysis, visualization, and many others.
-Fortunately, there are already plenty of frameworks written in Kotlin for data science.
-There are even more frameworks written in Java, which is perfect as they can be called from Kotlin code seamlessly.
+对于软件工程来说，任何领域的重要组成部分都有相关领域框架的可用性。
+对于数据科学，包括诸如机器学习、数据分析、可视化等领域。
+幸运的是，已经有很多用 Kotlin 编写的数据科学框架。
+更完美的是还有更多用 Java 编写的框架，因为可以在 Kotlin 代码中无缝调用 Java 框架。
 
-Below are two short lists of libraries that you may find useful for data science.
+以下是可能对数据科学有用的库的两个简短列表。
 
 ### Kotlin 库
 * [kotlin-statistics](https://github.com/thomasnield/kotlin-statistics) is a library providing extension functions for 
