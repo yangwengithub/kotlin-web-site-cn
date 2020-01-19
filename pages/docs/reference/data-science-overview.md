@@ -136,25 +136,25 @@ mvn clean package -DskipTests -Pspark-2.4 -Pscala-2.11
 以下是可能对数据科学有用的库的两个简短列表。
 
 ### Kotlin 库
-* [kotlin-statistics](https://github.com/thomasnield/kotlin-statistics) is a library providing extension functions for 
-exploratory and production statistics. It supports basic numeric list/sequence/array functions (from `sum` to `skewness`),
-slicing operators (such as `countBy`, `simpleRegressionBy`), binning operations, discrete PDF sampling,
-naive bayes classifier, clustering, linear regression, and much more.
+* [kotlin-statistics](https://github.com/thomasnield/kotlin-statistics) 是一个为<!--
+-->探索性统计与生产统计中提供扩展函数的库。它支持基本的数字列表/序列/数组函数（从 `sum` 到 `skewness`）、
+切片操作符（诸如 `countBy`、 `simpleRegressionBy`）、分箱（binning）操作符、离散 PDF 采样、
+朴素贝叶斯分类器、聚类、线性回归等等。
 
-* [kmath](https://github.com/mipt-npm/kmath) is a library inspired by [NumPy](https://numpy.org/).
-This library supports algebraic structures and operations, array-like structures, math expressions, histograms,
-streaming operations, a wrapper around [commons-math](http://commons.apache.org/proper/commons-math/) and
-[koma](https://github.com/kyonifer/koma), and more.
+* [kmath](https://github.com/mipt-npm/kmath) 是一个受 [NumPy](https://numpy.org/) 启发的库。
+这个库支持代数结构与运算、类数组结构、数学表达式、直方图、
+流运算、[commons-math](http://commons.apache.org/proper/commons-math/) 与
+[koma](https://github.com/kyonifer/koma) 的包装等等。
 
-* [krangl](https://github.com/holgerbrandl/krangl) is a library inspired by R's [dplyr](https://dplyr.tidyverse.org/)
-and Python's [pandas](https://pandas.pydata.org/). This library provides functionality for data manipulation using
-a functional-style API; it also includes functions for filtering, transforming, aggregating, and reshaping tabular data.
+* [krangl](https://github.com/holgerbrandl/krangl) 是一个受 R 语言的 [dplyr](https://dplyr.tidyverse.org/)
+与 Python 的 [pandas](https://pandas.pydata.org/) 启发的库。这个库提供了采用函数式风格 API
+进行数据操作的功能；它还包括过滤、转换、聚合与重塑表格数据的函数。
 
-* [lets-plot](https://github.com/JetBrains/lets-plot) is a plotting library for statistical data written in Kotlin.
-Lets-Plot is multiplatform and can be used not only with JVM, but also with JS and Python. For more information, see [below](#lets-plot-for-kotlin).
+* [lets-plot](https://github.com/JetBrains/lets-plot) 是一个用 Kotlin 编写的统计数据绘图库。
+Lets-Plot 是多平台的，不仅可以用于 JVM，还可以用于 JS 与 Python。更多信息请参见[下文](#lets-plot-for-kotlin)。
 
-* [kravis](https://github.com/holgerbrandl/kravis) is another library for the visualization of tabular data inspired by
-Python's [ggplot](https://ggplot2.tidyverse.org/).
+* [kravis](https://github.com/holgerbrandl/kravis) 是另一个用于表格数据可视化的库，其灵感来自于
+Python 的 [ggplot](https://ggplot2.tidyverse.org/)。
 
 ### Java 库
 
