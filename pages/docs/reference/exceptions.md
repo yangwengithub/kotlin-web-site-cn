@@ -118,7 +118,7 @@ fun fail(message: String): Nothing {
 ```
 </div>
 
-当你调用该函数时，编译器会知道执行不会超出该调用：
+当你调用该函数时，编译器会知道调用后不会继续执行：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
