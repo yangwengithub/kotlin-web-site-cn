@@ -467,7 +467,7 @@ kotlin.jvm.JvmClassMappingKt.getKotlinClass(MainView.class)
 
 ## 用 `@JvmName` 解决签名冲突
 
-有时我们想让一个 Kotlin 中的命名函数在字节码中有另外一个 JVM 名称。
+有时我们想让一个 Kotlin 中的具名函数在字节码中有另外一个 JVM 名称。
 最突出的例子是由于*类型擦除*引发的：
 
 
