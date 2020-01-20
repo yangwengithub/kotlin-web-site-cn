@@ -207,6 +207,6 @@ data class Counter(val dayIndex: Int) {
 `provideDelegate`、 `getValue` 以及 `setValue` 操作符函数已在<!--
 -->[委托属性](delegated-properties.html)中描述。
 
-## 命名函数的中缀调用
+## 具名函数的中缀调用
 
 我们可以通过[中缀函数的调用](functions.html#中缀表示法) 来模拟自定义中缀操作符。
