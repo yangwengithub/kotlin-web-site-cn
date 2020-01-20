@@ -91,7 +91,7 @@ import kotlinx.android.synthetic.main.＜布局＞.*
 
 若需要调用 `View` 的合成属性，同时还应该导入 `kotlinx.android.synthetic.main.activity_main.view.*`。
 
-导入完成后即可调用在xml文件中以视图控件命名属性的对应扩展，比如下例:
+导入完成后即可调用在xml文件中以视图控件具名属性的对应扩展，比如下例:
 
 <div class="sample" markdown="1" theme="idea" mode="xml">
 

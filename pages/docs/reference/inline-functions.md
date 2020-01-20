@@ -70,8 +70,8 @@ inline fun foo(inlined: () -> Unit, noinline notInlined: () -> Unit) { …… }
 
 ## 非局部返回
 
-在 Kotlin 中，我们可以只对一个命名或匿名函数使用正常的、非限定的 `return` 来退出。
-这意味着要退出一个 lambda 表达式，我们必须使用一个[标签](returns.html#标签处返回)，并且<!--
+在 Kotlin 中，我们只能对具名或匿名函数使用正常的、非限定的 return 来退出。
+这意味着要退出一个 lambda 表达式，我们必须使用一个[标签](returns.html#返回到标签)，并且<!--
 -->在 lambda 表达式内部禁止使用裸 `return`，因为 lambda 表达式不能使包含它的函数返回：
 
 <div class="sample" markdown="1" theme="idea">

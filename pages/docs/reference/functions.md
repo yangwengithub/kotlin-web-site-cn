@@ -82,7 +82,7 @@ class B : A() {
 ```
 </div>
 
-如果一个默认参数在一个无默认值的参数之前，那么该默认值只能通过使用[命名参数](#命名参数)调用该函数来使用：
+如果一个默认参数在一个无默认值的参数之前，那么该默认值只能通过使用[具名参数](#具名参数)调用该函数来使用：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -93,7 +93,7 @@ foo(baz = 1) // 使用默认值 bar = 0
 ```
 </div>
 
-如果在默认参数之后的最后一个参数是 [lambda 表达式](lambdas.html#lambda-表达式语法)，那么它既可以作为命名参数在括号内传入，也可以在[括号外](lambdas.html#passing-a-lambda-to-the-last-parameter)传入：
+如果在默认参数之后的最后一个参数是 [lambda 表达式](lambdas.html#lambda-表达式语法)，那么它既可以作为具名参数在括号内传入，也可以在[括号外](lambdas.html#passing-a-lambda-to-the-last-parameter)传入：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -106,9 +106,9 @@ foo { println("hello") }        // 使用两个默认值 bar = 0 与 baz = 1
 ```
 </div>
 
-### 命名参数
+### 具名参数
 
-可以在调用函数时使用命名的函数参数。当一个函数有大量的参数或默认参数时这会非常方便。
+可以在调用函数时使用具名的函数参数。当一个函数有大量的参数或默认参数时这会非常方便。
 
 给定以下函数：
 
@@ -143,7 +143,7 @@ reformat(str, true, true, false, '_')
 ```
 </div>
 
-使用命名参数我们可以使代码更具有可读性：
+使用具名参数我们可以使代码更具有可读性：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -166,9 +166,9 @@ reformat(str, wordSeparator = '_')
 ```
 </div>
 
-当一个函数调用混用位置参数与命名参数时，所有位置参数都要放在第一个命名参数之前。例如，允许调用 `f(1, y = 2)` 但不允许 `f(x = 1, 2)`。
+当一个函数调用混用位置参数与具名参数时，所有位置参数都要放在第一个具名参数之前。例如，允许调用 `f(1, y = 2)` 但不允许 `f(x = 1, 2)`。
 
-可以通过使用**星号**操作符将[可变数量参数（*vararg*{: .keyword }）](#可变数量的参数varargs) 以命名形式传入：
+可以通过使用**星号**操作符将[可变数量参数（*vararg*{: .keyword }）](#可变数量的参数varargs) 以具名形式传入：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -179,7 +179,7 @@ foo(strings = *arrayOf("a", "b", "c"))
 ```
 </div>
 
-> **对于 JVM 平台**：在调用 Java 函数时不能使用命名参数语法，因为 Java 字节码并不<!--
+> **对于 JVM 平台**：在调用 Java 函数时不能使用具名参数语法，因为 Java 字节码并不<!--
 -->总是保留函数参数的名称。
 
 ### 返回 Unit 的函数
@@ -265,7 +265,7 @@ val list = asList(1, 2, 3)
 在函数内部，类型 `T` 的 `vararg` 参数的可见方式是作为 `T` 数组，即上例中的 `ts` 变量具有类型 `Array <out T>`。
 
 只有一个参数可以标注为 `vararg`。如果 `vararg` 参数不是列表中的最后一个参数， 可以使用<!--
--->命名参数语法传递其后的参数的值，或者，如果参数具有函数类型，则通过在括号外部<!--
+-->具名参数语法传递其后的参数的值，或者，如果参数具有函数类型，则通过在括号外部<!--
 -->传一个 lambda。
 
 当我们调用 `vararg`-函数时，我们可以一个接一个地传参，例如 `asList(1, 2, 3)`，或者，如果我们已经有一个数组<!--
