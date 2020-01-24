@@ -7,9 +7,9 @@ title: "集合写操作"
 
 # 集合写操作
 
-[Mutable collections](collections-overview.html#集合类型) support operations for changing the collection contents, for example, adding or removing elements.
-On this page, we'll describe write operations available for all implementations of `MutableCollection`.
-For more specific operations available for `List` and `Map`, see [List Specific Operations](list-operations.html) and [Map Specific Operations](map-operations.html) respectively.
+[可变集合](collections-overview.html#集合类型) 支持更改集合内容的操作，例如添加或删除元素。
+在次页面上，我们将描述实现 `MutableCollection` 的所有写操作。
+有关 `List` 和 `Map` 可用的更多特定操作，请分别参见[List Specific Operations](list-operations.html)和 [Map Specific Operations](map-operations.html)。
 
 ## 添加元素
 
