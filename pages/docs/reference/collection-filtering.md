@@ -7,12 +7,12 @@ title: "过滤集合"
 
 # 过滤
 
-Filtering is one of the most popular tasks in the collection processing.
-In Kotlin, filtering conditions are defined by _predicates_ – lambda functions that take a collection element and return a boolean value: `true` means that the given element matches the predicate, `false` means the opposite.
+过滤是集合处理中最受欢迎的任务之一。
+在 Kotlin 中，过滤条件是由 _predicates_ – 定义的 lambda 函数接受一个集合元素并返回一个布尔值：`true` 表示给定元素与谓词匹配， `false` 表示相反。
 
-The standard library contains a group of extension functions that let you filter collections in a single call.
-These functions leave the original collection unchanged, so they are available for both [mutable and read-only](collections-overview.html#集合类型) collections.
-To operate the filtering result, you should assign it to a variable or chain the functions after filtering.
+标准库包含一组扩展功能，使你可以在单个调用中过滤集合。
+这些函数使原始集合保持不变，因此它们可用于[可变集合和只读集合](collections-overview.html#集合类型)。
+要操作过滤结果，应在过滤后将其分配给变量或链接功能。
 
 ## 按谓词过滤
 
