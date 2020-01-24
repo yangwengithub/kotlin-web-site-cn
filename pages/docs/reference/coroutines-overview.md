@@ -20,7 +20,7 @@ title: "协程概述"
 
 <div style="display: flex; align-items: center; margin-bottom: 20px">
     <img src="{{ url_for('asset', path='images/landing/native/book.png') }}" height="38p" width="55" style="margin-right: 10px;">
-    <b>Tutorials and Documentation</b>
+    <b>教程与文档</b>
 </div>
 
 Kotlin 新手？可以看看[入门](basic-syntax.html)页。
@@ -31,10 +31,12 @@ Kotlin 新手？可以看看[入门](basic-syntax.html)页。
 - [通道](coroutines/channels.html)
 - [协程上下文与调度器](coroutines/coroutine-context-and-dispatchers.html)
 - [共享的可变状态与并发](coroutines/shared-mutable-state-and-concurrency.html)
+- [异步流](/docs/reference/coroutines/flow.html)
 
 推荐的教程：
 - [你的第一个 Kotlin 协程程序](../tutorials/coroutines/coroutines-basic-jvm.html)
 - [异步程序设计](../tutorials/coroutines/async-programming.html)
+- [协程与通道简介](https://play.kotlinlang.org/hands-on/Introduction%20to%20Coroutines%20and%20Channels/01_Introduction)动手实验室
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
     <img src="{{ url_for('asset', path='images/landing/native/try.png') }}" height="38p" width="55" style="margin-right: 10px;">

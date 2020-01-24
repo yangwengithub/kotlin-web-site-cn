@@ -31,7 +31,7 @@ Kotlin 标准库提供了基本集合类型的实现： set、list 以及 map。
 * 一个 _只读_ 接口，提供访问集合元素的操作。
 * 一个 _可变_ 接口，通过写操作扩展相应的只读接口：添加、删除和更新其元素。
 
-请注意，更改可变集合不需要它是以 [`var`](basic-syntax.html#定义变量) 定义的变量：写操作修改同一个可变集合对象，因此引用不会改变。
+请注意，更改可变集合不需要它是以 [`var`](basic-syntax.html#defining-variables) 定义的变量：写操作修改同一个可变集合对象，因此引用不会改变。
 但是，如果尝试对 `val` 集合重新赋值，你将收到编译错误。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
@@ -50,7 +50,7 @@ fun main() {
 
 只读集合类型是[型变](generics.html#型变)的。
 这意味着，如果类 `Rectangle` 继承自 `Shape`，则可以在需要 `List <Shape>` 的任何地方使用 `List <Rectangle>`。
-换句话说，集合类型与元素类型具有相同的子类型关系。 地图在值类型上是型变的，但在键类型上不是。
+换句话说，集合类型与元素类型具有相同的子类型关系。 map 在值（value）类型上是型变的，但在键（key）类型上不是。
 
 反之，可变集合不是型变的；否则将导致运行时故障。 如果 `MutableList <Rectangle>` 是 `MutableList <Shape>` 的子类型，你可以在其中插入其他 `Shape` 的继承者（例如，`Circle`），从而违反了它的 `Rectangle` 类型参数。
 
@@ -62,7 +62,7 @@ fun main() {
 
 ### Collection
 
-[`Collection<T>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html) 是集合层次结构的根。此接口表示一个只读集合的共同行为：检索大小、检查一个项的成员等等。
+[`Collection<T>`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html) 是集合层次结构的根。此接口表示一个只读集合的共同行为：检索大小、检测是否为成员等等。
 `Collection` 继承自 `Iterable <T>` 接口，它定义了迭代元素的操作。可以使用 `Collection` 作为适用于不同集合类型的函数的参数。对于更具体的情况，请使用 `Collection` 的继承者： [`List`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html) 与 [`Set`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html)。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
@@ -89,7 +89,7 @@ fun main() {
 
 ```kotlin
 fun List<String>.getShortWordsTo(shortWords: MutableList<String>, maxLength: Int) {
-    this.filterTo(shortWords) { it.length <= maxLength}
+    this.filterTo(shortWords) { it.length <= maxLength }
     // throwing away the articles
     val articles = setOf("a", "A", "an", "An", "the", "The")
     shortWords -= articles

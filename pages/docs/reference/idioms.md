@@ -51,6 +51,17 @@ val positives = list.filter { it > 0 }
 ```
 </div>
 
+### 检测元素是否存在于集合中
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```kotlin
+if ("john@example.com" in emailsList) { …… }
+
+if ("jane@example.com" !in emailsList) { …… }
+```
+</div>
+
 ### 字符串内插
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -206,7 +217,8 @@ value?.let {
 ```kotlin
 val value = ……
 
-val mapped = value?.let { transformValue(it) } ?: defaultValueIfValueIsNull
+val mapped = value?.let { transformValue(it) } ?: defaultValue 
+// 如果该值或其转换结果为空，那么返回 defaultValue。
 ```
 </div>
 
@@ -322,6 +334,18 @@ with(myTurtle) { // 画一个 100 像素的正方形
 ```
 </div>
 
+### 配置对象的属性（`apply`）
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+```kotlin
+val myRectangle = Rectangle().apply {
+    length = 4
+    breadth = 5
+    color = 0xFAFAFA
+}
+```
+</div>
+
+这对于配置未出现在对象构造函数中的属性非常有用。
 
 ### Java 7 的 try with resources
 
@@ -369,4 +393,15 @@ var b = 2
 a = b.also { b = a }
 ```
 </div>
+
+### TODO()：将代码标记为不完整
+ 
+Kotlin 的标准库有一个 `TODO()` 函数，该函数总是抛出一个 `NotImplementedError`。
+其返回类型为 `Nothing`，因此无论预期类型是什么都可以使用它。
+还有一个接受原因参数的重载：
+```kotlin
+fun calcTaxes(): BigDecimal = TODO("Waiting for feedback from accounting")
+```
+
+IntelliJ IDEA 的 kotlin 插件理解 `TODO()` 的语言，并且会自动在 TODO 工具窗口中添加代码指示。 
 

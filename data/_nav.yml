@@ -31,7 +31,7 @@ subnav:
           title: 教程
 
         - url: /docs/books.html
-          title: 书籍
+          title: 图书
 
         - url: /docs/resources.html
           title: 更多资源
@@ -66,6 +66,8 @@ reference:
           title: Kotlin 用于 JavaScript 开发
         - url: /docs/reference/native-overview.html
           title: Kotlin 用于原生开发
+        - url: /docs/reference/data-science-overview.html
+          title: Kotlin 用于数据科学
         - url: /docs/reference/coroutines-overview.html
           title: 协程
         - url: /docs/reference/multiplatform.html
@@ -81,7 +83,7 @@ reference:
       description: 开始熟悉 Kotlin 基础包括操作、编码习惯与习惯用法。
       content:
         - url: /docs/reference/basic-syntax.html
-          title: 基础语法
+          title: 基本语法
         - url: /docs/reference/idioms.html
           title: 习惯用法
         - url: /docs/reference/coding-conventions.html
@@ -197,7 +199,7 @@ reference:
         - url: /docs/reference/multi-declarations.html
           title: 解构声明
         - url: /docs/reference/typecasts.html
-          title: 类型检查与转换
+          title: 类型检测与转换
         - url: /docs/reference/this-expressions.html
           title: This 表达式
         - url: /docs/reference/equality.html
@@ -246,6 +248,8 @@ reference:
     - title: JavaScript
       description: Kotlin 与 JavaScript 合用
       content:
+       - url: /docs/reference/js-project-setup.html
+         title: 搭建项目
        - url: /docs/reference/dynamic-type.html
          title: 动态类型
        - url: /docs/reference/js-interop.html
@@ -265,8 +269,8 @@ reference:
         path: kotlin-native
         nav: _nav_reference.yml
         base: /docs/reference/native
-        repo: https://github.com/hltj/kotlin-native-cn.git
-        branch: v1.3.0-fixes
+        repo: https://github.com/hltj/kotlin-native-cn
+        branch: v1.3.60-fixes
 
     - title: 协程
       description: Kotlin 协程库
@@ -285,6 +289,8 @@ reference:
           title: 编写 Kotlin 代码文档
         - url: /docs/reference/kapt.html
           title: 使用 Kapt
+        - url: /docs/reference/compiler-reference.html
+          title: Kotlin 编译器选项
         - url: /docs/reference/using-gradle.html
           title: 使用 Gradle
         - url: /docs/reference/using-maven.html
@@ -370,16 +376,22 @@ tutorials:
           title: 与 JavaScript 合用
         - url: /docs/tutorials/javascript/debugging-javascript/debugging-javascript.html
           title: 在浏览器中调试 Kotlin
+        - url: /docs/tutorials/javascript/react-and-kotlin-js.html
+          title: 用 React 与 Kotlin/JS 构建 Web 应用程序
 
     - title: 多平台项目
       content:
+        - url: /docs/tutorials/mpp/intro-to-kotlin-mpp.html
+          title: 多平台项目简介
         - url: /docs/tutorials/native/mpp-ios-android.html
           title: iOS 与 Android
-        - url: /docs/tutorials/multiplatform-library.html
+        - url: /docs/tutorials/mpp/multiplatform-library.html
           title: 多平台库
 
     - title: 原生
       content:
+        - url: /docs/tutorials/native/intro-to-kotlin-native.html
+          title: Kotlin/Native 简介
         - url: /docs/tutorials/native/basic-kotlin-native-app.html
           title: 基本 Kotlin/Native 应用程序
         - url: /docs/tutorials/native/mapping-primitive-data-types-from-c.html
@@ -394,7 +406,7 @@ tutorials:
           title: Kotlin/Native 开发动态库
         - url: /docs/tutorials/native/apple-framework.html
           title: Kotlin/Native 开发 Apple Framework
-        - url: /docs/tutorials/multiplatform-library.html
+        - url: /docs/tutorials/mpp/multiplatform-library.html
           title: 发布 Kotlin/Native 库
         - url: /docs/tutorials/native/curl.html
           title: 在应用中使用 C 语言互操作与 libcurl
@@ -407,7 +419,8 @@ tutorials:
           title: 异步程序设计
         - url: /docs/tutorials/coroutines/coroutines-basic-jvm.html
           title: JVM 平台的 Kotlin 协程简介
-
+        - url: /docs/tutorials/coroutines/intro-to-coroutines-and-channels.html
+          title: 协程与通道简介
 
     - title: Web 开发
       content:
@@ -445,7 +458,7 @@ foundation:
     - url: /foundation/language-committee-guidelines.html
       title: 语言委员会指南
     - url: /foundation/submitting-incompatible-changes.html
-      title: 提交不兼容的更改
+      title: 提交不兼容的变更
     - url: /foundation/guidelines.html
       title: Kotlin 品牌使用指南
     - url: /foundation/faq.html

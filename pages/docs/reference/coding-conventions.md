@@ -20,32 +20,32 @@ title: "编码规范"
 ### 应用风格指南
 
 如需根据本风格指南配置 IntelliJ 格式化程序，请安装 Kotlin 插件
-1.2.20 或更高版本，转到“Settings | Editor | Code Style | Kotlin”，点击右<!--
--->上角的“Set from...”链接，并从菜单中选择“Predefined style / Kotlin style guide”。
+1.2.20 或更高版本，转到 __Settings | Editor | Code Style | Kotlin__，点击右<!--
+-->上角的 __Set from...__ 链接，并从菜单中选择 __Predefined style | Kotlin style guide__。
 
 如需验证代码已按风格指南格式化，请转到探查设置（Inspections）并启用
-“Kotlin | Style issues | File is not formatted according to project settings”探查项。
+__Kotlin | Style issues | File is not formatted according to project settings__ 探查项。
 验证风格指南中描述的其他问题（如命名约定）的附加探查项默认已启用。
 
 ## 源代码组织
 
 ### 目录结构
 
-在混合语言项目中，Kotlin 源文件应当与 Java 源文件位于同一源文件根目录下，
-并遵循相同的目录结构（每个文件应存储在与其 package 语句对应的目录中
-）。
+在纯 Kotlin 项目中，推荐的目录结构遵循<!--
+-->省略了公共根包的包结构。例如，如果项目中的所有代码都位于 `org.example.kotlin` 包及其<!--
+-->子包中，那么 `org.example.kotlin` 包的文件应该直接放在源代码根目录下，而
+`org.example.kotlin.network.socket` 中的文件应该放在源代码根目录下的 `network/socket` 子目录中。
 
-在纯 Kotlin 项目中，推荐的目录结构遵循省略了公共根包的包结构
-（例如，如果项目中的所有代码都位于“org.example.kotlin”包及其<!--
--->子包中，那么“org.example.kotlin”包的文件应该直接放在源代码根目录下，而
-“org.example.kotlin.foo.bar”中的文件应该放在源代码根目录下的“foo/bar”子目录中）。
+> **对于 JVM 平台**：Kotlin 源文件应当与 Java 源文件位于同一源文件根目录下，
+并遵循相同的目录结构（每个文件应存储在与其 package 语句对应的目录中<!--
+-->。
 
 ### 源文件名称
 
 如果 Kotlin 文件包含单个类（以及可能相关的顶层声明），那么文件名应该与<!--
 -->该类的名称相同，并追加 .kt 扩展名。如果文件包含多个类或只包含顶层声明，
-那么选择一个描述该文件所包含内容的名称，并以此命名该文件。使用首字母大写的驼峰风格
-（例如 `ProcessDeclarations.kt`）。
+那么选择一个描述该文件所包含内容的名称，并以此命名该文件。
+使用首字母大写的[驼峰风格](https://zh.wikipedia.org/wiki/%E9%A7%9D%E5%B3%B0%E5%BC%8F%E5%A4%A7%E5%B0%8F%E5%AF%AB)（例如 `ProcessDeclarations.kt`）。
 
 文件的名称应该描述文件中代码的作用。因此，应避免在文件名中使用<!--
 -->诸如“Util”之类的无意义词语。
@@ -72,8 +72,7 @@ title: "编码规范"
 
 不要按字母顺序或者可见性对方法声明排序，也不要将常规方<!--
 -->法与扩展方法分开。而是要把相关的东西放在一起，这样从上到下<!--
--->阅读类的人就能够跟进所发生事情的逻辑。选择一个顺序（高级别优先，或者相反）
-并坚持下去。
+-->阅读类的人就能够跟进所发生事情的逻辑。选择一个顺序（高级别优先，或者相反）并坚持下去。
 
 将嵌套类放在紧挨使用这些类的代码之后。如果打算在外部使用嵌套类，而且类中并没有<!--
 -->引用这些类，那么把它们放到末尾，在伴生对象之后。
@@ -89,33 +88,33 @@ title: "编码规范"
 
 ## 命名规则
 
-Kotlin 遵循 Java 命名约定。尤其是：
+在 Kotlin 中，包名与类名的命名规则非常简单：
 
-包的名称总是小写且不使用下划线（`org.example.myproject`）。
+* 包的名称总是小写且不使用下划线（`org.example.project`）。
 通常不鼓励使用多个词的名称，但是如果确实需要使用多个词，可以将它们连接在一起<!--
--->或使用驼峰（`org.example.myProject`）。
+-->或使用驼峰风格（`org.example.myProject`）。
 
-类与对象的名称以大写字母开头并使用驼峰：
+* 类与对象的名称以大写字母开头并使用驼峰风格：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-open class DeclarationProcessor { …… }
+open class DeclarationProcessor { /*……*/ }
 
-object EmptyDeclarationProcessor : DeclarationProcessor() { …… }
+object EmptyDeclarationProcessor : DeclarationProcessor() { /*……*/ }
 ```
 
 </div>
 
 ### 函数名
  
-函数、属性与局部变量的名称以小写字母开头、使用驼峰而不使用下划线：
+函数、属性与局部变量的名称以小写字母开头、使用驼峰风格而不使用下划线：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-fun processDeclarations() { …… }
-var declarationCount = ……
+fun processDeclarations() { /*……*/ }
+var declarationCount = 1
 ```
 
 </div>
@@ -125,18 +124,17 @@ var declarationCount = ……
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-abstract class Foo { …… }
+abstract class Foo { /*……*/ }
 
-class FooImpl : Foo { …… }
+class FooImpl : Foo { /*……*/ }
 
-fun Foo(): Foo { return FooImpl(……) }
+fun FooImpl(): Foo { return FooImpl() }
 ```
-
 </div>
 
 #### 测试方法的名称
 
-当且仅当在测试中，可以使用反引号括起来的带空格的方法名。
+**当且仅当**在测试中，可以使用反引号括起来的带空格的方法名。
 （请注意，Android 运行时目前不支持这样的方法名。）测试代码中<!--
 -->也允许方法名使用下划线。
 
@@ -144,9 +142,9 @@ fun Foo(): Foo { return FooImpl(……) }
 
 ```kotlin
 class MyTestCase {
-     @Test fun `ensure everything works`() { ... }
+     @Test fun `ensure everything works`() { /*...*/ }
      
-     @Test fun ensureEverythingWorks_onAndroid() { ... }
+     @Test fun ensureEverythingWorks_onAndroid() { /*...*/ }
 }
 ```
 
@@ -166,7 +164,7 @@ val USER_NAME_FIELD = "UserName"
 
 </div>
 
-保存带有行为的对象或者可变数据的顶层/对象属性的名称应该使用常规驼峰名称：
+保存带有行为的对象或者可变数据的顶层/对象属性的名称应该使用驼峰风格名称：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -181,13 +179,13 @@ val mutableCollection: MutableSet<String> = HashSet()
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-val PersonComparator: Comparator<Person> = ...
+val PersonComparator: Comparator<Person> = /*...*/
 ```
 
 </div>
 
 对于枚举常量，可以使用大写、下划线分隔的名称
-（`enum class Color { RED, GREEN }`）也可使用以大写字母开头的常规驼峰名称，具体取决于用途。
+（`enum class Color { RED, GREEN }`）也可使用首字母大写的常规驼峰名称，具体取决于用途。
    
 #### 幕后属性的名称
 
@@ -224,8 +222,6 @@ class C {
 
 ## 格式化
 
-在大多数情况下，Kotlin 遵循 Java 编码规范。
-
 使用 4 个空格缩进。不要使用 tab。
 
 对于花括号，将左花括号放在结构起始处的行尾，而将右花括号<!--
@@ -261,7 +257,7 @@ Java 风格的花括号格式，如果尝试使用不同的格式化风格，那
 ```kotlin
 class A(val x: Int)
 
-fun foo(x: Int) { ... }
+fun foo(x: Int) { …… }
 
 fun bar() {
     foo(1)
@@ -305,9 +301,9 @@ abstract class Foo<out T : Any> : IFoo {
 }
 
 class FooImpl : Foo() {
-    constructor(x: String) : this(x) { …… }
+    constructor(x: String) : this(x) { /*……*/ }
     
-    val x = object : IFoo { …… }
+    val x = object : IFoo { /*……*/ } 
 } 
 ```
 
@@ -336,7 +332,7 @@ class Person(
     id: Int,
     name: String,
     surname: String
-) : Human(id, name) { …… }
+) : Human(id, name) { /*……*/ }
 ```
 
 </div>
@@ -351,7 +347,7 @@ class Person(
     name: String,
     surname: String
 ) : Human(id, name),
-    KotlinMaker { …… }
+    KotlinMaker { /*……*/ }
 ```
 
 </div>
@@ -366,7 +362,7 @@ class MyFavouriteVeryLongClassHolder :
     SomeOtherInterface,
     AndAnotherOne {
 
-    fun foo() { ... }
+    fun foo() { /*...*/ }
 }
 ```
 
@@ -383,7 +379,7 @@ class MyFavouriteVeryLongClassHolder :
     SomeOtherInterface,
     AndAnotherOne 
 {
-    fun foo() { ... }
+    fun foo() { /*...*/ }
 }
 ```
 
@@ -463,7 +459,7 @@ var x: String
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-@Test fun foo() { …… }
+@Test fun foo() { /*……*/ }
 ```
 
 </div>
@@ -550,7 +546,7 @@ val isEmpty: Boolean get() = size == 0
 
 ```kotlin
 val foo: String
-    get() { …… }
+    get() { /*……*/ }
 ```
 
 </div>
@@ -770,14 +766,14 @@ foo {
  * @param number The number to return the absolute value for.
  * @return The absolute value.
  */
-fun abs(number: Int) = ……
+fun abs(number: Int) { /*……*/ }
 
 // 而要这样：
 
 /**
  * Returns the absolute value of the given [number].
  */
-fun abs(number: Int) = ……
+fun abs(number: Int) { /*……*/ }
 ```
 
 </div>
@@ -857,10 +853,10 @@ val allowedValues = listOf("a", "b", "c")
 ```kotlin
 // 不良
 fun foo() = foo("a")
-fun foo(a: String) { …… }
+fun foo(a: String) { /*……*/ }
 
 // 良好
-fun foo(a: String = "a") { …… }
+fun foo(a: String = "a") { /*……*/ }
 ```
 
 </div>
@@ -892,9 +888,9 @@ typealias PersonIndex = Map<String, Person>
 
 不要在 lambda 表达式的最后一条语句中使用返回到标签。
 
-### 命名参数
+### 具名参数
 
-当一个方法接受多个相同的原生类型参数或者多个 `Boolean` 类型参数时，请使用命名参数语法，
+当一个方法接受多个相同的原生类型参数或者多个 `Boolean` 类型参数时，请使用具名参数语法，
 除非在上下文中的所有参数的含义都已绝对清楚。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -948,8 +944,8 @@ when(x) {
 
 ```kotlin
 when (x) {
-    null -> ……
-    else -> ……
+    null -> // ……
+    else -> // ……
 }
 ```
 
@@ -973,13 +969,13 @@ when (x) {
 
 ### 区间上循环
 
-使用 `until` 函数在一个区间上循环：
+使用 `until` 函数在一个开区间上循环：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-for (i in 0..n - 1) { …… }  // 不良
-for (i in 0 until n) { …… }  // 良好
+for (i in 0..n - 1) { /*……*/ }  // 不良
+for (i in 0 until n) { /*……*/ }  // 良好
 ```
 
 </div>

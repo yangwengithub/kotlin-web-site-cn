@@ -1,8 +1,8 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "使用注释处理的 Android 框架"
-description: "本教程介绍如何在 Kotlin 中使用依赖于注释处理的流行的 Android 框架和库。"
+title:  "使用注解处理的 Android 框架"
+description: "本教程介绍如何在 Kotlin 中使用依赖于注解处理的流行的 Android 框架和库。"
 authors: Svetlana Isakova
 showAuthorInfo: false
 source:
@@ -64,8 +64,8 @@ class DripCoffeeModule {
 ```
 </div>
 
-`@Module`-annotated classes define how to provide different objects.
-Note that when you pass an annotation argument as a vararg argument, you have to explicitly wrap it into an [array literal](/docs/reference/annotations.html#arrays-as-annotation-parameters) `[...]`, like in `@Module(includes = [PumpModule::class])` above.
+被 `@Module` 注解的类定义了如何提供一个不同对象的功能。
+注意，当你想要将一个注解参数作为可变参数来进行传递的时候，你必须显式地使用[字面值](/docs/reference/annotations.html#arrays-as-annotation-parameters) `[...]` 包装它，就像上面的 `@Module(includes = [PumpModule::class])` 一样。
 
 使用 `@Component` 为类型生成依赖注入的实现。
 自动生成类文件的类名带有 Dagger 前缀，比如下文示例 `DaggerCoffeeShop`：

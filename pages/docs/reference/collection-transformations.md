@@ -7,17 +7,17 @@ title: "集合转换操作"
 
 # 集合转换
 
-The Kotlin standard library provides a set of extension functions for collection _transformations_.
-These functions build new collections from existing ones based on the transformation rules provided.
-In this page, we'll give an overview of the available collection transformation functions.
+Kotlin 标准库为集合 _转换_ 提供了一组扩展函数。
+这些函数根据提供的转换规则从现有集合中构建新集合。
+在此页面中，我们将概述可用的集合转换函数。
 
 ## 映射
 
-The _mapping_ transformation creates a collection from the results of a function on the elements of another collection.
-The basic mapping function is [`map()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map.html).
-It applies the given lambda function to each subsequent element and returns the list of the lambda results.
-The order of results is the same as the original order of elements. 
-To apply a transformation that additionally uses the element index as an argument, use [`mapIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed.html).
+_映射_ 转换从另一个集合的元素上的函数结果创建一个集合。
+基本的映射函数是 [`map()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map.html)。
+它将给定的 lambda 函数应用于每个后续元素，并返回 lambda 结果列表。
+结果的顺序与元素的原始顺序相同。
+如需应用还要用到元素索引作为参数的转换，请使用 [`mapIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed.html)。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -32,7 +32,7 @@ fun main() {
 ```
 </div>
 
-If the transformation produces `null` on certain elements, you can filter out the `null`s from the result collection by calling the [`mapNotNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html) function instead of `map()`, or [`mapIndexedNotNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed-not-null.html) instead of `mapIndexed()`.
+如果转换在某些元素上产生 `null` 值，则可以通过调用 [`mapNotNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html) 函数取代 `map()` 或 [`mapIndexedNotNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed-not-null.html) 取代 `mapIndexed()` 来从结果集中过滤掉 `null` 值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -47,9 +47,9 @@ fun main() {
 ```
 </div>
 
-When transforming maps, you have two options: transform keys leaving values unchanged and vice versa.
-To apply a given transformation to keys, use [`mapKeys()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-keys.html); in turn, [`mapValues()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-values.html) transforms values.
-Both functions use the transformations that take a map entry as an argument, so you can operate both its key and value.
+映射转换时，有两个选择：转换键，使值保持不变，反之亦然。
+要将指定转换应用于键，请使用 [`mapKeys()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-keys.html)；反过来，[`mapValues()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-values.html) 转换值。
+这两个函数都使用将映射条目作为参数的转换，因此可以操作其键与值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 

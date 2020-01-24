@@ -7,7 +7,7 @@ title: "接口"
 
 # 接口
 
-Kotlin 的接口与 Java 8 类似，既包含抽象方法的声明，也包含<!--
+Kotlin 的接口可以既包含抽象方法的声明也包含<!--
 -->实现。与抽象类不同的是，接口无法保存状态。它可以有<!--
 -->属性但必须声明为抽象或提供访问器实现。
 
@@ -45,6 +45,7 @@ class Child : MyInterface {
 -->不能引用它们。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 interface MyInterface {
     val prop: Int // 抽象的
@@ -68,6 +69,7 @@ class Child : MyInterface {
 一个接口可以从其他接口派生，从而既提供基类型成员的实现也声明新的函数与属性。很自然地，实现这样接口的类只需定义所缺少的实现：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 interface Named {
     val name: String
@@ -94,6 +96,7 @@ data class Employee(
 实现多个接口时，可能会遇到同一方法继承多个实现的问题。例如
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 interface A {
     fun foo() { print("A") }

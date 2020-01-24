@@ -12,6 +12,7 @@ title: "函数：infix、vararg、tailrec"
 Kotlin 中的函数使用 *fun*{: .keyword } 关键字声明：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun double(x: Int): Int {
     return 2 * x
@@ -24,6 +25,7 @@ fun double(x: Int): Int {
 调用函数使用传统的方法：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 val result = double(2)
 ```
@@ -33,8 +35,9 @@ val result = double(2)
 调用成员函数使用点表示法：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
-Sample().foo() // 创建类 Sample 实例并调用 foo
+Stream().read() // 创建类 Stream 实例并调用 read()
 ```
 </div>
 
@@ -43,8 +46,9 @@ Sample().foo() // 创建类 Sample 实例并调用 foo
 函数参数使用 Pascal 表示法定义，即 *name*: *type*。参数用逗号隔开。每个参数必须有显式类型：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
-fun powerOf(number: Int, exponent: Int) { …… }
+fun powerOf(number: Int, exponent: Int) { /*……*/ }
 ```
 </div>
 
@@ -54,8 +58,9 @@ fun powerOf(number: Int, exponent: Int) { …… }
 -->重载数量：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
-fun read(b: Array<Byte>, off: Int = 0, len: Int = b.size) { …… }
+fun read(b: Array<Byte>, off: Int = 0, len: Int = b.size) { /*……*/ }
 ```
 </div>
 
@@ -65,32 +70,35 @@ fun read(b: Array<Byte>, off: Int = 0, len: Int = b.size) { …… }
 当覆盖一个带有默认参数值的方法时，必须从签名中省略默认参数值：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 open class A {
-    open fun foo(i: Int = 10) { …… }
+    open fun foo(i: Int = 10) { /*……*/ }
 }
 
 class B : A() {
-    override fun foo(i: Int) { …… }  // 不能有默认值
+    override fun foo(i: Int) { /*……*/ }  // 不能有默认值
 }
 ```
 </div>
 
-如果一个默认参数在一个无默认值的参数之前，那么该默认值只能通过使用[命名参数](#命名参数)调用该函数来使用：
+如果一个默认参数在一个无默认值的参数之前，那么该默认值只能通过使用[具名参数](#具名参数)调用该函数来使用：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
-fun foo(bar: Int = 0, baz: Int) { …… }
+fun foo(bar: Int = 0, baz: Int) { /*……*/ }
 
 foo(baz = 1) // 使用默认值 bar = 0
 ```
 </div>
 
-如果在默认参数之后的最后一个参数是 [lambda 表达式](lambdas.html#lambda-表达式语法)，那么它既可以作为命名参数在括号内传入，也可以在[括号外](lambdas.html#将-lambda-表达式传给最后一个参数)传入：
+如果在默认参数之后的最后一个参数是 [lambda 表达式](lambdas.html#lambda-表达式语法)，那么它既可以作为具名参数在括号内传入，也可以在[括号外](lambdas.html#passing-a-lambda-to-the-last-parameter)传入：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
-fun foo(bar: Int = 0, baz: Int = 1, qux: () -> Unit) { …… }
+fun foo(bar: Int = 0, baz: Int = 1, qux: () -> Unit) { /*……*/ }
 
 foo(1) { println("hello") }     // 使用默认值 baz = 1
 foo(qux = { println("hello") }) // 使用两个默认值 bar = 0 与 baz = 1
@@ -98,20 +106,21 @@ foo { println("hello") }        // 使用两个默认值 bar = 0 与 baz = 1
 ```
 </div>
 
-### 命名参数
+### 具名参数
 
-可以在调用函数时使用命名的函数参数。当一个函数有大量的参数或默认参数时这会非常方便。
+可以在调用函数时使用具名的函数参数。当一个函数有大量的参数或默认参数时这会非常方便。
 
 给定以下函数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
+
 ```kotlin
 fun reformat(str: String,
              normalizeCase: Boolean = true,
              upperCaseFirstLetter: Boolean = true,
              divideByCamelHumps: Boolean = false,
              wordSeparator: Char = ' ') {
-……
+/*……*/
 }
 ```
 </div>
@@ -119,6 +128,7 @@ fun reformat(str: String,
 我们可以使用默认参数来调用它：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 reformat(str)
 ```
@@ -127,14 +137,16 @@ reformat(str)
 然而，当使用非默认参数调用它时，该调用看起来就像：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 reformat(str, true, true, false, '_')
 ```
 </div>
 
-使用命名参数我们可以使代码更具有可读性：
+使用具名参数我们可以使代码更具有可读性：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 reformat(str,
     normalizeCase = true,
@@ -148,24 +160,26 @@ reformat(str,
 并且如果我们不需要所有的参数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 reformat(str, wordSeparator = '_')
 ```
 </div>
 
-当一个函数调用混用位置参数与命名参数时，所有位置参数都要放在第一个命名参数之前。例如，允许调用 `f(1, y = 2)` 但不允许 `f(x = 1, 2)`。
+当一个函数调用混用位置参数与具名参数时，所有位置参数都要放在第一个具名参数之前。例如，允许调用 `f(1, y = 2)` 但不允许 `f(x = 1, 2)`。
 
-可以通过使用**星号**操作符将[可变数量参数（*vararg*{: .keyword }）](#可变数量的参数varargs) 以命名形式传入：
+可以通过使用**星号**操作符将[可变数量参数（*vararg*{: .keyword }）](#可变数量的参数varargs) 以具名形式传入：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
-fun foo(vararg strings: String) { …… }
+fun foo(vararg strings: String) { /*……*/ }
 
 foo(strings = *arrayOf("a", "b", "c"))
 ```
 </div>
 
-请注意，在调用 Java 函数时不能使用命名参数语法，因为 Java 字节码并不<!--
+> **对于 JVM 平台**：在调用 Java 函数时不能使用具名参数语法，因为 Java 字节码并不<!--
 -->总是保留函数参数的名称。
 
 ### 返回 Unit 的函数
@@ -174,6 +188,7 @@ foo(strings = *arrayOf("a", "b", "c"))
 -->值不需要显式返回：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun printHello(name: String?): Unit {
     if (name != null)
@@ -188,6 +203,7 @@ fun printHello(name: String?): Unit {
 `Unit` 返回类型声明也是可选的。上面的代码等同于：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun printHello(name: String?) { …… }
 ```
@@ -198,6 +214,7 @@ fun printHello(name: String?) { …… }
 当函数返回单个表达式时，可以省略花括号并且在 **=** 符号之后指定代码体即可：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun double(x: Int): Int = x * 2
 ```
@@ -206,6 +223,7 @@ fun double(x: Int): Int = x * 2
 当返回值类型可由编译器推断时，显式声明返回类型是[可选](#显式返回类型)的：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun double(x: Int) = x * 2
 ```
@@ -224,6 +242,7 @@ Kotlin 不推断具有块代码体的函数的返回类型，因为这样的函�
 函数的参数（通常是最后一个）可以用 `vararg` 修饰符标记：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
+
 ```kotlin
 fun <T> asList(vararg ts: T): List<T> {
     val result = ArrayList<T>()
@@ -237,6 +256,7 @@ fun <T> asList(vararg ts: T): List<T> {
 允许将可变数量的参数传递给函数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 val list = asList(1, 2, 3)
 ```
@@ -245,13 +265,14 @@ val list = asList(1, 2, 3)
 在函数内部，类型 `T` 的 `vararg` 参数的可见方式是作为 `T` 数组，即上例中的 `ts` 变量具有类型 `Array <out T>`。
 
 只有一个参数可以标注为 `vararg`。如果 `vararg` 参数不是列表中的最后一个参数， 可以使用<!--
--->命名参数语法传递其后的参数的值，或者，如果参数具有函数类型，则通过在括号外部<!--
+-->具名参数语法传递其后的参数的值，或者，如果参数具有函数类型，则通过在括号外部<!--
 -->传一个 lambda。
 
 当我们调用 `vararg`-函数时，我们可以一个接一个地传参，例如 `asList(1, 2, 3)`，或者，如果我们已经有一个数组<!--
 -->并希望将其内容传给该函数，我们使用**伸展（spread）**操作符（在数组前面加 `*`）：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 val a = arrayOf(1, 2, 3)
 val list = asList(-1, 0, *a, 4)
@@ -267,6 +288,7 @@ val list = asList(-1, 0, *a, 4)
 * 其参数不得[接受可变数量的参数](#可变数量的参数varargs)且不能有[默认值](#默认参数)。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 infix fun Int.shl(x: Int): Int { …… }
 
@@ -280,13 +302,13 @@ infix fun Int.shl(x: Int): Int { …… }
 
 > 中缀函数调用的优先级低于算术操作符、类型转换以及 `rangeTo` 操作符。
 > 以下表达式是等价的：
-> * `1 shl 2 + 3` 与 `1 shl (2 + 3)`
-> * `0 until n * 2` 与 `0 until (n * 2)`
-> * `xs union ys as Set<*>` 与 `xs union (ys as Set<*>)`
+> * `1 shl 2 + 3` 等价于 `1 shl (2 + 3)`
+> * `0 until n * 2` 等价于 `0 until (n * 2)`
+> * `xs union ys as Set<*>` 等价于 `xs union (ys as Set<*>)`
 >
 > 另一方面，中缀函数调用的优先级高于布尔操作符 `&&` 与 `||`、`is-` 与 `in-` 检测以及其他一些操作符。这些表达式也是等价的：
-> * `a && b xor c` 与 `a && (b xor c)`
-> * `a xor b in c` 与 `(a xor b) in c`
+> * `a && b xor c` 等价于 `a && (b xor c)`
+> * `a xor b in c` 等价于 `(a xor b) in c`
 > 
 > 完整的优先级层次结构请参见其[语法参考](grammar.html#expressions)。
 {:.note}
@@ -296,14 +318,15 @@ infix fun Int.shl(x: Int): Int { …… }
 -->那样省略。这是确保非模糊解析所必需的。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class MyStringCollection {
-    infix fun add(s: String) { …… }
+    infix fun add(s: String) { /*……*/ }
     
     fun build() {
         this add "abc"   // 正确
         add("abc")       // 正确
-        add "abc"        // 错误：必须指定接收者
+        //add "abc"        // 错误：必须指定接收者
     }
 }
 ```
@@ -320,9 +343,10 @@ class MyStringCollection {
 Kotlin 支持局部函数，即一个函数在另一个函数内部：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
+
 ```kotlin
 fun dfs(graph: Graph) {
-    fun dfs(current: Vertex, visited: Set<Vertex>) {
+    fun dfs(current: Vertex, visited: MutableSet<Vertex>) {
         if (!visited.add(current)) return
         for (v in current.neighbors)
             dfs(v, visited)
@@ -336,6 +360,7 @@ fun dfs(graph: Graph) {
 局部函数可以访问外部函数（即闭包）的局部变量，所以在上例中，*visited* 可以是局部变量：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
+
 ```kotlin
 fun dfs(graph: Graph) {
     val visited = HashSet<Vertex>()
@@ -355,6 +380,7 @@ fun dfs(graph: Graph) {
 成员函数是在类或对象内部定义的函数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class Sample() {
     fun foo() { print("Foo") }
@@ -365,6 +391,7 @@ class Sample() {
 成员函数以点表示法调用：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 Sample().foo() // 创建类 Sample 实例并调用 foo
 ```
@@ -377,8 +404,9 @@ Sample().foo() // 创建类 Sample 实例并调用 foo
 函数可以有泛型参数，通过在函数名前使用尖括号指定：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
-fun <T> singletonList(item: T): List<T> { …… }
+fun <T> singletonList(item: T): List<T> { /*……*/ }
 ```
 </div>
 
@@ -403,6 +431,7 @@ Kotlin 支持一种称为[尾递归](https://zh.wikipedia.org/wiki/%E5%B0%BE%E8%
 当一个函数用 `tailrec` 修饰符标记并满足所需的形式时，编译器会优化该递归，留下一个快速而高效的基于循环的版本：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
+
 ```kotlin
 val eps = 1E-10 // "good enough", could be 10^-15
 
@@ -414,6 +443,7 @@ tailrec fun findFixPoint(x: Double = 1.0): Double
 这段代码计算余弦的不动点（fixpoint of cosine），这是一个数学常数。 它只是重复地从 1.0 开始调用 Math.cos，直到结果不再改变，对于这里指定的 `eps` 精度会产生 0.7390851332151611 的结果。最终代码相当于这种更传统风格的代码：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 val eps = 1E-10 // "good enough", could be 10^-15
 
@@ -428,5 +458,4 @@ private fun findFixPoint(): Double {
 ```
 </div>
 
-要符合 `tailrec` 修饰符的条件的话，函数必须将其自身调用作为它执行的最后一个操作。在递归调用后有更多代码时，不能使用尾递归，并且不能用在 try/catch/finally 块中。目前尾部递归只在 JVM 后端中支持。
-
+要符合 `tailrec` 修饰符的条件的话，函数必须将其自身调用作为它执行的最后一个操作。在递归调用后有更多代码时，不能使用尾递归，并且不能用在 try/catch/finally 块中。目前在 Kotlin for JVM 与 Kotlin/Native 中支持尾递归。

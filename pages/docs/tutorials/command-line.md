@@ -10,7 +10,7 @@ related:
 ---
 ### 下载编译器
 
-每个版本都附带一个独立版本的编译器。可以从 [GitHub Releases]({{ site.data.releases.latest.url }})下载。最新版本是 {{ site.data.releases.latest.version }}。
+每个版本都附带一个独立版本的编译器。可以从 [GitHub Releases]({{ site.data.releases.latest.url }}) 页下载最新版本（`kotlin-compiler-{{ site.data.releases.latest.version }}.zip`）。
 
 #### 手动安装
 将独立的编译器解压缩到一个目录中，并将 `bin` 目录添加到系统路径中。`bin` 目录包含了在 Windows、OS X 及 Linux 上编译与运行 Kotlin 所需的脚本。
@@ -60,13 +60,24 @@ $ sudo port install kotlin
 
 </div>
 
-#### [Snap](https://snapcraft.io/) package
+#### [Snap](https://snapcraft.io/) 包
 如果使用的是 Ubuntu 16.04 或更高版本，那么可以在命令行安装编译器：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
 ```bash
 $ sudo snap install --classic kotlin
+```
+
+</div>
+
+#### Chocolatey 包
+如果你是 Windows [Chocolatey](https://chocolatey.org/) 用户，那么你可以在命令行轻松安装编译器：
+
+<div class="sample" markdown="1" mode="shell" theme="idea">
+
+```cmd
+C:\> choco install kotlinc
 ```
 
 </div>
@@ -95,7 +106,7 @@ $ sudo snap install --classic kotlin
 
     </div>
 
-   `-d` 选项表示我们想要编译器的输出被调用，可以是类文件目录名或一个 *.jar* 文件名。`-include-runtime` 选项通过在其中包含 Kotlin 运行时库，使得生成的 *.jar* 文件中自包含运行时库且可运行。
+   `-d` 选项表示生成的类文件的输出路径，可以是目录，也可以是一个 *.jar* 文件。`-include-runtime` 选项通过在其中包含 Kotlin 运行时库，使得生成的 *.jar* 文件中自包含运行时库且可运行。
    如果要查看所有可用选项，请运行以下命令：
 
     <div class="sample" markdown="1" mode="shell" theme="idea">
@@ -119,7 +130,7 @@ $ sudo snap install --classic kotlin
 
 ### 编译库
 
-如果你正在开发一个供其他 Kotlin 应用程序使用的库，则可以生成 .jar 文件，而不将 Kotlin 运行时包含在其中。
+如果你正在开发一个供其他 Kotlin 应用程序使用的库，那么可以构建 *.jar* 文件，而不将 Kotlin 运行时包含在其中。
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -151,14 +162,18 @@ $ kotlin -classpath hello.jar HelloKt
 
 ### 使用命令行运行脚本
 
-Kotlin 也可以用作脚本语言。脚本是具有顶层可执行代码的 Kotlin 源文件（.kts）。
+Kotlin 也可以用作脚本语言。脚本是具有顶层可执行代码的 Kotlin 源文件（*.kts*）。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
 import java.io.File
 
-val folders = File(args[0]).listFiles { file -> file.isDirectory() }
+// Get the passed in path, i.e. "-d some/path" or use the current path.
+val path = if (args.contains("-d")) args[1 + args.indexOf("-d")]
+           else "."
+
+val folders = File(path).listFiles { file -> file.isDirectory() }
 folders?.forEach { folder -> println(folder) }
 ```
 
@@ -169,7 +184,7 @@ folders?.forEach { folder -> println(folder) }
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
 ```bash
-$ kotlinc -script list_folders.kts <path_to_folder_to_inspect>
+$ kotlinc -script list_folders.kts -- -d <path_to_folder_to_inspect>
 ```
 
 </div>
@@ -180,8 +195,7 @@ $ kotlinc -script list_folders.kts <path_to_folder_to_inspect>
 -->定义。
 
 当适当的 jar 文件包含在<!--
--->编译类路径中时，会自动检测并正确应用正确编写的脚本定义。或可以<!--
--->使用编译器的 `-script-templates` 选项来手动定义：
+-->编译类路径中时，会自动检测并正确应用正确编写的脚本定义。或可以使用编译器的 `-script-templates` 选项来手动定义：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 

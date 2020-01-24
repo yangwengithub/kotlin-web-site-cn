@@ -1,15 +1,15 @@
 [[include pages-includes/docs/tutorials/native/lets-create-gradle-build.md]]
 [[include pages-includes/docs/tutorials/native/mapping-primitive-data-types-from-c-code.md]]
 
-The prepared project sources can be downloaded directly from
+这个已经准备好的工程源文件可以直接在这里下载：
 [[include pages-includes/docs/tutorials/native/mapping-primitive-data-types-from-c-link.md]]
 
 
-The project file configures the C interop as an additional step of the build.
-Let's move the `interop.def` file to the `src/nativeInterop/cinterop` directory.
-Gradle recommends using conventions instead of configurations,
-for example, the source files are expected to be in the `src/nativeMain/kotlin` folder.
-By default, all the symbols from C are imported to the `interop` package,
-we may want to import the whole package in our `.kt` files.
-Check out the [kotlin-multiplatform](/docs/reference/building-mpp-with-gradle.html)
-plugin documentation to learn about all the different ways you could configure it.
+该项目文件将 C 互操作配置为构建的附加步骤。
+让我们将 `interop.def` 文件移动到 `src/nativeInterop/cinterop` 目录。
+Gradle 建议使用约定而不是配置，
+比如说，这个源文件被期望位于 `src/nativeMain/kotlin` 文件夹。
+默认的，C 中的所有符号都被导入到 `interop` 包中，
+我们也许想要将整个包导入到我们的 `.kt` 文件。
+查看 [kotlin 多平台](/docs/reference/building-mpp-with-gradle.html)<!--
+-->插件文档来学习所有不同的配置方式。

@@ -369,7 +369,7 @@ fun main(args: Array<String>) {
 
 对于[委托属性](delegated-properties.html)，现在可以使用 `provideDelegate` 操作符拦截委托到属性之间的绑定
 。
-例如，如果我们想要在绑定之前检查属性名称，我们可以这样写：
+例如，如果我们想要在绑定之前检测属性名称，我们可以这样写：
 
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -527,7 +527,7 @@ fun main(args: Array<String>) {
 
 </div>
 
-`takeIf` 就像单个值的 `filter`。它检查接收者是否满足该谓词，并<!--
+`takeIf` 就像单个值的 `filter`。它检测接收者是否满足该谓词，并<!--
 -->在满足时返回该接收者否则不满足时返回 `null`。
 结合 elvis-操作符和及早返回，它允许编写如下结构：
 
@@ -821,7 +821,7 @@ Kotlin 标准库的大部分目前可以从代码编译成 JavaScript 来使用�
 
 ### 更好的代码生成
 
-JavaScript 后端现在生成更加可静态检查的代码，这对 JS 代码处理工具（如
+JavaScript 后端现在生成更加可静态检测的代码，这对 JS 代码处理工具（如
 minifiers、 optimisers、 linters 等）更加友好。
 
 ### `external` 修饰符

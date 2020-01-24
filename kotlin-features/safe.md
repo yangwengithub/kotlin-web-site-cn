@@ -14,7 +14,7 @@ val name: String? = null    // 可控类型
 println(name.length())      // 编译错误
 ```
 
-并且如果你检查类型是正确的，编译器会为你做自动类型转换
+并且如果你检测类型是正确的，编译器会为你做自动类型转换
 
 ``` kotlin
 fun calculateTotal(obj: Any) {

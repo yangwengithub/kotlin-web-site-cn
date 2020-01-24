@@ -64,7 +64,7 @@ fun main() {
 
 * 确定 `a` 的类型，令其为 `T`；
 * 查找一个适用于类型为 `T` 的接收者的、带有 `operator` 修饰符的无参数函数 `inc()`；
-* 检查函数的返回类型是 `T` 的子类型。
+* 检测函数的返回类型是 `T` 的子类型。
 
 计算表达式的步骤是：
 
@@ -170,7 +170,7 @@ data class Counter(val dayIndex: Int) {
   * 如果相应的二元函数（即 `plusAssign()` 对应于 `plus()`）也可用，那么报告错误（模糊），
   * 确保其返回类型是 `Unit`，否则报告错误，
   * 生成 `a.plusAssign(b)` 的代码；
-* 否则试着生成 `a = a + b` 的代码（这里包含类型检查：`a + b` 的类型必须是 `a` 的子类型）。
+* 否则试着生成 `a = a + b` 的代码（这里包含类型检测：`a + b` 的类型必须是 `a` 的子类型）。
 
 *注意*：赋值在 Kotlin 中*不是*表达式。
 
@@ -185,7 +185,7 @@ data class Counter(val dayIndex: Int) {
 
 这些操作符只使用函数 [`equals(other: Any?): Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/equals.html)，可以覆盖它来提供自定义的相等性检测实现。不会调用任何其他同名函数（如 `equals(other: Foo)`）。
 
-*注意*：`===` 和 `!==`（同一性检查）不可重载，因此不存在对他们的约定。
+*注意*：`===` 和 `!==`（同一性检测）不可重载，因此不存在对他们的约定。
 
 这个 `==` 操作符有些特殊：它被翻译成一个复杂的表达式，用于筛选 `null` 值。
 `null == null`  总是 true，对于非空的 `x`，`x == null` 总是 false 而不会调用 `x.equals()`。
@@ -207,6 +207,6 @@ data class Counter(val dayIndex: Int) {
 `provideDelegate`、 `getValue` 以及 `setValue` 操作符函数已在<!--
 -->[委托属性](delegated-properties.html)中描述。
 
-## 命名函数的中缀调用
+## 具名函数的中缀调用
 
 我们可以通过[中缀函数的调用](functions.html#中缀表示法) 来模拟自定义中缀操作符。

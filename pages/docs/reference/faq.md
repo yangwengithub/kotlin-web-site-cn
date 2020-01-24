@@ -89,9 +89,11 @@ vert.x 或 JSF。另外还有一些 Kotlin 写的特定框架，例如 [Ktor](ht
 当面向JVM 平台时，Kotlin 生成 Java 兼容的字节码。当面向 JavaScript 时，Kotlin 会转译到 ES5.1，并生成与<!--
 -->包括 AMD 和 CommonJS 在内的模块系统相兼容的代码。当面向原生平台时，Kotlin 会（通过 LLVM）生成平台相关的代码。
 
-### Kotlin 只面向 Java 6 吗？
+### Kotlin 面向哪些版本的 JVM？
 
-不是。Kotlin 可以让你选择生成 Java 6 或者 Java 8 兼容的字节码。可以为较高版本的平台生成更优化的字节码。
+Kotlin 会让你选择用于执行的 JVM 版本。默认情况下，Kotlin/JVM 编译器会生成兼容 Java 6 的字节码。
+如果要利用 Java 新版本中提供的优化功能，可以将目标 Java 版本显式指定为 8 到 12。
+请注意，这种情况下生成的字节码可能无法在较低版本中运行。
 
 ### Kotlin 难吗？
 
@@ -106,7 +108,7 @@ Kotlin 是受 Java、C#、JavaScript、Scala 以及 Groovy 等现有语言的启
 
 ### 谁开发 Kotlin？
 
-Kotlin 主要由 JetBrains 的一个工程师团队开发（目前团队规模为 50+）。其首席语言设计师是
+Kotlin 主要由 JetBrains 的一个工程师团队开发（目前团队规模为 90+）。其首席语言设计师是
 [Andrey Breslav](https://twitter.com/abreslav)。除了核心团队，GitHub 上还有 250 多个外部贡献者。
 
 ### 在哪里可以了解关于 Kotlin 更多？
@@ -117,7 +119,7 @@ Kotlin 主要由 JetBrains 的一个工程师团队开发（目前团队规模�
 
 ### 有没有关于 Kotlin 的书？
 
-已经有[一些](/docs/books.html)关于 Kotlin 的书籍。其中包括由 Kotlin 团队成员 Dmitry Jemerov 和 Svetlana Isakova 合著的 [Kotlin in Action](https://www.manning.com/books/kotlin-in-action)、
+已经有[一些](/docs/books.html)关于 Kotlin 的图书。其中包括由 Kotlin 团队成员 Dmitry Jemerov 和 Svetlana Isakova 合著的 [Kotlin in Action](https://www.manning.com/books/kotlin-in-action)、
 面向 Android 开发人员的 [Kotlin for Android Developers](https://leanpub.com/kotlin-for-android-developers)。
 
 ### Kotlin 有没有在线课程？

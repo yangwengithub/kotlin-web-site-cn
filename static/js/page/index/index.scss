@@ -340,7 +340,7 @@
     border-bottom: 1px solid grey;
   }
 
-  .CodeMirror pre {
+  .CodeMirror pre.CodeMirror-line {
     font-size: 25px;
     line-height: 35px;
   }
@@ -905,5 +905,30 @@
   100% {
     @include transform(scale(2));
     opacity: 0;
+  }
+}
+
+.popup-wrapper._hidden {
+  display: none;
+}
+
+.popup-wrapper {
+  position: absolute;
+  background-color: transparent;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.7);
+
+  .popup-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    transform: translate3d(-50%, -50%, 0);
   }
 }

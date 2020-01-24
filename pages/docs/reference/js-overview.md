@@ -33,7 +33,7 @@ Kotlin 编译器努力遵循以下目标：
     * **使用服务器端技术**。你可以使用 Kotlin 与服务器端 JavaScript（如 Node.js）进行交互
 
 Kotlin 可以与现有的第三方库和框架（如 jQuery 或 ReactJS）一起使用。要使用强类型
-API 访问第三方框架，可以使用 [ts2kt](https://github.com/kotlin/ts2kt) 工具将 TypeScript 定义从 [Definitely Typed](http://definitelytyped.org/)
+API 访问第三方框架，可以使用 [dukat](https://github.com/kotlin/dukat) 工具将 TypeScript 定义从 [Definitely Typed](http://definitelytyped.org/)
 类型定义仓库转换为 Kotlin。或者，你可以使用<!--
 -->[动态类型](dynamic-type.html)访问任何框架，而无需强类型。
 
