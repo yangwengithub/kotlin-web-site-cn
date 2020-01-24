@@ -20,25 +20,25 @@ Kotlin 基金会的主要职能是：
 
 **商标**。Kotlin 商标以及相关标志、徽标与域名都属于 Kotlin 基金会。
 基金会允许根据<!--
--->[《Kotlin 品牌使用指南》](http://kotlinlang.org/foundation/guidelines.html)使用商标。所有<!--
+-->[《Kotlin 品牌使用指南》](/foundation/guidelines.html)使用商标。所有<!--
 -->不允许自动使用的用途都需要得到基金会的明确书面许可。
 
 <a name="lead-designer"></a>
-**首席语言设计师**负责关于项目开发及语言演进的所有决策。 The Foundation appoints the Lead Language Designer, but does not directly make decisions about the course of the project.
+**首席语言设计师**负责关于项目开发及语言演进的所有决策。基金会任命首席语言设计师，但不直接决定项目的进程。
 
 <a name="language-committee"></a>
-**不兼容的更改**。A special Language Committee appointed by the Foundation reviews the changes proposed by the Lead Language Designer and has the power to reject [_incompatible changes_](/docs/reference/evolution/kotlin-evolution.html#不兼容的变更) or require certain deprecation procedures to be carried out. The Language Committee has no power over compatible changes such as adding new features to the language. Compatible changes are made at the sole discretion of the Lead Language Designer. The Committee maintains a set of [guidelines](language-committee-guidelines.html) that are being consulted when making decisions. Meeting minutes of the Language Committee are available [online](https://docs.google.com/document/d/1ReH84Cw_ZhGOUM_MdMQbLjzB0edXIeaFuBUF5molsuI/preview).
+**不兼容的变更**。由基金会任命的一个特殊的语言委员会评审首席语言设计师提出的变更，并有权拒绝[_不兼容的变更_](/docs/reference/evolution/kotlin-evolution.html#不兼容的变更)或者要求执行某些弃用过程。语言委员会无权过问兼容的变更，例如为语言添加新功能。兼容的变更由首席语言设计师自行决定。委员会维持一套在做决定时所遵循得[准则](language-committee-guidelines.html)。语言委员会的会议纪要可[在线查看](https://docs.google.com/document/d/1ReH84Cw_ZhGOUM_MdMQbLjzB0edXIeaFuBUF5molsuI/preview)。
 
 
 ## 结构
 
-The Kotlin Foundation is a nonprofit nonstock corporation registered in the state of Delaware, USA. The Foundation is governed by the Board of Directors that makes all decisions by voting. The Board appoints the the Lead Language Designer and the members of the Language Committee. 
+Kotlin 基金会是一家在美国特拉华州注册的非营利性非股份公司。基金会由董事会管理，董事会通过投票做出所有决定。董事会任命首席语言设计师以及语言委员会成员。
 
-The President and the Secretary are elected by the Board of Directors as well. The President acts as the chief officer of the Foundation and supervises its affairs and operations. The Secretary keeps record of all meetings of the Board and its committees, and keeps track of membership and notices to the members, directors and third parties.
+总裁与秘书也由董事会选举产生。总裁担任基金会的首席执行官，监督基金会的事务与运营。秘书记录董事会及其委员会的所有会议，并跟进会员、董事以及第三方的会员资格与通知。
 
 ## 现任人员
 
-主席：Andrey Breslav（JetBrains）
+总裁：Andrey Breslav（JetBrains）
 
 秘书：Max Sills（Google）
 

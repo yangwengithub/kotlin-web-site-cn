@@ -30,6 +30,7 @@ annotation class Fancy
     -->生成的 API 文档中显示的类或方法的签名中。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION,
         AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.EXPRESSION)
@@ -42,6 +43,7 @@ annotation class Fancy
 ### 用法
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 @Fancy class Foo {
     @Fancy fun baz(@Fancy foo: Int): Int {
@@ -55,6 +57,7 @@ annotation class Fancy
 ，并将注解添加到其前面：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class Foo @Inject constructor(dependency: MyDependency) { …… }
 ```
@@ -63,6 +66,7 @@ class Foo @Inject constructor(dependency: MyDependency) { …… }
 你也可以标注属性访问器：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
+
 ```kotlin
 class Foo {
     var x: MyDependency? = null
@@ -76,6 +80,7 @@ class Foo {
 注解可以有接受参数的构造函数。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 annotation class Special(val why: String)
 
@@ -98,6 +103,7 @@ annotation class Special(val why: String)
 如果注解用作另一个注解的参数，则其名称不以 @ 字符为前缀：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 annotation class ReplaceWith(val expression: String)
 
@@ -111,10 +117,11 @@ annotation class Deprecated(
 
 如果需要将一个类指定为注解的参数，请使用 Kotlin 类
 （[KClass](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html)）。Kotlin 编译器会<!--
--->自动将其转换为 Java 类，以便 Java 代码能够正常看到该注解及参数
+-->自动将其转换为 Java 类，以便 Java 代码能够正常访问该注解与参数
 。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 
 import kotlin.reflect.KClass
@@ -132,6 +139,7 @@ annotation class Ann(val arg1: KClass<*>, val arg2: KClass<out Any>)
 该框架使用注解进行并发控制。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 annotation class Suspendable
 
@@ -146,6 +154,7 @@ val f = @Suspendable { Fiber.sleep(10) }
 。如果要指定精确地指定应该如何生成该注解，请使用以下语法：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class Example(@field:Ann val foo,    // 标注 Java 字段
               @get:Ann val bar,      // 标注 Java getter
@@ -157,6 +166,7 @@ class Example(@field:Ann val foo,    // 标注 Java 字段
 -->文件的顶层、package 指令之前或者在所有导入之前（如果文件在默认包中的话）：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 @file:JvmName("Foo")
 
@@ -168,6 +178,7 @@ package org.jetbrains.demo
 -->并将所有注解放在方括号内：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class Example {
      @set:[Inject VisibleForTesting]
@@ -191,6 +202,7 @@ class Example {
 要标注扩展函数的接收者参数，请使用以下语法：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun @receiver:Fancy String.myExtension() { ... }
 ```
@@ -203,12 +215,12 @@ fun @receiver:Fancy String.myExtension() { ... }
   * `property`;
   * `field`.
 
-
 ## Java 注解
 
 Java 注解与 Kotlin 100% 兼容：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 import org.junit.Test
 import org.junit.Assert.*
@@ -228,9 +240,10 @@ class Tests {
 </div>
 
 因为 Java 编写的注解没有定义参数顺序，所以不能使用常规函数调用<!--
--->语法来传递参数。相反，你需要使用命名参数语法：
+-->语法来传递参数。相反，你需要使用具名参数语法：
 
 <div class="sample" markdown="1" mode="java" theme="idea">
+
 ``` java
 // Java
 public @interface Ann {
@@ -241,6 +254,7 @@ public @interface Ann {
 </div>
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 // Kotlin
 @Ann(intValue = 1, stringValue = "abc") class C
@@ -250,6 +264,7 @@ public @interface Ann {
 就像在 Java 中一样，一个特殊的情况是 `value` 参数；它的值无需显式名称指定：
 
 <div class="sample" markdown="1" theme="idea" mode="java">
+
 ``` java
 // Java
 public @interface AnnWithValue {
@@ -259,6 +274,7 @@ public @interface AnnWithValue {
 </div>
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 // Kotlin
 @AnnWithValue("abc") class C
@@ -270,6 +286,7 @@ public @interface AnnWithValue {
 如果 Java 中的 `value` 参数具有数组类型，它会成为 Kotlin 中的一个 `vararg` 参数：
 
 <div class="sample" markdown="1" theme="idea" mode="java">
+
 ``` java
 // Java
 public @interface AnnWithArrayValue {
@@ -279,6 +296,7 @@ public @interface AnnWithArrayValue {
 </div>
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 // Kotlin
 @AnnWithArrayValue("abc", "foo", "bar") class C
@@ -289,6 +307,7 @@ public @interface AnnWithArrayValue {
 `arrayOf(……)`：
 
 <div class="sample" markdown="1" theme="idea" mode="java">
+
 ``` java
 // Java
 public @interface AnnWithArrayMethod {
@@ -298,6 +317,7 @@ public @interface AnnWithArrayMethod {
 </div>
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 // Kotlin 1.2+：
 @AnnWithArrayMethod(names = ["abc", "foo", "bar"]) 
@@ -314,6 +334,7 @@ class D
 注解实例的值会作为属性暴露给 Kotlin 代码：
 
 <div class="sample" markdown="1" theme="idea" mode="java">
+
 ``` java
 // Java
 public @interface Ann {
@@ -323,6 +344,7 @@ public @interface Ann {
 </div>
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 // Kotlin
 fun foo(ann: Ann) {

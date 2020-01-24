@@ -82,7 +82,7 @@ foo.`is`(bar)
 ## 空安全与平台类型
 
 Java 中的任何引用都可能是 *null*{: .keyword }，这使得 Kotlin 对来自 Java 的对象要求严格空安全是不现实的。
-Java 声明的类型在 Kotlin 中会被特别对待并称为*平台类型*。对这种类型的空检查会放宽，
+Java 声明的类型在 Kotlin 中会被特别对待并称为*平台类型*。对这种类型的空检测会放宽，
 因此它们的安全保证与在 Java 中相同（更多请参见[下文](#已映射类型)）。
 
 考虑以下示例：
@@ -402,7 +402,6 @@ Java 的原生类型映射到相应的 Kotlin 类型（请记住[平台类型](#
 | `java.lang.Comparable`   | `kotlin.Comparable!`    |
 | `java.lang.Enum`         | `kotlin.Enum!`    |
 | `java.lang.Annotation`   | `kotlin.Annotation!`    |
-| `java.lang.Deprecated`   | `kotlin.Deprecated!`    |
 | `java.lang.CharSequence` | `kotlin.CharSequence!`   |
 | `java.lang.String`       | `kotlin.String!`   |
 | `java.lang.Number`       | `kotlin.Number!`     |
@@ -470,7 +469,7 @@ Kotlin 只允许 *is*{: .keyword }-检测星投影的泛型类型：
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-if (a is List<Int>) // 错误：无法检查它是否真的是一个 Int 列表
+if (a is List<Int>) // 错误：无法检测它是否真的是一个 Int 列表
 // but
 if (a is List<*>) // OK：不保证列表的内容
 ```

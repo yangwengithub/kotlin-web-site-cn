@@ -102,7 +102,9 @@ internal actual fun writeLogMessage(message: String, logLevel: LogLevel) {
 -->可以通过在 Android 与 iOS 之间共享部分代码（如业务逻辑、连接等）
 来构建移动应用。
 
-参见：[多平台项目：iOS 与 Android](https://www.kotlincn.net/docs/tutorials/native/mpp-ios-android.html)
+参见： 
+- [移动端多平台特性、案例研究以及一些示例](https://www.jetbrains.com/lp/mobilecrossplatform/)
+- [搭建移动端多平台项目](https://www.kotlincn.net/docs/tutorials/native/mpp-ios-android.html)
 
 ### 客户端——服务端
 
@@ -116,7 +118,7 @@ internal actual fun writeLogMessage(message: String, logLevel: LogLevel) {
 
 <div style="display: flex; align-items: center; margin-bottom: 20px">
     <img src="{{ url_for('asset', path='images/landing/native/book.png') }}" height="38p" width="55" style="margin-right: 10px;">
-    <b>Tutorials and Documentation</b>
+    <b>教程与文档</b>
 </div>
 
 Kotlin 新手？可以看看[入门][Getting Started](basic-syntax.html)页。
@@ -126,7 +128,7 @@ Kotlin 新手？可以看看[入门][Getting Started](basic-syntax.html)页。
 - [平台相关声明](platform-specific-declarations.html)
 
 推荐的教程：
-- [多平台 Kotlin 库](https://www.kotlincn.net/docs/tutorials/multiplatform-library.html)
+- [多平台 Kotlin 库](https://www.kotlincn.net/docs/tutorials/mpp/multiplatform-library.html)
 - [多平台项目：iOS 与 Android](https://www.kotlincn.net/docs/tutorials/native/mpp-ios-android.html)
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">

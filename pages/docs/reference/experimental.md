@@ -143,6 +143,38 @@ tasks.withType<KotlinCompile>().all {
 </div>
 </div>
 
+If your Gradle module is a multiplatform module, use the `useExperimentalAnnotation` method:
+
+<div class="multi-language-sample" data-lang="groovy">
+<div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
+
+```groovy
+sourceSets {
+    all {
+        languageSettings {
+            useExperimentalAnnotation('kotlin.Experimental')
+        }
+    }
+}
+```
+
+</div>
+</div>
+
+<div class="multi-language-sample" data-lang="kotlin">
+<div class="sample" markdown="1" mode="kotlin" theme="idea" data-lang="kotlin" data-highlight-only>
+
+```kotlin
+sourceSets {
+    all {
+        languageSettings.useExperimentalAnnotation("kotlin.Experimental")
+    }
+}
+```
+
+</div>
+</div>
+
 For Maven, it would be:
 
 <div class="sample" markdown="1" mode="xml" theme="idea" data-highlight-only>
@@ -207,7 +239,9 @@ annotation class ExperimentalDateTime
 
 </div>
 
-If you publish several features in the experimental state, declare a marker for each. Separate markers make the use of experimental features safer for your clients: they'll be able to use only the features that they explicitly accept. This also lets you graduate the features to stable independently.
+If you publish several features in the experimental state, declare a marker for each.
+Separate markers make the use of experimental features safer for your clients: they can use only the features that they explicitly accept.
+This also lets you graduate the features to stable independently.
 
 ### 标记 API 元素
 

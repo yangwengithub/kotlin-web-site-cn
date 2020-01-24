@@ -33,10 +33,15 @@
   type: 库
   link: https://github.com/cheptsov/kotlin-nosql
 
-- name: FunKtionale
-  description: Kotlin 的函数式助手
+- name: Arrow
+  description: Kotlin 标准库的函数式“伴侣”
   type: 库
-  link: https://github.com/MarioAriasC/funKTionale
+  link: https://arrow-kt.io
+
+- name: Arrow Meta
+  description: Kotlin 编译器与 IDE 的函数式“伴侣”
+  type: 库
+  link: http://meta.arrow-kt.io
 
 - name: KotlinPrimavera
   description: Spring 框架的 Kotlin 包装
@@ -57,11 +62,6 @@
   description: Griffon 支持
   type: 工具
   link: https://github.com/griffon/griffon-kotlin-plugin
-
-- name: Android Rivers
-  description: Android 上的 RSS 阅读器
-  type: Android App
-  link: https://github.com/dodyg/AndroidRivers
 
 - name: Stew
   description: soup.io 的一个简单 Android app
@@ -202,11 +202,6 @@
   description: Kotlin 中的直观日期扩展
   type: 库
   link: https://github.com/hotchemi/khronos
-
-- name: TornadoFX
-  description: Kotlin 的轻量级 JavaFX 框架
-  type: 库
-  link: https://github.com/edvin/tornadofx
 
 - name: Hexagon
   description: Kotlin 的微服务框架

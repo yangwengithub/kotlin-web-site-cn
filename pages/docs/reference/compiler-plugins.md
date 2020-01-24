@@ -412,7 +412,7 @@ apply plugin: "kotlin-sam-with-receiver"
 
 ```groovy
 samWithReceiver {
-    annotation("com.my.Annotation")
+    annotation("com.my.SamWithReceiver")
 }
 ```
 

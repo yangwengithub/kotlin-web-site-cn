@@ -58,7 +58,7 @@ assert(widget is GoodWidget) { "Bad widget: ${widget::class.qualifiedName}" }
 
 ### 函数引用
 
-当我们有一个命名函数声明如下：
+当我们有一个具名函数声明如下：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
@@ -193,7 +193,7 @@ fun main() {
 ```       
 </div>            
 
-属性引用可以用在不需要参数的函数处：
+属性引用可以用在预期具有单个泛型参数的函数的地方：
 
 <div class="sample" markdown="1" theme="idea">
 ```kotlin

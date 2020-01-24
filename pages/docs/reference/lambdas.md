@@ -238,7 +238,7 @@ max(strings, { a, b -> a.length < b.length })
 
 函数 `max` 是一个高阶函数，它接受一个函数作为第二个参数。
 其第二个参数是一个表达式，它本身是一个函数，即函数字面值，它等价于<!--
--->以下命名函数：
+-->以下具名函数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -255,7 +255,7 @@ Lambda 表达式的完整语法形式如下：
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-val sum = { x: Int, y: Int -> x + y }
+val sum: (Int, Int) -> Int = { x: Int, y: Int -> x + y }
 ```
 
 </div>
@@ -269,14 +269,16 @@ lambda 表达式总是括在花括号中，
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-val sum: (Int, Int) -> Int = { x, y -> x + y }
+val sum = { x, y -> x + y }
 ```
 
 </div>
 
-### 将 lambda 表达式传给最后一个参数
+{:#passing-a-lambda-to-the-last-parameter}
 
-在 Kotlin 中有一个约定：如果函数的最后一个参数接受函数，那么作为相应参数<!--
+### 传递末尾的 lambda 表达式
+
+在 Kotlin 中有一个约定：如果函数的最后一个参数是函数，那么作为相应参数<!--
 -->传入的 lambda 表达式可以放在圆括号之外：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -286,6 +288,8 @@ val product = items.fold(1) { acc, e -> acc * e }
 ```
 
 </div>
+
+这种语法也称为*拖尾 lambda 表达式*。
 
 如果该 lambda 表达式是调用时唯一的参数，那么圆括号可以完全省略：
 
@@ -316,7 +320,7 @@ ints.filter { it > 0 } // 这个字面值是“(it: Int) -> Boolean”类型的
 
 ### 从 lambda 表达式中返回一个值
 
-我们可以使用[限定的返回](returns.html#标签处返回)语法从 lambda 显式返回一个值。
+我们可以使用[限定的返回](returns.html#返回到标签)语法从 lambda 显式返回一个值。
 否则，将隐式返回最后一个表达式的值。
 
 因此，以下两个片段是等价的：
@@ -337,8 +341,8 @@ ints.filter {
 
 </div>
 
-这一约定连同[在圆括号外传递 lambda 表达式](#将-lambda-表达式传给最后一个参数)一起支持
-[LINQ-风格](http://msdn.microsoft.com/en-us/library/bb308959.aspx) 的代码：
+这一约定连同[在圆括号外传递 lambda 表达式](#passing-a-lambda-to-the-last-parameter)一起支持
+[LINQ-风格](https://docs.microsoft.com/en-us/previous-versions/dotnet/articles/bb308959(v=msdn.10)) 的代码：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -422,7 +426,7 @@ Lambda表达式与匿名函数之间的另一个区别是<!--
 ### 闭包
 
 Lambda 表达式或者匿名函数（以及[局部函数](functions.html#局部函数)和[对象表达式](object-declarations.html#对象表达式)）
-可以访问其 _闭包_ ，即在外部作用域中声明的变量。 与 Java 不同的是可以修改闭包中捕获的变量：
+可以访问其 _闭包_ ，即在外部作用域中声明的变量。 在 lambda 表达式中可以修改闭包中捕获的变量：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 

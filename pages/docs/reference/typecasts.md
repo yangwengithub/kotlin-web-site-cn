@@ -2,16 +2,17 @@
 type: doc
 layout: reference
 category: "Syntax"
-title: "类型的检查与转换：“is”与“as”"
+title: "类型检测与类型转换：“is”与“as”"
 ---
 
-# 类型的检查与转换“is”与“as”
+# 类型检测与类型转换：“is”与“as”
 
 ## `is` 与 `!is` 操作符
 
-我们可以在运行时通过使用 `is` 操作符或其否定形式 `!is` 来检查对象是否符合给定类型：
+我们可以在运行时通过使用 `is` 操作符或其否定形式 `!is` 来检测对象是否符合给定类型：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 if (obj is String) {
     print(obj.length)
@@ -29,9 +30,10 @@ else {
 ## 智能转换
 
 在许多情况下，不需要在 Kotlin 中使用显式转换操作符，因为编译器跟踪<!--
--->不可变值的 `is`-检查以及[显式转换](#不安全的转换操作符)，并在需要时自动插入（安全的）转换：
+-->不可变值的 `is`-检测以及[显式转换](#不安全的转换操作符)，并在需要时自动插入（安全的）转换：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun demo(x: Any) {
     if (x is String) {
@@ -41,9 +43,10 @@ fun demo(x: Any) {
 ```
 </div>
 
-编译器足够聪明，能够知道如果反向检查导致返回那么该转换是安全的：
+编译器足够聪明，能够知道如果反向检测导致返回那么该转换是安全的：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 if (x !is String) return
 
@@ -54,6 +57,7 @@ print(x.length) // x 自动转换为字符串
 或者在 `&&` 和 `||` 的右侧：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 // `||` 右侧的 x 自动转换为字符串
 if (x !is String || x.length == 0) return
@@ -69,6 +73,7 @@ if (x is String && x.length > 0) {
 和 [*while*{: .keyword }-循环 ](control-flow.html#while-循环) 也一样：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 when (x) {
     is Int -> print(x + 1)
@@ -78,12 +83,12 @@ when (x) {
 ```
 </div>
 
-请注意，当编译器不能保证变量在检查和使用之间不可改变时，智能转换不能用。
+请注意，当编译器不能保证变量在检测和使用之间不可改变时，智能转换不能用。
 更具体地，智能转换能否适用根据以下规则：
 
   * *val*{: .keyword } 局部变量——总是可以，[局部委托属性除外](delegated-properties.html#局部委托属性自-11-起)；
-  * *val*{: .keyword } 属性——如果属性是 private 或 internal，或者该检查在声明属性的同一[模块](visibility-modifiers.html#模块)中执行。智能转换不适用于 open 的属性或者具有自定义 getter 的属性；
-  * *var*{: .keyword } 局部变量——如果变量在检查和使用之间没有修改、没有在会修改它的 lambda 中捕获、并且不是局部委托属性；
+  * *val*{: .keyword } 属性——如果属性是 private 或 internal，或者该检测在声明属性的同一[模块](visibility-modifiers.html#模块)中执行。智能转换不适用于 open 的属性或者具有自定义 getter 的属性；
+  * *var*{: .keyword } 局部变量——如果变量在检测和使用之间没有修改、没有在会修改它的 lambda 中捕获、并且不是局部委托属性；
   * *var*{: .keyword } 属性——决不可能（因为该变量可以随时被其他代码修改）。
 
 {:#不安全的转换操作符}
@@ -94,6 +99,7 @@ when (x) {
 Kotlin 中的不安全转换由中缀操作符 *as*{: .keyword }（参见[operator precedence](grammar.html#expressions)）完成：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 val x: String = y as String
 ```
@@ -101,9 +107,10 @@ val x: String = y as String
 
 请注意，*null*{: .keyword } 不能转换为 `String` 因该类型不是[可空的](null-safety.html)，
 即如果 `y` 为空，上面的代码会抛出一个异常。
-为了匹配 Java 转换语义，我们必须在转换右边有可空类型，就像：
+为了让这样的代码用于可空值，请在类型转换的右侧使用可空类型：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 val x: String? = y as String?
 ```
@@ -116,6 +123,7 @@ val x: String? = y as String?
 为了避免抛出异常，可以使用*安全*转换操作符 *as?*{: .keyword }，它可以在失败时返回 *null*{: .keyword }：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 val x: String? = y as? String
 ```
@@ -126,7 +134,7 @@ val x: String? = y as? String
 ## 类型擦除与泛型检测
 
 Kotlin 在编译时确保涉及[泛型](generics.html)操作的类型安全性，
-而在运行时，泛型类型的实例并无未带有关于它们实际类型参数的信息。例如，
+而在运行时，泛型类型的实例并未带有关于它们实际类型参数的信息。例如，
 `List<Foo>` 会被擦除为 `List<*>`。通常，在运行时无法检测一个实例是否属于带有某个类型参数的泛型类型<!--
 -->。
 
@@ -134,6 +142,7 @@ Kotlin 在编译时确保涉及[泛型](generics.html)操作的类型安全性�
 `ints is List<Int>` 或者 `list is T`（类型参数）。当然，你可以对一个实例检测[星投影的类型](generics.html#星投影)：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 if (something is List<*>) {
     something.forEach { println(it) } // 这些项的类型都是 `Any?`
@@ -146,6 +155,7 @@ if (something is List<*>) {
 在这种情况下，会省略尖括号：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 fun handleStrings(list: List<String>) {
     if (list is ArrayList) {
@@ -196,6 +206,7 @@ fun main() {
 即便如此，有时候我们有高级的程序逻辑来暗示类型安全。例如：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin 
 fun readDictionary(file: File): Map<String, *> = file.inputStream().use { 
     TODO("Read a mapping of strings to arbitrary elements.")
@@ -224,6 +235,7 @@ val intsDictionary: Map<String, Int> = readDictionary(intsFile) as Map<String, I
 [标注](annotations.html#注解)来禁止未受检类型转换警告：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only auto-indent="false">
+
 ```kotlin
 inline fun <reified T> List<*>.asListOfType(): List<T>? =
     if (all { it is T })

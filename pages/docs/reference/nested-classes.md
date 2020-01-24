@@ -26,7 +26,7 @@ val demo = Outer.Nested().foo() // == 2
 
 ## 内部类
 
-类可以标记为 *inner*{: .keyword } 以便能够访问外部类的成员。内部类会带有一个对外部类的对象的引用：
+标记为 *inner*{: .keyword } 的嵌套类能够访问其外部类的成员。内部类会带有一个对外部类的对象的引用：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -62,7 +62,7 @@ window.addMouseListener(object : MouseAdapter() {
 
 </div>
 
-如果对象是函数式 Java 接口（即具有单个抽象方法的 Java 接口）的实例，
+_注_：对于 JVM 平台, 如果对象是函数式 Java 接口（即具有单个抽象方法的 Java 接口）的实例，
 你可以使用带接口类型前缀的lambda表达式创建它：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>

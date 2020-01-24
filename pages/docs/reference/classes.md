@@ -18,7 +18,7 @@ Kotlin 中使用关键字 *class*{:.keyword} 声明类
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-class Invoice { ... }
+class Invoice { /*……*/ }
 ```
 
 </div>
@@ -43,7 +43,7 @@ class Empty
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-class Person constructor(firstName: String) { ... }
+class Person constructor(firstName: String) { /*……*/ }
 ```
 
 </div>
@@ -54,7 +54,7 @@ class Person constructor(firstName: String) { ... }
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-class Person(firstName: String) { ... }
+class Person(firstName: String) { /*……*/ }
 ```
 
 </div>
@@ -109,7 +109,7 @@ class Customer(name: String) {
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-class Person(val firstName: String, val lastName: String, var age: Int) { …… }
+class Person(val firstName: String, val lastName: String, var age: Int) { /*……*/ }
 ```
 
 </div>
@@ -123,7 +123,7 @@ class Person(val firstName: String, val lastName: String, var age: Int) { ……
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-class Customer public @Inject constructor(name: String) { …… }
+class Customer public @Inject constructor(name: String) { /*……*/ }
 ```
 
 </div>
@@ -139,6 +139,7 @@ class Customer public @Inject constructor(name: String) { …… }
 
 ```kotlin
 class Person {
+    var children: MutableList<Person> = mutableListOf<Person>();
     constructor(parent: Person) {
         parent.children.add(this)
     }
@@ -155,6 +156,7 @@ class Person {
 
 ```kotlin
 class Person(val name: String) {
+    var children: MutableList<Person> = mutableListOf<Person>();
     constructor(name: String, parent: Person) : this(name) {
         parent.children.add(this)
     }
@@ -164,7 +166,7 @@ class Person(val name: String) {
 </div>
 
 请注意，初始化块中的代码实际上会成为主构造函数的一部分。委托给主<!--
--->构造函数会作为次构造函数的第一条语句，因此所有初始化块中的代码都会<!--
+-->构造函数会作为次构造函数的第一条语句，因此所有初始化块与属性初始化器中的代码都会<!--
 -->在次构造函数体之前执行。即使该类没有主构造函数，这种委托仍会<!--
 -->隐式发生，并且仍会执行初始化块：
 
@@ -197,7 +199,7 @@ fun main() {
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-class DontCreateMe private constructor () { ... }
+class DontCreateMe private constructor () { /*……*/ }
 ```
 
 </div>
@@ -257,10 +259,9 @@ class Example // 从 Any 隐式继承
 
 </div>
 
-> 注意：`Any` 并不是 `java.lang.Object`；尤其是，它除了 `equals()`、`hashCode()` 与 `toString()` 外没有任何成员。
-更多细节请查阅[Java互操作性](java-interop.html#对象方法)部分。
+`Any` 有三个方法：`equals()`、 `hashCode()` 与 `toString()`。因此，为所有 Kotlin 类都定义了这些方法。 
 
-要声明一个显式的超类型，我们把类型放到类头的冒号之后：
+如需声明一个显式的超类型，请在类头中把超类型放到冒号之后：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -272,8 +273,8 @@ class Derived(p: Int) : Base(p)
 
 </div>
 
-如果派生类有一个主构造函数，其基类型可以（并且必须）
-用基类的主构造函数参数就地初始化。
+如果派生类有一个主构造函数，其基类可以（并且必须）
+用派生类主构造函数的参数就地初始化。
 
 如果派生类没有主构造函数，那么每个次构造函数必须<!--
 -->使用 *super*{: .keyword} 关键字初始化其基类型，或委托给另一个构造函数做到这一点。
@@ -293,25 +294,26 @@ class MyView : View {
 
 ### 覆盖方法
 
-我们之前提到过，Kotlin 力求清晰显式。与 Java 不同，Kotlin 对于<!--
+我们之前提到过，Kotlin 力求清晰显式。因此，Kotlin 对于<!--
 -->可覆盖的成员（我们称之为*开放*）以及覆盖后的成员需要显式修饰符：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-open class Base {
-    open fun v() { ... }
-    fun nv() { ... }
+open class Shape {
+    open fun draw() { /*……*/ }
+    fun fill() { /*……*/ }
 }
-class Derived() : Base() {
-    override fun v() { ... }
+
+class Circle() : Shape() {
+    override fun draw() { /*……*/ }
 }
 ```
 
 </div>
 
-Derived.v() 函数上必须加上 *override*{: .keyword} 修饰符。如果没写，编译器将会报错。
-如果函数没有标注 *open*{: .keyword} 如 `Base.nv()`，那么子类中不允许定义相同签名的函数，
+`Circle.draw()` 函数上必须加上 *override*{: .keyword} 修饰符。如果没写，编译器将会报错。
+如果函数没有标注 *open*{: .keyword} 如 `Shape.fill()`，那么子类中不允许定义相同签名的函数，
 不论加不加 **override**。将 *open*{: .keyword } 修饰符添加到 final 类（即没有 *open*{: .keyword } 的类）的成员上不起作用。
 
 标记为 *override*{: .keyword} 的成员本身是开放的，也就是说，它可以在子类中覆盖。如果你想禁止再次覆盖，使用 *final*{: .keyword} 关键字：
@@ -319,8 +321,8 @@ Derived.v() 函数上必须加上 *override*{: .keyword} 修饰符。如果没�
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-open class AnotherDerived() : Base() {
-    final override fun v() { ... }
+open class Rectangle() : Shape() {
+    final override fun draw() { /*……*/ }
 }
 ```
 
@@ -328,37 +330,41 @@ open class AnotherDerived() : Base() {
 
 ### 覆盖属性
 
-属性覆盖与方法覆盖类似；在超类中声明然后在派生类中重新声明的属性必须以 *override*{: .keyword } 开头，并且它们必须具有兼容的类型。每个声明的属性可以由具有初始化器的属性或者具有 getter 方法的属性覆盖。
+属性覆盖与方法覆盖类似；在超类中声明<!--
+-->然后在派生类中重新声明的属性必须以 *override*{: .keyword } 开头，并且它们必须具有兼容的类型。
+每个声明的属性可以由具有初始化器的属性或者具有 `get` 方法的属性覆盖。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-open class Foo {
-    open val x: Int get() { …… }
+open class Shape {
+    open val vertexCount: Int = 0
 }
 
-class Bar1 : Foo() {
-    override val x: Int = ……
+class Rectangle : Shape() {
+    override val vertexCount = 4
 }
 ```
 
 </div>
 
-你也可以用一个 `var` 属性覆盖一个 `val` 属性，但反之则不行。这是允许的，因为一个 `val` 属性本质上声明了一个 getter 方法，而将其覆盖为 `var` 只是在子类中额外声明一个 setter 方法。
+你也可以用一个 `var` 属性覆盖一个 `val` 属性，但反之则不行。
+这是允许的，因为一个 `val` 属性本质上声明了一个 `get` 方法，
+而将其覆盖为 `var` 只是在子类中额外声明一个 `set` 方法。
 
 请注意，你可以在主构造函数中使用 *override*{: .keyword } 关键字作为属性声明的一部分。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-interface Foo {
-    val count: Int
+interface Shape {
+    val vertexCount: Int
 }
 
-class Bar1(override val count: Int) : Foo
+class Rectangle(override val vertexCount: Int = 4) : Shape // 总是有 4 个顶点
 
-class Bar2 : Foo {
-    override var count: Int = 0
+class Polygon : Shape {
+    override var vertexCount: Int = 0  // 以后可以设置为任何数
 }
 ```
 
@@ -409,18 +415,18 @@ fun main() {
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-open class Foo {
-    open fun f() { println("Foo.f()") }
-    open val x: Int get() = 1
+open class Rectangle {
+    open fun draw() { println("Drawing a rectangle") }
+    val borderColor: String get() = "black"
 }
 
-class Bar : Foo() {
-    override fun f() { 
-        super.f()
-        println("Bar.f()") 
+class FilledRectangle : Rectangle() {
+    override fun draw() {
+        super.draw()
+        println("Filling the rectangle")
     }
-    
-    override val x: Int get() = super.x + 1
+
+    val fillColor: String get() = super.borderColor
 }
 ```
 
@@ -431,14 +437,16 @@ class Bar : Foo() {
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-class Bar : Foo() {
-    override fun f() { /* …… */ }
-    override val x: Int get() = 0
+class FilledRectangle: Rectangle() {
+    fun draw() { /* …… */ }
+    val borderColor: String get() = "black"
     
-    inner class Baz {
-        fun g() {
-            super@Bar.f() // 调用 Foo 实现的 f()
-            println(super@Bar.x) // 使用 Foo 实现的 x 的 getter
+    inner class Filler {
+        fun fill() { /* …… */ }
+        fun drawAndFill() {
+            super@FilledRectangle.draw() // 调用 Rectangle 的 draw() 实现
+            fill()
+            println("Drawn a filled rectangle with color ${super@FilledRectangle.borderColor}") // 使用 Rectangle 所实现的 borderColor 的 get()
         }
     }
 }
@@ -455,30 +463,28 @@ class Bar : Foo() {
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-open class A {
-    open fun f() { print("A") }
-    fun a() { print("a") }
+open class Rectangle {
+    open fun draw() { /* …… */ }
 }
 
-interface B {
-    fun f() { print("B") } // 接口成员默认就是“open”的
-    fun b() { print("b") }
+interface Polygon {
+    fun draw() { /* …… */ } // 接口成员默认就是“open”的
 }
 
-class C() : A(), B {
-    // 编译器要求覆盖 f()：
-    override fun f() {
-        super<A>.f() // 调用 A.f()
-        super<B>.f() // 调用 B.f()
-  }
+class Square() : Rectangle(), Polygon {
+    // 编译器要求覆盖 draw()：
+    override fun draw() {
+        super<Rectangle>.draw() // 调用 Rectangle.draw()
+        super<Polygon>.draw() // 调用 Polygon.draw()
+    }
 }
 ```
 
 </div>
 
-同时继承 `A` 与 `B` 没问题，并且 `a()` 与 `b()` 也没问题因为 `C` 只继承了每个函数的一个实现。
-但是 `f()` 由 `C` 继承了两个实现，所以我们**必须**在 `C` 中覆盖 `f()`
-并且提供我们自己的实现来消除歧义。
+可以同时继承 `Rectangle` 与 `Polygon`，
+但是二者都有各自的 `draw()` 实现，所以我们必须在 `Square` 中覆盖 `draw()`，
+并提供其自身的实现以消除歧义。
 
 ## 抽象类
 
@@ -491,12 +497,12 @@ class C() : A(), B {
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-open class Base {
-    open fun f() {}
+open class Polygon {
+    open fun draw() {}
 }
 
-abstract class Derived : Base() {
-    override abstract fun f()
+abstract class Rectangle : Polygon() {
+    override abstract fun draw()
 }
 ```
 
@@ -504,13 +510,9 @@ abstract class Derived : Base() {
 
 ## 伴生对象
 
-与 Java 或 C# 不同，在 Kotlin 中类没有静态方法。在大多数情况下，它建议简单地使用<!--
--->包级函数。
-
 如果你需要写一个可以无需用一个类的实例来调用、但需要访问类内部的<!--
 -->函数（例如，工厂方法），你可以把它写成该类内[对象声明](object-declarations.html)<!--
 -->中的一员。
 
 更具体地讲，如果在你的类内声明了一个[伴生对象](object-declarations.html#伴生对象)，
-你就可以使用像在 Java/C# 中调用静态方法相同的语法来调用其成员，只使用类名<!--
--->作为限定符。
+你就可以访问其成员，只是以类名作为限定符。

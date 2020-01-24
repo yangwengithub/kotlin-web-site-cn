@@ -90,12 +90,10 @@ runDceTestKotlinJs.dceOptions.devMode = true
 
 ## 注意事项
 
-* 对于 1.1.x 版本，DCE 工具是一个 *实验性的* 特性。
-  这并不意味着我们要删除它，或者它不能用于生产。
-  这意味着我们可能更改配置参数的名称、默认设置等等。
+* 对于 1.3.x 版本，DCE 工具是一个实验性的特性。这并不意味着我们要删除它，或者它不能用于生产。这意味着我们可能更改配置参数的名称、默认设置等等。
 * 目前，如果你的项目是共享库，那么不应使用 DCE 工具。
   它只适用于开发应用程序（可能使用共享库）时。
   原因是：DCE 不知道库的哪些部分会被用户的应用程序所使用。
 * DCE 不会通过删除不必要的空格及缩短标识符来执行代码压缩（丑化）。
-  对于此目的，你应该使用现有的工具，如 UglifyJS（https://github.com/mishoo/UglifyJS2 ）<!--
-  -->或者 Google Closure Compiler（https://developers.google.com/closure/compiler/ ）。
+  对于此目的，你应该使用现有的工具，如 [UglifyJS](https://github.com/mishoo/UglifyJS2)<!--
+  -->或者 [Google Closure Compiler](https://developers.google.com/closure/compiler/)。

@@ -32,6 +32,7 @@ title: "使用 Gradle 构建多平台项目"
 * [Android 支持](#android-支持)
     * [发布 Android 库](#发布-android-库)
 * [使用 Kotlin/Native 目标平台](#使用-kotlinnative-目标平台)
+    * [目标快捷方式](#目标快捷方式)
     * [构建最终原生二进制文件](#构建最终原生二进制文件)
 
 ## 项目结构
@@ -47,12 +48,12 @@ Kotlin 多平台项目的布局由以下构建块构成：
 
 * Kotlin 源代码会放到[源集](#配置源集)中。除了 Kotlin 源文件与<!--
 -->资源外，每个源集都可能有自己的依赖项。源集之间以<!--
--->*“依赖于”*关系构成了层次结构。源集本身是平台无关的，但是<!--
+-->*“依赖”*关系构成了层次结构。源集本身是平台无关的，但是<!--
 -->如果一个源集只面向单一平台编译，那么它可能包含平台相关代码与依赖项。
 
 每个编译项都有一个默认源集，是放置该编译项的源代码与依赖项的地<!--
 -->方。默认源集还用于通过<!--
--->“依赖于”关系将其他源集引到该编译项中。
+-->“依赖”关系将其他源集引到该编译项中。
 
 以下是一个面向 JVM 与 JS 的项目的图示：
 
@@ -63,7 +64,7 @@ Kotlin 多平台项目的布局由以下构建块构成：
 -->：都是为相应目标[默认创建](#默认项目布局)的。
 
 在上述示例中，JVM 目标的生产源代码由其 `main` 编译项编译，其中<!--
--->包括来自 `jvmMain` 与 `commonMain`（由于*依赖于*关系）的源代码与依赖项：
+-->包括来自 `jvmMain` 与 `commonMain`（由于*依赖*关系）的源代码与依赖项：
 
 ![源集与编译项]({{ url_for('asset', path='images/reference/building-mpp-with-gradle/mpp-one-compilation.png') }})
 
@@ -79,7 +80,7 @@ Kotlin 多平台项目的布局由以下构建块构成：
 -->来创建一个多平台项目。
 
 例如，如果选择了“Kotlin (Multiplatform Library)”，会创建一个包含三个<!--
--->[设置目标](#设置目标)的库项目，其中一个用于 JVM，一个用于 JS，还有一个用于您正在使用的原生平台。
+-->[目标](#设置目标)的库项目，其中一个用于 JVM，一个用于 JS，还有一个用于您正在使用的原生平台。
 这些是在 `build.gradle` <!--
 -->脚本中以下列方式配置的：
 
@@ -275,52 +276,52 @@ plugins {
 
 ## 设置目标
 
-A target is a part of the build responsible for compiling, testing, and packaging a piece of software aimed for
-one of the [supported platforms](#已支持平台).
+目标是构建的一部分，负责编译，测试与打包针对<!--
+-->一个[已支持平台](#已支持平台)的软件。
 
-All of the targets may share some of the sources and may have platform-specific sources as well.
+所有的目标可能共享一些源代码，也可能拥有平台专用的源代码。
 
-As the platforms are different, targets are built in different ways as well and have various platform-specific
-settings. The Gradle plugin bundles a number of presets for the supported platforms.
+由于平台的不同，目标也以不同的方式构建，并且拥有各个平台专用的<!--
+-->设置。Gradle 插件捆绑了一些已支持平台的预设。
 
-To create a target, use one of the preset functions, which are named according to the target platforms and optionally
-accept the target name and a configuring code block:
+要创建一个目标，请使用其中一个预设函数，这些预置函数根据目标平台命名，并可选择<!--
+-->接收一个目标名称与一个配置代码块：
 
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
 ``` groovy
 kotlin {
-    jvm() // Create a JVM target with the default name 'jvm'
-    js("nodeJs") // Create a JS target with a custom name 'nodeJs'
+    jvm() // 用默认名称 “jvm” 创建一个 JVM 目标
+    js("nodeJs") // 用自定义名称 “nodeJs” 创建一个 JS 目标
         
     linuxX64("linux") {
-        /* Specify additional settings for the 'linux' target here */
+        /* 在此处指定 “linux” 的其他设置 */
     }
 }
 ``` 
 </div>
 
-The preset functions return an existing target if there is one. This can be used to configure an existing target:
+如果存在，这些预置函数将返回一个现有的目标。这可以用于配置一个现有的目标：
 
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
 ```groovy
 kotlin {
-    /* ... */
+    /* …… */
 
-    // Configure the attributes of the 'jvm6' target:
-    jvm("jvm6").attributes { /* ... */ }
+    // 配置 “jvm6” 目标的属性
+    jvm("jvm6").attributes { /* …… */ }
 }
 ```
 
 </div>
 
-Note that both the target platform and the name matter: if a target was created as `jvm('jvm6')`, using `jvm()` will
-create a separate target (with the default name `jvm`). If the preset function used to create the target under that name
-was different, an error is reported.
+注意目标平台与命名都很重要：如果一个目标作为 `jvm('jvm6')` 创建，使用 `jvm()` 将会<!--
+-->创建一个单独的目标（使用默认名称 `jvm`）。如果用于创建该名称下的预设函数<!--
+-->不同，将会报告一个错误。
 
-The targets created from presets are added to the `kotlin.targets` domain object collection, which can be used to
-access them by their names or configure all targets:
+从预置函数创建的目标将被添加到域对象集合 `kotlin.targets` 中，这可以用于<!--
+-->通过名称访问它们或者配置所有目标：
 
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
@@ -329,22 +330,21 @@ kotlin {
     jvm()
     js("nodeJs")
 
-    println(targets.names) // Prints: [jvm, metadata, nodeJs]
+    println(targets.names) // 打印：[jvm, metadata, nodeJs]
 
-    // Configure all targets, including those which will be added later:
+    // 配置所有的目标，包括稍后添加的目标
     targets.all {
-        compilations["main"].defaultSourceSet { /* ... */ }
+        compilations["main"].defaultSourceSet { /* …… */ }
     }
 }
 ```
 
 </div>
 
-To create or access several targets from multiple presets dynamically, you can use the `targetFromPreset` function which
-accepts a preset (those are contained in the `kotlin.presets` domain object collection) and, optionally, a target name
-and a configuration code block.
+要从动态创建或访问多个预设中的多个目标，你可以使用 `targetFromPreset` 函数，
+它接收一个接收预设（那些被包含在 `kotlin.presets` 域对象集合中的），以及可选的目标名称与配置的代码块。
 
-For example, to create a target for each of the Kotlin/Native supported platforms (see below), use this code:
+例如，要为每一个 Kotlin/Native 支持的平台（见下文）创建目标，使用以下代码：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -353,7 +353,7 @@ For example, to create a target for each of the Kotlin/Native supported platform
 kotlin {
     presets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetPreset).each {
         targetFromPreset(it) {
-            /* Configure each of the created targets */
+            /* 配置每个已创建的目标 */
         }
     }
 }
@@ -368,12 +368,12 @@ kotlin {
 ```kotlin
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetPreset
 
-/* ... */
+/* …… */
 
 kotlin {
     presets.withType<KotlinNativeTargetPreset>().forEach {
         targetFromPreset(it) {
-            /* Configure each of the created targets */
+            /* 配置每个已创建的目标 */
         }
     }
 }
@@ -385,34 +385,36 @@ kotlin {
 
 ### 已支持平台
 
-There are target presets that one can apply using the preset functions, as shown above, for the
-following target platforms:
+如上所示，对于以下目标平台，可以使用预设函数应用目标平台预设<!--
+-->：
 
-* `jvm` for Kotlin/JVM;
-* `js` for Kotlin/JS;
-* `android` for Android applications and libraries. Note that one of the Android Gradle 
-   plugins should be applied before the target is created;
+* `jvm` 用于 Kotlin/JVM；
+* `js` 用于 Kotlin/JS；
+* `android` 用于 Android 应用程序与库。请注意在创建目标之前， 
+   应该应用其中之一的 Android Gradle 插件；
   
-*  Kotlin/Native target presets (see the [notes](#使用-kotlinnative-目标平台) below):
+*  Kotlin/Native 目标平台预设（参见下文[备注](#使用-kotlinnative-目标平台)）：
   
-    * `androidNativeArm32` and `androidNativeArm64` for Android NDK;
-    * `iosArm32`, `iosArm64`, `iosX64` for iOS;
-    * `linuxArm32Hfp`, `linuxMips32`, `linuxMipsel32`, `linuxX64` for Linux;
-    * `macosX64` for MacOS;
-    * `mingwX64` for Windows;
-    * `wasm32` for WebAssembly.
+    * `androidNativeArm32` 与 `androidNativeArm64` 用于 Android NDK；
+    * `iosArm32`、 `iosArm64`、 `iosX64` 用于 iOS；
+    * `watchosArm32`、 `watchosArm64`、 `watchosX86` 用于 watchOS；
+    * `tvosArm64`、 `tvosX64` 用于 tvOS；
+    * `linuxArm32Hfp`、 `linuxMips32`、 `linuxMipsel32`、 `linuxX64` 用于 Linux；
+    * `macosX64` 用于 MacOS；
+    * `mingwX64` 与 `mingwX86` 用于 Windows；
+    * `wasm32` 用于 WebAssembly。
     
-    Note that some of the Kotlin/Native targets require an [appropriate host machine](#使用-kotlinnative-目标平台) to build on.
+    请注意，某些 Kotlin/Native 目标平台需要[适宜的主机](#使用-kotlinnative-目标平台)来构建。
     
-Some targets may require additional configuration. For Android and iOS examples, see
-the [Multiplatform Project: iOS and Android](/docs/tutorials/native/mpp-ios-android.html) tutorial.
+某些目标平台可能需要附加配置。Android 与 iOS 示例请参见<!--
+-->[多平台项目：iOS 与 Android](/docs/tutorials/native/mpp-ios-android.html) 教程。
 
 ### 配置编译项
 
-Building a target requires compiling Kotlin once or multiple times. Each Kotlin compilation of a target may serve a
-different purpose (e.g. production code, tests) and incorporate different [source sets](#配置源集).
-The compilations of a target may be accessed in the DSL, for example, to get the tasks, configure
-[the Kotlin compiler options](using-gradle.html#编译器选项) or get the dependency files and compilation outputs:
+构建目标需要一次或多次编译 Kotlin。目标的每次 Kotlin 编译项都可以用于<!--
+-->不同的目的（例如生产代码，测试），并包含不同的[源集](#配置源集)。
+可以在 DSL 中访问目标的编译项，例如，配置<!--
+-->[Kotlin 编译器选项](using-gradle.html#编译器选项)或者获取依赖项文件和编译项输出用来获取任务。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -421,16 +423,16 @@ The compilations of a target may be accessed in the DSL, for example, to get the
 kotlin {
     jvm {
         compilations.main.kotlinOptions {
-            // Setup the Kotlin compiler options for the 'main' compilation:
+            // 为“main”编译项设置 Kotlin 编译器选项：
             jvmTarget = "1.8"
         }
 
-        compilations.main.compileKotlinTask // get the Kotlin task 'compileKotlinJvm'
-        compilations.main.output // get the main compilation output
-        compilations.test.runtimeDependencyFiles // get the test runtime classpath
+        compilations.main.compileKotlinTask // 获取 Kotlin 任务“compileKotlinJvm”
+        compilations.main.output // 获取 main 编译项输出
+        compilations.test.runtimeDependencyFiles // 获取测试运行时路径
     }
 
-    // Configure all compilations of all targets:
+    // 配置所有目标的所有编译项：
     targets.all {
         compilations.all {
             kotlinOptions {
@@ -452,18 +454,18 @@ kotlin {
     jvm {
         val main by compilations.getting {
             kotlinOptions {
-                // Setup the Kotlin compiler options for the 'main' compilation:
+                // 为“main”编译项设置 Kotlin 编译器选项：
                 jvmTarget = "1.8"
             }
 
-            compileKotlinTask // get the Kotlin task 'compileKotlinJvm'
-            output // get the main compilation output
+            compileKotlinTask // 获取 Kotlin 任务“compileKotlinJvm”
+            output // 获取 main 编译项输出
         }
 
-        compilations["test"].runtimeDependencyFiles // get the test runtime classpath
+        compilations["test"].runtimeDependencyFiles // 获取测试运行时路径
     }
 
-    // Configure all compilations of all targets:
+    // 配置所有目标的所有编译项：
     targets.all {
         compilations.all {
             kotlinOptions {
@@ -477,28 +479,28 @@ kotlin {
 </div>
 </div>
 
-Each compilation is accompanied by a default [source set](#配置源集), which is created automatically
-and should be used for sources and dependencies that are specific to that compilation. The default source set for a
-compilation `foo` of a target `bar` has the name `barFoo`. It can also be accessed from a compilation using
-`defaultSourceSet`:
+每个编译项都附带一个[默认源集](#配置源集)，该默认源集<!--
+-->存储特定于该编译项的源和依赖项。目标 `bar` 的编译项 `foo` 的默认源集的<!--
+-->名称为 `barFoo`。也可以使用 `defaultSourceSet` 
+从编译项中访问它：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
 ```groovy
 kotlin {
-    jvm() // Create a JVM target with the default name 'jvm'
+    jvm() // 使用默认名称“jvm”创建一个 JVM 目标
 
     sourceSets {
-        // The default source set for the 'main` compilation of the 'jvm' target:
+        // “jvm”目标的“main”编译项的默认源集：
         jvmMain {
-            /* ... */
+            /* …… */
         }
     }
 
-    // Alternatively, access it from the target's compilation:
+    // 或者，从目标的编译项中访问它：
     jvm().compilations.main.defaultSourceSet {
-        /* ... */
+        /* …… */
     }
 }
 ```
@@ -511,18 +513,18 @@ kotlin {
 
 ```kotlin
 kotlin {
-    jvm() // Create a JVM target with the default name 'jvm'
+    jvm() // 使用默认名称“jvm”创建一个 JVM 目标
 
     sourceSets {
-        // The default source set for the 'main` compilation of the 'jvm' target:
+        // “jvm”目标的“main”编译项的默认源集：
         val jvmMain by getting {
-            /* ... */
+            /* …… */
         }
     }
 
-    // Alternatively, access it from the target's compilation:
+    // 或者，从目标的编译项中访问它：
     jvm().compilations["main"].defaultSourceSet {
-        /* ... */
+        /* …… */
     }
 }
 ```
@@ -530,13 +532,13 @@ kotlin {
 </div>
 </div>
 
-To collect all source sets participating in a compilation, including those added via the depends-on relation, one can
-use the property `allKotlinSourceSets`.
+为了收集参与编译项的所有源集，包括通过依赖关系添加的源集，可以<!--
+-->使用属性 `allKotlinSourceSets`。
 
-For some specific use cases, creating a custom compilation may be required. This can be done within the target's `compilations`
-domain object collection. Note that the dependencies need to be set up manually for all custom compilations, and the
-usage of a custom compilation's outputs is up to the build author. For example, consider a custom compilation for integration tests
-of a `jvm()` target:
+对于某些特定用例，可能需要创建自定义编译项。这可以在目标的 `compilations` 领域对象集合<!--
+-->中完成。请注意，需要为所有自定义编译项手动设置依赖项，并且<!--
+-->自定义编译项输出的使用取决于构建所有者。例如，对目标 `jvm()` 的集成测试的<!--
+-->自定义编译项：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -548,20 +550,20 @@ kotlin {
             defaultSourceSet {
                 dependencies {
                     def main = compilations.main
-                    // Compile against the main compilation's compile classpath and outputs:
+                    // 根据 main 编译项的编译类路径和输出进行编译：
                     implementation(main.compileDependencyFiles + main.output.classesDirs)
                     implementation kotlin('test-junit')
-                    /* ... */
+                    /* …… */
                 }
             }
 
-            // Create a test task to run the tests produced by this compilation:
+            // 创建一个测试任务来运行此编译项产生的测试：
             tasks.create('jvmIntegrationTest', Test) {
-                // Run the tests with the classpath containing the compile dependencies (including 'main'),
-                // runtime dependencies, and the outputs of this compilation:
+                // 使用包含编译依赖项（包括“main”）的类路径运行测试，
+                // 运行时依赖项以及此编译项的输出：
                 classpath = compileDependencyFiles + runtimeDependencyFiles + output.allOutputs
 
-                // Run only the tests from this compilation's outputs:
+                // 仅运行此编译项输出中的测试：        
                 testClassesDirs = output.classesDirs
             }
         }
@@ -584,20 +586,20 @@ kotlin {
             val integrationTest by compilations.creating {
                 defaultSourceSet {
                     dependencies {
-                        // Compile against the main compilation's compile classpath and outputs:
+                        // 根据 main 编译项的编译类路径和输出进行编译：
                         implementation(main.compileDependencyFiles + main.output.classesDirs)
                         implementation(kotlin("test-junit"))
-                        /* ... */
+                        /* …… */
                     }
                 }
 
-                // Create a test task to run the tests produced by this compilation:
+                // 创建一个测试任务来运行此编译项产生的测试：
                 tasks.create<Test>("integrationTest") {
-                    // Run the tests with the classpath containing the compile dependencies (including 'main'),
-                    // runtime dependencies, and the outputs of this compilation:
+                    // 使用包含编译依赖项（包括“main”）的类路径运行测试，
+                    // 运行时依赖项以及此编译项的输出：
                     classpath = compileDependencyFiles + runtimeDependencyFiles + output.allOutputs
 
-                    // Run only the tests from this compilation's outputs:
+                    // 仅运行此编译项输出中的测试：
                     testClassesDirs = output.classesDirs
                 }
             }
@@ -609,23 +611,23 @@ kotlin {
 </div>
 </div>
 
-Also note that the default source set of a custom compilation depends on neither `commonMain` nor `commonTest` by
-default.
+还要注意，默认情况下，自定义编译项的默认源集既不依赖于 `commonMain` 也不依赖于
+`commonTest`。
 
 ## 配置源集
 
-A Kotlin source set is a collection of Kotlin sources, along with their resources, dependencies, and language settings,
-which may take part in Kotlin compilations of one or more [targets](#设置目标).
+Kotlin 源集是 Kotlin 源代码及其资源、依赖关系以及语言设置的集合，
+一个源集可能会参与一个或多个[目标](#设置目标)的 Kotlin 编译项。
 
-A source set is not bound to be platform-specific or "shared"; what it's allowed to contain depends on its usage:
-a source set added to multiple compilations is limited to the common language features and dependencies, while a source
-set that is only used by a single target can have platform-specific dependencies, and its code may use language
-features specific to that target's platform.
+源集不限于平台特定的或“共享的”；允许包含的内容取决于其用法：
+添加到多个编译项中的源集仅限于通用语言特性及依赖项，仅由单个目标使用的源集<!--
+-->可以具有平台特定的依赖项，并且其代码可能使用目标平台<!--
+-->特定的语言特性。
 
-Some source sets are created and configured by default: `commonMain`, `commonTest`, and the default source sets for the
- compilations. See [默认项目布局](#默认项目布局).
+默认情况下会创建并配置一些源集：`commonMain`、`commonTest` 和编译项的<!--
+-->默认源集。 请参见[默认项目布局](#默认项目布局)。
 
-The source sets are configured within a `sourceSets { ... }` block of the `kotlin { ... }` extension:
+源集在 `kotlin { ... }` 扩展的 `sourceSets { ... }` 块内配置：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -633,8 +635,8 @@ The source sets are configured within a `sourceSets { ... }` block of the `kotli
 ```groovy
 kotlin {
     sourceSets { 
-        foo { /* ... */ } // create or configure a source set by the name 'foo' 
-        bar { /* ... */ }
+        foo { /* …… */ } // 创建或配置名称为 “foo” 的源集
+        bar { /* …… */ }
     }
 }
 ``` 
@@ -648,8 +650,8 @@ kotlin {
 ```kotlin
 kotlin {
     sourceSets {
-        val foo by creating { /* ... */ } // create a new source set by the name 'foo'
-        val bar by getting { /* ... */ } // configure an existing source set by the name 'bar'
+        val foo by creating { /* …… */ } // 创建一个名为 “foo” 的新源集
+        val bar by getting { /* …… */ } // 使用名称 “bar” 配置现有的源集
     }
 }
 ```
@@ -657,20 +659,29 @@ kotlin {
 </div>
 </div>
 
-> Note: creating a source set does not link it to any target. Some source sets are [predefined](#默认项目布局)
-and thus compiled by default. However, custom source sets always need to be explicitly directed to the compilations. 
-See: [关联源集](#关联源集).
+> 注意：创建源集不会将其链接到任何目标。一些源集是[预定义的](#默认项目布局)
+因此默认情况下进行编译。但是，始终需要将自定义源集明确地定向到编译项。
+请参见：[关联源集](#关联源集)。
 {:.note}
 
-The source set names are case-sensitive. When referring to a default source set by its name, make sure the name prefix
-matches a target's name, for example, a source set `iosX64Main` for a target `iosX64`.
+源集名称区分大小写。在通过名称引用默认源集时，请确保源集的名称前缀<!--
+-->与目标名称匹配，例如，目标 `iosX64` 的源集 `iosX64Main`。
 
-A source set by itself is platform-agnostic, but
-it can be considered platform-specific if it is only compiled for a single platform. A source set can, therefore, contain either
-common code shared between the platforms or platform-specific code.
+源集本身是平台无关的，但是<!--
+-->如果仅针对单个平台进行编译，则可以将其视为特定于平台的。因此，源集可以包含<!--
+-->平台之间共享的公共代码或平台特定的代码。
 
-Each source set has a default source directory for Kotlin sources: `src/<source set name>/kotlin`. To add Kotlin source
-directories and resources to a source set, use its `kotlin` and `resources` `SourceDirectorySet`s:
+每个源集都有 Kotlin 源代码的默认源目录：`src/<源集名称>/kotlin`。要将 Kotlin 源目录<!--
+-->以及资源添加到源集中，请使用其 `kotlin` 与 `resources` `SourceDirectorySet`：
+
+默认情况下，源集的文件存储在以下目录中：
+
+* 源文件：`src/<source set name>/kotlin`
+* 资源文件：`src/<source set name>/resources`
+
+应该手动创建这些目录。
+
+要将自定义 Kotlin 源目录和资源添加到源集中，请使用其 `kotlin` 与 `resources` `SourceDirectorySet`：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -733,10 +744,10 @@ The source sets DSL can be used to define these connections between the source s
 ```groovy
 kotlin {
     sourceSets {
-        commonMain { /* ... */ }
+        commonMain { /* …… */ }
         allJvm {
             dependsOn commonMain
-            /* ... */
+            /* …… */
         }
     }
 }
@@ -751,10 +762,10 @@ kotlin {
 ```kotlin
 kotlin {
     sourceSets {
-        val commonMain by getting { /* ... */ }
+        val commonMain by getting { /* …… */ }
         val allJvm by creating {
             dependsOn(commonMain)
-            /* ... */
+            /* …… */
         }
     }
 }
@@ -782,17 +793,17 @@ kotlin {
         // custom source set with tests for the two targets
         desktopTest {
             dependsOn commonTest
-            /* ... */
+            /* …… */
         }
         // Make the 'windows' default test source set for depend on 'desktopTest'
         mingwX64().compilations.test.defaultSourceSet {
             dependsOn desktopTest
-            /* ... */
+            /* …… */
         }
         // And do the same for the other target:
         linuxX64().compilations.test.defaultSourceSet {
             dependsOn desktopTest
-            /* ... */
+            /* …… */
         }
     }
 }
@@ -813,17 +824,17 @@ kotlin {
         // custom source set with tests for the two targets
         val desktopTest by creating {
             dependsOn(getByName("commonTest"))
-            /* ... */
+            /* …… */
         }
         // Make the 'windows' default test source set for depend on 'desktopTest'
         mingwX64().compilations["test"].defaultSourceSet {
             dependsOn(desktopTest)
-            /* ... */
+            /* …… */
         }
         // And do the same for the other target:
         linuxX64().compilations["test"].defaultSourceSet {
             dependsOn(desktopTest)
-            /* ... */
+            /* …… */
         }
     }
 }
@@ -1098,7 +1109,7 @@ the tests for all targets.
 As the `commonTest` [default source set](#默认项目布局) is added to all test compilations, tests and test tools that are needed
 on all target platforms may be placed there.
 
-The [`kotlin.test` API](https://kotlinlang.org/api/latest/kotlin.test/index.html) is availble for multiplatform tests.
+The [`kotlin.test` API](https://kotlinlang.org/api/latest/kotlin.test/index.html) is available for multiplatform tests.
 Add the `kotlin-test-common` and `kotlin-test-annotations-common` dependencies to `commonTest` to use the assertion
 functions like `kotlin.test.assertTrue(...)`
 and `@Test`/`@Ignore`/`@BeforeTest`/`@AfterTest` annotations in the common tests.
@@ -1125,7 +1136,7 @@ follows:
 
 ```groovy
 plugins {
-    /* ... */
+    /* …… */
     id("maven-publish")
 }
 ```
@@ -1137,7 +1148,7 @@ A library also needs `group` and `version` to be set in the project:
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
 ```groovy
-plugins { /* ... */ }
+plugins { /* …… */ }
 
 group = "com.example.my.library"
 version = "0.0.1"
@@ -1306,7 +1317,7 @@ To configure this publication, access it via the `publishing { ... }` DSL of the
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
 ```groovy
-kotlin { /* ... */ }
+kotlin { /* …… */ }
 
 publishing {
     publications {
@@ -1324,7 +1335,7 @@ publishing {
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
 
 ```kotlin
-kotlin { /* ... */ }
+kotlin { /* …… */ }
 
 publishing {
     publications {
@@ -1559,7 +1570,7 @@ plugins {
     id("org.jetbrains.kotlin.multiplatform").version("{{ site.data.releases.latest.version }}")
 }
 
-android { /* ... */ }
+android { /* …… */ }
 
 kotlin {
     android { // Create the Android target
@@ -1580,7 +1591,7 @@ plugins {
     kotlin("multiplatform").version("{{ site.data.releases.latest.version }}")
 }
 
-android { /* ... */ }
+android { /* …… */ }
 
 kotlin {
     android { // Create the Android target
@@ -1613,7 +1624,7 @@ to be done in a top-level `dependencies { ... }` block rather than within Kotlin
 // ...
 
 kotlin {
-    android { /* ... */ }
+    android { /* …… */ }
 }
 
 dependencies {
@@ -1721,6 +1732,74 @@ It is important to note that some of the [Kotlin/Native targets](#已支持平�
 A target that is not supported by the current host is ignored during build and therefore not published. A library author may want to set up
 builds and publishing from different hosts as required by the library target platforms.
 
+### 目标快捷方式
+
+Some native targets are often created together and use the same sources. For example, building for an iOS device and a simulator
+is represented by different targets (`iosArm64` and `iosX64` respectively) but their source codes are usually the same.
+A canonical way to express such shared code in the multiplatform project model is creating an intermediate
+source set (`iosMain`) and configuring links between it and the platform source sets:
+
+<div class="multi-language-sample" data-lang="groovy">
+<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
+```groovy
+sourceSets{
+    iosMain {
+        dependsOn(commonMain)
+        iosDeviceMain.dependsOn(it)
+        iosSimulatorMain.dependsOn(it)
+    }
+}
+```
+
+</div>
+</div>
+
+<div class="multi-language-sample" data-lang="kotlin">
+<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+```kotlin
+val commonMain by sourceSets.getting
+val iosDeviceMain by sourceSets.getting
+val iosSimulatorMain by sourceSets.getting
+
+val iosMain by sourceSets.creating {
+    dependsOn(commonMain)
+    iosDeviceMain.dependsOn(this)
+    iosSimulatorMain.dependsOn(this)
+}
+```
+
+</div>
+</div>
+
+Since 1.3.60, the `kotlin-multiplaform` plugin provides shortcuts that automate such a configuration: they let users
+create a group of targets along with a common source set for them with a single DSL method.
+
+The following shortcuts are available:
+
+ * `ios` creates targets for `iosArm64` and `iosX64`.
+ * `watchos` creates targets for  `watchosArm32`, `watchosArm64`, and `watchosX86`.
+ * `tvos` creates targets for  `tvosArm64` and `tvosX64`. 
+
+<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+```kotlin
+// Create two targets for iOS.
+// Create common source sets: iosMain and iosTest.
+ios {
+    // Configure targets.
+    // Note: this lambda will be called for each target.
+}
+
+// You can also specify a name prefix for created targets.
+// Common source sets will also have this prefix:
+// anotherIosMain and anotherIosTest.
+ios("anotherIos")
+```
+
+</div>
+
 ### 构建最终原生二进制文件
 
 By default, a Kotlin/Native target is compiled down to a `*.klib` library artifact, which can be consumed by Kotlin/Native itself as a
@@ -1742,7 +1821,7 @@ all native platforms):
 |`test`       |a test executable       |all native targets| 
 |`sharedLib`  |a shared native library |all native targets except `wasm32`|
 |`staticLib`  |a static native library  |all native targets except `wasm32`|
-|`framework`  |an Objective-C framework |macOS and iOS targets only|
+|`framework`  |an Objective-C framework |macOS, iOS, watchOS, and tvOS targets only|
 
 Each factory method exists in several versions. Consider them by example of the `executable` method. All the same versions are available
 for all other factory methods.
@@ -1945,7 +2024,7 @@ binaries.findExecutable("foo", DEBUG)
 </div>
 </div>
 
-> Note: Before 1.3.40, both test and product executables were represented by the same binary type. Thus to access the default test binary created by the plugin, the following line was used:
+> Before 1.3.40, both test and product executables were represented by the same binary type. Thus to access the default test binary created by the plugin, the following line was used:
 > ```
 > binaries.getExecutable("test", "DEBUG")
 > ``` 
@@ -1962,7 +2041,7 @@ Binaries have a set of properties allowing one to configure them. The following 
 
  - **Compilation.** Each binary is built on basis of some compilation available in the same target. The default value of this parameter depends
  on the binary type: `Test` binaries are based on the `test` compilation while other binaries - on the `main` compilation.
- - **Linker options.** Options passed to a system linker during binary building. One can use this setting to link against some native library.
+ - **Linker options.** Options passed to a system linker during binary building. One can use this setting for linking against some native library.
  - **Output file name.** By default the output file name is based on binary name prefix or, if the name prefix isn't specified, on a project name.
  But it's possible to configure the output file name independently using the `baseName` property. Note that final file name will be formed
  by adding system-dependent prefix and postfix to this base name. E.g. a `libfoo.so` is produced for a Linux shared library with the base name `foo`.
@@ -2281,7 +2360,7 @@ kotlin {
                     includeDirs("include/directory", "another/directory")
                 }
 
-                anotherInterop { /* ... */ }
+                anotherInterop { /* …… */ }
             }
         }
     }
@@ -2322,7 +2401,7 @@ kotlin {
                 includeDirs("include/directory", "another/directory")
             }
 
-            val anotherInterop by cinterops.creating { /* ... */ }
+            val anotherInterop by cinterops.creating { /* …… */ }
         }
     }
 }

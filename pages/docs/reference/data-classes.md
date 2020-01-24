@@ -60,7 +60,7 @@ data class User(val name: String = "", val age: Int = 0)
 
 ## 在类体中声明的属性
 
-请注意，对于那些自动生成的函数，编译器只使用在主构造函数内部定义的属性。如需在生成的实现中排出一个属性，请将其声明在类体中：
+请注意，对于那些自动生成的函数，编译器只使用在主构造函数内部定义的属性。如需在生成的实现中排除一个属性，请将其声明在类体中：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -135,5 +135,5 @@ println("$name, $age years of age") // 输出 "Jane, 35 years of age"
 
 ## 标准数据类
 
-标准库提供了 `Pair` 与 `Triple`。尽管在很多情况下命名数据类是更好的设计选择，
+标准库提供了 `Pair` 与 `Triple`。尽管在很多情况下具名数据类是更好的设计选择，
 因为它们通过为属性提供有意义的名称使代码更具可读性。

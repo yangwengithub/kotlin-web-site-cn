@@ -6,7 +6,7 @@ import os
 import sys
 import threading
 from os import path
-from urllib.parse import urlparse, urljoin
+from urllib.parse import urlparse, urljoin, ParseResult
 
 import xmltodict
 import yaml
@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 from flask import Flask, render_template, Response, send_from_directory, request
 from flask.helpers import url_for, send_file, make_response
 from flask_frozen import Freezer, walk_directory
+from hashlib import md5
 
 from src.Feature import Feature
 from src.github import assert_valid_git_hub_url
@@ -49,6 +50,19 @@ data_folder = path.join(os.path.dirname(__file__), "data")
 _nav_cache = None
 _nav_lock = threading.RLock()
 
+_cached_asset_version = {}
+
+def get_asset_version(filename):
+    if filename in _cached_asset_version:
+        return _cached_asset_version[filename]
+
+    filepath = (root_folder if  root_folder  else ".") + filename
+    if filename and path.exists(filepath):
+        with open(filepath, 'rb') as file:
+            digest = md5(file.read()).hexdigest()
+            _cached_asset_version[filename] = digest
+            return digest
+    return None
 
 def get_site_data():
     data = {}
@@ -141,7 +155,13 @@ def add_data_to_context():
         }
     }
 
-
+@app.template_filter('autoversion')
+def autoversion_filter(filename):
+    asset_version = get_asset_version(filename)
+    if asset_version is None: return filename
+    original = urlparse(filename)._asdict()
+    original.update(query=original.get('query') + '&v=' + asset_version)
+    return ParseResult(**original).geturl()
 
 @app.route('/data/events.json')
 def get_events():
@@ -171,7 +191,6 @@ def videos_page():
 @app.route('/docs/books.html')
 def books_page():
     return render_template('pages/books.html')
-
 
 @app.route('/docs/kotlin-docs.pdf')
 def pdf():
@@ -229,7 +248,11 @@ def process_page(page_path):
 
     page = pages.get_or_404(page_path)
     if 'redirect_path' in page.meta and page.meta['redirect_path'] is not None:
-        return render_template('redirect.html', url=url_for('page', page_path=page.meta['redirect_path']))
+        page_path = page.meta['redirect_path']
+        if page_path.startswith('https://') or page_path.startswith('http://'):
+            return render_template('redirect.html', url=page_path)
+        else:
+            return render_template('redirect.html', url=url_for('page', page_path = page_path))
 
     if 'date' in page.meta and page['date'] is not None:
         page.meta['formatted_date'] = page.meta['date'].strftime('%d %B %Y')

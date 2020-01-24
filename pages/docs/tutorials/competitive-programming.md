@@ -39,14 +39,14 @@ description: "本教程介绍了 Kotlin 在竞技性程序设计中的基本用�
 -->[问题 A：可达数](http://codeforces.com/contest/1157/problem/A)。
 它要求实现问题陈述中所描述的简单算法。
 
-我们会通过创建一个新的 Kotlin 源文件来解这个问题。文件名无关紧要。`A.kt` 就挺好。
+我们会通过创建一个任意名称的 Kotlin 源文件来解这个问题。`A.kt` 就挺好。
 首先，我们需要实现问题陈述中指定的函数，如下：
 
 > 我们以这样的方式来表示函数 f(x)：将 x 加 1，然后，如果得到的数至少以一个零结尾，
 就去掉这个零。
 
-Kotlin 是实用且不拘一格的语言，既支持命令式也支持函数式编程风格，
-不强迫开发人员选择任何一种特定风格。可以按函数式风格实现函数 `f`，使用像<!--
+Kotlin 是一门实用且不拘一格的语言，既支持命令式也支持函数式编程风格，
+而不会将开发人员推向任何一种风格。可以按函数式风格实现函数 `f`，使用像<!--
 -->[尾递归](/docs/reference/functions.html#尾递归函数)这样的 Kotlin 特性：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -62,7 +62,7 @@ fun f(x: Int) = removeZeroes(x + 1)
 
 也可以编写函数 `f` 的命令式实现，使用传统的
 [while 循环](/docs/reference/control-flow.html)与可变变量（在 Kotlin 中用
-[var](/docs/reference/basic-syntax.html#定义变量) 表示）：
+[var](/docs/reference/basic-syntax.html#defining-variables) 表示）：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -207,12 +207,12 @@ private fun readInts() = readStrings().map { it.toInt() } // 整数列表
 </div>
 
 请注意，在竞技程序设计中，习惯给变量取比<!--
--->通常在工业编程实践中更短的名称，因为代码只需编写一次，以后就不需要支持了。
+-->通常在工业编程实践中更短的名称，因为代码只需编写一次，以后就不用支持了。
 当然，这些名称通常仍然是助记手段——数组用 `a`，
 索引用 `i`、`j`，表格的行列号用 `r`、`c`，坐标用 `x`、`y` 等。
 输入数据的名称保持与问题陈述中所给出的名称相同也更容易。
-当然，越复杂的问题就越需要更多的代码来解，进而变量名与函数名就会<!--
--->越长、越具有自解释性。
+当然，越复杂的问题就越需要更多的代码来解，这导致更长、具有自解释性的<!--
+-->变量名与函数名。
 
 ## 更多提示与技巧
 
@@ -260,7 +260,7 @@ println(a.joinToString("\n")) // 数组/list 中的每个元素占一行
 
 Kotlin 旨在让已经了解 Java 的人易于学习。
 在[官方比较页](/docs/reference/comparison-to-java.html)上给出了二者差异的快速概述。
-对于软件开发人员来说，关于 Kotlin 语言的基本语法的简短介绍可以直接在<!--
+对于软件开发人员来说，关于 Kotlin 基本语法的简短介绍可以直接在<!--
 -->以[基本语法](/docs/reference/basic-syntax.html)开始的网站参考部分中直接找。
 
 IDEA 已内置
