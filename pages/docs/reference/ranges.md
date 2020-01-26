@@ -119,7 +119,6 @@ fun main() {
 
 数列具有三个基本属性：`first` 元素、`last` 元素和一个非零的 `step`。
 首个元素为 `first`，后续元素是前一个元素加上一个 `step`。
-除非数列为空，否则最后一个元素总是被迭代命中。
 以确定的步长在数列上进行迭代等效于 Java/JavaScript 中基于索引的 `for` 循环。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -159,7 +158,23 @@ fun main() {
 ```
 </div>
 
-计算该数列的最后一个元素，以找到正步长的最大值不大于最终值，或负步长的最小值不小于最终值，使得 `(last - first) % step == 0`.
+The `last` element of the progression is calculated this way:
+* For a positive step: the maximum value not greater than the end value such that `(last - first) % step == 0`.
+* For a negative step: the minimum value not less than the end value such that `(last - first) % step == 0`.
+
+Thus, the `last` element is not always the same as the specified end value.
+
+<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
+
+```kotlin
+fun main() {
+//sampleStart
+    for (i in 1..9 step 3) print(i) // the last element is 7
+//sampleEnd
+}
+
+```
+</div>
 
 要创建反向迭代的数列，请在定义其区间时使用 `downTo` 而不是 `..`。
 
