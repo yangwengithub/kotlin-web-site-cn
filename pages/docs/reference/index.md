@@ -19,7 +19,7 @@ title: "Reference"
          <h3 style="font-weight: bold">IDE</h3>
          <p>很多现代 IDE 都支持 Kotlin 并且有助于编写地道的 Kotlin 代码：</p>
          <ul>
-             <li class="start">         <a style="text-decoration: none;" href="https://www.jetbrains.com/help/education/learner-start-guide.html?section=Kotlin%20Koans">Kotlin 教学插件</a> </li>
+             <li class="start">         <a style="text-decoration: none;" href="https://www.jetbrains.com/help/education/for-learners.html?section=Kotlin">EduTools 插件</a> </li>
              <li class="migrate start"> <a style="text-decoration: none;" href="https://www.jetbrains.com/help/idea/converting-a-java-file-to-kotlin-file.html">Java2Kotlin 转换器</a>  </li>
          </ul>
      </div>

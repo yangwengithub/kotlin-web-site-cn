@@ -4,18 +4,21 @@ layout: tutorial
 title:  "以 IntelliJ IDEA 入门"
 description: "本教程将引导你使用 IntelliJ IDEA 创建一个简单的 Hello World 应用程序。"
 authors: Hadi Hariri，Roman Belov，高金龙（翻译）
-date: 2019-04-23
+date: 2020-01-23
 showAuthorInfo: false
 ---
 ## 搭建环境
-在本教程中，我们将使用 IntelliJ IDEA。
-有关如何使用命令行编译器编译和执行 Kotlin 应用程序的说明，请参阅[使用命令行编译器][getting_started_command_line]。
 
-如果你是 JVM 及 Java 的新手，请查看 [JVM Minimal Survival Guide](http://hadihariri.com/2013/12/29/jvm-minimal-survival-guide-for-the-dotnet-developer/)。如果你是 IntelliJ IDEA 的新手，请查看 [The IntelliJ IDEA Minimal Survival Guide](http://hadihariri.com/2014/01/06/intellij-idea-minimal-survival-guide/)。
+In this tutorial we're going to use IntelliJ IDEA. To get started, install a recent version of IntelliJ IDEA.
 
-要开始使用，请安装最新版本的 IntelliJ IDEA。
-从版本15开始，Kotlin 与 IntelliJ IDEA 就捆绑在一起。
-你可以在 [JetBrains][jetbrains] 下载免费的  [Community Edition][intellijdownload] 。
+Kotlin is bundled with IntelliJ IDEA starting from version 15.
+
+You can download the free [Community Edition][intellijdownload] (or full-fledged [Ultimate Edition][intellijdownload]) from the [JetBrains website][jetbrains].
+
+As an alternative to using IntelliJ IDEA, you can compile and execute Kotlin applications using the command line compiler. For details, see [Working with the Command Line Compiler][getting_started_command_line].
+
+If you are new to the JVM and Java, check out the [JVM Minimal Survival Guide](http://hadihariri.com/2013/12/29/jvm-minimal-survival-guide-for-the-dotnet-developer/).
+If you are new to IntelliJ IDEA, check out the [The IntelliJ IDEA Minimal Survival Guide](http://hadihariri.com/2014/01/06/intellij-idea-minimal-survival-guide/).
 
 ## 创建一个新的项目
 安装好 IntelliJ IDEA 之后，就可以创建第一个 Kotlin 应用程序了。
