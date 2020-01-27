@@ -158,18 +158,18 @@ fun main() {
 ```
 </div>
 
-The `last` element of the progression is calculated this way:
-* For a positive step: the maximum value not greater than the end value such that `(last - first) % step == 0`.
-* For a negative step: the minimum value not less than the end value such that `(last - first) % step == 0`.
+数列的 `last` 元素是这样计算的：
+* 对于正步长：不大于结束值且满足 `(last - first) % step == 0` 的最大值。
+* 对于负步长：不小于结束值且满足 `(last - first) % step == 0` 的最小值。
 
-Thus, the `last` element is not always the same as the specified end value.
+因此，`last` 元素并非总与指定的结束值相同。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
 ```kotlin
 fun main() {
 //sampleStart
-    for (i in 1..9 step 3) print(i) // the last element is 7
+    for (i in 1..9 step 3) print(i) // 最后一个元素是 7
 //sampleEnd
 }
 
