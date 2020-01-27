@@ -164,7 +164,7 @@ fun main() {
 
 因此，`last` 元素并非总与指定的结束值相同。
 
-<div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
+
 
 ```kotlin
 fun main() {
@@ -174,7 +174,7 @@ fun main() {
 }
 
 ```
-</div>
+
 
 要创建反向迭代的数列，请在定义其区间时使用 `downTo` 而不是 `..`。
 
