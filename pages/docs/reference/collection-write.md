@@ -13,7 +13,7 @@ title: "集合写操作"
 
 ## 添加元素
 
-To add a single element to a list or a set, use the [`add()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/add.html) function. The specified object is appended to the end of the collection.
+要将单个元素添加到列表或集合，请使用[`add()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/add.html)函数。指定的对象将添加到集合的末尾。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -28,13 +28,14 @@ fun main() {
 ```
 </div>
 
-[`addAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/add-all.html) adds every element of the argument object to a list or a set. The argument can be an `Iterable`, a `Sequence`, or an `Array`.
-The types of the receiver and the argument may be different, for example, you can add all items from a `Set` to a `List`.
+[`addAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/add-all.html) 将参数对象的每个元素添加到列表或集合中。参数可以是 `Iterable`，`Sequence` 或 `Array`。
 
-When called on lists, `addAll()` adds new elements in the same order as they go in the argument.
-You can also call `addAll()` specifying an element position as the first argument.
-The first element of the argument collection will be inserted at this position.
-Other elements of the argument collection will follow it, shifting the receiver elements to the end. 
+接收者的类型和参数可能不同，例如，您可以将所有内容从  `Set` 添加到 `List`。
+
+当在列表上调用，`addAll()` 添加新元素时会按照相同的顺序添加参数。
+你也可以调用 `addAll()`，将元素位置指定为第一个参数。
+参数集合的第一个元素将插入到此位置。
+其他元素将跟随在参数集合后面，将接收者元素移到末尾。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
