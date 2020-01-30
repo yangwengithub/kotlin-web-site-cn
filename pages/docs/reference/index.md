@@ -12,15 +12,18 @@ title: "Reference"
         <ul>
             <li class="start">   <a style="text-decoration: none;" href="basic-syntax.html">基础</a> </li>
             <li class="migrate"> <a style="text-decoration: none;" href="idioms.html">习惯用法</a> </li>
-            <li class="migrate"> <a style="text-decoration: none;" href="java-interop.html">与 Java 互操作</a>  </li>
+            <li class="start"> <a style="text-decoration: none;" href="classes.html">类</a> </li>
+            <li class="start"> <a style="text-decoration: none;" href="functions.html">函数</a> </li>
         </ul>
     </div>
      <div style="padding: 5px;">
          <h3 style="font-weight: bold">IDE</h3>
-         <p>很多现代 IDE 都支持 Kotlin 并且有助于编写地道的 Kotlin 代码：</p>
+         <p>像 IntelliJ IDEA 这样的现代 IDE 有助于学习 Kotlin：</p>
          <ul>
-             <li class="start">         <a style="text-decoration: none;" href="https://www.jetbrains.com/help/education/for-learners.html?section=Kotlin">EduTools 插件</a> </li>
-             <li class="migrate start"> <a style="text-decoration: none;" href="https://www.jetbrains.com/help/idea/converting-a-java-file-to-kotlin-file.html">Java2Kotlin 转换器</a>  </li>
+             <li class="start"> <a style="text-decoration: none;" href="https://www.kotlincn.net/docs/tutorials/getting-started.html">以 IntelliJ IDEA 入门</a> </li>
+             <li class="start"> <a style="text-decoration: none;" href="https://www.jetbrains.com/help/education/for-learners.html?section=Kotlin">EduTools 插件</a> </li>
+             <li class="start"> <a style="text-decoration: none;" href="https://www.kotlincn.net/docs/tutorials/quick-run.html">运行代码片段</a> </li>
+             <li class="migrate"> <a style="text-decoration: none;" href="https://www.jetbrains.com/help/idea/converting-a-java-file-to-kotlin-file.html">Java2Kotlin 转换器</a>  </li>
          </ul>
      </div>
       <div style="padding: 5px;">
@@ -40,8 +43,9 @@ title: "Reference"
           <p>亲身体验是在浏览器中通过实际示例掌握 Kotlin 技能的方式：</p>
           <ul>
               <li class="start migrate"> <a style="text-decoration: none;" href="https://play.kotlinlang.org">演练平台</a> </li>
-              <li class="migrate"> <a style="text-decoration: none;" href="https://play.kotlinlang.org/byExample">Kotlin 示例</a>  </li>
-              <li class="start"> <a style="text-decoration: none;" href="https://play.kotlinlang.org/koans">Kotlin 心印</a> </li>
+              <li class="migrate"> <a style="text-decoration: none;" href="https://play.kotlinlang.org/hands-on/overview">动手实验室</a> </li>
+              <li class="start migrate"> <a style="text-decoration: none;" href="https://play.kotlinlang.org/byExample">例学 Kotlin</a>  </li>
+              <li class="start"> <a style="text-decoration: none;" href="https://play.kotlinlang.org/koans">心印</a> </li>
           </ul>
       </div>
       <div style="padding: 5px;">
