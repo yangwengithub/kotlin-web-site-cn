@@ -66,12 +66,12 @@ fun main() {
 
 ## 双路合并
 
-_Zipping_ transformation is building pairs from elements with the same positions in both collections.
-In the Kotlin standard library, this is done by the [`zip()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/zip.html) extension function.
-When called on a collection or an array with another collection (array) as an argument, `zip()` returns the `List` of `Pair` objects.
-The elements of the receiver collection are the first elements in these pairs.
-If the collections have different sizes, the result of the `zip()` is the smaller size; the last elements of the larger collection are not included in the result.
-`zip()` can also be called in the infix form `a zip b`.
+_双路合并_ 转换是根据两个集合中具有相同位置的元素构建配对。
+在 Kotlin 标准库中，这是通过 [`zip()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/zip.html) 扩展函数完成的。
+在集合或以另一个集合（数组）为参数的数组上调用时，`zip()` 返回 `List` 的 `Pair` 对象。
+接收器集合的元素是这些配对中的第一个元素。
+如果集合的大小不同，则 `zip()` 的结果为较小集合；结果中不包含较大集合的最后一个元素。
+`zip()` 也可以操作符的形式调用 `a zip b` 。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -89,8 +89,8 @@ fun main() {
 ```
 </div>
 
-You can also call `zip()` with a transformation function that takes two parameters: the receiver element and the argument element.
-In this case, the result `List` contains the return values of the transformation function called on pairs of the receiver and the argument elements with the same positions.
+也可以使用带有两个参数的转换函数来调用 `zip()`：接收器元素和参数元素。
+在这种情况下，结果 `List` 包含在具有相同位置的接收器对和自变量元素对上调用的转换函数的返回值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -106,12 +106,12 @@ fun main() {
 ```
 </div>
 
-When you have a `List` of `Pair`s, you can do the reverse transformation – _unzipping_ – that builds two lists from these pairs:
+当拥有 `Pair` 的 `List` 时，可以进行反向转换 _unzipping_——从这些键值对中构建两个列表：
 
-* The first list contains the first elements of each `Pair` in the original list. 
-* The second list contains the second elements.
+* 第一个列表包含原始列表中每个 `Pair` 的键。
+* 第二个列表包含原始列表中每个 `Pair` 的值。
 
-To unzip a list of pairs, call [`unzip()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/unzip.html).
+要分割键值对列表，请调用 [`unzip()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/unzip.html)。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
