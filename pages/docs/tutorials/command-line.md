@@ -72,15 +72,10 @@ $ sudo snap install --classic kotlin
 </div>
 
 #### Chocolatey 包
-如果你是 Windows [Chocolatey](https://chocolatey.org/) 用户，那么你可以在命令行轻松安装编译器：
+For users of [Chocolatey](https://chocolatey.org/) on Windows, 
+there is a community-maintained [kotlinc](https://chocolatey.org/packages/kotlinc) package.
+You can install it from the command line using the [`choco install`](https://chocolatey.org/docs/commandsinstall) command.
 
-<div class="sample" markdown="1" theme="idea">
-
-```cmd
-C:\> choco install kotlinc
-```
-
-</div>
 
 ### 创建并运行第一个应用程序
 

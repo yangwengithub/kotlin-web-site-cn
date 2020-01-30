@@ -888,9 +888,9 @@ typealias PersonIndex = Map<String, Person>
 
 不要在 lambda 表达式的最后一条语句中使用返回到标签。
 
-### 命名参数
+### 具名参数
 
-当一个方法接受多个相同的原生类型参数或者多个 `Boolean` 类型参数时，请使用命名参数语法，
+当一个方法接受多个相同的原生类型参数或者多个 `Boolean` 类型参数时，请使用具名参数语法，
 除非在上下文中的所有参数的含义都已绝对清楚。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>

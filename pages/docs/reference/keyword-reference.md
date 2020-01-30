@@ -164,7 +164,7 @@ Kotlin 支持以下操作符和特殊符号：
  * `@`
     - 引入一个[注解](annotations.html#用法)
     - 引入或引用一个[循环标签](returns.html#break-与-continue-标签) 
-    - 引入或引用一个 [lambda 表达式标签](returns.html#标签处返回)
+    - 引入或引用一个 [lambda 表达式标签](returns.html#返回到标签)
     - 引用一个来自外部作用域的 [“this”表达式](this-expressions.html#限定的-this)
     - 引用一个[外部超类](classes.html#调用超类实现)
  * `;` 分隔位于同一行的多个语句

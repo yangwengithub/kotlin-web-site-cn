@@ -44,9 +44,9 @@ notebook 中编写并运行 Kotlin 代码，以及使用以 Java 或 Kotlin 编�
 
 #### 设置 Kotlin 内核
 
-The Kotlin kernel requires Java 8 to be installed.
+Kotlin 内核需要安装 Java 8。
 
-To install the kernel, use [Conda](https://docs.conda.io/projects/conda/en/latest/):
+请使用 [Conda](https://docs.conda.io/projects/conda/en/latest/) 安装该内核：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -56,37 +56,37 @@ conda install kotlin-jupyter-kernel -c jetbrains
 
 </div>
 
-Once the kernel is installed, feel free to run the Jupyter notebook and switch to the Kotlin kernel.
-And that’s all there is to it, you can then write and run Kotlin in your notebook! 
+一旦内核安装完毕，就可以运行 Jupyter notebook 并切换到 Kotlin 内核。
+仅此而已，然后就可以在 notebook 中编写并运行 Kotlin 了！ 
 
 ![Kotlin in Jupyter notebook]({{ url_for('asset', path='images/landing/data-science/jupyter-kotlin.png')}})
 
-You can find more information about the Kotlin kernel for Jupyter [here](https://github.com/cheptsov/kotlin-jupyter-demo/blob/master/index.ipynb).
+可以在[这里](https://github.com/cheptsov/kotlin-jupyter-demo/blob/master/index.ipynb)找到关于 Jupyter 的 Kotlin 内核的更多信息。
 
 ### Zeppelin 解释器
 
-[Apache Zeppelin](http://zeppelin.apache.org/) is a popular web-based solution for interactive data analytics.
-Zeppelin provides strong support for the [Apache Spark](http://zeppelin.apache.org/docs/latest/interpreter/spark.html)
-cluster computing system, which is particularly useful for data engineering. Spark provides a high-level API in multiple languages.
+[Apache Zeppelin](http://zeppelin.apache.org/) 是一个流行的基于 web 的交互式数据分析解决方案。
+Zeppelin 为 [Apache Spark](http://zeppelin.apache.org/docs/latest/interpreter/spark.html)
+集群计算系统提供了强大的支持，这对于数据工程特别有用。Spark 提供了多种语言的高级 API。
  
-The language support in Zeppelin is provided by _interpreters_ - plugins that enable users to use a specific language or data-processing-backend.
-There are numerous community-maintained interpreters for different programming languages.
-The one we offer you is the **Kotlin interpreter for Apache Zeppelin** that adds the Kotlin support.
+Zeppelin 中的语言支持由*解释器*提供，解释器是让用户能够使用指定语言或者数据处理后端的插件。
+对于不同的编程语言有许多社区维护的解释器。
+我们提供了增加 Kotlin 支持的**用于 Apache Zeppelin 的 Kotlin 解释器**。
 
 #### 设置带 Kotlin 解释器的 Zeppelin
 
-Currently, the latest release of Zeppelin (0.8.2) doesn’t come with bundled Kotlin interpreter.
-But anyway, it’s available in the master branch of Zeppelin. 
-So, to add Kotlin support to Zeppelin, you need to build your own version from the sources.
+目前，最新版本的 Zeppelin（0.8.2）并未内置 Kotlin 解释器。
+不过，在 Zeppelin 的 master 分支中有。
+因此，为了向 Zeppelin 添加 Kotlin 支持，需要从源代码构建自己的版本。
 
-To build a custom version of Zeppelin, you will need:
+构建 Zeppelin 的定制版需要：
 
 * [Git](https://git-scm.com/)
 * [Maven](https://maven.apache.org/install.html),
 * [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-* The dependencies listed [here](https://zeppelin.apache.org/docs/latest/setup/basics/how_to_build.html#build-requirements)
+* 列在[此处](https://zeppelin.apache.org/docs/latest/setup/basics/how_to_build.html#build-requirements)各项依赖
 
-First, checkout the master branch from the Zeppelin repository:
+首先，从 Zeppelin 版本库中检出 master 分支：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -95,7 +95,7 @@ git clone --depth=1 git@github.com:apache/zeppelin.git
 ```
 </div>
 
-or
+或者
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -104,7 +104,7 @@ git clone --depth=1 https://github.com/apache/zeppelin.git
 ```
 </div>
 
-To build Zeppelin with Maven, go to the Zeppelin directory and run the following command:
+使用 Maven 构建 Zeppelin，请切换到 Zeppelin 目录并运行以下命令：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -113,7 +113,7 @@ mvn clean package -DskipTests -Pspark-2.4 -Pscala-2.11
 ```
 </div>
 
-Then run Zeppelin with the following command:
+然后使用以下命令运行 Zeppelin：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -122,39 +122,39 @@ Then run Zeppelin with the following command:
 ```
 </div>
 
-Now the Zeppelin UI is available on `http://localhost:8089`.
+现在可以在 `http://localhost:8089` 打开 Zeppelin UI 了。
 
-To learn about how to deploy Zeppelin with Kotlin support in a Spark cluster, see [this instruction](/docs/tutorials/zeppelin-spark-cluster.html).
+如需了解如何在 Spark 集群中部署带 Kotlin 支持的 Zeppelin，请参见[这个说明](/docs/tutorials/zeppelin-spark-cluster.html)。
 
 ## 相关库
 
-For software engineering, an important part of any domain is the availability of frameworks for related areas.
-For data science, this includes such areas as machine learning, data analysis, visualization, and many others.
-Fortunately, there are already plenty of frameworks written in Kotlin for data science.
-There are even more frameworks written in Java, which is perfect as they can be called from Kotlin code seamlessly.
+对于软件工程来说，任何领域的重要组成部分都有相关领域框架的可用性。
+对于数据科学，包括诸如机器学习、数据分析、可视化等领域。
+幸运的是，已经有很多用 Kotlin 编写的数据科学框架。
+更完美的是还有更多用 Java 编写的框架，因为可以在 Kotlin 代码中无缝调用 Java 框架。
 
-Below are two short lists of libraries that you may find useful for data science.
+以下是可能对数据科学有用的库的两个简短列表。
 
 ### Kotlin 库
-* [kotlin-statistics](https://github.com/thomasnield/kotlin-statistics) is a library providing extension functions for 
-exploratory and production statistics. It supports basic numeric list/sequence/array functions (from `sum` to `skewness`),
-slicing operators (such as `countBy`, `simpleRegressionBy`), binning operations, discrete PDF sampling,
-naive bayes classifier, clustering, linear regression, and much more.
+* [kotlin-statistics](https://github.com/thomasnield/kotlin-statistics) 是一个为<!--
+-->探索性统计与生产统计中提供扩展函数的库。它支持基本的数字列表/序列/数组函数（从 `sum` 到 `skewness`）、
+切片操作符（诸如 `countBy`、 `simpleRegressionBy`）、分箱（binning）操作符、离散 PDF 采样、
+朴素贝叶斯分类器、聚类、线性回归等等。
 
-* [kmath](https://github.com/mipt-npm/kmath) is a library inspired by [NumPy](https://numpy.org/).
-This library supports algebraic structures and operations, array-like structures, math expressions, histograms,
-streaming operations, a wrapper around [commons-math](http://commons.apache.org/proper/commons-math/) and
-[koma](https://github.com/kyonifer/koma), and more.
+* [kmath](https://github.com/mipt-npm/kmath) 是一个受 [NumPy](https://numpy.org/) 启发的库。
+这个库支持代数结构与运算、类数组结构、数学表达式、直方图、
+流运算、[commons-math](http://commons.apache.org/proper/commons-math/) 与
+[koma](https://github.com/kyonifer/koma) 的包装等等。
 
-* [krangl](https://github.com/holgerbrandl/krangl) is a library inspired by R's [dplyr](https://dplyr.tidyverse.org/)
-and Python's [pandas](https://pandas.pydata.org/). This library provides functionality for data manipulation using
-a functional-style API; it also includes functions for filtering, transforming, aggregating, and reshaping tabular data.
+* [krangl](https://github.com/holgerbrandl/krangl) 是一个受 R 语言的 [dplyr](https://dplyr.tidyverse.org/)
+与 Python 的 [pandas](https://pandas.pydata.org/) 启发的库。这个库提供了采用函数式风格 API
+进行数据操作的功能；它还包括过滤、转换、聚合与重塑表格数据的函数。
 
-* [lets-plot](https://github.com/JetBrains/lets-plot) is a plotting library for statistical data written in Kotlin.
-Lets-Plot is multiplatform and can be used not only with JVM, but also with JS and Python. For more information, see [below](#lets-plot-for-kotlin).
+* [lets-plot](https://github.com/JetBrains/lets-plot) 是一个用 Kotlin 编写的统计数据绘图库。
+Lets-Plot 是多平台的，不仅可以用于 JVM，还可以用于 JS 与 Python。更多信息请参见[下文](#lets-plot-for-kotlin)。
 
-* [kravis](https://github.com/holgerbrandl/kravis) is another library for the visualization of tabular data inspired by
-Python's [ggplot](https://ggplot2.tidyverse.org/).
+* [kravis](https://github.com/holgerbrandl/kravis) 是另一个用于表格数据可视化的库，其灵感来自于
+Python 的 [ggplot](https://ggplot2.tidyverse.org/)。
 
 ### Java 库
 

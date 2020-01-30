@@ -238,7 +238,7 @@ max(strings, { a, b -> a.length < b.length })
 
 函数 `max` 是一个高阶函数，它接受一个函数作为第二个参数。
 其第二个参数是一个表达式，它本身是一个函数，即函数字面值，它等价于<!--
--->以下命名函数：
+-->以下具名函数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -320,7 +320,7 @@ ints.filter { it > 0 } // 这个字面值是“(it: Int) -> Boolean”类型的
 
 ### 从 lambda 表达式中返回一个值
 
-我们可以使用[限定的返回](returns.html#标签处返回)语法从 lambda 显式返回一个值。
+我们可以使用[限定的返回](returns.html#返回到标签)语法从 lambda 显式返回一个值。
 否则，将隐式返回最后一个表达式的值。
 
 因此，以下两个片段是等价的：
@@ -342,7 +342,7 @@ ints.filter {
 </div>
 
 这一约定连同[在圆括号外传递 lambda 表达式](#passing-a-lambda-to-the-last-parameter)一起支持
-[LINQ-风格](http://msdn.microsoft.com/en-us/library/bb308959.aspx) 的代码：
+[LINQ-风格](https://docs.microsoft.com/en-us/previous-versions/dotnet/articles/bb308959(v=msdn.10)) 的代码：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 

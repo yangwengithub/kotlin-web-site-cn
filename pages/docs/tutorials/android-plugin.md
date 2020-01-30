@@ -57,6 +57,25 @@ apply plugin: 'kotlin-android-extensions'
 ```
 </div>
 
+### 启用实验特性
+
+Android 扩展插件包括几个实验特性：
+
+- [LayoutContainer 支持](#layoutcontainer-支持)
+- [多渠道支持](#多渠道支持)
+- [Parcelable 实现生成器](#parcelable-实现生成器)
+
+这些特性尚未被考虑用于生产环境，因此你需要在 `build.gradle` 中打开 *实验模式* 才能使用它们：
+
+<div class="sample" markdown="1" theme="idea" mode="groovy">
+
+```groovy
+androidExtensions {
+    experimental = true
+}
+```
+</div>
+
 ### 导入合成属性
 
 仅需要一行即可非常方便导入指定布局文件中所有控件属性：
@@ -72,7 +91,7 @@ import kotlinx.android.synthetic.main.＜布局＞.*
 
 若需要调用 `View` 的合成属性，同时还应该导入 `kotlinx.android.synthetic.main.activity_main.view.*`。
 
-导入完成后即可调用在xml文件中以视图控件命名属性的对应扩展，比如下例:
+导入完成后即可调用在xml文件中以视图控件具名属性的对应扩展，比如下例:
 
 <div class="sample" markdown="1" theme="idea" mode="xml">
 
@@ -93,7 +112,7 @@ activity.hello.text = "Hello World!"
 ```
 </div>
 
-### `LayoutContainer` 支持
+### LayoutContainer 支持
 
 Android 扩展插件支持不同类型的容器。最基本的是[`Activity`](https://developer.android.com/reference/android/app/Activity.html)、[`Fragment`](https://developer.android.com/reference/android/support/v4/app/Fragment.html) 以及 [`View`](https://developer.android.com/reference/android/view/View.html)，但是你可以（实际上）通过实现 `LayoutContainer` 接口将任何类转换为 Android 扩展容器，例如：
 
@@ -111,7 +130,7 @@ class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(con
 ```
 </div>
 
-请注意，你需要打开[实验性标志](#enabling-experimental-features)才能使用 `LayoutContainer`。
+请注意，你需要打开[实验性标志](#启用实验特性)才能使用 `LayoutContainer`。
 
 
 ### 多渠道支持
@@ -140,7 +159,7 @@ import kotlinx.android.synthetic.free.activity_free.*
 ```
 </div>
 
-在[实验模式](#enabling-experimental-features)中，你可以指定任何变体名称（不仅是渠道），例如 `freeDebug` 或者 `freeRelease` 也可以使用。
+在[实验模式](#启用实验特性)中，你可以指定任何变体名称（不仅是渠道），例如 `freeDebug` 或者 `freeRelease` 也可以使用。
 
 
 ### 视图缓存
@@ -180,7 +199,7 @@ fun Activity.b() {
 
 #### 更改视图缓存策略
 
-你可以全局或按容器更改缓存策略。这也需要打开[实验模式](#enabling-experimental-features)。
+你可以全局或按容器更改缓存策略。这也需要打开[实验模式](#启用实验特性)。
 
 项目全局缓存策略在 `build.gradle` 文件中设置：
 
@@ -193,7 +212,7 @@ androidExtensions {
 ```
 </div>
 
-默认情况下，Android扩展插件使用 `HashMap` 作为幕后存储集合，但是你可以切换到 `SparseArray`，也可以关闭缓存。当仅使用 Android 扩展的[Parcelable](#parcelable-implementations-generator)部分时，关闭缓存特别有用。
+默认情况下，Android扩展插件使用 `HashMap` 作为幕后存储集合，但是你可以切换到 `SparseArray`，也可以关闭缓存。当仅使用 Android 扩展的[Parcelable](#parcelable-实现生成器)部分时，关闭缓存特别有用。
 
 另外，你可以通过给一个容器添加注解 `@ContainerOptions` 来更改它的缓存策略：
 
@@ -215,8 +234,8 @@ fun MyActivity.a() {
 
 ### `Parcelable` 实现生成器
 
-Android 扩展插件提供[`Parcelable`](https://developer.android.com/reference/android/os/Parcelable) 实现生成器作为一项实验功能。
-想要使用它，请[打开](#enabling-experimental-features)实验标记。
+Android 扩展插件提供[`Parcelable`](https://developer.android.com/reference/android/os/Parcelable) 实现生成器作为一项实验特性。
+想要使用它，请[打开](#启用实验特性)实验标记。
 
 #### 如何使用
 
