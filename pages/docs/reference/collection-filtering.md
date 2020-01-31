@@ -89,7 +89,7 @@ fun main() {
 //sampleStart
     val numbers = listOf(null, "one", "two", null)
     numbers.filterNotNull().forEach {
-        println(it.length)   // length is unavailable for nullable Strings
+        println(it.length)   // 对空字符串来说长度不可用
     }
 //sampleEnd
 }
