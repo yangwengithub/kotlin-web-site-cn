@@ -158,32 +158,32 @@ Python 的 [ggplot](https://ggplot2.tidyverse.org/)。
 
 ### Java 库
 
-Since Kotlin provides first-class interop with Java, you can also use Java libraries for data science in your Kotlin code.
-Here are some examples of such libraries:
+因为 Kotlin 提供了与 Java 互操作的头等支持，所以也可以在用于数据科学的 Kotlin 代码中使用 Java 库。
+以下是这些库的一些示例：
 
-* [DeepLearning4J](https://deeplearning4j.org/) - a deep learning library for Java
+* [DeepLearning4J](https://deeplearning4j.org/)——一个 Java 深度学习库
 
-* [ND4J](http://nd4j.org/) - an efficient matrix math library for JVM
+* [ND4J](http://nd4j.org/)——用于 JVM 的高效矩阵数学库
 
-* [Dex](https://github.com/PatMartin/Dex) - a Java-based data visualization tool
+* [Dex](https://github.com/PatMartin/Dex)——一个基于 Java 的数据可视化工具
 
-* [Smile](https://github.com/haifengl/smile) - a comprehensive machine learning, natural language processing, linear algebra,
- graph, interpolation, and visualization system
+* [Smile](https://github.com/haifengl/smile)——一个全面的机器学习、自然语言处理、线性代数、
+ 图、插值与可视化系统
 
-* [Apache Commons Math](http://commons.apache.org/proper/commons-math/) - a general math, statistics, and machine learning library for Java
+* [Apache Commons Math](http://commons.apache.org/proper/commons-math/)——一个 Java 通用数学、统计与机器学习库
 
-* [OptaPlanner](https://www.optaplanner.org/) - a solver utility for optimization planning problems
+* [OptaPlanner](https://www.optaplanner.org/)——一个用于优化规划问题的求解器实用程序
 
-* [Charts](https://github.com/HanSolo/charts) - a scientific JavaFX charting library in development
+* [Charts](https://github.com/HanSolo/charts)——一个正在开发中的科学 JavaFX 图表库
 
-* [CoreNLP](https://stanfordnlp.github.io/CoreNLP/) - a natural language processing toolkit
+* [CoreNLP](https://stanfordnlp.github.io/CoreNLP/)——一个自然语言处理工具包
 
-* [Apache Mahout](https://mahout.apache.org/) - a distributed framework for regression, clustering and recommendation
+* [Apache Mahout](https://mahout.apache.org/)——一个回归、聚类与推荐的分布式框架
 
-* [Weka](https://www.cs.waikato.ac.nz/ml/index.html) - a collection of machine learning algorithms for data mining tasks
+* [Weka](https://www.cs.waikato.ac.nz/ml/index.html)——一组用于数据挖掘任务的机器学习算法
 
-If this list doesn’t cover your needs, you can find more options in the 
-[**Kotlin Data Science Resources**](https://github.com/thomasnield/kotlin-data-science-resources) digest from Thomas Nield.
+如果这个列表还不能满足需求，可以在 Thomas Nield 的
+[**Kotlin 数据科学资源**](https://github.com/thomasnield/kotlin-data-science-resources)摘要中找到更多选项。
 
 ### Lets-Plot for Kotlin
 
