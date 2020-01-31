@@ -68,10 +68,10 @@ fun main() {
 
 _双路合并_ 转换是根据两个集合中具有相同位置的元素构建配对。
 在 Kotlin 标准库中，这是通过 [`zip()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/zip.html) 扩展函数完成的。
-在集合或以另一个集合（数组）为参数的数组上调用时，`zip()` 返回 `List` 的 `Pair` 对象。
-接收器集合的元素是这些配对中的第一个元素。
-如果集合的大小不同，则 `zip()` 的结果为较小集合；结果中不包含较大集合的最后一个元素。
-`zip()` 也可以操作符的形式调用 `a zip b` 。
+在一个集合（或数组）上调用以另一个集合（或数组）作为参数，`zip()` 返回 `Pair` 对象的列表（`List`）。
+接收者集合的元素是这些配对中的第一个元素。
+如果集合的大小不同，则 `zip()` 的结果为较小集合的大小；结果中不包含较大集合的后续元素。
+`zip()` 也可以中缀形式调用 `a zip b` 。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -89,8 +89,8 @@ fun main() {
 ```
 </div>
 
-也可以使用带有两个参数的转换函数来调用 `zip()`：接收器元素和参数元素。
-在这种情况下，结果 `List` 包含在具有相同位置的接收器对和自变量元素对上调用的转换函数的返回值。
+也可以使用带有两个参数的转换函数来调用 `zip()`：接收者元素和参数元素。
+在这种情况下，结果 `List` 包含在具有相同位置的接收者对和参数元素对上调用的转换函数的返回值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
