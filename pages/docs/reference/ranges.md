@@ -7,13 +7,8 @@ title: "区间与数列"
 
 # 区间与数列
 
-<<<<<<< HEAD
-Kotlin 可以让你很轻松的使用 `Kotln.ranges` 包中的 [`rangeTo()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/range-to.html)  函数创建它的区间操作符。
-通常，`rangeTo()` 是补充 `in` 或 `!in` 的函数。
-=======
 Kotlin 可通过调用 `kotlin.ranges` 包中的 [`rangeTo()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/range-to.html) 函数及其操作符形式的 `..` 轻松地创建两个值的区间。
 通常，`rangeTo()` 会辅以 `in` 或 `!in` 函数。
->>>>>>> e5fe724ed8e659031644ef22ca5def1a3cd95051
 
 <div class="sample" markdown="1" theme="idea"  data-highlight-only>
 
@@ -24,15 +19,9 @@ if (i in 1..4) {  // 等同于 1 <= i && i <= 4
 ```
 </div>
 
-<<<<<<< HEAD
-整数区间 ([`IntRange`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-int-range/index.html), [`LongRange`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-long-range/index.html), [`CharRange`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-char-range/index.html)) 有一个额外的功能：它们可以迭代
-这些区间也是相应整数类型的[数列](https://en.wikipedia.org/wiki/Arithmetic_progression)。
-这些区间通常用于 `for` 循环中的迭代。
-=======
 整数类型区间（[`IntRange`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-int-range/index.html)、[`LongRange`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-long-range/index.html)、[`CharRange`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-char-range/index.html)）还有一个拓展特性：可以对其进行迭代。
 这些区间也是相应整数类型的[等差数列](https://zh.wikipedia.org/wiki/%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97)。
 这种区间通常用于 `for` 循环中的迭代。
->>>>>>> e5fe724ed8e659031644ef22ca5def1a3cd95051
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
