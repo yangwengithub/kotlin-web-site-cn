@@ -29,7 +29,6 @@ fun main() {
 </div>
 
 [`addAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/add-all.html) 将参数对象的每个元素添加到列表或集合中。参数可以是 `Iterable`，`Sequence` 或 `Array`。
-
 接收者的类型和参数可能不同，例如，您可以将所有内容从  `Set` 添加到 `List`。
 
 当在列表上调用，`addAll()` 添加新元素时会按照相同的顺序添加参数。
