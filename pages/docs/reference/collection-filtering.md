@@ -8,15 +8,15 @@ title: "过滤集合"
 # 过滤
 
 过滤是最常用的集合处理任务之一。<!--
--->在Kotlin中，过滤条件由 _谓词_ 定义 – 接受一个集合元素并且返回布尔值的 lambda 表达式：`true` 说明给定元素与谓词匹配，`false` 则相反。
+-->在Kotlin中，过滤条件由 _谓词_ 定义——接受一个集合元素并且返回布尔值的 lambda 表达式：`true` 说明给定元素与谓词匹配，`false` 则表示不匹配。
 
 标准库包含了一组让你能够通过单个调用就可以过滤集合的扩展函数。<!--
--->这些函数不会改变原始集合，因此它们可用于[可变和只读的](collections-overview.html#集合类型)集合。<!--
+-->这些函数不会改变原始集合，因此它们[既可用于可变集合也可用于只读集合](collections-overview.html#集合类型)。<!--
 -->为了操作过滤结果，应该在过滤后将其赋值给变量或链接其他函数。
 
 ## 按谓词过滤
 
-基础的过滤函数是 [`filter()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html)。<!--
+基本的过滤函数是 [`filter()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html)。<!--
 -->当使用一个谓词来调用时，`filter()` 返回与其匹配的集合元素。<!--
 -->对于 `List` 和` Set`，过滤结果都是一个 `List`，对 `Map` 来说结果还是一个 `Map`。
 
@@ -89,7 +89,7 @@ fun main() {
 //sampleStart
     val numbers = listOf(null, "one", "two", null)
     numbers.filterNotNull().forEach {
-        println(it.length)   // 对空字符串来说长度不可用
+        println(it.length)   // 对可空的 String 来说长度不可用
     }
 //sampleEnd
 }
