@@ -7,9 +7,9 @@ title: "集合写操作"
 
 # 集合写操作
 
-[可变集合](collections-overview.html#集合类型) 支持更改集合内容的操作，例如添加或删除元素。
+[可变集合](collections-overview.html#集合类型)支持更改集合内容的操作，例如添加或删除元素。
 在次页面上，我们将描述实现 `MutableCollection` 的所有写操作。
-有关 `List` 和 `Map` 可用的更多特定操作，请分别参见 [List 相关操作](list-operations.html) 和 [Map 相关操作](map-operations.html)。
+有关 `List` 和 `Map` 可用的更多特定操作，请分别参见 [List 相关操作](list-operations.html)和 [Map 相关操作](map-operations.html)。
 
 ## 添加元素
 
@@ -29,7 +29,7 @@ fun main() {
 </div>
 
 [`addAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/add-all.html) 将参数对象的每个元素添加到列表或集合中。参数可以是 `Iterable`、`Sequence` 或 `Array`。
-接收者的类型和参数可能不同，例如，你可以将所有内容从  `Set` 添加到 `List`。
+接收者的类型和参数可能不同，例如，你可以将所有内容从 `Set` 添加到 `List`。
 
 当在列表上调用时，`addAll()` 会按照在参数中出现的顺序添加各个新元素。
 你也可以调用 `addAll()` 时指定一个元素位置作为第一参数。
