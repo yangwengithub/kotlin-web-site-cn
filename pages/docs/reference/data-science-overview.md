@@ -187,13 +187,13 @@ Python 的 [ggplot](https://ggplot2.tidyverse.org/)。
 
 ### Lets-Plot for Kotlin
 
-**Lets-Plot for Kotlin** is a Kotlin API for the [Lets-Plot](https://github.com/JetBrains/lets-plot) library - 
-an open-source plotting library for statistical data written entirely in Kotlin. Lets-Plot was built on the concept of 
-layered graphics first described in Leland Wilkinson's work [The Grammar of Graphics](https://www.goodreads.com/book/show/2549408.The_Grammar_of_Graphics)
-and later implemented in the [ggplot2](https://ggplot2.tidyverse.org/) package for R.
+**Lets-Plot for Kotlin** 是 [Lets-Plot](https://github.com/JetBrains/lets-plot) 库的 Kotlin API， 
+Lets-Plot 是一个完全用 Kotlin 编写的开源的统计数据绘图库。Lets-Plot 建立在分层图形的概念上，
+该概念首先在 Leland Wilkinson 的著作 [The Grammar of Graphics](https://www.goodreads.com/book/show/2549408.The_Grammar_of_Graphics)
+中描述，后来在 R 语言的 [ggplot2](https://ggplot2.tidyverse.org/) 包中实现。
 
-Lets-Plot for Kotlin is tightly integrated with the [Kotlin kernel for Jupyter notebooks](#jupyter-内核).
-Once you have the Kotlin kernel installed and enabled, add the following line to a Jupyter notebook:
+Lets-Plot for Kotlin 与[用于 Jupyter notebook 的 Kotlin 内核](#jupyter-内核)紧密集成。
+安装并启用 Kotlin 内核后，将以下行添加到 Jupyter notebook 中：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -202,7 +202,7 @@ Once you have the Kotlin kernel installed and enabled, add the following line to
 ```
 </div>
 
-That’s it, now you can call functions from Lets-Plot and see the results.
+就是这样，现在就可以调用 Lets-Plot 中的函数并查看结果了。
 
 ![Lets-Plot diagram]({{ url_for('asset', path='images/landing/data-science/lets-plot.png')}})
 
