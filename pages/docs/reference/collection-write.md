@@ -7,13 +7,13 @@ title: "集合写操作"
 
 # 集合写操作
 
-[Mutable collections](collections-overview.html#集合类型) support operations for changing the collection contents, for example, adding or removing elements.
-On this page, we'll describe write operations available for all implementations of `MutableCollection`.
-For more specific operations available for `List` and `Map`, see [List Specific Operations](list-operations.html) and [Map Specific Operations](map-operations.html) respectively.
+[可变集合](collections-overview.html#集合类型)支持更改集合内容的操作，例如添加或删除元素。
+在次页面上，我们将描述实现 `MutableCollection` 的所有写操作。
+有关 `List` 和 `Map` 可用的更多特定操作，请分别参见 [List 相关操作](list-operations.html)和 [Map 相关操作](map-operations.html)。
 
 ## 添加元素
 
-To add a single element to a list or a set, use the [`add()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/add.html) function. The specified object is appended to the end of the collection.
+要将单个元素添加到列表或集合，请使用 [`add()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/add.html) 函数。指定的对象将添加到集合的末尾。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -28,13 +28,13 @@ fun main() {
 ```
 </div>
 
-[`addAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/add-all.html) adds every element of the argument object to a list or a set. The argument can be an `Iterable`, a `Sequence`, or an `Array`.
-The types of the receiver and the argument may be different, for example, you can add all items from a `Set` to a `List`.
+[`addAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/add-all.html) 将参数对象的每个元素添加到列表或集合中。参数可以是 `Iterable`、`Sequence` 或 `Array`。
+接收者的类型和参数可能不同，例如，你可以将所有内容从 `Set` 添加到 `List`。
 
-When called on lists, `addAll()` adds new elements in the same order as they go in the argument.
-You can also call `addAll()` specifying an element position as the first argument.
-The first element of the argument collection will be inserted at this position.
-Other elements of the argument collection will follow it, shifting the receiver elements to the end. 
+当在列表上调用时，`addAll()` 会按照在参数中出现的顺序添加各个新元素。
+你也可以调用 `addAll()` 时指定一个元素位置作为第一参数。
+参数集合的第一个元素将被插入到这个位置。
+其他元素将跟随在它后面，将接收者元素移到末尾。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
