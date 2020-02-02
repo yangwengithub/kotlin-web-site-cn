@@ -71,8 +71,8 @@ fun main() {
 
 ## 删除元素
 
-To remove an element from a mutable collection, use the [`remove()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/remove.html) function.
-`remove()` accepts the element value and removes one occurrence of this value. 
+若要从可变集合中移除元素，请使用 [`remove()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/remove.html) 函数。
+`remove()` 接受元素值，并删除该值的一个匹配项。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
