@@ -66,12 +66,12 @@ fun main() {
 
 ## 双路合并
 
-_Zipping_ transformation is building pairs from elements with the same positions in both collections.
-In the Kotlin standard library, this is done by the [`zip()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/zip.html) extension function.
-When called on a collection or an array with another collection (array) as an argument, `zip()` returns the `List` of `Pair` objects.
-The elements of the receiver collection are the first elements in these pairs.
-If the collections have different sizes, the result of the `zip()` is the smaller size; the last elements of the larger collection are not included in the result.
-`zip()` can also be called in the infix form `a zip b`.
+_双路合并_ 转换是根据两个集合中具有相同位置的元素构建配对。
+在 Kotlin 标准库中，这是通过 [`zip()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/zip.html) 扩展函数完成的。
+在一个集合（或数组）上以另一个集合（或数组）作为参数调用时，`zip()` 返回 `Pair` 对象的列表（`List`）。
+接收者集合的元素是这些配对中的第一个元素。
+如果集合的大小不同，则 `zip()` 的结果为较小集合的大小；结果中不包含较大集合的后续元素。
+`zip()` 也可以中缀形式调用 `a zip b` 。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -89,8 +89,8 @@ fun main() {
 ```
 </div>
 
-You can also call `zip()` with a transformation function that takes two parameters: the receiver element and the argument element.
-In this case, the result `List` contains the return values of the transformation function called on pairs of the receiver and the argument elements with the same positions.
+也可以使用带有两个参数的转换函数来调用 `zip()`：接收者元素和参数元素。
+在这种情况下，结果 `List` 包含在具有相同位置的接收者对和参数元素对上调用的转换函数的返回值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -106,12 +106,12 @@ fun main() {
 ```
 </div>
 
-When you have a `List` of `Pair`s, you can do the reverse transformation – _unzipping_ – that builds two lists from these pairs:
+当拥有 `Pair` 的 `List` 时，可以进行反向转换 _unzipping_——从这些键值对中构建两个列表：
 
-* The first list contains the first elements of each `Pair` in the original list. 
-* The second list contains the second elements.
+* 第一个列表包含原始列表中每个 `Pair` 的键。
+* 第二个列表包含原始列表中每个 `Pair` 的值。
 
-To unzip a list of pairs, call [`unzip()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/unzip.html).
+要分割键值对列表，请调用 [`unzip()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/unzip.html)。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -127,11 +127,11 @@ fun main() {
 
 ## 关联
 
-_Association_ transformations allow building maps from the collection elements and certain values associated with them.
-In different association types, the elements can be either keys or values in the association map.
+_关联_ 转换允许从集合元素和与其关联的某些值构建 Map。
+在不同的关联类型中，元素可以是关联 Map 中的键或值。
 
-The basic association function [`associateWith()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate-with.html) creates a `Map` in which the elements of the original collection are keys, and values are produced from them by the given transformation function.
-If two elements are equal, only the last one remains in the map.
+基本的关联函数 [`associateWith()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate-with.html) 创建一个 `Map`，其中原始集合的元素是键，并通过给定的转换函数从中产生值。
+如果两个元素相等，则仅最后一个保留在 Map 中。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -145,9 +145,9 @@ fun main() {
 ```
 </div>
 
-For building maps with collection elements as values, there is the function [`associateBy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate-by.html).
-It takes a function that returns a key based on an element's value. If two elements are equal, only the last one remains in the map. 
-`associateBy()` can also be called with a value transformation function.
+为了使用集合元素作为值来构建 Map，有一个函数 [`associateBy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate-by.html)。
+它需要一个函数，该函数根据元素的值返回键。如果两个元素相等，则仅最后一个保留在 Map 中。
+还可以使用值转换函数来调用 `associateBy()`。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -163,13 +163,13 @@ fun main() {
 ```
 </div>
 
-Another way to build maps in which both keys and values are somehow produced from collection elements is the function [`associate()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate.html).
-It takes a lambda function that returns a `Pair`: the key and the value of the corresponding map entry.
+另一种构建 Map 的方法是使用函数 [`associate()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/associate.html)，其中 Map 键和值都是通过集合元素生成的。
+它需要一个 lambda 函数，该函数返回 `Pair`：键和相应 Map 条目的值。
 
-Note that `associate()` produces short-living `Pair` objects which may affect the performance.
-Thus, `associate()` should be used when the performance isn't critical or it's more preferable than other options.
+请注意，`associate()` 会生成临时的 `Pair` 对象，这可能会影响性能。
+因此，当性能不是很关键或比其他选项更可取时，应使用 `associate()`。
 
-An example of the latter is when a key and the corresponding value are produced from an element together. 
+后者的一个示例：从一个元素一起生成键和相应的值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -192,7 +192,7 @@ fun parseFullName(fullName: String): FullName {
 ```
 </div>
 
-Here we call a transform function on an element first, and then build a pair from the properties of that function's result.
+此时，首先在一个元素上调用一个转换函数，然后根据该函数结果的属性建立 Pair。
 
 
 ## 打平
