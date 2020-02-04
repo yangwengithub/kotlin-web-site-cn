@@ -15,7 +15,7 @@ main:
       title: 社区
 
     - url: https://play.kotlinlang.org
-      title: 在线试用
+      title: 演练
 
 
 # Docs section navigation
@@ -25,7 +25,7 @@ subnav:
     - url: /docs/
       content:
         - url: /docs/reference/
-          title: 参考
+          title: 语言指南
 
         - url: /docs/tutorials/
           title: 教程
@@ -72,12 +72,16 @@ reference:
           title: 协程
         - url: /docs/reference/multiplatform.html
           title: 多平台
-        - url: /docs/reference/whatsnew11.html
-          title: 1.1 的新特性
-        - url: /docs/reference/whatsnew12.html
-          title: 1.2 的新特性
+
+    - title: 新特性
+      description: Kotlin 各版本的新特性
+      content:
         - url: /docs/reference/whatsnew13.html
           title: 1.3 的新特性
+        - url: /docs/reference/whatsnew12.html
+          title: 1.2 的新特性
+        - url: /docs/reference/whatsnew11.html
+          title: 1.1 的新特性
 
     - title: 开始
       description: 开始熟悉 Kotlin 基础包括操作、编码习惯与习惯用法。
@@ -185,6 +189,15 @@ reference:
         - url: /docs/reference/map-operations.html
           title: Map 相关操作
 
+    - title: 协程
+      description: Kotlin 协程库
+      external:
+        path: kotlinx.coroutines/docs
+        nav: _nav.yml
+        base: /docs/reference/coroutines
+        repo: https://github.com/hltj/kotlinx.coroutines-cn
+        branch: master
+
     - title: 多平台程序设计
       description: 跨 JVM、 JS 与原生平台复用代码
       content:
@@ -193,7 +206,7 @@ reference:
         - url: /docs/reference/building-mpp-with-gradle.html
           title: 以 Gradle 构建
 
-    - title: 其他
+    - title: 更多语言结构
       description: 各种知识点
       content:
         - url: /docs/reference/multi-declarations.html
@@ -271,15 +284,6 @@ reference:
         base: /docs/reference/native
         repo: https://github.com/hltj/kotlin-native-cn
         branch: v1.3.60-fixes
-
-    - title: 协程
-      description: Kotlin 协程库
-      external:
-        path: kotlinx.coroutines/docs
-        nav: _nav.yml
-        base: /docs/reference/coroutines
-        repo: https://github.com/hltj/kotlinx.coroutines-cn
-        branch: master
 
     - title: 工具
       description:

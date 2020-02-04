@@ -158,42 +158,42 @@ Python 的 [ggplot](https://ggplot2.tidyverse.org/)。
 
 ### Java 库
 
-Since Kotlin provides first-class interop with Java, you can also use Java libraries for data science in your Kotlin code.
-Here are some examples of such libraries:
+因为 Kotlin 提供了与 Java 互操作的头等支持，所以也可以在用于数据科学的 Kotlin 代码中使用 Java 库。
+以下是这些库的一些示例：
 
-* [DeepLearning4J](https://deeplearning4j.org/) - a deep learning library for Java
+* [DeepLearning4J](https://deeplearning4j.org/)——一个 Java 深度学习库
 
-* [ND4J](http://nd4j.org/) - an efficient matrix math library for JVM
+* [ND4J](http://nd4j.org/)——用于 JVM 的高效矩阵数学库
 
-* [Dex](https://github.com/PatMartin/Dex) - a Java-based data visualization tool
+* [Dex](https://github.com/PatMartin/Dex)——一个基于 Java 的数据可视化工具
 
-* [Smile](https://github.com/haifengl/smile) - a comprehensive machine learning, natural language processing, linear algebra,
- graph, interpolation, and visualization system
+* [Smile](https://github.com/haifengl/smile)——一个全面的机器学习、自然语言处理、线性代数、
+ 图、插值与可视化系统
 
-* [Apache Commons Math](http://commons.apache.org/proper/commons-math/) - a general math, statistics, and machine learning library for Java
+* [Apache Commons Math](http://commons.apache.org/proper/commons-math/)——一个 Java 通用数学、统计与机器学习库
 
-* [OptaPlanner](https://www.optaplanner.org/) - a solver utility for optimization planning problems
+* [OptaPlanner](https://www.optaplanner.org/)——一个用于优化规划问题的求解器实用程序
 
-* [Charts](https://github.com/HanSolo/charts) - a scientific JavaFX charting library in development
+* [Charts](https://github.com/HanSolo/charts)——一个正在开发中的科学 JavaFX 图表库
 
-* [CoreNLP](https://stanfordnlp.github.io/CoreNLP/) - a natural language processing toolkit
+* [CoreNLP](https://stanfordnlp.github.io/CoreNLP/)——一个自然语言处理工具包
 
-* [Apache Mahout](https://mahout.apache.org/) - a distributed framework for regression, clustering and recommendation
+* [Apache Mahout](https://mahout.apache.org/)——一个回归、聚类与推荐的分布式框架
 
-* [Weka](https://www.cs.waikato.ac.nz/ml/index.html) - a collection of machine learning algorithms for data mining tasks
+* [Weka](https://www.cs.waikato.ac.nz/ml/index.html)——一组用于数据挖掘任务的机器学习算法
 
-If this list doesn’t cover your needs, you can find more options in the 
-[**Kotlin Data Science Resources**](https://github.com/thomasnield/kotlin-data-science-resources) digest from Thomas Nield.
+如果这个列表还不能满足需求，可以在 Thomas Nield 的
+[**Kotlin 数据科学资源**](https://github.com/thomasnield/kotlin-data-science-resources)摘要中找到更多选项。
 
 ### Lets-Plot for Kotlin
 
-**Lets-Plot for Kotlin** is a Kotlin API for the [Lets-Plot](https://github.com/JetBrains/lets-plot) library - 
-an open-source plotting library for statistical data written entirely in Kotlin. Lets-Plot was built on the concept of 
-layered graphics first described in Leland Wilkinson's work [The Grammar of Graphics](https://www.goodreads.com/book/show/2549408.The_Grammar_of_Graphics)
-and later implemented in the [ggplot2](https://ggplot2.tidyverse.org/) package for R.
+**Lets-Plot for Kotlin** 是 [Lets-Plot](https://github.com/JetBrains/lets-plot) 库的 Kotlin API， 
+Lets-Plot 是一个完全用 Kotlin 编写的开源的统计数据绘图库。Lets-Plot 建立在分层图形的概念上，
+该概念首先在 Leland Wilkinson 的著作 [The Grammar of Graphics](https://www.goodreads.com/book/show/2549408.The_Grammar_of_Graphics)
+中描述，后来在 R 语言的 [ggplot2](https://ggplot2.tidyverse.org/) 包中实现。
 
-Lets-Plot for Kotlin is tightly integrated with the [Kotlin kernel for Jupyter notebooks](#jupyter-内核).
-Once you have the Kotlin kernel installed and enabled, add the following line to a Jupyter notebook:
+Lets-Plot for Kotlin 与[用于 Jupyter notebook 的 Kotlin 内核](#jupyter-内核)紧密集成。
+安装并启用 Kotlin 内核后，将以下行添加到 Jupyter notebook 中：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -202,19 +202,19 @@ Once you have the Kotlin kernel installed and enabled, add the following line to
 ```
 </div>
 
-That’s it, now you can call functions from Lets-Plot and see the results.
+就是这样，现在就可以调用 Lets-Plot 中的函数并查看结果了。
 
 ![Lets-Plot diagram]({{ url_for('asset', path='images/landing/data-science/lets-plot.png')}})
 
 ### NumPy 的 Kotlin 绑定
 
-[**KNumpy**](https://github.com/kotlin/kotlin-numpy/) (**Kotlin Bindings for NumPy**) is a Kotlin library that enables calling NumPy functions from the Kotlin code.
-[NumPy](https://numpy.org/) is a popular package for scientific computing with Python. It provides powerful capabilities
-for multi-dimensional array processing, linear algebra, Fourier transform, random numbers, and other mathematical tasks. 
+[**KNumpy**](https://github.com/kotlin/kotlin-numpy/)（**NumPy 的 Kotlin 绑定**）是一个能让 Kotlin 代码调用 NumPy 函数的 Kotlin 库。
+[NumPy](https://numpy.org/)是使用 Python 进行科学计算的一个流行软件包。它为<!--
+-->多维数组处理、线性代数、傅立叶变换、随机数以及其他数学任务提供了强大的功能。 
 
-KNumpy provides statically typed wrappers for NumPy functions. Thanks to the functional capabilities of Kotlin,
-the API of KNumpy is very similar to the one for NumPy. This lets developers that are experienced with NumPy easily switch to KNumpy.
-Here are two equal code samples:
+KNumpy 为 NumPy 函数提供了静态类型的包装。由于 Kotlin 的函数式能力，
+KNumpy 的 API 与对应的 NumPy API 非常相似。这让有 NumPy 经验的开发人员可以轻松切换到 KNumpy。
+以下是两份等价代码的示例：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -246,14 +246,14 @@ fun main() {
     println(a.ndim == 2)                             // true
     println(a.dtype)                                 // class java.lang.Integer
 
-    // create an array of ints, we square each element and the shape to (3, 5) 
+    // 创建一个整型数组，我们将每个元素取平方，然后重塑为 (3, 5)
     val b = (arange(15) `**` 2).reshape(3, 5)
 }
 ```
 </div>
 
-Unlike Python, Kotlin is a statically typed language. This lets you avoid entire classes of runtime errors with KNumpy:
-the Kotlin compiler detects them at earlier stages.
+与 Python 不同的是，Kotlin 是一种静态类型语言。这样使用 KNumpy 就可以避免运行时的类型错误：
+Kotlin 编译器会在更早的阶段检测到相应问题。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -267,8 +267,8 @@ import numpy as np
 a = np.ones((3, 3), dtype=int) * 3
 b = np.random.random((3, 3))
 
-b *= a # Success
-a *= b # TypeError at runtime 
+b *= a # 成功
+a *= b # 运行时 TypeError 
 ```
 </div>
 
@@ -277,13 +277,13 @@ a *= b # TypeError at runtime
 ```kotlin
 // Kotlin 
 
-// ...
+// ……
 
 val a = ones<Int>(3, 3) * 3
 val b = Random.random(3, 3)
 
-b *= a // Success
-a *= b // Compilation error: 
+b *= a // 成功
+a *= b // 编译错误： 
 // Type mismatch: inferred type is KtNDArray<Double> but KtNDArray<Int> was expected
 ```
 </div>

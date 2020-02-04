@@ -2,9 +2,29 @@
 
     <div class="global-footer-terms">
         <div class="g-layout">
-
+            <ul class="terms-social">
+                <li class="terms-social__item terms-social__item_blog">
+                    <a target="_blank" class="link" href="http://blog.jetbrains.com/kotlin">博客</a>
+                </li>
+                <li class="terms-social__item terms-social__item_forum">
+                    <a target="_blank" class="link" href="https://discuss.kotlinlang.org">论坛</a>
+                </li>
+                <li class="terms-social__item terms-social__item_bug-tracker">
+                    <a target="_blank" class="link" href="https://youtrack.jetbrains.com/issues/KT">问题跟踪</a>
+                </li>
+                <li class="terms-social__item terms-social__item_github">
+                    <a target="_blank" class="link" href="{{ config.GITHUB_URL }}">Github</a>
+                </li>
+                <li class="terms-social__item terms-social__item_twitter">
+                    <a target="_blank" class="link" href="{{ config.TWITTER_URL }}">Twitter</a>
+                </li>
+            </ul>
             <div class="global-footer-container">
                 <div class="global-footer-row">
+                        <p class="terms-para"><a class="terms-kit"
+                              href="/contribute.html">为 Kotlin 做贡献</a></p>
+                        <p class="terms-para"><a class="terms-kit"
+                              href={{ url_for('asset', path='kotlin-media-kit.pdf') }}>宣传资料</a></p>
                     <div class="terms-copyright">
                         采用 <a href="https://github.com/JetBrains/kotlin-web-site/blob/master/LICENSE">Apache
                         2
@@ -15,12 +35,10 @@
                         Kotlin 商标受 <a
                             href="/foundation/kotlin-foundation.html">Kotlin 基金会</a>保护
                     </div>
-                    <a class="terms-kit"
-                            href={{ url_for('asset', path='kotlin-media-kit.pdf') }}>宣传资料</a>
                 </div>
                 <div class="global-footer-row">
                     <div class="terms-sponsor">
-                        由 <a href="http://jetbrains.com" class="sponsor sponsor_jetbrains"
+                        由 <a href="http://jetbrains.com" class="sponsor sponsor_jetbrains jetbrains-logo _logo-jetbrains"
                                                       target="_blank">JetBrains</a> 赞助及开发；
                         由<a href="https://hltj.me/" class="testimonial-company-link" target="_blank" rel="nofollow">灰蓝天际</a>、
                         <a href="http://tanfujun.com" class="testimonial-company-link" target="_blank" rel="nofollow">晓_晨DEV</a>、
