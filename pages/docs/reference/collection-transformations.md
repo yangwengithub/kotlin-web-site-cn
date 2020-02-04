@@ -199,7 +199,7 @@ fun parseFullName(fullName: String): FullName {
 
 如需操作嵌套的集合，则可能会发现提供对嵌套集合元素进行打平访问的标准库函数很有用。
 
-首选函数为 [`flatten()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/flatten.html)。可以在一个集合的集合（例如，一个 `Set` 组成的 `List`）上调用它。
+第一个函数为 [`flatten()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/flatten.html)。可以在一个集合的集合（例如，一个 `Set` 组成的 `List`）上调用它。
 该函数返回嵌套集合中的所有元素的一个 `List`。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
