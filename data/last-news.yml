@@ -1,5 +1,5 @@
-- title: 让 Kotlin 为数据科学做好准备
-  link: https://blog.jetbrains.com/kotlin/2019/12/making-kotlin-ready-for-data-science/
+- title: Kotlin 拥抱数据科学
+  link: https://www.kotliner.cn/2020/01/making-kotlin-ready-for-data-science/
 
 - title: 协程现已稳定
   link: /docs/reference/coroutines-overview.html

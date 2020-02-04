@@ -208,13 +208,13 @@ Lets-Plot for Kotlin 与[用于 Jupyter notebook 的 Kotlin 内核](#jupyter-内
 
 ### NumPy 的 Kotlin 绑定
 
-[**KNumpy**](https://github.com/kotlin/kotlin-numpy/) (**Kotlin Bindings for NumPy**) is a Kotlin library that enables calling NumPy functions from the Kotlin code.
-[NumPy](https://numpy.org/) is a popular package for scientific computing with Python. It provides powerful capabilities
-for multi-dimensional array processing, linear algebra, Fourier transform, random numbers, and other mathematical tasks. 
+[**KNumpy**](https://github.com/kotlin/kotlin-numpy/)（**NumPy 的 Kotlin 绑定**）是一个能让 Kotlin 代码调用 NumPy 函数的 Kotlin 库。
+[NumPy](https://numpy.org/)是使用 Python 进行科学计算的一个流行软件包。它为<!--
+-->多维数组处理、线性代数、傅立叶变换、随机数以及其他数学任务提供了强大的功能。 
 
-KNumpy provides statically typed wrappers for NumPy functions. Thanks to the functional capabilities of Kotlin,
-the API of KNumpy is very similar to the one for NumPy. This lets developers that are experienced with NumPy easily switch to KNumpy.
-Here are two equal code samples:
+KNumpy 为 NumPy 函数提供了静态类型的包装。由于 Kotlin 的函数式能力，
+KNumpy 的 API 与对应的 NumPy API 非常相似。这让有 NumPy 经验的开发人员可以轻松切换到 KNumpy。
+以下是两份等价代码的示例：
 
 
 
@@ -246,14 +246,14 @@ fun main() {
     println(a.ndim == 2)                             // true
     println(a.dtype)                                 // class java.lang.Integer
 
-    // create an array of ints, we square each element and the shape to (3, 5) 
+    // 创建一个整型数组，我们将每个元素取平方，然后重塑为 (3, 5)
     val b = (arange(15) `**` 2).reshape(3, 5)
 }
 ```
 
 
-Unlike Python, Kotlin is a statically typed language. This lets you avoid entire classes of runtime errors with KNumpy:
-the Kotlin compiler detects them at earlier stages.
+与 Python 不同的是，Kotlin 是一种静态类型语言。这样使用 KNumpy 就可以避免运行时的类型错误：
+Kotlin 编译器会在更早的阶段检测到相应问题。
 
 
 
@@ -267,8 +267,8 @@ import numpy as np
 a = np.ones((3, 3), dtype=int) * 3
 b = np.random.random((3, 3))
 
-b *= a # Success
-a *= b # TypeError at runtime 
+b *= a # 成功
+a *= b # 运行时 TypeError 
 ```
 
 
@@ -277,13 +277,13 @@ a *= b # TypeError at runtime
 ```kotlin
 // Kotlin 
 
-// ...
+// ……
 
 val a = ones<Int>(3, 3) * 3
 val b = Random.random(3, 3)
 
-b *= a // Success
-a *= b // Compilation error: 
+b *= a // 成功
+a *= b // 编译错误： 
 // Type mismatch: inferred type is KtNDArray<Double> but KtNDArray<Int> was expected
 ```
 

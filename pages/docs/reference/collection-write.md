@@ -9,7 +9,7 @@ title: "集合写操作"
 
 [可变集合](collections-overview.html#集合类型)支持更改集合内容的操作，例如添加或删除元素。
 在次页面上，我们将描述实现 `MutableCollection` 的所有写操作。
-有关 `List` 和 `Map` 可用的更多特定操作，请分别参见 [List 相关操作](list-operations.html)和 [Map 相关操作](map-operations.html)。
+有关 `List` 与 `Map` 可用的更多特定操作，请分别参见 [List 相关操作](list-operations.html)与 [Map 相关操作](map-operations.html)。
 
 ## 添加元素
 
@@ -33,7 +33,7 @@ fun main() {
 
 当在列表上调用时，`addAll()` 会按照在参数中出现的顺序添加各个新元素。
 你也可以调用 `addAll()` 时指定一个元素位置作为第一参数。
-参数集合的第一个元素将被插入到这个位置。
+参数集合的第一个元素会被插入到这个位置。
 其他元素将跟随在它后面，将接收者元素移到末尾。
 
 
@@ -51,8 +51,8 @@ fun main() {
 ```
 
 
-You can also add elements using the in-place version of the [`plus` operator](collection-plus-minus.html) - [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) (`+=`)
- When applied to a mutable collection, `+=` appends the second operand (an element or another collection) to the end of the collection.
+你还可以使用 [`plus` 运算符](collection-plus-minus.html) - [`plusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/plus-assign.html) (`+=`) 添加元素。
+ 当应用于可变集合时，`+=` 将第二个操作数(一个元素或另一个集合)追加到集合的末尾。
 
 
 
@@ -71,8 +71,8 @@ fun main() {
 
 ## 删除元素
 
-To remove an element from a mutable collection, use the [`remove()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/remove.html) function.
-`remove()` accepts the element value and removes one occurrence of this value. 
+若要从可变集合中移除元素，请使用 [`remove()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/remove.html) 函数。
+`remove()` 接受元素值，并删除该值的一个匹配项。
 
 
 
@@ -89,13 +89,13 @@ fun main() {
 ```
 
 
-For removing multiple elements at once, there are the following functions :
+要一次删除多个元素，有以下函数：
 
-* [`removeAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/remove-all.html) removes all elements that are present in the argument collection.
-   Alternatively, you can call it with a predicate as an argument; in this case the function removes all elements for which the predicate yields `true`.
-* [`retainAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/retain-all.html) is the opposite of `removeAll()`: it removes all elements except the ones from the argument collection.
-   When used with a predicate, it leaves only elements that match it.
-* [`clear()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/clear.html) removes all elements from a list and leaves it empty.
+* [`removeAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/remove-all.html) 移除参数集合中存在的所有元素。
+   或者，你可以用谓词作为参数来调用它；在这种情况下，函数移除谓词产生 `true` 的所有元素。
+* [`retainAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/retain-all.html) 与 `removeAll()` 相反：它移除除参数集合中的元素之外的所有元素。
+   当与谓词一起使用时，它只留下与之匹配的元素。
+* [`clear()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/clear.html) 从列表中移除所有元素并将其置空。
 
 
 
