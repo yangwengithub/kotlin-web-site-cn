@@ -89,11 +89,11 @@ fun main() {
 ```
 </div>
 
-要一次删除多个元素，有以下函数 :
+要一次删除多个元素，有以下函数：
 
 * [`removeAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/remove-all.html) 移除参数集合中存在的所有元素。
    或者，你可以用谓词作为参数来调用它；在这种情况下，函数移除谓词产生 `true` 的所有元素。
-* [`retainAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/retain-all.html) 与 `removeAll()` 相反:它移除除参数集合中的元素之外的所有元素。
+* [`retainAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/retain-all.html) 与 `removeAll()` 相反：它移除除参数集合中的元素之外的所有元素。
    当与谓词一起使用时，它只留下与之匹配的元素。
 * [`clear()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/clear.html) 从列表中移除所有元素并将其置空。
 
