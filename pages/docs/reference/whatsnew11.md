@@ -55,7 +55,7 @@ launch(UI) {
 
 这里，`async { …… }` 启动一个协程，当我们使用 `await()` 时，挂起协程的执行，而执行正在等待的操作，并且在等待的操作完成时恢复（可能在不同的线程上） 。
 
-标准库通过 `yield` 和 `yieldAll` 函数使用协程来支持*惰性生成序列*。
+标准库通过 `yield` 与 `yieldAll` 函数使用协程来支持*惰性生成序列*。
 在这样的序列中，在取回每个元素之后挂起返回序列元素的代码块，
 并在请求下一个元素时恢复。这里有一个例子：
 
@@ -92,7 +92,7 @@ fun main(args: Array<String>) {
 -->在最终的 1.1 版本时保持该功能的向后兼容性。
 
 
-## 其他语言功能
+## 其他语言特性
 
 ### 类型别名
 
@@ -109,7 +109,7 @@ typealias OscarWinners = Map<String, String>
 fun countLaLaLand(oscarWinners: OscarWinners) =
         oscarWinners.count { it.value.contains("La La Land") }
 
-// 请注意，类型名称（初始名和类型别名）是可互换的：
+// 请注意，类型名称（初始名与类型别名）是可互换的：
 fun checkLaLaLandIsTheBestMovie(oscarWinners: Map<String, String>) =
         oscarWinners["Best picture"] == "La La Land"
 //sampleEnd
@@ -160,9 +160,9 @@ fun main(args: Array<String>) {
 更详细信息请参阅其 [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/bound-callable-references.md)。
 
 
-### 密封类和数据类
+### 密封类与数据类
 
-Kotlin 1.1 删除了一些对 Kotlin 1.0 中已存在的密封类和数据类的限制。
+Kotlin 1.1 删除了一些对 Kotlin 1.0 中已存在的密封类与数据类的限制。
 现在你可以在同一个文件中的任何地方定义一个密封类的子类，而不只是以作为密封类嵌套类的方式。
 数据类现在可以扩展其他类。
 这可以用来友好且清晰地定义一个表达式类的层次结构：
@@ -440,7 +440,7 @@ table {
 </div>
 
 在 Kotlin 1.0 中，传递给 `td` 的 lambda 表达式中的代码可以访问三个隐式接收者：传递给 `table`、`tr`
-和 `td` 的。 这允许你调用在上下文中没有意义的方法——例如在 `td` 里面调用 `tr`，从而<!--
+与 `td` 的。 这允许你调用在上下文中没有意义的方法——例如在 `td` 里面调用 `tr`，从而<!--
 -->在 `<td>` 中放置一个 `<tr>` 标签。
 
 在 Kotlin 1.1 中，你可以限制这种情况，以使只有在 `td` 的隐式接收者上定义的方法<!--
@@ -474,7 +474,7 @@ val port = System.getenv("PORT")?.toIntOrNull() ?: 80
 
 ### onEach()
 
-`onEach` 是一个小、但对于集合和序列很有用的扩展函数，它允许对操作链中<!--
+`onEach` 是一个小、但对于集合与序列很有用的扩展函数，它允许对操作链中<!--
 -->的集合/序列的每个元素执行一些操作，可能带有副作用。
 对于迭代其行为像 `forEach` 但是也进一步返回可迭代实例。 对于序列它返回一个<!--
 -->包装序列，它在元素迭代时延迟应用给定的动作。
@@ -490,7 +490,7 @@ inputDir.walk()
 
 </div>
 
-### also()、takeIf() 和 takeUnless()
+### also()、takeIf() 与 takeUnless()
 
 这些是适用于任何接收者的三个通用扩展函数。
  
@@ -529,7 +529,7 @@ fun main(args: Array<String>) {
 
 `takeIf` 就像单个值的 `filter`。它检测接收者是否满足该谓词，并<!--
 -->在满足时返回该接收者否则不满足时返回 `null`。
-结合 elvis-操作符和及早返回，它允许编写如下结构：
+结合 elvis-操作符与及早返回，可以编写如下结构：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -606,7 +606,7 @@ fun main(args: Array<String>) {
 //sampleEnd
     println("Counting first letters: $frequencies.")
 
-    // 另一种方式是使用“groupBy”和“mapValues”创建一个中间的映射，
+    // 另一种方式是使用“groupBy”与“mapValues”创建一个中间的映射，
     // 而“groupingBy”的方式会即时计数。
     val groupBy = words.groupBy { it.first() }.mapValues { (_, list) -> list.size }
     println("Comparing the result with using 'groupBy': ${groupBy == frequencies}.")
@@ -615,7 +615,7 @@ fun main(args: Array<String>) {
 
 </div>
 
-### Map.toMap() 和 Map.toMutableMap()
+### Map.toMap() 与 Map.toMutableMap()
 
 这俩函数可以用来简易复制映射：
 
@@ -632,7 +632,7 @@ class ImmutablePropertyBag(map: Map<String, Any>) {
 ### Map.minus(key)
 
 运算符 `plus` 提供了一种将键值对添加到只读映射中以生成新映射的方法，但是没有一种简单的方法来做相反的操作：从映射中删除一个键采用不那么直接的方式如 `Map.filter()` 或 `Map.filterKeys()`。
-现在运算符 `minus` 填补了这个空白。有 4 个可用的重载：用于删除单个键、键的集合、键的序列和键的数组。
+现在运算符 `minus` 填补了这个空白。有 4 个可用的重载：用于删除单个键、键的集合、键的序列与键的数组。
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
@@ -650,9 +650,9 @@ fun main(args: Array<String>) {
 
 </div>
 
-### minOf() 和 maxOf()
+### minOf() 与 maxOf()
 
-这些函数可用于查找两个或三个给定值中的最小和最大值，其中值是原生数字或 `Comparable` 对象。每个函数还有一个重载，它接受一个额外的 `Comparator` 实例，如果你想比较自身不可比的对象的话。
+这些函数可用于查找两个或三个给定值中的最小与最大值，其中值是原生数字或 `Comparable` 对象。每个函数还有一个重载，它接受一个额外的 `Comparator` 实例，如果你想比较自身不可比的对象的话。
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
 
@@ -674,7 +674,7 @@ fun main(args: Array<String>) {
 
 ### 类似数组的列表实例化函数
 
-类似于 `Array` 构造函数，现在有创建 `List` 和 `MutableList` 实例的函数，并通过<!--
+类似于 `Array` 构造函数，现在有创建 `List` 与 `MutableList` 实例的函数，并通过<!--
 -->调用 lambda 表达式来初始化每个元素：
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
@@ -724,16 +724,16 @@ fun main(args: Array<String>) {
 ### 抽象集合
 
 这些抽象类可以在实现 Kotlin 集合类时用作基类。
-对于实现只读集合，有 `AbstractCollection`、 `AbstractList`、 `AbstractSet` 和 `AbstractMap`，
-而对于可变集合，有 `AbstractMutableCollection`、 `AbstractMutableList`、 `AbstractMutableSet` 和 `AbstractMutableMap`。
+对于实现只读集合，有 `AbstractCollection`、 `AbstractList`、 `AbstractSet` 与 `AbstractMap`，
+而对于可变集合，有 `AbstractMutableCollection`、 `AbstractMutableList`、 `AbstractMutableSet` 与 `AbstractMutableMap`。
 在 JVM 上，这些抽象可变集合从 JDK 的抽象集合继承了大部分的功能。
 
 ### 数组处理函数
 
 标准库现在提供了一组用于逐个元素操作数组的函数：比较
-（`contentEquals` 和 `contentDeepEquals`），哈希码计算（`contentHashCode` 和 `contentDeepHashCode`），
-以及转换成一个字符串（`contentToString` 和 `contentDeepToString`）。它们都支持 JVM
-（它们作为 `java.util.Arrays` 中的相应函数的别名）和 JS（在
+（`contentEquals` 与 `contentDeepEquals`），哈希码计算（`contentHashCode` 与 `contentDeepHashCode`），
+以及转换成一个字符串（`contentToString` 与 `contentDeepToString`）。它们都支持 JVM
+（它们作为 `java.util.Arrays` 中的相应函数的别名）与 JS（在
 Kotlin 标准库中提供实现）。
 
 <div class="sample" markdown="1" data-min-compiler-version="1.1" theme="idea">
@@ -755,14 +755,14 @@ fun main(args: Array<String>) {
 ### Java 8 字节码支持
 
 Kotlin 现在可以选择生成 Java 8 字节码（命令行选项 `-jvm-target 1.8` 或者 Ant/Maven/Gradle 中<!--
--->的相应选项）。目前这并不改变字节码的语义（特别是，接口和 lambda 表达式中的默认方法<!--
+-->的相应选项）。目前这并不改变字节码的语义（特别是，接口与 lambda 表达式中的默认方法<!--
 -->的生成与 Kotlin 1.0 中完全一样），但我们计划在以后进一步使用它。
 
 
 ### Java 8 标准库支持
 
-现在有支持在 Java 7 和 8 中新添加的 JDK API 的标准库的独立版本。
-如果你需要访问新的 API，请使用 `kotlin-stdlib-jre7` 和 `kotlin-stdlib-jre8` maven 构件，而不是标准的 `kotlin-stdlib`。
+现在有支持在 Java 7 与 8 中新添加的 JDK API 的标准库的独立版本。
+如果你需要访问新的 API，请使用 `kotlin-stdlib-jre7` 与 `kotlin-stdlib-jre8` maven 构件，而不是标准的 `kotlin-stdlib`。
 这些构件是在 `kotlin-stdlib` 之上的微小扩展，它们将它作为传递依赖项带到项目中。
 
 
@@ -804,7 +804,7 @@ println(engine.eval("x + 2"))  // 输出 5
 
 ### kotlin.reflect.full
 
-[为 Java 9 支持准备](https://blog.jetbrains.com/kotlin/2017/01/kotlin-1-1-whats-coming-in-the-standard-library/)，在 `kotlin-reflect.jar` 库中的扩展函数和属性已移动<!--
+[为 Java 9 支持准备](https://blog.jetbrains.com/kotlin/2017/01/kotlin-1-1-whats-coming-in-the-standard-library/)，在 `kotlin-reflect.jar` 库中的扩展函数与属性已移动<!--
 -->到 `kotlin.reflect.full` 包中。旧包（`kotlin.reflect`）中的名称已弃用，将在
 Kotlin 1.2 中删除。请注意，核心反射接口（如 `KClass`）是 Kotlin 标准库
 （而不是 `kotlin-reflect`）的一部分，不受移动影响。
@@ -828,7 +828,7 @@ minifiers、 optimisers、 linters 等）更加友好。
 
 如果你需要以类型安全的方式在 Kotlin 中访问 JavaScript 实现的类，
 你可以使用 `external` 修饰符写一个 Kotlin 声明。（在 Kotlin 1.0 中，使用了 `@native` 注解。）
-与 JVM 目标平台不同，JS 平台允许对类和属性使用 external 修饰符。
+与 JVM 目标平台不同，JS 平台允许对类与属性使用 external 修饰符。
 例如，可以按以下方式声明 DOM `Node` 类：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>

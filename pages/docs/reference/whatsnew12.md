@@ -468,7 +468,7 @@ Kotlin 1.2 引入了一些使用  `BigInteger` 与 `BigDecimal` 运算以及由�
 
 ## JavaScript 后端
 
-### 默认启用 TypedArrays 支持
+### 默认启用 TypedArray 支持
 
 将 Kotlin 原生数组（如 `IntArray`、 `DoubleArray` 等）
 翻译为 [JavaScript 有类型数组](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays)的 JS 有类型数组支持<!--
