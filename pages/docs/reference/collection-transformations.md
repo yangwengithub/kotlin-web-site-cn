@@ -197,10 +197,10 @@ fun parseFullName(fullName: String): FullName {
 
 ## 打平
 
-If you operate nested collections, you may find the standard library functions that provide flat access to nested collection elements useful.
+如需操作嵌套的集合，则可能会发现提供对嵌套集合元素进行打平访问的标准库函数很有用。
 
-The first function is [`flatten()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/flatten.html). You can call it on a collection of collections, for example, a `List` of `Set`s.
-The function returns a single `List` of all the elements of the nested collections.
+第一个函数为 [`flatten()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/flatten.html)。可以在一个集合的集合（例如，一个 `Set` 组成的 `List`）上调用它。
+该函数返回嵌套集合中的所有元素的一个 `List`。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -214,10 +214,10 @@ fun main() {
 ```
 </div>
 
-Another function – [`flatMap()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/flat-map.html) provides a flexible way to process nested collections.
-It takes a function that maps a collection element to another collection.
-As a result, `flatMap()` returns a single list of its return values on all the elements.
-So, `flatMap()` behaves as a subsequent call of `map()` (with a collection as a mapping result) and `flatten()`.
+另一个函数——[`flatMap()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/flat-map.html) 提供了一种灵活的方式来处理嵌套的集合。
+它需要一个函数将一个集合元素映射到另一个集合。
+因此，`flatMap()` 返回单个列表其中包含所有元素的值。
+所以，`flatMap()` 表现为 `map()`（以集合作为映射结果）与 `flatten()` 的连续调用。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
