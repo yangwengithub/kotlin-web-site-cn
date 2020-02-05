@@ -102,8 +102,8 @@ binaries {
 | iOS Simulator (x86_64) | `iosX64()`      |
 {:.zebra}
  
-我们运行 `linkNative` Gradle 任务，以[在 IDE 中](basic-kotlin-native-app.html#run-in-ide)<!--
--->构建该库。
+我们运行 `linkNative` Gradle 任务以<!--
+-->[在 IDE 中](using-intellij-idea.html)构建该库，
 或者使用如下的控制台命令：
 [[include pages-includes/docs/tutorials/native/linkNative.md]]
 

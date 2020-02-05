@@ -8,7 +8,7 @@
 Kotlin/Native 可以通过 [kotlin 多平台](/docs/reference/building-mpp-with-gradle.html)<!--
 -->插件来使用 [Gradle](https://gradle.org) 构建系统。
 
-[基本 Kotlin/Native 应用程序](basic-kotlin-native-app.html#create-gradle-project)<!--
+[基本 Kotlin/Native 应用程序](/docs/tutorials/native/using-gradle.html)<!--
 -->这篇教程涵盖了使用 Gradle 创建 IDE 兼容工程的<!--
 -->基础知识。如果你正在寻找关于第一步的更多细节<!--
 -->以及如何开始一个新的 Kotlin/Native 项目并在 IntelliJ IDEA 中打开它的说明，则请你阅读<!--
