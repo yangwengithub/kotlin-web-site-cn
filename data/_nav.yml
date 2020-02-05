@@ -394,10 +394,14 @@ tutorials:
 
     - title: 原生
       content:
+        - url: /docs/tutorials/native/using-command-line-compiler.html
+          title: Hello Kotlin/Native using Command Line Compiler
+        - url: /docs/tutorials/native/using-gradle.html
+          title: Hello Kotlin/Native using Gradle
+        - url: /docs/tutorials/native/using-intellij-idea.html
+          title: Hello Kotlin/Native using IntelliJ IDEA
         - url: /docs/tutorials/native/intro-to-kotlin-native.html
-          title: Kotlin/Native 简介
-        - url: /docs/tutorials/native/basic-kotlin-native-app.html
-          title: 基本 Kotlin/Native 应用程序
+          title: Creating an HTTP Client in Kotlin/Native
         - url: /docs/tutorials/native/mapping-primitive-data-types-from-c.html
           title: 映射来自 C 语言的原始数据类型
         - url: /docs/tutorials/native/mapping-struct-union-types-from-c.html

@@ -18,12 +18,6 @@ issue: EVAN-5343
 - [如何映射结构与联合类型](#映射-c-语言的结构与联合类型)
 - [在 Kotlin 中如何使用结构与联合类型](#在-kotlin-中使用结构与联合类型)
 
-我们需要在自己的机器上已经安装了 Kotlin 编译器。
-这篇<!--
--->[基本 Kotlin 应用程序](basic-kotlin-native-app.html#obtaining-the-compiler)<!--
--->教程涵盖了这一步骤。
-我们假定拥有一个控制台，其中 `kotlinc-native`、`cinterop` 与 `klib` 命令均可用。
-
 ## 映射 C 语言的结构与联合类型
 
 理解在 Kotlin 与 C 之间进行映射的最好方式是尝试编写一个小型<!--
@@ -90,7 +84,7 @@ fun main() {
 </div>
 
 现在我们已经准备好<!--
--->[在 IntelliJ IDEA 中打开这个工程](basic-kotlin-native-app.html#open-in-ide)<!--
+-->[在 IntelliJ IDEA 中打开这个工程](using-intellij-idea.html)<!--
 -->并且看看如何修正这个示例工程。当我们做了这些之后，
 我们将观察到 C 的原始类型已经被映射到了 Kotlin/Native。
 
@@ -297,7 +291,7 @@ fun callMix_value() {
 
 现在我们应学习了如何在我们的代码中使用 C 声明，我们已经准备好<!--
 -->在一个真实的示例中尝试它的输出。我们来修改代码并看看如何<!--
--->[在 IDE 中](basic-kotlin-native-app.html#run-in-ide)调用 `runDebugExecutableNative` Gradle 任务来运行它。
+-->[在 IDE 中](using-intellij-idea.html)调用 `runDebugExecutableNative` Gradle 任务来运行它。
 或者使用下面的控制台命令：
 [[include pages-includes/docs/tutorials/native/runDebugExecutableNative.md]]
 
