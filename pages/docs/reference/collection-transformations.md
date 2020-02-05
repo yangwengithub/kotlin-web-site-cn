@@ -239,12 +239,12 @@ fun main() {
 
 ## 字符串表示
 
-If you need to retrieve the collection content in a readable format, use functions that transform the collections to strings: [`joinToString()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html) and [`joinTo()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to.html).
+如果需要以可读格式检索集合内容，请使用将集合转换为字符串的函数：[`joinToString()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html) 与 [`joinTo()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to.html)。
 
-`joinToString()` builds a single `String` from the collection elements based on the provided arguments.
-`joinTo()` does the same but appends the result to the given [`Appendable`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-appendable/index.html) object.
+`joinToString()` 根据提供的参数从集合元素构建单个 `String`。
+`joinTo()` 执行相同的操作，但将结果附加到给定的 [`Appendable`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-appendable/index.html) 对象。
 
-When called with the default arguments, the functions return the result similar to calling `toString()` on the collection: a `String` of elements' string representations separated by commas with spaces. 
+当使用默认参数调用时，函数返回的结果类似于在集合上调用 `toString()`：各元素的字符串表示形式以空格分隔而成的 `String`。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -264,8 +264,8 @@ fun main() {
 ```
 </div>
 
-To build a custom string representation, you can specify its parameters in function arguments `separator`, `prefix`, and `postfix`.
-The resulting string will start with the `prefix` and end with the `postfix`. The `separator` will come after each element except the last.
+要构建自定义字符串表示形式，可以在函数参数 `separator`、`prefix` 与 `postfix`中指定其参数。
+结果字符串将以 `prefix` 开头，以 `postfix` 结尾。除最后一个元素外，`separator` 将位于每个元素之后。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -279,8 +279,8 @@ fun main() {
 ```
 </div>
 
-For bigger collections, you may want to specify the `limit` – a number of elements that will be included into result.
-If the collection size exceeds the `limit`, all the other elements will be replaced with a single value of the `truncated` argument.
+对于较大的集合，可能需要指定 `limit` ——将包含在结果中元素的数量。
+如果集合大小超出 `limit`，所有其他元素将被 `truncated` 参数的单个值替换。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -294,7 +294,7 @@ fun main() {
 ```
 </div>
 
-Finally, to customize the representation of elements themselves, provide the `transform` function. 
+最后，要自定义元素本身的表示形式，请提供 `transform` 函数。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
