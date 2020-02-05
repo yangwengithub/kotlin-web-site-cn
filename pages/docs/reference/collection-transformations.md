@@ -244,7 +244,7 @@ fun main() {
 `joinToString()` 根据提供的参数从集合元素构建单个 `String`。
 `joinTo()` 执行相同的操作，但将结果附加到给定的 [`Appendable`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-appendable/index.html) 对象。
 
-当使用默认参数调用时，函数返回的结果类似于在集合上调用 `toString()`：`String` 的字符串元素表示形式，以逗号和空格分隔。
+当使用默认参数调用时，函数返回的结果类似于在集合上调用 `toString()`：各元素的字符串表示形式以空格分隔而成的 `String`。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -264,7 +264,7 @@ fun main() {
 ```
 </div>
 
-要构建自定义字符串表示形式，可以在函数参数 `separator`，`prefix` 与 `postfix`中指定其参数。
+要构建自定义字符串表示形式，可以在函数参数 `separator`、`prefix` 与 `postfix`中指定其参数。
 结果字符串将以 `prefix` 开头，以 `postfix` 结尾。除最后一个元素外，`separator` 将位于每个元素之后。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
