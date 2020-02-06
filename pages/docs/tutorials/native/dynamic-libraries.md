@@ -114,12 +114,12 @@ binaries {
 -->所有声明的前缀。
 
 现在我们已经准备好<!--
--->[在 IntelliJ IDEA 中打开这个工程](basic-kotlin-native-app.html#open-in-ide)<!--
+-->[在 IntelliJ IDEA 中打开这个工程](/docs/tutorials/native/using-intellij-idea.html)<!--
 -->并且可以看到如何修正这个示例工程。在我们这样做的时候，
 我们将会研究 C 函数如何映射为 Kotlin/Native 声明。
 
 我们来运行这个 `linkNative` Gradle 任务来<!--
--->[在 IDE 中](basic-kotlin-native-app.html#run-in-ide)构建该库。
+-->在 IDE 中构建该库。
 或者运行下面这行控制台命令：
 [[include pages-includes/docs/tutorials/native/linkNative.md]]
 

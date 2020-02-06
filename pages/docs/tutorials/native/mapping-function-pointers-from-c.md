@@ -18,12 +18,6 @@ issue: EVAN-5343
 - [将 Kotlin 函数作为 C 函数指针传递](#将-kotlin-函数作为-c-函数指针传递)
 - [在 Kotlin 中使用 C 函数指针](#在-kotlin-中使用-c-函数指针)
 
-我们需要在自己的机器上已经安装了 Kotlin 编译器。
-这篇<!--
--->[基本 Kotlin 应用程序](basic-kotlin-native-app.html#obtaining-the-compiler)<!--
--->涵盖了这一步骤的细节。
-我们假定拥有一个控制台，其中 `kotlinc-native`、`cinterop` 与 `klib` 命令均可用。
-
 
 ## 映射 C 中的函数指针类型
 
@@ -88,7 +82,7 @@ fun main() {
 </div>
 
 现在我们已经准备好<!--
--->[在 IntelliJ IDEA 中打开这个工程](basic-kotlin-native-app.html#open-in-ide)<!--
+-->[在 IntelliJ IDEA 中打开这个工程](using-intellij-idea.html)<!--
 -->并且看看如何修正这个示例工程。当我们做了这些之后，
 我们将观察到 C 函数是如何映射到 Kotlin/Native 声明的。
 
@@ -161,7 +155,7 @@ Kotlin 将函数指针返回类型转换到一个可空的 `CPointer<CFunction<.
 ## 修改代码
 
 我们已经看到了所有的声明，所以是时候修改并运行代码了。
-我们[在 IDE 中](basic-kotlin-native-app.html#run-in-ide)运行 `runDebugExecutableNative` Gradle 任务<!--
+我们[在 IDE 中](using-intellij-idea.html)运行 `runDebugExecutableNative` Gradle 任务<!--
 -->或使用下面的命令来运行代码：
 [[include pages-includes/docs/tutorials/native/runDebugExecutableNative.md]]
 

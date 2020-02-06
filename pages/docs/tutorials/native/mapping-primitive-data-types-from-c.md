@@ -118,7 +118,7 @@ fun main() {
 </div>
 
 现在我们已经准备好<!--
--->[在 IntelliJ IDEA 中打开这个工程](basic-kotlin-native-app.html#open-in-ide)<!--
+-->[在 IntelliJ IDEA 中打开这个工程](using-intellij-idea.html)<!--
 -->并且看看如何修正这个示例工程。当我们做完这些之后，
 我们将检查 C 的原始类型是如何映射到 Kotlin/Native 的。
 
@@ -157,7 +157,7 @@ C 类型按照我们期望的方式进行了映射，注意，`char` 类型映�
 ## 修改代码
 
 我们已经看到了所有的定义并且是时候来修改代码了。
-我们[在 IDE 中](basic-kotlin-native-app.html#run-in-ide)运行 `runDebugExecutableNative` Gradle 任务<!--
+我们[在 IDE 中](using-intellij-idea.html)运行 `runDebugExecutableNative` Gradle 任务<!--
 -->或使用下面的命令来运行代码：
 [[include pages-includes/docs/tutorials/native/runDebugExecutableNative.md]]
 
