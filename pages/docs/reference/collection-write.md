@@ -142,7 +142,7 @@ fun main() {
 
 ## 更新元素
 
-Lists and sets also provide operations for updating elements.
-They are described in [List Specific Operations](list-operations.html) and [Map Specific Operations](map-operations.html).
-For sets, updating doesn't make sense since it's actually removing an element and adding another one.
+列表和集合还提供更新元素的操作。
+它们在 [List 相关操作](list-operations.html)与 [Map 相关操作](map-operations.html)中有所描述。
+对于集合来说，更新没有意义，因为它实际上是移除一个元素并添加另一个元素。
 
