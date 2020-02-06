@@ -117,12 +117,12 @@ fun main() {
 ```
 </div>
 
-Another way to remove elements from a collection is with the [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) operator – the in-place version of [`minus`](collection-plus-minus.html).
-The second argument can be a single instance of the element type or another collection.
-With a single element on the right-hand side, `-=` removes the _first_ occurrence of it.
-In turn, if it's a collection, _all_ occurrences of its elements are removed.
-For example, if a list contains duplicate elements, they are removed at once.
-The second operand can contain elements that are not present in the collection. Such elements don't affect the operation execution.
+从集合中移除元素的另一种方法是使用 [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html)  (`-=`) - [`minus`](collection-plus-minus.html) 操作符。
+第二个参数可以是元素类型的单个实例或另一个集合。
+右边有一个元素时，`-=` 会移除它的第一个匹配项。
+反过来，如果它是一个集合，那么它的元素的所有引用都将被移除。
+例如，如果列表包含重复的元素，它们将被立即删除。
+第二个操作数可以包含集合中不存在的元素。这些元素不会影响操作的执行。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
