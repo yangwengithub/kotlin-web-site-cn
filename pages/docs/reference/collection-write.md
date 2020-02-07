@@ -117,12 +117,12 @@ fun main() {
 ```
 </div>
 
-Another way to remove elements from a collection is with the [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) operator – the in-place version of [`minus`](collection-plus-minus.html).
-The second argument can be a single instance of the element type or another collection.
-With a single element on the right-hand side, `-=` removes the _first_ occurrence of it.
-In turn, if it's a collection, _all_ occurrences of its elements are removed.
-For example, if a list contains duplicate elements, they are removed at once.
-The second operand can contain elements that are not present in the collection. Such elements don't affect the operation execution.
+从集合中移除元素的另一种方法是使用 [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) ——原地修改版的 [`minus`](collection-plus-minus.html) 操作符。 [`minus`](collection-plus-minus.html) 操作符。
+第二个参数可以是元素类型的单个实例或另一个集合。
+右边是单个元素时，`-=` 会移除它的第一个匹配项。
+反过来，如果它是一个集合，那么它的所有元素的每次出现都会删除。
+例如，如果列表包含重复的元素，它们将被同时删除。
+第二个操作数可以包含集合中不存在的元素。这些元素不会影响操作的执行。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -142,7 +142,7 @@ fun main() {
 
 ## 更新元素
 
-Lists and sets also provide operations for updating elements.
-They are described in [List Specific Operations](list-operations.html) and [Map Specific Operations](map-operations.html).
-For sets, updating doesn't make sense since it's actually removing an element and adding another one.
+list 和 set 还提供更新元素的操作。
+它们在 [List 相关操作](list-operations.html)与 [Map 相关操作](map-operations.html)中有所描述。
+对于 set 来说，更新没有意义，因为它实际上是移除一个元素并添加另一个元素。
 
