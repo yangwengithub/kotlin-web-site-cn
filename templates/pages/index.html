@@ -1,217 +1,144 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Kotlin 语言中文站</title>
-    {% include 'inc/head.html' %}
+{% extends 'base.html' %}
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='index.css')|autoversion }}">
-</head>
-<body class="page_index">
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W8DZRW"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+{% block body_class %}page__index-new{% endblock %}
 
-<div class="global-layout">
-    {% include 'inc/header.html' %}
-
-    <section class="kotlin-overview-section _works-on">
-        <h2 class="section-header">用于以下领域的编程语言</h2>
-        <div class="works-on-list">
-            {%- set technologies = [
-              {'target': 'JVM', 'href': '/docs/reference/server-overview.html'},
-              {'target': 'Android', 'href': '/docs/reference/android-overview.html'},
-              {'target': '浏览器', 'href': '/docs/reference/js-overview.html'},
-              {'target': '原生', 'href': '/docs/reference/native-overview.html'}
-            ]-%}
-
-            {% for technology in technologies %}
-                {% if(technology.href) %}
-                    <a href="{{ technology.href }}" class="works-on-item">
-                        <div class="works-on-icon _{{ technology['target'].lower() }}"></div>
-                        <div class="works-on-text">
-                            {{ technology['target'] }}<br/>&nbsp;
-                        </div>
-                    </a>
-                {% else %}
-                    <div class="works-on-item">
-                        <div class="works-on-icon _{{ technology['target'].lower() }}"></div>
-                        <div class="works-on-text">
-                            {{ technology['target'] }}<br/>（就快好了）
-                        </div>
-                    </div>
-                {% endif %}
-            {% endfor %}
+{% block page_outer_content %}
+    <section class="kto-overview-section kto-overview-section_mode_dark kotlin-intro-section">
+        <div class="g-layout">
+            <p class="kotlin-intro-section__intro">
+                用于 <a href="/docs/reference/android-overview.html">Android</a>、 <a href="https://www.jetbrains.com/lp/mobilecrossplatform/" target="_blank">移动端跨平台</a><br>
+                与<a href="/docs/reference/js-overview.html"> web 开发</a>、 <a href="/docs/reference/server-overview.html">服务器端</a>、 <a href="/docs/reference/native-overview.html">原生</a><br>
+                以及<a href="/docs/reference/data-science-overview.html">数据科学</a>的编程语言。永远开源 <a target="_blank" href="{{ config.GITHUB_URL }}" class="kotlin-intro-section__icon">Github</a>
+            </p>
+            <p class="kotlin-intro-section__buttons">
+                <a class="kto-button kto-button_theme_dark kto-button_size_m kto-button_mode_primary smooth-anchor" href="#try-kotlin">入门</a>
+                <a class="kotlin-banner-section__try-ide" href="/docs/tutorials/getting-started.html">在 IDE 中试用</a>
+            </p>
         </div>
     </section>
 
-    <section class="kotlin-overview-section _features">
-        <h2 class="section-header">为什么选择 Kotlin？</h2>
-        <div class="section-content">
-            <ul class="kotlin-features-list">
+    <section class="kto-overview-section kto-overview-section_mode_dark kotlin-banner-section">
+        <h2 class="kotlin-banner-section__title g-layout">Kotlin 近期动态</h2>
+        <div class="kotlin-banner-section__banner">
+            <a target="_blank" class="kotlin-banner-section__link g-layout"
+               href="https://surveys.jetbrains.com/s3/kotlin-census-2019">
+                <img
+                    alt="Kotlin 调查问卷 2020！" width="960"
+                    src="/_assets/static/css/com/layout/images/banners/kt_census_20.png"
+                >
+            </a>
+        </div>
+    </section>
+
+    <section class="kto-overview-section kto-overview-section_mode_dark kotlin-news-section">
+        <div class="g-layout">
+            <div class="kotlin-news-section-news">
+                {% for news in site.data["last-news"] %}
+                    {% set domain_link = get_domain(news.link) %}
+                    <a class="kotlin-news-section-news__item" href="{{ news.link }}"{% if domain_link %} target="_blank"{% endif %}>
+                        <span class="kotlin-news-section-news__title">
+                            {{ news.title }}
+                        </span>
+                        <span class="kotlin-news-section-news__tag{% if domain_link %} kotlin-news-section-news__tag_external{% endif %}">
+                            {% if news.tag %}{{ news.tag }}
+                            {% elif domain_link %}{{ domain_link }}
+                            {% else %}Overview{% endif %}
+                        </span>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="kto-overview-section kto-overview-section_mode_dark kotlin-jump-section">
+        <div class="kotlin-jump-section__wrapper g-layout">
+            <div class="kotlin-jump-section__content">
+                <h2 class="kotlin-jump-section__title">直接调转到</h2>
+                <p>一站式轻松学习 Kotlin 所需的所有资源</p>
+            </div>
+            <a class="kto-button kto-button_theme_dark kto-button_size_m kto-button_mode_outline" href="/docs/reference/"> 入门</a>
+        </div>
+    </section>
+
+    {% include 'inc/pages/index/code-examples.html' %}
+
+    <section class="kto-overview-section kotlin-why-section">
+        <div class="g-layout">
+            <h2 id="why-kotlin" class="kto-overview-section__title">
+                <a class="kto-overview-section__title_link" href="#why-kotlin">为什么选择 Kotlin？</a>
+            </h2>
+            <ul class="kto-features-list">
                 {% for feature in features %}
-                    <li class="kotlin-feature _{{ feature.id }} js-popup-open-button"
-                        data-popup-id="kotlin-feature_{{ feature.id }}">
-                        <div class="feature-image">
-                            <div class="feature-icon _{{ feature.id }}"></div>
+                    <li class="kto-features-list__feature kto-features-list__feature_{{ feature.id }}">
+                        <div class="kto-features-list__short-info">
+                            <h3 class="kto-features-list__title">{{ feature.title | safe }}</h3>
+                            <p class="kto-features-list__description">{{ feature.description | safe }}</p>
                         </div>
-                        <h3 class="feature-title">{{ feature.title }}</h3>
-                        <p class="feature-description">{{ feature.description }}</p>
-                        <span class="feature-example-link">参见示例</span>
+                        <div class="kto-features-list__content">
+                            {{ feature.content | safe }}
+
+                            {% if feature.id == "工具友好" %}
+                                <ul class="kto-getting-list g-layout">
+                                    {% macro render_get_kotlin_item(id, title, description, instructions, download, className="") -%}
+                                        <li class="kto-getting-item kto-getting-item_{{ id }} {{ className }}">
+                                            <div class="kto-getting-item__content">
+                                                <h3 class="kto-getting-item__title">{{ title }}</h3>
+                                                <p class="kto-getting-item__description"> {{ caller() }}</p>
+                                            </div>
+                                            <div>
+                                                {% if download %}<a href="{{ download }}" target="_blank" class="kto-getting-item__download">下载</a>{% endif %}
+                                                <a href="{{ instructions }}" class="kto-getting-item__instruction">使用说明</a>
+                                            </div>
+                                        </li>
+                                    {%- endmacro %}
+
+                                    {% call render_get_kotlin_item(id="intellij-idea", title="IntelliJ IDEA", className="jetbrains-logo _logo-intellij-idea",
+                                                instructions="/docs/tutorials/getting-started.html", download="https://www.jetbrains.com/idea/download/") %}
+                                        IntelliJ IDEA 社区版或 IntelliJ IDEA Ultimate 中已自带
+                                    {% endcall %}
+
+                                    {% call render_get_kotlin_item(id="android-studio", title="Android Studio",
+                                                instructions="/docs/tutorials/kotlin-android.html",  download="https://developer.android.com/studio/") %}
+                                        <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.0</a> 已自带，有插件可用于早期版本
+                                    {% endcall %}
+
+                                    {% call render_get_kotlin_item(id="eclipse", title="Eclipse", instructions="/docs/tutorials/getting-started-eclipse.html") %}
+                                        从 Eclipse Marketplace 安装插件
+                                    {% endcall %}
+
+                                    {% call render_get_kotlin_item(id="standalone-compiler", title="Standalone Compiler", instructions="/docs/tutorials/command-line.html") %}
+                                    使用任何编辑器，并在命令行构建
+                                    {% endcall %}
+                                </ul>
+                            {% endif %}
+                        </div>
                     </li>
                 {% endfor %}
             </ul>
         </div>
-
-        {% for feature in features %}
-            <div class="overview-popup overview-popup_{{ feature.id }} _hidden js-popup"
-                 id="kotlin-feature_{{ feature.id }}">
-                <div class="popup-content">
-                    {{ feature.content | safe }}
-                </div>
-
-                <div class="popup-close-button js-popup-close-button"
-                     data-popup-id="kotlin-feature_{{ feature.id }}"></div>
-            </div>
-            <div class="overview-popup-overlay"></div>
-        {% endfor %}
-
     </section>
 
-    {# This fle conteins a lot of pre-formatted code. #}
-    {% include 'inc/pages/index/code-examples.html' %}
-
-    <section class="kotlin-overview-section _get-kotlin" id="get-kotlin">
-        <div class="section-content">
-            <div class="get-kotlin-options-list">
-                <div class="option-item _intellij-idea">
-                    <div class="option-image">
-                        <div class="jetbrains-logo _logo-intellij-idea _size-2"></div>
-                    </div>
-                    <div class="option-title-pre-text">使用</div>
-                    <h3 class="option-title">IntelliJ IDEA</h3>
-
-                    <p class="option-description">
-                        IntelliJ IDEA 社区版或 IntelliJ IDEA Ultimate 中已自带
-                    </p>
-
-                    <div class="option-link-wrap">
-                        <a href="/docs/tutorials/getting-started.html"
-                           class="option-link">
-                            使用说明
-                        </a>
-                    </div>
-                </div>
-
-                <div class="option-item">
-                    <div class="option-image _android-studio"></div>
-                    <div class="option-title-pre-text">使用</div>
-                    <h3 class="option-title">Android Studio</h3>
-
-                    <p class="option-description">
-                        <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.0</a> 已自带，有插件可用于早期版本
-                    </p>
-
-
-                    <div class="option-link-wrap">
-                        <a href="/docs/tutorials/kotlin-android.html"
-                           class="option-link">
-                            使用说明
-                        </a>
-                    </div>
-                </div>
-
-                <div class="option-item">
-                    <div class="option-image _eclipse"></div>
-                    <div class="option-title-pre-text">使用</div>
-                    <h3 class="option-title">Eclipse</h3>
-
-                    <p class="option-description">
-                        从 Eclipse Marketplace 安装插件
-                    </p>
-
-                    <div class="option-link-wrap">
-                        <a href="/docs/tutorials/getting-started-eclipse.html"
-                           class="option-link">
-                            使用说明
-                        </a>
-                    </div>
-                </div>
-
-                <div class="option-item _standalone-compiler">
-                    <div class="option-image _standalone-compiler"></div>
-                    <div class="option-title-pre-text">独立的</div>
-                    <h3 class="option-title">编译器</h3>
-
-                    <p class="option-description">
-                        使用任何编辑器，并在命令行构建
-                    </p>
-
-                    <div class="option-link-wrap">
-                        <a href="/docs/tutorials/command-line.html"
-                           class="option-link">下载编译器</a>
-                    </div>
-                </div>
-            </div>
-            <p class="kotlin-version">最新版本： {{ data.releases.latest.version }}</p>
-        </div>
-    </section>
-
-    <section class="kotlin-overview-section _testimonials">
-        <h2 class="section-header">Kotlin 用途集锦</h2>
-
-        <div class="testimonials-layout">
-            <div class="testimonials">
+    <section id="usage-highlights" class="kto-overview-section kotlin-highlights-section">
+        <div class="g-layout">
+            <h2 class="kto-overview-section__title kotlin-highlights-section__title">
+                <a class="kto-overview-section__title_link" href="#usage-highlights">Kotlin 用途集锦</a>
+            </h2>
+            <ul class="kto-highlights">
                 {% for testimonial in data.testimonials %}
-                    <div class="testimonial">
-                        <h3 class="testimonial-header">{{ testimonial.company }}</h3>
-                        <div class="testimonial-text">{{ testimonial.text | safe }}</div>
-                    </div>
+                    <li class="kto-highlights-item">
+                        <h3 class="kto-highlights-item__header">{{ testimonial.company | safe }}</h3>
+                        <div class="kto-highlights-item__text">{{ testimonial.text | safe }}</div>
+                    </li>
                 {% endfor %}
-            </div>
-        </div>
-    </section>
-
-    <section class="kotlin-overview-section _community">
-        <h2 class="section-header">保持联系</h2>
-        <div class="section-content">
-            <ul class="links-list">
-                <li class="links-list-item">
-                    <a href="http://blog.jetbrains.com/kotlin" class="link" target="_blank">
-                        <span class="link-icon _blog"></span>
-                        <span class="link-text">博客</span>
-                    </a>
-                </li>
-
-                <li class="links-list-item">
-                    <a href="community.html" class="link">
-                        <span class="link-icon _forum"></span>
-                        <span class="link-text">社区</span>
-                    </a>
-                </li>
-
-                <li class="links-list-item">
-                    <a href="{{ config.TWITTER_URL }}" class="link" target="_blank">
-                        <span class="link-icon _twitter"></span>
-                        <span class="link-text">Twitter</span>
-                    </a>
-                </li>
-
-                <li class="links-list-item">
-                    <a href="https://youtrack.jetbrains.com/issues/KT" class="link" target="_blank">
-                    <span class="link-icon _issue-tracker">
-                        <div class="jetbrains-logo _logo-youtrack _size-2"></div>
-                    </span>
-                        <span class="link-text">问题跟踪</span>
-                    </a>
-                </li>
             </ul>
         </div>
     </section>
-</div>
+{% endblock %}
 
-{% include 'inc/footer.html' %}
-{% include 'inc/search-popup.html' %}
-<script src="{{ url_for('static', filename='index.js')|autoversion }}"></script>
-</body>
-</html>
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css')|autoversion }}">
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='index.js')|autoversion }}"></script>
+{% endblock %}
