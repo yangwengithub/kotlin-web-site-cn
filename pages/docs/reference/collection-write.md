@@ -117,7 +117,7 @@ fun main() {
 ```
 </div>
 
-从集合中移除元素的另一种方法是使用 [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) —— 原地修改版的 [`minus`](collection-plus-minus.html) 操作符。 [`minus`](collection-plus-minus.html) 操作符。
+从集合中移除元素的另一种方法是使用 [`minusAssign`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/minus-assign.html) (`-=`) ——原地修改版的 [`minus`](collection-plus-minus.html) 操作符。 [`minus`](collection-plus-minus.html) 操作符。
 第二个参数可以是元素类型的单个实例或另一个集合。
 右边是单个元素时，`-=` 会移除它的第一个匹配项。
 反过来，如果它是一个集合，那么它的所有元素的每次出现都会删除。
