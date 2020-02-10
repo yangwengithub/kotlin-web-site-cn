@@ -14,7 +14,6 @@ Kotlin 标准库包含用于取集合的一部分的扩展函数。
 
 [`slice()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html) 返回具有给定索引的 collection 元素列表。
 索引可以作为[区间](ranges.html)或作为整数值的集合传递。
-The indices may be passed either as a [range](ranges.html) or as a collection of integer values. 
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -32,11 +31,11 @@ fun main() {
 
 ## Take 与 drop
 
-To get the specified number of elements starting from the first, use the [`take()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/take.html) function.
-For getting the last elements, use [`takeLast()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/take-last.html).
-When called with a number larger than the collection size, both functions return the whole collection.  
+要从头开始获取指定数量的元素，请使用 [`take()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/take.html) 函数。
+要从尾开始获取指定数量的元素，请使用 [`takeLast()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/take-last.html)。
+当调用的数字大于集合的大小时，两个函数都将返回整个集合。
 
-To take all the elements except a given number of first or last elements, call the [`drop()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/drop.html) and [`dropLast()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/drop-last.html) functions respectively.
+要从头或从尾去除给定数量的元素，请调用 [`drop()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/drop.html) 或 [`dropLast()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/drop-last.html) 函数。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -53,13 +52,13 @@ fun main() {
 ```
 </div>
 
-You can also use predicates to define the number of elements for taking or dropping.
-There are four functions similar to the ones described above:
+还可以使用谓词来定义要获取或去除的元素的数量。
+有四个与上述功能相似的函数：
 
-* [`takeWhile()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/take-while.html) is `take()` with a predicate: it takes the elements up to but excluding the first one not matching the predicate. If the first collection element doesn't match the predicate, the result is empty.
-* [`takeLastWhile()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/take-last-while.html) is similar to `takeLast()`: it takes the range of elements matching the predicate from the end of the collection. The first element of the range is the element next to the last element not matching the predicate. If the last collection element doesn't match the predicate, the result is empty;
-* [`dropWhile()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/drop-while.html) is the opposite to `takeWhile()` with the same predicate: it returns the elements from the first one not matching the predicate to the end.
-* [`dropLastWhile()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/drop-last-while.html) is the opposite to `takeLastWhile()` with the same predicate: it returns the elements from the beginning to the last one not matching the predicate.
+* [`takeWhile()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/take-while.html) 是带有谓词的 `take()`：它将不停获取元素直到排除与谓词匹配的首个元素。如果首个集合元素与谓词不匹配，则结果为空。
+* [`takeLastWhile()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/take-last-while.html) 与 `takeLast()` 类似：它从集合末尾获取与谓词匹配的元素区间。区间的首个元素是与谓词不匹配的最后一个元素右边的元素。如果最后一个集合元素与谓词不匹配，则结果为空。
+* [`dropWhile()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/drop-while.html) 与具有相同谓词的 `takeWhile()` 相反：它将首个与谓词不匹配的元素返回到末尾。
+* [`dropLastWhile()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/drop-last-while.html) 与具有相同谓词的 `takeLastWhile()` 相反：它返回从开头到最后一个与谓词不匹配的元素。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
