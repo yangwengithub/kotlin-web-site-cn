@@ -142,7 +142,7 @@ fun main() {
 
 ## 更新元素
 
-list 和 set 还提供更新元素的操作。
+list 和 map 还提供更新元素的操作。
 它们在 [List 相关操作](list-operations.html)与 [Map 相关操作](map-operations.html)中有所描述。
 对于 set 来说，更新没有意义，因为它实际上是移除一个元素并添加另一个元素。
 
