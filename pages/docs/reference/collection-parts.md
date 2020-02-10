@@ -7,12 +7,13 @@ title: "取集合的一部分"
 
 # 取集合的一部分
 
-The Kotlin standard library contains extension functions for retrieving parts of a collection.
-These functions provide a variety of ways to select elements for the result collection: listing their positions explicitly, specifying the result size, and others. 
+Kotlin 标准库包含用于取集合的一部分的扩展函数。
+这些函数提供了多种方法来选择结果集合的元素：显式列出其位置，指定结果大小等。
 
 ## Slice
 
-[`slice()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html) returns a list of the collection elements with given indices.
+[`slice()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html) 返回具有给定索引的 collection 元素列表。
+索引可以作为[区间](ranges.html)或作为整数值的集合传递。
 The indices may be passed either as a [range](ranges.html) or as a collection of integer values. 
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
