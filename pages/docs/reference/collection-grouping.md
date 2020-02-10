@@ -31,7 +31,7 @@ fun main() {
 
 如果要对元素进行分组，然后一次将操作应用于所有分组，请使用 [`groupingBy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/grouping-by.html) 函数。
 它返回一个 [`Grouping`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-grouping/index.html) 类型的实例。
-通过 `Grouping` 实例，可以以一种惰性的方式将操作应用于所有组：这些组实际上是在执行操作之前构建的。
+通过 `Grouping` 实例，可以以一种惰性的方式将操作应用于所有组：这些分组实际上是刚好在执行操作前构建的。
 
 即，`Grouping` 支持以下操作：
 
