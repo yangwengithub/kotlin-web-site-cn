@@ -135,7 +135,8 @@ fun main() {
 * `step` 定义两个相邻视窗的第一个元素之间的距离。默认情况下，该值为1，因此结果包含从所有元素开始的视窗。如果将 step 增加到2，将只收到以奇数元素开头的窗口：第一个、第三个等。
 * `partialWindows` 包含从集合末尾的元素开始的较小的视窗。例如，如果请求三个元素的视窗，就不能为最后两个元素构建它们。在本例中，启用 `partialWindows` 将包括两个大小为2与1的列表。
 
-最后，可以立即对返回的区间应用转换。为此，在调用 `windowed()` 时将转换作为 lambda 函数提供。
+最后，可以立即对返回的区间应用转换。
+为此，在调用 `windowed()` 时将转换作为 lambda 函数提供。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
