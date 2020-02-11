@@ -77,10 +77,10 @@ fun main() {
 
 ## Chunked
 
-To break a collection onto parts of a given size, use the [`chunked()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/chunked.html) function.
-`chunked()` takes a single argument – the size of the chunk – and returns a `List` of `List`s of the given size.
-The first chunk starts from the first element and contains the `size` elements, the second chunk holds the next `size` elements, and so on.
-The last chunk may have a smaller size. 
+要将集合分解为给定大小的“块”，请使用 [`chunked()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/chunked.html) 函数。
+`chunked()` 采用一个参数（块的大小），并返回一个 `List` 其中包含给定大小的 `List`。
+第一个块从第一个元素开始并包含 `size` 元素，第二个块包含下一个 `size` 元素，依此类推。
+最后一个块的大小可能较小。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -94,10 +94,10 @@ fun main() {
 ```
 </div>
 
-You can also apply a transformation for the returned chunks right away.
-To do this, provide the transformation as a lambda function when calling `chunked()`.
-The lambda argument is a chunk of the collection. When `chunked()` is called with a transformation,
-the chunks are short-living `List`s that should be consumed right in that lambda.  
+还可以立即对返回的块应用转换。
+为此，请在调用 `chunked()` 时将转换作为 lambda 函数提供。
+lambda 参数是集合的一部分。当通过转换调用 `chunked()` 时，
+这些块是临时的 `List`，应立即在该 lambda 中使用。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
