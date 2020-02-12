@@ -152,7 +152,7 @@ fun main() {
 ## 检测存在与否
 
 如需检查集合中某个元素的存在，可以使用 [`contains()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/contains.html) 函数。
-如果存在一个集合元素等于 （`equals()`） 函数参数，那么它返回 `true`。
+如果存在一个集合元素等于（`equals()`）函数参数，那么它返回 `true`。
 你可以使用 `in` 关键字以操作符的形式调用 `contains()`。
 
 如需一次检查多个实例的存在，可以使用这些实例的集合作为参数调用 [`containsAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/contains-all.html)。
