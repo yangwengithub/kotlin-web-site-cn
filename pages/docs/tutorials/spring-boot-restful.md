@@ -1,42 +1,42 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Creating a RESTful Web Service with Spring Boot"
-description: "This tutorial walks us through the process of creating a simple REST controller with Spring Boot"
+title:  "用 Spring Boot 创建 RESTful Web 服务"
+description: "本教程将引导完成使用 Spring Boot 创建简单的 REST 控制器的过程"
 authors: Hadi Hariri, Edoardo Vacchi, Sébastien Deleuze
 showAuthorInfo: true
 source: spring-boot-restful
 ---
-Kotlin works quite smoothly with Spring Boot and many of the steps found on the [Spring Guides](https://spring.io/guides) for creating a RESTful service
-can be followed verbatim for Kotlin. There are some minor differences however when it comes to defining the Gradle configuration
-and the project layout structure, as well as the initialization code.
+Kotlin 使用 Spring Boot 可以非常顺畅地工作，
+并且 Kotlin 可以完全遵循 [Spring 指南](https://spring.io/guides)中创建 RESTful 服务的许多步骤。
+但是，在定义 Gradle 配置和项目布局结构以及初始化代码方面存在一些细微的差异。
 
-In this tutorial we'll walk through the steps required. For a more thorough explanation of Spring Boot and Kotlin, please see
-[Building web applications with Spring Boot and Kotlin](https://spring.io/guides/tutorials/spring-boot-kotlin/).
+在本教程中，将逐步完成所需的步骤。
+有关 Spring Boot 与 Kotlin 的更详尽说明，请参见[使用 Spring Boot 与 Kotlin 构建 Web 应用程序](https://spring.io/guides/tutorials/spring-boot-kotlin/).
 
-Note that all classes in this tutorial are in the `org.jetbrains.kotlin.demo` package.
+注意，本教程中的所有类都在 `org.jetbrains.kotlin.demo` 包中。
 
-### Defining the project and dependencies
+### 定义项目与依赖项
 {{ site.text_using_gradle }}
 
-The Gradle file is pretty much standard for Spring Boot. The only differences are the structure layout for source folders for Kotlin, the required Kotlin dependencies and the [*kotlin-spring*](https://www.kotlincn.net/docs/reference/compiler-plugins.html#kotlin-spring-compiler-plugi) Gradle plugin (CGLIB proxies used for example for `@Configuration` and `@Bean` processing require `open` classes).
+Gradle 文件几乎是标准的 Spring Boot。唯一的区别是 Kotlin 的源文件夹的结构布局、所需的 Kotlin 依赖项与 Gradle 插件：[*kotlin-spring*](https://www.kotlincn.net/docs/reference/compiler-plugins.html#kotlin-spring-compiler-plugi)（以使用 CGLIB 代理为例，`@Configuration` 与 `@Bean` 处理需要 `open` 类）。
 
 <div class="sample" markdown="1" theme="idea" mode="groovy">
 ``` groovy
 buildscript {
-    ext.kotlin_version = '{{ site.data.releases.latest.version }}' // Required for Kotlin integration
+    ext.kotlin_version = '{{ site.data.releases.latest.version }}' // Kotlin 集成所需
     ext.spring_boot_version = '2.1.0.RELEASE'
     repositories {
         jcenter()
     }
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Required for Kotlin integration
-        classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version" // See https://www.kotlincn.net/docs/reference/compiler-plugins.html#spring-support
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Kotlin 集成所需
+        classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version" // 参见 https://www.kotlincn.net/docs/reference/compiler-plugins.html#spring-support
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$spring_boot_version"
     }
 }
 
-apply plugin: 'kotlin' // Required for Kotlin integration
+apply plugin: 'kotlin' // Kotlin 集成所需
 apply plugin: "kotlin-spring" // https://www.kotlincn.net/docs/reference/compiler-plugins.html#spring-support
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
@@ -51,15 +51,15 @@ repositories {
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version" // Required for Kotlin integration
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version" // Kotlin 集成所需
     compile "org.springframework.boot:spring-boot-starter-web"
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 ```
 </div>
 
-### Creating a Greeting Data Class and Controller
-The next step is to create Greeting Data class that has two properties: *id* and a *content*
+### 创建 Greeting 数据类与控制器
+下一步是创建具有两个属性的 Greeting 数据类：*id* 与 *content*
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
@@ -67,8 +67,8 @@ data class Greeting(val id: Long, val content: String)
 ```
 </div>
 
-We now define the *GreetingController* which serves requests of the form */greeting?name={value}* and returns a JSON object
-representing an instance of *Greeting*
+现在，定义 *GreetingController* ，以 */greeting?name={value}* 的形式接受请求，
+并返回表示 *Greeting* 实例的 JSON 对象。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
@@ -85,12 +85,13 @@ class GreetingController {
 ```
 </div>
 
-As can be seen, this is again pretty much a one-to-one translation of Java to Kotlin, with nothing special required for Kotlin.
+可以看出，这几乎是 Java 到 Kotlin 的一对一转换，对 Kotlin 没有任何特殊要求。
 
-### Creating the Application class
-Finally we need to define an Application class. As Spring Boot looks for a public static main method, we need to define this in Kotlin. It could be done with the *@JvmStatic* annotation and a companion object but here we prefer using a [top-level function]({{ url_for('page', page_path="docs/reference/functions") }}) defined outside Application class since it leads to more concise and clean code.
+### 创建 Application 类
+最后，需要定义一个 Application 类。使用 Kotlin 来定义一个 Spring Boot 所需的公共静态 main 方法。
+可以使用 *@JvmStatic* 注解与一个伴生对象来完成，但在这里更推荐使用 Application 类外部定义的[顶级函数]({{ url_for('page', page_path="docs/reference/functions") }})，因为这可以使代码更简洁明了。
 
-No need to mark the Application class as *open* since we are using the *kotlin-spring* Gradle plugin which does that automatically.
+无需将 Application 类标记为 *open*，因为 Gradle 插件 *kotlin-spring* 会自动完成。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
@@ -103,12 +104,12 @@ fun main(args: Array<String>) {
 ```
 </div>
 
-### Running the application
-We can now use any of the standard Gradle tasks for Spring Boot to run the application. As such, running
+### 运行应用程序
+现在可以使用一个 Gradle 标准任务来运行 Spring Boot 应用：
 
     ./gradlew bootRun
 
-the application is compiled, resources bundled and launched, allowing us to access it via the browser (default port is 8080)
+当应用完成编译，资源捆绑并启动，就可以通过浏览器访问了（默认端口为 8080）
 
 ![Running App]({{ url_for('tutorial_img', filename='spring-boot-restful/running-app.png')}})
 
