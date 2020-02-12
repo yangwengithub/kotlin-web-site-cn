@@ -11,13 +11,13 @@ Kotlin 集合提供了一套从集合中检索单个元素的函数。
 此页面描述的函数适用于 list 和 set。
 
 正如 [list 的定义](collections-overview.html)所言，list 是有序集合。
-因此，list 中的每个元素都有其位置可供你参考。
+因此，list 中的每个元素都有其位置可供你引用。
 除了此页面上描述的函数外，list 还提供了更广泛的一套方法去按索引检索和搜索元素。
 有关更多详细信息，请参见 [List 相关操作](list-operations.html)。
 
 反过来，从[定义](collections-overview.html)来看，set 并不是有序集合。
 但是，Kotlin 中的 `Set` 按某些顺序存储元素。
-这些可以是插入顺序（在 `LinkedHashSet` 中），自然排序顺序（在 `SortedSet` 中）。
+这些可以是插入顺序（在 `LinkedHashSet` 中）、自然排序顺序（在 `SortedSet` 中）、或者其他顺序。
 一组元素的顺序也可以是未知的。
 在这种情况下，元素仍会以某种顺序排序，因此，依赖元素位置的函数仍会返回其结果。
 但是，除非调用者知道所使用的 `Set` 的具体实现，否则这些结果对于调用者是不可预测的。
@@ -28,8 +28,8 @@ Kotlin 集合提供了一套从集合中检索单个元素的函数。
  用一个整数作为参数来调用它，你会得到给定位置的集合元素。
  第一个元素的位置是 `0`，最后一个元素的位置是 `(size - 1)`。
  
- `elementAt()` 对于不提供索引访问或无法静态知道提供索引访问的集合很有用。
-  在使用 `List` 的情况下，使用[索引访问操作符](list-operations.html#按索引取元素)更为习惯。
+ `elementAt()` 对于不提供索引访问或非静态已知提供索引访问的集合很有用。
+  在使用 `List` 的情况下，使用[索引访问操作符](list-operations.html#按索引取元素) （`get()` 或 `[]`）更为习惯。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -65,7 +65,7 @@ fun main() {
 
 * 当指定位置超出集合范围时，[`elementAtOrNull()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at-or-null.html) 返回 null。
 * [`elementAtOrElse()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at-or-else.html) 还接受一个 lambda 表达式，该表达式能将一个 `Int` 参数映射为一个集合元素类型的实例。
-   当使用一个越界位置来调用时，`elementAtOrElse()` 返回给定值上的 lambda 表达式结果。
+   当使用一个越界位置来调用时，`elementAtOrElse()` 返回对给定值调用该 lambda 表达式的结果。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -83,7 +83,7 @@ fun main() {
 ## 按条件取
 
 函数 [`first()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html) 和 [`last()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html) 还可以让你在集合中搜索与给定谓词匹配的元素。
-当你使用测试集合元素的谓词调用 `first()` 时，你会得到谓词在其上产生 `true` 的第一个元素。
+当你使用测试集合元素的谓词调用 `first()` 时，你会得到对其调用谓词产生 `true` 的第一个元素。
 反过来，带有一个谓词的 `last()` 返回与其匹配的最后一个元素。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
@@ -152,7 +152,7 @@ fun main() {
 ## 检测存在与否
 
 如需检查集合中某个元素的存在，可以使用 [`contains()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/contains.html) 函数。
-如果存在一个集合元素与函数参数 `equals()`，那么它返回 `true`。
+如果存在一个集合元素等于 （`equals()`） 函数参数，那么它返回 `true`。
 你可以使用 `in` 关键字以操作符的形式调用 `contains()`。
 
 如需一次检查多个实例的存在，可以使用这些实例的集合作为参数调用 [`containsAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/contains-all.html)。
