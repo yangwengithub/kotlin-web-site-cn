@@ -13,7 +13,7 @@ Kotlin 标准库包含用于取集合的一部分的扩展函数。
 ## Slice
 
 [`slice()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html) 返回具有给定索引的集合元素列表。
-索引可以是作为[区间](ranges.html)或作为整数值的集合传递。
+索引既可以是作为[区间](ranges.html)传入的也可以是作为整数值的集合传入的。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
