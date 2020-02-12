@@ -59,7 +59,7 @@ dependencies {
 </div>
 
 ### 创建 Greeting 数据类与控制器
-下一步是创建具有两个属性的 Greeting 数据类：*id* 与 *content*
+下一步是创建具有两个属性（*id* 与 *content*）的 Greeting 数据类
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ``` kotlin
