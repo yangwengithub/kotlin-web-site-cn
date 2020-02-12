@@ -77,10 +77,10 @@ fun main() {
 
 ## Chunked
 
-To break a collection onto parts of a given size, use the [`chunked()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/chunked.html) function.
-`chunked()` takes a single argument – the size of the chunk – and returns a `List` of `List`s of the given size.
-The first chunk starts from the first element and contains the `size` elements, the second chunk holds the next `size` elements, and so on.
-The last chunk may have a smaller size. 
+要将集合分解为给定大小的“块”，请使用 [`chunked()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/chunked.html) 函数。
+`chunked()` 采用一个参数（块的大小），并返回一个 `List` 其中包含给定大小的 `List`。
+第一个块从第一个元素开始并包含 `size` 元素，第二个块包含下一个 `size` 元素，依此类推。
+最后一个块的大小可能较小。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -94,10 +94,10 @@ fun main() {
 ```
 </div>
 
-You can also apply a transformation for the returned chunks right away.
-To do this, provide the transformation as a lambda function when calling `chunked()`.
-The lambda argument is a chunk of the collection. When `chunked()` is called with a transformation,
-the chunks are short-living `List`s that should be consumed right in that lambda.  
+还可以立即对返回的块应用转换。
+为此，请在调用 `chunked()` 时将转换作为 lambda 函数提供。
+lambda 参数是集合的一块。当通过转换调用 `chunked()` 时，
+这些块是临时的 `List`，应立即在该 lambda 中使用。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -105,7 +105,7 @@ the chunks are short-living `List`s that should be consumed right in that lambda
 fun main() {
 //sampleStart
     val numbers = (0..13).toList() 
-    println(numbers.chunked(3) { it.sum() })  // `it` is a chunk of the original collection
+    println(numbers.chunked(3) { it.sum() })  // `it` 为原始集合的一个块
 //sampleEnd
 }
 ```
@@ -113,10 +113,10 @@ fun main() {
 
 ## Windowed
 
-You can retrieve all possible ranges of the collection elements of a given size.
-The function for getting them is called [`windowed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/windowed.html): it returns a list of element ranges that you would see if you were looking at the collection through a sliding window of the given size.
-Unlike `chunked()`,  `windowed()` returns element ranges (_windows_) starting from *each* collection element.
-All the windows are returned as elements of a single `List`.
+可以检索给定大小的集合元素中所有可能区间。
+获取它们的函数称为 [`windowed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/windowed.html)：它返回一个元素区间列表，比如通过给定大小的滑动窗口查看集合，则会看到该区间。
+与 `chunked()` 不同，`windowed()` 返回从*每个*集合元素开始的元素区间（_窗口_）。
+所有窗口都作为单个 `List` 的元素返回。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -130,13 +130,13 @@ fun main() {
 ```
 </div>
 
-`windowed()` provides more flexibility with optional parameters:
+`windowed()` 通过可选参数提供更大的灵活性：
 
-* `step` defines a distance between first elements of two adjacent windows. By default the value is 1, so the result contains windows starting from all elements. If you increase the step to 2, you will receive only windows starting from odd elements: first, third, an so on.
-* `partialWindows` includes windows of smaller sizes that start from the elements at the end of the collection. For example, if you request windows of three elements, you can't build them for the last two elements. Enabling `partialWindows` in this case includes two more lists of sizes 2 and 1.
+* `step` 定义两个相邻窗口的第一个元素之间的距离。默认情况下，该值为 1，因此结果包含从所有元素开始的窗口。如果将 step 增加到 2，将只收到以奇数元素开头的窗口：第一个、第三个等。
+* `partialWindows` 包含从集合末尾的元素开始的较小的窗口。例如，如果请求三个元素的窗口，就不能为最后两个元素构建它们。在本例中，启用 `partialWindows` 将包括两个大小为2与1的列表。
 
-Finally, you can apply a transformation to the returned ranges right away.
-To do this, provide the transformation as a lambda function when calling `windowed()`.
+最后，可以立即对返回的区间应用转换。
+为此，在调用 `windowed()` 时将转换作为 lambda 函数提供。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -151,10 +151,10 @@ fun main() {
 ```
 </div>
 
-To build two-element windows, there is a separate function - [`zipWithNext()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/zip-with-next.html).
-It creates pairs of adjacent elements of the receiver collection.
-Note that `zipWithNext()` doesn't break the collection into pairs; it creates a `Pair` for _each_ element except the last one, so its result on `[1, 2, 3, 4]` is `[[1, 2], [2, 3], [3, 4]]`, not `[[1, 2`], `[3, 4]]`.
-`zipWithNext()` can be called with a transformation function as well; it should take two elements of the receiver collection as arguments.
+要构建两个元素的窗口，有一个单独的函数——[`zipWithNext()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/zip-with-next.html)。
+它创建接收器集合的相邻元素对。
+请注意，`zipWithNext()` 不会将集合分成几对；它为 _每个_ 元素创建除最后一个元素外的对，因此它在 `[1, 2, 3, 4]` 上的结果为 `[[1, 2], [2, 3], [3, 4]]`，而不是 `[[1, 2`]，`[3, 4]]`。
+`zipWithNext()` 也可以通过转换函数来调用；它应该以接收者集合的两个元素作为参数。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
