@@ -60,9 +60,9 @@ fun main() {
 
 ### 线性查找
 
-In any lists, you can find the position of an element using the functions [`indexOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of.html) and [`lastIndexOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-index-of.html).
-They return the first and the last position of an element equal to the given argument in the list.
-If there are no such elements, both functions return `-1`.
+在任何列表中，都可以使用 [`indexOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of.html) 或 [`lastIndexOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-index-of.html) 函数找到元素的位置。
+它们返回与列表中给定参数相等的元素的第一个或最后一个位置。
+如果没有这样的元素，则两个函数均返回 `-1`。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -78,10 +78,10 @@ fun main() {
 ```
 </div>
 
-There is also a pair of functions that take a predicate and search for elements matching it:
+还有一对函数接受谓词并搜索与之匹配的元素：
 
-* [`indexOfFirst()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-first.html) returns the *index of the first* element matching the predicate or `-1` if there are no such elements.
-* [`indexOfLast()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html) returns the *index of the last* element matching the predicate or `-1` if there are no such elements.
+* [`indexOfFirst()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-first.html) 返回与谓词匹配的*第一个元素的索引*，如果没有此类元素，则返回 `-1`。
+* [`indexOfLast()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html) 返回与谓词匹配的*最后一个元素的索引*，如果没有此类元素，则返回 `-1`。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
