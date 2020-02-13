@@ -128,8 +128,8 @@ fun main() {
 
 #### Comparator 二分搜索
 
-When list elements aren't `Comparable`, you should provide a [`Comparator`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparator.html) to use in the binary search.
-The list must be sorted in ascending order according to this `Comparator`. Let's have a look at an example:
+如果列表元素不可`排序`，则应提供一个用于二进制搜索的 [`Comparator`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparator.html)。
+该列表必须根据此 `Comparator` 以升序排序。来看一个例子：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -151,10 +151,10 @@ fun main() {
 ```
 </div>
 
-Here's a list of `Product` instances that aren't `Comparable` and a `Comparator` that defines the order: product `p1` precedes product `p2` if `p1`'s  price is less than `p2`'s price.
-So, having a list sorted ascending according to this order, we use `binarySearch()` to find the index of the specified `Product`.
+这是一个不可`排序`的 `Product` 实例列表，以及一个定义排序的 `Comparator`：如果 `p1` 的价格小于 `p2` 的价格，则产品 `p1` 在产品 `p2` 之前。
+因此，按照此顺序对列表进行升序排序后，使用 `binarySearch()` 查找指定的 `Product`的索引。
 
-Custom comparators are also handy when a list uses an order different from natural one, for example, a case-insensitive order for `String` elements. 
+当列表使用与自然排序不同的顺序时（例如，对 `String` 元素不区分大小写的顺序），自定义 Comparator 也很方便。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
