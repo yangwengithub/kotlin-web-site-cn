@@ -171,9 +171,9 @@ fun main() {
 
 #### 比较函数二分搜索
 
-Binary search with _comparison_ function lets you find elements without providing explicit search values.
-Instead, it takes a comparison function mapping elements to `Int` values and searches for the element where the function returns zero.
-The list must be sorted in the ascending order according to the provided function; in other words, the return values of comparison must grow from one list element to the next one.
+使用 _比较_ 函数的二进制搜索无需提供明确的搜索值即可查找元素。
+取而代之的是，它使用一个比较函数将元素映射到 `Int` 值，并搜索函数返回 0 的元素。
+该列表必须根据提供的函数以升序排序；换句话说，比较的返回值必须从一个列表元素增长到下一个列表元素。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -197,7 +197,7 @@ fun main() {
 ```
 </div>
 
-Both comparator and comparison binary search can be performed for list ranges as well.
+Comparator 与比较函数二分搜索都可以针对列表区间执行。
 
 ## List 写操作
 
