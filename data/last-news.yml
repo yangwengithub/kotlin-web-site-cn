@@ -1,11 +1,11 @@
-- title: Kotlin 拥抱数据科学
+- title: "Kotlin 拥抱\xA0数据科学"
   link: https://www.kotliner.cn/2020/01/making-kotlin-ready-for-data-science/
 
 - title: 协程现已稳定
   link: /docs/reference/coroutines-overview.html
   tag: 新特性
 
-- title: 在 Kotlin 1.4 中可以期待什么
+- title: "在 Kotlin\xA01.4 中可以期待什么"
   link: https://blog.jetbrains.com/kotlin/2019/12/what-to-expect-in-kotlin-1-4-and-beyond/
 
 - title: KotlinConf 2019 各场演讲
