@@ -1,13 +1,9 @@
-- company: Pinterest
-  text: Pinterest 已成功<a target="_blank" href="https://www.youtube.com/watch?v=mDpnc45WwlI">将 Kotlin 引入</a>了他们的应用程序，每个月有 1 亿 5 千万人使用。
 - company: Gradle
   text: Gradle 正<a target="_blank" href="https://hltj.me/kotlin/2017/06/13/kotlin-meet-gradle.html">引入 Kotlin</a> 作为编写脚本的语言。
-- company: Evernote
-  text: Evernote 最近 <a target="_blank" href="https://blog.evernote.com/tech/2017/01/26/android-state-library/">将 Kotlin 整合</a>到了他们的 Android 客户端
-- company: Uber
-  text: Uber 团队<a target="_blank" href="https://www.reddit.com/r/androiddev/comments/5sihp0/2017_whos_using_kotlin/ddfmkf7/">使用 Kotlin</a> 来构建内部工具
 - company: Corda
   text: Corda 是一个开源分布式分类账号平台，由各大银行提供支持，<a target="_blank" href="https://www.corda.net/2017/01/10/kotlin/">完全由 Kotlin 构建</a>。
+- company: Evernote
+  text: Evernote 最近 <a target="_blank" href="https://blog.evernote.com/tech/2017/01/26/android-state-library/">将 Kotlin 整合</a>到了他们的 Android 客户端
 - company: Coursera
   text: Coursera Android 应用程序<a target="_blank" href="https://building.coursera.org/blog/2016/03/16/becoming-bilingual-coursera/">部分用 Kotlin 编写</a>
 - company: Pivotal

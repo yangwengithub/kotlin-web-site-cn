@@ -9,7 +9,7 @@
 }
 
 .kto-overview-section {
-  font-family: Inter-UI, Arial, sans-serif;
+  font-family: Inter, Arial, sans-serif;
   color: #27282C;
 
   padding-top: 40px;
@@ -65,6 +65,13 @@ a.kto-overview-section__title_link:any-link {
 
 .kto-overview-section__title_link:hover::after {
   background-image: url("./images/anchor.svg");
+}
+
+.kto-overview-section__title_size_s {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 26px;
+  margin-bottom: 30px;
 }
 
 @import "kotlin-intro-section";
