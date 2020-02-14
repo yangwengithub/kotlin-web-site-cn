@@ -226,7 +226,7 @@ fun main() {
 
 ### 更新
 
-Lists also offer a function to replace an element at a given position - [`set()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/set.html) and its operator form `[]`. `set()` doesn't change the indexes of other elements.
+列表还提供了在指定位置替换元素的函数——[`set()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/set.html) 及其操作符形式 `[]`。`set()` 不会更改其他元素的索引。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
@@ -242,7 +242,7 @@ fun main() {
 ```
 </div>
 
-[`fill()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fill.html) simply replaces all the collection elements with the specified value.
+[`fill()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fill.html) 简单地将所有集合元素的值替换为指定值。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
