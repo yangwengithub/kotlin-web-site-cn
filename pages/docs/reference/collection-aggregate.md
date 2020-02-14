@@ -77,7 +77,7 @@ fun main() {
 对于更特定的情况，有函数 [`reduce()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce.html) 和 [`fold()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold.html)，它们依次将所提供的操作应用于集合元素并返回累积的结果。
 操作有两个参数：先前的累积值和集合元素。
 
-这两个函数的区别在于：`fold()` 接受一个初始值并将其用作第一步的累加值，而 `reduce()` 的第一步则将第一个和第二个元素作为第一步的操作参数。
+这两个函数的区别在于：`fold()` 接受一个初始值并将其用作第一步的累积值，而 `reduce()` 的第一步则将第一个和第二个元素作为第一步的操作参数。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
