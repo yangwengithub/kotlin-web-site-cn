@@ -261,8 +261,8 @@ fun main() {
 
 ### 删除
 
-To remove an element at a specific position from a list, use the [`removeAt()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/remove-at.html) function providing the position as an argument.
-All indices of elements that come after the element being removed will decrease by one.
+要从列表中删除指定位置的元素，请使用 [`removeAt()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/remove-at.html) 函数，并将位置作为参数。
+在元素被删除之后出现的所有元素索引将减 1。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
