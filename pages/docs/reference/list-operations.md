@@ -280,18 +280,18 @@ fun main() {
 
 ### 排序
 
-In [Collection Ordering](collection-ordering.html), we describe operations that retrieve collection elements in specific orders.
-For mutable lists, the standard library offers similar extension functions that perform the same ordering operations in place.
-When you apply such an operation to a list instance, it changes the order of elements in that exact instance.
+在[集合排序](collection-ordering.html)中，描述了按特定顺序检索集合元素的操作。
+对于可变列表，标准库中提供了类似的扩展函数，这些扩展函数可以执行相同的排序操作。
+将此类操作应用于列表实例时，它将更改指定实例中元素的顺序。
 
-The in-place sorting functions have similar names to the functions that apply to read-only lists, but without the `ed/d` suffix:
+就地排序函数的名称与应用于只读列表的函数的名称相似，但没有 `ed/d` 后缀：
 
-*  `sort*` instead of `sorted*` in the names of all sorting functions: [`sort()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sort.html), [`sortDescending()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sort-descending.html), [`sortBy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sort-by.html), and so on.
-* [`shuffle()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/shuffle.html) instead of `shuffled()`.
-* [`reverse()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reverse.html) instead of `reversed()`.
+*  `sort*` 在所有排序函数的名称中代替 `sorted*`：[`sort()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sort.html)，[`sortDescending()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sort-descending.html)，[`sortBy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sort-by.html)，诸如此类。
+* [`shuffle()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/shuffle.html) 代替 `shuffled()`。
+* [`reverse()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reverse.html) 代替 `reversed()`。
 
-[`asReversed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/as-reversed.html) called on a mutable list returns another mutable list which is a reversed view of the original list. Changes in that view are reflected in the original list.
-The following example shows sorting functions for mutable lists:
+[`asReversed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/as-reversed.html) 在可变列表上调用会返回另一个可变列表，该列表是原始列表的反向视图。在该视图中的更改将反映在原始列表中。
+以下示例展示了可变列表的排序函数：
 
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
@@ -324,7 +324,3 @@ fun main() {
 
 ```
 </div>
-
-
-
-
