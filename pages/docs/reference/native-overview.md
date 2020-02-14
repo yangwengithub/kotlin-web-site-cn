@@ -82,7 +82,7 @@ Kotlin 新手？可以看看[入门](basic-syntax.html)页。
 - [Swift/Objective-C 互操作](native/objc_interop.html)
 
 推荐的教程：
-- [基本的 Kotlin/Native 应用程序](https://www.kotlincn.net/docs/tutorials/native/basic-kotlin-native-app.html)
+- [Hello Kotlin/Native](https://www.kotlincn.net/docs/tutorials/native/using-command-line-compiler.html)
 - [多平台项目：iOS 与 Android](https://www.kotlincn.net/docs/tutorials/native/mpp-ios-android.html)
 - [C 语言 Kotlin/Native 之间的类型映射](https://www.kotlincn.net/docs/tutorials/native/mapping-primitive-data-types-from-c.html)
 - [Kotlin/Native 开发动态库](https://www.kotlincn.net/docs/tutorials/native/dynamic-libraries.html)
