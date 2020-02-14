@@ -201,13 +201,13 @@ Comparator 与比较函数二分搜索都可以针对列表区间执行。
 
 ## List 写操作
 
-In addition to the collection modification operations described in [Collection Write Operations](collection-write.html), [mutable](collections-overview.html#集合类型) lists support specific write operations.
-Such operations use the index to access elements to broaden the list modification capabilities.
+除了[集合写操作](collection-write.html)中描述的集合修改操作之外，[可变](collections-overview.html#集合类型)列表还支持特定的写操作。
+这些操作使用索引来访问元素以扩展列表修改功能。
 
 ### 添加
 
-To add elements to a specific position in a list, use [`add()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/add.html) and [`addAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/add-all.html) providing the position for element insertion as an additional argument.
-All elements that come after the position shift to the right.
+要将元素添加到列表中的特定位置，请使用 [`add()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/add.html) 或 [`addAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/add-all.html) 并提供元素插入的位置作为附加参数。
+位置之后的所有元素都将向右移动。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
