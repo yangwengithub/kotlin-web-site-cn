@@ -100,10 +100,10 @@ fun main() {
 ### 在有序列表中二分查找
 
 还有另一种搜索列表中元素的方法——[二分查找算法](https://zh.wikipedia.org/wiki/%E4%BA%8C%E5%88%86%E6%90%9C%E5%B0%8B%E6%BC%94%E7%AE%97%E6%B3%95)。
-它的工作速度明显快于其他内置搜索功能，但*要求列表按照某种[排序](collection-ordering.html)*（自然排序或函数参数中提供的另一种排序）以升序排序。
+它的工作速度明显快于其他内置搜索功能，但*要求该列表按照一定的顺序*（自然排序或函数参数中提供的另一种排序）按升序[排序过](collection-ordering.html)。
 否则，结果是不确定的。
 
-要搜索排序列表中的元素，请调用 [`binarySearch()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/binary-search.html) 函数，并将该值作为参数传递。
+要搜索已排序列表中的元素，请调用 [`binarySearch()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/binary-search.html) 函数，并将该值作为参数传递。
 如果存在这样的元素，则函数返回其索引；否则，将返回 `(-insertionPoint - 1)`，其中 `insertionPoint` 为应插入此元素的索引，以便列表保持排序。
 如果有多个具有给定值的元素，搜索则可以返回其任何索引。
 
@@ -128,7 +128,7 @@ fun main() {
 
 #### Comparator 二分搜索
 
-如果列表元素不可`排序`，则应提供一个用于二进制搜索的 [`Comparator`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparator.html)。
+如果列表元素不是 `Comparable`，则应提供一个用于二分搜索的 [`Comparator`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparator.html)。
 该列表必须根据此 `Comparator` 以升序排序。来看一个例子：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
