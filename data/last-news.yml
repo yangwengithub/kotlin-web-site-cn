@@ -1,9 +1,8 @@
 - title: "Kotlin 拥抱数据科学"
   link: https://www.kotliner.cn/2020/01/making-kotlin-ready-for-data-science/
 
-- title: 协程现已稳定
-  link: /docs/reference/coroutines-overview.html
-  tag: 新特性
+- title: Ktor 1.3 Release
+  link: https://blog.jetbrains.com/kotlin/2020/01/ktor-1-3-release/
 
 - title: "在 Kotlin\xA01.4 中可以期待什么"
   link: https://blog.jetbrains.com/kotlin/2019/12/what-to-expect-in-kotlin-1-4-and-beyond/
