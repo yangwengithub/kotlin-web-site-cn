@@ -719,13 +719,13 @@ kotlin {
 
 ### 关联源集
 
-Kotlin 源集可能与 *‘depends on’* 关系有关，如此那么如果一个源集 `foo` 依赖于一个<!--
+Kotlin 源集可能与 *‘depends on’* 关系有关，因而如果一个源集 `foo` 依赖于一个<!--
 -->源集 `bar`，那么：
 
 * 每当为特定目标编译 `foo` 时，`bar` 也参与到编译中，并且还会编译成<!--
 -->相同的目标二进制格式，例如 JVM 类文件或者 JS 代码；
 
-* `foo` 的源能 ‘看到’ `bar` 的声明，包括 `internal` 的，以及 `bar` 的[依赖](#添加依赖)，即使是<!--
+* `foo` 的源能 ‘看到’ `bar` 的声明，包括 `internal` 以及 `bar` 的[依赖](#添加依赖)，即使是<!--
 -->被指定为 `implementation` 的依赖；
 
 * `foo` 可能包含针对 `bar` 的预期定义的[特定平台的实现](platform-specific-declarations.html)
@@ -736,7 +736,7 @@ Kotlin 源集可能与 *‘depends on’* 关系有关，如此那么如果一�
 
 不允许源集间循环依赖。
 
-源集 DSL 可以用于定义两个源集之间的联系。
+源集 DSL 可以用于定义两个源集之间的联系：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
