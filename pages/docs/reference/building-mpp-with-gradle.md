@@ -719,13 +719,13 @@ kotlin {
 
 ### 关联源集
 
-Kotlin 源集可能与 *‘depends on’* 关系有关，因而如果一个源集 `foo` 依赖于一个<!--
+Kotlin 源集可能与 *“depends on”* 关系有关，因而如果一个源集 `foo` 依赖于一个<!--
 -->源集 `bar`，那么：
 
 * 每当为特定目标编译 `foo` 时，`bar` 也参与到编译中，并且还会编译成<!--
 -->相同的目标二进制格式，例如 JVM 类文件或者 JS 代码；
 
-* `foo` 源中的代码能 ‘看到’ `bar` 的定义，包括 `internal` 的以及 `bar` 的[依赖](#添加依赖)，即使是<!--
+* `foo` 源中的代码能 “看到” `bar` 的定义，包括 `internal` 的以及 `bar` 的[依赖](#添加依赖)，即使是<!--
 -->被指定为 `implementation` 的依赖；
 
 * `foo` 可能包含针对 `bar` 的预期定义的[特定平台的实现](platform-specific-declarations.html)
@@ -795,7 +795,7 @@ kotlin {
             dependsOn commonTest
             /* …… */
         }
-        // 将 ‘windows’ 的默认测试源集设置为依赖于 ‘desktopTest’
+        // 将 “windows” 的默认测试源集设置为依赖于 “desktopTest”
         mingwX64().compilations.test.defaultSourceSet {
             dependsOn desktopTest
             /* …… */
@@ -826,7 +826,7 @@ kotlin {
             dependsOn(getByName("commonTest"))
             /* …… */
         }
-        // 将 ‘windows’ 的默认测试源集设置为依赖于 ‘desktopTest’
+        // 将 “windows” 的默认测试源集设置为依赖于 “desktopTest”
         mingwX64().compilations["test"].defaultSourceSet {
             dependsOn(desktopTest)
             /* …… */
