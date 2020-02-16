@@ -719,24 +719,24 @@ kotlin {
 
 ### 关联源集
 
-Kotlin source sets may be connected with the *'depends on'* relation, so that if a source set `foo`  depends on a
-source set `bar` then:
+Kotlin 源集可能与 *‘depends on’* 关系有关，如此那么如果一个源集 `foo` 依赖于一个<!--
+-->源集 `bar`，那么：
 
-* whenever `foo` is compiled for a certain target, `bar` takes part in that compilation as well and is also compiled 
-into the same target binary form, such as JVM class files or JS code;
+* 每当为特定目标编译 `foo` 时，`bar` 也参与到编译中，并且还会编译成<!--
+-->相同的目标二进制格式，例如 JVM 类文件或者 JS 代码；
 
-* sources of `foo` 'see' the declarations of `bar`, including the `internal` ones, and the [dependencies](#添加依赖) of `bar`, even those
- specified as `implementation` dependencies;
+* `foo` 的源能 ‘看到’ `bar` 的声明，包括 `internal` 的，以及 `bar` 的[依赖](#添加依赖)，即使是<!--
+-->被指定为 `implementation` 的依赖；
 
-* `foo` may contain [platform-specific implementations](platform-specific-declarations.html) for the expected declarations of `bar`;
+* `foo` 可能包含针对 `bar` 的预期定义的[特定平台的实现](platform-specific-declarations.html)
 
-* the resources of `bar` are always processed and copied along with the resources of `foo`;
+* `bar` 的资源总是与 `foo` 的资源一起处理与复制；
 
-* the [语言设置](#语言设置) of `foo` and `bar` should be consistent;
+* `foo` 与 `bar` 的语言应该是一致的；
 
-Circular source set dependencies are prohibited.
+不允许源集间循环依赖。
 
-The source sets DSL can be used to define these connections between the source sets:
+源集 DSL 可以用于定义两个源集之间的联系。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -774,12 +774,12 @@ kotlin {
 </div>
 </div>
 
-Custom source sets created in addition to the [default ones](#默认项目布局) should be explicitly included into
- the dependencies hierarchy to be able to use declarations from other source sets and, most importantly, to take part 
- in compilations. 
-Most often, they need a `dependsOn(commonMain)` or `dependsOn(commonTest)` statement, and some of the default platform-specific
- source sets should depend on the custom ones, 
- directly or indirectly:
+除了[默认源集](#默认项目布局)外，还应将创建的自定义源集显式地包含在<!--
+-->依赖关系层次结构中，以便于能够使用其他源集的定义，并且最重要的是能够参与到<!--
+-->编译中。
+大多数时候，它们需要 `dependsOn(commonMain)` 或 `dependsOn(commonTest)` 声明，并且一些默认的特定平台的<!--
+-->源集应该直接或间接地<!--
+-->依赖于自定义的源集
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -790,17 +790,17 @@ kotlin {
     linuxX64()
 
     sourceSets {
-        // custom source set with tests for the two targets
+        // 带有两个目标测试的自定义源集
         desktopTest {
             dependsOn commonTest
             /* …… */
         }
-        // Make the 'windows' default test source set for depend on 'desktopTest'
+        // 将 ‘windows’ 的默认测试源集设置为依赖于 ‘desktopTest’
         mingwX64().compilations.test.defaultSourceSet {
             dependsOn desktopTest
             /* …… */
         }
-        // And do the same for the other target:
+        // 并且为其他目标做同样的工作：
         linuxX64().compilations.test.defaultSourceSet {
             dependsOn desktopTest
             /* …… */
@@ -821,17 +821,17 @@ kotlin {
     linuxX64()
 
     sourceSets {
-        // custom source set with tests for the two targets
+        // 带有两个目标测试的自定义源集
         val desktopTest by creating {
             dependsOn(getByName("commonTest"))
             /* …… */
         }
-        // Make the 'windows' default test source set for depend on 'desktopTest'
+        // 将 ‘windows’ 的默认测试源集设置为依赖于 ‘desktopTest’
         mingwX64().compilations["test"].defaultSourceSet {
             dependsOn(desktopTest)
             /* …… */
         }
-        // And do the same for the other target:
+        // 并且为其他目标做同样的工作：
         linuxX64().compilations["test"].defaultSourceSet {
             dependsOn(desktopTest)
             /* …… */
