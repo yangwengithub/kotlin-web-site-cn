@@ -3,7 +3,7 @@ type: tutorial
 layout: tutorial
 title:  "用 Spring Boot 创建 RESTful Web 服务"
 description: "本教程将引导完成使用 Spring Boot 创建简单的 REST 控制器的过程"
-authors: Hadi Hariri, Edoardo Vacchi, Sébastien Deleuze
+authors: Hadi Hariri, Edoardo Vacchi, Sébastien Deleuze，Yue_plus（翻译）
 showAuthorInfo: true
 source: spring-boot-restful
 ---
