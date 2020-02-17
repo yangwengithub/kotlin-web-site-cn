@@ -845,7 +845,7 @@ kotlin {
 
 ### 添加依赖
 
-为了添加依赖到源集中，需要在源集 DSL 中使用 `dependencies { …… }` 块，支持<!--
+为了添加依赖到源集中，需要在源集 DSL 中使用 `dependencies { …… }` 块，支持以下<!--
 -->四种依赖：
 
 * `api` 依赖在编译时与运行时均会使用，并导出到库使用者。如果<!--
@@ -928,7 +928,7 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                // 包含源集 “commonMain” 的所有编译
+                // 包含源集 “commonMain” 的所有编译项
                 // 会将依赖项解析为兼容的目标（如果有）：
                 api project(':foo-lib')
             }
@@ -948,7 +948,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                // 包含源集 “commonMain” 的所有编译
+                // 包含源集 “commonMain” 的所有编译项
                 // 会将依赖项解析为兼容的目标（如果有）：
                 api(project(":foo-lib"))
             }
