@@ -35,6 +35,8 @@ Kotlin 非常适合开发服务器端应用程序，可以让你编写简明且�
  * [kotlinx.html](https://github.com/kotlin/kotlinx.html) 是可在 Web 应用程序中用于构建 HTML 的 DSL。
 它可以作为传统模板系统（如JSP和FreeMarker）的替代品。
 
+ * [Micronaut](https://micronaut.io/) is a modern, JVM-based, full-stack framework for building modular, easily testable microservice and serverless applications. It comes with a lot of built-in, handy features.
+
  * 通过相应 Java 驱动程序进行持久化的可用选项包括直接 JDBC 访问、JPA 以及使用 NoSQL 数据库。
 对于 JPA，[kotlin-jpa 编译器插件](compiler-plugins.html#jpa-支持)使
 Kotlin 编译的类适应框架的要求。
@@ -68,3 +70,4 @@ AWS Labs 提供了一个[示例项目](https://github.com/awslabs/serverless-pho
 -->将向你展示如何在 Kotlin 中构建和运行非常小的 Web 应用程序。
 * 关于更深入的介绍，请查看本站的[参考文档](index.html)及
 [Kotlin 心印](https://www.kotlincn.net/docs/tutorials/koans.html)。
+* Micronaut also has a lot of well-detailed [guides](https://guides.micronaut.io/tags/kotlin.html), showing how you can build microservices in Kotlin.
