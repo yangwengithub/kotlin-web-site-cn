@@ -80,9 +80,9 @@ fun main() {
 fun main() {
 //sampleStart
     val numbers = mutableListOf(1, 2, 3, 4, 3)
-    numbers.remove(3)                    // removes the first `3`
+    numbers.remove(3)                    // 删除了第一个 `3`
     println(numbers)
-    numbers.remove(5)                    // removes nothing
+    numbers.remove(5)                    // 什么都没删除
     println(numbers)
 //sampleEnd
 }
@@ -133,7 +133,7 @@ fun main() {
     numbers -= "three"
     println(numbers)
     numbers -= listOf("four", "five")    
-    //numbers -= listOf("four")    // does the same as above
+    //numbers -= listOf("four")    // 与上述相同
     println(numbers)    
 //sampleEnd
 }

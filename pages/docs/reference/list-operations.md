@@ -60,9 +60,9 @@ fun main() {
 
 ### 线性查找
 
-In any lists, you can find the position of an element using the functions [`indexOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of.html) and [`lastIndexOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-index-of.html).
-They return the first and the last position of an element equal to the given argument in the list.
-If there are no such elements, both functions return `-1`.
+在任何列表中，都可以使用 [`indexOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of.html) 或 [`lastIndexOf()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-index-of.html) 函数找到元素的位置。
+它们返回与列表中给定参数相等的元素的第一个或最后一个位置。
+如果没有这样的元素，则两个函数均返回 `-1`。
 
 
 
@@ -78,10 +78,10 @@ fun main() {
 ```
 
 
-There is also a pair of functions that take a predicate and search for elements matching it:
+还有一对函数接受谓词并搜索与之匹配的元素：
 
-* [`indexOfFirst()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-first.html) returns the *index of the first* element matching the predicate or `-1` if there are no such elements.
-* [`indexOfLast()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html) returns the *index of the last* element matching the predicate or `-1` if there are no such elements.
+* [`indexOfFirst()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-first.html) 返回与谓词匹配的*第一个元素的索引*，如果没有此类元素，则返回 `-1`。
+* [`indexOfLast()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html) 返回与谓词匹配的*最后一个元素的索引*，如果没有此类元素，则返回 `-1`。
 
 
 
@@ -99,15 +99,15 @@ fun main() {
 
 ### 在有序列表中二分查找
 
-There is one more way to search elements in lists – [binary search](https://en.wikipedia.org/wiki/Binary_search_algorithm).
-It works significantly faster than other built-in search functions but *requires the list to be [sorted](collection-ordering.html)* in ascending order according to a certain ordering: natural or another one provided in the function parameter.
-Otherwise, the result is undefined. 
+还有另一种搜索列表中元素的方法——[二分查找算法](https://zh.wikipedia.org/wiki/%E4%BA%8C%E5%88%86%E6%90%9C%E5%B0%8B%E6%BC%94%E7%AE%97%E6%B3%95)。
+它的工作速度明显快于其他内置搜索功能，但*要求该列表按照一定的顺序*（自然排序或函数参数中提供的另一种排序）按升序[排序过](collection-ordering.html)。
+否则，结果是不确定的。
 
-To search an element in a sorted list, call the [`binarySearch()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/binary-search.html) function passing the value as an argument.
-If such an element exists, the function returns its index; otherwise, it returns `(-insertionPoint - 1)` where `insertionPoint` is the index where this element should be inserted so that the list remains sorted.
-If there is more than one element with the given value, the search can return any of their indices.
+要搜索已排序列表中的元素，请调用 [`binarySearch()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/binary-search.html) 函数，并将该值作为参数传递。
+如果存在这样的元素，则函数返回其索引；否则，将返回 `(-insertionPoint - 1)`，其中 `insertionPoint` 为应插入此元素的索引，以便列表保持排序。
+如果有多个具有给定值的元素，搜索则可以返回其任何索引。
 
-You can also specify an index range to search in: in this case, the function searches only between two provided indices.
+还可以指定要搜索的索引区间：在这种情况下，该函数仅在两个提供的索引之间搜索。
 
 
 
@@ -128,8 +128,8 @@ fun main() {
 
 #### Comparator 二分搜索
 
-When list elements aren't `Comparable`, you should provide a [`Comparator`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparator.html) to use in the binary search.
-The list must be sorted in ascending order according to this `Comparator`. Let's have a look at an example:
+如果列表元素不是 `Comparable`，则应提供一个用于二分搜索的 [`Comparator`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparator.html)。
+该列表必须根据此 `Comparator` 以升序排序。来看一个例子：
 
 
 
@@ -151,10 +151,10 @@ fun main() {
 ```
 
 
-Here's a list of `Product` instances that aren't `Comparable` and a `Comparator` that defines the order: product `p1` precedes product `p2` if `p1`'s  price is less than `p2`'s price.
-So, having a list sorted ascending according to this order, we use `binarySearch()` to find the index of the specified `Product`.
+这是一个不可`排序`的 `Product` 实例列表，以及一个定义排序的 `Comparator`：如果 `p1` 的价格小于 `p2` 的价格，则产品 `p1` 在产品 `p2` 之前。
+因此，按照此顺序对列表进行升序排序后，使用 `binarySearch()` 查找指定的 `Product`的索引。
 
-Custom comparators are also handy when a list uses an order different from natural one, for example, a case-insensitive order for `String` elements. 
+当列表使用与自然排序不同的顺序时（例如，对 `String` 元素不区分大小写的顺序），自定义 Comparator 也很方便。
 
 
 
@@ -171,9 +171,9 @@ fun main() {
 
 #### 比较函数二分搜索
 
-Binary search with _comparison_ function lets you find elements without providing explicit search values.
-Instead, it takes a comparison function mapping elements to `Int` values and searches for the element where the function returns zero.
-The list must be sorted in the ascending order according to the provided function; in other words, the return values of comparison must grow from one list element to the next one.
+使用 _比较_ 函数的二分搜索无需提供明确的搜索值即可查找元素。
+取而代之的是，它使用一个比较函数将元素映射到 `Int` 值，并搜索函数返回 0 的元素。
+该列表必须根据提供的函数以升序排序；换句话说，比较的返回值必须从一个列表元素增长到下一个列表元素。
 
 
 
@@ -197,17 +197,17 @@ fun main() {
 ```
 
 
-Both comparator and comparison binary search can be performed for list ranges as well.
+Comparator 与比较函数二分搜索都可以针对列表区间执行。
 
 ## List 写操作
 
-In addition to the collection modification operations described in [Collection Write Operations](collection-write.html), [mutable](collections-overview.html#集合类型) lists support specific write operations.
-Such operations use the index to access elements to broaden the list modification capabilities.
+除了[集合写操作](collection-write.html)中描述的集合修改操作之外，[可变](collections-overview.html#集合类型)列表还支持特定的写操作。
+这些操作使用索引来访问元素以扩展列表修改功能。
 
 ### 添加
 
-To add elements to a specific position in a list, use [`add()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/add.html) and [`addAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/add-all.html) providing the position for element insertion as an additional argument.
-All elements that come after the position shift to the right.
+要将元素添加到列表中的特定位置，请使用 [`add()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/add.html) 或 [`addAll()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/add-all.html) 并提供元素插入的位置作为附加参数。
+位置之后的所有元素都将向右移动。
 
 
 
@@ -226,7 +226,7 @@ fun main() {
 
 ### 更新
 
-Lists also offer a function to replace an element at a given position - [`set()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/set.html) and its operator form `[]`. `set()` doesn't change the indexes of other elements.
+列表还提供了在指定位置替换元素的函数——[`set()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/set.html) 及其操作符形式 `[]`。`set()` 不会更改其他元素的索引。
 
 
 
@@ -242,7 +242,7 @@ fun main() {
 ```
 
 
-[`fill()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fill.html) simply replaces all the collection elements with the specified value.
+[`fill()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fill.html) 简单地将所有集合元素的值替换为指定值。
 
 
 
@@ -261,8 +261,8 @@ fun main() {
 
 ### 删除
 
-To remove an element at a specific position from a list, use the [`removeAt()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/remove-at.html) function providing the position as an argument.
-All indices of elements that come after the element being removed will decrease by one.
+要从列表中删除指定位置的元素，请使用 [`removeAt()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/remove-at.html) 函数，并将位置作为参数。
+在元素被删除之后出现的所有元素索引将减 1。
 
 
 
@@ -280,18 +280,18 @@ fun main() {
 
 ### 排序
 
-In [Collection Ordering](collection-ordering.html), we describe operations that retrieve collection elements in specific orders.
-For mutable lists, the standard library offers similar extension functions that perform the same ordering operations in place.
-When you apply such an operation to a list instance, it changes the order of elements in that exact instance.
+在[集合排序](collection-ordering.html)中，描述了按特定顺序检索集合元素的操作。
+对于可变列表，标准库中提供了类似的扩展函数，这些扩展函数可以执行相同的排序操作。
+将此类操作应用于列表实例时，它将更改指定实例中元素的顺序。
 
-The in-place sorting functions have similar names to the functions that apply to read-only lists, but without the `ed/d` suffix:
+就地排序函数的名称与应用于只读列表的函数的名称相似，但没有 `ed/d` 后缀：
 
-*  `sort*` instead of `sorted*` in the names of all sorting functions: [`sort()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sort.html), [`sortDescending()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sort-descending.html), [`sortBy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sort-by.html), and so on.
-* [`shuffle()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/shuffle.html) instead of `shuffled()`.
-* [`reverse()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reverse.html) instead of `reversed()`.
+*  `sort*` 在所有排序函数的名称中代替 `sorted*`：[`sort()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sort.html)、[`sortDescending()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sort-descending.html)、[`sortBy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sort-by.html) 等等。
+* [`shuffle()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/shuffle.html) 代替 `shuffled()`。
+* [`reverse()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reverse.html) 代替 `reversed()`。
 
-[`asReversed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/as-reversed.html) called on a mutable list returns another mutable list which is a reversed view of the original list. Changes in that view are reflected in the original list.
-The following example shows sorting functions for mutable lists:
+[`asReversed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/as-reversed.html) 在可变列表上调用会返回另一个可变列表，该列表是原始列表的反向视图。在该视图中的更改将反映在原始列表中。
+以下示例展示了可变列表的排序函数：
 
 
 
