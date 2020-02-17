@@ -121,7 +121,7 @@ fun main() {
 你还可以使用将元素索引作为参数的操作。
 为此，使用函数 [`reduceIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce-indexed.html) 和 [`foldIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold-indexed.html) 传递元素索引作为操作的第一个参数。
 
-最后，还有一些函数将这些操作从右到左应用于集合元素——[`reduceRightIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce-right-indexed.html) 与 [`foldRightIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold-right-indexed.html)。
+最后，还有将这些操作从右到左应用于集合元素的函数——[`reduceRightIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reduce-right-indexed.html) 与 [`foldRightIndexed()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold-right-indexed.html)。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
