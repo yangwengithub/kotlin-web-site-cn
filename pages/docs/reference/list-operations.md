@@ -171,7 +171,7 @@ fun main() {
 
 #### 比较函数二分搜索
 
-使用 _比较_ 函数的二进制搜索无需提供明确的搜索值即可查找元素。
+使用 _比较_ 函数的二分搜索无需提供明确的搜索值即可查找元素。
 取而代之的是，它使用一个比较函数将元素映射到 `Int` 值，并搜索函数返回 0 的元素。
 该列表必须根据提供的函数以升序排序；换句话说，比较的返回值必须从一个列表元素增长到下一个列表元素。
 
@@ -286,7 +286,7 @@ fun main() {
 
 就地排序函数的名称与应用于只读列表的函数的名称相似，但没有 `ed/d` 后缀：
 
-*  `sort*` 在所有排序函数的名称中代替 `sorted*`：[`sort()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sort.html)，[`sortDescending()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sort-descending.html)，[`sortBy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sort-by.html)，诸如此类。
+*  `sort*` 在所有排序函数的名称中代替 `sorted*`：[`sort()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sort.html)、[`sortDescending()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sort-descending.html)、[`sortBy()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/sort-by.html)、诸如此类。
 * [`shuffle()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/shuffle.html) 代替 `shuffled()`。
 * [`reverse()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reverse.html) 代替 `reversed()`。
 
@@ -324,3 +324,6 @@ fun main() {
 
 ```
 </div>
+
+
+
