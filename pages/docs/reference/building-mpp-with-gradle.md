@@ -728,7 +728,7 @@ Kotlin 源集可能与 *“depends on”* 关系有关，因而如果一个源�
 * `foo` 源中的代码能 “看到” `bar` 的定义，包括 `internal` 的以及 `bar` 的[依赖](#添加依赖)，即使是<!--
 -->被指定为 `implementation` 的依赖；
 
-* `foo` 可能包含针对 `bar` 的预期定义的[特定平台的实现](platform-specific-declarations.html)
+* `foo` 可能包含针对 `bar` 的预期定义的[特定平台的实现](platform-specific-declarations.html)；
 
 * `bar` 的资源总是与 `foo` 的资源一起处理与复制；
 
