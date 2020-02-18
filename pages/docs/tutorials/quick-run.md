@@ -21,7 +21,7 @@ related:
 ## 草稿与工单
 
 IntelliJ IDEA 的 Kotlin 插件支持[_草稿_](https://www.jetbrains.com/help/idea/scratches.html)与 _工单_。
-
+ 
 使用草稿，可以在与项目相同的 IDE 窗口中创建代码草稿，并即时运行它们。
 草稿与项目无关；所以可以从系统上的任何 IntelliJ IDEA 窗口访问并运行所有草稿。
 
