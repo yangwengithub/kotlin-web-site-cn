@@ -962,9 +962,11 @@ kotlin {
 
 同样的，如果以实验性的[Gradle 元数据发布模式](#experimental-metadata-publishing-mode)发布了一个多平台库，并且该项目<!--
 -->也设置为使用元数据，那么只需要为公共源集指定一次依赖。
-除此以外，应该每个特定平台的源集提供库的相应平台模块（除了公共模块），如上所示。
+除此以外，应该为每个特定平台的源集<!--
+-->提供库的相应平台模块（除了公共模块），如上所示。
 
-指定依赖的另一种方式是在顶层使用 Gradle 内置 DSL，其配置名称遵循模式 `<源集名称><依赖类型>`：
+指定依赖的另一种方式是在顶层使用 Gradle 内置 DSL，其配置名称遵循<!--
+-->模式 `<源集名称><依赖类型>`：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
