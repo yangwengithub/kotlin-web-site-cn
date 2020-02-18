@@ -861,7 +861,7 @@ kotlin {
   
 * `runtimeOnly` 依赖在运行时可用，但在任何模块的编译时都是不可见的。
 
-每个源集都指定了依赖，如下所示：
+每个源集都可以通过以下方式指定依赖：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
