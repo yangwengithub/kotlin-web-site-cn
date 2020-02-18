@@ -1066,8 +1066,6 @@ kotlin.sourceSets.all {
 Gradle 构建中，只有构建的默认源集的语言设置会被使用，并且应用于<!--
 -->参与编译的所有源代码。
 
-The language settings are checked for consistency between source sets depending on each other. Namely, if `foo` depends on `bar`:
-
 检查语言设置是否相互依赖，以确保源集之间的一致性。即如果 `foo` 依赖于 `bar`：
 
 * `foo` 需设置高于或等于 `bar` 的 `languageVersion`；
