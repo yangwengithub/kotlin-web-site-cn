@@ -13,12 +13,12 @@ showAuthorInfo: false
 
 从 15 版开始，IntelliJ IDEA 内集成 Kotlin。
 
-可以从 [JetBrains 官网][jetbrains]下载免费的[社区版][intellijdownload]（或完整的[专业版][intellijdownload]）。
+可以从 [JetBrains 官网][jetbrains]下载免费的[社区版][intellijdownload]（或完整的[旗舰版][intellijdownload]）。
 
-作为使用 IntelliJ IDEA 的替代方法，也可使用命令行编译器来编译和执行 Kotlin 应用程序。相关详细信息，请参阅[使用命令行编译器][getting_started_command_line]。
+作为使用 IntelliJ IDEA 的替代方法，也可使用命令行编译器来编译和执行 Kotlin 应用程序。相关详细信息，请参见[使用命令行编译器][getting_started_command_line]。
 
-如果您不熟悉JVM和Java，请查看 [JVM 简明使用手册](http://hadihariri.com/2013/12/29/jvm-minimal-survival-guide-for-the-dotnet-developer/)。
-如果您不熟悉 IntelliJ IDEA，请参阅 [IntelliJ IDEA 简明使用手册](http://hadihariri.com/2014/01/06/intellij-idea-minimal-survival-guide/)。
+如果不熟悉JVM和Java，请查看 [JVM 简明使用手册](http://hadihariri.com/2013/12/29/jvm-minimal-survival-guide-for-the-dotnet-developer/)。
+如果您不熟悉 IntelliJ IDEA，请参见 [IntelliJ IDEA 简明使用手册](http://hadihariri.com/2014/01/06/intellij-idea-minimal-survival-guide/)。
 
 ## 创建一个新的项目
 安装好 IntelliJ IDEA 之后，就可以创建第一个 Kotlin 应用程序了。
