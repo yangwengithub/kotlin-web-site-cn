@@ -1002,7 +1002,7 @@ dependencies {
 
 ### 语言设置
 
-The language settings for a source set can be specified as follows:
+源集的语言设置可以通过以下方式指定：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -1012,11 +1012,11 @@ kotlin {
     sourceSets {
         commonMain {
             languageSettings {
-                languageVersion = '1.3' // possible values: '1.0', '1.1', '1.2', '1.3'
-                apiVersion = '1.3' // possible values: '1.0', '1.1', '1.2', '1.3'
-                enableLanguageFeature('InlineClasses') // language feature name
-                useExperimentalAnnotation('kotlin.ExperimentalUnsignedTypes') // annotation FQ-name
-                progressiveMode = true // false by default
+                languageVersion = '1.3' // 可填：“1.0”、“1.1”、“1.2”、“1.3”
+                apiVersion = '1.3' // 可填：“1.0”、“1.1”、“1.2”、“1.3”
+                enableLanguageFeature('InlineClasses') // 语言特性名称
+                useExperimentalAnnotation('kotlin.ExperimentalUnsignedTypes') // 注解的全限定名
+                progressiveMode = true // 默认为 false
             }
         }
     }
@@ -1034,11 +1034,11 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             languageSettings.apply {
-                languageVersion = "1.3" // possible values: '1.0', '1.1', '1.2', '1.3'
-                apiVersion = "1.3" // possible values: '1.0', '1.1', '1.2', '1.3'
-                enableLanguageFeature("InlineClasses") // language feature name
-                useExperimentalAnnotation("kotlin.ExperimentalUnsignedTypes") // annotation FQ-name
-                progressiveMode = true // false by default
+                languageVersion = "1.3" // 可填：“1.0”、“1.1”、“1.2”、“1.3”
+                apiVersion = "1.3" // 可填：“1.0”、“1.1”、“1.2”、“1.3”
+                enableLanguageFeature("InlineClasses") // 语言特性名称
+                useExperimentalAnnotation("kotlin.ExperimentalUnsignedTypes") // 注解的全限定名
+                progressiveMode = true // 默认为 false
             }
         }
     }
@@ -1049,7 +1049,7 @@ kotlin {
 </div>
 
 
-It is possible to configure the language settings of all source sets at once:
+可以一次性为所有源集配置语言设置：
 
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
@@ -1062,16 +1062,18 @@ kotlin.sourceSets.all {
 </div>
 
 
-Language settings of a source set affect how the sources are analyzed in the IDE. Due to the current limitations, in a
-Gradle build, only the language settings of the compilation's default source set are used and are applied to all of the
-sources participating in the compilation.
+源集的语言设置会影响 IDE 识别源代码的方式。由于当前的限制，在
+Gradle 构建中，只有构建的默认源集的语言设置会被使用，并且应用于<!--
+-->参与编译的所有源代码。
 
 The language settings are checked for consistency between source sets depending on each other. Namely, if `foo` depends on `bar`:
 
-* `foo` should set `languageVersion` that is greater than or equal to that of `bar`;
-* `foo` should enable all unstable language features that `bar` enables (there's no such requirement for bugfix features);
-* `foo` should use all experimental annotations that `bar` uses;
-* `apiVersion`, bugfix language features, and `progressiveMode` can be set arbitrarily; 
+检查语言设置是否相互依赖，以确保源集之间的一致性。即如果 `foo` 依赖于 `bar`：
+
+* `foo` 需设置高于或等于 `bar` 的 `languageVersion`；
+* `foo` 需要启用所有 `bar` 启用的非稳定语言特性（对于错误修复功能则没有这种要求）；
+* `foo` 需要使用所有 `bar` 使用的实验性注解；
+* `apiVersion`、错误修复的语言特性 和 `progressiveMode` 可以被任意设置；
 
 ## 默认项目布局
 
