@@ -2203,7 +2203,7 @@ should be either a platform one (e.g. `kotlinx-coroutines-core-native_debug_maco
 or be exported transitively (see below).
 
 By default, export works non-transitively. If a library `foo` depending on library `bar` is exported, only methods of `foo` will
-be added in the output framework. This behaviour can by changed by the `transitiveExport` flag.
+be added in the output framework. This behaviour can be changed by the `transitiveExport` flag.
 
 > Groovy DSL
 
