@@ -848,18 +848,18 @@ kotlin {
 为了添加依赖到源集中，需要在源集 DSL 中使用 `dependencies { …… }` 块，支持以下<!--
 -->四种依赖：
 
-* `api` 依赖在编译时与运行时均会使用，并导出到库使用者。如果<!--
+* `api` 依赖在编译项与运行时均会使用，并导出到库使用者。如果<!--
 -->当前模块的公共 API 中使用了依赖中的任何类型，那么它应该是一个 `api` 依赖；
   
-* `implementation` 依赖在当前模块的编译时与运行时均会使用，但不暴露<!--
--->给其他具有 `implementation` 依赖的模块的编译时。对于那种内部逻辑实现所需要的依赖，应该使用 `implementation`
+* `implementation` 依赖在当前模块的编译项与运行时均会使用，但不暴露<!--
+-->给其他具有 `implementation` 依赖的模块的编译项。对于那种内部逻辑实现所需要的依赖，应该使用 `implementation`
 依赖类型。如果模块是一个未发布的 endpoint 应用，它或许该<!--
 -->使用 `implementation` 依赖而不是 `api` 依赖。
 
-* `compileOnly` 依赖仅用于当前模块的编译时，并且在运行时与<!---
-->其他模块的编译时均不可用。这些依赖应该用于运行时具有第三方实现 API 中。
+* `compileOnly` 依赖仅用于当前模块的编译项，并且在运行时与<!---
+->其他模块的编译项均不可用。这些依赖应该用于运行时具有第三方实现 API 中。
   
-* `runtimeOnly` 依赖在运行时可用，但在任何模块的编译时都是不可见的。
+* `runtimeOnly` 依赖在运行时可用，但在任何模块的编译项都是不可见的。
 
 每个源集都可以通过以下方式指定依赖：
 
@@ -995,7 +995,7 @@ dependencies {
 一些 Gradle 内置依赖（例如 `gradleApi()`、`localGroovy()`、或 `gradleTestKit()`）<!--
 -->在源集依赖 DSL 中是不可用的。但是，你可以将它们添加到顶级依赖块中，如上所示。
 
-可以使用符号 `kotlin("stdlib")` 添加对 Kotlin 模块（例如 `kotlin-stdlib` 或 `kotlin-reflect`）的依赖，
+可以使用 `kotlin("stdlib")` 表示法添加对 Kotlin 模块（例如 `kotlin-stdlib` 或 `kotlin-reflect`）的依赖，
 这是 `"org.jetbrains.kotlin:kotlin-stdlib"` 的简写。
 
 ### 语言设置
