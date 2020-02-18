@@ -845,23 +845,23 @@ kotlin {
 
 ### 添加依赖
 
-To add a dependency to a source set, use a `dependencies { ... }` block of the source sets DSL. Four kinds of dependencies
-are supported:
+为了添加依赖到源集中，需要在源集 DSL 中使用 `dependencies { …… }` 块，支持以下<!--
+-->四种依赖：
 
-* `api` dependencies are used both during compilation and at runtime and are exported to library consumers. If any types
-  from a dependency are used in the public API of the current module, then it should be an `api` dependency;
+* `api` 依赖在编译项与运行时均会使用，并导出到库使用者。如果<!--
+-->当前模块的公共 API 中使用了依赖中的任何类型，那么它应该是一个 `api` 依赖；
   
-* `implementation` dependencies are used during compilation and at runtime for the current module, but are not exposed for compilation 
-  of other modules depending on the one with the `implementation` dependency. The`implementation` dependency kind should be used for 
-  dependencies needed for the internal logic of a module. If a module is an endpoint application which is not published, it may
-  use `implementation` dependencies instead of `api` ones.
+* `implementation` 依赖在当前模块的编译项与运行时均会使用，但不暴露<!--
+-->给其他具有 `implementation` 依赖的模块的编译项。对于那种内部逻辑实现所需要的依赖，应该使用 `implementation`
+依赖类型。如果模块是一个未发布的 endpoint 应用，它或许该<!--
+-->使用 `implementation` 依赖而不是 `api` 依赖。
 
-* `compileOnly` dependencies are only used for compilation of the current module and are available neither at runtime nor during compilation
-  of other modules. These dependencies should be used for APIs which have a third-party implementation available at runtime.
+* `compileOnly` 依赖仅用于当前模块的编译项，并且在运行时与<!---
+->其他模块的编译项均不可用。这些依赖应该用于运行时具有第三方实现 API 中。
   
-* `runtimeOnly` dependencies are available at runtime but are not visible during compilation of any module.
+* `runtimeOnly` 依赖在运行时可用，但在任何模块的编译项都是不可见的。
 
-Dependencies are specified per source set as follows:
+每个源集都可以通过以下方式指定依赖：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -909,16 +909,16 @@ kotlin {
 </div>
 </div>
 
-Note that for the IDE to correctly analyze the dependencies of the common sources, the common source sets need to have 
-corresponding dependencies on the Kotlin metadata packages in addition to the platform-specific artifact dependencies 
-of the platform-specific source sets. Usually, an artifact with a suffix 
-`-common` (as in `kotlin-stdlib-common`) or `-metadata` is required when using a published library (unless it is 
-published with Gradle metadata, as described below).
+请注意，为了 IDE 能够正确地识别公共源的依赖，除了特定平台源集构件的依赖外，
+公共源集还需要在
+Kotlin 元数据包中具有相应的依赖。通常，
+在使用一个已发布的库时（除非它与 Gradle 元数据一起发布，如下所述），
+需要有一个后缀为 `-common` （如 `kotlin-stdlib-common`）或 `-metadata` 的构件。
 
-However, a `project('...')` dependency on another multiplatform project is resolved to an appropriate target
-automatically. It is enough to specify a single `project('...')` dependency in a source set's dependencies, 
-and the compilations that include the source set will receive a corresponding platform-specific artifact of 
-that project, given that it has a compatible target:
+然而，在另一个多平台项目中的 `project('……')` 依赖会被自动处理成一个<!--
+-->合适的目标。在源集的依赖中指定单个 `project('……')` 依赖就足够了，
+并且包含在源集中的编译将会接收到其项目的合适的特定平台的构件，
+鉴于它具有兼容的目标：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -928,8 +928,8 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                // All of the compilations that include source set 'commonMain'
-                // will get this dependency resolved to a compatible target, if any:
+                // 包含源集 “commonMain” 的所有编译项
+                // 会将依赖项解析为兼容的目标（如果有）：
                 api project(':foo-lib')
             }
         }
@@ -948,8 +948,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                // All of the compilations that include source set 'commonMain'
-                // will get this dependency resolved to a compatible target, if any:
+                // 包含源集 “commonMain” 的所有编译项
+                // 会将依赖项解析为兼容的目标（如果有）：
                 api(project(":foo-lib"))
             }
         }
@@ -960,13 +960,13 @@ kotlin {
 </div>
 </div>
 
-Likewise, if a multiplatform library is published in the experimental [Gradle metadata publishing mode](#experimental-metadata-publishing-mode) and the project 
-is set up to consume the metadata as well, then it is enough to specify a dependency only once, for the common source set. 
-Otherwise, each platform-specific source set should be 
-provided with a corresponding platform module of the library, in addition to the common module, as shown above.
+同样的，如果以实验性的[Gradle 元数据发布模式](#experimental-metadata-publishing-mode)发布了一个多平台库，并且该项目<!--
+-->也设置为使用元数据，那么只需要为公共源集指定一次依赖。
+除此以外，应该为每个特定平台的源集<!--
+-->提供库的相应平台模块（除了公共模块），如上所示。
 
-An alternative way to specify the dependencies is to use the Gradle built-in DSL at the top level with the configuration names following the 
-pattern `<sourceSetName><DependencyKind>`:
+指定依赖的另一种方式是在顶层使用 Gradle 内置 DSL，其配置名称遵循<!--
+-->模式 `<源集名称><依赖类型>`：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -994,11 +994,11 @@ dependencies {
 </div>
 </div>
 
-Some of the Gradle built-in dependencies, like `gradleApi()`, `localGroovy()`, or `gradleTestKit()` are not available
-in the source sets dependency DSL. You can, however, add them within the top-level dependency block, as shown above.
+一些 Gradle 内置依赖（例如 `gradleApi()`、`localGroovy()`、或 `gradleTestKit()`）<!--
+-->在源集依赖 DSL 中是不可用的。但是，你可以将它们添加到顶级依赖块中，如上所示。
 
-A dependency on a Kotlin module like `kotlin-stdlib` or `kotlin-reflect` may be added with the notation `kotlin("stdlib")`,
-which is a shorthand for `"org.jetbrains.kotlin:kotlin-stdlib"`.
+可以使用 `kotlin("stdlib")` 表示法添加对 Kotlin 模块（例如 `kotlin-stdlib` 或 `kotlin-reflect`）的依赖，
+这是 `"org.jetbrains.kotlin:kotlin-stdlib"` 的简写。
 
 ### 语言设置
 
