@@ -1069,7 +1069,7 @@ Gradle 构建中，只有构建的默认源集的语言设置会被使用，并�
 检查语言设置是否相互依赖，以确保源集之间的一致性。即如果 `foo` 依赖于 `bar`：
 
 * `foo` 需设置高于或等于 `bar` 的 `languageVersion`；
-* `foo` 需要启用所有 `bar` 启用的非稳定语言特性（对于错误修复功能则没有这种要求）；
+* `foo` 需要启用所有 `bar` 启用的非稳定语言特性（对于错误修复特性则没有这种要求）；
 * `foo` 需要使用所有 `bar` 使用的实验性注解；
 * `apiVersion`、错误修复的语言特性 和 `progressiveMode` 可以被任意设置；
 
@@ -1090,12 +1090,12 @@ Gradle 构建中，只有构建的默认源集的语言设置会被使用，并�
 
 仅仅是默认源集就涵盖了很多用例，因此不需要自定义源集。
  
-每个默认源集都拥有在它在 `src/<源集名称>/kotlin` 目录以及 `src/<源集名称>/resources` 下的 Kotlin 源代码与资源。
+每个默认源集都拥有在 `src/<源集名称>/kotlin` 目录下的 Kotlin 源代码与在 `src/<源集名称>/resources` 目录下的资源
 
 在 Android 项目中，将为每个 [Android 源集](https://developer.android.com/studio/build/#sourcesets)创建额外的 Kotlin 源集.
 如果其 Android 目标的名称为 `foo`，那么其 Android 源集 `bar` 将获得一个对应的 Kotlin 源集 `fooBar`。
 然而，Kotlin 编译项能够使用来自所有 `src/bar/java`、`src/bar/kotlin` 以及 `src/fooBar/kotlin`
-目录的 Kotlin 源代码。而 Java 源代码则只能从上述目录中的首个读取。
+目录的 Kotlin 源代码。而 Java 源代码则只能从上述第一个目录读取。
 
 ## 运行测试
 
