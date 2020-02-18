@@ -1075,27 +1075,27 @@ Gradle 构建中，只有构建的默认源集的语言设置会被使用，并�
 
 ## 默认项目布局
 
-By default, each project contains two source sets, `commonMain` and `commonTest`, where one can place all the code that should be 
-shared between all of the target platforms. These source sets are added to each production and test compilation, respectively.
+默认情况下，每个项目都包含了两个源集，`commonMain` 与 `commonTest`，在其中可以放置应在<!--
+-->所有目标平台之间共享的所有代码。这些源集分别添加到每个生产和测试编译项。
 
-Then, once a target is added, default compilations are created for it:
+之后，当目标被添加时，将为其创建默认编译项：
 
-* `main` and `test` compilations for JVM, JS, and Native targets;
-* a compilation per [Android build variant](https://developer.android.com/studio/build/build-variants), for Android targets;
+* 针对 JVM、JS 和原生目标的 `main` 与 `test` 编译项；
+* 针对每个 [Android 构建版本](https://developer.android.com/studio/build/build-variants)的编译项；
 
-For each compilation, there is a default source set under the name composed as `<targetName><CompilationName>`. This default source
-set participates in the compilation, and thus it should be used for the platform-specific code and dependencies, and for adding other source
- sets to the compilation by the means of 'depends on'. For example, a project with
-targets `jvm6` (JVM) and `nodeJs` (JS) will have source sets: `commonMain`, `commonTest`, `jvm6Main`, `jvm6Test`, `nodeJsMain`, `nodeJsTest`.
+对于每个编译项，在由 `<目标名称><编译项名称>` 组成的名称下都有一个默认源集。这个默认源集<!--
+-->参与编译，因此它应用于特定平台的代码与依赖，并且以依赖的方式将其他<!--
+-->源集添加到编译项中。例如，一个有者
+`jvm6` （JVM）与 `nodeJs`（JS）目标的项目将拥有源集：`commonMain`、`commonTest`、`jvm6Main`、`jvm6Test`、`nodeJsMain` 以及 `nodeJsTest`。
 
-Numerous use cases are covered by just the default source sets and don't require custom source sets.
+仅仅是默认源集就涵盖了很多用例，因此不需要自定义源集。
  
-Each source set by default has its Kotlin sources under `src/<sourceSetName>/kotlin` directory and the resources under `src/<sourceSetName>/resources`.
+每个默认源集都拥有在它在 `src/<源集名称>/kotlin` 目录以及 `src/<源集名称>/resources` 下的 Kotlin 源代码与资源。
 
-In Android projects, additional Kotlin source sets are created for each [Android source set](https://developer.android.com/studio/build/#sourcesets).
-If the Android target has a name `foo`, the Android source set `bar` gets a Kotlin source set counterpart `fooBar`.
-The Kotlin compilations, however, are able to consume Kotlin sources from all of the directories `src/bar/java`,
-`src/bar/kotlin`, and `src/fooBar/kotlin`. Java sources are only read from the first of these directories.
+在 Android 项目中，将为每个 [Android 源集](https://developer.android.com/studio/build/#sourcesets)创建额外的 Kotlin 源集.
+如果其 Android 目标的名称为 `foo`，那么其 Android 源集 `bar` 将获得一个对应的 Kotlin 源集 `fooBar`。
+然而，Kotlin 编译项能够使用来自所有 `src/bar/java`、`src/bar/kotlin` 以及 `src/fooBar/kotlin`
+目录的 Kotlin 源代码。而 Java 源代码则只能从上述目录中的首个读取。
 
 ## 运行测试
 
