@@ -1115,7 +1115,7 @@ JS 与其他 Kotlin/Native 目标<!--
 以及 `@Test`/`@Ignore`/`@BeforeTest`/`@AfterTest` 注解）
 
 对于 JVM 目标，将 `kotlin-test-junit` 或 `kotlin-test-testng` 用于相应的断言器实现和<!--
--->注释映射。
+-->注解映射。
 
 对于 Kotlin/JS 目标，把 `kotlin-test-js` 添加为测试依赖。至此，将创建针对 Kotlin/JS 的测试任务，但默认情况下并不会运行测试；
 应该手动配置它们以使用 JavaScript 测试框架运行测试。
