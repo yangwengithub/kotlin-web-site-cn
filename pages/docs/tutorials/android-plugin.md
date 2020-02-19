@@ -57,26 +57,7 @@ apply plugin: 'kotlin-android-extensions'
 ```
 </div>
 
-### 启用实验特性
-
-Android 扩展插件包括几个实验特性：
-
-- [LayoutContainer 支持](#layoutcontainer-支持)
-- [多渠道支持](#多渠道支持)
-- [Parcelable 实现生成器](#parcelable-实现生成器)
-
-这些特性尚未被考虑用于生产环境，因此你需要在 `build.gradle` 中打开 *实验模式* 才能使用它们：
-
-<div class="sample" markdown="1" theme="idea" mode="groovy">
-
-```groovy
-androidExtensions {
-    experimental = true
-}
-```
-</div>
-
-### 导入合成属性
+### 导入合成的属性
 
 仅需要一行即可非常方便导入指定布局文件中所有控件属性：
 
@@ -111,56 +92,6 @@ import kotlinx.android.synthetic.main.＜布局＞.*
 activity.hello.text = "Hello World!"
 ```
 </div>
-
-### LayoutContainer 支持
-
-Android 扩展插件支持不同类型的容器。最基本的是[`Activity`](https://developer.android.com/reference/android/app/Activity.html)、[`Fragment`](https://developer.android.com/reference/android/support/v4/app/Fragment.html) 以及 [`View`](https://developer.android.com/reference/android/view/View.html)，但是你可以（实际上）通过实现 `LayoutContainer` 接口将任何类转换为 Android 扩展容器，例如：
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-
-```kotlin
-import android.support.v7.widget.RecyclerView
-import kotlinx.android.extensions.LayoutContainer
-
-class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
-    fun setup(title: String) {
-        itemTitle.text = "Hello World!"
-    }
-}
-```
-</div>
-
-请注意，你需要打开[实验性标志](#启用实验特性)才能使用 `LayoutContainer`。
-
-
-### 多渠道支持
-
-安卓扩展插件现已支持安卓多渠道。假设当前在 `build.gradle` 文件中指定一个名为 `free` 的渠道：
-
-<div class="sample" markdown="1" theme="idea" mode="groovy">
-
-```groovy
-android {
-    productFlavors {
-        free {
-            versionName "1.0-free"
-        }
-    }
-}
-```
-</div>
-
-所以现在只需要添加一行导入语句即可从 `free/res/layout/activity_free.xml` 布局中导入所有的合成属性：
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-
-```kotlin
-import kotlinx.android.synthetic.free.activity_free.*
-```
-</div>
-
-在[实验模式](#启用实验特性)中，你可以指定任何变体名称（不仅是渠道），例如 `freeDebug` 或者 `freeRelease` 也可以使用。
-
 
 ### 视图缓存
 
@@ -234,8 +165,7 @@ fun MyActivity.a() {
 
 ### `Parcelable` 实现生成器
 
-Android 扩展插件提供[`Parcelable`](https://developer.android.com/reference/android/os/Parcelable) 实现生成器作为一项实验特性。
-想要使用它，请[打开](#启用实验特性)实验标记。
+Android 扩展插件提供 [`Parcelable`](https://developer.android.com/reference/android/os/Parcelable) 实现生成器。
 
 #### 如何使用
 
@@ -329,3 +259,75 @@ class MyClass(@TypeParceler<ExternalClass, ExternalClassParceler>() val external
 class MyClass(val external: @WriteWith<ExternalClassParceler>() ExternalClass)
 ```
 </div>
+
+{:#enabling-experimental-features}
+
+### 实验性特性
+
+Android 扩展插件包括几个实验特性：
+
+- [LayoutContainer 支持](#layoutcontainer-支持)
+- [多渠道支持](#多渠道支持)
+
+这些特性尚未被考虑用于生产环境，因此你需要在 `build.gradle` 中打开 *实验模式* 才能使用它们：
+
+<div class="sample" markdown="1" theme="idea" mode="groovy">
+
+```groovy
+androidExtensions {
+    experimental = true
+}
+```
+</div>
+
+### LayoutContainer 支持
+
+Android 扩展插件支持不同类型的容器。最基本的是[`Activity`](https://developer.android.com/reference/android/app/Activity.html)、[`Fragment`](https://developer.android.com/reference/android/support/v4/app/Fragment.html) 以及 [`View`](https://developer.android.com/reference/android/view/View.html)，但是你可以（实际上）通过实现 `LayoutContainer` 接口将任何类转换为 Android 扩展容器，例如：
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```kotlin
+import android.support.v7.widget.RecyclerView
+import kotlinx.android.extensions.LayoutContainer
+
+class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+    fun setup(title: String) {
+        itemTitle.text = "Hello World!"
+    }
+}
+```
+</div>
+
+请注意，你需要打开[实验性标志](#启用实验特性)才能使用 `LayoutContainer`。
+
+
+### 多渠道支持
+
+安卓扩展插件现已支持安卓多渠道。假设当前在 `build.gradle` 文件中指定一个名为 `free` 的渠道：
+
+<div class="sample" markdown="1" theme="idea" mode="groovy">
+
+```groovy
+android {
+    productFlavors {
+        free {
+            versionName "1.0-free"
+        }
+    }
+}
+```
+</div>
+
+所以现在只需要添加一行导入语句即可从 `free/res/layout/activity_free.xml` 布局中导入所有的合成属性：
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```kotlin
+import kotlinx.android.synthetic.free.activity_free.*
+```
+</div>
+
+在[实验模式](#启用实验特性)中，你可以指定任何变体名称（不仅是渠道），例如 `freeDebug` 或者 `freeRelease` 也可以使用。
+
+
+
