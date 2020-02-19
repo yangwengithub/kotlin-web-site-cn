@@ -2,8 +2,8 @@
 type: tutorial
 layout: tutorial
 title: "运行代码片段"
-description: "本教程介绍了以轻量级方式编写和运行 Kotlin 代码段的方法，
-而无需创建整个应用程序。"
+description: "本教程介绍了以轻量级方式编写和运行 Kotlin 代码段、
+而无需创建整个应用程序的方法。"
 authors: Pavel Semyonov，johnpoint(翻译)，Yue_plus(翻译)
 date: 2019-11-13
 showAuthorInfo: false
@@ -66,7 +66,7 @@ IntelliJ IDEA 可以自动运行草稿与工单中的代码。
 
 工单会自动从其所在的模块中访问类或函数。
 
-要从草稿中使用项目中的类或函数，请照常使用 `import` 语句将它们导入到头文件中。
+要从草稿中使用项目中的类或函数，请照常使用 `import` 语句将它们导入到草稿文件中。
 然后编写代码，并使用在 __Use classpath of module__ 列表中选择的适当模块运行它。
 
 草稿与工单都使用已连接模块的已编译版本。
