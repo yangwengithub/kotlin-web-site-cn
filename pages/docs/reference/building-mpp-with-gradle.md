@@ -1099,7 +1099,7 @@ Gradle 构建中，只有构建的默认源集的语言设置会被使用，并�
 
 ## 运行测试
 
-目前默认支持 JVM, Android, Linux, Windows 以及 macOS 在 Gradle 构建中运行测试；
+目前默认支持 JVM、Android、Linux、Windows 以及 macOS 在 Gradle 构建中运行测试；
 JS 与其他 Kotlin/Native 目标<!--
 -->需要手动配置以在适当的环境、模拟器或测试框架下运行测试。
 
