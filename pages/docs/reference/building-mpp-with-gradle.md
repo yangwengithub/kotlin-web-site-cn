@@ -1099,28 +1099,28 @@ Gradle 构建中，只有构建的默认源集的语言设置会被使用，并�
 
 ## 运行测试
 
-Running tests in a Gradle build is currently supported by default for JVM, Android, Linux, Windows and macOS; 
-JS and other Kotlin/Native targets
-need to be manually configured to run the tests with an appropriate environment, an emulator or a test framework.  
+目前默认支持 JVM、Android、Linux、Windows 以及 macOS 在 Gradle 构建中运行测试；
+JS 与其他 Kotlin/Native 目标<!--
+-->需要手动配置以在适当的环境、模拟器或测试框架下运行测试。
 
-A test task is created under the name `<targetName>Test` for each target that is suitable for testing. Run the `check` task to run 
-the tests for all targets. 
+将为每个适合测试的目标创建名为 `<目标名称>Test` 的测试任务。运行 `check` 任务以<!--
+-->为所有目标运行测试。
 
-As the `commonTest` [default source set](#默认项目布局) is added to all test compilations, tests and test tools that are needed
-on all target platforms may be placed there.
+由于 `commonTest` [默认源集](#默认项目布局)被添加到所有测试编译项中，所以会将所有目标平台<!--
+-->上所需的测试和测试工具放在此处。
 
-The [`kotlin.test` API](https://kotlinlang.org/api/latest/kotlin.test/index.html) is available for multiplatform tests.
-Add the `kotlin-test-common` and `kotlin-test-annotations-common` dependencies to `commonTest` to use the assertion
-functions like `kotlin.test.assertTrue(...)`
-and `@Test`/`@Ignore`/`@BeforeTest`/`@AfterTest` annotations in the common tests.
+[`kotlin.test` API](https://kotlinlang.org/api/latest/kotlin.test/index.html)对于多平台测试是可用的。
+添加 `kotlin-test-common` 与 `kotlin-test-annotations-common` 依赖到 `commonTest` 以在<!--
+-->公共测试中使用断言函数（例如 `kotlin.test.assertTrue(……)`
+以及 `@Test`/`@Ignore`/`@BeforeTest`/`@AfterTest` 注解）
 
-For JVM targets, use `kotlin-test-junit` or `kotlin-test-testng` for the corresponding asserter implementation and
-annotations mapping.
+对于 JVM 目标，将 `kotlin-test-junit` 或 `kotlin-test-testng` 用于相应的断言器实现和<!--
+-->注解映射。
 
-For Kotlin/JS targets, add `kotlin-test-js` as a test dependency. At this point, test tasks for Kotlin/JS are created 
-but do not run tests by default; they should be manually configured to run the tests with a JavaScript test framework. 
+对于 Kotlin/JS 目标，把 `kotlin-test-js` 添加为测试依赖。至此，将创建针对 Kotlin/JS 的测试任务，但默认情况下并不会运行测试；
+应该手动配置它们以使用 JavaScript 测试框架运行测试。
 
-Kotlin/Native targets do not require additional test dependencies, and the `kotlin.test` API implementations are built-in.
+Kotlin/Native 目标不需要额外测试依赖，并且内置了 `kotlin.test` API 的实现。
 
 ## 发布多平台库
 
