@@ -14,8 +14,8 @@ related:
 有时可能需要在项目或应用程序之外快速编写并执行代码。
 例如，在学习 Kotlin 或计算表达式时，这可能会很有用。
 来看一下可以用来快速运行 Kotlin 代码的三种便捷方式：
-* [草稿](#scratches-and-worksheets)：在 IDE 中的项目之外的临时文件中编写和运行代码。
-* [工单](#scratches-and-worksheets)：就像草稿一样，但是它们位于项目中。
+* [草稿](#草稿与工单)：在 IDE 中的项目之外的临时文件中编写和运行代码。
+* [工单](#草稿与工单)：就像草稿一样，但是它们位于项目中。
 * [REPL](#repl)：(_<span title="Read">读取</span>-<span title="Eval">求值</span>-<span title="Print">输出</span>-<span title="Loop">循环</span>_)在交互式控制台中运行代码。
 
 ## 草稿与工单
