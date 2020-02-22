@@ -1,22 +1,23 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Debugging Kotlin in browser"
+title:  "在浏览器中调试 Kotlin"
+authors: Yue_plus（翻译）
 date: 2017-07-31
 showAuthorInfo: false
 ---
 
-This tutorial shows how to debug a Kotlin/JS project build by Gradle.
-If you are using Maven or IDEA, the recipes would be similar.
+本教程介绍了如何调试 Gradle 构建的 Kotlin/JS 项目。
+如果使用的是 Maven 或 IDEA，操作方法相似。
 
-Before reading this tutorial, please, look through
-[Kotlin and JavaScript for Gradle tutorial](http://www.kotlincn.net/docs/tutorials/javascript/getting-started-gradle/getting-started-with-gradle.html).
+在阅读本教程之前，请仔细阅读
+[以 Gradle 入门 Kotlin 和 JavaScript](http://www.kotlincn.net/docs/tutorials/javascript/getting-started-gradle/getting-started-with-gradle.html).
 
 
-## Generating source map
+## 创建源映射
 
-To debug Kotlin sources in the browser, you should tell the compiler to generate source map file.
-Add following lines to the Gradle configuration:
+要在浏览器中调试 Kotlin 源，应告诉编译器生成源映射文件。
+将以下行添加到 Gradle 配置中：
 
 <div class="sample" markdown="1" theme="idea" mode="groovy">
 
@@ -25,28 +26,28 @@ compileKotlin2Js {
     kotlinOptions.sourceMap = true
     kotlinOptions.sourceMapEmbedSources = "always"
 
-    // remaining configuration options
+    // 其他配置选项
 } 
 ```
 
 </div>
 
-Now, if you rebuild the project, you should see both `.js` and `.js.map` files generated.
+现在，如果重新构建项目，则应该同时看到生成的 `.js` 和 `.js.map` 文件。
 
 
-## Debugging in Chrome DevTools
+## 在 Chrome DevTools 中进行调试
 
-To debug Kotlin in Google Chrome, you should use DevTools.
-Please, read the [official documentation](https://developer.chrome.com/devtools) to learn
-how to open and use DevTools.
+要在 Google Chrome 浏览器中调试 Kotlin，应使用 DevTools。
+请阅读[官方文档](https://developer.chrome.com/devtools)
+以了解如何打开与使用 DevTools。
 
-Now, if you open DevTools, you should see both JavaScript and Kotlin files in Sources tab,
-as shown in the picture below.
+现在，如果打开了 DevTools，则应该在 Sources 选项卡中同时看到 JavaScript 与 Kotlin 文件，
+如下图所示：
 
 ![Debugging in Chrome DevTools]({{ url_for('tutorial_img', filename='javascript/debugging-javascript/chrome-devtools.png')}})
 
-Note that you can open folders in the Source tab and see sources of libraries you are using in your project,
-including Kotlin standard library (`kotlin.js`).
-This, however, requires that libraries are compiled with source maps enabled,
-as well as sources embedded into source maps.
-So the good practice is: if you share a library for Kotlin/JS, please, include source map into distribution.
+请注意，可以在 Source 选项卡中打开文件夹，并查看项目中正在使用的库的源，
+包括 Kotlin 标准库（`kotlin.js`）。
+但是，这需要在启用源映射以及嵌入源映射的源的情况下编译库。
+因此，推荐做法是：
+如果共享 Kotlin/JS 的库，请在发行版中包含源映射。
