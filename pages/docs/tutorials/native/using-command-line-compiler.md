@@ -40,7 +40,7 @@ fun main() {
 ## 从控制台编译代码
 
 To compile the application use the [downloaded](https://github.com/JetBrains/kotlin/releases)
-要编译这个应用程序，请使用[下载的版本](https://github.com/JetBrains/kotlin/releases)
+要编译这个应用程序，请使用[下载项](https://github.com/JetBrains/kotlin/releases)
 compiler to execute the following command:
 编译器执行以下命令:
 
