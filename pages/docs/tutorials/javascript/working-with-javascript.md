@@ -75,7 +75,7 @@ dependencies {
 ```
 </div>
 
-相关配置 Gradle 以实现 JavaScript 对象的更多信息，请参见[以 Gradle 入门](getting-started-gradle/getting-started-with-gradle.html)。
+关于配置 Gradle 面向 JavaScript 平台的更多信息，请参见[以 Gradle 入门](getting-started-gradle/getting-started-with-gradle.html)。
 
 包含依赖项后，便可访问提供的不同接口来生成 DOM。
 以下代码将在 `window.load` 事件中为 ```div``` 内添加一个带有文本 ```Hello``` 的新 ```span``` 标签。
@@ -146,17 +146,17 @@ public external fun jQuery(selector: String): JQuery
 ```
 </div>
 
-上面的代码表明该函数是在外部定义的。```@JsName("$")``` 批注允许在运行时将名称映射到 ```$```。
+上面的代码表明该函数是在外部定义的。```@JsName("$")``` 注解允许在运行时将名称映射到 ```$```。
 有关外部声明的更多详细信息，请参阅 [JavaScript 互操作文档](/docs/reference/js-interop.html#external-修饰符)。
 
 请注意，TypeScript 与 Kotlin 的类型系统不完全匹配，
-因此，如果在使用 Kotlin 的 API 时遇到困难，则可能需要编辑生成的标头。
+因此，如果在使用 Kotlin 的 API 时遇到困难，则可能需要编辑生成的头文件。
 
 
 ## 使用 Dynamic
 
-尽管上述解决方案有相应头文件（是自己定义的，或从 TypeScript 头转换而来的文件）的情况下很好用，但通常需要使用一些没有标头的库。
-例如，要使用jQuery插件，该插件可让我们将 HTML 表转换为漂亮的可导航网格。
+尽管上述解决方案有相应头文件（是自己定义的，或从 TypeScript 头转换而来的文件）的情况下很好用，但通常需要使用一些没有头文件的库。
+例如，要使用 jQuery 插件，该插件可让我们将 HTML 表转换为漂亮的可导航网格。
 
 通过 JavaScript 使用的方式是在相应的 ```<table>``` 元素上调用 ```dataTable()```
 
