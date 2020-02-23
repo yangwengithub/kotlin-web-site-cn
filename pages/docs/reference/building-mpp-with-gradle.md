@@ -1128,7 +1128,7 @@ Kotlin/Native 目标不需要额外测试依赖，并且内置了 `kotlin.test` 
 > 不支持为多平台库添加用户端的新目标。
 {:.note} 
 
-来自多平台项目的库构建可能通过 [`maven-publish` Gradle 插件](https://docs.gradle.org/current/userguide/publishing_maven.html)<!--
+来自多平台项目的库构建可以通过 [`maven-publish` Gradle 插件](https://docs.gradle.org/current/userguide/publishing_maven.html)<!--
 -->发布到 Maven 仓库，这个插件可通过<!--
 -->以下方式应用：
 
