@@ -1124,13 +1124,13 @@ Kotlin/Native 目标不需要额外测试依赖，并且内置了 `kotlin.test` 
 
 ## 发布多平台库
 
-> The set of target platforms is defined by a multiplatform library author, and they should provide all of the platform-specific implementations for the library. 
-> Adding new targets for a multiplatform library at the consumer's side is not supported. 
+> 目标平台集合由多平台库作者定义，并且他们应该为库提供所有特定平台的实现。
+> 不支持为多平台库添加用户端的新目标。
 {:.note} 
 
-A library built from a multiplatform project may be published to a Maven repository with the
-[`maven-publish` Gradle plugin](https://docs.gradle.org/current/userguide/publishing_maven.html), which can be applied as
-follows:
+来自多平台项目的库构建可能通过 [`maven-publish` Gradle 插件](https://docs.gradle.org/current/userguide/publishing_maven.html)<!--
+-->发布到 Maven 仓库，这个插件可通过<!--
+-->以下方式应用：
 
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
@@ -1143,7 +1143,7 @@ plugins {
 
 </div>
 
-A library also needs `group` and `version` to be set in the project:
+一个库也需要在项目中设置 `group` 与 `version` 字段：
 
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
@@ -1156,28 +1156,28 @@ version = "0.0.1"
 
 </div>
 
-Compared to publishing a plain Kotlin/JVM or Java project, there is no need to create publications manually
-via the `publishing { ... }` DSL. The publications are automatically created for each of the targets that can be
-built on the current host, except for the Android target, which needs an additional step to configure
-publishing, see [发布 Android 库](#发布-android-库).
+与发布一个普通的 Kotlin/JVM 或 Java 项目相比，并没有必要通过 `publishing { …… }` DSL
+来手动创建一个发布项。将为可在当前主机<!--
+-->构建的每个目标自动创建发布项，但 Android 目标除外，Android 目标需要额外的步骤来配置<!--
+-->发布，参见[发布 Android 库](#发布-android-库)。
 
-The repositories where the library will be published are added via the `repositories` block in the `publishing { ... }`
-DSL, as explained in [Maven Publish Plugin. Repositories](https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven:repositories).
+通过在 `publishing { …… }` DSL 中的 `repositories` 块添加将被发布的库的仓库。
+如 [Maven Publish Plugin. Repositories](https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven:repositories) 所述。
 
-The default artifact IDs follow the pattern `<projectName>-<targetNameToLowerCase>`, for example `sample-lib-nodejs`
-for a target named `nodeJs` in a project `sample-lib`.
+默认构件 ID 遵循模式 `<项目名称>-<小写的目标名称>`，例如对于项目 `sample-lib` 中<!--
+-->名为 `nodeJs` 的目标，为 `sample-lib-nodejs`。
 
-By default, a sources JAR is added to each publication in addition to its main artifact. The sources JAR contains the
-sources used by the `main` compilation of the target. If you also need to publish a documentation artifact (like a
-Javadoc JAR), you need to configure its build manually and add it as an artifact to the relevant publications, as shown
-below.
+默认情况下，将为每个发布项中添加源代码 JAR（除了它的主构件）。源代码 JAR 包含了<!--
+-->目标主编译项所使用的源代码。如果你还需要发布文档构件（例如
+Javadoc JAR），则需要手动配置其构建并且将其作为构件添加到相关发布项中，如<!--
+-->下所示。
 
-Also, an additional publication under the name `metadata` is added by default which contains serialized Kotlin
-declarations and is used by the IDE to analyze multiplatform libraries.
-The default artifact ID of this publication is formed as `<projectName>-metadata`.
+此外，会默认添加名为 `metadata` 的额外发布项，它包含序列化的 Kotlin
+定义并且被 IDE 用于分析多平台库。
+这个发布项的默认构件 ID 的形式为 `<项目名称>-metadata`。
 
-The Maven coordinates can be altered and additional artifact files may be added to the publications within the
-`targets { ... }` block or the `publishing { ... }` DSL:
+可以更改 Maven 坐标，并且可以为在
+`targets { …… }` 块或 `publishing { …… }` DSL 中的发布项添加额外的构件文件：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -1185,20 +1185,20 @@ The Maven coordinates can be altered and additional artifact files may be added 
 ```groovy
 kotlin {
     jvm('jvm6') {
-        mavenPublication { // Setup the publication for the target 'jvm6'
-            // The default artifactId was 'foo-jvm6', change it:
+        mavenPublication { // 为目标 “jvm6” 设置发布项
+            // 默认的 artifactId 为 “foo-jvm6”，修改它：
             artifactId = 'foo-jvm'
-            // Add a docs JAR artifact (it should be a custom task):
+            // 添加 docs JAR 构件（应是一个自定义任务）：
             artifact(jvmDocsJar)
         }
     }
 }
 
-// Alternatively, configure the publications with the `publishing { ... }` DSL:
+// 使用 `publishing { …… }` DSL 来配置发布项是可选的：
 publishing {
     publications {
-        jvm6 { /* Setup the publication for target 'jvm6' */ }
-        metadata { /* Setup the publication for Kotlin metadata */ }
+        jvm6 { /* 为目标 “jvm6” 设置发布项 */ }
+        metadata { /* 为 Kotlin 元数据设置发布项 */ }
     }
 }
 ```
@@ -1212,20 +1212,20 @@ publishing {
 ```kotlin
 kotlin {
     jvm("jvm6") {
-        mavenPublication { // Setup the publication for the target 'jvm6'
-            // The default artifactId was 'foo-jvm6', change it:
+        mavenPublication { // 为目标 “jvm6” 设置发布项
+            // 默认的 artifactId 为 “foo-jvm6”，修改它：
             artifactId = "foo-jvm"
-            // Add a docs JAR artifact (it should be a custom task):
+            // 添加 docs JAR 构件（应是一个自定义任务）：
             artifact(jvmDocsJar)
         }
     }
 }
 
-// Alternatively, configure the publications with the `publishing { ... }` DSL:
+// 使用 `publishing { …… }` DSL 来配置发布项是可选的：
 publishing {
     publications.withType<MavenPublication>().apply {
-        val jvm6 by getting { /* Setup the publication for target 'jvm6' */ }
-        val metadata by getting { /* Setup the publication for Kotlin metadata */ }
+        val jvm6 by getting { /* 为目标 “jvm6” 设置发布项 */ }
+        val metadata by getting { /* 为 Kotlin 元数据设置发布项 */ }
     }
 }
 ```
@@ -1233,14 +1233,14 @@ publishing {
 </div>
 </div>
 
-As assembling Kotlin/Native artifacts requires several builds to run on different host platforms, publishing a
-multiplatform library that includes Kotlin/Native targets needs to be done with that same set of host machines. To avoid
-duplicate publications of modules that can be built on more than one of the platforms
-(like JVM, JS, Kotlin metadata, WebAssembly), the publishing tasks for these modules may be configured to run
-conditionally.
+由于组装 Kotlin/Native 构件时，需要一些构建才能在不同的主机平台运行，所以发布<!--
+-->包含 Kotlin/Native 目标的多平台库需要使用同一套主机进行。为了避免<!--
+-->重复发布能在多个平台
+（例如 JVM、JS、Kotlin 元数据以及 WebAssembly）上构建的模块，可以将这些模块的发布任务配置为<!--
+-->有条件地运行。
 
-This simplified example ensures that the JVM, JS, and Kotlin metadata publications are only uploaded when
-`-PisLinux=true` is passed to the build in the command line:
+这个简化的例子确保了 JVM、JS 与 Kotlin 元数据的发布仅在命令行中传递
+`-PisLinux=true` 到构建时上传：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -1252,8 +1252,8 @@ kotlin {
     mingwX64()
     linuxX64()
 
-    // Note that the Kotlin metadata is here, too.
-    // The mingwx64() target is automatically skipped as incompatible in Linux builds.
+    // 注意 Kotlin 元数据也在这里。
+    // 由于 mingwx64() 目标在 Linux 构建中不兼容而被自动跳过。
     configure([targets["metadata"], jvm(), js()]) {
         mavenPublication { targetPublication ->
             tasks.withType(AbstractPublishToMaven)
@@ -1277,8 +1277,8 @@ kotlin {
     mingwX64()
     linuxX64()
 
-    // Note that the Kotlin metadata is here, too.
-    // The mingwx64() target is automatically skipped as incompatible in Linux builds.
+    // 注意 Kotlin 元数据也在这里。
+    // 由于 mingwx64() 目标在 Linux 构建中不兼容而被自动跳过。
     configure(listOf(metadata(), jvm(), js())) {
         mavenPublication {
             val targetPublication = this@mavenPublication
