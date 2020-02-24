@@ -232,8 +232,59 @@ val l = 1L + 3 // Long + Int => Long
 
 ### 运算
 
-Kotlin支持数字运算的标准集，运算被定义为相应的类成员（但编译器会将函数调用优化为相应的指令）。
+Kotlin支持数字运算的标准集（`+` `-` `*` `/` `%`），运算被定义<!--
+-->为相应的类成员（但编译器会将函数调用优化为相应的指令）。
 参见[运算符重载](operator-overloading.html)。
+
+#### 整数除法
+
+Note that division between integers always returns an integer. Any fractional part is discarded. For example:
+
+<div class="sample" markdown="1" theme="idea">
+
+```kotlin
+fun main() {
+//sampleStart
+    val x = 5 / 2
+    //println(x == 2.5) // ERROR: Operator '==' cannot be applied to 'Int' and 'Double'
+    println(x == 2)
+//sampleEnd
+}
+```
+
+</div>
+
+This is true for a division between any two integer types.
+
+<div class="sample" markdown="1" theme="idea">
+
+```kotlin
+fun main() {
+//sampleStart
+    val x = 5L / 2
+    println(x == 2L)
+//sampleEnd
+}
+```
+
+</div>
+
+To return a floating-point type, explicitly convert one of the arguments to a floating-point type.
+
+<div class="sample" markdown="1" theme="idea">
+
+```kotlin
+fun main() {
+//sampleStart
+    val x = 5 / 2.toDouble()
+    println(x == 2.5)
+//sampleEnd
+}
+```
+
+</div>
+
+#### 位运算
 
 对于位运算，没有特殊字符来表示，而只可用中缀方式调用具名函数，例如:
 
