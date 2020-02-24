@@ -16,7 +16,7 @@ showAuthorInfo: false
 
 ## 创建源代码映射
 
-要在浏览器中调试 Kotlin 源，应告诉编译器生成源映射文件。
+要在浏览器中调试 Kotlin 源代码，应告诉编译器生成源代码映射文件。
 将以下行添加到 Gradle 配置中：
 
 <div class="sample" markdown="1" theme="idea" mode="groovy">
@@ -46,8 +46,8 @@ compileKotlin2Js {
 
 ![Debugging in Chrome DevTools]({{ url_for('tutorial_img', filename='javascript/debugging-javascript/chrome-devtools.png')}})
 
-请注意，可以在 Source 选项卡中打开文件夹，并查看项目中正在使用的库的源，
+请注意，可以在 Source 选项卡中打开文件夹，并查看项目中正在使用的库的源代码，
 包括 Kotlin 标准库（`kotlin.js`）。
-但是，这需要在启用源映射以及嵌入源映射的源的情况下编译库。
+但是，这需要在启用源代码映射以及嵌入源代码映射的源代码的情况下编译库。
 因此，推荐做法是：
-如果共享 Kotlin/JS 的库，请在发行版中包含源映射。
+如果共享 Kotlin/JS 的库，请在发行版中包含源代码映射。
