@@ -2,7 +2,7 @@
 type: tutorial
 layout: tutorial
 title: "使用命令行编译器的 Hello Kotlin/Native"
-description: "看看如何使用命令行编译器来编译 Kotlin/Native 应用程序"
+description: "了解如何使用命令行编译器编译 Kotlin/Native 应用程序"
 authors: 
   - Hadi Hariri
   - Yue_plus（翻译）
