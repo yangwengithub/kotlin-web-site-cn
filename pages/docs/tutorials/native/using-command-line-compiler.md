@@ -13,8 +13,8 @@ date: 2020-01-15
 
 ## 获取编译器
 
-Kotlin/Native 编译器适用于 macOS、Linux 及 Windows。它是一个命令行工具，作为标准 Kotlin 发行版的一部分提供，可以从 [GitHub 发行版]({{site.data.releases.latest.url }})下载。它支持包括<!-- 
--->iOS （arm32、arm64、simulator x86_64）、Windows （mingw32 及 x86_64）在内的多个不同目标平台，
+Kotlin/Native 编译器适用于 macOS、Linux 及 Windows。它是一个命令行工具，作为标准 Kotlin 发行版的一部分提供，可以从 [GitHub 发行版]({{site.data.releases.latest.url }})下载。它支持包括 
+iOS （arm32、arm64、simulator x86_64）、Windows （mingw32 及 x86_64）在内的多个不同目标平台，
 Linux （x86_64、arm64、MIPS）、macOS （x86_64）、Raspberry PI、SMT32、WASM。有关目标的完整列表，请参见 [Kotlin/Native 概述](/docs/reference/native-overview.html)。
 
 进行跨平台交叉编译，这意味着可以使用一个平台针对另一个平台进行编译，
@@ -25,8 +25,8 @@ Linux （x86_64、arm64、MIPS）、macOS （x86_64）、Raspberry PI、SMT32、
 
 ## 创建 Hello Kotlin/Native
 
-该应用程序将在标准输出上打印 "Hello Kotlin/Native"。在选择的工作目录中，创建一个名为<!--
--->`hello.kt` 的文件，并输入以下内容:
+该应用程序将在标准输出上打印 "Hello Kotlin/Native"。在选择的工作目录中，创建一个名为
+`hello.kt` 的文件，并输入以下内容:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
