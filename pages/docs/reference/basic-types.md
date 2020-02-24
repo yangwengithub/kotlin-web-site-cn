@@ -236,7 +236,7 @@ Kotlin支持数字运算的标准集（`+` `-` `*` `/` `%`），运算被定义<
 -->为相应的类成员（但编译器会将函数调用优化为相应的指令）。
 参见[运算符重载](operator-overloading.html)。
 
-#### Division of integers
+#### 整数除法
 
 Note that division between integers always returns an integer. Any fractional part is discarded. For example:
 
@@ -284,7 +284,7 @@ fun main() {
 
 </div>
 
-#### Bitwise operations 
+#### 位运算
 
 对于位运算，没有特殊字符来表示，而只可用中缀方式调用具名函数，例如:
 
