@@ -28,6 +28,8 @@ title: "使用 Gradle 构建多平台项目"
 * [默认项目布局](#默认项目布局)
 * [运行测试](#运行测试)
 * [发布多平台库](#发布多平台库)
+    * [实验性的元数据发布模式](#实验性的元数据发布模式)
+    * [目标消歧义](#目标消歧义)
 * [JVM 目标平台中的 Java 支持](#jvm-目标平台中的-java-支持)
 * [Android 支持](#android-支持)
     * [发布 Android 库](#发布-android-库)
@@ -1293,25 +1295,25 @@ kotlin {
 
 
 
-### Experimental metadata publishing mode
+### 实验性的元数据发布模式
 
-Gradle module metadata provides rich publishing and dependency resolution features that are used in Kotlin
-multiplatform projects to simplify dependencies configuration for build authors. In particular, the publications of a
-multiplatform library may include a special 'root' module that stands for the whole library and is automatically
-resolved to the appropriate platform-specific artifacts when added as a dependency, as described below.
+Gradle 模块元数据提供了丰富的发布与解析依赖项的特性，这些特性用于 Kotlin
+多平台项目来为构建作者简化依赖配置。特别是多平台库的发布项<!--
+-->可能包含一个特殊的 “根” 模块，它基于整个库，并且<!--
+-->在添加为依赖项时自动解析到适当的特定平台构件中，如下所述。
 
-In Gradle 5.3 and above, the module metadata is always used during dependency resolution, but publications don't
-include any module metadata by default. To enable module metadata publishing, add
-`enableFeaturePreview("GRADLE_METADATA")` to the root project's `settings.gradle` file. With older Gradle versions,
-this is also required for module metadata consumption.
+Gradle 5.3 或更高的版本，依赖项解析期间总是使用模块元数据，但在默认情况下，发布项不会<!--
+-->包含任何模块元数据。为了启用发布模块元数据，需要添加
+`enableFeaturePreview("GRADLE_METADATA")` 到根项目的 `settings.gradle` 文件。对于更旧的 Gradle 版本，
+模块元数据的使用也需要这个。
 
-> Note that the module metadata published by Gradle 5.3 and above cannot be read by Gradle versions older
-> than 5.3.
+> 注意通过 Gradle 5.3 或更高版本发布的模块元数据不能被低于
+> 5.3 的 Gradle 所读取。
 {:.note}
 
-With Gradle metadata enabled, an additional 'root' publication named `kotlinMultiplatform` is added to the project's
-publications. The default artifact ID of this publication matches the project name without any additional suffix.
-To configure this publication, access it via the `publishing { ... }` DSL of the `maven-publish` plugin:
+随着启用 Gradle 元数据，一个额外的名为 `kotlinMultiplatform` 的 “根” 发布项将添加到项目的<!--
+-->发布项中。这个发布项的默认构件 ID 与没有任何额外后缀的项目名称相匹配。
+为了配置这个发布项，可以通过 `maven-publish` 插件的 `publishing { …… }` DSL 访问：
 
 
 > Groovy DSL
@@ -1349,15 +1351,15 @@ publishing {
 
 
 
-This publication does not include any artifacts and only references the other publications as its variants. However, it
-may need the sources and documentation artifacts if that is required by the repository. In that case, add those artifacts
-by using [`artifact(...)`](https://docs.gradle.org/current/javadoc/org/gradle/api/publish/maven/MavenPublication.html#artifact-java.lang.Object-)
-in the publication's scope, which is accessed as shown above.
+这个发布项没有包含任何构件并且仅将其他发布项引用为它的变体。然而，
+如果仓库需要，则可能需要提供源代码和文档构件。在这种情况下，在发布项的 scope 中<!--
+-->通过使用 [`artifact(...)`](https://docs.gradle.org/current/javadoc/org/gradle/api/publish/maven/MavenPublication.html#artifact-java.lang.Object-) 
+添加那些构件， 如上所示访问。
 
-If a library has a 'root' publication, the consumer may specify a single dependency on the library as a whole in a
- common source set, and a corresponding platform-specific variant will be chosen, if available, for each of the
- compilations that include this dependency. Consider a `sample-lib` library built for the JVM and JS and published with
- a 'root' publication:
+如果库拥有一个 “根” 发布项，用户可以在公共源集中指定对整个库的单个依赖，
+并且将为每个包含这个依赖项的编译项（如果有）选择一个合适的特定平台版本。
+考虑一个为 JVM 和 JS 编译并且与
+“根” 发布项一起发布的 `sample-lib` 库：
  
 > Groovy DSL
 
@@ -1370,8 +1372,8 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                // This single dependency is resolved to the appropriate target modules,
-                // for example, `sample-lib-jvm6` for JVM, `sample-lib-js` for JS:
+                // 这单个依赖将解析到适当的目标模块，
+                // 例如，对于 JVM 解析为 `sample-lib-jvm6`，而对于 JS 解析为 `sample-lib-js`：
                 api 'com.example:sample-lib:1.0'
             }
         }
@@ -1393,8 +1395,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                // This single dependency is resolved to the appropriate target modules,
-                // for example, `sample-lib-jvm6` for JVM, `sample-lib-js` for JS:
+                // 这单个依赖将解析到适当的目标模块，
+                // 例如，对于 JVM 解析为 `sample-lib-jvm6`，而对于 JS 解析为 `sample-lib-js`：
                 api("com.example:sample-lib:1.0")
             }
         }
@@ -1405,10 +1407,10 @@ kotlin {
 
 
 
-This requires that the consumer's Gradle build can read Gradle module metadata, either using Gradle 5.3+ or explicitly
-enabling it by `enableFeaturePreview("GRADLE_METADATA")` in `settings.gradle`.
+这需要使用者的 Gradle 构建可以读取 Gradle 模块元数据，要么使用 Gradle 5.3+，要么<!--
+-->在 `settings.gradle` 中通过 `enableFeaturePreview("GRADLE_METADATA")` 显式地启用它
 
-### Disambiguating targets
+### 目标消歧义
 
 It is possible to have more than one target for a single platform in a multiplatform library. For example, these targets
 may provide the same API and differ in the libraries they cooperate with at runtime, like testing frameworks or logging solutions. 
