@@ -1373,7 +1373,7 @@ kotlin {
         commonMain {
             dependencies {
                 // 这单个依赖将解析到适当的目标模块，
-                // 例如，`sample-lib-jvm6` 解析到 JVM，而 `sample-lib-js` 解析到 JS：
+                // 例如，对于 JVM 解析为 `sample-lib-jvm6`，而对于 JS 解析为 `sample-lib-js`：
                 api 'com.example:sample-lib:1.0'
             }
         }
@@ -1396,7 +1396,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 // 这单个依赖将解析到适当的目标模块，
-                // 例如，`sample-lib-jvm6` 解析到 JVM，而 `sample-lib-js` 解析到 JS：
+                // 例如，对于 JVM 解析为 `sample-lib-jvm6`，而对于 JS 解析为 `sample-lib-js`：
                 api("com.example:sample-lib:1.0")
             }
         }
