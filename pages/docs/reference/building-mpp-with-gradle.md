@@ -1311,7 +1311,7 @@ Gradle 5.3 或更高的版本，依赖项解析期间总是使用模块元数据
 > 5.3 的 Gradle 所读取。
 {:.note}
 
-启用 Gradle 元数据，一个额外的名为 `kotlinMultiplatform` 的 “根” 发布项将添加到项目的<!--
+随着启用 Gradle 元数据，一个额外的名为 `kotlinMultiplatform` 的 “根” 发布项将添加到项目的<!--
 -->发布项中。这个发布项的默认构件 ID 与没有任何额外后缀的项目名称相匹配。
 为了配置这个发布项，可以通过 `maven-publish` 插件的 `publishing { …… }` DSL 访问：
 
