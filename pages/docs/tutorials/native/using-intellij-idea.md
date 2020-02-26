@@ -1,7 +1,7 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Hello Kotlin/Native using IntelliJ IDEA"
+title:  "使用 IntelliJ IDEA 的 Hello Kotlin/Native"
 description: "A look at how to create a Kotlin/Native application using IntelliJ IDEA"
 authors: Hadi Hariri
 date: 2020-01-15
