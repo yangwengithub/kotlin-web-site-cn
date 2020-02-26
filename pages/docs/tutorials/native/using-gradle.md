@@ -57,7 +57,7 @@ Gradle 构建文件：
 
 取决于目标平台，不同的[函数](/docs/reference/building-mpp-with-gradle.html)，
 例如：`macosX64`、`mingwX64`、`linuxX64`、`iosX64`，用于创建 Kotlin 目标。
-函数名称是我们为其编译代码的平台。
+函数名称是其编译代码的平台。
 这些函数可以选择将目标名称作为参数，在本例中为 `"native"`。
 指定的 _目标名称_ 用于在项目中生成源路径和任务名称。
 
@@ -93,5 +93,5 @@ fun main() {
 
 ## 下一步做什么？
 
-要了解如何为现实的 Kotlin/Native 项目编写 Gradle 构建脚本，参阅[使用 Gradle 构建多平台项目](/docs/reference/building-mpp-with-gradle.html).
+要了解如何为现实的 Kotlin/Native 项目编写 Gradle 构建脚本，请参阅[使用 Gradle 构建多平台项目](/docs/reference/building-mpp-with-gradle.html).
 
