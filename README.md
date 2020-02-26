@@ -53,13 +53,15 @@ Kotlin 语言使用了可在 templates 文件夹中找到的 [Jinja2](http://jin
 
 ### Kotlin 语法参考
 
-Kotlin 语法参考（grammar.xml）由 [Kotlin 语法生成器](https://github.com/JetBrains/kotlin-grammar-generator)根据  [Kotlin 语法定义](https://github.com/JetBrains/kotlin/tree/master/grammar)生成。
+Kotlin 语法参考（grammar.xml）由 [Kotlin 语法生成器](https://github.com/JetBrains/kotlin-grammar-generator)根据
+[Kotlin 语法定义](https://github.com/JetBrains/kotlin/tree/master/grammar)生成。
 
 ## 写作内容
 
 ### 标记
 
-带有一些附加功能（例如 GitHub 防护代码块）的 kramdown 用作 Markdown 解析器。请参阅 [kramdown 官网](http://kramdown.gettalong.org/syntax.html)上的完整语法参考。
+带有一些附加功能（例如 GitHub 防护代码块）的 kramdown 用作 Markdown 解析器。
+请参阅 [kramdown 官网](http://kramdown.gettalong.org/syntax.html)上的完整语法参考。
 
 ### 指定页面元素属性
 
@@ -111,14 +113,15 @@ Kotlin 语法参考（grammar.xml）由 [Kotlin 语法生成器](https://github.
 示例：
 
 ```
-> **`inc()/dec()` 不应该改变接收器对象**.
+> **`inc()/dec()` 不应该改变接收者对象**.
 >
-> “改变接收器”是指“接收器变量”，而不是接收器对象。
+> “改变接收者”是指“接收者变量”，而不是接收者对象。
 {:.note}
 ```
 
 ## 反馈错误
-[YouTrack](http://youtrack.jetbrains.com/issues/KT) 用于错误报告与建议。 单击[此处报告问题](http://youtrack.jetbrains.com/newIssue?project=KT&clearDraft=true&c=Subsystems+Web+Site)。
+[YouTrack](http://youtrack.jetbrains.com/issues/KT) 用于错误报告与建议。
+单击[此处报告问题](http://youtrack.jetbrains.com/newIssue?project=KT&clearDraft=true&c=Subsystems+Web+Site)。
 
 
 [project-url]: https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub
