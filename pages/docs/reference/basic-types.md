@@ -238,7 +238,7 @@ Kotlin支持数字运算的标准集（`+` `-` `*` `/` `%`），运算被定义<
 
 #### 整数除法
 
-Note that division between integers always returns an integer. Any fractional part is discarded. For example:
+请注意，整数间的除法总是返回整数。会丢弃任何小数部分。例如：
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -254,7 +254,7 @@ fun main() {
 
 </div>
 
-This is true for a division between any two integer types.
+对于任何两个整数类型之间的除法来说都是如此。
 
 <div class="sample" markdown="1" theme="idea">
 
@@ -269,7 +269,7 @@ fun main() {
 
 </div>
 
-To return a floating-point type, explicitly convert one of the arguments to a floating-point type.
+如需返回浮点类型，请将其中的一个参数显式转换为浮点类型。
 
 <div class="sample" markdown="1" theme="idea">
 
