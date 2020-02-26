@@ -1,10 +1,11 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Hello Kotlin/Native using Gradle"
-description: "A look at how to compile Kotlin/Native applications using Gradle"
+title:  "使用 Gradle 的 Hello Kotlin/Native"
+description: "了解如何使用 Gradle 编译 Kotlin/Native 应用程序"
 authors: 
   - Hadi Hariri
+  - Yue_plus（翻译）
 date: 2020-01-15
 ---
 
