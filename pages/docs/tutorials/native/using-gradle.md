@@ -28,7 +28,7 @@ Gradle 支持两种语言的构建脚本：
 - Groovy 脚本为 `build.gradle` 文件
 - Kotlin 脚本为 `build.gradle.kts` 文件
 
-Groovy 语言是 Gradle 最早支持的脚本语言，它利用了该语言的动态类型与运行时功能。
+Groovy 语言是 Gradle 最早支持的脚本语言，它利用了该语言的动态类型与运行时特性。
 也可以在 Gradle 脚本中使用 Kotlin。
 作为一种静态类型的语言，当涉及到编译与错误检测时，可以在 IDE 中更好地发挥作用。
 
@@ -89,7 +89,7 @@ fun main() {
 ## 在 IDE 中打开项目
 
 任何支持 Gradle 的 IDE 都应允许在 IDE 中打开项目。
-对于 [IntelliJ IDEA](https://www.jetbrains.com/idea)，只需打开项目文件夹，将自动将其检测为 Kotlin/Native 项目。
+对于 [IntelliJ IDEA](https://www.jetbrains.com/idea)，只需打开项目文件夹，会自动将其检测为 Kotlin/Native 项目。
 
 ## 下一步做什么？
 
