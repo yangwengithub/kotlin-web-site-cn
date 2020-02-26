@@ -18,16 +18,16 @@ title: "排序"
 大多数内置类型是可比较的：
 
 * 数值类型使用传统的数值顺序：`1` 大于 `0`； `-3.4f` 大于 `-5f`，以此类推。
-* `Char` 和 `String` 使用[字典顺序](https://en.wikipedia.org/wiki/Lexicographical_order)： `b` 大于 `a`; `world` 大于 `hello`.
+* `Char` 和 `String` 使用[字典顺序](https://en.wikipedia.org/wiki/Lexicographical_order)： `b` 大于 `a`； `world` 大于 `hello`。
 
 如需为用户定义的类型定义一个自然顺序，可以让这个类型继承 `Comparable`。
 这需要实现  `compareTo()` 函数。 `compareTo()` 必须将另一个具有相同类型的对象作为参数并返回一个整数值来显示哪个对象更大：
 
-* 正值表明接收方对象更大。
+* 正值表明接收者对象更大。
 * 负值表明它小于参数。
-* 0说明对象相等。
+* 0 说明对象相等。
 
-下面是一个类，可用于排序由主要部分和次要部分组成的版本。
+下面是一个类，可用于排序由主版本号和次版本号两部分组成的版本。
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
