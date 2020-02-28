@@ -35,7 +35,7 @@ date: 2020-01-15
 
 ![项目]({{ url_for('tutorial_img', filename='native/using-intellij-idea/IDE-1.png')}})
 
-要运行项目，只需使用相应的快捷方式或从菜单中调用 [IDE 中的 Run 命令](https://www.jetbrains.com/help/idea/running-applications.html)。
+要运行项目，只需使用相应的快捷方式或从 Run 菜单中调用 [IDE 中的 Run 命令](https://www.jetbrains.com/help/idea/running-applications.html)。
 
 ![运行]({{ url_for('tutorial_img', filename='native/using-intellij-idea/IDE-2.png')}})
 
