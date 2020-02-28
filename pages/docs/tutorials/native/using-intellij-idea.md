@@ -20,7 +20,7 @@ date: 2020-01-15
 
 ![向导第一步]({{ url_for('tutorial_img', filename='native/using-intellij-idea/wizard.png')}})
 
-在对话框中单击 **Nex**，然后在下一步中确保选中 **Automatically import this project on changes in build script** 已替换。这在开始时非常有用<!--
+在对话框中单击 **Next**，然后在下一步中确保选中 **Automatically import this project on changes in build script** 已勾选。这在开始时非常有用<!--
 -->可以确保自动导入对编写脚本的任何即时更改。
 
 ![向导第二步]({{ url_for('tutorial_img', filename='native/using-intellij-idea/wizard-2.png')}})
