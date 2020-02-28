@@ -12,15 +12,15 @@ date: 2020-01-15
 
 ## 在 IntelliJ IDEA 中创建一个新的 Kotlin/Native 项目
 
-以下内容适用于 [IntelliJ IDEA 社区版和终极版](https://www.jetbrains.com/idea)。
+以下内容适用于 [IntelliJ IDEA 社区版和旗舰版](https://www.jetbrains.com/idea)。
 
 
-从 IntelliJ IDEA 或 **Welcome screen** 中的 **File** 菜单中，选择创建一个新项目然后在向导的第一步中，在左侧栏中<!--
+从 IntelliJ IDEA 的 **File** 菜单或 **Welcome screen** 中，选择创建一个新项目然后在向导的第一步中，在左侧栏中<!--
 -->选择 **Kotlin** 然后在右侧栏中选择 **Native | Gradle**。
 
 ![向导第一步]({{ url_for('tutorial_img', filename='native/using-intellij-idea/wizard.png')}})
 
-在其中脚本中的 **Next** 并在下一步中确保 **Automatically import this project on changes in build script** 已替换。这在开始时非常有用<!--
+在对话框中单击 **Nex**，然后在下一步中确保选中 **Automatically import this project on changes in build script** 已替换。这在开始时非常有用<!--
 -->可以确保自动导入对编写脚本的任何即时更改。
 
 ![向导第二步]({{ url_for('tutorial_img', filename='native/using-intellij-idea/wizard-2.png')}})
@@ -28,16 +28,16 @@ date: 2020-01-15
 单击 **Next** 后，输入项目的路径和名称。
 
 ![向导第三步]({{ url_for('tutorial_img', filename='native/using-intellij-idea/wizard-3.png')}})
-
+构建脚本
 这将完成该过程并在 IDE 中打开新创建的项目。 默认情况下，向导将创建必要的
 `Sample<TARGET>.kt` 文件，并提供用于将一些字符串写入标准输出的代码。 请注意，`<TARGET>` 会根据在其上创建项目<!--
--->的操作系统（Windows，Linux，macOS）而有所不同。
+-->的操作系统（Windows、Linux、macOS）而有所不同。
 
 ![Project]({{ url_for('tutorial_img', filename='native/using-intellij-idea/IDE-1.png')}})
 
-要运行项目，只需使用相应的快捷方式或从菜单中调用[IDE 中的运行命令](https://www.jetbrains.com/help/idea/running-applications.html)。
+要运行项目，只需使用相应的快捷方式或从菜单中调用 [IDE 中的运行命令](https://www.jetbrains.com/help/idea/running-applications.html)。
 
-![运行]({{ url_for('tutorial_img', filename='native/using-intellij-idea/IDE-2.png')}})
+![Run]({{ url_for('tutorial_img', filename='native/using-intellij-idea/IDE-2.png')}})
 
 该示例项目可以作为 Kotlin/Native 任何新项目的基础。
 
@@ -45,6 +45,6 @@ date: 2020-01-15
 
 有关更多信息，请查看：
 
-* [Kotlin/Native Gradle plugin](/docs/reference/native/gradle_plugin.html)
-* [Building Multiplatform Projects with Gradle](/docs/reference/building-mpp-with-gradle.html)
+* [Kotlin/Native Gradle 插件](/docs/reference/native/gradle_plugin.html)
+* [使用 Gradle 构建多平台项目](/docs/reference/building-mpp-with-gradle.html)
 
