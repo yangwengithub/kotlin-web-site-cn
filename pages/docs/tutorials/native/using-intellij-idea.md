@@ -21,23 +21,23 @@ date: 2020-01-15
 ![向导第一步]({{ url_for('tutorial_img', filename='native/using-intellij-idea/wizard.png')}})
 
 在对话框中单击 **Next**，然后在下一步中确保选中 **Automatically import this project on changes in build script** 已勾选。这在开始时非常有用<!--
--->可以确保自动导入对编写脚本的任何即时更改。
+-->可以确保自动导入对构建脚本的任何即时更改。
 
 ![向导第二步]({{ url_for('tutorial_img', filename='native/using-intellij-idea/wizard-2.png')}})
 
 单击 **Next** 后，输入项目的路径和名称。
 
 ![向导第三步]({{ url_for('tutorial_img', filename='native/using-intellij-idea/wizard-3.png')}})
-构建脚本
+
 这将完成该过程并在 IDE 中打开新创建的项目。 默认情况下，向导将创建必要的
 `Sample<TARGET>.kt` 文件，并提供用于将一些字符串写入标准输出的代码。 请注意，`<TARGET>` 会根据在其上创建项目<!--
 -->的操作系统（Windows、Linux、macOS）而有所不同。
 
-![Project]({{ url_for('tutorial_img', filename='native/using-intellij-idea/IDE-1.png')}})
+![项目]({{ url_for('tutorial_img', filename='native/using-intellij-idea/IDE-1.png')}})
 
-要运行项目，只需使用相应的快捷方式或从菜单中调用 [IDE 中的运行命令](https://www.jetbrains.com/help/idea/running-applications.html)。
+要运行项目，只需使用相应的快捷方式或从菜单中调用 [IDE 中的 Run 命令](https://www.jetbrains.com/help/idea/running-applications.html)。
 
-![Run]({{ url_for('tutorial_img', filename='native/using-intellij-idea/IDE-2.png')}})
+![运行]({{ url_for('tutorial_img', filename='native/using-intellij-idea/IDE-2.png')}})
 
 该示例项目可以作为 Kotlin/Native 任何新项目的基础。
 
