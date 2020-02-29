@@ -1,50 +1,50 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Hello Kotlin/Native using IntelliJ IDEA"
-description: "A look at how to create a Kotlin/Native application using IntelliJ IDEA"
-authors: Hadi Hariri
+title:  "使用 IntelliJ IDEA 的 Hello Kotlin/Native"
+description: "看看如何使用 IntelliJ IDEA 创建 Kotlin/Native 应用程序"
+authors: Hadi Hariri，高金龙（翻译）
 date: 2020-01-15
 ---
 
 <!--- To become a How-To. Need to change type to new "HowTo" --->
 
 
-## Creating a new Kotlin/Native project in IntelliJ IDEA
+## 在 IntelliJ IDEA 中创建一个新的 Kotlin/Native 项目
 
-This following is applicable to both [IntelliJ IDEA Community Edition as well as the Ultimate Edition](https://www.jetbrains.com/idea).
+以下内容适用于 [IntelliJ IDEA 社区版和旗舰版](https://www.jetbrains.com/idea)。
 
 
-From the **File** menu in IntelliJ IDEA or **Welcome screen**, select to create a new Project and in the first step of the Wizard
-select **Kotlin** on the left hand column and **Native | Gradle** on the right hand.
+从 IntelliJ IDEA 的 **File** 菜单或 **Welcome screen** 中，选择创建一个新项目然后在向导的第一步中，在左侧栏中<!--
+-->选择 **Kotlin** 然后在右侧栏中选择 **Native | Gradle**。
 
-![Wizard Step One]({{ url_for('tutorial_img', filename='native/using-intellij-idea/wizard.png')}})
+![向导第一步]({{ url_for('tutorial_img', filename='native/using-intellij-idea/wizard.png')}})
 
-Click **Next** in the dialog and in the next step make sure **Automatically import this project on changes in build script** is checked. This is useful when starting
-out to make sure any immediate changes to the build script are imported automatically. 
+在对话框中单击 **Next**，然后在下一步中确保选中 **Automatically import this project on changes in build script** 已勾选。这在开始时非常有用<!--
+-->可以确保自动导入对构建脚本的任何即时更改。
 
-![Wizard Step Two]({{ url_for('tutorial_img', filename='native/using-intellij-idea/wizard-2.png')}})
+![向导第二步]({{ url_for('tutorial_img', filename='native/using-intellij-idea/wizard-2.png')}})
 
-On clicking **Next**, enter the path and name for the project.
+单击 **Next** 后，输入项目的路径和名称。
 
-![Wizard Step Three]({{ url_for('tutorial_img', filename='native/using-intellij-idea/wizard-3.png')}})
+![向导第三步]({{ url_for('tutorial_img', filename='native/using-intellij-idea/wizard-3.png')}})
 
-This will complete the process and open the newly created project in the IDE. By default the wizard will create the necessary
-`Sample<TARGET>.kt` file and provide code for writing some string to the standard output. Note that `<TARGET>` varies based on the operating
-system the project was created on (Windows, Linux, macOS).
+这将完成该过程并在 IDE 中打开新创建的项目。 默认情况下，向导将创建必要的
+`Sample<TARGET>.kt` 文件，并提供用于将一些字符串写入标准输出的代码。 请注意，`<TARGET>` 会根据在其上创建项目<!--
+-->的操作系统（Windows、Linux、macOS）而有所不同。
 
-![Project]({{ url_for('tutorial_img', filename='native/using-intellij-idea/IDE-1.png')}})
+![项目]({{ url_for('tutorial_img', filename='native/using-intellij-idea/IDE-1.png')}})
 
-To run the project, simply invoke the [Run command in the IDE](https://www.jetbrains.com/help/idea/running-applications.html), by using the corresponding shortcuts or from the Run menu
+要运行项目，只需使用相应的快捷方式或从 Run 菜单中调用 [IDE 中的 Run 命令](https://www.jetbrains.com/help/idea/running-applications.html)。
 
-![Run]({{ url_for('tutorial_img', filename='native/using-intellij-idea/IDE-2.png')}})
+![运行]({{ url_for('tutorial_img', filename='native/using-intellij-idea/IDE-2.png')}})
 
-The sample project can serve as the basis for any new project for Kotlin/Native.
+该示例项目可以作为 Kotlin/Native 任何新项目的基础。
 
-## What's next?
+## 下一步是什么？
 
-For further information, check out:
+有关更多信息，请查看：
 
-* [Kotlin/Native Gradle plugin](/docs/reference/native/gradle_plugin.html)
-* [Building Multiplatform Projects with Gradle](/docs/reference/building-mpp-with-gradle.html)
+* [Kotlin/Native Gradle 插件](/docs/reference/native/gradle_plugin.html)
+* [使用 Gradle 构建多平台项目](/docs/reference/building-mpp-with-gradle.html)
 

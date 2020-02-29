@@ -649,7 +649,7 @@ fun main() {
 
 {:#using-collections}
 
-## Collections
+## 集合
 
 对集合进行迭代:
 
