@@ -102,7 +102,7 @@ kapt {
 
 ## Gradle 构建缓存支持（自 1.2.20 起）
 
-默认情况下，kapt 注解处理任务就会[在 Gradle 中缓存](https://guides.gradle.org/using-build-cache/)。注解处理器所运行的任意代码可能不一定将输入转换为输出、可能访问与修改 Gradle 未跟踪的文件等。If the annotation processors used in the build cannot be properly cached, it is possible to disable caching for kapt entirely by adding the following lines to the build script, in order to avoid false-positive cache hits for the kapt tasks:
+默认情况下，kapt 注解处理任务就会[在 Gradle 中缓存](https://guides.gradle.org/using-build-cache/)。注解处理器所运行的任意代码可能不一定将输入转换为输出、可能访问与修改 Gradle 未跟踪的文件等。如果无法正确缓存在构建中使用的注释处理器，则可以通过在构建脚本中添加以下几行来完全禁用对 kapt 的缓存，以避免对 kapt 任务造成假阳性的缓存命中：
 
 <div class="sample" markdown="1" mode="groovy" theme="idea">
 
