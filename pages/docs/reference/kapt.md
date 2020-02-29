@@ -102,7 +102,7 @@ kapt {
 
 ## Gradle 构建缓存支持（自 1.2.20 起）
 
-默认情况下，kapt 注解处理任务就会[在 Gradle 中缓存](https://guides.gradle.org/using-build-cache/)。注解处理器所运行的任意代码可能不一定将输入转换为输出、可能访问与修改 Gradle 未跟踪的文件等。如果无法正确缓存在构建中使用的注释处理器，则可以通过在构建脚本中添加以下几行来完全禁用对 kapt 的缓存，以避免对 kapt 任务造成假阳性的缓存命中：
+默认情况下，kapt 注解处理任务就会[在 Gradle 中缓存](https://guides.gradle.org/using-build-cache/)。注解处理器所运行的任意代码可能不一定将输入转换为输出、可能访问与修改 Gradle 未跟踪的文件等。如果无法正确缓存在构建中使用的注解处理器，那么可以通过在构建脚本中添加以下几行来完全禁用对 kapt 的缓存，以避免对 kapt 任务造成假阳性的缓存命中：
 
 <div class="sample" markdown="1" mode="groovy" theme="idea">
 
@@ -116,8 +116,8 @@ kapt {
 
 ## 并行运行 kapt 任务（自 1.2.60 起）
 
-为了提高使用 kapt 的构建速度，可以为 Grap 任务启用 [Gradle Worker API](https://guides.gradle.org/using-the-worker-api/)。
-使用 Worker API，Gradle 可以并行运行来自单个项目的独立注释处理任务，这在某些情况下会大大减少执行时间。
+为了提高使用 kapt 的构建速度，可以为 kapt 任务启用 [Gradle Worker API](https://guides.gradle.org/using-the-worker-api/)。
+使用 Worker API，Gradle 可以并行运行来自单个项目的独立注解处理任务，这在某些情况下会大大减少执行时间。
 但是，在启用 Gradle Worker API 的情况下运行 kapt 会由于并行执行而导致内存消耗增加。
 
 要使用 Gradle Worker API 并行执行 kapt 任务，请将此行添加到 `gradle.properties` 文件中：
@@ -133,15 +133,15 @@ kapt.use.worker.api=true
 ## kapt 的避免编译（自 1.3.20 起）
 
 为了减少 kapt 增量构建的时间，可以使用 Gradle [避免编译](https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_compile_avoidance)。
-启用避免编译后，Gradle 可以在重新构建项目时跳过注释处理。特别是在以下情况下，将跳过注释处理：
+启用避免编译后，Gradle 可以在重新构建项目时跳过注解处理。特别是在以下情况下，将跳过注解处理：
 * 项目的源文件未更改。
-* 依赖项的更改与 [ABI](https://en.wikipedia.org/wiki/Application_binary_interface) 兼容。例如，唯一的变化是方法主体。
+* 依赖项中的变更是 [ABI](https://en.wikipedia.org/wiki/Application_binary_interface) 兼容的。例如，唯一的变化是方法主体。
 
-但是，避免编译不能用于在编译类路径中发现的注释处理器，因为它们中的任何更改都需要运行注释处理任务。
+但是，避免编译不能用于在编译类路径中发现的注解处理器，因为它们中的任何更改都需要运行注解处理任务。
 
 要在避免编译的情况下运行 kapt：
-* 如[在 Gradle 中使用](#在-gradle-中使用)所述，将注释处理器依赖项手动添加到 `kapt*` 配置。
-* 通过在 `gradle.properties` 文件中添加以下行，在编译类路径中关闭对注释处理器的发现：
+* 如[在 Gradle 中使用](#在-gradle-中使用)所述，将注解处理器依赖项手动添加到 `kapt*` 配置。
+* 通过在 `gradle.properties` 文件中添加以下行，在编译类路径中关闭对注解处理器的发现：
 
 <div class="sample" markdown="1" mode="xml" theme="idea">
 
@@ -153,11 +153,11 @@ kapt.include.compile.classpath=false
 
 ## 增量注解处理（自 1.3.30 起）
 
-从 1.3.30 版开始，kapt 作为实验特性支持增量注释处理。
-当前，仅当所使用的所有注释处理器均为增量式时，注释处理才可以是增量式的。
+从 1.3.30 版开始，kapt 作为实验特性支持增量注解处理。
+当前，仅当所使用的所有注解处理器均为增量式时，注解处理才可以是增量式的。
 
-从 1.3.50 版开始，默认情况下启用增量注释处理。
-要禁用增量注释处理，请将以下行添加到 `gradle.properties` 文件中：
+从 1.3.50 版开始，默认情况下启用增量注解处理。
+要禁用增量注解处理，请将以下行添加到 `gradle.properties` 文件中：
 
 <div class="sample" markdown="1" mode="xml" theme="idea">
 
@@ -167,7 +167,7 @@ kapt.incremental.apt=false
 
 </div>
 
-请注意，增量注释处理也需要启用[增量编译](using-gradle.html#增量编译)。
+请注意，增量注解处理也需要启用[增量编译](using-gradle.html#增量编译)。
 
 ## Java 编译器选项
 
