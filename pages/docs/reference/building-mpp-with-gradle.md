@@ -1419,10 +1419,10 @@ kotlin {
 -->充足的信息来决定选择哪个目标，从而导致解析的失败。
 
 解决的方法是用自定义属性标记目标, Gradle 在解析依赖项期间会考虑到它。
-This, however, must be done on both the library author and the consumer sides,
-and it's the library author's responsibility to communicate the attribute and its possible values to the consumers.
+但是，这必须在库作者与使用者两方面进行，
+并且库作者有责任将属性与可能的值传达给使用者。
  
-Adding attributes is done symmetrically, to both the library and the consumer projects. 例如，考虑一个<!--
+属性需要对称地添加到库和用户项目中。例如，考虑一个<!--
 -->在两个目标中支持了 JUnit 和 TestNG 的测试库。库作者需要为这两个<!--
 -->目标添加属性，如下： 
 
