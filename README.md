@@ -1,8 +1,5 @@
 # Kotlin 语言中文站
-
-[![Join the chat at https://gitter.im/kotlin-web-site-cn/community](https://badges.gitter.im/kotlin-web-site-cn/community.svg)](https://gitter.im/kotlin-web-site-cn/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-[![Official project][project-badge]][project-url] [![Slack][slack-badge]][slack-url] 
+官方英文站：[![Official project][project-badge]][project-url] [![Slack][slack-badge]][slack-url] 中文站：[![到  https://gitter.im/kotlin-web-site-cn/community 讨论](https://badges.gitter.im/kotlin-web-site-cn/community.svg)](https://gitter.im/kotlin-web-site-cn/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 这是<https://www.kotlincn.net/>的源代码
 
