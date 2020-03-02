@@ -1724,7 +1724,7 @@ those will be merged into one dependencies list.
 
 ## 使用 Kotlin/Native 目标平台
 
-重要的是，注意一些 [Kotlin/Native 目标](#已支持平台)可能仅在适当的主机上被编译：
+重要的是，注意某些 [Kotlin/Native 目标](#已支持平台)仅能在适当的主机上被编译：
 
 * Linux MIPS 目标（`linuxMips32` 与 `linuxMipsel32`）需要一台 Linux 主机。其他 Linux 目标则可以在任意受支持的主机上编译。
 * Windows 目标需要一台 Windows 主机；
