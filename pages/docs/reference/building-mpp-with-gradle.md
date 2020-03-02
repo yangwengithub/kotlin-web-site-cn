@@ -1412,19 +1412,19 @@ kotlin {
 
 ### 目标消歧义
 
-It is possible to have more than one target for a single platform in a multiplatform library. For example, these targets
-may provide the same API and differ in the libraries they cooperate with at runtime, like testing frameworks or logging solutions. 
+在一个多平台库中，对于单个平台可能拥有多个目标。例如，这些目标<!--
+-->可能提供了相同的 API，并且在运行时调用的实现库中有所不同，例如测试框架或日志解决方案。
 
-However, dependencies on such a multiplatform library may be ambiguous and may thus fail to resolve because there is not
-enough information to decide which of the targets to choose.
+然而，对这种多平台库的依赖可能存在歧义，并且可能因为没有<!--
+-->充足的信息来决定选择哪个目标，从而导致解析的失败。
 
-The solution is to mark the targets with a custom attribute, which is taken into account by Gradle during dependency
-resolution. This, however, must be done on both the library author and the consumer sides,
-and it's the library author's responsibility to communicate the attribute and its possible values to the consumers.
+解决的方法是用自定义属性标记目标, Gradle 会根据它来解析依赖项。
+但是，库的作者与用户必须同时给目标加上自定义属性，
+并且库作者有责任将属性与可能的值传达给使用者。
  
-Adding attributes is done symmetrically, to both the library and the consumer projects. For example, consider a testing
-library that supports both JUnit and TestNG in the two targets. The library author needs to add an attribute to both
-targets as follows:
+添加属性对库作者和用户来说是对称的。例如，考虑一个<!--
+-->在两个目标中分别支持了 JUnit 和 TestNG 的测试库。库作者需要为这两个<!--
+-->目标添加属性，如下： 
 
 > Groovy DSL
 
@@ -1464,10 +1464,10 @@ kotlin {
 
 
 
-The consumer may only need to add the attribute to a single target where the ambiguity arises.
+用户可能只需要给产生歧义的单个目标添加属性。
 
-If the same kind of ambiguity arises when a dependency is added to a custom configuration rather than one of the
-configurations created by the plugin, you can add the attributes to the configuration in the same way:
+如果将依赖项被添加到自定义的配置项中（而不是<!--
+-->通过插件创建的配置项之一）时出现了相同的歧义，你可以通过相同的方式将属性添加到配置项中：
 
 > Groovy DSL
 
