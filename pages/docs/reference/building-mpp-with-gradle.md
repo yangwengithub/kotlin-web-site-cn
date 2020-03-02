@@ -1358,7 +1358,7 @@ publishing {
 
 如果库拥有一个 “根” 发布项，用户可以在公共源集中指定对整个库的单个依赖，
 并且将为每个包含这个依赖项的编译项（如果有）选择一个合适的特定平台版本。
-考虑一个为 JVM 和 JS 编译并且与
+考虑一个为 JVM 与 JS 编译并且与
 “根” 发布项一起发布的 `sample-lib` 库：
  
 <div class="multi-language-sample" data-lang="groovy">
@@ -1775,10 +1775,10 @@ val iosMain by sourceSets.creating {
 </div>
 </div>
 
-自 1.3.60 起，`kotlin-multiplaform` 插件提供了自动化这些配置的捷径：它们使用户<!--
+自 1.3.60 起，`kotlin-multiplaform` 插件提供了自动化这些配置的快捷方式：它们使用户<!--
 -->可以通过单个 DSL 方法来创建一组目标以及公共源集。
 
-可用捷径有这些：
+可用快捷方式有这些：
 
  * `ios` 为 `iosArm64` 与 `iosX64` 创建目标。
  * `watchos` 为 `watchosArm32`、`watchosArm64` 以及 `watchosX86` 创建目标。
