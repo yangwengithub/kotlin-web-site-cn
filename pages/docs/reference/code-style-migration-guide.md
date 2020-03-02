@@ -77,7 +77,7 @@ _警告：_ 设置 **kotlin.code.style** 选项可能会在项目导入期间修
 ![Reformat code 对话框]({{ url_for('tutorial_img', filename='codestyle-migration/reformat-code.png') }})
 
 
-对于逐步迁移，可以启用“文件未根据项目设置格式化（*File is not formatted according to project settings*）”检查。这将突出显示应修改格式的地方。启用“仅应用于修改后的文件”选项后，检查将仅在修改后的文件中显示格式问题。无论如何，此类文件应该尽快修改并提交。
+对于逐步迁移，可以启用*“File is not formatted according to project settings”（文件未根据项目设置格式化）*探查项。这将突出显示应修改格式的地方。启用*“Apply only to modified files”（仅应用于修改后的文件）*选项后，检查将仅在修改后的文件中显示格式问题。无论如何，此类文件应该尽快修改并提交。
 
 ## 在项目中存储旧的代码风格
 
