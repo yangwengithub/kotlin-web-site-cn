@@ -231,8 +231,8 @@ reference:
           title: 作用域函数
         - url: /docs/reference/type-safe-builders.html
           title: 类型安全的构建器
-        - url: /docs/reference/experimental.html
-          title: 实验性 API 标记
+        - url: /docs/reference/opt-in-requirements.html
+          title: Opt-in Requirements
 
     - title: 核心库
       content:
@@ -364,22 +364,24 @@ tutorials:
           title: 在一个项目中混用 Java 与 Kotlin
     - title: JavaScript
       content:
-        - url: /docs/tutorials/javascript/kotlin-to-javascript/kotlin-to-javascript.html
-          title: Kotlin 转 JavaScript
-        - url: /docs/tutorials/javascript/getting-started-gradle/getting-started-with-gradle.html
-          title: 以 Gradle 入门
-        - url: /docs/tutorials/javascript/getting-started-idea/getting-started-with-intellij-idea.html
-          title: 以 IntelliJ IDEA 入门
-        - url: /docs/tutorials/javascript/getting-started-maven/getting-started-with-maven.html
-          title: 以 Maven 入门
-        - url: /docs/tutorials/javascript/getting-started-command-line/command-line-library-js.html
-          title: 使用命令行编译器创建 Kotlin JavaScript 库
+        - url: /docs/tutorials/javascript/setting-up.html
+          title: Setting up a project
+        - url: /docs/tutorials/javascript/running-kotlin-js.html
+          title: Running Kotlin/JS
+        - url: /docs/tutorials/javascript/dev-server-continuous-compilation.html
+          title: Development Server and Continuous Compilation
+        - url: /docs/tutorials/javascript/using-packages-from-npm.html
+          title: Using packages from npm
+        - url: /docs/tutorials/javascript/debugging-kotlin-in-browser.html
+          title: 在浏览器中调试 Kotlin
+        - url: /docs/tutorials/javascript/running-tests.html
+          title: Running tests
+        - url: /docs/tutorials/javascript/browser-api-dom.html
+          title: Browser API and the DOM
+        - url: /docs/tutorials/javascript/typesafe-html-dsl.html
+          title: Typesafe HTML DSL
         - url: /docs/tutorials/javascript/working-with-modules/working-with-modules.html
           title: Kotlin 与 JavaScript 模块合用
-        - url: /docs/tutorials/javascript/working-with-javascript.html
-          title: 与 JavaScript 合用
-        - url: /docs/tutorials/javascript/debugging-javascript/debugging-javascript.html
-          title: 在浏览器中调试 Kotlin
         - url: /docs/tutorials/javascript/react-and-kotlin-js.html
           title: 用 React 与 Kotlin/JS 构建 Web 应用程序
 

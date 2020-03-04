@@ -7,16 +7,8 @@ authors: Hadi Hariri，刘文俊（翻译）
 showAuthorInfo: true
 ---
 
-将 Kotlin 编译到 JavaScript 有许多种方法，<!--
--->推荐的方法是使用 Gradle。如果需要，你还可以直接使用 IntelliJ IDEA 构建 JavaScript 项目，<!--
--->使用 Maven 编译，或者手动使用命令行编译代码。<!--
--->学习如何将 Kotlin 编译为 JavaScript，请参阅下面的相应教程：
- 
-* [使用 Gradle](../getting-started-gradle/getting-started-with-gradle.html)
-* [使用 IntelliJ IDEA](../getting-started-idea/getting-started-with-intellij-idea.html)
-* [使用 Maven](../getting-started-maven/getting-started-with-maven.html)
-* [使用命令行](../getting-started-command-line/command-line-library-js.html)
-
+This tutorial explains how Kotlin code compiles to Javascript.
+To learn more about how to create a Kotlin/JS project, see [Setting up a Kotlin/JS project](../setting-up.html).
 
 ## 检查编译输出
 
@@ -41,8 +33,6 @@ fun main(args: Array<String>) {
 Kotlin 编译器将会生成下面的文件：
 
    ![Compiler Output]({{ url_for('tutorial_img', filename='javascript/kotlin-to-javascript/compiler-output.png')}})
-   
-注意：仅有基于 IntelliJ IDEA 的项目才会创建包含 `kotlin.js` 和其他库文件的 `lib` 目录，此功能由 Kotlin [构面设置](https://www.jetbrains.com/help/idea/facets.html)中的 ”Copy library runtime files“ 标记控制。在 Maven 或 Gradle 构建（包含多平台项目）中，默认不会把库文件复制到编译输出目录。有关如何使用这些构建系统实现相同功能的说明，请参阅相应的教程。
 
 我们最感兴趣的文件是 `ConsoleOutput.js`：
 

@@ -8,7 +8,12 @@ date: 2016-09-30
 showAuthorInfo: true
 ---
 
-在本教程中，我们会学习如何
+>__Warning__: this tutorial is outdated for Kotlin {{ site.data.releases.latest.version }}.
+>We strongly recommend using Gradle for Kotlin/JS projects. For instructions on creating 
+>Kotlin/JS projects with Gradle, see [Setting up a Kotlin/JS project](../setting-up.html)
+{:.note}
+>
+在本教程中我们会学习如何
 
 * [创建编译到 JavaScript 的应用程序](#创建编译到-javascript-的应用程序)
 * [调试程序](#调试程序)
@@ -36,6 +41,7 @@ showAuthorInfo: true
 -->输出到控制台窗口中。
 
 <div class="sample" markdown="1" theme="idea" data-target-platform="js">
+
 ```kotlin
 fun main(args: Array<String>) {
     val message = "Hello JavaScript!"
@@ -48,6 +54,7 @@ fun main(args: Array<String>) {
 -->请查看 [Kotlin 转 JavaScript](../kotlin-to-javascript/kotlin-to-javascript.html) 教程。
 
 <div class="sample" markdown="1" theme="idea" mode="xml" auto-indent="false">
+
 ```html 
 <!DOCTYPE html>
 <html lang="en">

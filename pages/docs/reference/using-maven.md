@@ -265,56 +265,6 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 java -jar target/mymodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 ```
 
-## 面向 JavaScript
-
-为了编译 JavaScript 代码，需要使用 `js` 和 `test-js` 目标来执行 `compile`：
-
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
-
-```xml
-<plugin>
-    <groupId>org.jetbrains.kotlin</groupId>
-    <artifactId>kotlin-maven-plugin</artifactId>
-    <version>${kotlin.version}</version>
-    <executions>
-        <execution>
-            <id>compile</id>
-            <phase>compile</phase>
-            <goals>
-                <goal>js</goal>
-            </goals>
-        </execution>
-        <execution>
-            <id>test-compile</id>
-            <phase>test-compile</phase>
-            <goals>
-                <goal>test-js</goal>
-            </goals>
-        </execution>
-    </executions>
-</plugin>
-```
-
-</div>
-
-你还需要更改标准库依赖：
-
-
-<div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
-
-```xml
-<groupId>org.jetbrains.kotlin</groupId>
-<artifactId>kotlin-stdlib-js</artifactId>
-<version>${kotlin.version}</version>
-```
-
-</div>
-
-对于单元测试支持，你还需要添加对 `kotlin-test-js` 构件的依赖。
-
-更多信息请参阅[以 Maven 入门使用 Kotlin 与 JavaScript](https://www.kotlincn.net/docs/tutorials/javascript/getting-started-maven/getting-started-with-maven.html)
-教程。
-
 ## 指定编译器选项
 
 可以将额外的编译器选项与参数指定为 Maven 插件节点的 `<configuration>` 元素下的标签
