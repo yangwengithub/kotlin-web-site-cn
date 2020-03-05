@@ -59,7 +59,7 @@ kotlin.target.browser {
 </div>
 </div>
 
-Note that the names of functions with parameters are [mangled](js-to-kotlin-interop.html#jsname-annotation)
+Note that the names of functions with parameters are [mangled](js-to-kotlin-interop.html#jsname-注解)
 in the generated JavaScript code. To keep such functions from elimination, use the mangled names in the `keep` arguments.
 
 ## Known issue: DCE and ktor
