@@ -23,7 +23,7 @@ Kotlin 允许你将 Kotlin 项目编译为热门模块系统的 JavaScript 模�
  
 If you're targeting the browser, you can specify the desired module type in the `webpackTask` configuration block:
  
-<div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
+> Groovy DSL
 
 ```groovy
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackOutput.Target.COMMONJS
@@ -41,7 +41,7 @@ kotlin {
 
 ```
 
-</div>
+
   
 This way, you'll get a single JS file with all dependencies included.
 
@@ -53,19 +53,19 @@ If you're creating a JS library or a node.js file, define the module kind as des
 
 To select module kind, set the `moduleKind` compiler option in the Gradle build script.
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
+
+> Groovy DSL
 
 ```groovy
 compileKotlinJs.kotlinOptions.moduleKind = "commonjs"
 
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" mode="kotlin" theme="idea" data-lang="kotlin" data-highlight-only>
+
+
+
+> Groovy DSL
 
 ```kotlin
 tasks.named("compileKotlinJs") {
@@ -74,14 +74,14 @@ tasks.named("compileKotlinJs") {
 }
 ```
 
-</div>
-</div>
+
+
 
 Available values are: `plain`, `amd`, `commonjs`, `umd`.
 
 In Kotlin Gradle DSL, there is also a shortcut for setting the CommonJS module kind:
 
-<div class="sample" markdown="1" mode="kotlin" theme="idea" data-lang="kotlin" data-highlight-only>
+> Kotlin DSL
 
 ```
 kotlin {
@@ -90,7 +90,7 @@ kotlin {
     }
 }
 ```
-</div>
+
 
 ## `@JsModule` 注解
 

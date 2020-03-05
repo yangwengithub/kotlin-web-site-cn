@@ -31,8 +31,8 @@ To keep certain declarations from elimination, add the `dceTask` block into the 
 list the declarations as the arguments of the `keep` function. An argument must be the declaration's fully qualified name
 with the module name as a prefix: `moduleName.dot.separated.package.name.declarationName`
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
+
+> Groovy DSL
 
 ```groovy
 kotlin.target.browser {
@@ -42,11 +42,11 @@ kotlin.target.browser {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" mode="kotlin" theme="idea" data-lang="kotlin" data-highlight-only>
+
+
+
+> Kotlin DSL
 
 ```kotlin
 kotlin.target.browser {
@@ -56,8 +56,8 @@ kotlin.target.browser {
 }
 ```
 
-</div>
-</div>
+
+
 
 Note that the names of functions with parameters are [mangled](js-to-kotlin-interop.html#jsname-注解)
 in the generated JavaScript code. To keep such functions from elimination, use the mangled names in the `keep` arguments.
@@ -69,8 +69,8 @@ of using [ktor](https://ktor.io/) in Kotlin/JS projects. In some cases, you may 
 that comes from the `io.ktor:ktor-client-js:1.3.0` or `io.ktor:ktor-client-core:1.3.0` artifacts.
 To avoid this issue, add the following DCE configuration:
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
+
+> Groovy DSL
 
 ```groovy
 kotlin.target.browser {
@@ -81,10 +81,10 @@ kotlin.target.browser {
 ```
 
 
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" mode="kotlin" theme="idea" data-lang="kotlin" data-highlight-only>
+
+
+> Kotlin DSL
 
 ```kotlin
 kotlin.target.browser {
@@ -94,5 +94,5 @@ kotlin.target.browser {
 }
 ```
 
-</div>
-</div>
+
+

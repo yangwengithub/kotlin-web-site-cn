@@ -240,7 +240,7 @@ Kotlin支持数字运算的标准集（`+` `-` `*` `/` `%`），运算被定义<
 
 请注意，整数间的除法总是返回整数。会丢弃任何小数部分。例如：
 
-<div class="sample" markdown="1" theme="idea">
+
 
 ```kotlin
 fun main() {
@@ -252,11 +252,11 @@ fun main() {
 }
 ```
 
-</div>
+
 
 对于任何两个整数类型之间的除法来说都是如此。
 
-<div class="sample" markdown="1" theme="idea">
+
 
 ```kotlin
 fun main() {
@@ -267,11 +267,11 @@ fun main() {
 }
 ```
 
-</div>
+
 
 如需返回浮点类型，请将其中的一个参数显式转换为浮点类型。
 
-<div class="sample" markdown="1" theme="idea">
+
 
 ```kotlin
 fun main() {
@@ -282,7 +282,7 @@ fun main() {
 }
 ```
 
-</div>
+
 
 #### 位运算
 

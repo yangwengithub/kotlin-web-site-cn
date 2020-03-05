@@ -86,18 +86,18 @@ kotlin {
 }    
 ```
 
-</div>
+
 
 Or just
 
-<div class="sample" markdown="1" mode="groovy" theme="idea">
+> Groovy DSL
 
 ```groovy
 kotlin.target.browser {     
 }    
 ```
 
-</div>
+
 
 The Kotlin/JS plugin automatically configures its tasks for working with the selected environment.
 This includes downloading and installing dependencies required for running and testing the application, and therefore
@@ -367,8 +367,8 @@ assign a value to the `directory` property.
 Once you run a project build task, Gradle will save the output bundle in this location together
 with project resources.
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
+
+> Groovy DSL
 
 ```groovy
 kotlin.target.browser {
@@ -378,11 +378,11 @@ kotlin.target.browser {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" mode="kotlin" theme="idea" data-lang="kotlin" data-highlight-only>
+
+
+
+> Kotlin DSL
 
 ```kotlin
 kotlin.target.browser {
@@ -392,5 +392,5 @@ kotlin.target.browser {
 }
 ```
 
-</div>
-</div>
+
+

@@ -31,7 +31,7 @@ When you use an API in the code intended for third-party use (a library), you ca
 To do this, annotate your declaration with the [_opt-in requirement annotation_](#opt-in-requirement-annotations) of the API used in its body.
 This enables you to use the API elements marked with this annotation.
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 // library code
@@ -44,9 +44,9 @@ annotation class MyDateTime // Opt-in requirement annotation
 class DateProvider // A class requiring opt-in
 ```
 
-</div>
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+
 
 ```kotlin
 // client code
@@ -66,7 +66,7 @@ fun displayDate() {
 }
 ```
 
-</div>
+
 
 As you can see in this example, the annotated function appears to be a part of the `@MyDateTime` API.
 So, such an opt-in propagates the opt-in requirement to the client code; its clients will see the same warning message
@@ -79,7 +79,7 @@ In modules that don't expose their own API, such as applications, you can opt in
 the opt-in requirement to your code. In this case, mark your declaration with [@OptIn](/api/latest/jvm/stdlib/kotlin/-opt-in/index.html)
  passing the opt-in requirement annotation as its argument:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 // library code
@@ -92,9 +92,9 @@ annotation class MyDateTime // Opt-in requirement annotation
 class DateProvider // A class requiring opt-in
 ```
 
-</div>
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+
 
 ```kotlin
 //client code
@@ -109,21 +109,21 @@ fun displayDate() {
 }
 ```
 
-</div>
+
 
 When somebody calls the function `getDate()`, they won't be informed about the opt-in requirements for APIs used in its body. 
 
 To use an API that requires opt-in in all functions and classes in a file, add the file-level annotation `@file:OptIn`
 to the top of the file before the package specification and imports.
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
  
  ```kotlin
  //client code
  @file:OptIn(MyDateTime::class)
  ```
  
- </div>
+ 
 
 ### Module-wide opt-in
 
@@ -134,8 +134,8 @@ Compiling with this argument has the same effect as if every declaration in the 
 
 If you build your module with Gradle, you can add arguments like this:
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
+
+> Groovy DSL
 
 ```groovy
 compileKotlin {
@@ -145,11 +145,11 @@ compileKotlin {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" mode="kotlin" theme="idea" data-lang="kotlin" data-highlight-only>
+
+
+
+> Kotlin DSL
 
 ```kotlin
 tasks.withType<KotlinCompile>().all {
@@ -157,13 +157,13 @@ tasks.withType<KotlinCompile>().all {
 }
 ```
 
-</div>
-</div>
+
+
 
 If your Gradle module is a multiplatform module, use the `useExperimentalAnnotation` method:
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
+
+> Groovy DSL
 
 ```groovy
 sourceSets {
@@ -175,11 +175,11 @@ sourceSets {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" mode="kotlin" theme="idea" data-lang="kotlin" data-highlight-only>
+
+
+
+> Kotlin DSL
 
 ```kotlin
 sourceSets {
@@ -189,12 +189,12 @@ sourceSets {
 }
 ```
 
-</div>
-</div>
+
+
 
 For Maven, it would be:
 
-<div class="sample" markdown="1" mode="xml" theme="idea" data-highlight-only>
+
 
 ```xml
 <build>
@@ -214,7 +214,7 @@ For Maven, it would be:
 </build>
 ```
 
-</div>
+
 
 To opt in to multiple APIs on the module level, add one of the described arguments for each opt-in requirement marker used in your module.
 
@@ -225,7 +225,7 @@ To opt in to multiple APIs on the module level, add one of the described argumen
 If you want to require explicit consent to using your module's API, create an annotation class to use as an _opt-in requirement annotation_.
 This class must be annotated with [@RequiresOptIn](/api/latest/jvm/stdlib/kotlin/-requires-opt-in/index.html):
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 @RequiresOptIn
@@ -234,7 +234,7 @@ This class must be annotated with [@RequiresOptIn](/api/latest/jvm/stdlib/kotlin
 annotation class MyDateTime
 ```
 
-</div>
+
 
 Opt-in requirement annotations must meet several requirements:
 * `BINARY` [retention](/api/latest/jvm/stdlib/kotlin.annotation/-annotation-retention/index.html)
@@ -250,7 +250,7 @@ To set the desired level, specify the `level` parameter of the `@RequiresOptIn` 
 Additionally, you can provide a `message` to inform API users about special condition of using the API. 
 The compiler will show it to users that use the API without opt-in.
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 @RequiresOptIn(level = RequiresOptIn.Level.WARNING, message = "This API is experimental. It can be incompatibly changed in the future.")
@@ -259,7 +259,7 @@ The compiler will show it to users that use the API without opt-in.
 annotation class ExperimentalDateTime
 ```
 
-</div>
+
 
 If you publish multiple independent features that require opt-in, declare an annotation for each.
 This makes the use of API safer for your clients: they can use only the features that they explicitly accept.
@@ -269,7 +269,7 @@ This also lets you remove the opt-in requirements from the features independentl
 
 To require an opt-in to using an API element, annotate its declaration with an opt-in requirement annotation:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 @MyDateTime
@@ -279,7 +279,7 @@ class DateProvider
 fun getTime(): Time {}
 ```
 
-</div>
+
 
 
 ## Opt-in requirements for experimental APIs
@@ -295,7 +295,7 @@ To let the API users update their modules accordingly (remove the annotations
 from their code and recompile), mark the annotations as [`@Deprecated`](/api/latest/jvm/stdlib/kotlin/-deprecated/index.html)
 and provide the explanation in the deprecation message.
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 @Deprecated("This opt-in requirement is not used anymore. Remove its usages from your code.")
@@ -303,7 +303,7 @@ and provide the explanation in the deprecation message.
 annotation class ExperimentalDateTime
 ```
 
-</div>
+
 
 ## Experimental status of the opt-in requirements
 
