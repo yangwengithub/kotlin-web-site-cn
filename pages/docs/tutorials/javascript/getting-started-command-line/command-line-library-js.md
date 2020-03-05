@@ -8,6 +8,12 @@ showAuthorInfo: false
 related:
     - getting-started.md
 ---
+
+>__Warning__: this tutorial is outdated for Kotlin {{ site.data.releases.latest.version }}.
+>We strongly recommend using Gradle for Kotlin/JS projects. For instructions on creating 
+>Kotlin/JS projects with Gradle, see [Setting up a Kotlin/JS project](../setting-up.html)
+{:.note}
+>
 ### 创建一个 Kotlin/JavaScript 库
 
 我们将创建一个简单的 Kotlin/JavaScript 库。

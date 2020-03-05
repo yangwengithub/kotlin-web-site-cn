@@ -8,7 +8,11 @@ date: 2016-11-04
 showAuthorInfo: true
 ---
 
-在本教程中，我们会学习如何
+>__Warning__: this tutorial is outdated for Kotlin {{ site.data.releases.latest.version }}.
+>We strongly recommend using Gradle for Kotlin/JS projects. For instructions on creating 
+>Kotlin/JS projects with Gradle, see [Setting up a Kotlin/JS project](../setting-up.html)
+{:.note}
+>
 
 * [使用 Maven 创建编译到 JavaScript 的应用程序](#创建编译到-javascript-的应用程序)
 * [配置编译器选项](#配置编译器选项)
@@ -43,6 +47,7 @@ IntelliJ IDEA 将会为我们添加 [Maven 配置](#maven-配置)中的相关条
 #### Maven 配置
 
 <div class="sample" markdown="1" theme="idea" mode="xml" auto-indent="false">
+
 ```xml
 <properties>
     <kotlin.version>{{ site.data.releases.latest.version }}</kotlin.version> 
@@ -96,6 +101,7 @@ IntelliJ IDEA 将会为我们添加 [Maven 配置](#maven-配置)中的相关条
 -->Maven 不会在构建过程中解压 JAR 包，因此我们需要在构建中添加一个额外的步骤来执行此操作。
 
 <div class="sample" markdown="1" theme="idea" mode="xml" auto-indent="false">
+
 ```xml
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
@@ -133,6 +139,7 @@ IntelliJ IDEA 将会为我们添加 [Maven 配置](#maven-配置)中的相关条
 为了指定模块的类型，我们可以在插件中添加一条配置，如下所示：
 
 <div class="sample" markdown="1" theme="idea" mode="xml" auto-indent="false">
+
 ```xml
  </executions>
  ...

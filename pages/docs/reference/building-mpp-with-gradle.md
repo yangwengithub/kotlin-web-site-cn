@@ -962,7 +962,7 @@ kotlin {
 
 
 
-同样的，如果以实验性的[Gradle 元数据发布模式](#experimental-metadata-publishing-mode)发布了一个多平台库，并且该项目<!--
+同样的，如果以实验性的[Gradle 元数据发布模式](#实验性的元数据发布模式)发布了一个多平台库，并且该项目<!--
 -->也设置为使用元数据，那么只需要为公共源集指定一次依赖。
 除此以外，应该为每个特定平台的源集<!--
 -->提供库的相应平台模块（除了公共模块），如上所示。
@@ -2138,11 +2138,11 @@ binaries {
 
 
 
-#### Exporting dependencies in frameworks
+#### Exporting dependencies to binaries
 
-When building an Objective-C framework, it is often necessary to pack not just the classes of the current project,
-but also the classes of some of its dependencies. The Binaries DSL allows one to specify which dependencies will be exported
-in the framework using the `export` method.  Note that only API dependencies of a corresponding source set can be exported.
+When building an Objective-C framework or a native library (shared or static), it is often necessary to pack not just the
+classes of the current project, but also the classes of some of its dependencies. The Binaries DSL allows one to specify
+which dependencies will be exported to a binary using the `export` method. Note that only API dependencies of a corresponding source set can be exported.
 
 > Groovy DSL
 
@@ -2151,11 +2151,11 @@ in the framework using the `export` method.  Note that only API dependencies of 
 kotlin {
     sourceSets {
         macosMain.dependencies {
-            // Will be exported in the framework.
+            // Will be exported.
             api project(':dependency')
             api 'org.example:exported-library:1.0'
 
-            // Will not be exported in the framework.
+            // Will not be exported.
             api 'org.example:not-exported-library:1.0'
         }
     }
@@ -2164,6 +2164,11 @@ kotlin {
         framework {
             export project(':dependency')
             export 'org.example:exported-library:1.0'
+        }
+
+        sharedLib {
+            // It's possible to export different sets of dependencies to different binaries.
+            export project(':dependency')
         }
     }
 }
@@ -2179,11 +2184,11 @@ kotlin {
 kotlin {
     sourceSets {
         macosMain.dependencies {
-            // Will be exported in the framework.
+            // Will be exported.
             api(project(":dependency"))
             api("org.example:exported-library:1.0")
 
-            // Will not be exported in the framework.
+            // Will not be exported.
             api("org.example:not-exported-library:1.0")
         }
     }
@@ -2192,6 +2197,11 @@ kotlin {
         framework {
             export(project(":dependency"))
             export("org.example:exported-library:1.0")
+        }
+
+        sharedLib {
+            // It's possible to export different sets of dependencies to different binaries.
+            export(project(':dependency'))
         }
     }
 }

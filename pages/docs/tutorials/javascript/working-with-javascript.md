@@ -1,104 +1,25 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "与 JavaScript 合用"
-description: "看看如何与 DOM 交互以及使用 JavaScript 库"
+title:  "Working with JavaScript libraries"
+description: "A look at how we use JavaScript libraries with Kotlin/JS."
 authors: Hadi Hariri，Yue_plus（翻译）
 date: 2017-02-27
 showAuthorInfo: false
 ---
 
+>__Warning__: this tutorial does not reflect all newest changes for Kotlin {{ site.data.releases.latest.version }}.
+>To get started with writing modern Kotlin/JS projects, please see [Setting up a Kotlin/JS project](setting-up)
+{:.note}
+>
 
 在本教程中，我们将了解如何
 
-* [访问 DOM](#访问-DOM)
-* [使用 kotlinx.html 生成 HTML](#使用-kotlinxhtml)
-* [使用 dukat 与库交互](#使用-dukat-生成-Kotlin-的头文件)
+* [使用 dukat 与库交互](使用-dukat-生成用于-kotlin-的头文件)
 * [使用 dynamic 与库交互](#使用-dynamic)
 
 
-
-## 访问 DOM
-
-Kotlin 标准库围绕 JavaScript API 提供了一系列包装器，用于与文档进行交互。通常访问的主要组件是变量 `document`。有了可以访问的权限，便可以简单地读取与写入相应的属性。例如，要设置页面背景，可以：
-
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-```kotlin
-document.bgColor = "FFAA12" 
-```
-</div>
-
-DOM 还提供了一种通过 ID、name、类名、标签等检索特定元素的方法。所有返回的元素均为 `NodeList` 类型，要访问成员，需要将其强制转换为特定类型的元素。
-以下代码展示了如何访问页面上的输入元素：
-
-<div class="sample" markdown="1" theme="idea" mode="xml">
-```html
-<body>
-    <input type="text" name="email" id="email"/>
-    <script type="text/javascript" src="scripts/kotlin.js"></script>
-    <script type="text/javascript" src="scripts/domInteraction.js"></script>
-</body>
-```
-</div>
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-```kotlin
-val email = document.getElementById("email") as HTMLInputElement
-email.value = "hadi@jetbrains.com"
-```
-</div>
-
-非常注意：确保在 ``body`` 标签关闭之前引入脚本。另外，将脚本放在顶部将导致在 DOM 完全加载完毕之前运行脚本。
-
-像引用 input 元素一样，也可以访问页面上的其他元素，并将其转换为适当的类型。
-
-## 使用 kotlinx.html
-
-[kotlinx.html 库](http://www.github.com/kotlin/kotlinx.html)提供使用静态类型的 HTML 构建器生成 DOM 的能力。
-该库可用于面向 JVM 或 JavaScript 编程时。要使用该库，需要包括相应的依赖项。
-在使用 Gradle 的情况下：
-
-<div class="sample" markdown="1" theme="idea" mode="groovy">
-```groovy
-repositories {
-    mavenCentral()
-    maven {
-        url  "http://dl.bintray.com/kotlin/kotlinx.html/"
-    }
-}
-
-dependencies {
-    compile 'org.jetbrains.kotlinx:kotlinx-html-js:0.6.1'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
-}
-```
-</div>
-
-关于配置 Gradle 面向 JavaScript 平台的更多信息，请参见[以 Gradle 入门](getting-started-gradle/getting-started-with-gradle.html)。
-
-包含依赖项后，便可访问提供的不同接口来生成 DOM。
-以下代码将在 `window.load` 事件中为 ```div``` 内添加一个带有文本 ```Hello``` 的新 ```span``` 标签。
-
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
-```kotlin
-import kotlin.browser.*
-import kotlinx.html.*
-import kotlinx.html.dom.*
-
-fun printHello() {
-    window.onload = {
-        document.body!!.append.div {
-            span {
-                +"Hello"
-            }
-        }
-    }
-}
-```
-</div>
-
-## 使用 dukat 生成 Kotlin 的头文件
+## 使用 dukat 生成用于 Kotlin 的头文件
 
 标准库中提供了一系列有关 DOM 的包装器以及使用静态类型与 JavaScript 配合使用的函数。
 但是，当使用 jQuery 之类的库时会发生什么？对于 JavaScript 生态系统上可用的所有不同库，Kotlin 没有自己的“头”文件，但是 TypeScript 有。
@@ -120,6 +41,7 @@ dukat -d headers jquery.d.ts
 生成文件后，便可简单地将其包含在项目中并使用它：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 jQuery("#area").hover { window.alert("Hello!") }
 ```
@@ -128,6 +50,7 @@ jQuery("#area").hover { window.alert("Hello!") }
 注意，```jQuery``` 需要包含在相应的 HTML 中：
 
 <div class="sample" markdown="1" theme="idea" mode="xml">
+
 ```html
 <script type="text/javascript" src="js/jquery.js"></script>
 
@@ -140,6 +63,7 @@ jQuery("#area").hover { window.alert("Hello!") }
 头文件仅包含在运行时定义的函数的函数声明。例如，可以像这样定义一个 ```jQuery``` 函数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 @JsName("$")
 public external fun jQuery(selector: String): JQuery
@@ -212,6 +136,7 @@ $("#data").dataTable()
 以下变量被声明为 ```dynamic```，这意味着对其进行的调用均不会导致编译时错误：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 val myObject: dynamic = null
 
@@ -228,6 +153,7 @@ myObject.callAnything()
 在前面的示例中，使用了 jQuery 处理 DOM 元素，现在可以将其与 `asDynamic()` 结合起来，然后在结果上调用 `dataTable()`：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 $("#data").asDynamic().dataTable()
 ```
@@ -237,6 +163,7 @@ $("#data").asDynamic().dataTable()
 这种情况下，需要确保包含插件的相应脚本文件：
 
 <div class="sample" markdown="1" theme="idea" mode="xml">
+
 ```html
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jquery.dataTables.js"></script>
