@@ -19,7 +19,7 @@ Kotlin 允许你将 Kotlin 项目编译为热门模块系统的 JavaScript 模�
 4. 统一模块定义（UMD，Unified Module Definitions），它与 *AMD* 和 *CommonJS* 兼容，
    并且当在运行时 *AMD* 和 *CommonJS* 都不可用时，作为“plain”使用。
 
-## Targeting the browser
+## 面向浏览器
  
 If you're targeting the browser, you can specify the desired module type in the `webpackTask` configuration block:
  
@@ -45,11 +45,11 @@ kotlin {
   
 This way, you'll get a single JS file with all dependencies included.
 
-## Creating libraries and node.js files
+## 创建库与 node.js 文件
 
 If you're creating a JS library or a node.js file, define the module kind as described below.
 
-### Choosing the target module system
+### 选择目标模块系统
 
 To select module kind, set the `moduleKind` compiler option in the Gradle build script.
 

@@ -365,21 +365,21 @@ tutorials:
     - title: JavaScript
       content:
         - url: /docs/tutorials/javascript/setting-up.html
-          title: Setting up a project
+          title: 搭建一个项目
         - url: /docs/tutorials/javascript/running-kotlin-js.html
-          title: Running Kotlin/JS
+          title: 运行 Kotlin/JS
         - url: /docs/tutorials/javascript/dev-server-continuous-compilation.html
-          title: Development Server and Continuous Compilation
+          title: 开发服务器与持续编译
         - url: /docs/tutorials/javascript/using-packages-from-npm.html
-          title: Using packages from npm
+          title: 使用来自 npm 的包
         - url: /docs/tutorials/javascript/debugging-kotlin-in-browser.html
           title: 在浏览器中调试 Kotlin
         - url: /docs/tutorials/javascript/running-tests.html
-          title: Running tests
+          title: 运行测试
         - url: /docs/tutorials/javascript/browser-api-dom.html
-          title: Browser API and the DOM
+          title: 浏览器 API 与 DOM
         - url: /docs/tutorials/javascript/typesafe-html-dsl.html
-          title: Typesafe HTML DSL
+          title: 类型安全的 HTML DSL
         - url: /docs/tutorials/javascript/working-with-modules/working-with-modules.html
           title: Kotlin 与 JavaScript 模块合用
         - url: /docs/tutorials/javascript/react-and-kotlin-js.html

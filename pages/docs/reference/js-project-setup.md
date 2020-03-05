@@ -64,7 +64,7 @@ Inside the `kotlin` section, you can manage the following aspects:
 * [Run configuration](#配置-run-任务)
 * [Test configuration](#配置-test-任务)
 * [Bundling](#配置-webpack-绑定) for browser projects
-* [Target directory](#distribution-target-directory)
+* [Target directory](#分发目标目录)
 
 ## 选择执行环境
 
@@ -358,7 +358,7 @@ To build a project artifact using Webpack, execute the `browserProductionWebpack
 
 </div>
 
-## Distribution target directory
+## 分发目标目录
 
 By default, the results of a Kotlin/JS project build reside in the `/build/distribution` directory within the project root.
 
