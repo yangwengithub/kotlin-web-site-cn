@@ -70,4 +70,4 @@ AWS Labs 提供了一个[示例项目](https://github.com/awslabs/serverless-pho
 -->将向你展示如何在 Kotlin 中构建和运行非常小的 Web 应用程序。
 * 关于更深入的介绍，请查看本站的[参考文档](index.html)及
 [Kotlin 心印](https://www.kotlincn.net/docs/tutorials/koans.html)。
-* Micronaut also has a lot of well-detailed [guides](https://guides.micronaut.io/tags/kotlin.html), showing how you can build microservices in Kotlin.
+* Micronaut 还提供了很多详细的[指南](https://guides.micronaut.io/tags/kotlin.html)，展示了如何使用 Kotlin 构建微服务。
