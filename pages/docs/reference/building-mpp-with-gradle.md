@@ -1551,8 +1551,8 @@ src
 -->相应的任务来代替它们：
 
 * `jar` is disabled in favor of the target's JAR task (e.g. `jvmJar`)
-* `test` is disabled, and the target's test task is used (e.g. `jvmTest`)
-* `*ProcessResources` tasks are disabled, and the resources are processed by the equivalent tasks of the compilations
+* `test` 被禁用，并且使用目标的测试任务（例如 `jvmTest`）
+* `*ProcessResources` 任务被禁用，并且资源将由编译项的等价任务处理
 
 这个目标的发布项将由 Kotlin 插件处理，并且不需要特定于
 Java 插件的步骤，例如手动创建发布项并配置它为 `from(components.java)`。
