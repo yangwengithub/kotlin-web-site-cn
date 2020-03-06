@@ -1550,7 +1550,7 @@ src
 由于当前的限制，一些由 Java 插件配置的任务将被禁用，并且 Kotlin 插件添加了<!--
 -->相应的任务来代替它们：
 
-* `jar` is disabled in favor of the target's JAR task (e.g. `jvmJar`)
+* `jar` 被禁用，取而代之的是目标的 JAR 任务（例如 `jvmJar`）
 * `test` 被禁用，并且使用目标的测试任务（例如 `jvmTest`）
 * `*ProcessResources` 任务被禁用，并且资源将由编译项的等价任务处理
 
