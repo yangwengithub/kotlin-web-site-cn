@@ -6,19 +6,16 @@ description: "看看如何使用 Kotlin 与 JavaScript 模块进行交互。"
 authors: Hadi Hariri 
 date: 2016-09-30
 showAuthorInfo: false
+redirect_path: /docs/reference/js-modules
 ---
 
 
 在本教程中你将会看到：
 
-* [使用 IntelliJ IDEA 配置模块](#configuring-modules-with-intellij-idea)
-* [使用 Maven 或者 Gradle 配置模块](#configuring-modules-when-using-maven-or-gradle)
+* Configure modules when using Gradle
 * [在浏览器中通过 AMD 使用 Koltin](#using-amd)
 * [在 node.js 中通过 CommonJS 使用 Kotlin](#using-commonjs)
 
-
-
-## 使用 IntelliJ IDEA 配置模块
 
 Koltin 所生成的 JavaScript 代码能够兼容异步模块定义（AMD, Asynchronous Module Definition）, CommonJS 以及统一模块定义（UMD，Unified Module Definitions）。
 
@@ -26,14 +23,35 @@ Koltin 所生成的 JavaScript 代码能够兼容异步模块定义（AMD, Async
 * **CommonJS** 通常是使用在服务端的模块系统，特别是适合用于 node.js，Node 模块全都是遵循这样的定义的。 CommonJS 模块也可以通过[Browserify](http://browserify.org/)在浏览器中使用。
 * **UMD** 则是试图让模块在客户端和服务端都能使用。
 
-我们可以利用 Kotlin 编译器配置来选择生成哪种模块。 注意如果使用 UMD 选项的话，一旦其中一类无法编译的话则会生成另外一类。
-一般来说 IDEA 中 Kotlin 的编译器选项会影响整个项目而不仅仅是一个单独的模块。
+To configure the module output format in Gradle build script, add the following lines:
 
-![Kotlin Compiler Options]({{ url_for('tutorial_img', filename='javascript/working-with-modules/kotlin-compiler.png')}})
+<div class="multi-language-sample" data-lang="groovy">
+<div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
 
-## 使用 Maven 或者 Gradle 配置模块
+```groovy
+compileKotlinJs.kotlinOptions.moduleKind = "commonjs"
 
-如果是使用 Maven 或者 Gradle 的话还可以配置模块的输出格式，详细信息请移步[JavaScript Modules](http://www.kotlincn.net/docs/reference/js-modules.html)。
+```
+
+</div>
+</div>
+
+<div class="multi-language-sample" data-lang="kotlin">
+<div class="sample" markdown="1" mode="kotlin" theme="idea" data-lang="kotlin" data-highlight-only>
+
+```kotlin
+tasks.named("compileKotlinJs") {
+    this as KotlinJsCompile
+    kotlinOptions.moduleKind = "commonjs"
+}
+```
+
+</div>
+</div>
+
+Available values are: `plain`, `amd`, `commonjs`, `umd`.
+
+For more information, see [JavaScript Modules](http://kotlinlang.org/docs/reference/js-modules.html).
 
 ## 使用异步模块定义（AMD）
 
@@ -42,6 +60,7 @@ Koltin 所生成的 JavaScript 代码能够兼容异步模块定义（AMD, Async
 举个例子：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class Customer(val id: Int, val name: String, val email: String) {
     var isPreferred = false
@@ -55,6 +74,7 @@ class Customer(val id: Int, val name: String, val email: String) {
 会生成如下的 JavaScript 代码：
 
 <div class="sample" markdown="1" theme="idea" mode="js">
+
 ```javascript
 define('customerBL', ['kotlin'], function (Kotlin) {
   'use strict';
@@ -84,6 +104,7 @@ define('customerBL', ['kotlin'], function (Kotlin) {
 那么可以在 `index.html` 中利用标签中 `data-main` 属性的值来定义 `main.js` 从而引入 `require.js` ，如下所示：
 
 <div class="sample" markdown="1" theme="idea" mode="xml">
+
 ```html
 <head>
     <meta charset="UTF-8">
@@ -96,6 +117,7 @@ define('customerBL', ['kotlin'], function (Kotlin) {
 其中 `main.js` 的内容如下：
 
 <div class="sample" markdown="1" theme="idea" mode="js">
+
 ```javascript
 requirejs.config({
     paths: {
@@ -121,6 +143,7 @@ requirejs(["customerBL"], function (customerBL) {
 举个例子：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ```kotlin
 class Customer(val id: Int, val name: String, val email: String) {
     var isPreferred = false
@@ -134,6 +157,7 @@ class Customer(val id: Int, val name: String, val email: String) {
 会生成如下的 JavaScript 代码：
 
 <div class="sample" markdown="1" theme="idea" mode="js">
+
 ```javascript
 module.exports = function (Kotlin) {
   'use strict';
@@ -170,6 +194,7 @@ module.exports = function (Kotlin) {
 Kotlin 基本库在[npm](https://www.npmjs.com/)是可用的，因此我们可以轻松地在项目的 `package.json` 文件中以一个依赖的形式进行引用，如下所示：
 
 <div class="sample" markdown="1" theme="idea" mode="js">
+
 ```json
 {
   "name": "node-demo",
@@ -186,6 +211,7 @@ Kotlin 基本库在[npm](https://www.npmjs.com/)是可用的，因此我们可�
 我们可以轻松地在 node.js 代码中通过使用 `require` 函数来导入模块从而可以使用模块里的任意类和函数，如下所示：
 
 <div class="sample" markdown="1" theme="idea" mode="js">
+
 ```javascript
 var customerBL = require('./scripts/customerBL')
 

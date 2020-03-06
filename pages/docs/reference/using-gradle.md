@@ -617,7 +617,7 @@ tasks.withType<KotlinCompile>().configureEach {
 |------|-------------|-----------------|--------------|
 | `javaParameters` | 为方法参数生成 Java 1.8 反射的元数据 |  | false |
 | `jdkHome` | 将来自指定位置的自定义 JDK 而不是默认的 JAVA_HOME 包含到类路径中 |  |  |
-| `jvmTarget` | 生成的 JVM 字节码的目标版本（1.6、 1.8、 9、 10、 11 或 12），默认为 1.6 | "1.6"、 "1.8"、 "9"、 "10"、 "11"、 "12" | "1.6" |
+| `jvmTarget` | 生成的 JVM 字节码的目标版本（1.6、 1.8、 9、 10、 11、 12 或 13），默认为 1.6 | "1.6"、 "1.8"、 "9"、 "10"、 "11"、 "12"、 "13" | "1.6" |
 | `noJdk` | 不要自动在类路径中包含 Java 运行时 |  | false |
 | `noReflect` | 不要自动在类路径中包含 Kotlin 反射实现 |  | true |
 | `noStdlib` | 不要自动在类路径中包含 Kotlin 运行时与 Kotlin 反射 |  | true |

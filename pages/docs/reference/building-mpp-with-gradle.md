@@ -962,7 +962,7 @@ kotlin {
 </div>
 </div>
 
-同样的，如果以实验性的[Gradle 元数据发布模式](#experimental-metadata-publishing-mode)发布了一个多平台库，并且该项目<!--
+同样的，如果以实验性的[Gradle 元数据发布模式](#实验性的元数据发布模式)发布了一个多平台库，并且该项目<!--
 -->也设置为使用元数据，那么只需要为公共源集指定一次依赖。
 除此以外，应该为每个特定平台的源集<!--
 -->提供库的相应平台模块（除了公共模块），如上所示。
@@ -1358,7 +1358,7 @@ publishing {
 
 如果库拥有一个 “根” 发布项，用户可以在公共源集中指定对整个库的单个依赖，
 并且将为每个包含这个依赖项的编译项（如果有）选择一个合适的特定平台版本。
-考虑一个为 JVM 和 JS 编译并且与
+考虑一个为 JVM 与 JS 编译并且与
 “根” 发布项一起发布的 `sample-lib` 库：
  
 <div class="multi-language-sample" data-lang="groovy">
@@ -1724,22 +1724,22 @@ those will be merged into one dependencies list.
 
 ## 使用 Kotlin/Native 目标平台
 
-It is important to note that some of the [Kotlin/Native targets](#已支持平台) may only be built with an appropriate host machine:
+重要的是，注意某些 [Kotlin/Native 目标](#已支持平台)仅能在适当的主机上被编译：
 
-* Linux MIPS targets (`linuxMips32` and `linuxMipsel32`) require a Linux host. Other Linux targets can be built on any supported host;
-* Windows targets require a Windows host;
-* macOS and iOS targets can only be built on a macOS host;
-* The 64-bit Android Native target require a Linux or macOS host. The 32-bit Android Native target can be built on any supported host.
+* Linux MIPS 目标（`linuxMips32` 与 `linuxMipsel32`）需要一台 Linux 主机。其他 Linux 目标则可以在任意受支持的主机上编译。
+* Windows 目标需要一台 Windows 主机；
+* macOS 与 iOS 目标只能在 macOS 主机上编译；
+* 64 位的 Android 原生目标需要一台 Linux 或 macOS 主机。32 位的 Android 原生目标则可以在任意受支持的主机上编译。
 
-A target that is not supported by the current host is ignored during build and therefore not published. A library author may want to set up
-builds and publishing from different hosts as required by the library target platforms.
+当前主机不支持的目标在构建期间会被忽略，因此也不会发布。库作者可能希望在目标库平台所需的不同主机上<!--
+-->进行构建和发布。
 
 ### 目标快捷方式
 
-Some native targets are often created together and use the same sources. For example, building for an iOS device and a simulator
-is represented by different targets (`iosArm64` and `iosX64` respectively) but their source codes are usually the same.
-A canonical way to express such shared code in the multiplatform project model is creating an intermediate
-source set (`iosMain`) and configuring links between it and the platform source sets:
+一些原生目标经常一同创建，并且使用相同的源代码。例如，iOS 设备与模拟器<!--
+-->的构建由不同的目标（分别是 `iosArm64` 与 `iosX64`）表示，但它们的源代码通常是相同的。
+多平台项目模型中来表示这种共享代码的一个经典方式是创建一个中间<!--
+-->源集（`iosMain`），并且在它和平台源集之间配置链接：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -1775,28 +1775,28 @@ val iosMain by sourceSets.creating {
 </div>
 </div>
 
-Since 1.3.60, the `kotlin-multiplaform` plugin provides shortcuts that automate such a configuration: they let users
-create a group of targets along with a common source set for them with a single DSL method.
+自 1.3.60 起，`kotlin-multiplaform` 插件提供了自动化这些配置的快捷方式：它们使用户<!--
+-->可以通过单个 DSL 方法来创建一组目标以及公共源集。
 
-The following shortcuts are available:
+可用快捷方式有这些：
 
- * `ios` creates targets for `iosArm64` and `iosX64`.
- * `watchos` creates targets for  `watchosArm32`, `watchosArm64`, and `watchosX86`.
- * `tvos` creates targets for  `tvosArm64` and `tvosX64`. 
+ * `ios` 为 `iosArm64` 与 `iosX64` 创建目标。
+ * `watchos` 为 `watchosArm32`、`watchosArm64` 以及 `watchosX86` 创建目标。
+ * `tvos` 为 `tvosArm64` 与 `tvosX64` 创建目标。
 
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
 
 ```kotlin
-// Create two targets for iOS.
-// Create common source sets: iosMain and iosTest.
+// 为 iOS 创建两个目标。
+// 创建公共源集：iosMain 与 iosTest。
 ios {
-    // Configure targets.
-    // Note: this lambda will be called for each target.
+    // 配置目标。
+    // 注意：将会为每个目标调用这个 lambda。
 }
 
-// You can also specify a name prefix for created targets.
-// Common source sets will also have this prefix:
-// anotherIosMain and anotherIosTest.
+// 你也可以指定一个名称前缀来创建目标。
+// 公共源集也将会有一个前缀：
+// anotherIosMain 与 anotherIosTest。
 ios("anotherIos")
 ```
 
@@ -2138,11 +2138,11 @@ binaries {
 </div>
 </div>
 
-#### Exporting dependencies in frameworks
+#### Exporting dependencies to binaries
 
-When building an Objective-C framework, it is often necessary to pack not just the classes of the current project,
-but also the classes of some of its dependencies. The Binaries DSL allows one to specify which dependencies will be exported
-in the framework using the `export` method.  Note that only API dependencies of a corresponding source set can be exported.
+When building an Objective-C framework or a native library (shared or static), it is often necessary to pack not just the
+classes of the current project, but also the classes of some of its dependencies. The Binaries DSL allows one to specify
+which dependencies will be exported to a binary using the `export` method. Note that only API dependencies of a corresponding source set can be exported.
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -2151,11 +2151,11 @@ in the framework using the `export` method.  Note that only API dependencies of 
 kotlin {
     sourceSets {
         macosMain.dependencies {
-            // Will be exported in the framework.
+            // Will be exported.
             api project(':dependency')
             api 'org.example:exported-library:1.0'
 
-            // Will not be exported in the framework.
+            // Will not be exported.
             api 'org.example:not-exported-library:1.0'
         }
     }
@@ -2164,6 +2164,11 @@ kotlin {
         framework {
             export project(':dependency')
             export 'org.example:exported-library:1.0'
+        }
+
+        sharedLib {
+            // It's possible to export different sets of dependencies to different binaries.
+            export project(':dependency')
         }
     }
 }
@@ -2179,11 +2184,11 @@ kotlin {
 kotlin {
     sourceSets {
         macosMain.dependencies {
-            // Will be exported in the framework.
+            // Will be exported.
             api(project(":dependency"))
             api("org.example:exported-library:1.0")
 
-            // Will not be exported in the framework.
+            // Will not be exported.
             api("org.example:not-exported-library:1.0")
         }
     }
@@ -2192,6 +2197,11 @@ kotlin {
         framework {
             export(project(":dependency"))
             export("org.example:exported-library:1.0")
+        }
+
+        sharedLib {
+            // It's possible to export different sets of dependencies to different binaries.
+            export(project(':dependency'))
         }
     }
 }
