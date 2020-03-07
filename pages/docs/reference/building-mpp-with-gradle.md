@@ -1503,11 +1503,11 @@ configurations {
 
 ## JVM 目标平台中的 Java 支持
 
-This feature is available since Kotlin 1.3.40.
+这个特性自 Kotlin 1.3.40 可用。
 
-By default, a JVM target ignores Java sources and only compiles Kotlin source files.
-To include Java sources in the compilations of a JVM target, or to apply a Gradle plugin that requires the
-`java` plugin to work, you need to explicitly enable Java support for the target:
+默认情况下，JVM 目标将忽略 Java 源代码，并且只编译 Kotlin 源文件。
+为了将 Java 源代码包含入 JVM 目标的编译项中，或是为了应用需要
+`java` 插件才能工作的 Gradle 插件，你需要为目标显式地启用 Java 支持：
 
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
 
@@ -1521,13 +1521,13 @@ kotlin {
 
 </div>
 
-This will apply the Gradle `java` plugin and configure the target to cooperate with it.
-Note that just applying the Java plugin without specifying `withJava()` in a JVM
-target will have no effect on the target.
+这将会应用 Gradle `java` 插件，并配置目标以与它协作。
+注意，在 JVM 目标中仅应用 Java 插件但没有指定 `withJava()`，
+将不会对目标有任何影响。
 
-The file system locations for the Java sources are different from  the `java` plugin's defaults.
-The Java source files need to be placed in the sibling directories of the Kotlin source
-roots. For example, if the JVM target has the default name `jvm`, the paths are:
+Java 源的文件系统位置与 `java` 插件的默认值不同。
+Java 源文件需要被放置在 Kotlin 源<!--
+-->根目录的同级目录中。例如，如果 JVM 目标有一个默认名称 `jvm`，则路径为：
 
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
 
@@ -1545,17 +1545,17 @@ src
 
 </div>
 
-The common source sets cannot include Java sources.
+公共源集不能包含 Java 源。
 
-Due to the current limitations, some tasks configured by the Java plugin are disabled, and the corresponding tasks added
-by the Kotlin plugin are used instead:
+由于当前的限制，一些由 Java 插件配置的任务将被禁用，并且 Kotlin 插件添加了<!--
+-->相应的任务来代替它们：
 
-* `jar` is disabled in favor of the target's JAR task (e.g. `jvmJar`)
-* `test` is disabled, and the target's test task is used (e.g. `jvmTest`)
-* `*ProcessResources` tasks are disabled, and the resources are processed by the equivalent tasks of the compilations
+* `jar` 被禁用，取而代之的是目标的 JAR 任务（例如 `jvmJar`）
+* `test` 被禁用，并且使用目标的测试任务（例如 `jvmTest`）
+* `*ProcessResources` 任务被禁用，并且资源将由编译项的等价任务处理
 
-The publication of this target is handled by the Kotlin plugin and doesn't require the steps that are specific to the
-Java plugin, such as manually creating a publication and configuring it as `from(components.java)`.
+这个目标的发布项将由 Kotlin 插件处理，并且不需要特定于
+Java 插件的步骤，例如手动创建发布项并配置它为 `from(components.java)`。
 
 ##  Android 支持
 
