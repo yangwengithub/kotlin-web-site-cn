@@ -1505,8 +1505,8 @@ configurations {
 
 这个特性自 Kotlin 1.3.40 可用。
 
-默认情况下，JVM 目标将忽略 Java 源，并且只编译 Kotlin 源文件。
-为了将 Java 源包含入 JVM 目标的编译项中，或是为了应用需要
+默认情况下，JVM 目标将忽略 Java 源代码，并且只编译 Kotlin 源文件。
+为了将 Java 源代码包含入 JVM 目标的编译项中，或是为了应用需要
 `java` 插件才能工作的 Gradle 插件，你需要为目标显式地启用 Java 支持：
 
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
