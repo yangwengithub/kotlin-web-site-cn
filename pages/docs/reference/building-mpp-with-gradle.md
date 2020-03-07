@@ -1525,8 +1525,8 @@ kotlin {
 注意，在 JVM 目标中仅应用 Java 插件但没有指定 `withJava()`，
 将不会对目标有任何影响。
 
-Java 源的文件系统位置与 `java` 插件的默认值不同。
-Java 源文件需要被放置在 Kotlin 源<!--
+Java 源代码的文件系统位置与 `java` 插件的默认值不同。
+Java 源文件需要被放置在 Kotlin 源代码<!--
 -->根目录的同级目录中。例如，如果 JVM 目标有一个默认名称 `jvm`，则路径为：
 
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
@@ -1545,7 +1545,7 @@ src
 
 </div>
 
-公共源集不能包含 Java 源。
+公共源集不能包含 Java 源代码。
 
 由于当前的限制，一些由 Java 插件配置的任务将被禁用，并且 Kotlin 插件添加了<!--
 -->相应的任务来代替它们：
