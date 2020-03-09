@@ -1618,7 +1618,7 @@ kotlin {
 
 使用 [kapt](/docs/reference/kapt.html) 进行注解处理也是受支持的，但，由于当前的限制，
 它要求 Android 目标需要在配置 `kapt` 依赖之前创建，`kapt` 依赖需要在<!--
--->顶级 `dependencies { …… }` 代码块（而不是 Kotlin 源集依赖）中完成
+-->顶级 `dependencies { …… }` 代码块（而不是 Kotlin 源集依赖）中完成。
 
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
 
