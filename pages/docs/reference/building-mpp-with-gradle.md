@@ -1610,8 +1610,8 @@ kotlin {
 
 然后，对于每个通过变体编译的 [Android 源集](https://developer.android.com/studio/build/build-variants#sourcesets)，
 将在目标名称前面的那个源集名称下创建 Kotlin 源集，
-例如 Kotlin 源集 `androidDebug` 的 Android 源集 `debug`，
-以及名为 `android` 的 Kotlin 目标。 这些 Kotlin 源集将相应地添加到变体编译项中。
+Kotlin 源集 `androidDebug` 用于 Android 源集 `debug`
+与名为 `android` 的 Kotlin 目标。 这些 Kotlin 源集将相应地添加到变体编译项中。
 
 默认源集 `commonMain` 将添加到每个生产项（应用或库）变体的编译项中。
 类似地，`commonTest` 源集也将添加到单元测试的编译项，以及 instrumented 测试变体中。
