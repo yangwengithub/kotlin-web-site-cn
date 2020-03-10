@@ -8,7 +8,7 @@ title: "集合写操作"
 # 集合写操作
 
 [可变集合](collections-overview.html#集合类型)支持更改集合内容的操作，例如添加或删除元素。
-在次页面上，我们将描述实现 `MutableCollection` 的所有写操作。
+在此页面上，我们将描述实现 `MutableCollection` 的所有写操作。
 有关 `List` 与 `Map` 可用的更多特定操作，请分别参见 [List 相关操作](list-operations.html)与 [Map 相关操作](map-operations.html)。
 
 ## 添加元素
