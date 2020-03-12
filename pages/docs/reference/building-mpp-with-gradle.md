@@ -1559,9 +1559,9 @@ Java 插件的步骤，例如手动创建发布项并配置它为 `from(componen
 
 ##  Android 支持
 
-Kotlin Multiplatform projects support the Android platform by providing the `android` preset.
-Creating an Android target requires that one of the Android Gradle plugins, like `com.android.application` or
-`com.android.library` is manually applied to the project. Only one Android target may be created per Gradle subproject:
+Kotlin 多平台项目通过提供 `android` 内置函数支持 Android 平台。
+创建 Android 目标需要 Android Gradle 插件之一，例如手动应用`com.android.application` 或
+`com.android.library` 到项目中。每个 Gradle 子项目仅可能创建一个 Android 目标：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -1575,8 +1575,8 @@ plugins {
 android { /* …… */ }
 
 kotlin {
-    android { // Create the Android target
-        // Provide additional configuration if necessary
+    android { // 创建 Android 目标
+        // 提供必要的附加配置
     }
 }
 ```
@@ -1596,8 +1596,8 @@ plugins {
 android { /* …… */ }
 
 kotlin {
-    android { // Create the Android target
-        // Provide additional configuration if necessary
+    android { // 创建 Android 目标
+        // 提供必要的附加配置
     }
 }
 ```
@@ -1605,20 +1605,20 @@ kotlin {
 </div>
 </div>
 
-An Android target's compilations created by default are tied to [Android build variants](https://developer.android.com/studio/build/build-variants):
-for each build variant, a Kotlin compilation is created under the same name.
+默认创建的 Android 目标编译项与 [Android 构建变体](https://developer.android.com/studio/build/build-variants)相关联：
+对于每个构建变体，将会以相同的名称创建 Kotlin 构建项。
 
-Then, for each [Android source set](https://developer.android.com/studio/build/build-variants#sourcesets) compiled by
-the variants, a Kotlin source set is created under that source set name
-prepended by the target name, like Kotlin source set `androidDebug` for an Android source set `debug` and the Kotlin target
-named `android`. These Kotlin source sets are added to the variants compilations accordingly.
+然后，对于每个通过变体编译的 [Android 源集](https://developer.android.com/studio/build/build-variants#sourcesets)，
+将在目标名称前面的那个源集名称下创建 Kotlin 源集，
+Kotlin 源集 `androidDebug` 用于 Android 源集 `debug`
+与名为 `android` 的 Kotlin 目标。 这些 Kotlin 源集将相应地添加到变体编译项中。
 
-The default source set `commonMain` is added to each production (application or library) variant's compilation. The
-`commonTest` source set is, similarly, added to the compilations of unit test and instrumented test variants.
+默认源集 `commonMain` 将添加到每个生产项（应用或库）变体的编译项中。
+类似地，`commonTest` 源集也将添加到单元测试的编译项，以及 instrumented 测试变体中。
 
-Annotation processing with [kapt](/docs/reference/kapt.html) is also supported but, due to the current limitations,
-it requires that the Android target is created before the `kapt` dependencies are configured, which needs
-to be done in a top-level `dependencies { ... }` block rather than within Kotlin source sets dependencies.
+使用 [kapt](/docs/reference/kapt.html) 进行注解处理也是受支持的，但，由于当前的限制，
+它要求 Android 目标需要在配置 `kapt` 依赖之前创建，`kapt` 依赖需要在<!--
+-->顶级 `dependencies { …… }` 代码块（而不是 Kotlin 源集依赖）中完成。
 
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
 
