@@ -213,55 +213,26 @@ plugins {
 
 
 ```groovy
-sourceSets {
-    main.kotlin.srcDirs += 'src/main/myKotlin'
-}
-```
-
-
-
-
-> Kotlin DSL
-
-
-```kotlin
-sourceSets["main"].withConvention(KotlinSourceSet::class) {
-    kotlin.srcDir("src/main/myKotlin")
-}
-```
-
-
-
-
-除了输出的 JavaScript 文件，该插件默认会创建一个带二进制描述符的额外 JS 文件。
-如果你是构建其他 Kotlin 模块可以依赖的可重用库，那么该文件是必需的，并且应该与转换结果一起分发。
-其生成由 `kotlinOptions.metaInfo` 选项控制：
-
-> Groovy DSL
-
-
-```groovy
-compileKotlin2Js {
-    kotlinOptions.metaInfo = true
-}
-```
-
-
-
-
-> Kotlin DSL
-
-
-```kotlin
-tasks {
-    "compileKotlin2Js"(Kotlin2JsCompile::class)  {
-        kotlinOptions.metaInfo = true
+kotlin {
+    sourceSets {
+        main.kotlin.srcDirs += 'src/main/myKotlin'
     }
 }
 ```
 
 
 
+
+> Kotlin DSL
+
+
+```kotlin
+kotlin {
+    sourceSets["main"].apply {    
+        kotlin.srcDir("src/main/myKotlin") 
+    }
+}
+```
 
 
 ## 面向 Android
