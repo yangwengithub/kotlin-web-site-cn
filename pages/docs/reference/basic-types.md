@@ -246,7 +246,7 @@ Kotlin支持数字运算的标准集（`+` `-` `*` `/` `%`），运算被定义<
 fun main() {
 //sampleStart
     val x = 5 / 2
-    //println(x == 2.5) // ERROR: Operator '==' cannot be applied to 'Int' and 'Double'
+    //println(x == 2.5) // 错误：运算符 '==' 不能应用于 'Int' 与 'Double'
     println(x == 2)
 //sampleEnd
 }
