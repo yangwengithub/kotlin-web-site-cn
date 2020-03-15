@@ -5,43 +5,43 @@ category: "Syntax"
 title: "Opt-in Requirements"
 ---
 
-# Opt-in Requirements
+# 选择加入的要求
 
-> The opt-in requirement annotations `@RequiresOptIn` and `@OptIn` are *experimental* in Kotlin 1.3.
-> See the usage details [below](#experimental-status-of-the-opt-in-requirements).
+> 要求选择加入的注解 `@RequiresOptIn` 与 `@OptIn` 在 Kotlin 1.3中是 *实验性的*。
+> 请参阅[以下](#experimental-status-of-the-opt-in-requirements)用法详细信息。
 {:.note}
 
-The Kotlin standard library provides a mechanism for requiring and giving explicit consent for using certain elements of APIs.
-This mechanism lets library developers inform users of their APIs about specific conditions that require opt-in,
-for example, if an API is in the experimental state and is likely to change in the future. 
+Kotlin 标准库提供了一种机制，用于要求并明确同意使用API的某些元素。
+通过这种机制，库开发人员可以将使用其 API 需要选择加入的特定条件告知用户，
+例如，如果某个 API 处于实验状态，并且将来可能会更改。
 
-To prevent potential issues, the compiler warns users of such APIs about these conditions and
-requires them to opt in before using the API.
+为了避免潜在的问题，编译器会向此类 API 的用户发出警告，
+告知他们这些条件，并要求他们在使用 API 之前选择加入。
 
-## Opting in to using API
+## 选择使用 API
 
-If a library author marks a declaration from a library's API as [_requiring opt-in_](#requiring-opt-in-for-api),
-you should give an explicit consent for using it in your code. 
-There are several ways to opt in to such APIs, all applicable without technical limitations.
-You are free to choose the way that you find best for your situation. 
+如果库作者将一个库的 API 声明标记为[_要求选择加入_](#requiring-opt-in-for-api)
+你应该明确同意在代码中使用它。
+有多种方式可以选择加入使用此类 API，所有方法均不受技术限制。
+你可以自由选择最适合自己的方式。
 
-### Propagating opt-in
+### 传递选择加入
 
-When you use an API in the code intended for third-party use (a library), you can propagate its opt-in requirement to your API as well.
-To do this, annotate your declaration with the [_opt-in requirement annotation_](#opt-in-requirement-annotations) of the API used in its body.
-This enables you to use the API elements marked with this annotation.
+在使用供第三方（库）使用的 API 时，你也可以把其选择加入的要求传递到自己的 API。
+为此，请在你的 API 主体声明中添加注解 [_要求选择加入的注解_](#opt-in-requirement-annotations)。
+这可以让你使用带有此注解的 API 元素。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-// library code
+// 库代码
 @RequiresOptIn(message = "This API is experimental. It may be changed in the future without notice.")
 @Retention(AnnotationRetention.BINARY)
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
-annotation class MyDateTime // Opt-in requirement annotation
+annotation class MyDateTime // 要求选择加入的注解
 
 @MyDateTime                            
-class DateProvider // A class requiring opt-in
+class DateProvider // 要求选择加入的类
 ```
 
 </div>
@@ -49,47 +49,47 @@ class DateProvider // A class requiring opt-in
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-// client code
+// 客户端代码
 fun getYear(): Int {  
-    val dateProvider: DateProvider // Error: DateProvider requires opt-in
+    val dateProvider: DateProvider // 错误：DateProvider 要求选择加入
     // ...
 }
 
 @MyDateTime
 fun getDate(): Date {  
-    val dateProvider: DateProvider // OK: the function requires opt-in as well
+    val dateProvider: DateProvider // OK：该函数也需要选择加入
     // ...
 }
 
 fun displayDate() {
-    println(getDate()) // error: getDate() requires opt-in
+    println(getDate()) // 错误：getDate() 需要选择加入
 }
 ```
 
 </div>
 
-As you can see in this example, the annotated function appears to be a part of the `@MyDateTime` API.
-So, such an opt-in propagates the opt-in requirement to the client code; its clients will see the same warning message
-and be required to consent as well.
-To use multiple APIs that require opt-in, mark the declaration with all their opt-in requirement annotations.
+如本例所示，带注释的函数看起来是 `@MyDateTime` API 的一部分。
+因此，这种选择加入会将选择加入的要求传播到客户端代码；其客户将看到相同的警告消息，
+并且也必须同意。 
+要使用多个需要选择加入的API，请在声明中标记所有需要选择加入的注解。
 
-### Non-propagating use
+### 非传递的用法
 
-In modules that don't expose their own API, such as applications, you can opt in to using APIs without propagating
-the opt-in requirement to your code. In this case, mark your declaration with [@OptIn](/api/latest/jvm/stdlib/kotlin/-opt-in/index.html)
- passing the opt-in requirement annotation as its argument:
+在不公开其自身API的模块（例如应用程序）中，你可以选择使用 API 而无需将选择加入的要求传递到代码中。
+这种情况下，请使用[@OptIn](/api/latest/jvm/stdlib/kotlin/-opt-in/index.html)标记你的声明，
+并以要求选择加入的注解作为参数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-// library code
+// 库代码
 @RequiresOptIn(message = "This API is experimental. It may be changed in the future without notice.")
 @Retention(AnnotationRetention.BINARY)
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
-annotation class MyDateTime // Opt-in requirement annotation
+annotation class MyDateTime // 要求选择加入的注解
 
 @MyDateTime                            
-class DateProvider // A class requiring opt-in
+class DateProvider // 要求选择加入的类
 ```
 
 </div>
@@ -97,42 +97,42 @@ class DateProvider // A class requiring opt-in
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-//client code
+//客户端代码
 @OptIn(MyDateTime::class)
-fun getDate(): Date { // Uses DateProvider; doesn't propagate the opt-in requirement
+fun getDate(): Date { // 使用 DateProvider；不传递选择加入的要求
     val dateProvider: DateProvider
     // ...
 }
 
 fun displayDate() {
-    println(getDate()) // OK: opt-in is not required
+    println(getDate()) // OK：不要求选择加入
 }
 ```
 
 </div>
 
-When somebody calls the function `getDate()`, they won't be informed about the opt-in requirements for APIs used in its body. 
+当有人调用函数 `getDate()` 时，不会通知他们函数主体中使用的选择加入 API 的要求。
 
-To use an API that requires opt-in in all functions and classes in a file, add the file-level annotation `@file:OptIn`
-to the top of the file before the package specification and imports.
+要在一个文件的所有函数和类中使用要求选择加入的 API，请在文件的顶部，
+文件包说明和导入声明前添加文件级注释 `@file:OptIn`。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
  
  ```kotlin
- //client code
+ //客户端代码
  @file:OptIn(MyDateTime::class)
  ```
  
  </div>
 
-### Module-wide opt-in
+### 模块范围的选择加入
 
-If you don't want to annotate every usage of APIs that require opt-in, you can opt in to them for your whole module.
-To opt in to using an API in a module, compile it with the argument `-Xopt-in`,
-specifying the fully qualified name of the opt-in requirement annotation of the API you use: `-Xopt-in=org.mylibrary.OptInAnnotation`.
-Compiling with this argument has the same effect as if every declaration in the module had the annotation`@OptIn(OptInAnnotation::class)`.
+如果你不想在使用要求选择加入 API 的每个地方都添加注解，则可以为整个模块选择加入这些 API。
+要选择在模块中使用 API，请使用参数 `-Xopt-in` 进行编译，
+使用 `-Xopt-in = org.mylibrary.OptInAnnotation` 指定该 API 使用的要求选择加入注解的标准名称。
+使用此参数进行编译的效果与模块中每个声明都有注解 `@OptIn(OptInAnnotation::class)` 的效果相同。
 
-If you build your module with Gradle, you can add arguments like this:
+如果使用 Gradle 构建模块，可以添加如下参数：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
@@ -160,7 +160,7 @@ tasks.withType<KotlinCompile>().all {
 </div>
 </div>
 
-If your Gradle module is a multiplatform module, use the `useExperimentalAnnotation` method:
+如果你的 Gradle 模块是多平台模块，请使用 `useExperimentalAnnotation` 方法：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
@@ -192,7 +192,7 @@ sourceSets {
 </div>
 </div>
 
-For Maven, it would be:
+对于 Maven，它将是：
 
 <div class="sample" markdown="1" mode="xml" theme="idea" data-highlight-only>
 
@@ -216,14 +216,14 @@ For Maven, it would be:
 
 </div>
 
-To opt in to multiple APIs on the module level, add one of the described arguments for each opt-in requirement marker used in your module.
+要在模块级别选择加入多个 API，请为每个要求选择加入的 API 添加以上描述的参数之一。
 
-## Requiring opt-in for API 
+## 要求选择加入 API 
 
-### Opt-in requirement annotations
+### 要求选择加入的注解
 
-If you want to require explicit consent to using your module's API, create an annotation class to use as an _opt-in requirement annotation_.
-This class must be annotated with [@RequiresOptIn](/api/latest/jvm/stdlib/kotlin/-requires-opt-in/index.html):
+如果想获得使用者使用你的模块 API 的明确同意，请创建一个注解类，作为_要求选择加入的注解_。
+这个类必须使用[@RequiresOptIn](/api/latest/jvm/stdlib/kotlin/-requires-opt-in/index.html)注解：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -236,19 +236,19 @@ annotation class MyDateTime
 
 </div>
 
-Opt-in requirement annotations must meet several requirements:
+要求选择加入的注解必须满足以下几个要求：
 * `BINARY` [retention](/api/latest/jvm/stdlib/kotlin.annotation/-annotation-retention/index.html)
-* No `EXPRESSION` and `FILE` among [targets](/api/latest/jvm/stdlib/kotlin.annotation/-annotation-target/index.html)
-* No parameters.
+* [targets](/api/latest/jvm/stdlib/kotlin.annotation/-annotation-target/index.html)中没有 `EXPRESSION` 与 `FILE`
+* 没有参数
 
-An opt-in requirement can have one of two severity [levels](/api/latest/jvm/stdlib/kotlin/-requires-opt-in/-level/index.html):
-* `RequiresOptIn.Level.ERROR`. Opt-in is mandatory. Otherwise, the code that uses marked API won't compile. Default level.
-* `RequiresOptIn.Level.WARNING`. Opt-in is not mandatory, but advisable. Without it, the compiler raises a warning.
+选择加入的要求可以具有以下两个严格[级别](/api/latest/jvm/stdlib/kotlin/-requires-opt-in/-level/index.html)之一：
+* `RequiresOptIn.Level.ERROR`。选择加入是强制性的。 否则，使用标记 API 的代码将无法编译。 默认级别。
+* `RequiresOptIn.Level.WARNING`。选择加入不是强制性的，而是建议使用的。 没有它，编译器会发出警告。
 
-To set the desired level, specify the `level` parameter of the `@RequiresOptIn` annotation.
+要设置所需的级别，请指定 `@RequiresOptIn` 注解的 `level` 参数。
 
-Additionally, you can provide a `message` to inform API users about special condition of using the API. 
-The compiler will show it to users that use the API without opt-in.
+另外，你可以提供一个`消息`来通知 API 用户有关使用该API的特定条件。
+编译器会将其显示给使用该 API 但未选择加入的用户。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -261,9 +261,9 @@ annotation class ExperimentalDateTime
 
 </div>
 
-If you publish multiple independent features that require opt-in, declare an annotation for each.
-This makes the use of API safer for your clients: they can use only the features that they explicitly accept.
-This also lets you remove the opt-in requirements from the features independently.
+如果你发布了多个需要选择加入的独立功能，请为每个功能声明一个注解。
+这使你的用户可以更安全地使用 API：他们只能使用其明确接受的功能。
+这也使你可以独立地从功能中删除选择加入的要求。
 
 ### Marking API elements
 
