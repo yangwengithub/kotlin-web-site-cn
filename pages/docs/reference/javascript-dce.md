@@ -7,7 +7,7 @@ title: "JavaScript DCE"
 
 # JavaScript 无用代码消除（DCE）
 
-The Kotlin/JS Gradle plugin includes a [_dead code elimination_](https://wikipedia.org/wiki/Dead_code_elimination) (_DCE_) tool.
+Kotlin/JS Gradle 插件包含一个[_无用代码消除_](https://zh.wikipedia.org/wiki/%E6%AD%BB%E7%A2%BC%E5%88%AA%E9%99%A4)（_DCE_）工具。
 Dead code elimination is often also called _tree shaking_. It reduces the size or the resulting JavaScript code by
 removing unused properties, functions, and classes.
 
