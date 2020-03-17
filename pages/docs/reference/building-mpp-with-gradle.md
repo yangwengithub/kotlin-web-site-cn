@@ -1638,13 +1638,13 @@ dependencies {
 
 ### 发布 Android 库
 
-To publish an Android library as a part of a multiplatform library, one needs to
-[setup publishing for the library](#发布多平台库) and provide additional configuration for the
-Android library target.
+为了将 Android 库发布为多平台库的一部分，需要<!--
+-->[为库设定发布项](#发布多平台库)，并且为
+Android 库目标提供额外的配置项。
 
-By default, no artifacts of an Android library are published. To publish artifacts produced by a set of
-[Android variants](https://developer.android.com/studio/build/build-variants), specify the variant names in the Android
-target block as follows:
+默认情况下，不会发布 Android 库的构件。为了发布
+[Android 变体](https://developer.android.com/studio/build/build-variants)生成的一系列构件，需要在 Android
+目标代码块中指定变体名称，如下所示：
 
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
 
@@ -1658,13 +1658,13 @@ kotlin {
 
 </div>
 
-The example above will work for Android libraries with no product flavors. For a library with product flavors, the
-variant names also contain the flavors, like `fooBarDebug` or `fooBazRelease`.
+上面的例子将在没有生产 flavors 的 Android 库上工作。对于一个有生产 flavors 的库，变体<!--
+-->名称也要包含 flavors，例如 `fooBarDebug` 或是 `fooBazRelease`。
 
-Note that if a library consumer defines variants that are missing in the library, they need to provide
-[matching fallbacks](https://developer.android.com/studio/build/dependencies#resolve_matching_errors). For example, if
-a library does not have or does not publish a `staging` build type, it will be necessary to provide a fallback for the
-consumers who have such a build type, specifying at least one of the build types that the library publishes:
+注意，如果库用户定义了库中缺失的变体，则他们需要提供<!--
+-->[后备的匹配](https://developer.android.com/studio/build/dependencies#resolve_matching_errors)。例如，如果<!--
+-->库不具有，或者没有发布 `staging` 构建类型，那么有必要为<!--
+-->拥有这种构建类型的使用者提供一个后备的匹配，至少指定库发布的一个构建类型：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -1700,12 +1700,12 @@ android {
 </div>
 </div>
 
-Similarly, a library consumer may need to provide matching fallbacks for custom product flavors if some are missing in
-the library publications.
+类似地，如果库发布项中缺失某些匹配的后备，那么库用户也许需要为自定义生产项 flavors
+提供它们。
 
-There is an option to publish variants grouped by the product flavor, so that the outputs of the different build
-types are placed in a single module, with the build type becoming a classifier for the artifacts (the release build
-type is still published with no classifier). This mode is disabled by default and can be enabled as follows:
+你可以选择发布按产品 flavor 分组的变体，以便将不同构建类型的输出<!--
+-->放置在单独的模块中，并使构建类型成为构建的分类器（release 构建<!--
+-->类型不通过分类器发布）。这个模式默认是禁用的，不过可以通过以下方式启用：
 
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
 
@@ -1719,8 +1719,8 @@ kotlin {
 
 </div>
 
-It is not recommended to publish variants grouped by the product flavor in case they have different dependencies, as
-those will be merged into one dependencies list.
+不推荐发布按产品 flavor 分类的变体，以防它们拥有不同的依赖项，因为<!--
+-->这些将被合并到一个依赖项列表中。
 
 ## 使用 Kotlin/Native 目标平台
 
