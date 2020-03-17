@@ -1658,13 +1658,13 @@ kotlin {
 
 </div>
 
-上面的例子将在没有生产 flavors 的 Android 库上工作。对于一个有生产 flavors 的库，变体<!--
+上面的例子将在没有生产 flavors 的 Android 库上工作。对于有生产 flavors 的库，变体<!--
 -->名称也要包含 flavors，例如 `fooBarDebug` 或是 `fooBazRelease`。
 
 注意，如果库用户定义了库中缺失的变体，则他们需要提供<!--
 -->[后备的匹配](https://developer.android.com/studio/build/dependencies#resolve_matching_errors)。例如，如果<!--
 -->库不具有，或者没有发布 `staging` 构建类型，那么有必要为<!--
--->拥有这种构建类型的使用者提供一个后备的匹配，至少指定库发布的一个构建类型：
+-->拥有这种构建类型的使用者提供后备的匹配，至少指定库发布的一个构建类型：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
