@@ -8,28 +8,28 @@ title: "JavaScript DCE"
 # JavaScript 无用代码消除（DCE）
 
 Kotlin/JS Gradle 插件包含一个[_无用代码消除_](https://zh.wikipedia.org/wiki/%E6%AD%BB%E7%A2%BC%E5%88%AA%E9%99%A4)（_DCE_）工具。
-Dead code elimination is often also called _tree shaking_. It reduces the size or the resulting JavaScript code by
-removing unused properties, functions, and classes.
+无用代码消除通常也称为 _<span title="tree shaking">摇树</span>_。
+通过删除未使用的属性、函数和类，它减小了大小或生成的 JavaScript 代码。
 
-Unused declarations can appear in cases like:
+在以下情况下会出现未使用的声明：
 
-* A function is inlined and never gets called directly (which happens always except for few situations).
-* A module uses a shared library. Its parts that you don't use still get into the resulting bundle without DCE.
-  For example, the Kotlin standard library contains functions for manipulating lists, arrays, char sequences,
-  adapters for DOM, and so on. Altogether, they comprise about 1.3 mb file. A simple "Hello, world" application only requires
-  console routines, which is only few kilobytes for the entire file.
+* 函数是内联的，永远不会直接调用（除了少数情况总是发生）。
+* 模块使用共享库。没有 DCE 的情况下，未使用的组件仍会进入结果包。
+  例如，Kotlin 标准库中包含用于操作列表、数组、字符序列、DOM 适配器的函数。
+  它们总共构成了大约 1.3MB 的文件。
+  一个简单的 "Hello, world" 应用程序仅需要控制台例程，整个程序只有几 KB。
 
-Kotlin/JS Gradle plugin handles DCE automatically when you build a production bundle, for example, with `browserProductionWebpack` task.
-The development bundling tasks don't include DCE.
+Kotlin/JS Gradle 插件在构建生产包时会自动处理 DCE，例如：使用 `browserProductionWebpack` 任务。
+开发捆绑任务不包括 DCE。
 
-## Excluding declarations from DCE
+## 不包括 DCE 的声明
 
-Sometimes you may need to keep a function or a class in the resulting JavaScript code even if you don't use it in your module,
-for example, if you're going to use it in the client JavaScript code.
+有时，即使未在模块中使用函数或类，也可能需要在结果 JavaScript 代码中保留一个函数或一个类，
+例如：如果要在客户端 JavaScript 代码中使用它，则可能会保留该函数或类。
 
-To keep certain declarations from elimination, add the `dceTask` block into the Gradle build script and
-list the declarations as the arguments of the `keep` function. An argument must be the declaration's fully qualified name
-with the module name as a prefix: `moduleName.dot.separated.package.name.declarationName`
+为了避免某些声明被删除，请将 `dceTask` 代码块添加到 Gradle 构建脚本中，并将这些声明列为 `keep` 函数的参数。
+参数必须是声明的标准名称，并且模块名称为前缀：
+`moduleName.dot.separated.package.name.declarationName`
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
@@ -59,15 +59,15 @@ kotlin.target.browser {
 </div>
 </div>
 
-Note that the names of functions with parameters are [mangled](js-to-kotlin-interop.html#jsname-注解)
-in the generated JavaScript code. To keep such functions from elimination, use the mangled names in the `keep` arguments.
+请注意，带有参数的函数名称在生成的 JavaScript 代码中被[修饰](js-to-kotlin-interop.html#jsname-注解)。
+为了避免消除这些函数，请在 `keep` 参数中使用修饰的名称。
 
-## Known issue: DCE and ktor
+## 已知问题：DCE 与 ktor
 
-In Kotlin {{ site.data.releases.latest.version }}, there is a known [issue](https://github.com/ktorio/ktor/issues/1339) 
-of using [ktor](https://ktor.io/) in Kotlin/JS projects. In some cases, you may get a type error like `<something> is not a function` 
-that comes from the `io.ktor:ktor-client-js:1.3.0` or `io.ktor:ktor-client-core:1.3.0` artifacts.
-To avoid this issue, add the following DCE configuration:
+在 Kotlin {{ site.data.releases.latest.version }} 中，存在一个在 Kotlin/JS 项目中使用 [ktor](https://ktor.io/) 的已知[问题](https://github.com/ktorio/ktor/issues/1339)。
+在某些情况下，可能会遇到类型错误，例如：`<something> is not a function`
+这是来自 `io.ktor:ktor-client-js:1.3.0` 或 `io.ktor:ktor-client-core:1.3.0` 模块。
+为避免此问题，请添加以下DCE配置：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
