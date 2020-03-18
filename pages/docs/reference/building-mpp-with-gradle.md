@@ -1662,9 +1662,9 @@ kotlin {
 -->名称也要包含 flavors，例如 `fooBarDebug` 或是 `fooBazRelease`。
 
 注意，如果库用户定义了库中缺失的变体，则他们需要提供<!--
--->[后备的匹配](https://developer.android.com/studio/build/dependencies#resolve_matching_errors)。例如，如果<!--
+-->[备用的匹配](https://developer.android.com/studio/build/dependencies#resolve_matching_errors)。例如，如果<!--
 -->库不具有，或者没有发布 `staging` 构建类型，那么有必要为<!--
--->拥有这种构建类型的使用者提供后备的匹配，至少指定库发布项的一个构建类型：
+-->拥有这种构建类型的使用者提供备用的匹配，至少指定库发布项的一个构建类型：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -1700,7 +1700,7 @@ android {
 </div>
 </div>
 
-类似地，如果库发布项中缺失某些匹配的后备，那么库用户也许需要为自定义产品类型<!--
+类似地，如果库发布项中缺失某些备用的匹配，那么库用户也许需要为自定义产品类型<!--
 -->提供它们。
 
 你可以选择发布按产品类型分组的变体，以便将不同构建类型的输出<!--
@@ -1719,7 +1719,7 @@ kotlin {
 
 </div>
 
-不推荐发布按产品类型分组的变体，以防它们拥有不同的依赖项，因为<!--
+不推荐发布按产品类型分组的变体，以免它们拥有不同的依赖项，因为<!--
 -->这些将被合并到一个依赖项列表中。
 
 ## 使用 Kotlin/Native 目标平台
