@@ -7,13 +7,18 @@ title: "搭建 Kotlin/JS 项目"
 
 # 搭建 Kotlin/JS 项目
 
-Kotlin/JS 项目使用 Gradle 作为构建系统。为了开发者轻松管理其 Kotlin/JS 项目，我们提供了 Kotlin/JS Gradle 插件。该插件提供项目配置工具以及用以自动执行 JavaScript 开发中常用的例程的帮助程序。例如，该插件会下载 [Yarn](https://yarnpkg.com/) 软件包管理器，在后台管理 NPM 依赖，并使用[Webpack](https://webpack.js.org/)从 Kotlin 项目构建 JavaScript 包。
+Kotlin/JS 项目使用 Gradle 作为构建系统。为了开发者轻松管理其 Kotlin/JS 项目，我们提供了 Kotlin/JS Gradle 插件。
+该插件提供项目配置工具以及用以自动执行 JavaScript 开发中常用的例程的帮助程序。
+举个例子，该插件会下载 [Yarn](https://yarnpkg.com/) 软件包管理器，在后台管理 NPM 依赖，并使用[Webpack](https://webpack.js.org/)
+从 Kotlin 项目构建 JavaScript 包。
 
-要在 IntelliJ IDEA 中创建 Kotlin/JS 项目，请转至 **File | New | Project**，并选择 **Gradle | Kotlin/JS for browser** 或 **Kotlin/JS for Node.js**。请确保未勾选清除 **Java** 复选框。
+要在 IntelliJ IDEA 中创建 Kotlin/JS 项目，请转至 **File | New | Project**，
+并选择 **Gradle | Kotlin/JS for browser** 或 **Kotlin/JS for Node.js**。请确保未勾选清除 **Java** 复选框。
  
 ![New project wizard]({{ url_for('asset', path='images/reference/js-project-setup/wizard.png') }})
 
-另外，您可以在 `build.gradle` 文件中手动将 `org.jetbrains.kotlin.js` 插件应用于 Gradle 项目。如果您使用 Gradle Kotlin DSL，则可以使用插件 `kotlin(“js”)`。
+另外，您可以在 `build.gradle` 文件中手动将 `org.jetbrains.kotlin.js` 插件应用于 Gradle 项目。
+如果您使用 Gradle Kotlin DSL，则可以使用插件 `kotlin(“js”)`。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -67,7 +72,7 @@ Kotlin/JS 项目可以针对两个不同的执行环境：
 * Browser，用于浏览器中客户端脚本
 * [Node.js](https://nodejs.org/)，用于在浏览器外部运行 JavaScript 代码，例如，用于服务器端脚本。
 
-要定义 Kotlin/JS 项目的目标执行环境，请在 `target` 部分内部添加 `browser {}` 或 `nodejs {}`。
+要定义 Kotlin/JS 项目的目标执行环境，请在 `target` 部分添加 `browser {}` 或 `nodejs {}`。
 
 <div class="sample" markdown="1" mode="groovy" theme="idea">
 
@@ -93,11 +98,13 @@ kotlin.target.browser {
 
 </div>
 
-Kotlin/JS 插件会自动配置其任务，来与在所选环境工作。这项操作包括下载与安装运行和测试应用程序所需的依赖。因此，开发者无需额外配置即可构建、运行和测试简单项目。
+Kotlin/JS 插件会自动配置其任务，来与在所选环境工作。
+这项操作包括下载与安装运行和测试应用程序所需的依赖。因此，开发者无需额外配置就可以构建、运行和测试简单项目。
 
 ## 管理依赖
 
-就像其他任何的 Gradle 项目一样，Kotlin/JS 项目支持位于构建脚本的 `dependencies` 部分的传统 Gradle [依赖声明](https://docs.gradle.org/current/userguide/declaring_dependencies.html)。
+就像其他任何的 Gradle 项目一样，Kotlin/JS 项目支持位于构建脚本的 `dependencies` 
+部分的传统 Gradle [依赖声明](https://docs.gradle.org/current/userguide/declaring_dependencies.html)。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
@@ -160,7 +167,9 @@ kotlin {
 
 ### Kotlin 标准库
 
-所有 Kotlin/JS 项目都必须依赖 Kotlin/JS [标准库](https://kotlinlang.org/api/latest/jvm/stdlib/)。如果您的项目包含用 Kotlin 编写的测试，则还应在添加 [kotlin.test](https://kotlinlang.org/api/latest/kotlin.test/) [依赖项](https://kotlinlang.org/api/latest/kotlin.test/)。
+所有 Kotlin/JS 项目都必须依赖 Kotlin/JS [标准库](https://kotlinlang.org/api/latest/jvm/stdlib/)。
+如果您的项目包含用 Kotlin 编写的测试，则还应在添加 [kotlin.test](https://kotlinlang.org/api/latest/kotlin.test/) 
+[依赖项](https://kotlinlang.org/api/latest/kotlin.test/)。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
@@ -190,9 +199,12 @@ dependencies {
 
 ### NPM 依赖
 
-在 JavaScript 中，管理依赖项的常用方法是 [NPM](https://www.npmjs.com/)。它提供了最大的 JavaScript 模块公共[存储库](https://www.npmjs.com/)以及用于下载它们的工具。
+在 JavaScript 中，管理依赖项的常用方法是 [NPM](https://www.npmjs.com/)。
+它提供了最大的 JavaScript 模块公共[存储库](https://www.npmjs.com/)以及用于下载它们的工具。
 
-Kotlin/JS 插件使您可以在 Gradle 构建脚本中声明 NPM 依赖关系以及其他依赖关系，并自动执行其他所有操作。它安装了 [Yarn](https://yarnpkg.com/lang/en/) 程序包管理器，并使用它来将依赖项从 NPM 存储库下载到 `node_modules` 项目目录 ─── JavaScript 项目的 NPM 依赖项的一般位置。
+Kotlin/JS 插件使您可以在 Gradle 构建脚本中声明 NPM 依赖关系以及其他依赖关系，并自动执行其他所有操作。
+它安装了 [Yarn](https://yarnpkg.com/lang/en/) 程序包管理器，
+并使用它来将依赖项从 NPM 存储库下载到 `node_modules` 项目目录 ─── JavaScript 项目的 NPM 依赖项的一般位置。
 
 要声明 NPM 依赖项，请将其名称和版本传递 `npm()` 函数给依赖项声明中的函数。
 
@@ -220,13 +232,14 @@ dependencies {
 </div>
 </div>
 
-安装 NPM 依赖项后，您可以按照 [在Kotlin中调用JS](http://www.kotlincn.net/docs/reference/js-interop.html) 中所述在代码中使用其API 。
+安装 NPM 依赖项后，您可以按照 [在Kotlin中调用JS](http://www.kotlincn.net/docs/reference/js-interop.html) 中所述，在代码中使用其API 。
 
 ## 配置 run 任务
 
 Kotlin/JS 插件提供了一个运行任务，使您无需额外配置即可运行项目。
 
-它使用 [Webpack DevServer](https://webpack.js.org/configuration/dev-server/) 来运行 Kotlin/JS 项目。如果要自定义 DevServer 配置，请更改其端口，请使用Webpack配置文件。
+它使用 [Webpack DevServer](https://webpack.js.org/configuration/dev-server/) 来运行 Kotlin/JS 项目。
+如果要自定义 DevServer 配置，请更改其端口，请使用 Webpack 配置文件。
 
 要运行项目，请执行标准生命周期的 `run` 任务：
 
@@ -238,7 +251,8 @@ Kotlin/JS 插件提供了一个运行任务，使您无需额外配置即可运�
 
 </div>
 
-要在浏览器中查看源文件更改而不想重新启动 DevServer，请使用 Gradle [连续构建(continuous build)](https://docs.gradle.org/current/userguide/command_line_interface.html#sec:continuous_build)：
+要在浏览器中查看源文件更改而不想重新启动 DevServer，请使用 Gradle 
+[连续构建(continuous build)](https://docs.gradle.org/current/userguide/command_line_interface.html#sec:continuous_build)：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -260,7 +274,8 @@ Kotlin/JS 插件提供了一个运行任务，使您无需额外配置即可运�
 
 ## 配置 test 任务
 
-Kotin/JS Gradle 插件会自动为项目设置测试基础结构。对于浏览器项目，它将下载并安装具有其他必需依赖的 [Karma](https://karma-runner.github.io/)  测试运行程序；对于 NodeJS 项目，使用 [Mocha](https://mochajs.org/) 测试框架。
+Kotin/JS Gradle 插件会自动为项目设置测试基础结构。对于浏览器项目，它将下载并安装具有其他必需依赖的 
+[Karma](https://karma-runner.github.io/)  测试运行程序；对于 NodeJS 项目，使用 [Mocha](https://mochajs.org/) 测试框架。
 
 该插件还提供了有用的测试功能，例如：
 
@@ -268,7 +283,8 @@ Kotin/JS Gradle 插件会自动为项目设置测试基础结构。对于浏览�
 * 测试报告生成
 * 在控制台中测试运行结果
 
-默认情况下，该插件使用 [Headless Chrome](https://chromium.googlesource.com/chromium/src/+/lkgr/headless/README.md) 来运行浏览器测试。您还可以通过在构建脚本中的 `useKarma` 部分中添加相应的条目，从而在其他浏览器中运行它们 ：
+默认情况下，该插件使用 [Headless Chrome](https://chromium.googlesource.com/chromium/src/+/lkgr/headless/README.md) 
+来运行浏览器测试。您还可以通过在构建脚本中的 `useKarma` 部分中添加相应的条目，从而在其他浏览器中运行它们 ：
 
 <div class="sample" markdown="1" mode="groovy" theme="idea">
 
@@ -317,11 +333,14 @@ kotlin.target.browser {
 
 ## 配置 Webpack 绑定
 
-对于浏览器目标，Kotlin/JS 插件使用众所周知的 [Webpack](https://webpack.js.org/) 模块捆绑器。为了配置项目捆绑，可以使用标准的 Webpack 配置文件。Webpack 配置功能在其 [文档](https://webpack.js.org/concepts/configuration/) 中有很好的描述。对于 Kotlin/JS 项目，Webpack 配置文件位于项目根目录下的 `webpack.config.d` 目录中。
+对于浏览器目标，Kotlin/JS 插件使用众所周知的 [Webpack](https://webpack.js.org/) 模块捆绑器。
+为了配置项目捆绑，可以使用标准的 Webpack 配置文件。
+Webpack 配置功能在其 [文档](https://webpack.js.org/concepts/configuration/) 中有很好的描述。
+对于 Kotlin/JS 项目，Webpack 配置文件位于项目根目录下的 `webpack.config.d` 目录中。
 
 为了构建可执行的 JavaScript 工件，Kotlin/JS 插件包含 `browserDevelopmentWebpack` 以及 `browserProductionWebpack` 任务。
 
-要使用Webpack构建项目工件，请执行Gradle任务 `browserProductionWebpack` 或 `browserDevelopmentWebpack`：
+要使用 Webpack 构建项目工件，请执行 Gradle 任务 `browserProductionWebpack` 或 `browserDevelopmentWebpack`：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -335,7 +354,8 @@ kotlin.target.browser {
 
 默认情况下，Kotlin/JS 项目构建的结果位于项目根目录下的 `/build/distribution` 目录中。
 
-要为项目分发文件设置另一个位置，请在构建脚本中的 `browser` 里添加 `distribution`，然后为它的 `directory` 属性赋值。运行项目构建任务后，Gradle 会将输出包和项目资源一起保存在此位置。
+要为项目分发文件设置另一个位置，请在构建脚本中的 `browser` 里添加 `distribution`，然后为它的 `directory` 属性赋值。
+运行项目构建任务后，Gradle 会将输出包和项目资源一起保存在此位置。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
