@@ -66,7 +66,7 @@ kotlin.target.browser {
 
 在 Kotlin {{ site.data.releases.latest.version }} 中，存在一个在 Kotlin/JS 项目中使用 [ktor](https://ktor.io/) 的已知[问题](https://github.com/ktorio/ktor/issues/1339)。
 在某些情况下，可能会遇到类型错误，例如：`<something> is not a function`
-这是来自 `io.ktor:ktor-client-js:1.3.0` 或 `io.ktor:ktor-client-core:1.3.0` 构建。
+这是来自 `io.ktor:ktor-client-js:1.3.0` 或 `io.ktor:ktor-client-core:1.3.0` 构件。
 为避免此问题，请添加以下 DCE 配置：
 
 <div class="multi-language-sample" data-lang="groovy">
