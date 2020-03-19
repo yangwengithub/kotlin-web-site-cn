@@ -22,13 +22,13 @@ Kotlin/JS Gradle 插件包含一个[_无用代码消除_](https://zh.wikipedia.o
 Kotlin/JS Gradle 插件在构建生产包时会自动处理 DCE，例如：使用 `browserProductionWebpack` 任务。
 开发捆绑任务不包括 DCE。
 
-## 不包括 DCE 的声明
+## 从 DCE 排除的声明
 
 有时，即使未在模块中使用函数或类，也可能需要在结果 JavaScript 代码中保留一个函数或一个类，
 例如：如果要在客户端 JavaScript 代码中使用它，则可能会保留该函数或类。
 
 为了避免某些声明被删除，请将 `dceTask` 代码块添加到 Gradle 构建脚本中，并将这些声明列为 `keep` 函数的参数。
-参数必须是声明的标准名称，并且模块名称为前缀：
+参数必须是声明的完整限定名，并且模块名称为前缀：
 `moduleName.dot.separated.package.name.declarationName`
 
 <div class="multi-language-sample" data-lang="groovy">
@@ -59,15 +59,15 @@ kotlin.target.browser {
 </div>
 </div>
 
-请注意，带有参数的函数名称在生成的 JavaScript 代码中被[修饰](js-to-kotlin-interop.html#jsname-注解)。
+请注意，带有参数的函数名称在生成的 JavaScript 代码中会被[修饰](js-to-kotlin-interop.html#jsname-注解)。
 为了避免消除这些函数，请在 `keep` 参数中使用修饰的名称。
 
 ## 已知问题：DCE 与 ktor
 
 在 Kotlin {{ site.data.releases.latest.version }} 中，存在一个在 Kotlin/JS 项目中使用 [ktor](https://ktor.io/) 的已知[问题](https://github.com/ktorio/ktor/issues/1339)。
 在某些情况下，可能会遇到类型错误，例如：`<something> is not a function`
-这是来自 `io.ktor:ktor-client-js:1.3.0` 或 `io.ktor:ktor-client-core:1.3.0` 模块。
-为避免此问题，请添加以下DCE配置：
+这是来自 `io.ktor:ktor-client-js:1.3.0` 或 `io.ktor:ktor-client-core:1.3.0` 构建。
+为避免此问题，请添加以下 DCE 配置：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
