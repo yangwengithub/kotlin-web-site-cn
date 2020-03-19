@@ -261,6 +261,20 @@ class Example // 从 Any 隐式继承
 
 `Any` 有三个方法：`equals()`、 `hashCode()` 与 `toString()`。因此，为所有 Kotlin 类都定义了这些方法。 
 
+By default, Kotlin classes are final: they can’t be inherited.
+To make a class inheritable, mark it with the `open` keyword.
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```kotlin
+open class Base //Class is open for inheritance
+
+```
+
+</div>
+
+ 
+
 如需声明一个显式的超类型，请在类头中把超类型放到冒号之后：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
