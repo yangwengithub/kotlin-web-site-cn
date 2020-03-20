@@ -1,5 +1,5 @@
-- title: "Kotlin 拥抱数据科学"
-  link: https://www.kotliner.cn/2020/01/making-kotlin-ready-for-data-science/
+- title: "Kotlin 1.3.70 released"
+  link: https://blog.jetbrains.com/kotlin/2020/03/kotlin-1-3-70-released/
 
 - title: Ktor 1.3 发布
   link: https://blog.jetbrains.com/kotlin/2020/01/ktor-1-3-release/
@@ -7,5 +7,5 @@
 - title: "在 Kotlin\xA01.4 中可以期待什么"
   link: https://blog.jetbrains.com/kotlin/2019/12/what-to-expect-in-kotlin-1-4-and-beyond/
 
-- title: KotlinConf 2019 各场演讲
-  link: https://kotlinconf.com/talks/
+- title: Improved *.gradle.kts IDE Support
+  link: https://blog.jetbrains.com/kotlin/2020/02/improved-gradle-kts-ide-support/
