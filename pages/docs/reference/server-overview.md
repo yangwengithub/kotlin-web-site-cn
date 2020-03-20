@@ -36,6 +36,8 @@ Kotlin 非常适合开发服务器端应用程序，可以让你编写简明且�
 它可以作为传统模板系统（如JSP和FreeMarker）的替代品。
 
  * [Micronaut](https://micronaut.io/) is a modern, JVM-based, full-stack framework for building modular, easily testable microservice and serverless applications. It comes with a lot of built-in, handy features.
+ 
+ * [Javalin](https://javalin.io) is a very lightweight web framework for Kotlin and Java which supports WebSockets, HTTP2 and async requests.
 
  * 通过相应 Java 驱动程序进行持久化的可用选项包括直接 JDBC 访问、JPA 以及使用 NoSQL 数据库。
 对于 JPA，[kotlin-jpa 编译器插件](compiler-plugins.html#jpa-支持)使

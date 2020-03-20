@@ -6,51 +6,65 @@ main_nav_id: contribute
 
 # 为 Kotlin 贡献力量
 
-Kotlin 是 Apache 2 授权的开源（OSS）项目。其源代码、工具、文档甚至官方网站都保存在 [GitHub](https://github.com/jetbrains/kotlin) 上（译注：中文站即本站也在 [Github](https://github.com/hltj/kotlin-web-site-cn) 上）。尽管
-团队的大部分都在 JetBrains 工作，Kotlin 项目还是已经有近一百个外部贡献者了，并且我们（官方）一直在寻找更多的人。
+Kotlin is an open-source project under the [Apache 2.0 License](https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt). The source code, tooling, documentation, and even this web site are maintained on [GitHub](https://github.com/jetbrains/kotlin). 
+While Kotlin is mostly developed by JetBrains, there are hundreds of external contributors to the Kotlin project and we are always on the lookout for more people to help us.
 
-## 如何贡献
+## Participate in Early Access Preview
 
-### 贡献代码
+You can help us improve Kotlin by participating in Kotlin Early Access Preview (EAP) and providing us with your valuable feedback.
+ 
+For every release, Kotlin ships a few preview builds where you can try out the latest features before they go to production. You can report any bugs you find to our issue tracker [YouTrack](https://kotl.in/issue) 
+and we will try to fix them before a final release. This way, you can get bug fixes earlier than the standard Kotlin release cycle.
 
-如果你想贡献代码，请到 GitHub 检出最新版本，并遵循关于如何从源代码构建 Kotlin 的说明。之后，你可以开始在问题追踪系统上挑选
-一些[待完成任务](https://youtrack.jetbrains.com/issues/KT?q=%23Unresolved+)。确保你使用 [Up For Grabs](https://youtrack.jetbrains.com/issues/KT?q=%23Unresolved+tag%3A+%7BUp+For+Grabs%7D) 查找问题标签，因为这些是
-更容易入门的。
+## Contribute to the compiler, standard library, and tooling
 
-### 为文档或网站贡献力量
+If you want to contribute to the Kotlin compiler, standard library, or tooling, go to [GitHub](https://github.com/jetbrains/kotlin), check out the latest Kotlin version,
+ and follow [the instructions on how to contribute](https://github.com/JetBrains/kotlin/blob/master/docs/contributing.md).
+ 
+You can help us by completing [open tasks](https://youtrack.jetbrains.com/issues/KT?q=tag:%20%7BUp%20For%20Grabs%7D%20and%20State:%20Open). 
+Please keep an open line of communication with us because we may have questions and comments on your changes. Otherwise, we won't be able to incorporate your contributions.
 
-我们需要更多的文档。如果你有兴趣合作，请随时查看[在 GitHub 上的官方网站](https://github.com/jetbrains/kotlin-web-site)源代码并发送 Pull Request。网站
-是使用 Markdown 和 Jekyll 构建的。
+## Contribute to other libraries and create your own
 
-### 贡献教程或视频
+Besides the standard library that provides core capabilities, Kotlin has a number of additional (kotlinx) libraries that extend its functionality. 
+Each kotlinx library is developed in a separate repository, has its own versioning and release cycle.
 
-你已经为 Kotlin 创建了一个教程或视频吗？请告诉我们。我们非常乐于在[社区内容](http://www.kotlincn.net/docs/resources.html)下展示。
+If you want to contribute to a kotlinx library, follow the contribution process described for each library, such as [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines),
+ [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization/blob/master/CONTRIBUTING.md), and [ktor](https://github.com/ktorio/ktor/blob/master/CONTRIBUTING.md).
 
-### 演讲
+If you have a library that could be useful to other Kotlin developers, let us know via <feedback@kotlinlang.org>.
 
-如果你已经或者将要为 Kotlin 发表演讲，请告诉我们。我们会[将其展示在列表中](http://www.kotlincn.net/docs/events.html)。
+## Contribute to the documentation
 
-### Kotlin-x 项目与社区项目
+If you've found an issue in [the Kotlin documentation](https://kotlinlang.org/docs/reference/), 
+feel free to check out [the documentation source code on GitHub](https://github.com/JetBrains/kotlin-web-site/tree/master/pages/docs)
+and send us a pull request. Please keep an open line of communication with us because we may have questions and comments on your changes. 
+Otherwise, we won't be able to incorporate your contributions. 
 
-Kotlin 只有很小的运行时，且旨在保持如此。我们相信标准运行时库中缺少的其他功能可以
-作为 Kotlin Contributions 在 Kotlin-X 项目集下开发，或者作为社区成员的独立项目开发。如果你有一个你认为
-其他人可能会觉得有用的库，请告诉我们。如果你想贡献任何现有的库，请检出它们。
+The documentation site is built using Markdown and Jekyll. 
 
-### 翻译
+## Create tutorials or videos
 
-欢迎将 Kotlin 文档翻译成你自己的语言，并在你的网站上发布你的翻译（译注：如本网站）。
-但是，请注意，我们（Kotlin 官方）无法在官方代码库中托管你的翻译并将其发布在 kotlinlang.org 上。
-官方网站是 Kotlin 语言的官方文档，我们需要能够确保那里的所有信息
-是正确且最新的。对于一种 Kotlin 团队中没有人说的语言这么做，不幸的是现在并不可行。
+If you've created tutorials or videos for Kotlin, please share them with us via <feedback@kotlinlang.org>. 
+
+
+## Translate documentation to other languages
+
+You are welcome to translate the Kotlin documentation into your own language and publish the translation on your website.
+However, we won't be able to host your translation in the main repository and publish it on [kotlinlang.org](https://kotlinlang.org/docs/reference/).
+
+This site is the official documentation for the language, and we ensure that all the information here
+is correct and up to date. Unfortunately, we won't be able to review documentation in other languages. 
 
 **译注**：补充或改善中文站（即本站）翻译，可以 fork [Kotlin 语言中文站](https://github.com/hltj/kotlin-web-site-cn)项目并提 Pull Request。
 目前《翻译指南》还在制订中，不过 [#35](https://github.com/hltj/kotlin-web-site-cn/issues/35) 有一些草稿，
 初次翻译请务必先阅读 [#35](https://github.com/hltj/kotlin-web-site-cn/issues/35) 及其中链接对应的内容。
 
-### 传播这个词
+## Hold events and presentations
 
-Kotlin 是一门新的语言，但我们对此抱有很高期望，我们需要相信它的人传播这个词！
+If you've given or just plan to give presentations or hold events on Kotlin, please fill out [the form](https://surveys.jetbrains.com/s3/Submit-a-Kotlin-Talk). We'll feature them on [the event list](http://kotlinlang.org/docs/events.html).
 
+ 
 ---
 
 ### 中文站翻译贡献者

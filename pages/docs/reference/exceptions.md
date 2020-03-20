@@ -87,7 +87,7 @@ catch (IOException e) {
 
 这并不好，参见[《Effective Java》第三版](http://www.oracle.com/technetwork/java/effectivejava-136174.html) 第 77 条：*不要忽略异常*。
 
-Bruce Eckel 在[《Java 是否需要受检的异常？》（Does Java need Checked Exceptions?）](http://www.mindview.net/Etc/Discussions/CheckedExceptions) 中指出：
+Bruce Eckel says about checked exceptions:
 
 > 通过一些小程序测试得出的结论是异常规范会同时提高开发者的生产力与代码质量，但是大型软件项目的经验表明一个不同的结论——生产力降低、代码质量很少或没有提高。
 
@@ -95,6 +95,8 @@ Bruce Eckel 在[《Java 是否需要受检的异常？》（Does Java need Check
 
 * [《Java 的受检异常是一个错误》（Java's checked exceptions were a mistake）](http://radio-weblogs.com/0122027/stories/2003/04/01/JavasCheckedExceptionsWereAMistake.html)（Rod Waldhoff）
 * [《受检异常的烦恼》（The Trouble with Checked Exceptions）](http://www.artima.com/intv/handcuffs.html)（Anders Hejlsberg）
+
+If you want to alert callers of possible exceptions when calling Kotlin code from Java, Swift, or Objective-C, you can use the `@Throws` annotation. Read more about using this annotation [for Java](https://kotlinlang.org/docs/reference/java-to-kotlin-interop.html#checked-exceptions) as well as [for Swift and Objective-C](https://kotlinlang.org/docs/reference/native/objc_interop.html#errors-and-exceptions).
 
 ## Nothing 类型
 
