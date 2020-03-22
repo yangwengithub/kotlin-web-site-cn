@@ -7,11 +7,11 @@ title: "Opt-in Requirements"
 
 # 选择加入的要求
 
-> 要求选择加入的注解 `@RequiresOptIn` 与 `@OptIn` 在 Kotlin 1.3中是 *实验性的*。
+> 要求选择加入的注解 `@RequiresOptIn` 与 `@OptIn` 在 Kotlin 1.3 中是 *实验性的*。
 > 请参阅[以下](#experimental-status-of-the-opt-in-requirements)用法详细信息。
 {:.note}
 
-Kotlin 标准库提供了一种机制，用于要求并明确同意使用API的某些元素。
+Kotlin 标准库提供了一种机制，用于要求并明确同意使用 API 的某些元素。
 通过这种机制，库开发人员可以将使用其 API 需要选择加入的特定条件告知用户，
 例如，如果某个 API 处于实验状态，并且将来可能会更改。
 
@@ -25,9 +25,9 @@ Kotlin 标准库提供了一种机制，用于要求并明确同意使用API的�
 有多种方式可以选择加入使用此类 API，所有方法均不受技术限制。
 你可以自由选择最适合自己的方式。
 
-### 传递选择加入
+### 传播选择加入
 
-在使用供第三方（库）使用的 API 时，你也可以把其选择加入的要求传递到自己的 API。
+在使用供第三方（库）使用的 API 时，你也可以把其选择加入的要求传播到自己的 API。
 为此，请在你的 API 主体声明中添加注解 [_要求选择加入的注解_](#opt-in-requirement-annotations)。
 这可以让你使用带有此注解的 API 元素。
 
@@ -73,10 +73,10 @@ fun displayDate() {
 并且也必须同意。 
 要使用多个需要选择加入的API，请在声明中标记所有需要选择加入的注解。
 
-### 非传递的用法
+### 非传播的用法
 
-在不公开其自身API的模块（例如应用程序）中，你可以选择使用 API 而无需将选择加入的要求传递到代码中。
-这种情况下，请使用[@OptIn](/api/latest/jvm/stdlib/kotlin/-opt-in/index.html)标记你的声明，
+在不公开其自身API的模块（例如应用程序）中，你可以选择使用 API 而无需将选择加入的要求传播到代码中。
+这种情况下，请使用 [@OptIn](/api/latest/jvm/stdlib/kotlin/-opt-in/index.html) 标记你的声明，
 并以要求选择加入的注解作为参数：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -99,7 +99,7 @@ class DateProvider // 要求选择加入的类
 ```kotlin
 //客户端代码
 @OptIn(MyDateTime::class)
-fun getDate(): Date { // 使用 DateProvider；不传递选择加入的要求
+fun getDate(): Date { // 使用 DateProvider；不传播选择加入的要求
     val dateProvider: DateProvider
     // ...
 }
@@ -223,7 +223,7 @@ sourceSets {
 ### 要求选择加入的注解
 
 如果想获得使用者使用你的模块 API 的明确同意，请创建一个注解类，作为_要求选择加入的注解_。
-这个类必须使用[@RequiresOptIn](/api/latest/jvm/stdlib/kotlin/-requires-opt-in/index.html)注解：
+这个类必须使用 [@RequiresOptIn](/api/latest/jvm/stdlib/kotlin/-requires-opt-in/index.html) 注解：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -247,7 +247,7 @@ annotation class MyDateTime
 
 要设置所需的级别，请指定 `@RequiresOptIn` 注解的 `level` 参数。
 
-另外，你可以提供一个`消息`来通知 API 用户有关使用该API的特定条件。
+另外，你可以提供一个`message`来通知用户有关使用该 API 的特定条件。
 编译器会将其显示给使用该 API 但未选择加入的用户。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
