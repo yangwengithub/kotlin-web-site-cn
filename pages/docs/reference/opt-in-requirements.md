@@ -247,7 +247,7 @@ annotation class MyDateTime
 
 要设置所需的级别，请指定 `@RequiresOptIn` 注解的 `level` 参数。
 
-另外，你可以提供一个`message`来通知用户有关使用该 API 的特定条件。
+另外，你可以提供一个 `message` 来通知用户有关使用该 API 的特定条件。
 编译器会将其显示给使用该 API 但未选择加入的用户。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
@@ -265,9 +265,9 @@ annotation class ExperimentalDateTime
 这使你的用户可以更安全地使用 API：他们只能使用其明确接受的功能。
 这也使你可以独立地从功能中删除选择加入的要求。
 
-### Marking API elements
+### 标记 API 元素
 
-To require an opt-in to using an API element, annotate its declaration with an opt-in requirement annotation:
+要在使用 API 时要求选择加入，请给它的声明添加要求选择加入的注解。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -282,18 +282,18 @@ fun getTime(): Time {}
 </div>
 
 
-## Opt-in requirements for experimental APIs
+## 实验 API 的选择加入要求
 
-If you use opt-in requirements for features in the experimental state, carefully handle the API graduation to avoid 
-breaking the client code.
+如果要求选择加入实验状态的特性，请仔细处理 API 由实验状态到稳定状态的转换，
+以避免破坏客户端代码。
 
-Once your experimental API graduates and is released in a stable state, remove its opt-in requirement annotations from declarations.
-The clients will be able to use them without restriction. However, you should leave the annotation classes in modules so that 
-the existing client code remains compatible.
+API 结束实验并以稳定状态发布后，请从声明中删除其要求选择加入的注解。
+客户端将可以不受限制地使用它们。但是，你应该将注解类留在模块中，以便<!-- 
+-->与现有的客户端代码保持兼容。
 
-To let the API users update their modules accordingly (remove the annotations 
-from their code and recompile), mark the annotations as [`@Deprecated`](/api/latest/jvm/stdlib/kotlin/-deprecated/index.html)
-and provide the explanation in the deprecation message.
+为了让 API 用户相应地更新其模块（从代码中删除注解并重新编译），
+请将注解标记为 [`@Deprecated`](/api/latest/jvm/stdlib/kotlin/-deprecated/index.html)
+并在弃用 message 中提供说明。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -305,14 +305,14 @@ annotation class ExperimentalDateTime
 
 </div>
 
-## Experimental status of the opt-in requirements
+## 选择加入要求的实验状态
 
-The opt-in requirement mechanism is experimental in Kotlin 1.3.
-This means that in future releases it may be changed in ways that make it incompatible.
+选择加入要求的机制在 Kotlin 1.3 中是实验性的。
+这意味着在将来的版本中，可能会以不兼容的方式进行更改。
 
-To make the users of annotations `@OptIn` and `@RequiresOptIn` aware of their experimental status,
-the compiler raises warnings when compiling the code with these annotations:
+为了让使用注解 `@OptIn` 和 `@RequiresOptIn` 的用户了解其实验状态，
+编译器会在编译代码时发出警告：
 
 ```This class can only be used with the compiler argument '-Xopt-in=kotlin.RequiresOptIn'```
 
- To remove the warnings, add the compiler argument `-Xopt-in=kotlin.RequiresOptIn`.
+要移除警告，请添加编译器参数 `-Xopt-in=kotlin.RequiresOptIn`。
