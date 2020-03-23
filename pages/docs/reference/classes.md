@@ -264,14 +264,14 @@ class Example // 从 Any 隐式继承
 By default, Kotlin classes are final: they can’t be inherited.
 To make a class inheritable, mark it with the `open` keyword.
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 open class Base //Class is open for inheritance
 
 ```
 
-</div>
+
 
  
 
