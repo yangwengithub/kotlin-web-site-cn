@@ -9,7 +9,7 @@ title: "搭建 Kotlin/JS 项目"
 
 Kotlin/JS 项目使用 Gradle 作为构建系统。为了开发者轻松管理其 Kotlin/JS 项目，我们提供了 Kotlin/JS Gradle 插件。
 该插件提供项目配置工具以及用以自动执行 JavaScript 开发中常用的例程的帮助程序。
-举个例子，该插件会下载 [Yarn](https://yarnpkg.com/) 软件包管理器，在后台管理 NPM 依赖，并使用[Webpack](https://webpack.js.org/)
+举个例子，该插件会下载 [Yarn](https://yarnpkg.com/) 软件包管理器，在后台管理 NPM 依赖，并使用 [Webpack](https://webpack.js.org/)
 从 Kotlin 项目构建 JavaScript 包。
 
 要在 IntelliJ IDEA 中创建 Kotlin/JS 项目，请转至 **File | New | Project**，
@@ -205,7 +205,7 @@ dependencies {
 在 JavaScript 中，管理依赖项的常用方法是 [NPM](https://www.npmjs.com/)。
 它提供了最大的 JavaScript 模块公共[存储库](https://www.npmjs.com/)以及用于下载它们的工具。
 
-Kotlin/JS 插件使你可以在 Gradle 构建脚本中声明 NPM 依赖关系以及其他依赖项，并自动执行其他所有操作。
+Kotlin/JS 插件使你可以在 Gradle 构建脚本中声明 NPM 依赖项以及其他依赖项，并自动执行其他所有操作。
 它安装了 [Yarn](https://yarnpkg.com/lang/en/) 程序包管理器，
 并使用它来将依赖项从 NPM 存储库下载项目的 `node_modules` 目录
 ─── JavaScript 项目的 NPM 依赖项的一般位置。
@@ -236,7 +236,7 @@ dependencies {
 </div>
 </div>
 
-安装 NPM 依赖项后，你可以按照 [在 Kotlin 中调用 JS ](http://www.kotlincn.net/docs/reference/js-interop.html) 
+安装 NPM 依赖项后，你可以按照[在 Kotlin 中调用 JS](http://www.kotlincn.net/docs/reference/js-interop.html) 
 中所述，在代码中使用其 API。
 
 ## 配置 run 任务
