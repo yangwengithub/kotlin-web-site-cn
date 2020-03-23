@@ -76,6 +76,7 @@ $ sudo snap install --classic kotlin
 有一个社区维护的软件包 [kotlinc](https://chocolatey.org/packages/kotlinc) 可供使用，
 你可以在命令行通过 [`choco install`](https://chocolatey.org/docs/commandsinstall) 进行安装。
 
+
 ### 创建并运行第一个应用程序
 
 1. 在 Kotlin 中创建一个显示 Hello，World! 的简单应用程序。使用喜欢的编辑器，创建一个名为 *hello.kt* 的新文件，内容如下：
