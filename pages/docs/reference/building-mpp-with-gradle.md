@@ -1804,15 +1804,15 @@ ios("anotherIos")
 
 ### 构建最终原生二进制文件
 
-By default, a Kotlin/Native target is compiled down to a `*.klib` library artifact, which can be consumed by Kotlin/Native itself as a
-dependency but cannot be executed or used as a native library. To declare final native binaries like executables or shared libraries a `binaries`
-property of a native target is used. This property represents a collection of native binaries built for this target in addition to the
-default `*.klib` artifact and provides a set of methods for declaring and configuring them.
+默认情况下，Kotlin/Native 目标将被编译为 `*.klib` 库构件，它可以被 Kotlin/Native 自身作为<!--
+-->依赖项使用，但并不能被执行，或是用作原生库。为了声明像可执行文件或是链接库的最终原生二进制文件，
+需要使用原生目标的 `binaries` 属性。除默认 `*.klib` 构建外，
+这个属性还代表一个为这个目标构建的原生二进制文件集合，并且提供了一系列声明和配置它们的方法。
 
-Note that the `kotlin-multiplaform` plugin doesn't create any production binaries by default. The only binary available by default
-is a debug executable allowing one to run tests from the `test` compilation.
+注意，`kotlin-multiplaform` 插件默认不会创建任何生产二进制文件。默认情况下，
+唯一可用的二进制文件是调试可执行文件，它允许运行来自 `test` 编译项的测试。
 
-#### Declaring binaries
+#### 声明二进制文件
 
 A set of factory methods is used for declaring elements of the `binaries` collection. These methods allow one to specify what kinds of binaries are to be created and configure them. The following binary kinds are supported (note that not all the kinds are available for
 all native platforms):
@@ -1934,7 +1934,7 @@ binaries {
 The first argument in this example allows one to set a name prefix for the created binaries which is used to access them in the buildscript (see the ["Accessing binaries"](#accessing-binaries) section).
 Also this prefix is used as a default name for the binary file. For example on Windows the sample above produces files `foo.exe` and `bar.exe`.
 
-#### Accessing binaries
+#### 访问二进制文件
 
 The binaries DSL allows not only creating binaries but also accessing already created ones to configure them or get their properties
 (e.g. path to an output file). The `binaries` collection implements the
@@ -2037,7 +2037,7 @@ binaries.findExecutable("foo", DEBUG)
 {:.note}
  
 
-#### Configuring binaries
+#### 配置二进制文件
 
 Binaries have a set of properties allowing one to configure them. The following options are available:
 
@@ -2138,7 +2138,7 @@ binaries {
 </div>
 </div>
 
-#### Exporting dependencies to binaries
+#### 导出依赖项为二进制文件
 
 When building an Objective-C framework or a native library (shared or static), it is often necessary to pack not just the
 classes of the current project, but also the classes of some of its dependencies. The Binaries DSL allows one to specify
@@ -2249,7 +2249,7 @@ binaries {
 </div>
 </div>
 
-#### Building universal frameworks
+#### 构建通用框架
 
 By default, an Objective-C framework produced by Kotlin/Native supports only one platform. However, such frameworks can be merged
 into a single universal (fat) binary using the `lipo` utility. Particularly, such an operation makes sense for 32-bit and 64-bit iOS
@@ -2334,7 +2334,7 @@ kotlin {
 </div>
 </div>
 
-### CInterop support
+### C 互操作支持
 
 Since Kotlin/Native provides [interoperability with native languages](native/c_interop.html),
 there is a DSL allowing one to configure this feature for a specific compilation.
