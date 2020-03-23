@@ -13,13 +13,13 @@ Kotlin/JS 项目使用 Gradle 作为构建系统。为了开发者轻松管理�
 从 Kotlin 项目构建 JavaScript 包。
 
 要在 IntelliJ IDEA 中创建 Kotlin/JS 项目，请转至 **File | New | Project**，
-并选择 **Gradle | Kotlin/JS for browser** 或 **Kotlin/JS for Node.js**。请确保未勾选清除 **Java** 复选框。
+并选择 **Gradle | Kotlin/JS for browser** 或 **Kotlin/JS for Node.js**。请不要勾选 **Java** 复选框。
  
 ![New project wizard]({{ url_for('asset', path='images/reference/js-project-setup/wizard.png') }})
 
 
-另外，您可以在 `build.gradle` 文件中手动将 `org.jetbrains.kotlin.js` 插件应用于 Gradle 项目。
-如果您使用 Gradle Kotlin DSL，则可以使用插件 `kotlin(“js”)`。
+另外，你可以在 `build.gradle` 文件中手动将 `org.jetbrains.kotlin.js` 插件应用于 Gradle 项目。
+如果你使用 Gradle Kotlin DSL，则可以使用插件 `kotlin(“js”)`。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -45,7 +45,7 @@ plugins {
 </div>
 </div>
 
-Kotlin/JS 插件可让您在构建脚本的 `kotlin` 部分中管理项目的各个方面。
+Kotlin/JS 插件可让你在构建脚本的 `kotlin` 部分中管理项目的各个方面。
 
 <div class="sample" markdown="1" mode="groovy" theme="idea">
 
@@ -57,9 +57,9 @@ kotlin {
 
 </div>
  
-在 `kotlin` 部分中，您可以管理以下方面：
+在 `kotlin` 部分中，你可以管理以下方面：
 
-* [选择执行环境](#选择执行环境): 浏览器 或 Node.js
+* [选择执行环境](#选择执行环境): 浏览器或 Node.js
 * [管理依赖](#管理依赖): Maven 和 NPM
 * [配置 run 任务](#配置-run-任务)
 * [配置 test 任务](#配置-test-任务)
@@ -99,7 +99,7 @@ kotlin.target.browser {
 
 </div>
 
-Kotlin/JS 插件会自动配置其任务，来与在所选环境工作。
+Kotlin/JS 插件会自动配置其任务，和所选环境配合工作。
 这项操作包括下载与安装运行和测试应用程序所需的依赖。
 因此，开发者无需额外配置就可以构建、运行和测试简单项目。
 
@@ -171,7 +171,7 @@ kotlin {
 ### Kotlin 标准库
 
 所有 Kotlin/JS 项目都必须依赖 Kotlin/JS [标准库](https://kotlinlang.org/api/latest/jvm/stdlib/)。
-如果您的项目包含用 Kotlin 编写的测试，则还应在添加 [kotlin.test](https://kotlinlang.org/api/latest/kotlin.test/) 
+如果你的项目包含用 Kotlin 编写的测试，则还应在添加 [kotlin.test](https://kotlinlang.org/api/latest/kotlin.test/) 
 [依赖项](https://kotlinlang.org/api/latest/kotlin.test/)。
 
 <div class="multi-language-sample" data-lang="groovy">
@@ -205,7 +205,7 @@ dependencies {
 在 JavaScript 中，管理依赖项的常用方法是 [NPM](https://www.npmjs.com/)。
 它提供了最大的 JavaScript 模块公共[存储库](https://www.npmjs.com/)以及用于下载它们的工具。
 
-Kotlin/JS 插件使您可以在 Gradle 构建脚本中声明 NPM 依赖关系以及其他依赖关系，并自动执行其他所有操作。
+Kotlin/JS 插件使你可以在 Gradle 构建脚本中声明 NPM 依赖关系以及其他依赖关系，并自动执行其他所有操作。
 它安装了 [Yarn](https://yarnpkg.com/lang/en/) 程序包管理器，
 并使用它来将依赖项从 NPM 存储库下载到 `node_modules` 项目目录 
 ─── JavaScript 项目的 NPM 依赖项的一般位置。
@@ -236,12 +236,12 @@ dependencies {
 </div>
 </div>
 
-安装 NPM 依赖项后，您可以按照 [在Kotlin中调用JS](http://www.kotlincn.net/docs/reference/js-interop.html) 
+安装 NPM 依赖项后，你可以按照 [在Kotlin中调用JS](http://www.kotlincn.net/docs/reference/js-interop.html) 
 中所述，在代码中使用其API 。
 
 ## 配置 run 任务
 
-Kotlin/JS 插件提供了一个运行任务，使您无需额外配置即可运行项目。
+Kotlin/JS 插件提供了一个运行任务，使你无需额外配置即可运行项目。
 它使用 [Webpack DevServer](https://webpack.js.org/configuration/dev-server/) 来运行 Kotlin/JS 项目。
 如果要自定义 DevServer 配置，请更改其端口，请使用 Webpack 配置文件。
 
@@ -290,7 +290,7 @@ Kotin/JS Gradle 插件会自动为项目设置测试基础结构。对于浏览�
 
 默认情况下，该插件使用 
 [Headless Chrome](https://chromium.googlesource.com/chromium/src/+/lkgr/headless/README.md) 
-来运行浏览器测试。您还可以通过在构建脚本中的 `useKarma` 部分中添加相应的条目，从而在其他浏览器中运行它们 ：
+来运行浏览器测试。你还可以通过在构建脚本中的 `useKarma` 部分中添加相应的条目，从而在其他浏览器中运行它们 ：
 
 <div class="sample" markdown="1" mode="groovy" theme="idea">
 
