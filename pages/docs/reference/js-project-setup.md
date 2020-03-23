@@ -284,7 +284,7 @@ Kotin/JS Gradle 插件会自动为项目设置测试基础结构。对于浏览�
 
 该插件还提供了有用的测试功能，例如：
 
-* 原始地图生成
+* 源代码映射文件生成
 * 测试报告生成
 * 在控制台中测试运行结果
 
@@ -341,14 +341,14 @@ kotlin.target.browser {
 
 对于浏览器目标，Kotlin/JS 插件使用众所周知的 [Webpack](https://webpack.js.org/) 模块捆绑器。
 为了配置项目捆绑，可以使用标准的 Webpack 配置文件。
-Webpack 配置功能在其 [文档](https://webpack.js.org/concepts/configuration/) 中有很好的描述。
+Webpack 配置功能在其[文档](https://webpack.js.org/concepts/configuration/)中有很好的描述。
 对于 Kotlin/JS 项目，Webpack 配置文件位于项目根目录下的 
 `webpack.config.d` 目录中。
 
-为了构建可执行的 JavaScript 工件，Kotlin/JS 插件包含 `browserDevelopmentWebpack` 
+为了构建可执行的 JavaScript 构件，Kotlin/JS 插件包含 `browserDevelopmentWebpack` 
 以及 `browserProductionWebpack` 任务。
 
-要使用 Webpack 构建项目工件，请执行 Gradle 任务 `browserProductionWebpack` 或 `browserDevelopmentWebpack`：
+要使用 Webpack 构建项目构件，请执行 Gradle 任务 `browserProductionWebpack` 或 `browserDevelopmentWebpack`：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -362,10 +362,10 @@ Webpack 配置功能在其 [文档](https://webpack.js.org/concepts/configuratio
 
 默认情况下，Kotlin/JS 项目构建的结果位于项目根目录下的 `/build/distribution` 目录中。
 
-要为项目分发文件设置另一个位置，请在构建脚本中的 `browser` 里添加 `distribution`，然后
-为它的 `directory` 属性赋值。
-运行项目构建任务后，Gradle 会将输出的内容
-和项目资源一起保存在此位置。
+要为项目分发文件设置另一个位置，请在构建脚本中的 `browser` 里添加 `distribution`，然后<!--
+-->为它的 `directory` 属性赋值。
+运行项目构建任务后，Gradle 会将输出的内容<!--
+-->和项目资源一起保存在此位置。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
