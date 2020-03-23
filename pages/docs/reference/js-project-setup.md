@@ -205,12 +205,12 @@ dependencies {
 在 JavaScript 中，管理依赖项的常用方法是 [NPM](https://www.npmjs.com/)。
 它提供了最大的 JavaScript 模块公共[存储库](https://www.npmjs.com/)以及用于下载它们的工具。
 
-Kotlin/JS 插件使你可以在 Gradle 构建脚本中声明 NPM 依赖关系以及其他依赖关系，并自动执行其他所有操作。
+Kotlin/JS 插件使你可以在 Gradle 构建脚本中声明 NPM 依赖关系以及其他依赖项，并自动执行其他所有操作。
 它安装了 [Yarn](https://yarnpkg.com/lang/en/) 程序包管理器，
-并使用它来将依赖项从 NPM 存储库下载到 `node_modules` 项目目录 
+并使用它来将依赖项从 NPM 存储库下载项目的 `node_modules` 目录
 ─── JavaScript 项目的 NPM 依赖项的一般位置。
 
-要声明 NPM 依赖项，请将其名称和版本传递 `npm()` 函数给依赖项声明中的函数。
+要声明 NPM 依赖项，将其名称与版本传给依赖项声明内的 `npm()` 函数。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" mode="groovy" theme="idea" data-lang="groovy">
@@ -236,12 +236,12 @@ dependencies {
 </div>
 </div>
 
-安装 NPM 依赖项后，你可以按照 [在Kotlin中调用JS](http://www.kotlincn.net/docs/reference/js-interop.html) 
-中所述，在代码中使用其API 。
+安装 NPM 依赖项后，你可以按照 [在 Kotlin 中调用 JS ](http://www.kotlincn.net/docs/reference/js-interop.html) 
+中所述，在代码中使用其 API。
 
 ## 配置 run 任务
 
-Kotlin/JS 插件提供了一个运行任务，使你无需额外配置即可运行项目。
+Kotlin/JS 插件提供了一个 `run` 任务，使你无需额外配置即可运行项目。
 它使用 [Webpack DevServer](https://webpack.js.org/configuration/dev-server/) 来运行 Kotlin/JS 项目。
 如果要自定义 DevServer 配置，请更改其端口，请使用 Webpack 配置文件。
 
