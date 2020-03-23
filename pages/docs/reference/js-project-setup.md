@@ -256,7 +256,7 @@ Kotlin/JS 插件提供了一个 `run` 任务，使你无需额外配置即可运
 </div>
 
 要在浏览器中查看源文件更改而不想重新启动 DevServer，请使用 Gradle 
-[连续构建(continuous build)](https://docs.gradle.org/current/userguide/command_line_interface.html#sec:continuous_build)：
+[连续构建（continuous build）](https://docs.gradle.org/current/userguide/command_line_interface.html#sec:continuous_build)：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
