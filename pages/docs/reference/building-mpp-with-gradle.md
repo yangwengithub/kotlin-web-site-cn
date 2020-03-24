@@ -1814,32 +1814,32 @@ ios("anotherIos")
 
 #### 声明二进制文件
 
-A set of factory methods is used for declaring elements of the `binaries` collection. These methods allow one to specify what kinds of binaries are to be created and configure them. The following binary kinds are supported (note that not all the kinds are available for
-all native platforms):
+`binaries` 集合的元素通过一套工厂方法声明。这些方法允许指定要创建的二进制类型并对其进行配置。以下是受支持的二进制类型（注意，
+并不是所有类型都可用于所有原生平台）：
 
-|**Factory method**|**Binary kind**|**Available for**|
+|**工厂方法**|**二进制类型**|**可用于**|
 | --- | --- | --- |
-|`executable` |a product executable    |all native targets|
-|`test`       |a test executable       |all native targets| 
-|`sharedLib`  |a shared native library |all native targets except `wasm32`|
-|`staticLib`  |a static native library  |all native targets except `wasm32`|
-|`framework`  |an Objective-C framework |macOS, iOS, watchOS, and tvOS targets only|
+|`executable` |产品可执行文件    |所有原生目标|
+|`test`       |测试可执行文件    |所有原生目标| 
+|`sharedLib`  |链接原生库        |除了 `wasm32` 的所有原生目标|
+|`staticLib`  |静态原生库        |除了 `wasm32` 的所有原生目标|
+|`framework`  |Objective-C 框架 |仅 macOS、iOS、watchOS 与 tvOS 目标|
 
-Each factory method exists in several versions. Consider them by example of the `executable` method. All the same versions are available
-for all other factory methods.
+每个工厂方法都有多个版本。通过 `executable` 方法的示例考虑他们。所有相同的版本<!--
+-->对所有其他的工厂方法都是可用的。
 
-The simplest version doesn't require any additional parameters and creates one binary for each build type.
-Currently there a two build types available: `DEBUG` (produces a not optimized binary with a debug information) and `RELEASE` (produces
-an optimized binary without debug information). Consequently the following snippet creates two executable binaries: debug and release.
+最简单的版本不需要任何额外的参数，并且会为每个构建类型都创建二进制文件。
+目前有两个可用的构件类型：`DEBUG` （生成带有调试信息的，未优化的二进制文件） 与 `RELEASE` （生成<!--
+-->不带有调试信息的，经过优化的二进制文件）。
 
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
 
 ```kotlin
 kotlin {
-    linuxX64 { // Use your target instead.
+    linuxX64 { // 更改为你所使用的目标。
         binaries {
             executable {
-                // Binary configuration.
+                // 二进制配置。
             }
         }
     }
@@ -1848,8 +1848,8 @@ kotlin {
 
 </div>
 
-A lambda expression accepted by the `executable` method in the example above is applied to each binary created and allows one to configure the binary
-(see the [corresponding section](#configuring-binaries)). Note that this lambda can be dropped if there is no need for additional configuration:
+在上面例子中的 `executable` 方法接受的 lambda 表达式将应用于创建的每个二进制文件，并且允许配置二进制文件。
+（参见[相应部分](#配置二进制文件)）。注意，如果不需要额外的配置，则可以删除这个 lambda：
 
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
 
@@ -1861,7 +1861,7 @@ binaries {
 
 </div>
 
-It is possible to specify which build types will be used to create binaries and which won't. In the following example only debug executable is created.
+可以指定构建类型是否用于创建二进制文件。以下的示例仅创建了调试可执行文件。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -1869,7 +1869,7 @@ It is possible to specify which build types will be used to create binaries and 
 ```groovy
 binaries {
     executable([DEBUG]) {
-        // Binary configuration.
+        // 二进制配置。
     }
 }
 ```
@@ -1883,7 +1883,7 @@ binaries {
 ```kotlin
 binaries {
     executable(listOf(DEBUG)) {
-        // Binary configuration.
+        // 二进制配置。
     }
 }
 ```
@@ -1891,7 +1891,7 @@ binaries {
 </div>
 </div>
 
-Finally the last factory method version allows customizing the binary name.
+最终，最后一个工厂方法版本允许自定义二进制文件名称。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -1899,12 +1899,12 @@ Finally the last factory method version allows customizing the binary name.
 ```groovy
 binaries {
     executable('foo', [DEBUG]) {
-        // Binary configuration.
+        // 二进制配置。
     }
 
-    // It's possible to drop the list of build types (all the available build types will be used in this case).
+    // 可以删除构建类型的列表（这种情况下，将使用所有可用的构件类型）。
     executable('bar') {
-        // Binary configuration.
+        // 二进制配置。
     }
 }
 ```
@@ -1918,12 +1918,12 @@ binaries {
 ```kotlin
 binaries {
     executable("foo", listOf(DEBUG)) {
-        // Binary configuration.
+        // 二进制配置。
     }
 
-    // It's possible to drop the list of build types (all the available build types will be used in this case).
+    // 可以删除构建类型的列表（这种情况下，将使用所有可用的构件类型）。
     executable("bar") {
-        // Binary configuration.
+        // 二进制配置。
     }
 }
 ```
@@ -1931,8 +1931,8 @@ binaries {
 </div>
 </div>
 
-The first argument in this example allows one to set a name prefix for the created binaries which is used to access them in the buildscript (see the ["Accessing binaries"](#accessing-binaries) section).
-Also this prefix is used as a default name for the binary file. For example on Windows the sample above produces files `foo.exe` and `bar.exe`.
+在这个示例中的第一个参数允许为创建的二进制文件设置名称前缀，该前缀用于在构建脚本中访问它们（参见 [“访问二进制文件”](#访问二进制文件) 部分）。
+这个前缀也用作二进制文件的默认名称。例如在 Windows 平台上，上面的示例将生产出 `foo.exe` 与 `bar.exe` 文件。
 
 #### 访问二进制文件
 
