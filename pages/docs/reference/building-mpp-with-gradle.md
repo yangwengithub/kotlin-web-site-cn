@@ -1861,7 +1861,7 @@ binaries {
 
 </div>
 
-可以指定构建类型是否用于创建二进制文件。以下的示例仅创建了调试可执行文件。
+可以指定哪些构建类型将用于创建二进制文件，哪些将不创建。以下的示例仅创建了调试可执行文件。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
