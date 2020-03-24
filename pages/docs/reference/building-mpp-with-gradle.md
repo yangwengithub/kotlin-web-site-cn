@@ -1821,15 +1821,15 @@ ios("anotherIos")
 | --- | --- | --- |
 |`executable` |产品可执行文件    |所有原生目标|
 |`test`       |测试可执行文件    |所有原生目标| 
-|`sharedLib`  |链接原生库        |除了 `wasm32` 的所有原生目标|
-|`staticLib`  |静态原生库        |除了 `wasm32` 的所有原生目标|
+|`sharedLib`  |链接原生库        |除了 `wasm32` 以外的所有原生目标|
+|`staticLib`  |静态原生库        |除了 `wasm32` 以外的所有原生目标|
 |`framework`  |Objective-C 框架 |仅 macOS、iOS、watchOS 与 tvOS 目标|
 
 每个工厂方法都有多个版本。通过 `executable` 方法的示例考虑他们。所有相同的版本<!--
 -->对所有其他的工厂方法都是可用的。
 
 最简单的版本不需要任何额外的参数，并且会为每个构建类型都创建二进制文件。
-目前有两个可用的构件类型：`DEBUG` （生成带有调试信息的，未优化的二进制文件） 与 `RELEASE` （生成<!--
+目前有两个可用的构建类型：`DEBUG` （生成带有调试信息的，未优化的二进制文件） 与 `RELEASE` （生成<!--
 -->不带有调试信息的，经过优化的二进制文件）。
 
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
