@@ -160,7 +160,7 @@ person?.department?.head = managersPool.getManager()
 
 ## Elvis 操作符
 
-当我们有一个可空的引用 `r` 时，我们可以说“如果 `r` 非空，我使用它；否则使用某个非空的值 `x`”：
+当我们有一个可空的引用 `b` 时，我们可以说“如果 `b` 非空，我使用它；否则使用某个非空的值”：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
