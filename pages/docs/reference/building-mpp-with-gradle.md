@@ -1945,7 +1945,7 @@ binaries DSL 不仅允许创建二进制文件，还可以访问已经创建的�
 -->名字。这个名称基于名称的前缀（如果已指定），构建类型和二进制种类根据以下模式：
 `<可选名称前缀><构建类型><二进制种类>`， 例如 `releaseFramework` 或 `testDebugExecutable`。
 
-> 注意：静态库和链接库分别有 `static` 与 `shared` 后缀，例如 `fooDebugStatic` 或 `barReleaseShared`
+> 注意：静态库和共享库分别有 `static` 与 `shared` 后缀，例如 `fooDebugStatic` 或 `barReleaseShared`
 
 这个名称可以用于访问库：
 
