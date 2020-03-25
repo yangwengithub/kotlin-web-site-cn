@@ -2039,26 +2039,26 @@ binaries.findExecutable("foo", DEBUG)
 
 #### 配置二进制文件
 
-Binaries have a set of properties allowing one to configure them. The following options are available:
+二进制文件具有一套属性，允许配置它们。可用的选项有这些：
 
- - **Compilation.** Each binary is built on basis of some compilation available in the same target. The default value of this parameter depends
- on the binary type: `Test` binaries are based on the `test` compilation while other binaries - on the `main` compilation.
- - **Linker options.** Options passed to a system linker during binary building. One can use this setting for linking against some native library.
- - **Output file name.** By default the output file name is based on binary name prefix or, if the name prefix isn't specified, on a project name.
- But it's possible to configure the output file name independently using the `baseName` property. Note that final file name will be formed
- by adding system-dependent prefix and postfix to this base name. E.g. a `libfoo.so` is produced for a Linux shared library with the base name `foo`.
- - **Entry point** (for executable binaries only). By default the entry point for Kotlin/Native programs is a `main` function located in the root
- package. This setting allows one to change this default and use a custom function as an entry point. For example it can be used to move the `main`
- function from the root package.
- - **Access to the output file.**
- - **Access to a link task.**
- - **Access to a run task** (for executable binaries only). The `kotlin-multiplatform` plugin creates run tasks for all executable binaries of host
- platforms (Windows, Linux and macOS). Names of such tasks are based on binary names, e.g. `runReleaseExecutable<target-name>`
- or `runFooDebugExecutable<target-name>`. A run task can be accessed using the `runTask` property of an executable binary.
-- **Framework type** (only for Objective-C frameworks). By default a framework built by Kotlin/Native contains a dynamic library. But it's possible
- to replace it with a static library.
+ - **编译项** 每个二进制都是基于相同目标中一些可用的编译项构建的。这个参数的默认值依赖<!--
+ -->于二进制类型：`Test` 二进制文件基于 `test` 编译项，而其他二进制文件基于 `main` 编译项。
+ - **链接器选项** 选项将在二进制文件的构建期间被传递到系统链接器中。可以使用这个设置链接到某些原生库。
+ - **输出文件名称** 默认情况下，输出文件名称基于二进制文件名称前缀，如果没有指定前缀，则基于项目名称。
+ 但可以使用 `baseName` 属性来单独配置输出文件名称。注意，最终文件名称将通过添加系统相关的前缀与后缀到这个基础名称形成。
+ 例如 Linux 共享库与基础名称 `foo` 将产出 `libfoo.so`。
+ - **入口点**（仅用于可执行的二进制文件）。默认情况下，Kotlin/Native 程序的入口点是位于根包的 `main`
+ 函数。这个设置允许改变这个默认值，并使用自定义的函数作为入口点。例如它可以用于将 `main`
+ 函数从根包中移出。
+ - **访问输出文件**
+ - **访问链接任务**
+ - **访问运行任务**（仅用于可执行的二进制文件）。`kotlin-multiplatform` 插件为主机平台（Windows、Linux 与 macOS）的所有可执行二进制文件创建运行任务。
+ 这些任务的名称基于二进制文件名称，例如 `runReleaseExecutable<目标名称>`
+ 或 `runFooDebugExecutable<目标名称>`。可以使用可执行二进制文件的 `runTask` 属性来访问运行任务。
+- **框架类型**（仅用于 Objective-C frameworks）。默认情况下，通过 Kotlin/Native 构建的框架包含动态库。但可以<!--
+-->把它替换为静态库。
 
-The following example shows how to use these settings.
+下面的例子演示了如何使用这些设置。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -2066,31 +2066,31 @@ The following example shows how to use these settings.
 ```groovy
 binaries {
     executable('my_executable', [RELEASE]) {
-        // Build a binary on the basis of the test compilation.
+        // 在测试编译项的基础上构建二进制文件。
         compilation = compilations.test
 
-        // Custom command line options for the linker.
+        // 为链接器自定义命令行选项。
         linkerOpts = ['-L/lib/search/path', '-L/another/search/path', '-lmylib']
 
-        // Base name for the output file.
+        // 用于输出文件的基础名称。
         baseName = 'foo'
 
-        // Custom entry point function.
+        // 自定义入口函数。
         entryPoint = 'org.example.main'
 
-        // Accessing the output file.
+        // 访问输出文件。
         println("Executable path: ${outputFile.absolutePath}")
 
-        // Accessing the link task.
+        // 访问链接任务。
         linkTask.dependsOn(additionalPreprocessingTask)
 
-        // Accessing the run task.
-        // Note that the runTask is null for non-host platforms.
+        // 访问运行任务。
+        // 注意，对于无主机的平台，runTask 为 null。
         runTask?.dependsOn(prepareForRun)
     }
 
     framework('my_framework' [RELEASE]) {
-        // Include a static library instead of a dynamic one into the framework.
+        // 在框架中包含静态库，而不是动态库。
         isStatic = true
     }
 }
@@ -2105,31 +2105,31 @@ binaries {
 ```kotlin
 binaries {
     executable("my_executable", listOf(RELEASE)) {
-        // Build a binary on the basis of the test compilation.
+        // 在测试编译项的基础上构建二进制文件。
         compilation = compilations["test"]
 
-        // Custom command line options for the linker.
+        // 为链接器自定义命令行选项。
         linkerOpts = mutableListOf("-L/lib/search/path", "-L/another/search/path", "-lmylib")
 
-        // Base name for the output file.
+        // 用于输出文件的基础名称。
         baseName = "foo"
 
-        // Custom entry point function.
+        // 自定义入口函数。
         entryPoint = "org.example.main"
 
-        // Accessing the output file.
+        // 访问输出文件。
         println("Executable path: ${outputFile.absolutePath}")
 
-        // Accessing the link task.
+        // 访问链接任务。
         linkTask.dependsOn(additionalPreprocessingTask)
 
-        // Accessing the run task.
-        // Note that the runTask is null for non-host platforms.
+        // 访问运行任务。
+        // 注意，对于无主机的平台，runTask 为 null。
         runTask?.dependsOn(prepareForRun)
     }
 
     framework("my_framework" listOf(RELEASE)) {
-        // Include a static library instead of a dynamic one into the framework.
+        // 在框架中包含静态库，而不是动态库。
         isStatic = true
     }
 }
