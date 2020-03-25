@@ -1936,29 +1936,29 @@ binaries {
 
 #### 访问二进制文件
 
-The binaries DSL allows not only creating binaries but also accessing already created ones to configure them or get their properties
-(e.g. path to an output file). The `binaries` collection implements the
-[`DomainObjectSet`](https://docs.gradle.org/current/javadoc/org/gradle/api/DomainObjectSet.html) interface and provides methods like
-`all` or `matching` allowing configuring groups of elements.
+binaries DSL 不仅允许创建二进制文件，还可以访问已经创建的二进制文件以配置它们或获取它们的属性
+（例如输出文件的路径）。`binaries` 集合实现了
+[`DomainObjectSet`](https://docs.gradle.org/current/javadoc/org/gradle/api/DomainObjectSet.html) 接口，并提供了类似
+`all` 或 `matching` 这些允许配置元素组的方法。
 
-Also it's possible to get a certain element of the collection. There are two ways to do this. First, each binary has a unique
-name. This name is based on the name prefix (if it's specified), build type and binary kind according to the following pattern:
-`<optional-name-prefix><build-type><binary-kind>`, e.g. `releaseFramework` or `testDebugExecutable`.
+也可以获取集合中的某些元素。有两种方式可以做到。第一种方式，每个库拥有独有的<!--
+-->名字。这个名称基于名称的前缀（如果已指定），构建类型和二进制种类根据以下模式：
+`<可选名称前缀><构建类型><二进制种类>`， 例如 `releaseFramework` 或 `testDebugExecutable`。
 
-> Note: static and shared libraries has suffixes `static` and `shared` respectively, e.g. `fooDebugStatic` or `barReleaseShared`
+> 注意：静态库和共享库分别有 `static` 与 `shared` 后缀，例如 `fooDebugStatic` 或 `barReleaseShared`
 
-This name can be used to access the binary:
+这个名称可以用于访问库：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
 ```groovy
-// Fails if there is no such a binary.
+// 如果没有这样的库将会导致错误。
 binaries['fooDebugExecutable']
 binaries.fooDebugExecutable
 binaries.getByName('fooDebugExecutable')
 
- // Returns null if there is no such a binary.
+ // 如果没有这样的库将返回 null。
 binaries.findByName('fooDebugExecutable')
 ```
 
@@ -1969,36 +1969,36 @@ binaries.findByName('fooDebugExecutable')
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
 
 ```kotlin
-// Fails if there is no such a binary.
+// 如果没有这样的库将会导致错误。
 binaries["fooDebugExecutable"]
 binaries.getByName("fooDebugExecutable")
 
- // Returns null if there is no such a binary.
+ // 如果没有这样的库将返回 null。
 binaries.findByName("fooDebugExecutable")
 ```
 
 </div>
 </div>
 
-The second way is using typed getters. These getters allow one to access a binary of a certain type by its name prefix and build type.
+第二种方式是使用标记过类型的 getter。这些 getter 允许通过它的名称前缀与构建类型访问某种类型的二进制文件。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
 ```groovy
-// Fails if there is no such a binary.
+// 如果没有这样的库将会导致错误。
 binaries.getExecutable('foo', DEBUG)
-binaries.getExecutable(DEBUG)          // Skip the first argument if the name prefix isn't set.
-binaries.getExecutable('bar', 'DEBUG') // You also can use a string for build type.
+binaries.getExecutable(DEBUG)          // 如果没有设置名称前缀则会跳过第一个参数。
+binaries.getExecutable('bar', 'DEBUG') // 你也可以使用字符串作为构建类型。
 
-// Similar getters are available for other binary kinds:
-// getFramework, getStaticLib and getSharedLib.
+// 类似的 getter 对其他二进制种类也是可以用的：
+// getFramework、getStaticLib 与 getSharedLib。
 
-// Returns null if there is no such a binary.
+// 如果没有这样的库将返回 null。
 binaries.findExecutable('foo', DEBUG)
 
-// Similar getters are available for other binary kinds:
-// findFramework, findStaticLib and findSharedLib.
+// 类似的 getter 对其他二进制种类也是可以用的：
+// findFramework、findStaticLib 与 findSharedLib。
 ```
 
 </div>
@@ -2008,29 +2008,29 @@ binaries.findExecutable('foo', DEBUG)
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
 
 ```kotlin
-// Fails if there is no such a binary.
+// 如果没有这样的库将会导致错误。
 binaries.getExecutable("foo", DEBUG)
-binaries.getExecutable(DEBUG)          // Skip the first argument if the name prefix isn't set.
-binaries.getExecutable("bar", "DEBUG") // You also can use a string for build type.
+binaries.getExecutable(DEBUG)          // 如果没有设置名称前缀则会跳过第一个参数。
+binaries.getExecutable("bar", "DEBUG") // 你也可以使用字符串作为构建类型。
 
-// Similar getters are available for other binary kinds:
-// getFramework, getStaticLib and getSharedLib.
+// 类似的 getter 对其他二进制种类也是可以用的：
+// getFramework、getStaticLib 与 getSharedLib。
 
-// Returns null if there is no such a binary.
+// 如果没有这样的库将返回 null。
 binaries.findExecutable("foo", DEBUG)
 
-// Similar getters are available for other binary kinds:
-// findFramework, findStaticLib and findSharedLib.
+// 类似的 getter 对其他二进制种类也是可以用的：
+// findFramework、findStaticLib 与 findSharedLib。
 ```
 
 </div>
 </div>
 
-> Before 1.3.40, both test and product executables were represented by the same binary type. Thus to access the default test binary created by the plugin, the following line was used:
+> 1.3.40 之前，测试和产品可执行文件均由相同的二进制类型表示。因此，要访问通过插件创建的默认测试二进制文件，请使用下行：
 > ```
 > binaries.getExecutable("test", "DEBUG")
 > ``` 
-> Since 1.3.40, test executables are represented by a separate binary type and have their own getter. To access the default test binary, use:
+> 自 1.3.40 起，测试可执行文件由单独的二进制类型表示，并且拥有自己的 getter。要访问默认的测试库，请使用：
 > ```
 > binaries.getTest("DEBUG")
 > ```
