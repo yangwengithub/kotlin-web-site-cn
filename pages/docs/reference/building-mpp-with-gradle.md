@@ -2055,7 +2055,7 @@ binaries.findExecutable("foo", DEBUG)
  - **访问运行任务**（仅用于可执行的二进制文件）。`kotlin-multiplatform` 插件为主机平台（Windows、Linux 与 macOS）的所有可执行二进制文件创建运行任务。
  这些任务的名称基于二进制文件名称，例如 `runReleaseExecutable<目标名称>`
  或 `runFooDebugExecutable<目标名称>`。可以使用可执行二进制文件的 `runTask` 属性来访问运行任务。
-- **框架类型**（仅用于 Objective-C frameworks）。默认情况下，通过 Kotlin/Native 构建的框架包含动态库。但可以<!--
+- **Framework 类型**（仅用于 Objective-C frameworks）。默认情况下，通过 Kotlin/Native 构建的 framework 包含动态库。但可以<!--
 -->把它替换为静态库。
 
 下面的例子演示了如何使用这些设置。
