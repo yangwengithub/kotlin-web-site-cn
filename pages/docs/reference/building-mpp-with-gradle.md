@@ -2140,7 +2140,7 @@ binaries {
 
 #### 导出依赖项到二进制文件
 
-当构建 Objective-C framework 或原生库（共享或静态），经常不仅要打包当前项目的
+当构建 Objective-C framework 或原生库（共享或静态）时，经常不仅要打包当前项目的
 class，还需要打包其某些依赖项的 class。binaries DSL 允许使用 `export`
 方法指定将哪些依赖项将导出到二进制文件。注意，仅有相应源集的 API 依赖项可以被导出。
 
@@ -2212,10 +2212,10 @@ kotlin {
 
 > 如这个示例所展示的，maven 依赖项也可以被导出。但由于 Gradle 元数据的当前限制，这种依赖项<!--
 -->应该是平台依赖（例如 `kotlinx-coroutines-core-native_debug_macos_x64` 而不是 `kotlinx-coroutines-core-native`）
-或过渡导出（参见下文）。
+或被传递地导出（参见下文）。
 
-默认情况下，导出工作是不过渡的。如果导出了依赖于库 `bar` 的库 `foo`，那么仅有 `foo` 的方法将<!--
--->被添加到输出 framework。这个行为可以通过 `transitiveExport` flag 来改变。
+默认情况下，导出工作是不传递的。如果导出了依赖于库 `bar` 的库 `foo`，那么仅有 `foo` 的方法将<!--
+-->被添加到输出 framework。这个行为可以通过 `transitiveExport` 标志来改变。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
