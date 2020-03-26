@@ -2214,7 +2214,7 @@ kotlin {
 -->应该是平台依赖（例如 `kotlinx-coroutines-core-native_debug_macos_x64` 而不是 `kotlinx-coroutines-core-native`）
 或被传递地导出（参见下文）。
 
-默认情况下，导出工作是不传递的。如果导出了依赖于库 `bar` 的库 `foo`，那么仅有 `foo` 的方法将<!--
+默认情况下，导出工作是非传递性的。如果导出了依赖于库 `bar` 的库 `foo`，那么仅有 `foo` 的方法将<!--
 -->被添加到输出 framework。这个行为可以通过 `transitiveExport` 标志来改变。
 
 <div class="multi-language-sample" data-lang="groovy">
