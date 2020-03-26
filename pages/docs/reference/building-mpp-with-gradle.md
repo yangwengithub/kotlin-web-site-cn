@@ -2138,11 +2138,11 @@ binaries {
 </div>
 </div>
 
-#### 导出依赖项为二进制文件
+#### 导出依赖项到二进制文件
 
-When building an Objective-C framework or a native library (shared or static), it is often necessary to pack not just the
-classes of the current project, but also the classes of some of its dependencies. The Binaries DSL allows one to specify
-which dependencies will be exported to a binary using the `export` method. Note that only API dependencies of a corresponding source set can be exported.
+当构建 Objective-C framework 或原生库（共享或静态），经常不仅要打包当前项目的
+class，还需要打包其某些依赖项的 class。binaries DSL 允许使用 `export`
+方法指定将哪些依赖项将导出到二进制文件。注意，仅有相应源集的 API 依赖项可以被导出。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -2151,11 +2151,11 @@ which dependencies will be exported to a binary using the `export` method. Note 
 kotlin {
     sourceSets {
         macosMain.dependencies {
-            // Will be exported.
+            // 将被导出。
             api project(':dependency')
             api 'org.example:exported-library:1.0'
 
-            // Will not be exported.
+            // 将不被导出。
             api 'org.example:not-exported-library:1.0'
         }
     }
@@ -2167,7 +2167,7 @@ kotlin {
         }
 
         sharedLib {
-            // It's possible to export different sets of dependencies to different binaries.
+            // 可以将不同的依赖项集合导出到不同的二进制文件。
             export project(':dependency')
         }
     }
@@ -2184,11 +2184,11 @@ kotlin {
 kotlin {
     sourceSets {
         macosMain.dependencies {
-            // Will be exported.
+            // 将被导出。
             api(project(":dependency"))
             api("org.example:exported-library:1.0")
 
-            // Will not be exported.
+            // 将不被导出。
             api("org.example:not-exported-library:1.0")
         }
     }
@@ -2200,7 +2200,7 @@ kotlin {
         }
 
         sharedLib {
-            // It's possible to export different sets of dependencies to different binaries.
+            // 可以将不同的依赖项集合导出到不同的二进制文件。
             export(project(':dependency'))
         }
     }
@@ -2210,12 +2210,12 @@ kotlin {
 </div>
 </div>
 
-> As shown in this example, maven dependency also can be exported. But due to current limitations of Gradle metadata such a dependency
-should be either a platform one (e.g. `kotlinx-coroutines-core-native_debug_macos_x64` instead of `kotlinx-coroutines-core-native`)
-or be exported transitively (see below).
+> 如这个示例所展示的，maven 依赖项也可以被导出。但由于 Gradle 元数据的当前限制，这种依赖项<!--
+-->应该是平台依赖（例如 `kotlinx-coroutines-core-native_debug_macos_x64` 而不是 `kotlinx-coroutines-core-native`）
+或过渡导出（参见下文）。
 
-By default, export works non-transitively. If a library `foo` depending on library `bar` is exported, only methods of `foo` will
-be added in the output framework. This behaviour can be changed by the `transitiveExport` flag.
+默认情况下，导出工作是不过渡的。如果导出了依赖于库 `bar` 的库 `foo`，那么仅有 `foo` 的方法将<!--
+-->被添加到输出 framework。这个行为可以通过 `transitiveExport` flag 来改变。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -2224,7 +2224,7 @@ be added in the output framework. This behaviour can be changed by the `transiti
 binaries {
     framework {
         export project(':dependency')
-        // Export transitively.
+        // 过渡地导出。
         transitiveExport = true
     }
 }
@@ -2240,7 +2240,7 @@ binaries {
 binaries {
     framework {
         export(project(":dependency"))
-        // Export transitively.
+        // 过渡地导出。
         transitiveExport = true
     }
 }
