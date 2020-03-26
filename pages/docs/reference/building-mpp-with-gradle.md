@@ -2249,7 +2249,7 @@ binaries {
 </div>
 </div>
 
-#### 构建 universal framework
+#### 构建通用 framework
 
 By default, an Objective-C framework produced by Kotlin/Native supports only one platform. However, such frameworks can be merged
 into a single universal (fat) binary using the `lipo` utility. Particularly, such an operation makes sense for 32-bit and 64-bit iOS
