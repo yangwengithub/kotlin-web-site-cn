@@ -2085,7 +2085,7 @@ binaries {
         linkTask.dependsOn(additionalPreprocessingTask)
 
         // 访问运行任务。
-        // 注意，对于无主机的平台，runTask 为 null。
+        // 注意，对于非本机的平台，runTask 为 null。
         runTask?.dependsOn(prepareForRun)
     }
 
@@ -2124,7 +2124,7 @@ binaries {
         linkTask.dependsOn(additionalPreprocessingTask)
 
         // 访问运行任务。
-        // 注意，对于无主机的平台，runTask 为 null。
+        // 注意，对于非本机的平台，runTask 为 null。
         runTask?.dependsOn(prepareForRun)
     }
 
