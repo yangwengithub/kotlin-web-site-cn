@@ -2251,12 +2251,12 @@ binaries {
 
 #### 构建通用 framework
 
-By default, an Objective-C framework produced by Kotlin/Native supports only one platform. However, such frameworks can be merged
-into a single universal (fat) binary using the `lipo` utility. Particularly, such an operation makes sense for 32-bit and 64-bit iOS
-frameworks. In this case the resulting universal framework can be used on both 32-bit and 64-bit devices.
+默认情况下，仅支持一个平台通过 Kotlin/Native 产出 Objective-C framework。然而，这种 framework 可以使用 `lipo` 工具将其合并<!--
+-->到一个单独的、通用的（fat）二进制文件中。特别的，这种操作对于 32 位与 64 位的 iOS
+framework 是有意义的。在这种情况下，最终通用 framework 可以在 32 位与 64 位的设备上使用。
 
-The Gradle plugin provides a separate task that creates a universal framework for iOS targets from several regular ones.
-The example below shows how to use this task. Note that the fat framework must have the same base name as the initial frameworks.
+Gradle 插件提供了一个单独的任务，该任务从多个常规目标为 iOS 目标创建通用 framework。
+下面的示例展示了如何使用这个任务。注意，fat framework 必须具有与初始 framework 相同的基础名称。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -2265,7 +2265,7 @@ The example below shows how to use this task. Note that the fat framework must h
 import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
 
 kotlin {
-    // Create and configure the targets.
+    // 创建并配置目标。 
     targets {
         iosArm32("ios32")
         iosArm64("ios64")
@@ -2277,15 +2277,15 @@ kotlin {
         }
     }
 
-    // Create a task building a fat framework.
+    // 创建一个任务，用于构建 fat framework。
     task debugFatFramework(type: FatFrameworkTask) {
-        // The fat framework must have the same base name as the initial frameworks.
+        // fat framework 必须具有与初始 framework 相同的基础名称。
         baseName = "my_framework"
 
-        // The default destination directory is '<build directory>/fat-framework'.
+        // 默认目标目录是 “<build 目录>/fat-framework”。
         destinationDir = file("$buildDir/fat-framework/debug")
 
-        // Specify the frameworks to be merged.
+        // 指定要合并的 framework。
         from(
             targets.ios32.binaries.getFramework("DEBUG"),
             targets.ios64.binaries.getFramework("DEBUG")
@@ -2304,7 +2304,7 @@ kotlin {
 import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
 
 kotlin {
-    // Create and configure the targets.
+    // 创建并配置目标。 
     val ios32 = iosArm32("ios32")
     val ios64 = iosArm64("ios64")
 
@@ -2314,15 +2314,15 @@ kotlin {
         }
     }
 
-    // Create a task building a fat framework.
+    // 创建一个任务，用于构建 fat framework。
     tasks.create("debugFatFramework", FatFrameworkTask::class) {
-        // The fat framework must have the same base name as the initial frameworks.
+        // fat framework 必须具有与初始 framework 相同的基础名称。
         baseName = "my_framework"
 
-        // The default destination directory is '<build directory>/fat-framework'.
+        // 默认目标目录是 “<build 目录>/fat-framework”。
         destinationDir = buildDir.resolve("fat-framework/debug")
 
-        // Specify the frameworks to be merged.
+        // 指定要合并的 framework。
         from(
             ios32.binaries.getFramework("DEBUG"),
             ios64.binaries.getFramework("DEBUG")
