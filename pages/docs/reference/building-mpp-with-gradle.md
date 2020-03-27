@@ -2336,39 +2336,39 @@ kotlin {
 
 ### C 互操作支持
 
-Since Kotlin/Native provides [interoperability with native languages](native/c_interop.html),
-there is a DSL allowing one to configure this feature for a specific compilation.
+自 Kotlin/Native 提供了[与原生语言互操作](native/c_interop.html)，
+就有 DSL 允许为特定编译项配置这个特性。
 
-A compilation can interact with several native libraries. Interoperability with each of them can be configured in
-the `cinterops` block of the compilation:
+编译项可以与多个原生库交互。它们的互操作性可以在 compilation 的
+`cinterops` 块中配置：
 
 > Groovy DSL
 
 
 ```groovy
 kotlin {
-    linuxX64 { // Replace with a target you need.
+    linuxX64 { // 替换为你所需要的目标
         compilations.main {
             cinterops {
                 myInterop {
-                    // Def-file describing the native API.
-                    // The default path is src/nativeInterop/cinterop/<interop-name>.def
+                    // Def-file 描述原生 API。
+                    // 默认路径是 src/nativeInterop/cinterop/<互操作名称>.def
                     defFile project.file("def-file.def")
 
-                    // Package to place the Kotlin API generated.
+                    // 用于放置生成的 Kotlin API 的包。
                     packageName 'org.sample'
 
-                    // Options to be passed to compiler by cinterop tool.
+                    // 通过 cinterop 工具传递给编译器的选项
                     compilerOpts '-Ipath/to/headers'
 
-                    // Directories for header search (an analogue of the -I<path> compiler option).
+                    // 用于头文件搜索的目录（类似于编译器选项 -I<路径>）。
                     includeDirs.allHeaders("path1", "path2")
 
-                    // Additional directories to search headers listed in the 'headerFilter' def-file option.
-                    // -headerFilterAdditionalSearchPrefix command line option analogue.
+                    // 搜索在 “headerFilter” def-file 选项中列出的头文件的额外目录。
+                    // 类似于命令行参数 -headerFilterAdditionalSearchPrefix。
                     includeDirs.headerFilterOnly("path1", "path2")
 
-                    // A shortcut for includeDirs.allHeaders.
+                    // includeDirs.allHeaders 的快捷方式。
                     includeDirs("include/directory", "another/directory")
                 }
 
@@ -2387,29 +2387,29 @@ kotlin {
 
 ```kotlin
 kotlin {
-    linuxX64 {  // Replace with a target you need.
+    linuxX64 {  // 替换为你所需要的目标
         compilations.getByName("main") {
             val myInterop by cinterops.creating {
-                // Def-file describing the native API.
-                // The default path is src/nativeInterop/cinterop/<interop-name>.def
+                // Def-file 描述原生 API。
+                // 默认路径是 src/nativeInterop/cinterop/<互操作名称>.def
                 defFile(project.file("def-file.def"))
 
-                // Package to place the Kotlin API generated.
+                // 用于放置生成的 Kotlin API 的包。
                 packageName("org.sample")
 
-                // Options to be passed to compiler by cinterop tool.
+                // 通过 cinterop 工具传递给编译器的选项
                 compilerOpts("-Ipath/to/headers")
 
-                // Directories to look for headers.
+                // 用于寻找头文件的目录。
                 includeDirs.apply {
-                    // Directories for header search (an analogue of the -I<path> compiler option).
+                    // 用于头文件搜索的目录（类似于编译器选项 -I<路径>）。
                     allHeaders("path1", "path2")
 
-                    // Additional directories to search headers listed in the 'headerFilter' def-file option.
-                    // -headerFilterAdditionalSearchPrefix command line option analogue.
+                    // 搜索在 “headerFilter” def-file 选项中列出的头文件的额外目录。
+                    // 类似于命令行参数 -headerFilterAdditionalSearchPrefix。
                     headerFilterOnly("path1", "path2")
                 }
-                // A shortcut for includeDirs.allHeaders.
+                // includeDirs.allHeaders 的快捷方式。
                 includeDirs("include/directory", "another/directory")
             }
 
@@ -2423,5 +2423,5 @@ kotlin {
 
 
 
-Often it's necessary to specify target-specific linker options for a binary which uses a native library. It can by done
-using the `linkerOpts` property of the binary. See the [Configuring binaries](#configuring-binaries) section for details.
+经常需要为使用了原生库的二进制文件指定特定于目标的链接器选项。可以通过<!--
+-->使用二进制文件的 `linkerOpts` 属性来完成。参见[配置二进制文件](#配置二进制文件)部分获取更多详细内容。 
