@@ -2339,7 +2339,7 @@ kotlin {
 自 Kotlin/Native 提供了[与原生语言互操作](native/c_interop.html)，
 就有 DSL 允许为特定编译项配置这个特性。
 
-编译项可以与多个原生库相互作用。它们的互操作性可以在 compilation 的
+编译项可以与多个原生库交互。它们的互操作性可以在 compilation 的
 `cinterops` 块中配置：
 
 <div class="multi-language-sample" data-lang="groovy">
