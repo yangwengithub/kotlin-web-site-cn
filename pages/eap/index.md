@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Participate in the Kotlin Early Access Preview
+title: 参与 Kotlin 抢先体验预览
 main_nav_id: eap
 ---
 
-# Participate in the Kotlin Early Access Preview (EAP)
+# 参与 Kotlin 抢先体验预览（即 EAP，Early Access Preview）
 
 You can participate in the Kotlin Early Access Preview (EAP) to try out the latest Kotlin features before they are released.
 
@@ -49,6 +49,7 @@ check [our instructions on how to configure your build to support this version](
                 <li>New backend for Kotlin/JS that brings major improvements to the resulting artifacts</li>
                 <li>And many other improvements</li>
             </ul>
+            <p> For more details, please refer to <a href="https://blog.jetbrains.com/kotlin/2020/03/kotlin-1-4-m1-released/" target="_blank">the blog post</a>.</p>
          </td>
         <td>
             <ul>
