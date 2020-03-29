@@ -1804,42 +1804,42 @@ ios("anotherIos")
 
 ### 构建最终原生二进制文件
 
-By default, a Kotlin/Native target is compiled down to a `*.klib` library artifact, which can be consumed by Kotlin/Native itself as a
-dependency but cannot be executed or used as a native library. To declare final native binaries like executables or shared libraries a `binaries`
-property of a native target is used. This property represents a collection of native binaries built for this target in addition to the
-default `*.klib` artifact and provides a set of methods for declaring and configuring them.
+默认情况下，Kotlin/Native 目标将被编译为 `*.klib` 库构件，它可以被 Kotlin/Native 自身作为<!--
+-->依赖项使用，但并不能被执行，或是用作原生库。为了声明像可执行文件或是链接库的最终原生二进制文件，
+需要使用原生目标的 `binaries` 属性。除默认 `*.klib` 构建外，
+这个属性还代表一个为这个目标构建的原生二进制文件集合，并且提供了一系列声明和配置它们的方法。
 
-Note that the `kotlin-multiplaform` plugin doesn't create any production binaries by default. The only binary available by default
-is a debug executable allowing one to run tests from the `test` compilation.
+注意，`kotlin-multiplaform` 插件默认不会创建任何生产二进制文件。默认情况下，
+唯一可用的二进制文件是调试可执行文件，它允许运行来自 `test` 编译项的测试。
 
-#### Declaring binaries
+#### 声明二进制文件
 
-A set of factory methods is used for declaring elements of the `binaries` collection. These methods allow one to specify what kinds of binaries are to be created and configure them. The following binary kinds are supported (note that not all the kinds are available for
-all native platforms):
+`binaries` 集合的元素通过一套工厂方法声明。这些方法允许指定要创建的二进制类型并对其进行配置。以下是受支持的二进制类型（注意，
+并不是所有类型都可用于所有原生平台）：
 
-|**Factory method**|**Binary kind**|**Available for**|
+|**工厂方法**|**二进制类型**|**可用于**|
 | --- | --- | --- |
-|`executable` |a product executable    |all native targets|
-|`test`       |a test executable       |all native targets| 
-|`sharedLib`  |a shared native library |all native targets except `wasm32`|
-|`staticLib`  |a static native library  |all native targets except `wasm32`|
-|`framework`  |an Objective-C framework |macOS, iOS, watchOS, and tvOS targets only|
+|`executable` |产品可执行文件         |所有原生目标|
+|`test`       |测试可执行文件         |所有原生目标| 
+|`sharedLib`  |链接原生库             |除了 `wasm32` 以外的所有原生目标|
+|`staticLib`  |静态原生库             |除了 `wasm32` 以外的所有原生目标|
+|`framework`  |Objective-C framework |仅 macOS、iOS、watchOS 与 tvOS 目标|
 
-Each factory method exists in several versions. Consider them by example of the `executable` method. All the same versions are available
-for all other factory methods.
+每个工厂方法都有多个版本。通过 `executable` 方法的示例考虑他们。所有相同的版本<!--
+-->对所有其他的工厂方法都是可用的。
 
-The simplest version doesn't require any additional parameters and creates one binary for each build type.
-Currently there a two build types available: `DEBUG` (produces a not optimized binary with a debug information) and `RELEASE` (produces
-an optimized binary without debug information). Consequently the following snippet creates two executable binaries: debug and release.
+最简单的版本不需要任何额外的参数，并且会为每个构建类型都创建二进制文件。
+目前有两个可用的构建类型：`DEBUG` （生成带有调试信息的、未优化的二进制文件） 与 `RELEASE` （生成<!--
+-->不带有调试信息的、经过优化的二进制文件）。
 
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
 
 ```kotlin
 kotlin {
-    linuxX64 { // Use your target instead.
+    linuxX64 { // 更改为你所使用的目标。
         binaries {
             executable {
-                // Binary configuration.
+                // 二进制配置。
             }
         }
     }
@@ -1848,8 +1848,8 @@ kotlin {
 
 </div>
 
-A lambda expression accepted by the `executable` method in the example above is applied to each binary created and allows one to configure the binary
-(see the [corresponding section](#configuring-binaries)). Note that this lambda can be dropped if there is no need for additional configuration:
+在上面例子中的 `executable` 方法接受的 lambda 表达式将应用于创建的每个二进制文件，并且允许配置二进制文件。
+（参见[相应部分](#配置二进制文件)）。注意，如果不需要额外的配置，则可以删除这个 lambda：
 
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
 
@@ -1861,7 +1861,7 @@ binaries {
 
 </div>
 
-It is possible to specify which build types will be used to create binaries and which won't. In the following example only debug executable is created.
+可以指定哪些构建类型将用于创建二进制文件，哪些将不创建。以下的示例仅创建了调试可执行文件。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -1869,7 +1869,7 @@ It is possible to specify which build types will be used to create binaries and 
 ```groovy
 binaries {
     executable([DEBUG]) {
-        // Binary configuration.
+        // 二进制配置。
     }
 }
 ```
@@ -1883,7 +1883,7 @@ binaries {
 ```kotlin
 binaries {
     executable(listOf(DEBUG)) {
-        // Binary configuration.
+        // 二进制配置。
     }
 }
 ```
@@ -1891,7 +1891,7 @@ binaries {
 </div>
 </div>
 
-Finally the last factory method version allows customizing the binary name.
+最终，最后一个工厂方法版本允许自定义二进制文件名称。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -1899,12 +1899,12 @@ Finally the last factory method version allows customizing the binary name.
 ```groovy
 binaries {
     executable('foo', [DEBUG]) {
-        // Binary configuration.
+        // 二进制配置。
     }
 
-    // It's possible to drop the list of build types (all the available build types will be used in this case).
+    // 可以删除构建类型的列表（这种情况下，将使用所有可用的构建类型）。
     executable('bar') {
-        // Binary configuration.
+        // 二进制配置。
     }
 }
 ```
@@ -1918,12 +1918,12 @@ binaries {
 ```kotlin
 binaries {
     executable("foo", listOf(DEBUG)) {
-        // Binary configuration.
+        // 二进制配置。
     }
 
-    // It's possible to drop the list of build types (all the available build types will be used in this case).
+    // 可以删除构建类型的列表（这种情况下，将使用所有可用的构建类型）。
     executable("bar") {
-        // Binary configuration.
+        // 二进制配置。
     }
 }
 ```
@@ -1931,34 +1931,34 @@ binaries {
 </div>
 </div>
 
-The first argument in this example allows one to set a name prefix for the created binaries which is used to access them in the buildscript (see the ["Accessing binaries"](#accessing-binaries) section).
-Also this prefix is used as a default name for the binary file. For example on Windows the sample above produces files `foo.exe` and `bar.exe`.
+在这个示例中的第一个参数允许为创建的二进制文件设置名称前缀，该前缀用于在构建脚本中访问它们（参见 [“访问二进制文件”](#访问二进制文件) 部分）。
+这个前缀也用作二进制文件的默认名称。例如在 Windows 平台上，上面的示例将生产出 `foo.exe` 与 `bar.exe` 文件。
 
-#### Accessing binaries
+#### 访问二进制文件
 
-The binaries DSL allows not only creating binaries but also accessing already created ones to configure them or get their properties
-(e.g. path to an output file). The `binaries` collection implements the
-[`DomainObjectSet`](https://docs.gradle.org/current/javadoc/org/gradle/api/DomainObjectSet.html) interface and provides methods like
-`all` or `matching` allowing configuring groups of elements.
+binaries DSL 不仅允许创建二进制文件，还可以访问已经创建的二进制文件以配置它们或获取它们的属性
+（例如输出文件的路径）。`binaries` 集合实现了
+[`DomainObjectSet`](https://docs.gradle.org/current/javadoc/org/gradle/api/DomainObjectSet.html) 接口，并提供了类似
+`all` 或 `matching` 这些允许配置元素组的方法。
 
-Also it's possible to get a certain element of the collection. There are two ways to do this. First, each binary has a unique
-name. This name is based on the name prefix (if it's specified), build type and binary kind according to the following pattern:
-`<optional-name-prefix><build-type><binary-kind>`, e.g. `releaseFramework` or `testDebugExecutable`.
+也可以获取集合中的某些元素。有两种方式可以做到。第一种方式，每个库拥有独有的<!--
+-->名字。这个名称基于名称的前缀（如果已指定），构建类型和二进制种类根据以下模式：
+`<可选名称前缀><构建类型><二进制种类>`， 例如 `releaseFramework` 或 `testDebugExecutable`。
 
-> Note: static and shared libraries has suffixes `static` and `shared` respectively, e.g. `fooDebugStatic` or `barReleaseShared`
+> 注意：静态库和共享库分别有 `static` 与 `shared` 后缀，例如 `fooDebugStatic` 或 `barReleaseShared`
 
-This name can be used to access the binary:
+这个名称可以用于访问库：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
 ```groovy
-// Fails if there is no such a binary.
+// 如果没有这样的库将会导致错误。
 binaries['fooDebugExecutable']
 binaries.fooDebugExecutable
 binaries.getByName('fooDebugExecutable')
 
- // Returns null if there is no such a binary.
+ // 如果没有这样的库将返回 null。
 binaries.findByName('fooDebugExecutable')
 ```
 
@@ -1969,36 +1969,36 @@ binaries.findByName('fooDebugExecutable')
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
 
 ```kotlin
-// Fails if there is no such a binary.
+// 如果没有这样的库将会导致错误。
 binaries["fooDebugExecutable"]
 binaries.getByName("fooDebugExecutable")
 
- // Returns null if there is no such a binary.
+ // 如果没有这样的库将返回 null。
 binaries.findByName("fooDebugExecutable")
 ```
 
 </div>
 </div>
 
-The second way is using typed getters. These getters allow one to access a binary of a certain type by its name prefix and build type.
+第二种方式是使用标记过类型的 getter。这些 getter 允许通过它的名称前缀与构建类型访问某种类型的二进制文件。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
 ```groovy
-// Fails if there is no such a binary.
+// 如果没有这样的库将会导致错误。
 binaries.getExecutable('foo', DEBUG)
-binaries.getExecutable(DEBUG)          // Skip the first argument if the name prefix isn't set.
-binaries.getExecutable('bar', 'DEBUG') // You also can use a string for build type.
+binaries.getExecutable(DEBUG)          // 如果没有设置名称前缀则会跳过第一个参数。
+binaries.getExecutable('bar', 'DEBUG') // 你也可以使用字符串作为构建类型。
 
-// Similar getters are available for other binary kinds:
-// getFramework, getStaticLib and getSharedLib.
+// 类似的 getter 对其他二进制种类也是可以用的：
+// getFramework、getStaticLib 与 getSharedLib。
 
-// Returns null if there is no such a binary.
+// 如果没有这样的库将返回 null。
 binaries.findExecutable('foo', DEBUG)
 
-// Similar getters are available for other binary kinds:
-// findFramework, findStaticLib and findSharedLib.
+// 类似的 getter 对其他二进制种类也是可以用的：
+// findFramework、findStaticLib 与 findSharedLib。
 ```
 
 </div>
@@ -2008,57 +2008,57 @@ binaries.findExecutable('foo', DEBUG)
 <div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
 
 ```kotlin
-// Fails if there is no such a binary.
+// 如果没有这样的库将会导致错误。
 binaries.getExecutable("foo", DEBUG)
-binaries.getExecutable(DEBUG)          // Skip the first argument if the name prefix isn't set.
-binaries.getExecutable("bar", "DEBUG") // You also can use a string for build type.
+binaries.getExecutable(DEBUG)          // 如果没有设置名称前缀则会跳过第一个参数。
+binaries.getExecutable("bar", "DEBUG") // 你也可以使用字符串作为构建类型。
 
-// Similar getters are available for other binary kinds:
-// getFramework, getStaticLib and getSharedLib.
+// 类似的 getter 对其他二进制种类也是可以用的：
+// getFramework、getStaticLib 与 getSharedLib。
 
-// Returns null if there is no such a binary.
+// 如果没有这样的库将返回 null。
 binaries.findExecutable("foo", DEBUG)
 
-// Similar getters are available for other binary kinds:
-// findFramework, findStaticLib and findSharedLib.
+// 类似的 getter 对其他二进制种类也是可以用的：
+// findFramework、findStaticLib 与 findSharedLib。
 ```
 
 </div>
 </div>
 
-> Before 1.3.40, both test and product executables were represented by the same binary type. Thus to access the default test binary created by the plugin, the following line was used:
+> 1.3.40 之前，测试和产品可执行文件均由相同的二进制类型表示。因此，要访问通过插件创建的默认测试二进制文件，请使用下行：
 > ```
 > binaries.getExecutable("test", "DEBUG")
 > ``` 
-> Since 1.3.40, test executables are represented by a separate binary type and have their own getter. To access the default test binary, use:
+> 自 1.3.40 起，测试可执行文件由单独的二进制类型表示，并且拥有自己的 getter。要访问默认的测试库，请使用：
 > ```
 > binaries.getTest("DEBUG")
 > ```
 {:.note}
  
 
-#### Configuring binaries
+#### 配置二进制文件
 
-Binaries have a set of properties allowing one to configure them. The following options are available:
+二进制文件具有一套属性，允许配置它们。可用的选项有这些：
 
- - **Compilation.** Each binary is built on basis of some compilation available in the same target. The default value of this parameter depends
- on the binary type: `Test` binaries are based on the `test` compilation while other binaries - on the `main` compilation.
- - **Linker options.** Options passed to a system linker during binary building. One can use this setting for linking against some native library.
- - **Output file name.** By default the output file name is based on binary name prefix or, if the name prefix isn't specified, on a project name.
- But it's possible to configure the output file name independently using the `baseName` property. Note that final file name will be formed
- by adding system-dependent prefix and postfix to this base name. E.g. a `libfoo.so` is produced for a Linux shared library with the base name `foo`.
- - **Entry point** (for executable binaries only). By default the entry point for Kotlin/Native programs is a `main` function located in the root
- package. This setting allows one to change this default and use a custom function as an entry point. For example it can be used to move the `main`
- function from the root package.
- - **Access to the output file.**
- - **Access to a link task.**
- - **Access to a run task** (for executable binaries only). The `kotlin-multiplatform` plugin creates run tasks for all executable binaries of host
- platforms (Windows, Linux and macOS). Names of such tasks are based on binary names, e.g. `runReleaseExecutable<target-name>`
- or `runFooDebugExecutable<target-name>`. A run task can be accessed using the `runTask` property of an executable binary.
-- **Framework type** (only for Objective-C frameworks). By default a framework built by Kotlin/Native contains a dynamic library. But it's possible
- to replace it with a static library.
+ - **编译项。** 每个二进制都是基于相同目标中一些可用的编译项构建的。这个参数的默认值依赖<!--
+ -->于二进制类型：`Test` 二进制文件基于 `test` 编译项，而其他二进制文件基于 `main` 编译项。
+ - **链接器选项。** 选项将在二进制文件的构建期间被传递到系统链接器中。可以使用这个设置链接到某些原生库。
+ - **输出文件名称。** 默认情况下，输出文件名称基于二进制文件名称前缀，如果没有指定前缀，则基于项目名称。
+ 但可以使用 `baseName` 属性来单独配置输出文件名称。注意，最终文件名称将通过添加系统相关的前缀与后缀到这个基础名称形成。
+ 例如 Linux 共享库与基础名称 `foo` 将产出 `libfoo.so`。
+ - **入口点**（仅用于可执行的二进制文件）。默认情况下，Kotlin/Native 程序的入口点是位于根包的 `main`
+ 函数。这个设置允许改变这个默认值，并使用自定义的函数作为入口点。例如它可以用于将 `main`
+ 函数从根包中移出。
+ - **访问输出文件。**
+ - **访问链接任务。**
+ - **访问运行任务**（仅用于可执行的二进制文件）。`kotlin-multiplatform` 插件为主机平台（Windows、Linux 与 macOS）的所有可执行二进制文件创建运行任务。
+ 这些任务的名称基于二进制文件名称，例如 `runReleaseExecutable<目标名称>`
+ 或 `runFooDebugExecutable<目标名称>`。可以使用可执行二进制文件的 `runTask` 属性来访问运行任务。
+- **Framework 类型**（仅用于 Objective-C frameworks）。默认情况下，通过 Kotlin/Native 构建的 framework 包含动态库。但可以<!--
+-->把它替换为静态库。
 
-The following example shows how to use these settings.
+下面的例子演示了如何使用这些设置。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -2066,31 +2066,31 @@ The following example shows how to use these settings.
 ```groovy
 binaries {
     executable('my_executable', [RELEASE]) {
-        // Build a binary on the basis of the test compilation.
+        // 在测试编译项的基础上构建二进制文件。
         compilation = compilations.test
 
-        // Custom command line options for the linker.
+        // 为链接器自定义命令行选项。
         linkerOpts = ['-L/lib/search/path', '-L/another/search/path', '-lmylib']
 
-        // Base name for the output file.
+        // 用于输出文件的基础名称。
         baseName = 'foo'
 
-        // Custom entry point function.
+        // 自定义入口函数。
         entryPoint = 'org.example.main'
 
-        // Accessing the output file.
+        // 访问输出文件。
         println("Executable path: ${outputFile.absolutePath}")
 
-        // Accessing the link task.
+        // 访问链接任务。
         linkTask.dependsOn(additionalPreprocessingTask)
 
-        // Accessing the run task.
-        // Note that the runTask is null for non-host platforms.
+        // 访问运行任务。
+        // 注意，对于非本机的平台，runTask 为 null。
         runTask?.dependsOn(prepareForRun)
     }
 
     framework('my_framework' [RELEASE]) {
-        // Include a static library instead of a dynamic one into the framework.
+        // 在框架中包含静态库，而不是动态库。
         isStatic = true
     }
 }
@@ -2105,31 +2105,31 @@ binaries {
 ```kotlin
 binaries {
     executable("my_executable", listOf(RELEASE)) {
-        // Build a binary on the basis of the test compilation.
+        // 在测试编译项的基础上构建二进制文件。
         compilation = compilations["test"]
 
-        // Custom command line options for the linker.
+        // 为链接器自定义命令行选项。
         linkerOpts = mutableListOf("-L/lib/search/path", "-L/another/search/path", "-lmylib")
 
-        // Base name for the output file.
+        // 用于输出文件的基础名称。
         baseName = "foo"
 
-        // Custom entry point function.
+        // 自定义入口函数。
         entryPoint = "org.example.main"
 
-        // Accessing the output file.
+        // 访问输出文件。
         println("Executable path: ${outputFile.absolutePath}")
 
-        // Accessing the link task.
+        // 访问链接任务。
         linkTask.dependsOn(additionalPreprocessingTask)
 
-        // Accessing the run task.
-        // Note that the runTask is null for non-host platforms.
+        // 访问运行任务。
+        // 注意，对于非本机的平台，runTask 为 null。
         runTask?.dependsOn(prepareForRun)
     }
 
     framework("my_framework" listOf(RELEASE)) {
-        // Include a static library instead of a dynamic one into the framework.
+        // 在框架中包含静态库，而不是动态库。
         isStatic = true
     }
 }
@@ -2138,11 +2138,11 @@ binaries {
 </div>
 </div>
 
-#### Exporting dependencies to binaries
+#### 导出依赖项到二进制文件
 
-When building an Objective-C framework or a native library (shared or static), it is often necessary to pack not just the
-classes of the current project, but also the classes of some of its dependencies. The Binaries DSL allows one to specify
-which dependencies will be exported to a binary using the `export` method. Note that only API dependencies of a corresponding source set can be exported.
+当构建 Objective-C framework 或原生库（共享或静态）时，经常不仅要打包当前项目的
+class，还需要打包其某些依赖项的 class。binaries DSL 允许使用 `export`
+方法指定将哪些依赖项将导出到二进制文件。注意，仅有相应源集的 API 依赖项可以被导出。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -2151,11 +2151,11 @@ which dependencies will be exported to a binary using the `export` method. Note 
 kotlin {
     sourceSets {
         macosMain.dependencies {
-            // Will be exported.
+            // 将被导出。
             api project(':dependency')
             api 'org.example:exported-library:1.0'
 
-            // Will not be exported.
+            // 将不被导出。
             api 'org.example:not-exported-library:1.0'
         }
     }
@@ -2167,7 +2167,7 @@ kotlin {
         }
 
         sharedLib {
-            // It's possible to export different sets of dependencies to different binaries.
+            // 可以将不同的依赖项集合导出到不同的二进制文件。
             export project(':dependency')
         }
     }
@@ -2184,11 +2184,11 @@ kotlin {
 kotlin {
     sourceSets {
         macosMain.dependencies {
-            // Will be exported.
+            // 将被导出。
             api(project(":dependency"))
             api("org.example:exported-library:1.0")
 
-            // Will not be exported.
+            // 将不被导出。
             api("org.example:not-exported-library:1.0")
         }
     }
@@ -2200,7 +2200,7 @@ kotlin {
         }
 
         sharedLib {
-            // It's possible to export different sets of dependencies to different binaries.
+            // 可以将不同的依赖项集合导出到不同的二进制文件。
             export(project(':dependency'))
         }
     }
@@ -2210,12 +2210,12 @@ kotlin {
 </div>
 </div>
 
-> As shown in this example, maven dependency also can be exported. But due to current limitations of Gradle metadata such a dependency
-should be either a platform one (e.g. `kotlinx-coroutines-core-native_debug_macos_x64` instead of `kotlinx-coroutines-core-native`)
-or be exported transitively (see below).
+> 如这个示例所展示的，maven 依赖项也可以被导出。但由于 Gradle 元数据的当前限制，这种依赖项<!--
+-->应该是平台依赖（例如 `kotlinx-coroutines-core-native_debug_macos_x64` 而不是 `kotlinx-coroutines-core-native`）
+或被传递地导出（参见下文）。
 
-By default, export works non-transitively. If a library `foo` depending on library `bar` is exported, only methods of `foo` will
-be added in the output framework. This behaviour can be changed by the `transitiveExport` flag.
+默认情况下，导出工作是非传递性的。如果导出了依赖于库 `bar` 的库 `foo`，那么仅有 `foo` 的方法将<!--
+-->被添加到输出 framework。这个行为可以通过 `transitiveExport` 标志来改变。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -2224,7 +2224,7 @@ be added in the output framework. This behaviour can be changed by the `transiti
 binaries {
     framework {
         export project(':dependency')
-        // Export transitively.
+        // 过渡地导出。
         transitiveExport = true
     }
 }
@@ -2240,7 +2240,7 @@ binaries {
 binaries {
     framework {
         export(project(":dependency"))
-        // Export transitively.
+        // 过渡地导出。
         transitiveExport = true
     }
 }
@@ -2249,14 +2249,14 @@ binaries {
 </div>
 </div>
 
-#### Building universal frameworks
+#### 构建通用 framework
 
-By default, an Objective-C framework produced by Kotlin/Native supports only one platform. However, such frameworks can be merged
-into a single universal (fat) binary using the `lipo` utility. Particularly, such an operation makes sense for 32-bit and 64-bit iOS
-frameworks. In this case the resulting universal framework can be used on both 32-bit and 64-bit devices.
+默认情况下，仅支持一个平台通过 Kotlin/Native 产出 Objective-C framework。然而，这种 framework 可以使用 `lipo` 工具将其合并<!--
+-->到一个单独的、通用的（fat）二进制文件中。特别的，这种操作对于 32 位与 64 位的 iOS
+framework 是有意义的。在这种情况下，最终通用 framework 可以在 32 位与 64 位的设备上使用。
 
-The Gradle plugin provides a separate task that creates a universal framework for iOS targets from several regular ones.
-The example below shows how to use this task. Note that the fat framework must have the same base name as the initial frameworks.
+Gradle 插件提供了一个单独的任务，该任务从多个常规目标为 iOS 目标创建通用 framework。
+下面的示例展示了如何使用这个任务。注意，fat framework 必须具有与初始 framework 相同的基础名称。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -2265,7 +2265,7 @@ The example below shows how to use this task. Note that the fat framework must h
 import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
 
 kotlin {
-    // Create and configure the targets.
+    // 创建并配置目标。 
     targets {
         iosArm32("ios32")
         iosArm64("ios64")
@@ -2277,15 +2277,15 @@ kotlin {
         }
     }
 
-    // Create a task building a fat framework.
+    // 创建一个任务，用于构建 fat framework。
     task debugFatFramework(type: FatFrameworkTask) {
-        // The fat framework must have the same base name as the initial frameworks.
+        // fat framework 必须具有与初始 framework 相同的基础名称。
         baseName = "my_framework"
 
-        // The default destination directory is '<build directory>/fat-framework'.
+        // 默认目标目录是 “<build 目录>/fat-framework”。
         destinationDir = file("$buildDir/fat-framework/debug")
 
-        // Specify the frameworks to be merged.
+        // 指定要合并的 framework。
         from(
             targets.ios32.binaries.getFramework("DEBUG"),
             targets.ios64.binaries.getFramework("DEBUG")
@@ -2304,7 +2304,7 @@ kotlin {
 import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
 
 kotlin {
-    // Create and configure the targets.
+    // 创建并配置目标。 
     val ios32 = iosArm32("ios32")
     val ios64 = iosArm64("ios64")
 
@@ -2314,15 +2314,15 @@ kotlin {
         }
     }
 
-    // Create a task building a fat framework.
+    // 创建一个任务，用于构建 fat framework。
     tasks.create("debugFatFramework", FatFrameworkTask::class) {
-        // The fat framework must have the same base name as the initial frameworks.
+        // fat framework 必须具有与初始 framework 相同的基础名称。
         baseName = "my_framework"
 
-        // The default destination directory is '<build directory>/fat-framework'.
+        // 默认目标目录是 “<build 目录>/fat-framework”。
         destinationDir = buildDir.resolve("fat-framework/debug")
 
-        // Specify the frameworks to be merged.
+        // 指定要合并的 framework。
         from(
             ios32.binaries.getFramework("DEBUG"),
             ios64.binaries.getFramework("DEBUG")
@@ -2334,41 +2334,41 @@ kotlin {
 </div>
 </div>
 
-### CInterop support
+### C 互操作支持
 
-Since Kotlin/Native provides [interoperability with native languages](native/c_interop.html),
-there is a DSL allowing one to configure this feature for a specific compilation.
+自 Kotlin/Native 提供了[与原生语言互操作](native/c_interop.html)，
+就有 DSL 允许为特定编译项配置这个特性。
 
-A compilation can interact with several native libraries. Interoperability with each of them can be configured in
-the `cinterops` block of the compilation:
+编译项可以与多个原生库交互。它们的互操作性可以在 compilation 的
+`cinterops` 块中配置：
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
 
 ```groovy
 kotlin {
-    linuxX64 { // Replace with a target you need.
+    linuxX64 { // 替换为你所需要的目标
         compilations.main {
             cinterops {
                 myInterop {
-                    // Def-file describing the native API.
-                    // The default path is src/nativeInterop/cinterop/<interop-name>.def
+                    // Def-file 描述原生 API。
+                    // 默认路径是 src/nativeInterop/cinterop/<互操作名称>.def
                     defFile project.file("def-file.def")
 
-                    // Package to place the Kotlin API generated.
+                    // 用于放置生成的 Kotlin API 的包。
                     packageName 'org.sample'
 
-                    // Options to be passed to compiler by cinterop tool.
+                    // 通过 cinterop 工具传递给编译器的选项
                     compilerOpts '-Ipath/to/headers'
 
-                    // Directories for header search (an analogue of the -I<path> compiler option).
+                    // 用于头文件搜索的目录（类似于编译器选项 -I<路径>）。
                     includeDirs.allHeaders("path1", "path2")
 
-                    // Additional directories to search headers listed in the 'headerFilter' def-file option.
-                    // -headerFilterAdditionalSearchPrefix command line option analogue.
+                    // 搜索在 “headerFilter” def-file 选项中列出的头文件的额外目录。
+                    // 类似于命令行参数 -headerFilterAdditionalSearchPrefix。
                     includeDirs.headerFilterOnly("path1", "path2")
 
-                    // A shortcut for includeDirs.allHeaders.
+                    // includeDirs.allHeaders 的快捷方式。
                     includeDirs("include/directory", "another/directory")
                 }
 
@@ -2387,29 +2387,29 @@ kotlin {
 
 ```kotlin
 kotlin {
-    linuxX64 {  // Replace with a target you need.
+    linuxX64 {  // 替换为你所需要的目标
         compilations.getByName("main") {
             val myInterop by cinterops.creating {
-                // Def-file describing the native API.
-                // The default path is src/nativeInterop/cinterop/<interop-name>.def
+                // Def-file 描述原生 API。
+                // 默认路径是 src/nativeInterop/cinterop/<互操作名称>.def
                 defFile(project.file("def-file.def"))
 
-                // Package to place the Kotlin API generated.
+                // 用于放置生成的 Kotlin API 的包。
                 packageName("org.sample")
 
-                // Options to be passed to compiler by cinterop tool.
+                // 通过 cinterop 工具传递给编译器的选项
                 compilerOpts("-Ipath/to/headers")
 
-                // Directories to look for headers.
+                // 用于寻找头文件的目录。
                 includeDirs.apply {
-                    // Directories for header search (an analogue of the -I<path> compiler option).
+                    // 用于头文件搜索的目录（类似于编译器选项 -I<路径>）。
                     allHeaders("path1", "path2")
 
-                    // Additional directories to search headers listed in the 'headerFilter' def-file option.
-                    // -headerFilterAdditionalSearchPrefix command line option analogue.
+                    // 搜索在 “headerFilter” def-file 选项中列出的头文件的额外目录。
+                    // 类似于命令行参数 -headerFilterAdditionalSearchPrefix。
                     headerFilterOnly("path1", "path2")
                 }
-                // A shortcut for includeDirs.allHeaders.
+                // includeDirs.allHeaders 的快捷方式。
                 includeDirs("include/directory", "another/directory")
             }
 
@@ -2423,5 +2423,5 @@ kotlin {
 </div>
 </div>
 
-Often it's necessary to specify target-specific linker options for a binary which uses a native library. It can by done
-using the `linkerOpts` property of the binary. See the [Configuring binaries](#configuring-binaries) section for details.
+经常需要为使用了原生库的二进制文件指定特定于目标的链接器选项。可以通过<!--
+-->使用二进制文件的 `linkerOpts` 属性来完成。参见[配置二进制文件](#配置二进制文件)部分获取更多详细内容。 
