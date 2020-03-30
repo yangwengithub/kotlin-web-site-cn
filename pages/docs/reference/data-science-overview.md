@@ -56,6 +56,10 @@ conda install kotlin-jupyter-kernel -c jetbrains
 
 </div>
 
+There are also other installation options. For example, you may use `pip` package manager
+or install a non-stable version of the kernel. Get more info about installation process
+[here](https://github.com/Kotlin/kotlin-jupyter#installation).
+
 一旦内核安装完毕，就可以运行 Jupyter notebook 并切换到 Kotlin 内核。
 仅此而已，然后就可以在 notebook 中编写并运行 Kotlin 了！ 
 
@@ -169,6 +173,7 @@ Python 的 [ggplot](https://ggplot2.tidyverse.org/)。
 
 * [Smile](https://github.com/haifengl/smile)——一个全面的机器学习、自然语言处理、线性代数、
  图、插值与可视化系统
+   * [Smile-NLP-kt](https://github.com/londogard/smile-nlp-kt) - a Kotlin rewrite of the Scala implicits for the natural language processing part of Smile in the format of extension functions and interfaces.
 
 * [Apache Commons Math](http://commons.apache.org/proper/commons-math/)——一个 Java 通用数学、统计与机器学习库
 
