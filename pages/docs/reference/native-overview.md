@@ -29,7 +29,7 @@ Kotlin/Native 支持以下平台：
    * tvOS (arm64、 x86_64)
    * Android（arm32、arm64、 x86、 x86_64）
    * Windows（mingw x86_64、 x86）
-   * Linux（x86_64、 arm32、 MIPS、 MIPS 小端次序、树莓派）
+   * Linux（x86_64、 arm32、 arm64、 MIPS、 MIPS 小端次序）
    * WebAssembly（wasm32）
 
 ## 互操作
