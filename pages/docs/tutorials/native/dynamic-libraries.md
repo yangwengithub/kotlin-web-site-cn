@@ -427,7 +427,7 @@ Microsoft Visual Studio。
 包。
 
 在 Windows 上，动态库可以通过生成的静态库包装器<!--
--->以及手动编写代码的形式导入，使用 [LoadLibrary](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684175.aspx)
+-->以及手动编写代码的形式导入，使用 [LoadLibrary](https://docs.microsoft.com/en-gb/windows/win32/api/libloaderapi/nf-libloaderapi-loadlibrarya)
 处理或类似的 Win32API 功能。我们将使用第一种选项并为我们自己的
 `libnative.dll` 生成静态包装器。
  

@@ -7,9 +7,14 @@ title: "Opt-in Requirements"
 
 # 选择加入的要求
 
-> 要求选择加入的注解 `@RequiresOptIn` 与 `@OptIn` 在 Kotlin 1.3 中是 *实验性的*。
+> 要求选择加入的注解 `@RequiresOptIn` 与 `@OptIn` 是 *实验性的*。 
 > 请参阅[以下](#experimental-status-of-the-opt-in-requirements)用法详细信息。
-{:.note}
+{:.note} 
+
+> `@RequireOptIn` and `@OptIn` annotations were introduced in 1.3.70 to replace previously used `@Experimental` and `@UseExperimental`;
+> at the same time, `-Xopt-in` compiler option replaced `-Xuse-experimental`.
+{:.note} 
+
 
 Kotlin 标准库提供了一种机制，用于要求并明确同意使用 API 的某些元素。
 通过这种机制，库开发人员可以将使用其 API 需要选择加入的特定条件告知用户，
