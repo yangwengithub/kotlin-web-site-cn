@@ -135,7 +135,7 @@ annotation class Ann(val arg1: KClass<*>, val arg2: KClass<out Any>)
 ### Lambda 表达式
 
 注解也可以用于 lambda 表达式。它们会被应用于生成 lambda 表达式体的 `invoke()`
-方法上。这对于像 [Quasar](http://www.paralleluniverse.co/quasar/) 这样的框架很有用，
+方法上。这对于像 [Quasar](https://docs.paralleluniverse.co/quasar/) 这样的框架很有用，
 该框架使用注解进行并发控制。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
