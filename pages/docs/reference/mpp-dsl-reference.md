@@ -1,10 +1,10 @@
 ---
 type: doc
 layout: reference
-title: "Building Multiplatform Projects with Gradle"
+title: "以 Gradle 构建多平台项目"
 ---
 
-# Kotlin Multiplatform Gradle DSL Reference
+# Kotlin 多平台 Gradle DSL 参考
 
 > Multiplatform projects are an experimental feature in Kotlin 1.2 and 1.3. All of the language
 and tooling features described in this document are subject to change in future Kotlin versions.
@@ -15,28 +15,28 @@ projects. Here we provide a reference of its contents; use it as a reminder when
 for Kotlin multiplatform projects. For the concepts of Kotlin multiplatform projects and instructions on writing build scripts
 with the plugin, see [Building Multiplatform Projects with Gradle](building-mpp-with-gradle.html).
 
-## Table of Contents
+## 目录
  
-* [Id and version](#id-and-version)
-* [Top-level blocks](#top-level-blocks)
-* [Targets](#targets)
-    * [Common target configuration](#common-target-configuration)
-    * [JVM targets](#jvm-targets)
-    * [JavaScript targets](#javascript-targets)
-    * [Native targets](#native-targets)
-    * [Android targets](#android-targets)
-* [Source sets](#source-sets)
-    * [Predefined source sets](#predefined-source-sets)
-    * [Custom source sets](#custom-source-sets)
-    * [Source set parameters](#source-set-parameters)
-* [Compilations](#compilations)
-    * [Predefine compilations](#predefined-compilations)
-    * [Custom compilations](#custom-compilations)
-    * [Compilation parameters](#compilation-parameters)
-* [Dependencies](#dependencies)
-* [Language settings](#language-settings)
+* [id 与版本](#id-与版本)
+* [顶层块](#顶层块)
+* [目标](#目标)
+    * [公共目标配置](#公共目标配置)
+    * [JVM 目标](#jvm-目标)
+    * [JavaScript 目标](#javascript-目标)
+    * [Native 目标](#native-目标)
+    * [Android 目标](#android-目标)
+* [源集](#源集)
+    * [预定义源集](#预定义源集)
+    * [自定义源集](#自定义源集)
+    * [源集参数](#源集参数)
+* [编译项](#编译项)
+    * [预定义编译项](#预定义编译项)
+    * [自定义编译项](#自定义编译项)
+    * [编译项参数](#编译项参数)
+* [依赖项](#依赖项)
+* [语言设置](#语言设置)
 
-## Id and version
+## id 与版本
 
 The fully qualified name of the Kotlin Multiplatform Gradle plugin is `org.jetbrains.kotlin.multiplatform`. 
 If you use the Kotlin Gradle DSL, you can apply the plugin with `kotlin(“multiplatform”)`.
@@ -66,19 +66,19 @@ plugins {
 </div>
 </div>
 
-## Top-level blocks
+## 顶层块
 
 `kotlin` is the top-level block for multiplatform project configuration in the Gradle build script.
 Inside `kotlin`, you can write the following blocks:
 
 |**Block**|**Description**|
 | --- | --- |
-| _\<targetName\>_ |Declares a particular target of a project. The names of available targets are listed in the [Targets](#targets) section.|
+| _\<targetName\>_ |Declares a particular target of a project. The names of available targets are listed in the [Targets](#目标) section.|
 |`targets` |All targets of the project.|
 |`presets` |All predefined targets. Use this for [configuring multiple predefined targets](building-mpp-with-gradle.html#setting-up-targets) at once.|
 |`sourceSets` |Configures predefined and declares custom [source sets](building-mpp-with-gradle.html#configuring-source-sets) of the project. |
 
-## Targets
+## 目标
 
 _Target_ is a part of the build responsible for compiling, testing, and packaging a piece of software aimed for 
 one of the [supported platforms](building-mpp-with-gradle.html#supported-platforms). The targets of a multiplatform project
@@ -127,10 +127,10 @@ kotlin {
 
 Configuration of a target can include two parts:
 
-* [Common configuration](#common-target-configuration) available for all targets.
+* [Common configuration](#公共目标配置) available for all targets.
 * Target-specific configuration.
 
-### Common target configuration
+### 公共目标配置
 
 In any target block, you can use the following declarations:
 
@@ -142,9 +142,9 @@ In any target block, you can use the following declarations:
 |`artifactsTaskName`|The name of the task that builds the resulting artifacts of this target.|
 |`components`|The components used to setup Gradle publications.|
 
-### JVM targets
+### JVM 目标
 
-In addition to [common target configuration](#common-target-configuration), jvm targets have a specific function:
+In addition to [common target configuration](#公共目标配置), jvm targets have a specific function:
 
 |**Name**|**Description**| 
 | --- | --- |
@@ -167,7 +167,7 @@ kotlin {
 
 </div>
 
-### JavaScript targets
+### JavaScript 目标
 
 The `js` block describes the configuration of JavaScript targets. It can contain one of two blocks depending on the target execution environment:
 
@@ -231,7 +231,7 @@ kotlin {
 
 </div>
 
-### Native targets
+### Native 目标
 
 For native targets, the following specific blocks are available:
 
@@ -355,7 +355,7 @@ kotlin {
 </div>
 </div>
 
-### Android targets
+### Android 目标
 
 The Kotlin multiplatform plugin contains two specific functions for android targets.
 Two functions help you configure [build variants](https://developer.android.com/studio/build/build-variants):
@@ -383,16 +383,16 @@ For more details about configuring Android targets of multiplatform projects, se
 For information on writing build scripts for Android projects, see the [Android developer documentation](https://developer.android.com/studio/build).
 {:.note}
 
-## Source sets
+## 源集
 
 The `sourceSets` block describes source sets of the project. A source set contains Kotlin source files that participate
 in compilations together, along with their resources, dependencies, and language settings. 
 
-A multiplatform project contains [predefined](#predefined-source-sets) source sets for its targets;
-developers can also create [custom](#custom-source-sets) source sets for their needs.
+A multiplatform project contains [predefined](#预定义源集) source sets for its targets;
+developers can also create [custom](#自定义源集) source sets for their needs.
 For instructions on creating and configuring source sets, see [Configuring source sets](building-mpp-with-gradle.html#configuring-source-sets).
 
-### Predefined source sets
+### 预定义源集
 
 Predefined source sets are set up automatically upon creation of a multiplatform project.
 Available predefined source sets are the following:
@@ -435,7 +435,7 @@ kotlin {
 
 For more information about the predefined source sets, see [Default Project Layout](building-mpp-with-gradle.html#default-project-layout).
 
-### Custom source sets
+### 自定义源集
 
 Custom source sets are created by the project developers manually.
 To create a custom source set, add a section with its name inside the `sourceSets` section.
@@ -472,7 +472,7 @@ kotlin {
 Note that a newly created source set isn’t connected to other ones. To use it in the project’s compilations,
 connect it with other source sets as described in [Connecting source sets](building-mpp-with-gradle.html#connecting-source-sets).
 
-### Source set parameters
+### 源集参数
 
 Configurations of source sets are stored inside the corresponding blocks of `sourceSets`. A source set has the following parameters:
 
@@ -481,8 +481,8 @@ Configurations of source sets are stored inside the corresponding blocks of `sou
 |`kotlin.srcDir`|Location of Kotlin source files inside the source set directory.|
 |`resources.srcDir`|Location of resources inside the source set directory.|
 |`dependsOn`|Connection with another source set. The instructions on connecting source sets are provided in [Connecting source sets](building-mpp-with-gradle.html#connecting-source-sets).|
-|`dependencies`|[Dependencies](#dependencies) of the source set.|
-|`languageSettings`|[Language settings](building-mpp-with-gradle.html#language-settings) applied to the source set.|
+|`dependencies`|[依赖项](#依赖项) of the source set.|
+|`languageSettings`|[语言设置](building-mpp-with-gradle.html#语言设置) applied to the source set.|
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -526,15 +526,15 @@ kotlin {
 </div>
 </div>
 
-## Compilations
+## 编译项
 
-A target can have one or more compilations, for example, for production or testing. There are [predefined compilations](#predefined-compilations)
-that are added automatically upon target creation. Developers can additionally create [custom compilations](#custom-compilations).
+A target can have one or more compilations, for example, for production or testing. There are [predefined compilations](#预定义编译项)
+that are added automatically upon target creation. Developers can additionally create [custom compilations](#自定义编译项).
 
 To refer to all or some particular compilations of a target, use the `compilations` object collection.
 From `compilations`, you can refer to a compilation by its name.
 
-### Predefined compilations
+### 预定义编译项
 
 Predefined compilations are created automatically for each target of a project except for Android targets.
 Available predefined compilations are the following:
@@ -577,7 +577,7 @@ kotlin {
 </div>
 </div>
 
-### Custom compilations
+### 自定义编译项
 
 In addition to predefined compilations, developers can create their own custom compilations.
 To create a custom compilation, add a new item into the `compilations` collection.
@@ -635,7 +635,7 @@ kotlin {
 </div>
 </div>
 
-### Compilation parameters
+### 编译项参数
 
 A compilation has the following parameters:
 
@@ -715,7 +715,7 @@ kotlin {
 </div>
 </div>
 
-## Dependencies
+## 依赖项
 
 The dependencies block of the source set declaration contains the dependencies of this source set.
 There are four kinds of dependencies:
@@ -773,7 +773,7 @@ kotlin {
 </div>
 </div>
 
-Additionally, source sets can depend on each other. In this case, the [dependsOn()](#source-set-parameters) function is used.
+Additionally, source sets can depend on each other. In this case, the [dependsOn()](#源集参数) function is used.
 Source set dependencies can also be declared in the top-level `dependencies` block of the build script.
 In this case, their declarations follow the pattern `<sourceSetName><DependencyKind>`, for example, `commonMainApi`.
 
@@ -803,7 +803,7 @@ dependencies {
 </div>
 </div>
 
-## Language settings
+## 语言设置
 
 The languageSettings block of a source set defines certain aspects of project analysis and build. The following language settings are available:
 

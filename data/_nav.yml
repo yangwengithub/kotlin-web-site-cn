@@ -206,7 +206,7 @@ reference:
         - url: /docs/reference/building-mpp-with-gradle.html
           title: 以 Gradle 构建
         - url: /docs/reference/mpp-dsl-reference.html
-          title: Multiplatform Gradle DSL Reference
+          title: 多平台 Gradle DSL 参考
 
 
     - title: 更多语言结构
