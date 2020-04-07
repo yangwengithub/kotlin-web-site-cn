@@ -42,8 +42,8 @@ The fully qualified name of the Kotlin Multiplatform Gradle plugin is `org.jetbr
 If you use the Kotlin Gradle DSL, you can apply the plugin with `kotlin(“multiplatform”)`.
 The plugin versions match the Kotlin release versions. The most recent version is {{ site.data.releases.latest.version }}.
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
+> Groovy DSL
 
 ```groovy
 plugins {
@@ -51,11 +51,11 @@ plugins {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+
+
+> Kotlin DSL
 
 ```kotlin
 plugins {
@@ -63,8 +63,8 @@ plugins {
 }
 ```
 
-</div>
-</div>
+
+
 
 ## 顶层块
 
@@ -112,7 +112,7 @@ The complete list of available targets is the following:
 |`mingwX86`|32-bit Microsoft Windows|
 |`wasm32`|WebAssembly|
 
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+> Groovy DSL
 
 ```groovy
 kotlin {
@@ -123,7 +123,7 @@ kotlin {
 }
 ```
 
-</div>
+
 
 Configuration of a target can include two parts:
 
@@ -155,7 +155,7 @@ don't follow the Java plugin's defaults. Instead, they are derived from the Kotl
 has the default name `jvm`, the paths are `src/jvmMain/java` (for production Java sources) and `src/jvmTest/java` for test Java sources.
 For more information, see [Java support in JVM targets](building-mpp-with-gradle.html#java-support-in-jvm-targets).
 
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+> Kotlin DSL
 
 ```kotlin
 kotlin {
@@ -165,7 +165,7 @@ kotlin {
 }
 ```
 
-</div>
+
 
 ### JavaScript 目标
 
@@ -190,7 +190,7 @@ For details about configuring Kotlin/JS projects, see [Setting up a Kotlin/JS pr
 |`dceTask`|Configuration of [Dead Code Elimination](javascript-dce.html).|
 |`distribution`|Path to output files.|
 
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+> Kotlin DSL
 
 ```kotlin
 kotlin {
@@ -207,7 +207,7 @@ kotlin {
 }
 ```
 
-</div>
+
 
 #### Node.js
 
@@ -218,7 +218,7 @@ kotlin {
 |`testRuns`|Configuration of test execution.|
 |`runTask`|Configuration of project running.|
 
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+> Kotlin DSL
 
 ```kotlin
 kotlin {
@@ -229,7 +229,7 @@ kotlin {
 }
 ```
 
-</div>
+
 
 ### Native 目标
 
@@ -254,7 +254,7 @@ There are the following kinds of binaries:
 
 For more information on configuring binaries, see [Building final native binaries](building-mpp-with-gradle.html#building-final-native-binaries).
 
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+> Kotlin DSL
 
 ```kotlin
 kotlin {
@@ -268,7 +268,7 @@ kotlin {
 }
 ```
 
-</div>
+
 
 #### CInterops
 
@@ -284,8 +284,8 @@ To provide an interop with a library, add an entry to `cinterops` and define its
 
 For more information on Kotlin interop with C libraries, see [CInterop support](building-mpp-with-gradle.html#cinterop-support).
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
+> Groovy DSL
 
 ```groovy
 kotlin {
@@ -317,11 +317,11 @@ kotlin {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+
+
+> Kotlin DSL
 
 ```kotlin
 kotlin {
@@ -352,8 +352,8 @@ kotlin {
 
 ```
 
-</div>
-</div>
+
+
 
 ### Android 目标
 
@@ -365,7 +365,7 @@ Two functions help you configure [build variants](https://developer.android.com/
 |`publishLibraryVariants()`|Specifies build variants to publish. For usage instructions, see [Publishing Android libraries](building-mpp-with-gradle.html#publishing-android-libraries).|
 |`publishAllLibraryVariants()`|Publishes all build variants.|
 
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+> Kotlin DSL
 
 ```kotlin
 kotlin {
@@ -375,7 +375,7 @@ kotlin {
 }
 ```
 
-</div>
+
 
 For more details about configuring Android targets of multiplatform projects, see [Android Support](building-mpp-with-gradle.html#android-support).
 
@@ -405,8 +405,8 @@ Available predefined source sets are the following:
 
 With Kotlin Gradle DSL, the sections of predefined source sets should be marked `by getting`.
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
+> Groovy DSL
 
 ```groovy
 kotlin { 
@@ -416,11 +416,11 @@ kotlin {
 }
 ``` 
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+
+
+> Kotlin DSL
 
 ```kotlin
 kotlin { 
@@ -430,8 +430,8 @@ kotlin {
 }
 ```
 
-</div>
-</div>
+
+
 
 For more information about the predefined source sets, see [Default Project Layout](building-mpp-with-gradle.html#default-project-layout).
 
@@ -441,8 +441,8 @@ Custom source sets are created by the project developers manually.
 To create a custom source set, add a section with its name inside the `sourceSets` section.
 If using Kotlin Gradle DSL, mark custom source sets `by creating`.
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
+> Groovy DSL
 
 ```groovy
 kotlin { 
@@ -452,11 +452,11 @@ kotlin {
 }
 ``` 
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+
+
+> Kotlin DSL
 
 ```kotlin
 kotlin { 
@@ -466,8 +466,8 @@ kotlin {
 }
 ```
 
-</div>
-</div>
+
+
 
 Note that a newly created source set isn’t connected to other ones. To use it in the project’s compilations,
 connect it with other source sets as described in [Connecting source sets](building-mpp-with-gradle.html#connecting-source-sets).
@@ -484,8 +484,8 @@ Configurations of source sets are stored inside the corresponding blocks of `sou
 |`dependencies`|[依赖项](#依赖项) of the source set.|
 |`languageSettings`|[语言设置](building-mpp-with-gradle.html#语言设置) applied to the source set.|
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
+> Groovy DSL
 
 ```groovy
 kotlin { 
@@ -502,11 +502,11 @@ kotlin {
 }
 ``` 
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+
+
+> Kotlin DSL
 
 ```kotlin
 kotlin { 
@@ -523,8 +523,8 @@ kotlin {
 }
 ```
 
-</div>
-</div>
+
+
 
 ## 编译项
 
@@ -544,8 +544,8 @@ Available predefined compilations are the following:
 |`main`|Compilation for production sources.|
 |`test`|Compilation for tests.|
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
+> Groovy DSL
 
 ```groovy
 kotlin {
@@ -556,11 +556,11 @@ kotlin {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+
+
+> Kotlin DSL
 
 ```kotlin
 kotlin {
@@ -574,8 +574,8 @@ kotlin {
 }
 ```
 
-</div>
-</div>
+
+
 
 ### 自定义编译项
 
@@ -583,8 +583,8 @@ In addition to predefined compilations, developers can create their own custom c
 To create a custom compilation, add a new item into the `compilations` collection.
 If using Kotlin Gradle DSL, mark custom compilations `by creating`.
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
+> Groovy DSL
 
 ```groovy
 kotlin {
@@ -605,11 +605,11 @@ kotlin {
 }
 ```
 
-</div> 
-</div>
+ 
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+
+> Kotlin DSL
 
 ```kotlin
 kotlin {
@@ -632,8 +632,8 @@ kotlin {
 }
 ```
 
-</div>
-</div>
+
+
 
 ### 编译项参数
 
@@ -652,8 +652,8 @@ A compilation has the following parameters:
 |`compileDependencyFiles`|Compile-time dependency files (classpath) of the compilation.|
 |`runtimeDependencyFiles`|Runtime dependency files (classpath) of the compilation.|
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
+> Groovy DSL
 
 ```groovy
 kotlin {
@@ -679,11 +679,11 @@ kotlin {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+
+
+> Kotlin DSL
 
 ```kotlin
 kotlin {
@@ -712,8 +712,8 @@ kotlin {
 }
 ```
 
-</div>
-</div>
+
+
 
 ## 依赖项
 
@@ -727,8 +727,8 @@ There are four kinds of dependencies:
 |`compileOnly`|Dependencies used only for compilation of the current module.|
 |`runtimeOnly`|Dependencies available at runtime but not visible during compilation of any module.|
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
+> Groovy DSL
 
 ```groovy
 kotlin {
@@ -747,11 +747,11 @@ kotlin {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+
+
+> Kotlin DSL
 
 ```groovy
 kotlin {
@@ -770,15 +770,15 @@ kotlin {
 }
 ```
 
-</div>
-</div>
+
+
 
 Additionally, source sets can depend on each other. In this case, the [dependsOn()](#源集参数) function is used.
 Source set dependencies can also be declared in the top-level `dependencies` block of the build script.
 In this case, their declarations follow the pattern `<sourceSetName><DependencyKind>`, for example, `commonMainApi`.
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
+> Groovy DSL
 
 ```groovy
 dependencies {
@@ -787,11 +787,11 @@ dependencies {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+
+
+> Kotlin DSL
 
 ```kotlin
 dependencies {
@@ -800,8 +800,8 @@ dependencies {
 }
 ```
 
-</div>
-</div>
+
+
 
 ## 语言设置
 
@@ -815,8 +815,8 @@ The languageSettings block of a source set defines certain aspects of project an
 |`useExperimentalAnnotation`|Allows using the specified [opt-in annotation](opt-in-requirements.html).|
 |`progressiveMode`|Enables the [progressive mode](whatsnew13.html#progressive-mode).|
 
-<div class="multi-language-sample" data-lang="groovy">
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+
+> Groovy DSL
 
 ```groovy
 kotlin {
@@ -834,11 +834,11 @@ kotlin {
 }
 ```
 
-</div>
-</div>
 
-<div class="multi-language-sample" data-lang="kotlin">
-<div class="sample" markdown="1" theme="idea" mode='kotlin' data-highlight-only>
+
+
+
+> Kotlin DSL
 
 ```kotlin
 kotlin {
@@ -856,5 +856,4 @@ kotlin {
 }
 ```
 
-</div>
-</div>
+
