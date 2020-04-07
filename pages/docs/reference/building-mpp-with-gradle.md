@@ -401,7 +401,7 @@ kotlin {
     * `iosArm32`、 `iosArm64`、 `iosX64` 用于 iOS；
     * `watchosArm32`、 `watchosArm64`、 `watchosX86` 用于 watchOS；
     * `tvosArm64`、 `tvosX64` 用于 tvOS；
-    * `linuxArm32Hfp`、 `linuxMips32`、 `linuxMipsel32`、 `linuxX64` 用于 Linux；
+    * `linuxArm64`、 `linuxArm32Hfp`、 `linuxMips32`、 `linuxMipsel32`、 `linuxX64` 用于 Linux；
     * `macosX64` 用于 MacOS；
     * `mingwX64` 与 `mingwX86` 用于 Windows；
     * `wasm32` 用于 WebAssembly。

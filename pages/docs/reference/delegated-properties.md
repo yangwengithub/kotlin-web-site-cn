@@ -248,19 +248,61 @@ fun example(computeFoo: () -> Foo) {
 
 这里我们总结了委托对象的要求。
 
-对于一个**只读**属性（即 *val*{:.keyword} 声明的），委托必须提供一个名为 `getValue` 的函数，该函数接受以下参数：
+对于一个**只读**属性（即 *val*{:.keyword} 声明的），委托必须提供一个操作符函数 `getValue()`，该函数具有以下参数：
 
-* `thisRef` —— 必须与 _属性所有者_ 类型（对于扩展属性——指被扩展的类型）相同或者是它的超类型；
+* `thisRef` —— 必须与 _属性所有者_ 类型（对于扩展属性——指被扩展的类型）相同或者是其超类型。
 * `property` —— 必须是类型 `KProperty<*>` 或其超类型。
  
-这个函数必须返回与属性相同的类型（或其子类型）。
+`getValue()` 必须返回与属性相同的类型（或其子类型）。
 
-对于一个**可变**属性（即 *var*{:.keyword} 声明的），委托必须*额外*提供一个名为 `setValue` 的函数，该函数接受以下参数：
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```kotlin
+class Resource
+
+class Owner {
+    val valResource: Resource by ResourceDelegate()
+}
+
+class ResourceDelegate {
+    operator fun getValue(thisRef: Owner, property: KProperty<*>): Resource {
+        return Resource()
+    }
+}
+```
+
+</div>
+
+对于一个**可变**属性（即 *var*{:.keyword} 声明的），委托必须额外提供一个操作符函数 `setValue()`，
+该函数具有以下参数：
+
+* `thisRef` —— 必须与 _属性所有者_ 类型（对于扩展属性——指被扩展的类型）相同或者是其超类型。
+* `property` —— 必须是类型 `KProperty<*>` 或其超类型。
+* `value` --- 必须与属性类型相同（或者是其超类型）。
  
-* `thisRef` —— 同 `getValue()`；
-* `property` —— 同 `getValue()`；
-* new value —— 必须与属性同类型或者是它的子类型。
- 
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```kotlin
+class Resource
+
+class Owner {
+    var varResource: Resource by ResourceDelegate()
+}
+
+class ResourceDelegate(private var resource: Resource = Resource()) {
+    operator fun getValue(thisRef: Owner, property: KProperty<*>): Resource {
+        return resource
+    }
+    operator fun setValue(thisRef: Owner, property: KProperty<*>, value: Any?) {
+        if (value is Resource) {
+            resource = value
+        }
+    }
+}
+```
+
+</div>
+
 `getValue()` 或/与 `setValue()` 函数可以通过委托类的成员函数提供或者由扩展函数提供。
 当你需要委托属性到原本未提供的这些函数的对象时后者会更便利。
 两函数都需要用 `operator` 关键字来进行标记。
