@@ -250,7 +250,7 @@ fun example(computeFoo: () -> Foo) {
 
 对于一个**只读**属性（即 *val*{:.keyword} 声明的），委托必须提供一个操作符函数 `getValue()`，该函数具有以下参数：
 
-* `thisRef` —— 必须与 _属性所有者_ 类型（对于扩展属性——指被扩展的类型）相同或者是它的超类型。
+* `thisRef` —— 必须与 _属性所有者_ 类型（对于扩展属性——指被扩展的类型）相同或者是其超类型。
 * `property` —— 必须是类型 `KProperty<*>` 或其超类型。
  
 `getValue()` 必须返回与属性相同的类型（或其子类型）。
@@ -276,9 +276,9 @@ class ResourceDelegate {
 对于一个**可变**属性（即 *var*{:.keyword} 声明的），委托必须额外提供一个操作符函数 `setValue()`，
 该函数具有以下参数：
 
-* `thisRef` --- must be the same or a supertype of the _property owner_ (for extension properties --- the type being extended).
-* `property` --- must be of type `KProperty<*>` or its supertype.
-* `value` --- must be of the same type as the property (or its supertype).
+* `thisRef` —— 必须与 _属性所有者_ 类型（对于扩展属性——指被扩展的类型）相同或者是其超类型。
+* `property` —— 必须是类型 `KProperty<*>` 或其超类型。
+* `value` --- 必须与属性类型相同（或者是其超类型）。
  
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
