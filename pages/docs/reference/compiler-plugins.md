@@ -6,10 +6,10 @@ title: "编译器插件"
 
 # 编译器插件
 
-* [All-open compiler plugin](#all-open-compiler-plugin)
-* [No-arg compiler plugin](#no-arg-compiler-plugin)
-* [SAM-with-receiver compiler plugin](#sam-with-receiver-compiler-plugin)
-* [`Parcelable` implementations generator](#parcelable-implementations-generator)
+* [全开放编译器插件](#全开放编译器插件)
+* 无参编译器插件](#无参编译器插件)
+* [带有接收者的 SAM 编译器插件](#带有接收者的-sam-编译器插件)
+* [`Parcelable` 实现生成器](#parcelable-实现生成器)
 
 ## 全开放编译器插件
 
@@ -470,7 +470,7 @@ samWithReceiver {
 
 </div>
 
-## `Parcelable` implementations generator
+## `Parcelable` 实现生成器
 
 Android Extensions plugin provides [`Parcelable`](https://developer.android.com/reference/android/os/Parcelable) implementation generator.
 
@@ -510,7 +510,7 @@ data class User(val firstName: String, val lastName: String, val age: Int) : Par
 </div>
 
 
-### Supported types
+### 已支持类型
 
 `@Parcelize` supports a wide range of types:
 
@@ -527,7 +527,7 @@ data class User(val firstName: String, val lastName: String, val age: Int) : Par
 - nullable versions of all supported types.
 
 
-### Custom `Parceler`s
+### 自定义 `Parceler`
 
 Even if your type is not supported directly, you can write a `Parceler` mapping object for it.
 
