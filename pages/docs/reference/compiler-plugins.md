@@ -476,7 +476,7 @@ Android Extensions plugin provides [`Parcelable`](https://developer.android.com/
 
 Annotate the class with `@Parcelize`, and a `Parcelable` implementation will be generated automatically.
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 import kotlinx.android.parcel.Parcelize
@@ -484,14 +484,14 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 class User(val firstName: String, val lastName: String, val age: Int): Parcelable
 ```
-</div>
+
 
 `@Parcelize` requires all serialized properties to be declared in the primary constructor. Android Extensions will issue a warning on each property 
 with a backing field declared in the class body. Also, `@Parcelize` can't be applied if some of the primary constructor parameters are not properties.
 
 If your class requires more advanced serialization logic, write it inside a companion class:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 @Parcelize
@@ -507,7 +507,7 @@ data class User(val firstName: String, val lastName: String, val age: Int) : Par
     }
 }
 ```
-</div>
+
 
 
 ### 已支持类型
@@ -531,7 +531,7 @@ data class User(val firstName: String, val lastName: String, val age: Int) : Par
 
 Even if your type is not supported directly, you can write a `Parceler` mapping object for it.
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 class ExternalClass(val value: Int)
@@ -544,11 +544,11 @@ object ExternalClassParceler : Parceler<ExternalClass> {
     }
 }
 ```
-</div>
+
 
 External parcelers can be applied using `@TypeParceler` or `@WriteWith` annotations:
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 // Class-local parceler
@@ -564,4 +564,4 @@ class MyClass(@TypeParceler<ExternalClass, ExternalClassParceler>() val external
 @Parcelize
 class MyClass(val external: @WriteWith<ExternalClassParceler>() ExternalClass)
 ```
-</div>
+
