@@ -75,7 +75,7 @@ vert.x 或 JSF。另外还有一些 Kotlin 写的特定框架，例如 [Ktor](ht
 ### 哪些 IDE 支持 Kotlin？
 
 所有主要的 Java IDE 都支持 Kotlin，包括 [IntelliJ IDEA](https://www.kotlincn.net/docs/tutorials/getting-started.html)、
-[Android Studio](https://www.kotlincn.net/docs/tutorials/kotlin-android.html)、[Eclipse](https://www.kotlincn.net/docs/tutorials/getting-started-eclipse.html) 和
+[Android Studio](https://developer.android.com/kotlin/get-started)、[Eclipse](https://www.kotlincn.net/docs/tutorials/getting-started-eclipse.html) 和
 [NetBeans](http://plugins.netbeans.org/plugin/68590/kotlin)。另外，有一个[命令行编译器](https://www.kotlincn.net/docs/tutorials/command-line.html)<!--
 -->可用，为编译和运行应用程序提供了直接的支持。
   
