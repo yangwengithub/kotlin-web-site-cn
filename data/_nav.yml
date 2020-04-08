@@ -353,7 +353,7 @@ tutorials:
           title: 心印
         - url: /docs/tutorials/competitive-programming.html
           title: 竞技程序设计
-    - title: Java Interop
+    - title: Java 互操作
       content:
         - url: /docs/tutorials/mixing-java-kotlin-intellij.html
           title: 在一个项目中混用 Java 与 Kotlin
