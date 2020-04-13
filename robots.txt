@@ -1,5 +1,5 @@
 User-agent: *
-Host: kotlinlang.org
+Host: www.kotlincn.net
 
 # Sitemaps
-sitemap: https://kotlinlang.org/sitemap.xml
+sitemap: https://www.kotlincn.net/sitemap.xml
