@@ -119,16 +119,16 @@ var declarationCount = 1
 
 </div>
 
-例外：用于创建类实例的工厂函数可以与要创建的类具有相同的名称：
+例外：用于创建类实例的工厂函数可以与抽象返回类型具有相同的名称：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-abstract class Foo { /*……*/ }
+interface Foo { /*……*/ }
 
 class FooImpl : Foo { /*……*/ }
 
-fun FooImpl(): Foo { return FooImpl() }
+fun Foo(): Foo { return FooImpl() }
 ```
 </div>
 

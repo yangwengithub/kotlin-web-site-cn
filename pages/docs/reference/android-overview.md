@@ -7,46 +7,27 @@ title: "Kotlin 用于 Android 开发"
 
 # 使用 Kotlin 进行 Android 开发
 
-Kotlin 非常适合开发 Android 应用程序，将现代语言的所有优势带入
-Android 平台而不会引入任何新的限制：
+Android mobile development has been Kotlin-first since Google I/O in 2019.
 
-  * **兼容性**：Kotlin 与 JDK 6 完全兼容，保障了 Kotlin 应用程序可以在较旧的
-    Android 设备上运行而无任何问题。Kotlin 工具在 Android Studio 中会完全支持，并且兼容 Android 构建系统。
-  * **性能**：由于非常相似的字节码结构，Kotlin 应用程序的运行速度与 Java 类似。
-    随着 Kotlin 对内联函数的支持，使用 lambda 表达式的代码通常比用 Java 写的代码运行得更快。
-  * **互操作性**：Kotlin 可与 Java 进行 100％ 的互操作，允许在 Kotlin 应用程序中使用所有现有的 Android 库
-    。这包括注解处理，所以数据绑定与 Dagger 也是一样。
-  * **占用**：Kotlin 具有非常紧凑的运行时库，可以通过使用 ProGuard 进一步减少。
-    在[实际应用程序](https://blog.gouline.net/kotlin-production-tales-62b56057dc8a)中，Kotlin 运行时<!--
-    -->只增加几百个方法以及 .apk 文件不到 100K 大小。
-  * **编译时长**：Kotlin 支持高效的增量编译，所以对于<!--
-    -->清理构建会有额外的开销，[增量构建通常与 Java 一样快或者更快](https://medium.com/keepsafe-engineering/kotlin-vs-java-compilation-speed-e6c174b39b5d)。
-  * **学习曲线**：对于 Java 开发人员，Kotlin 入门很容易。包含在 Kotlin 插件中的自动 Java 到 Kotlin 的转换器<!--
-    -->有助于迈出第一步。[Kotlin 心印](https://www.kotlincn.net/docs/tutorials/koans.html) 通过一系列互动练习提供了语言主要功能的指南。
+Using Kotlin for Android development, you can benefit from:
 
-## Kotlin 用于 Android 的案例学习
+* **Less code combined with greater readability**. Spend less time writing your code and working to understand the code of others.
+* **Mature language and environment**. Since its creation in 2011, Kotlin has developed continuously, not only as a language 
+but as a whole ecosystem with robust tooling. Now it's seamlessly integrated in Android Studio and is actively used by many companies 
+for developing Android applications.
+* **Kotlin support in Android Jetpack and other libraries**. [KTX extensions](https://developer.android.com/kotlin/ktx) add Kotlin language features, 
+such as coroutines, extension functions, lambdas, and named parameters, to existing Android libraries.
+* **Interoperability with Java**. You can use Kotlin along with the Java programming language in your applications without needing to migrate all your code 
+to Kotlin.
+* **Support for multiplatform development**. You can use Kotlin for developing not only Android but also [iOS](https://www.jetbrains.com/lp/mobilecrossplatform/), backend, and web applications. 
+Enjoy the benefits of sharing the common code among the platforms.
+* **Code safety**. Less code and better readability lead to fewer errors. The Kotlin compiler detects these remaining errors, making the code safe.
+* **Easy learning**. Kotlin is very easy to learn, especially for Java developers.
+* **Big community**. Kotlin has great support and many contributions from the community, which is growing all over the world. 
+According to Google, over 60% of the top 1000 apps on the Play Store use Kotlin.
 
-Kotlin 已被一些大公司成功采用，其中一些公司分享了他们的经验：
+Many startups and Fortune 500 companies have already developed Android applications using Kotlin – see the list at [the Google website for Kotlin developers](https://developer.android.com/kotlin).
 
-  * Pinterest 已经成功地[将 Kotlin 引入了他们的应用程序中](https://www.youtube.com/watch?v=mDpnc45WwlI)，每个月有 1 亿 5 千万人使用。
-  * Basecamp 的 Android 应用程序是 [100％ Kotlin 代码](https://m.signalvnoise.com/how-we-made-basecamp-3s-android-app-100-kotlin-35e4e1c0ef12)，他们报告了程序员幸福的<!--
-    -->巨大差异，以及工作质量与速度的巨大改善。
-  * Keepsafe 的 App Lock 应用程序也[已转换为 100％ Kotlin](https://medium.com/keepsafe-engineering/lessons-from-converting-an-app-to-100-kotlin-68984a05dcb6)，
-    使源代码行数减少 30％、方法数减少 10％。
+If you want to start using Kotlin for Android development, read [Google’s recommendation for getting started with Kotlin on Android](https://developer.android.com/kotlin/get-started).
 
-## Kotlin Android 扩展
-
-[Kotlin Android 扩展](https://www.kotlincn.net/docs/tutorials/android-plugin.html)是一个编译器扩展，
-可以让你摆脱代码中的 `findViewById()` 调用，并将其替换为合成的编译器生成的<!--
--->属性。
-
-## 下一步
-
- * 下载并安装 [Android Studio](https://developer.android.com/studio/index.html)，其中包含开箱即用的 Kotlin 支持。
- * 按照 [Android 与 Kotlin 入门](https://www.kotlincn.net/docs/tutorials/kotlin-android.html)教程<!--
--->创建你的第一个 Kotlin 应用程序。
- * 关于更深入的介绍，请查看本站的[参考文档](index.html)及
-[Kotlin 心印](https://www.kotlincn.net/docs/tutorials/koans.html)。
- * 另一个很好的资源是 [Kotlin for Android Developers](https://leanpub.com/kotlin-for-android-developers)，
-这本书会引导你逐步完成在 Kotlin 中创建真正的 Android 应用程序的过程。
- * 检出 Google 的 [Kotlin 写的示例项目](https://developer.android.com/samples/index.html?language=kotlin)。
+If you're new to Android and want to learn to create applications with Kotlin, check out [this Udacity course](https://www.udacity.com/course/developing-android-apps-with-kotlin--ud9012).

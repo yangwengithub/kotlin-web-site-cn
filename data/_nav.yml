@@ -205,6 +205,9 @@ reference:
           title: 平台相关声明
         - url: /docs/reference/building-mpp-with-gradle.html
           title: 以 Gradle 构建
+        - url: /docs/reference/mpp-dsl-reference.html
+          title: 多平台 Gradle DSL 参考
+
 
     - title: 更多语言结构
       description: 各种知识点
@@ -248,6 +251,8 @@ reference:
           title: 关键字与操作符
         - url: /docs/reference/grammar.html
           title: 语法
+        - url: /docs/reference/code-style-migration-guide.html
+          title: 编码风格约定
 
 
     - title: Java 互操作
@@ -288,25 +293,22 @@ reference:
     - title: 工具
       description:
       content:
-  #      - /docs/reference/kotlin-build-tools.html: Kotlin Build Tools
-        - url: /docs/reference/kotlin-doc.html
-          title: 编写 Kotlin 代码文档
-        - url: /docs/reference/kapt.html
-          title: 使用 Kapt
-        - url: /docs/reference/compiler-reference.html
-          title: Kotlin 编译器选项
         - url: /docs/reference/using-gradle.html
-          title: 使用 Gradle
+          title: Gradle
         - url: /docs/reference/using-maven.html
-          title: 使用 Maven
+          title: Maven
         - url: /docs/reference/using-ant.html
-          title: 使用 Ant
-        - url: /docs/reference/kotlin-osgi.html
-          title: Kotlin 与 OSGi
+          title: Ant
+        - url: /docs/reference/compiler-reference.html
+          title: 编译器选项
         - url: /docs/reference/compiler-plugins.html
           title: 编译器插件
-        - url: /docs/reference/code-style-migration-guide.html
-          title: 编码规范
+        - url: /docs/reference/kapt.html
+          title: Kapt
+        - url: /docs/reference/kotlin-doc.html
+          title: Dokka
+        - url: /docs/reference/kotlin-osgi.html
+          title: OSGi
 
     - title: 演进
       description: 语言演进与兼容性
@@ -350,14 +352,6 @@ tutorials:
           title: 心印
         - url: /docs/tutorials/competitive-programming.html
           title: 竞技程序设计
-    - title: Android
-      content:
-        - url: /docs/tutorials/kotlin-android.html
-          title: Android 开发入门
-        - url: /docs/tutorials/android-plugin.html
-          title: Kotlin Android 扩展
-        - url: /docs/tutorials/android-frameworks.html
-          title: Android 框架
     - title: Java 互操作
       content:
         - url: /docs/tutorials/mixing-java-kotlin-intellij.html
