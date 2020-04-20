@@ -91,7 +91,7 @@ Kotlin 多平台项目的布局由以下构建块构成：
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version '1.3.71'
+    id 'org.jetbrains.kotlin.multiplatform' version '1.3.72'
 }
 
 repositories {
@@ -115,7 +115,7 @@ kotlin {
 
 ```kotlin
 plugins {
-    kotlin("multiplatform") version "1.3.71"
+    kotlin("multiplatform") version "1.3.72"
 }
 
 repositories {
@@ -252,7 +252,7 @@ Kotlin 多平台项目需要 Gradle 4.7 及以上版本，不支持旧版本的 
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlin.multiplatform' version '1.3.71'
+    id 'org.jetbrains.kotlin.multiplatform' version '1.3.72'
 }
 ```
 
@@ -264,7 +264,7 @@ plugins {
 
 ```kotlin
 plugins {
-    kotlin("multiplatform") version "1.3.71"
+    kotlin("multiplatform") version "1.3.72"
 }
 ```
 
@@ -1569,7 +1569,7 @@ Kotlin 多平台项目通过提供 `android` 内置函数支持 Android 平台�
 ```groovy
 plugins {
     id("com.android.library")
-    id("org.jetbrains.kotlin.multiplatform").version("1.3.71")
+    id("org.jetbrains.kotlin.multiplatform").version("1.3.72")
 }
 
 android { /* …… */ }
@@ -1590,7 +1590,7 @@ kotlin {
 ```kotlin
 plugins {
     id("com.android.library")
-    kotlin("multiplatform").version("1.3.71")
+    kotlin("multiplatform").version("1.3.72")
 }
 
 android { /* …… */ }
