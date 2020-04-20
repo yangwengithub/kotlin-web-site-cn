@@ -133,7 +133,7 @@ Hadi Hariri 的 [O’Reilly Course](http://shop.oreilly.com/product/063692005298
 
 有。Kotlin 有一个非常有活力的社区。Kotlin 开发人员常出现在 [Kotlin 论坛](http://discuss.kotlinlang.org)、
 [StackOverflow](http://stackoverflow.com/questions/tagged/kotlin) 上并且更积极地活跃在 [Kotlin Slack](http://slack.kotlinlang.org)
-（截至 2018 年 10 月有近 20000 名成员）上。
+（截至 2020 年 4 月有近 30000 名成员）上。
 
 ### 有没有 Kotlin 活动？
  
