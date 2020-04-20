@@ -218,10 +218,10 @@
   type: 应用程序
   link: https://github.com/datawire/discovery
 
-- name: KotlinTest
+- name: Kotest
   description: 著名的 ScalaTest 的 Kotlin 移植
   type: 库
-  link: https://github.com/kotlintest/kotlintest
+  link: https://github.com/kotest/kotest
   
 - name: Black-and-White
   description: 用于黑白树着色的算法库

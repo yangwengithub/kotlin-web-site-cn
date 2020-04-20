@@ -32,9 +32,6 @@ subnav:
 
         - url: /docs/books.html
           title: 图书
-
-        - url: /docs/resources.html
-          title: 更多资源
     - url: /community/
       content:
         - url: /community/
@@ -293,7 +290,6 @@ reference:
     - title: 工具
       description:
       content:
-  #      - /docs/reference/kotlin-build-tools.html: Kotlin Build Tools
         - url: /docs/reference/using-gradle.html
           title: Gradle
         - url: /docs/reference/using-maven.html
