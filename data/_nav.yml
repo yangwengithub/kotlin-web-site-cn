@@ -32,9 +32,6 @@ subnav:
 
         - url: /docs/books.html
           title: 图书
-
-        - url: /docs/resources.html
-          title: 更多资源
     - url: /community/
       content:
         - url: /community/
