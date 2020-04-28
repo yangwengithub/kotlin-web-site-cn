@@ -195,15 +195,28 @@ fun main() {
 如需移除警告，必须通过指定编译器参数 `-Xinline-classes` 来选择使用这项实验性的特性。
 
 ### 在 Gradle 中启用内联类
-<div class="sample" markdown="1" theme="idea" mode='groovy'>
+<div class="multi-language-sample" data-lang="groovy">
+<div class="sample" markdown="1" theme="idea" mode="groovy" data-lang="groovy">
 
-``` groovy
-
+```groovy
 compileKotlin {
     kotlinOptions.freeCompilerArgs += ["-Xinline-classes"]
 }
 ```
 
+</div>
+</div>
+
+<div class="multi-language-sample" data-lang="kotlin">
+<div class="sample" markdown="1" theme="idea" mode="kotlin" data-lang="kotlin" data-highlight-only>
+
+```kotlin
+tasks.withType<KotlinCompile> {
+    kotlinOptions.freeCompilerArgs += "-Xinline-classes"
+}
+```
+
+</div>
 </div>
 
 关于详细信息，请参见[编译器选项](using-gradle.html#编译器选项)。关于[多平台项目](whatsnew13.html#多平台项目)的设置，请参见[使用 Gradle 构建多平台项目](building-mpp-with-gradle.html#语言设置)章节。

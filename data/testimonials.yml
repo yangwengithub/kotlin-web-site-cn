@@ -6,7 +6,7 @@
   text: Evernote 最近 <a target="_blank" href="https://blog.evernote.com/tech/2017/01/26/android-state-library/">将 Kotlin 整合</a>到了他们的 Android 客户端
 - company: Coursera
   text: Coursera Android 应用程序<a target="_blank" href="https://building.coursera.org/blog/2016/03/16/becoming-bilingual-coursera/">部分用 Kotlin 编写</a>
-- company: Pivotal
+- company: Spring
   text: Spring <a target="_blank" href="https://hltj.me/kotlin/2017/05/23/kotlin-support-in-spring5.html">采用 Kotlin 的语言特性</a>来提供更简洁的 API
 - company: Atlassian
   text: <a target="_blank" href="https://twitter.com/danlew42/status/809065097339564032">Trello Android</a> 应用程序中的所有新代码都用 Kotlin。
