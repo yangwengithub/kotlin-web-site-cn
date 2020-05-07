@@ -171,8 +171,7 @@ Python 的 [ggplot](https://ggplot2.tidyverse.org/)。
 
 * [Dex](https://github.com/PatMartin/Dex)——一个基于 Java 的数据可视化工具
 
-* [Smile](https://github.com/haifengl/smile)——一个全面的机器学习、自然语言处理、线性代数、
- 图、插值与可视化系统
+* [Smile](https://github.com/haifengl/smile)——一个全面的机器学习、自然语言处理、线性代数、图、插值与可视化系统。除了 Java API，Smile 还提供了函数式的 [Kotlin API](http://haifengl.github.io/api/kotlin/smile-kotlin/index.html) 以及 Scala 与 Clojure API。
    * [Smile-NLP-kt](https://github.com/londogard/smile-nlp-kt)——以 Kotlin 扩展函数与接口格式重写了 Smile 的自然语言处理部分的 Scala 隐式内容。
 
 * [Apache Commons Math](http://commons.apache.org/proper/commons-math/)——一个 Java 通用数学、统计与机器学习库

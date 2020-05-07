@@ -499,9 +499,9 @@ fun main() {
 
 **上下文对象**作为 lambda 表达式的参数（`it`）来访问。 **返回值**是上下文对象本身。
 
-`also` 对于执行一些将上下文对象作为参数的操作很有用。 对于不会改变上下文对象的操作，可使用 `also`，例如记录或打印调试信息。 通常，你可以在不破坏程序逻辑的情况下从调用链中删除 `also` 的调用。
+`also` 对于执行一些将上下文对象作为参数的操作很有用。 Use `also` for actions that need a reference rather to the object than to its properties and functions, or when you don't want to shadow `this` reference from an outer scope.
 
-当你在代码中看到 `also` 时，可以将其理解为“*并且执行以下操作*”。
+当你在代码中看到 `also` 时，可以将其理解为“*并且用该对象执行以下操作*”。
 
 
 

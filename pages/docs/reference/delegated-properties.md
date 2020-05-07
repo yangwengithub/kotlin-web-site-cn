@@ -255,7 +255,7 @@ fun example(computeFoo: () -> Foo) {
  
 `getValue()` 必须返回与属性相同的类型（或其子类型）。
 
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 class Resource
@@ -271,7 +271,7 @@ class ResourceDelegate {
 }
 ```
 
-</div>
+
 
 对于一个**可变**属性（即 *var*{:.keyword} 声明的），委托必须额外提供一个操作符函数 `setValue()`，
 该函数具有以下参数：
@@ -280,7 +280,7 @@ class ResourceDelegate {
 * `property` —— 必须是类型 `KProperty<*>` 或其超类型。
 * `value` --- 必须与属性类型相同（或者是其超类型）。
  
-<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 
 ```kotlin
 class Resource
@@ -301,7 +301,7 @@ class ResourceDelegate(private var resource: Resource = Resource()) {
 }
 ```
 
-</div>
+
 
 `getValue()` 或/与 `setValue()` 函数可以通过委托类的成员函数提供或者由扩展函数提供。
 当你需要委托属性到原本未提供的这些函数的对象时后者会更便利。

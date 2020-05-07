@@ -197,12 +197,25 @@ fun main() {
 ### 在 Gradle 中启用内联类
 
 
-``` groovy
 
+```groovy
 compileKotlin {
     kotlinOptions.freeCompilerArgs += ["-Xinline-classes"]
 }
 ```
+
+
+
+
+
+
+
+```kotlin
+tasks.withType<KotlinCompile> {
+    kotlinOptions.freeCompilerArgs += "-Xinline-classes"
+}
+```
+
 
 
 
