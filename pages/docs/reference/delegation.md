@@ -106,5 +106,5 @@ fun main() {
 
 > **On the JVM**: when an interface with `default` methods is used for delegation (including Kotlin interfaces with  `@JvmDefault`),
 >the default implementations are called even if the actual delegate type provides its own implementations.
->For details, see [Calling Kotlin from Java](java-to-kotlin-interop.html#using-in-delegates).
+>For details, see [Calling Kotlin from Java](java-to-kotlin-interop.html#在委托中使用).
 {:.note}
