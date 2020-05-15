@@ -408,6 +408,8 @@ public class BB8 implements Robot {
 
 关于兼容性的更多详情请参见 `@JvmDefault` [参考页](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html)。
 
+### Using in delegates
+
 请注意，如果将带有 `@JvmDefault` 的方法的接口用作[委托](/docs/reference/delegation.html)，
 那么即是实际的委托类型提供了自己的实现，也会调用默认方法的实现。
 
