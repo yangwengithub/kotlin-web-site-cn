@@ -192,7 +192,7 @@ foo(strings = *arrayOf("a", "b", "c"))
 ```kotlin
 fun printHello(name: String?): Unit {
     if (name != null)
-        println("Hello ${name}")
+        println("Hello $name")
     else
         println("Hi there!")
     // `return Unit` 或者 `return` 是可选的
@@ -382,7 +382,7 @@ fun dfs(graph: Graph) {
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
 ```kotlin
-class Sample() {
+class Sample {
     fun foo() { print("Foo") }
 }
 ```
