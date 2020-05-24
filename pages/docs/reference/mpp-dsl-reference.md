@@ -7,7 +7,7 @@ title: "以 Gradle 构建多平台项目"
 # Kotlin 多平台 Gradle DSL 参考
 
 > 在 Kotlin 1.2 与 1.3 中，多平台项目是实验性特性。所有在<!--
--->这篇文档中描述的语言与工具特性可能在未来的 Kotlin 版本中修改。
+-->这篇文档中描述的语言与工具特性可能在未来的 Kotlin 版本中改变。
 {:.note}
 
 Kotlin 多平台 Gradle 插件是用于创建 [Kotlin 多平台](multiplatform.html)
