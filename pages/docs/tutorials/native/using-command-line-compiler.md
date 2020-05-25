@@ -39,7 +39,7 @@ fun main() {
 
 ## 从控制台编译代码
 
-要编译这个应用程序，请[下载](https://github.com/JetBrains/kotlin/releases)
+要编译这个应用程序，请[下载]({{ site.data.releases.latest.url }})
 编译器执行以下命令:
 
 ```bash
