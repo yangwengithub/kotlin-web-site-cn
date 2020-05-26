@@ -39,7 +39,7 @@ Kotlin 多平台 Gradle 插件是用于创建 [Kotlin 多平台](multiplatform.h
 ## id 与版本
 
 Kotlin 多平台 Gradle 插件的全限定名是 `org.jetbrains.kotlin.multiplatform`。
-如果你使用 Kotlin Gradle DSL，那么你可以通过 `kotlin(“multiplatform”)` 来应用插件。
+如果你使用 Kotlin Gradle DSL，那么你可以通过 `kotlin("multiplatform")` 来应用插件。
 插件版本与 Kotlin 版本相匹配。最新的版本是：{{ site.data.releases.latest.version }}。
 
 <div class="multi-language-sample" data-lang="groovy">
