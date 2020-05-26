@@ -6,8 +6,7 @@ title: "Kotlin 编译器选项"
 
 # Kotlin 编译器选项
 
-Each release of Kotlin includes compilers for the supported targets: 
-JVM, JavaScript, and native binaries for [supported platforms](native-overview.html#目标平台).
+每个 Kotlin 版本都包含支持目标的编译器：[目标平台](native-overview.html#目标平台)的 JVM、JavaScript 与 native 二进制文件。
 
 These compilers are used by the IDE when you click the __Compile__ or __Run__ button for your Kotlin project.  
 
