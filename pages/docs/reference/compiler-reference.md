@@ -8,10 +8,10 @@ title: "Kotlin 编译器选项"
 
 每个 Kotlin 版本都包含支持目标的编译器：[目标平台](native-overview.html#目标平台)的 JVM、JavaScript 与 native 二进制文件。
 
-These compilers are used by the IDE when you click the __Compile__ or __Run__ button for your Kotlin project.  
+当单击 Kotlin 项目的 __Compile__ 或 __Run__ 按钮时，IDE 会使用这些编译器。
 
-You can also run Kotlin compilers manually from the command line as described 
-in the [Working with command-line compiler](/docs/tutorials/command-line.html) tutorial. For example: 
+还可以按照[使用命令行编译器](/docs/tutorials/command-line.html)
+教程中所述从命令行手动运行 Kotlin 编译器。例如：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -23,17 +23,17 @@ $ kotlinc hello.kt -include-runtime -d hello.jar
  
 ## 编译器选项
 
-Kotlin compilers have a number of options for tailoring the compiling process.
-Compiler options for different targets are listed on this page together with a description of each one.
+Kotlin 编译器具有许多用于定制编译过程的选项。
+此页面列出了针对不同目标的编译器选项，并提供了每个选项的描述。
 
-There are several ways to set the compiler options and their values (_compiler arguments_):
-- In IntelliJ IDEA, write in the compiler arguments in the __Additional command-line parameters__ text box in 
-__Settings | Build, Execution, Deployment | Compilers | Kotlin Compiler__
-- If you're using Gradle, specify the compiler arguments in the `kotlinOptions` property of the Kotlin compilation task.
-For details, see [Using Gradle](using-gradle.html#编译器选项).
-- If you're using Maven, specify the compiler arguments in the `<configuration>` element of the Maven plugin node. 
-For details, see [Using Maven](using-maven.html#指定编译器选项).
-- If you run a command-line compiler, add the compiler arguments directly to the utility call or write them into an [argfile](#argfile).
+有几种方法可以设置编译器选项及其值（_编译器参数_）：
+- 在 IntelliJ IDEA 的 __Settings | Build, Execution, Deployment | Compilers | Kotlin Compiler__ 窗口中，
+在 __Additional command-line parameters__ 文本框中输入编译器参数。
+- 如果使用 Gradle，请在 Kotlin 编译任务的 `kotlinOptions` 属性中指定编译器参数。
+有关详细信息，请参见[使用 Gradle](using-gradle.html#编译器选项)。
+- 如果使用 Maven，请在 Maven 插件节点的 `<configuration>` 元素中指定编译器参数。
+有关详细信息，请参见[使用 Maven](using-maven.html#指定编译器选项)。
+- 如果运行命令行编译器，则将编译器参数直接添加到效用函数调用中，或将其写入 [argfile](#argfile)。
 
 ##  公共选项
 
