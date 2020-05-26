@@ -38,9 +38,9 @@ Kotlin 多平台 Gradle 插件是用于创建 [Kotlin 多平台](multiplatform.h
 
 ## id 与版本
 
-The fully qualified name of the Kotlin Multiplatform Gradle plugin is `org.jetbrains.kotlin.multiplatform`. 
-If you use the Kotlin Gradle DSL, you can apply the plugin with `kotlin(“multiplatform”)`.
-The plugin versions match the Kotlin release versions. The most recent version is {{ site.data.releases.latest.version }}.
+Kotlin 多平台 Gradle 插件的全限定名是 `org.jetbrains.kotlin.multiplatform`。
+如果你使用 Kotlin Gradle DSL，那么你可以通过 `kotlin(“multiplatform”)` 来应用插件。
+插件版本与 Kotlin 版本相匹配。最新的版本是：{{ site.data.releases.latest.version }}。
 
 <div class="multi-language-sample" data-lang="groovy">
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -68,15 +68,15 @@ plugins {
 
 ## 顶层块
 
-`kotlin` is the top-level block for multiplatform project configuration in the Gradle build script.
-Inside `kotlin`, you can write the following blocks:
+`kotlin` 是在 Gradle 构建脚本中配置多平台项目的顶层块。
+`kotlin` 块内，你可以使用以下块：
 
-|**Block**|**Description**|
+|**块**|**介绍**|
 | --- | --- |
-| _\<targetName\>_ |Declares a particular target of a project. The names of available targets are listed in the [Targets](#目标) section.|
-|`targets` |All targets of the project.|
-|`presets` |All predefined targets. Use this for [configuring multiple predefined targets](building-mpp-with-gradle.html#setting-up-targets) at once.|
-|`sourceSets` |Configures predefined and declares custom [source sets](building-mpp-with-gradle.html#configuring-source-sets) of the project. |
+| _\<目标名称\>_ |声明项目的特定目标，所有可用的目标名称已陈列在[目标](#目标)部分中.|
+|`targets` |项目的所有目标。|
+|`presets` |所有预定义的目标。使用这个同时[配置多个预定义目标](building-mpp-with-gradle.html#setting-up-targets)。|
+|`sourceSets` |配置预定义和声明自定义项目的[源集](building-mpp-with-gradle.html#configuring-source-sets)。|
 
 ## 目标
 
