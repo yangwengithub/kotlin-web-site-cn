@@ -146,8 +146,8 @@ fun hasPrefix(x: Any) = when(x) {
 ```kotlin
 when {
     x.isOdd() -> print("x is odd")
-    x.isEven() -> print("x is even")
-    else -> print("x is funny")
+    y.isEven() -> print("y is even")
+    else -> print("x+y is even.")
 }
 ```
 
@@ -285,4 +285,3 @@ do {
 ## 循环中的 Break 与 continue
 
 在循环中 Kotlin 支持传统的 *break*{: .keyword } 与 *continue*{: .keyword } 操作符。参见[返回与跳转](returns.html)。
-
