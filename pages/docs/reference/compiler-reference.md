@@ -6,7 +6,8 @@ title: "Kotlin 编译器选项"
 
 # Kotlin 编译器选项
 
-每个 Kotlin 版本都包含支持目标的编译器：[目标平台](native-overview.html#目标平台)的 JVM、JavaScript 与 native 二进制文件。
+每个 Kotlin 版本都包含支持目标的编译器：
+[目标平台](native-overview.html#目标平台)的 JVM、JavaScript 与 native 二进制文件。
 
 当单击 Kotlin 项目的 __Compile__ 或 __Run__ 按钮时，IDE 会使用这些编译器。
 
@@ -161,69 +162,69 @@ $ kotlinc @options/compiler.options hello.kt
     
 ## Kotlin/JVM 编译器选项
 
-The Kotlin compiler for JVM compiles Kotlin source files into Java class files. 
-The command-line tools for Kotlin to JVM compilation are `kotlinc` and `kotlinc-jvm`.
-You can also use them for executing Kotlin script files.
+用于 JVM 的 Kotlin 编译器将 Kotlin 源文件编译为 Java 类文件。
+用于 Kotlin 到 JVM 编译的命令行工具是 `kotlinc` 与 `kotlinc-jvm`。
+也可以使用它们来执行 Kotlin 脚本文件。
 
-In addition to the [common options](#公共选项), Kotlin/JVM compiler has the options listed below.
+除了常见选项外，Kotlin/JVM 编译器还具有以下列出的[公共选项](#公共选项)。
 
 ### `-classpath <path>` (`-cp <path>`)
 
-Search for class files in the specified paths. Separate elements of the classpath with system path separators (**;** on Windows, **:** on macOS/Linux).
-The classpath can contain file and directory paths, ZIP, or JAR files.
+在指定的路径中搜索类文件。用系统路径分隔符将类路径的各个元素分开（在Windows上是 **;** 在macOS/Linux上是 **:**）。
+类路径可以包含文件和目录路径，ZIP 或 JAR 文件。
 {:.details-group}
 
 ### `-d <path>`
 
-Place the generated class files into the specified location. The location can be a directory, a ZIP, or a JAR file. 
+将生成的类文件放置到指定位置。该位置可以是目录、ZIP 或 JAR 文件。
 {:.details-group}
 
 ### `-include-runtime`
 
-Include the Kotlin runtime into the resulting JAR file. Makes the resulting archive runnable on any Java-enabled 
-environment.
+将 Kotlin 运行时包含在生成的 JAR 文件中。
+使生成的归档文件可在任何启用 Java 的环境中运行。
 {:.details-group}
 
 ### `-jdk-home <path>`
 
-Use a custom JDK home directory to include into the classpath if it differs from the default `JAVA_HOME`.
+如果自定义 JDK 主目录与默认的 `JAVA_HOME` 不同，请使用它来将其包含在类路径中。
 {:.details-group}
 
 ### `-jvm-target <version>`
 
-Specify the target version of the generated JVM bytecode. Possible values are `1.6`, `1.8`, `9`, `10`, `11`, `12`, and `13`.
-The default value is `1.6`.
+指定生成的 JVM 字节码的目标版本。可能的值为 `1.6`、`1.8`、`9`、`10`、`11`、`12`、`13`。
+默认值为 `1.6`。
 {:.details-group}
 
 ### `-java-parameters`
 
-Generate metadata for Java 1.8 reflection on method parameters.
+为 Java 1.8 反射方法参数生成元数据。
 {:.details-group}
 
 ### `-module-name <name>`
 
-Set a custom name for the generated `.kotlin_module` file.
+为生成的 `.kotlin_module` 文件设置自定义名称。
 {:.details-group}
   
 ### `-no-jdk`
 
-Don't automatically include the Java runtime into the classpath.
+不要自动将Java运行时包含在类路径中。
 {:.details-group}
 
 ### `-no-reflect`
 
-Don't automatically include the Kotlin reflection (`kotlin-reflect.jar`) into the classpath.
+不要自动将Kotlin反射（`kotlin-reflect.jar`）包含到类路径中。
 {:.details-group}
 
 ### `-no-stdlib`
 
-Don't automatically include the Kotlin/JVM stdlib (`kotlin-stdlib.jar`) and Kotlin reflection (`kotlin-reflect.jar`)
-into the classpath. 
+不要自动将 Kotlin/JVM stdlib（`kotlin-stdlib.jar`）与
+Kotlin 反射（`kotlin-reflect.jar`）包含到类路径中。
 {:.details-group}
   
 ### `-script-templates <classnames[,]>`
 
-Script definition template classes. Use fully qualified class names and separate them with commas (**,**).
+脚本定义模板类。使用完全限定的类名，并用逗号（**,**）分隔。
 {:.details-group}
 
 
