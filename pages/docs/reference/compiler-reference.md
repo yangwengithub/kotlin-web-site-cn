@@ -37,83 +37,83 @@ Kotlin 编译器具有许多用于定制编译过程的选项。
 
 ##  公共选项
 
-The following options are common for all Kotlin compilers.
+以下选项对于所有 Kotlin 编译器都是通用的。
 
 ### `-version` 
 
-Display the compiler version.
+显示编译器版本。
 {:.details-group}
 
 ### `-nowarn`
 
-Suppress the compiler from displaying warnings during compilation.
+禁止编译器在编译期间显示警告。
 {:.details-group}
 
 ### `-Werror`
 
-Turn any warnings into a compilation error. 
+将所有警告转换为编译错误。
 {:.details-group}
 
 ### `-verbose`
 
-Enable verbose logging output which includes details of the compilation process.
+启用详细的日志记录输出，其中包括编译过程的详细信息。
 {:.details-group}
 
 ### `-script`
 
-Evaluate a Kotlin script file. When called with this option, the compiler executes the first Kotlin script (`*.kts`) 
-file among the given arguments.
+检查 Kotlin 脚本文件。
+使用此选项调用时，编译器将执行给定参数中的第一个 Kotlin 脚本文件（`*.kts`）。
 {:.details-group}
 
 ### `-help` (`-h`)
 
-Display usage information and exit. Only standard options are shown.
-To show advanced options, use `-X`.
+显示用法信息并退出。仅显示标准选项。
+要显示高级选项，请使用 `-X`。
 {:.details-group}
 
 ### `-X`
 
-Display information about the advanced options and exit. These options are currently unstable: 
-their names and behavior may be changed without notice.
+显示有关高级选项的信息并退出。这些选项当前不稳定：
+它们的名称与行为可能会更改，恕不另行通知。
 {:.details-group}
 
 ### `-kotlin-home <path>`
 
-Specify a custom path to the Kotlin compiler used for the discovery of runtime libraries.
+指定用于发现运行时库的 Kotlin 编译器的自定义路径。
 {:.details-group}
   
 ### `-P plugin:<pluginId>:<optionName>=<value>`
 
-Pass an option to a Kotlin compiler plugin.
-Available plugins and their options are listed in [Compiler plugins](compiler-plugins.html).
+将选项传递给 Kotlin 编译器插件。
+可用插件及其选项列在[编译器插件](compiler-plugins.html)中。
 {:.details-group}
   
 ### `-language-version <version>`
 
-Provide source compatibility with the specified version of Kotlin.
+提供与指定版本的 Kotlin 的源兼容性。
 {:.details-group}
 
 ### `-api-version <version>`
 
-Allow using declarations only from the specified version of Kotlin bundled libraries.
+仅允许使用 Kotlin 捆绑库指定版本中的声明。
 {:.details-group}
 
 ### `-progressive`
 
-Enable the [progressive mode](whatsnew13.html#渐进模式) for the compiler.
+为编译器启用[渐进模式](whatsnew13.html#渐进模式)。
 {:.details-group}
-In the progressive mode, deprecations and bug fixes for unstable code take effect immediately,
-instead of going through a graceful migration cycle.
-Code written in the progressive mode is backwards compatible; however, code written in
-a non-progressive mode may cause compilation errors in the progressive mode.
+在渐进模式下，针对不稳定代码的弃用与错误修复将立即生效，
+而无需经历正常的迁移周期。
+以渐进模式编写的代码是向后兼容的。
+但是，以非渐进模式编写的代码可能会在渐进模式下导致编译错误。
 {:.details-group}
 
 {:#argfile}
 
 ### `@<argfile>`
 
-Read the compiler options from the given file. Such a file can contain compiler options with values 
-and paths to the source files. Options and paths should be separated by whitespaces. For example:
+从给定文件中读取编译器选项。这样的文件可以包含带有值与源文件路径的编译器选项。
+选项与路径应由空格分隔。例如：
 {:.details-group}
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
@@ -125,8 +125,8 @@ hello.kt
 
 </div>
 
-To pass values that contain whitespaces, surround them with single (**'**) or double (**"**) quotes. If a value contains 
-quotation marks in it, escape them with a backslash (**\\**).
+要传递包含空格的值，请用单引号（**'**）或双引号（**"**）引起来。
+如果值中包含引号，请使用反斜杠（**\\**）对其进行转义。
 {:.details-group}
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
@@ -137,7 +137,7 @@ quotation marks in it, escape them with a backslash (**\\**).
      
 </div>
 
-You can also pass multiple argument files, for example, to separate compiler options from source files. 
+还可以传递多个参数文件，例如，将编译器选项与源文件分开。
 {:.details-group}
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
@@ -148,7 +148,7 @@ $ kotlinc @compiler.options @classes
 
 </div>
 
-If the files reside in locations different from the current directory, use relative paths. 
+如果文件位于与当前目录不同的位置，请使用相对路径。
 {:.details-group}
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
