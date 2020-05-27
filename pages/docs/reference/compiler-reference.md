@@ -306,122 +306,122 @@ Kotlin 到 JS 编译的命令行工具是 `kotlinc-js`。
 
 ## Kotlin/Native 编译器选项
 
-Kotlin/Native compiler compiles Kotlin source files into native binaries for the [supported platforms](native-overview.html#目标平台). 
-The command-line tool for Kotlin/Native compilation is `kotlinc-native`.
+Kotlin/Native 编译器将 Kotlin 源文件编译为[目标平台](native-overview.html#目标平台)的 Native 二进制文件。
+Kotlin/Native 编译的命令行工具是 `kotlinc-native`。
 
-In addition to the [common options](#公共选项), Kotlin/Native compiler has the options listed below.
+除了[公共选项](#公共选项)外，Kotlin/Native 编译器还具有以下列出的选项。
 
 
 ### `-enable-assertions` (`-ea`)
 
-Enable runtime assertions in the generated code.
+在生成的代码中启用运行时断言。
 {:.details-group}
     
 ### `-g`
 
-Enable emitting debug information.
+启用输出调试信息。
 {:.details-group}
     
 ### `-generate-test-runner` (`-tr`)
 
-Produce an application for running unit tests from the project.
+生成一个用于运行项目中的单元测试的应用程序。
 {:.details-group}    
 ### `-generate-worker-test-runner` (`-trw`)
 
-Produce an application for running unit tests in a [worker thread](native/concurrency.html#worker).
+生成一个用于在 [Worker 线程](native/concurrency.html#worker)中运行单元测试的应用程序。
 {:.details-group}
     
 ### `-generate-no-exit-test-runner` (`-trn`)
 
-Produce an application for running unit tests without an explicit process exit.
+生成一个用于运行单元测试的应用程序，而无需显式退出进程。
 {:.details-group}
     
 ### `-include-binary <path>` (`-ib <path>`)
 
-Pack external binary within the generated klib file.
+在生成的 klib 文件中打包外部二进制文件。
 {:.details-group}
     
 ### `-library <path>` (`-l <path>`)
 
-Link with the library. To learn about using libraries in Kotlin/native projects, see 
-[Kotlin/Native libraries](native/libraries.html).
+与库链接。要了解有关在 Kotlin/native 项目中使用库的信息，
+请参见 [Kotlin/Native 库](native/libraries.html)。
 {:.details-group}
 
 ### `-library-version <version>` (`-lv`)
 
-Set the library version.
+设置库版本。
 {:.details-group}
     
 ### `-list-targets`
 
-List the available hardware targets.
+列出可用的硬件目标。
 {:.details-group}
 
 ### `-manifest <path>`
 
-Provide a manifest addend file.
+提供清单附加文件。
 {:.details-group}
 
 ### `-module-name <name>`
 
-Specify a name for the compilation module.
-This option can also be used to specify a name prefix for the declarations exported to Objective-C:
-[How do I specify a custom Objective-C prefix/name for my Kotlin framework?](native/faq.html#q-how-do-i-specify-a-custom-objective-c-prefixname-for-my-kotlin-framework)
+指定编译模块的名称。
+此选项还可用于为导出到 Objective-C 的声明指定名称前缀：
+[如何为 Kotlin 框架指定自定义的 Objective-C 前缀/名称？](native/faq.html#q-how-do-i-specify-a-custom-objective-c-prefixname-for-my-kotlin-framework)
 {:.details-group}
 
 ### `-native-library <path>`(`-nl <path>`)
 
-Include the native bitcode library.
+包含 Native Bitcode 库。
 {:.details-group}
 
 ### `-no-default-libs`
 
-Disable linking user code with the [default platform libraries](native/platform_libs.html) distributed with the compiler.
+禁止将用户代码与编译器一起分发的[默认平台库](native/platform_libs.html)链接。
 {:.details-group}
     
 ### `-nomain`
 
-Assume the `main` entry point to be provided by external libraries.
+假定要由外部库提供的 `main` 入口点。
 {:.details-group}
 
 ### `-nopack`
 
-Don't pack the library into a klib file.
+不要将库打包到 klib 文件中。
 {:.details-group}
 
 ### `-linker-option`
 
-Pass an argument to the linker during binary building. This can be used for linking against some native library.
+在二进制构建过程中，将参数传递给链接器。这可用于链接到某些 Native 库。
 {:.details-group}
 
 ### `-linker-options <args>`
 
-Pass multiple arguments to the linker during binary building. Separate arguments with whitespaces.
+在二进制构建过程中，将多个参数传递给链接器。用空格分隔参数。
 {:.details-group}
 
 ### `-nostdlib`
 
-Don't link with stdlib.
+不要与头文件链接。
 {:.details-group}
 
 ### `-opt`
 
-Enable compilation optimizations.
+启用编译优化。
 {:.details-group}
 
 ### `-output <name>` (`-o <name>`)
 
-Set the name for the output file.
+设置输出文件的名称。
 {:.details-group}
 
 ### `-entry <name>` (`-e <name>`)
 
-Specify the qualified entry point name.
+指定合格的入口点名称。
 {:.details-group}
 
 ### `-produce <output>` (`-p`)
 
-Specify output file kind:
+指定输出文件的种类：
 {:.details-group}
 - `program`
 - `static`
@@ -432,12 +432,12 @@ Specify output file kind:
 
 ### `-repo <path>` (`-r <path>`)
 
-Library search path. For more information, see [Library search sequence](native/libraries.html#库搜索顺序).
+库搜索路径。有关更多信息，请参见[库搜索顺序](native/libraries.html#库搜索顺序)。
 {:.details-group}
 
 ### `-target <target>`
 
-Set hardware target. To see the list of available targets, use the [`-list-targets`](#-list-targets) option.
+设置硬件目标。要查看可用目标的列表，请使用 [`-list-targets`](#-list-targets) 选项。
 {:.details-group}
 
   
