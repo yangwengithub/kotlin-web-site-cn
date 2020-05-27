@@ -7,12 +7,12 @@ title: "Kotlin 编译器选项"
 # Kotlin 编译器选项
 
 每个 Kotlin 版本都包含支持目标的编译器：
-[目标平台](native-overview.html#目标平台)的 JVM、JavaScript 与 native 二进制文件。
+用于[所支持平台](native-overview.html#目标平台)的 JVM、JavaScript 与 Native 二进制文件。
 
 当单击 Kotlin 项目的 __Compile__ 或 __Run__ 按钮时，IDE 会使用这些编译器。
 
 还可以按照[使用命令行编译器](/docs/tutorials/command-line.html)
-教程中所述从命令行手动运行 Kotlin 编译器。例如：
+教程中所述在命令行手动运行 Kotlin 编译器。例如：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -31,10 +31,10 @@ Kotlin 编译器具有许多用于定制编译过程的选项。
 - 在 IntelliJ IDEA 的 __Settings | Build, Execution, Deployment | Compilers | Kotlin Compiler__ 窗口中，
 在 __Additional command-line parameters__ 文本框中输入编译器参数。
 - 如果使用 Gradle，请在 Kotlin 编译任务的 `kotlinOptions` 属性中指定编译器参数。
-有关详细信息，请参见[使用 Gradle](using-gradle.html#编译器选项)。
+详情请参见[使用 Gradle](using-gradle.html#编译器选项)。
 - 如果使用 Maven，请在 Maven 插件节点的 `<configuration>` 元素中指定编译器参数。
-有关详细信息，请参见[使用 Maven](using-maven.html#指定编译器选项)。
-- 如果运行命令行编译器，则将编译器参数直接添加到效用函数调用中，或将其写入 [argfile](#argfile)。
+详情请参见[使用 Maven](using-maven.html#指定编译器选项)。
+- 如果运行命令行编译器，则将编译器参数直接添加到工具函数调用中，或将其写入 [argfile](#argfile)。
 
 ##  公共选项
 
@@ -62,7 +62,7 @@ Kotlin 编译器具有许多用于定制编译过程的选项。
 
 ### `-script`
 
-检查 Kotlin 脚本文件。
+运行 Kotlin 脚本文件。
 使用此选项调用时，编译器将执行给定参数中的第一个 Kotlin 脚本文件（`*.kts`）。
 {:.details-group}
 
@@ -91,7 +91,7 @@ Kotlin 编译器具有许多用于定制编译过程的选项。
   
 ### `-language-version <version>`
 
-提供与指定版本的 Kotlin 的源兼容性。
+提供与指定版本的 Kotlin 的源代码兼容性。
 {:.details-group}
 
 ### `-api-version <version>`
@@ -171,7 +171,7 @@ $ kotlinc @options/compiler.options hello.kt
 ### `-classpath <path>` (`-cp <path>`)
 
 在指定的路径中搜索类文件。用系统路径分隔符将类路径的各个元素分开（在Windows上是 **;** 在macOS/Linux上是 **:**）。
-类路径可以包含文件和目录路径，ZIP 或 JAR 文件。
+类路径可以包含文件和目录路径、ZIP 或 JAR 文件。
 {:.details-group}
 
 ### `-d <path>`
@@ -208,12 +208,12 @@ $ kotlinc @options/compiler.options hello.kt
   
 ### `-no-jdk`
 
-不要自动将Java运行时包含在类路径中。
+不要自动将 Java 运行时包含在类路径中。
 {:.details-group}
 
 ### `-no-reflect`
 
-不要自动将Kotlin反射（`kotlin-reflect.jar`）包含到类路径中。
+不要自动将 Kotlin 反射（`kotlin-reflect.jar`）包含到类路径中。
 {:.details-group}
 
 ### `-no-stdlib`
@@ -260,7 +260,7 @@ Kotlin 到 JS 编译的命令行工具是 `kotlinc-js`。
 - `umd` ——[通用模块定义](https://github.com/umdjs/umd)模块。
     
 要了解有关不同类型的 JS 模块及其之间区别的更多信息，
-请参见[本文](https://www.davidbcalhoun.com/2014/what-is-amd-commonjs-and-umd/)。
+请参见[这篇文章](https://www.davidbcalhoun.com/2014/what-is-amd-commonjs-and-umd/)。
 {:.details-group}
 
 ### `-no-stdlib`
@@ -285,28 +285,28 @@ Kotlin 到 JS 编译的命令行工具是 `kotlinc-js`。
 
 ### `-source-map`
 
-生成源映射。
+生成源代码映射。
 {:.details-group}
 
 ### `-source-map-base-dirs <path>`
 
-使用指定的路径作为基本目录。基本目录用于计算源映射中的相对路径。
+使用指定的路径作为基本目录。基本目录用于计算源代码映射中的相对路径。
 {:.details-group}
 
 ### `-source-map-embed-sources {always|never|inlining}`
 
-将源文件嵌入到源映射中。
+将源代码文件嵌入到源代码映射中。
 {:.details-group}
 
 ### `-source-map-prefix`
 
-将指定的前缀添加到源映射中的路径。
+将指定的前缀添加到源代码映射中的路径。
 {:.details-group}
 
 
 ## Kotlin/Native 编译器选项
 
-Kotlin/Native 编译器将 Kotlin 源文件编译为[目标平台](native-overview.html#目标平台)的 Native 二进制文件。
+Kotlin/Native 编译器将 Kotlin 源代码文件编译为用于[所支持平台](native-overview.html#目标平台)的 Native 二进制文件。
 Kotlin/Native 编译的命令行工具是 `kotlinc-native`。
 
 除了[公共选项](#公共选项)外，Kotlin/Native 编译器还具有以下列出的选项。
@@ -401,7 +401,7 @@ Kotlin/Native 编译的命令行工具是 `kotlinc-native`。
 
 ### `-nostdlib`
 
-不要与头文件链接。
+不要与标准库链接。
 {:.details-group}
 
 ### `-opt`
@@ -416,7 +416,7 @@ Kotlin/Native 编译的命令行工具是 `kotlinc-native`。
 
 ### `-entry <name>` (`-e <name>`)
 
-指定合格的入口点名称。
+指定限定的入口点名称。
 {:.details-group}
 
 ### `-produce <output>` (`-p`)
