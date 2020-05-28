@@ -39,8 +39,12 @@
     align-items: flex-end;
   }
 
-  .global-footer-row {
-    width: 50%;
+  .global-footer-row-left {
+    width: 27%;
+  }
+
+  .global-footer-row-right {
+    width: 73%;
   }
 
   .terms-social {
