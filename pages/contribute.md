@@ -103,7 +103,7 @@ Kotlin 编程语言中文站翻译贡献者如下（排名不分先后）：
 * [高金龙](https://github.com/SpielbergGao)
 * [shiyongkun](https://github.com/shiyongkun)
 * [yangxiaobinhaoshuai](https://github.com/yangxiaobinhaoshuai)
-* [Yuang Qiao](https://github.com/qiaoyuang)
+* [乔禹昂](https://github.com/qiaoyuang)
 * [capcdk](https://github.com/capcdk)
 * [luozejiaqun](https://github.com/luozejiaqun)
 * [shuhuaxie](https://github.com/shuhuaxie)
