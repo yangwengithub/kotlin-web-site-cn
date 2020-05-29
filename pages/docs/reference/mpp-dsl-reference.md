@@ -82,7 +82,7 @@ plugins {
 
 _目标_ 是负责构建编译、测试、以及针对某个<!--
 -->[已支持平台](building-mpp-with-gradle.html#supported-platforms)打包一份软件的一部分。多平台项目的目标<!--
--->在 `kotlin` 块中的相应代码块中描述，例如：`jvm`、`android` 与 `iosArm64`。
+-->在 `kotlin` 块中的相应代码块中描述，例如：`jvm`、`android` 以及 `iosArm64`。
 以下是可用目标的完整列表：
  
 |**名称**|**描述**| 
