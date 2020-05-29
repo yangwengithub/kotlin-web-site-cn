@@ -80,36 +80,36 @@ plugins {
 
 ## 目标
 
-_Target_ is a part of the build responsible for compiling, testing, and packaging a piece of software aimed for 
-one of the [supported platforms](building-mpp-with-gradle.html#supported-platforms). The targets of a multiplatform project
- are described in the corresponding blocks inside `kotlin`, for example, `jvm`, `android`, `iosArm64`.
-The complete list of available targets is the following:
+_目标_ 是负责构建编译、测试、以及针对某个<!--
+-->[已支持平台](building-mpp-with-gradle.html#supported-platforms)打包一份软件的一部分。多平台项目的目标<!--
+-->在 `kotlin` 的相应代码块中描述，例如：`jvm`、`android` 与 `iosArm64`。
+以下是可用目标的完整列表：
  
-|**Name**|**Description**| 
+|**名称**|**描述**| 
 | --- | --- |
-|`jvm`| Java Virtual Machine|
+|`jvm`| Java 虚拟机|
 |`js`| JavaScript|
-|`android`|Android (APK)|
-|`androidNativeArm32`|[Android NDK](https://developer.android.com/ndk) on ARM (ARM32) platforms|
-|`androidNativeArm64`|[Android NDK](https://developer.android.com/ndk) on ARM64 platforms|
-|`androidNativeX86`|[Android NDK](https://developer.android.com/ndk) on x86 platforms|
-|`androidNativeX64`|[Android NDK](https://developer.android.com/ndk) on x86_64 platforms|
-|`iosArm32`|Apple iOS on ARM (ARM32) platforms (Apple iPhone 5 and earlier)|
-|`iosArm64`|Apple iOS on ARM64 platforms (Apple iPhone 5s and newer)|
-|`iosX64`|Apple iOS 64-bit simulator|
-|`watchosArm32`|Apple watchOS on ARM (ARM32) platforms (Apple Watch Series 3 and earlier)|
-|`watchosArm64`|Apple watchOS on ARM64_32 platforms (Apple Watch Series 4 and newer)|
-|`watchosX86`|Apple watchOS simulator|
-|`tvosArm64`|Apple tvOS on ARM64 platforms (Apple TV 4th generation and newer)|
-|`tvosX64`|Apple tvOS simulator|
-|`linuxArm64`|Linux on ARM64 platforms, for example, Raspberry Pi|
-|`linuxArm32Hfp`|Linux on hard-float ARM (ARM32) platforms|
-|`linuxMips32`|Linux on MIPS platforms|
-|`linuxMipsel32`|Linux on little-endian MIPS (mipsel) platforms|
-|`linuxX64`|Linux on x86_64 platforms|
+|`android`|Android（APK）|
+|`androidNativeArm32`|[Android NDK](https://developer.android.com/ndk) 基于 ARM（ARM32）平台|
+|`androidNativeArm64`|[Android NDK](https://developer.android.com/ndk) 基于 ARM64 平台|
+|`androidNativeX86`|[Android NDK](https://developer.android.com/ndk) 基于 x86 平台|
+|`androidNativeX64`|[Android NDK](https://developer.android.com/ndk) 基于 x86_64 平台|
+|`iosArm32`|Apple iOS 基于 ARM（ARM32）平台（Apple iPhone 5 或更早）|
+|`iosArm64`|Apple iOS 基于 ARM64 平台（Apple iPhone 5s 或更新）|
+|`iosX64`|Apple iOS 64-bit 模拟器|
+|`watchosArm32`|Apple watchOS 基于 ARM（ARM32）平台（Apple Watch Series 3 或更早）|
+|`watchosArm64`|Apple watchOS 基于 ARM64_32 平台（Apple Watch Series 4 或更新）|
+|`watchosX86`|Apple watchOS 模拟器|
+|`tvosArm64`|Apple tvOS 基于 ARM64 平台（Apple TV 4th generation 或更新）|
+|`tvosX64`|Apple tvOS 模拟器|
+|`linuxArm64`|Linux 基于 ARM64 平台，例如：树莓派|
+|`linuxArm32Hfp`|Linux 基于 hard-float ARM（ARM32）平台|
+|`linuxMips32`|Linux 基于 MIPS 平台|
+|`linuxMipsel32`|Linux 基于 little-endian MIPS（mipsel）平台|
+|`linuxX64`|Linux 基于 x86_64 平台|
 |`macosX64`|Apple macOS|
-|`mingwX64`|64-bit Microsoft Windows|
-|`mingwX86`|32-bit Microsoft Windows|
+|`mingwX64`|64-bit 微软 Windows|
+|`mingwX86`|32-bit 微软 Windows|
 |`wasm32`|WebAssembly|
 
 <div class="sample" markdown="1" theme="idea" mode='groovy'>
@@ -125,10 +125,10 @@ kotlin {
 
 </div>
 
-Configuration of a target can include two parts:
+目标的配置项可以包含这两个部分：
 
-* [Common configuration](#公共目标配置) available for all targets.
-* Target-specific configuration.
+* 可用于所有目标的[公共目标配置](#公共目标配置)。
+* 目标特定的配置项。
 
 ### 公共目标配置
 
