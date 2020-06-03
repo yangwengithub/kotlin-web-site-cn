@@ -9,7 +9,7 @@ title: "Kotlin 编译器选项"
 每个 Kotlin 版本都包含支持目标的编译器：
 用于[所支持平台](native-overview.html#目标平台)的 JVM、JavaScript 与 Native 二进制文件。
 
-当单击 Kotlin 项目的 __Compile__ 或 __Run__ 按钮时，IDE 会使用这些编译器。
+当单击 Kotlin 项目的 __Compile__ 或 __运行(Run)__ 按钮时，IDE 会使用这些编译器。
 
 还可以按照[使用命令行编译器](/docs/tutorials/command-line.html)
 教程中所述在命令行手动运行 Kotlin 编译器。例如：
@@ -28,8 +28,8 @@ Kotlin 编译器具有许多用于定制编译过程的选项。
 此页面列出了针对不同目标的编译器选项，并提供了每个选项的描述。
 
 有几种方法可以设置编译器选项及其值（_编译器参数_）：
-- 在 IntelliJ IDEA 的 __Settings | Build, Execution, Deployment | Compilers | Kotlin Compiler__ 窗口中，
-在 __Additional command-line parameters__ 文本框中输入编译器参数。
+- 在 IntelliJ IDEA 的 __设置(Settings) | 构建、执行、部署(Build, Execution, Deployment) | 编译器(Compilers) | Kotlin Compiler__ 窗口中，
+在 __附加命令行参数(Additional command-line parameters)__ 文本框中输入编译器参数。
 - 如果使用 Gradle，请在 Kotlin 编译任务的 `kotlinOptions` 属性中指定编译器参数。
 详情请参见[使用 Gradle](using-gradle.html#编译器选项)。
 - 如果使用 Maven，请在 Maven 插件节点的 `<configuration>` 元素中指定编译器参数。
