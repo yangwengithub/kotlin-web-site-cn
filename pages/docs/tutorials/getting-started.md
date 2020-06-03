@@ -41,11 +41,11 @@ showAuthorInfo: false
 
    ![新建 Kotlin 文件]({{ url_for('tutorial_img', filename='getting-started/new_file.png') }})
 
-4. 创建文件后，添加 `main` 函数，它是 Kotlin 应用程序的起点。 IntelliJ IDEA 提供了一个快速完成此操作的模板。 只需输入 *main* 并按 <kbd> Tab </kbd> 键即可。
+4. 创建文件后，添加 `main` 函数，它是 Kotlin 应用程序的入口。 IntelliJ IDEA 提供了一个快速完成此操作的模板。 只需输入 *main* 并按 <kbd> Tab </kbd> 键即可。
 
    ![Kotlin Main 函数]({{ url_for('tutorial_img', filename='getting-started/main.png') }})
 
-5. 添加一行代码：println("Hello，World!") 输出 “Hello，World！”。
+5. 添加一行代码输出 “Hello，World！”。
 
    ![Kotlin Hello World]({{ url_for('tutorial_img', filename='getting-started/hello_world.png') }})
 
