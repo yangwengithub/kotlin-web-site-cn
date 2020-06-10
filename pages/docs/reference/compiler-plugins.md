@@ -474,7 +474,7 @@ samWithReceiver {
 
 Android 扩展插件提供了 [`Parcelable`](https://developer.android.com/reference/android/os/Parcelable) 实现生成器。
 
-Annotate the class with `@Parcelize`, and a `Parcelable` implementation will be generated automatically.
+用 `@Parcelize` 标注该类，然后会自动生成一个 `Parcelable` 实现。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -486,10 +486,10 @@ class User(val firstName: String, val lastName: String, val age: Int): Parcelabl
 ```
 </div>
 
-`@Parcelize` requires all serialized properties to be declared in the primary constructor. Android Extensions will issue a warning on each property 
-with a backing field declared in the class body. Also, `@Parcelize` can't be applied if some of the primary constructor parameters are not properties.
+`@Parcelize` 要求在主构造函数中声明所有序列化的属性。Android 扩展程序会针对每个属性发出警告，并在类主体中声明一个支持字段。
+此外，如果某些主要构造函数参数不是属性，则无法应用 `@Parcelize`。
 
-If your class requires more advanced serialization logic, write it inside a companion class:
+如果类需要更高级的序列化逻辑，请在配套类中编写：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -512,24 +512,24 @@ data class User(val firstName: String, val lastName: String, val age: Int) : Par
 
 ### 已支持类型
 
-`@Parcelize` supports a wide range of types:
+`@Parcelize` 支持多种类型：
 
-- primitive types (and their boxed versions);
-- objects and enums;
-- `String`, `CharSequence`;
-- `Exception`;
-- `Size`, `SizeF`, `Bundle`, `IBinder`, `IInterface`, `FileDescriptor`;
-- `SparseArray`, `SparseIntArray`, `SparseLongArray`, `SparseBooleanArray`;
-- all `Serializable` (yes, `Date` is supported too) and `Parcelable` implementations;
-- collections of all supported types: `List` (mapped to `ArrayList`), `Set` (mapped to `LinkedHashSet`), `Map` (mapped to `LinkedHashMap`);
-    + Also a number of concrete implementations: `ArrayList`, `LinkedList`, `SortedSet`, `NavigableSet`, `HashSet`, `LinkedHashSet`, `TreeSet`, `SortedMap`, `NavigableMap`, `HashMap`, `LinkedHashMap`, `TreeMap`, `ConcurrentHashMap`;
-- arrays of all supported types;
-- nullable versions of all supported types.
+- 基本类型（及其框装版本）；
+- 对象与枚举；
+- `String`、`CharSequence`；
+- `Exception`；
+- `Size`、`SizeF`、`Bundle`、`IBinder`、`IInterface`、`FileDescriptor`；
+- `SparseArray`、`SparseIntArray`、`SparseLongArray`、`SparseBooleanArray`；
+- 所有 `Serializable`（是的，`Date` 也受支持）与 `Parcelable` 实现；
+- 所有受支持的集合类型：`List`（映射到 `ArrayList`），`Set` 映射到 `LinkedHashSet`，`Map` 映射到 `LinkedHashMap`；
+    + 还有一些具体的实现：`ArrayList`、`LinkedList`、`SortedSet`、`NavigableSet`、`HashSet`、`LinkedHashSet`、`TreeSet`、`SortedMap`、`NavigableMap`、`HashMap`、`LinkedHashMap`、`TreeMap`、`ConcurrentHashMap`；
+- 所有受支持的数组类型；
+- 所有受支持的可为空的版本类型。
 
 
 ### 自定义 `Parceler`
 
-Even if your type is not supported directly, you can write a `Parceler` mapping object for it.
+即使不直接支持的类型，也可以为其编写 `Parceler` 映射对象。
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -546,7 +546,7 @@ object ExternalClassParceler : Parceler<ExternalClass> {
 ```
 </div>
 
-External parcelers can be applied using `@TypeParceler` or `@WriteWith` annotations:
+可以使用 `@TypeParceler` 或 `@WriteWith` 标注应用外部包裹程序：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
