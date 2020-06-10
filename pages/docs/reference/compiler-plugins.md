@@ -472,7 +472,7 @@ samWithReceiver {
 
 ## `Parcelable` 实现生成器
 
-Android Extensions plugin provides [`Parcelable`](https://developer.android.com/reference/android/os/Parcelable) implementation generator.
+Android 扩展插件提供了 [`Parcelable`](https://developer.android.com/reference/android/os/Parcelable) 实现生成器。
 
 Annotate the class with `@Parcelize`, and a `Parcelable` implementation will be generated automatically.
 
