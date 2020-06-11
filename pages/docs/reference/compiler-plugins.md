@@ -486,10 +486,10 @@ class User(val firstName: String, val lastName: String, val age: Int): Parcelabl
 ```
 </div>
 
-`@Parcelize` 要求在主构造函数中声明所有序列化的属性。Android 扩展程序会针对每个属性发出警告，并在类主体中声明一个支持字段。
+`@Parcelize` 要求在主构造函数中声明所有序列化的属性。Android 扩展程序会针对每个属性发出警告，并在类主体中声明一个幕后字段。
 此外，如果某些主要构造函数参数不是属性，则无法应用 `@Parcelize`。
 
-如果类需要更高级的序列化逻辑，请在配套类中编写：
+如果类需要更高级的序列化逻辑，请在伴生类中编写：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
@@ -514,17 +514,17 @@ data class User(val firstName: String, val lastName: String, val age: Int) : Par
 
 `@Parcelize` 支持多种类型：
 
-- 基本类型（及其框装版本）；
+- 基本类型（及其装箱版）；
 - 对象与枚举；
 - `String`、`CharSequence`；
 - `Exception`；
 - `Size`、`SizeF`、`Bundle`、`IBinder`、`IInterface`、`FileDescriptor`；
 - `SparseArray`、`SparseIntArray`、`SparseLongArray`、`SparseBooleanArray`；
 - 所有 `Serializable`（是的，`Date` 也受支持）与 `Parcelable` 实现；
-- 所有受支持的集合类型：`List`（映射到 `ArrayList`），`Set` 映射到 `LinkedHashSet`，`Map` 映射到 `LinkedHashMap`；
+- 所有已支持类型的集合：`List`（映射到 `ArrayList`），`Set` 映射到 `LinkedHashSet`，`Map` 映射到 `LinkedHashMap`；
     + 还有一些具体的实现：`ArrayList`、`LinkedList`、`SortedSet`、`NavigableSet`、`HashSet`、`LinkedHashSet`、`TreeSet`、`SortedMap`、`NavigableMap`、`HashMap`、`LinkedHashMap`、`TreeMap`、`ConcurrentHashMap`；
 - 所有受支持的数组类型；
-- 所有受支持的可为空的版本类型。
+- 所有受支持的类型的可空版本。
 
 
 ### 自定义 `Parceler`
