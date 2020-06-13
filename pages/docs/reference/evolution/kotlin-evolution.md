@@ -44,34 +44,34 @@ Kotlin 旨在成为程序员的实用工具。在语言演进方面，它的实�
 *   之前编译运行正常的代码现在（编译或链接）失败并报错。这包括删除语言结构以及添加新的限制。
 *   之前正常执行的代码现在抛异常了。
 
-The less obvious cases that belong to the "grey area" include handling corner cases differently, throwing an exception of a different type than before, changing behavior observable only through reflection, changes in undocumented/undefined behavior, renaming binary artifacts, etc. Sometimes such changes are very important and affect migration experience dramatically, sometimes they are insignificant.
+属于“灰色区域”的不太明显的情况包括以不同方式处理极端情况，抛出与以前不同类型的异常，仅通过反射可以观察到的行为更改，未记录/未定义的行为更改，重命名二进制文件等。有时这些更改非常重要，并且会极大地影响迁移体验，有时影响微不足道。
 
-绝对不是不兼容的变更的一些示例包括
-
-
-
-*   Adding new warnings.
-*   Enabling new language constructs or relaxing limitations for existing ones.
-*   Changing private/internal APIs and other implementation details.
-
-The principles of Keeping the Language Modern and Comfortable Updates suggest that incompatible changes are sometimes necessary, but they should be introduced carefully. Our goal is to make the users aware of upcoming changes well in advance to let them migrate their code comfortably. 
-
-Ideally, every incompatible change should be announced through a compile-time warning reported in the problematic code (usually referred to as a _deprecation warning_) and accompanied with automated migration aids. So, the ideal migration workflow goes as follows:
+不是不兼容的变更的一些示例包括
 
 
 
-*   Update to version A (where the change is announced) 
-    *   See warnings about the upcoming change
-    *   Migrate the code with the help of the tooling
-*   Update to version B (where the change happens)
-    *   See no issues at all
+*   添加新的警告。
+*   启用新的语言结构或放宽对现有语言结构的限制。
+*   更改私有/内部 API 和其他实现细节。
 
-In practice some changes can't be accurately detected at compile time, so no warnings can be reported, but at least the users will be notified through Release notes of version A that a change is coming in version B.
+保持语言现代化和舒适更新的原则表明，有时需要进行不兼容的更改，但应该详细介绍这些更改。我们的目标是使用户提前了解即将发生的更改，以便他们能够轻松地迁移代码。
+
+理想情况下，应通过有问题的代码中报告的编译时警告（通常称为弃用警告）来声明每个不兼容的更改，并提供自动迁移辅助工具。 因此，理想的迁移工作流程如下：
 
 
-### Dealing with compiler bugs
 
-Compilers are complicated software and despite the best effort of their developers they have bugs. The bugs that cause the compiler itself to fail or report spurious errors or generate obviously failing code, though annoying and often embarrassing, are easy to fix, because the fixes do not constitute incompatible changes. Other bugs may cause the compiler to generate incorrect code that does not fail: e.g. by missing some errors in the source or simply generating wrong instructions. Fixes of such bugs are technically incompatible changes (some code used to compile fine, but now it won't any more), but we are inclined to fixing them as soon as possible to prevent the bad code patterns from spreading across user code. In our opinion, this serves the principle of Comfortable Updates, because fewer users have a chance of encountering the issue. Of course, this applies only to bugs that are found soon after appearing in a released version.
+*   更新到版本 A（宣布更改）
+    *   查看有关即将发生的更改的警告
+    *   借助工具迁移代码
+*   更新到版本 B（发生更改）
+    *   完全没有问题
+
+实际上，在编译时无法准确检测到某些更改，因此不会报告任何警告，但是至少会通过版本 A 的发行说明通知用户版本 B 中即将进行的更改。
+
+
+### 处理编译器错误
+
+编译器是复杂的软件，尽管开发人员尽了最大努力，但它们仍然存在 bug。导致编译器自身编译失败、或报告虚假错误、或生成明显编译失败的代码的 bug，虽然很烦人并且常常令人尴尬，但它们很容易修复，因为这些修复不构成不兼容的变更。其他 bug 可能会导致编译器生成不会编译失败的错误代码，例如：遗漏了源代码中的一些错误，或者只是生成了错误的指令。这些 bug 的修复是技术上不兼容的更改（某些代码过去可以正常编译，但现在编译失败），但是我们倾向于尽快修复它们，以防止不良代码模式在用户代码中传播。我们认为，这符合“舒适更新”的原则，因为较少的用户有机会遇到此问题。当然，这仅适用于在发行版本中出现后不久发现的 bug。
 
 
 ## Decision Making
