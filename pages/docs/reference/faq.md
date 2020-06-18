@@ -68,9 +68,9 @@ vert.x 或 JSF。另外还有一些 Kotlin 写的特定框架，例如 [Ktor](ht
 
 ### 我可以用 Kotlin 进行原生开发吗？
 
-Yes. Kotlin/Native is available as a part of Kotlin project. It compiles Kotlin to native code that can run without a VM.
-It is still in beta, but you can already try it on popular desktop and mobile platforms and even some IoT devices.
-For more information, check out the [Kotlin/Native documentation](native-overview.html).
+可以。Kotlin/Native 是 Kotlin 项目的一部分。它将 Kotlin 编译成无需虚拟机（VM）即可运行的原生代码。
+仍处于 beta 测试阶段，不过已经可以在主流的桌面与移动端平台甚至某些物联网（IoT）设备上试用。
+更多详细信息请查阅 [Kotlin/Native 文档](native-overview.html)。
 
 ### 哪些 IDE 支持 Kotlin？
 
@@ -144,7 +144,7 @@ Hadi Hariri 的 [O’Reilly Course](http://shop.oreilly.com/product/063692005298
 
 有。官方的年度 [KotlinConf](https://kotlinconf.com/) 由 JetBrains 主办。
 分别于 [2017 年](https://kotlinconf.com/2017/) 在旧金山、[2018 年](https://kotlinconf.com/2018/)在阿姆斯特丹、
-[2019 年](https://kotlinconf.com/2019/)在 Copenhagen 举行。
+[2019 年](https://kotlinconf.com/2019/)在哥本哈根举行。
 Kotlin 也会在全球不同地方举行大会。你可以在[网站上找到即将到来的会谈列表](/community/talks.html?time=upcoming)。
 
 ### Kotlin 上社交媒体吗？
