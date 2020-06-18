@@ -336,6 +336,8 @@ tutorials:
     - title: 开始
       content:
         - url: /docs/tutorials/getting-started.html
+          title: Getting Started with Kotlin
+        - url: /docs/tutorials/jvm-get-started.html
           title: 以 IntelliJ IDEA 入门
         - url: /docs/tutorials/getting-started-eclipse.html
           title: 以 Eclipse 入门
