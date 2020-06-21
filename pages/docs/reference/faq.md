@@ -68,13 +68,13 @@ vert.x 或 JSF。另外还有一些 Kotlin 写的特定框架，例如 [Ktor](ht
 
 ### 我可以用 Kotlin 进行原生开发吗？
 
-原生 Kotlin（Kotlin/Native）目前[正在准备中](https://blog.jetbrains.com/kotlin/tag/native/)。它将 Kotlin 编译为<!--
--->可以无需 VM 运行的原生代码。有一个技术预览发布版，但它还不能用于生产，并且 1.0 我们还<!--
--->没有面向所有平台支持的计划。更多信息请查看 [Kotlin/Native 博文公告](https://blog.jetbrains.com/kotlin/2017/04/kotlinnative-tech-preview-kotlin-without-a-vm/)。
+可以。Kotlin/Native 是 Kotlin 项目的一部分。它将 Kotlin 编译成无需虚拟机（VM）即可运行的原生代码。
+仍处于 beta 测试阶段，不过已经可以在主流的桌面与移动端平台甚至某些物联网（IoT）设备上试用。
+更多详细信息请查阅 [Kotlin/Native 文档](native-overview.html)。
 
 ### 哪些 IDE 支持 Kotlin？
 
-所有主要的 Java IDE 都支持 Kotlin，包括 [IntelliJ IDEA](https://www.kotlincn.net/docs/tutorials/getting-started.html)、
+所有主要的 Java IDE 都支持 Kotlin，包括 [IntelliJ IDEA](https://www.kotlincn.net/docs/tutorials/jvm-get-started.html)、
 [Android Studio](https://developer.android.com/kotlin/get-started)、[Eclipse](https://www.kotlincn.net/docs/tutorials/getting-started-eclipse.html) 和
 [NetBeans](http://plugins.netbeans.org/plugin/68590/kotlin)。另外，有一个[命令行编译器](https://www.kotlincn.net/docs/tutorials/command-line.html)<!--
 -->可用，为编译和运行应用程序提供了直接的支持。
@@ -108,7 +108,7 @@ Kotlin 是受 Java、C#、JavaScript、Scala 以及 Groovy 等现有语言的启
 
 ### 谁开发 Kotlin？
 
-Kotlin 主要由 JetBrains 的一个工程师团队开发（目前团队规模为 90+）。其首席语言设计师是
+Kotlin 主要由 JetBrains 的一个工程师团队开发（目前团队规模为 100+）。其首席语言设计师是
 [Andrey Breslav](https://twitter.com/abreslav)。除了核心团队，GitHub 上还有 250 多个外部贡献者。
 
 ### 在哪里可以了解关于 Kotlin 更多？
@@ -143,7 +143,8 @@ Hadi Hariri 的 [O’Reilly Course](http://shop.oreilly.com/product/063692005298
 ### 有没有 Kotlin 大会？
 
 有。官方的年度 [KotlinConf](https://kotlinconf.com/) 由 JetBrains 主办。
-分别于 [2017 年](https://kotlinconf.com/2017/) 在旧金山、2018 年在阿姆斯特丹举行。
+分别于 [2017 年](https://kotlinconf.com/2017/) 在旧金山、[2018 年](https://kotlinconf.com/2018/)在阿姆斯特丹、
+[2019 年](https://kotlinconf.com/2019/)在哥本哈根举行。
 Kotlin 也会在全球不同地方举行大会。你可以在[网站上找到即将到来的会谈列表](/community/talks.html?time=upcoming)。
 
 ### Kotlin 上社交媒体吗？

@@ -26,7 +26,7 @@ issue: EVAN-6031
 
 # 配置本地环境
 
-在本教程中我们将使用 IntelliJ IDEA 社区版，而使用终极版也同样可以做到。IDE 应该已经安装了 Kotlin plugin 1.3.x 或者更高的版本。 
+在本教程中我们将使用 IntelliJ IDEA 社区版，而使用旗舰版也同样可以做到。IDE 应该已经安装了 Kotlin plugin 1.3.x 或者更高的版本。 
 这个可以通过 IDE 的 *Settings*（或 *Preferences*）中的 *Language & Frameworks | Kotlin Updates* 部分来验证。
 此项目的原生部分是使用 Mac OS X 编写的，但如果您使用的是其他平台，请不要担心，该平台仅影响此特定教程中的目录名称。
 
