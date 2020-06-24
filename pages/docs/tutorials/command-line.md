@@ -49,17 +49,6 @@ $ brew install kotlin
 
 </div>
 
-#### MacPorts
-如果你是 [MacPorts](https://www.macports.org/) 用户，那么可以使用以下命令安装编译器：
-
-<div class="sample" markdown="1" mode="shell" theme="idea">
-
-```bash
-$ sudo port install kotlin
-```
-
-</div>
-
 #### [Snap](https://snapcraft.io/) 包
 如果使用的是 Ubuntu 16.04 或更高版本，那么可以在命令行安装编译器：
 
@@ -70,12 +59,6 @@ $ sudo snap install --classic kotlin
 ```
 
 </div>
-
-#### Chocolatey 包
-对于 Windows 下的 [Chocolatey](https://chocolatey.org/) 用户，
-有一个社区维护的软件包 [kotlinc](https://chocolatey.org/packages/kotlinc) 可供使用，
-你可以在命令行通过 [`choco install`](https://chocolatey.org/docs/commandsinstall) 进行安装。
-
 
 ### 创建并运行第一个应用程序
 
