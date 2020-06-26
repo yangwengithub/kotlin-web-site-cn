@@ -74,7 +74,7 @@ Kotlin 旨在成为程序员的实用工具。在语言演进方面，它的实�
 编译器是复杂的软件，尽管开发人员尽了最大努力，但它们仍然存在 bug。导致编译器自身编译失败、或报告虚假错误、或生成明显编译失败的代码的 bug，虽然很烦人并且常常令人尴尬，但它们很容易修复，因为这些修复不构成不兼容的变更。其他 bug 可能会导致编译器生成不会编译失败的错误代码，例如：遗漏了源代码中的一些错误，或者只是生成了错误的指令。这些 bug 的修复是技术上不兼容的更改（某些代码过去可以正常编译，但现在编译失败），但是我们倾向于尽快修复它们，以防止不良代码模式在用户代码中传播。我们认为，这符合“舒适更新”的原则，因为较少的用户有机会遇到此问题。当然，这仅适用于在发行版本中出现后不久发现的 bug。
 
 
-## Decision Making
+## 决策制定
 
 [JetBrains](https://jetbrains.com), the original creator of Kotlin, is driving its progress with the help of the community and in accord with the [Kotlin Foundation](/foundation/kotlin-foundation.html).
 
@@ -83,7 +83,7 @@ All changes to the Kotlin Programming Language are overseen by the [Lead Languag
 The Language Committee makes final decisions on what incompatible changes will be made and what exact measures should be taken to make user updates comfortable. In doing so, it relies on a set of guidelines available [here](/foundation/language-committee-guidelines.html).
 
 
-## Feature Releases and Incremental Releases
+## 功能发布与增量发布
 
 Stable releases with versions 1.2, 1.3, etc. are usually considered to be _feature releases_ bringing major changes in the language. Normally, we publish _incremental releases_, numbered 1.2.20, 1.2.30, etc, in between feature releases. 
 
@@ -92,19 +92,19 @@ Incremental releases bring updates in the tooling (often including features), pe
 Feature releases often add new features and may remove or change previously deprecated ones. Feature graduation from experimental to stable also happens in feature releases.
 
 
-### EAP Builds
+### EAP 版本
 
 Before releasing stable versions, we usually publish a number of preview builds dubbed EAP (for "Early Access Preview") that let us iterate faster and gather feedback from the community. EAPs of feature releases usually produce binaries that will be later rejected by the stable compiler to make sure that possible bugs in the binary format survive no longer than the preview period. Final Release Candidates normally do not bear this limitation.
 
 
-### Experimental features
+### 实验功能
 
 According to the Feedback Loop principle described above, we iterate on our designs in the open and release versions of the language where some features have the _experimental_ status and _are supposed to change_. Experimental features can be added, changed or removed at any point and without warning. We make sure that experimental features can't be used accidentally by an unsuspecting user. Such features usually require some sort of an explicit opt-in either in the code or in the project configuration.
 
 Experimental features usually graduate to the stable status after some iterations.
 
 
-### Status of different components
+### 不同组件的状态
 
 To check the stability status of different components of Kotlin (Kotlin/JVM, JS, Native, various libraries, etc), please consult [this link](components-stability.html).
 
