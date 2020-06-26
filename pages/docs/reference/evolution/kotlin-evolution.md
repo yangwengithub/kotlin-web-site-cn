@@ -76,12 +76,11 @@ Kotlin 旨在成为程序员的实用工具。在语言演进方面，它的实�
 
 ## 决策制定
 
-[JetBrains](https://jetbrains.com), the original creator of Kotlin, is driving its progress with the help of the community and in accord with the [Kotlin Foundation](/foundation/kotlin-foundation.html).
+[JetBrains](https://jetbrains.com)是 Kotlin 的原始创建者，它在社区的帮助下并根据 Kotlin 基金会来推动 kotlin 的发展。
 
-All changes to the Kotlin Programming Language are overseen by the [Lead Language Designer](/foundation/kotlin-foundation.html#lead-designer) (currently Andrey Breslav). The Lead Designer has the final say in all matters related to language evolution. Additionally, incompatible changes to fully stable components have to be approved to by the [Language Committee](/foundation/kotlin-foundation.html#language-committee) designated under the [Kotlin Foundation](/foundation/kotlin-foundation.html) (currently comprised of Jeffrey van Gogh, William R. Cook and Andrey Breslav).
+[首席语言设计师](/foundation/kotlin-foundation.html#lead-designer)（现为 Andrey Breslav）负责监督 Kotlin 编程语言的所有更改。首席设计师在与语言发展有关的所有事务中拥有最终决定权。 此外，对完全稳定的组件进行不兼容的更改必须完全由[Kotlin 基金会](/foundation/kotlin-foundation.html)指定的[语言委员会](/foundation/kotlin-foundation.html#language-committee)（目前由 Jeffrey van Gogh，William R. Cook和Andrey Breslav组成）批准。
 
-The Language Committee makes final decisions on what incompatible changes will be made and what exact measures should be taken to make user updates comfortable. In doing so, it relies on a set of guidelines available [here](/foundation/language-committee-guidelines.html).
-
+语言委员会对将进行哪些不兼容的更改以及应采取什么确切的措施使用户感到满意做出最终决定。为此，它依赖[此处](/foundation/language-committee-guidelines.html)提供的一组准则。
 
 ## 功能发布与增量发布
 
