@@ -82,30 +82,31 @@ Kotlin 旨在成为程序员的实用工具。在语言演进方面，它的实�
 
 语言委员会对将进行哪些不兼容的更改以及应采取什么确切的措施使用户感到满意做出最终决定。为此，它依赖[此处](/foundation/language-committee-guidelines.html)提供的一组准则。
 
+
 ## 功能发布与增量发布
 
-Stable releases with versions 1.2, 1.3, etc. are usually considered to be _feature releases_ bringing major changes in the language. Normally, we publish _incremental releases_, numbered 1.2.20, 1.2.30, etc, in between feature releases. 
+类似 1.2、1.3 等版本的稳定版本通常被认为是对语言进行重大更改的功能版本。通常，在功能发布之间会发布增量发布，编号为 1.2.20、1.2.30 等。
 
-Incremental releases bring updates in the tooling (often including features), performance improvements and bug fixes. We try to keep such versions compatible with each other, so changes to the compiler are mostly optimizations and warning additions/removals. Experimental features may, of course, be added, removed or changed at any time.
+增量版本带来了工具方面的更新（通常包括功能），性能改进和错误修复。我们试图使这些版本彼此兼容，因此对编译器的更改主要是优化和添加/删除警告。实验功能可以随时被添加、删除或更改。
 
-Feature releases often add new features and may remove or change previously deprecated ones. Feature graduation from experimental to stable also happens in feature releases.
+功能版本通常会添加新功能，并且可能会删除或更改以前不推荐使用的功能。某项功能从试验版到稳定版的过渡也包含在功能版本的发布中。
 
 
-### EAP 版本
+### 早期预览版本
 
-Before releasing stable versions, we usually publish a number of preview builds dubbed EAP (for "Early Access Preview") that let us iterate faster and gather feedback from the community. EAPs of feature releases usually produce binaries that will be later rejected by the stable compiler to make sure that possible bugs in the binary format survive no longer than the preview period. Final Release Candidates normally do not bear this limitation.
+在发布稳定版本之前，我们通常会发布许多称为 EAP（“Early Access Preview”）的早期预览版本，这些版本使我们能够更快地进行迭代并从社区中收集反馈。功能版本的早期预览版本通常会生成二进制文件，这些二进制文件随后将被稳定的编译器拒绝，以确保二进制文件中可能存在的错误只在预览期出现。最终发布的二进制文件通常没有此限制。
 
 
 ### 实验功能
 
-According to the Feedback Loop principle described above, we iterate on our designs in the open and release versions of the language where some features have the _experimental_ status and _are supposed to change_. Experimental features can be added, changed or removed at any point and without warning. We make sure that experimental features can't be used accidentally by an unsuspecting user. Such features usually require some sort of an explicit opt-in either in the code or in the project configuration.
+根据上述反馈环原则，我们在语言的开放和发行版本中对设计进行迭代，其中某些功能具有实验性并且可以更改。实验功能可以随时被添加、更改或删除，不会发出警告。我们确保实验功能不会被用户意外使用。此类功能通常需要在代码或项目配置中进行某种类型的显式选择。
 
-Experimental features usually graduate to the stable status after some iterations.
+实验功能通常会在经过几次迭代后逐渐达到稳定状态。
 
 
 ### 不同组件的状态
 
-To check the stability status of different components of Kotlin (Kotlin/JVM, JS, Native, various libraries, etc), please consult [this link](components-stability.html).
+要查看 Kotlin 的不同组件（Kotlin/JVM、JS、Native、各种库等）的稳定性状态，请查阅[链接](components-stability.html)。
 
 
 ## Libraries
