@@ -54,7 +54,7 @@ Java 类型系统中最棘手的部分之一是通配符类型（参见 [Java Ge
 ``` java
 // Java
 List<String> strs = new ArrayList<String>();
-List<Object> objs = strs; // ！！！即将来临的问题的原因就在这里。Java 禁止这样！
+List<Object> objs = strs; // ！！！此处的编译器错误让我们避免了之后的运行时异常
 objs.add(1); // 这里我们把一个整数放入一个字符串列表
 String s = strs.get(0); // ！！！ ClassCastException：无法将整数转换为字符串
 ```

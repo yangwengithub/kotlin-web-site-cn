@@ -21,6 +21,7 @@ main:
 # Docs section navigation
 # =======================
 subnav:
+  type: tab
   content:
     - url: /docs/
       content:
@@ -35,18 +36,19 @@ subnav:
     - url: /community/
       content:
         - url: /community/
-          urlPattern: ^/community/$
-          title: 社区概述
+          urlPattern: ^\/community\/$
+          title: 概述
 
         - url: /user-groups/user-group-list.html
-          urlPattern: /user-groups*
+          urlPattern: /user-groups.*
           title: 用户群组
 
-        - url: /community/kotlin-nights.html
-          title: Kotlin 之夜
+        - url: /community/events.html
+          urlPattern: ^\/community\/(events\.html|kotlin-nights.*)
+          title: 活动
 
         - url: /community/talks.html
-          title: 会谈
+          title: 会谈与演讲者
 
 # Reference navigation
 # ====================
@@ -472,6 +474,18 @@ groups:
     - url: /user-groups/user-group-list.html
       title: Kotlin 用户组列表
     - url: /user-groups/support.html
-      title: 支助和准则
+      title: 准则与支持
     - url: /user-groups/branding.html
-      title: 品牌
+      title: 品牌宣传资料
+    - url: https://confluence.jetbrains.com/display/ALL/JetBrains+Open+Source+and+Community+Code+of+Conduct
+      title: 行为守则
+
+
+events:
+  content:
+    - url: /community/events.html
+      title: Kotlin 活动
+    - url: /community/kotlin-nights/guidelines.html
+      title: 准则与支持
+    - url: /community/kotlin-nights/branding.html
+      title: 品牌宣传资料
