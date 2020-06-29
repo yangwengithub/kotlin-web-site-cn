@@ -28,7 +28,7 @@ title: "使用 Gradle 构建多平台项目"
 * [默认项目布局](#默认项目布局)
 * [运行测试](#运行测试)
 * [发布多平台库](#发布多平台库)
-    * [实验性的元数据发布模式](#实验性的元数据发布模式)
+    * [元数据发布](#元数据发布)
     * [目标消歧义](#目标消歧义)
 * [JVM 目标平台中的 Java 支持](#jvm-目标平台中的-java-支持)
 * [Android 支持](#android-支持)
@@ -962,8 +962,7 @@ kotlin {
 </div>
 </div>
 
-同样的，如果以实验性的[Gradle 元数据发布模式](#实验性的元数据发布模式)发布了一个多平台库，并且该项目<!--
--->也设置为使用元数据，那么只需要为公共源集指定一次依赖。
+同样的，如果[发布了带有 Gradle 元数据](#元数据发布)的一个多平台库，那么只需要为公共源集指定一次依赖。
 除此以外，应该为每个特定平台的源集<!--
 -->提供库的相应平台模块（除了公共模块），如上所示。
 
@@ -1295,23 +1294,22 @@ kotlin {
 </div>
 </div>
 
-### 实验性的元数据发布模式
+<a name="实验性的元数据发布模式">
+
+### 元数据发布
 
 Gradle 模块元数据提供了丰富的发布与解析依赖项的特性，这些特性用于 Kotlin
 多平台项目来为构建作者简化依赖配置。特别是多平台库的发布项<!--
--->可能包含一个特殊的 “根” 模块，它基于整个库，并且<!--
+-->包含一个特殊的 “根” 模块，它基于整个库，并且<!--
 -->在添加为依赖项时自动解析到适当的特定平台构件中，如下所述。
 
-Gradle 5.3 或更高的版本，依赖项解析期间总是使用模块元数据，但在默认情况下，发布项不会<!--
+In Gradle 6.0 and above, the module metadata is always used during dependency resolution and included in publications.
+
+In earlier Gradle versions starting from 5.3，依赖项解析期间使用模块元数据，但在默认情况下，发布项不会<!--
 -->包含任何模块元数据。为了启用发布模块元数据，需要添加
-`enableFeaturePreview("GRADLE_METADATA")` 到根项目的 `settings.gradle` 文件。对于更旧的 Gradle 版本，
-模块元数据的使用也需要这个。
+`enableFeaturePreview("GRADLE_METADATA")` 到根项目的 `settings.gradle` 文件。
 
-> 注意通过 Gradle 5.3 或更高版本发布的模块元数据不能被低于
-> 5.3 的 Gradle 所读取。
-{:.note}
-
-随着启用 Gradle 元数据，一个额外的名为 `kotlinMultiplatform` 的 “根” 发布项将添加到项目的<!--
+When publications include module metadata，一个额外的名为 `kotlinMultiplatform` 的 “根” 发布项将添加到项目的<!--
 -->发布项中。这个发布项的默认构件 ID 与没有任何额外后缀的项目名称相匹配。
 为了配置这个发布项，可以通过 `maven-publish` 插件的 `publishing { …… }` DSL 访问：
 
@@ -1406,9 +1404,6 @@ kotlin {
 
 </div>
 </div>
-
-这需要使用者的 Gradle 构建可以读取 Gradle 模块元数据，要么使用 Gradle 5.3+，要么<!--
--->在 `settings.gradle` 中通过 `enableFeaturePreview("GRADLE_METADATA")` 显式地启用它
 
 ### 目标消歧义
 
