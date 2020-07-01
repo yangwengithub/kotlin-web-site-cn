@@ -12,8 +12,8 @@ Kotlin/JS 项目使用 Gradle 作为构建系统。为了开发者轻松管理�
 举个例子，该插件会下载 [Yarn](https://yarnpkg.com/) 软件包管理器，在后台管理 [npm](https://www.npmjs.com/) 依赖，并使用
 [webpack](https://webpack.js.org/) 从 Kotlin 项目构建 JavaScript 包。
 
-要在 IntelliJ IDEA 中创建 Kotlin/JS 项目，请转至 **File | New | Project**，
-并选择 **Gradle | Kotlin/JS for browser** 或 **Kotlin/JS for Node.js**。请不要勾选 **Java** 复选框。
+要在 IntelliJ IDEA 中创建 Kotlin/JS 项目，请转至 **文件(File) \| 新建(New) \| 项目(Project)**，
+并勾选 **Gradle \| Kotlin/JS for browser** 或 **Kotlin/JS for Node.js**。请不要勾选 **Java** 复选框。
 
 ![New project wizard]({{ url_for('asset', path='images/reference/js-project-setup/wizard.png') }})
 
@@ -341,17 +341,17 @@ kotlin.target.browser {
 
 对于浏览器目标，Kotlin/JS 插件使用众所周知的 [Webpack](https://webpack.js.org/) 模块捆绑器。
 
-The Kotlin/JS Gradle plugin automatically generates a standard webpack configuration file 
-at build time which you can find the at `build/js/packages/projectName/webpack.config.js`.
+Kotlin/JS Gradle 插件会在构建时自动生成一个标准的 webpack 配置文件，
+可以在 `build/js/packages/projectName/webpack.config.js` 中找到该文件。
 
-The most common webpack adjustments can be made directly via the
-`kotlin.target.browser.webpackTask` configuration block in the Gradle build file.
+最常见的 webpack 调整可以直接通过 Gradle 构建文件中的
+`kotlin.target.browser.webpackTask` 配置块进行。
 
-If you want to make further adjustments to the webpack configuration, place your additional configuration files inside a directory
-called `webpack.config.d` in the root of your project. When building your project, all JS configuration files will automatically
-be merged into the `build/js/packages/projectName/webpack.config.js` file.
-To add a new [webpack loader](https://webpack.js.org/loaders/), for example, add the following to
-a `.js` file inside the `webpack.config.d`:
+如果要进一步调整 webpack 配置，请将其他配置文件放在项目根目录中名为 `webpack.config.d` 的目录中。
+在构建项目时，所有 JS 配置文件都会自动被合并到
+`build/js/packages/projectName/webpack.config.js` 文件中。
+例如，要添加新的 [webpack loader](https://webpack.js.org/loaders/)，
+请将以下内容添加到 `webpack.config.d` 中的 `.js` 文件中：
 
 <div class="sample" markdown="1" mode="javascript" theme="idea">
 
@@ -364,11 +364,11 @@ config.module.rules.push({
 
 </div>
 
-All webpack configuration
-capabilities are well described in its [documentation](https://webpack.js.org/concepts/configuration/).
+所有 webpack 配置功能在其
+[文档](https://webpack.js.org/concepts/configuration/) 中都有详细说明。
 
 为了通过 webpack 构建可执行的 JavaScript 构件，Kotlin/JS 插件包含 `browserDevelopmentWebpack` 以及
-`browserProductionWebpack` Gradle 任务。 Execute them to obtain artifacts for development or production respectively:
+`browserProductionWebpack` Gradle 任务。执行它们分别获得用于开发或生产的构件：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -378,13 +378,13 @@ capabilities are well described in its [documentation](https://webpack.js.org/co
 
 </div>
 
-## Configuring Yarn
+## 配置 Yarn
 
-To configure additional Yarn features, place a `.yarnrc` file in the root of your project.
-At build time, it gets picked up automatically.
+要配置其他 Yarn 特性，请将 `.yarnrc` 文件放在项目的根目录中。
+在构建时，它会被自动拾取。
 
-For example, to use a custom registry for npm packages, add the following line to a file called
-`.yarnrc` in the project root:
+例如，要将自定义 registry 用于 npm 软件包，
+请将以下行添加到项目根目录中名为 `.yarnrc` 的文件中：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -394,7 +394,7 @@ registry "http://my.registry/api/npm/"
 
 </div>
 
-To learn more about `.yarnrc`, please visit the [official Yarn documentation](https://classic.yarnpkg.com/en/docs/yarnrc/).
+要了解有关 `.yarnrc` 的更多信息，请访问 [Yarn 官方文档](https://classic.yarnpkg.com/en/docs/yarnrc/)。
 
 ## 分发目标目录
 
