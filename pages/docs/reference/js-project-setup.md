@@ -368,7 +368,7 @@ config.module.rules.push({
 [文档](https://webpack.js.org/concepts/configuration/) 中都有详细说明。
 
 为了通过 webpack 构建可执行的 JavaScript 构件，Kotlin/JS 插件包含 `browserDevelopmentWebpack` 以及
-`browserProductionWebpack` Gradle 任务。执行它们分别获得用于开发或生产的<span title="artifacts">工件</span>：
+`browserProductionWebpack` Gradle 任务。执行它们分别获得用于开发或生产的构件：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
 
@@ -381,9 +381,9 @@ config.module.rules.push({
 ## 配置 Yarn
 
 要配置其他 Yarn 特性，请将 `.yarnrc` 文件放在项目的根目录中。
-在构建时，它会自动被拾取。
+在构建时，它会被自动拾取。
 
-例如，要将自定义注册表用于 npm 软件包，
+例如，要将自定义 registry 用于 npm 软件包，
 请将以下行添加到项目根目录中名为 `.yarnrc` 的文件中：
 
 <div class="sample" markdown="1" mode="shell" theme="idea">
