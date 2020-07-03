@@ -1,7 +1,7 @@
 ---
 type: tutorial
 layout: tutorial
-title:  "Getting Started with Kotlin"
+title:  "Kotlin 入门"
 ---
 
 It’s easy to get started with Kotlin using the Kotlin plugin integrated in [IntelliJ IDEA](https://www.jetbrains.com/idea/). 
