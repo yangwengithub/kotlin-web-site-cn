@@ -20,6 +20,6 @@ title:  "Kotlin 入门"
 从一个小类或函数开始，并带有[与 Java 代码正确互操作性](../reference/java-interop.html)所需的注释。
 *   用 **Kotlin** 为代码 **编写一些测试**。
 测试是将 Kotlin 添加到代码库中的安全场所，因为在打包过程中它们并未与应用程序捆绑在一起。
-*   **[将Java代码转换为Kotlin](mixing-java-kotlin-intellij.html#converting-an-existing-java-file-to-kotlin-with-j2k)**。
+*   **[将 Java 代码转换为 Kotlin](mixing-java-kotlin-intellij.html#converting-an-existing-java-file-to-kotlin-with-j2k)**。
 提取 Java 函数的小片段，并使用 Java-to-Kotlin 转换器将其转换为 Kotlin 类与函数。
 
