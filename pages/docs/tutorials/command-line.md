@@ -147,7 +147,7 @@ Kotlin 也可以用作脚本语言。脚本是具有顶层可执行代码的 Kot
 ```kotlin
 import java.io.File
 
-// Get the passed in path, i.e. "-d some/path" or use the current path.
+// 获取传入的路径，即“-d 一些/路径”或使用当前路径。
 val path = if (args.contains("-d")) args[1 + args.indexOf("-d")]
            else "."
 
