@@ -74,39 +74,39 @@ Kotlin 旨在成为程序员的实用工具。在语言演进方面，它的实�
 编译器是复杂的软件，尽管开发人员尽了最大努力，但它们仍然存在 bug。导致编译器自身编译失败、或报告虚假错误、或生成明显编译失败的代码的 bug，虽然很烦人并且常常令人尴尬，但它们很容易修复，因为这些修复不构成不兼容的变更。其他 bug 可能会导致编译器生成不会编译失败的错误代码，例如：遗漏了源代码中的一些错误，或者只是生成了错误的指令。这些 bug 的修复是技术上不兼容的更改（某些代码过去可以正常编译，但现在编译失败），但是我们倾向于尽快修复它们，以防止不良代码模式在用户代码中传播。我们认为，这符合“舒适更新”的原则，因为较少的用户有机会遇到此问题。当然，这仅适用于在发行版本中出现后不久发现的 bug。
 
 
-## Decision Making
+## 决策制定
 
-[JetBrains](https://jetbrains.com), the original creator of Kotlin, is driving its progress with the help of the community and in accord with the [Kotlin Foundation](/foundation/kotlin-foundation.html).
+[JetBrains](https://jetbrains.com)是 Kotlin 的原始创建者，它在社区的帮助下并根据 Kotlin 基金会来推动 kotlin 的发展。
 
-All changes to the Kotlin Programming Language are overseen by the [Lead Language Designer](/foundation/kotlin-foundation.html#lead-designer) (currently Andrey Breslav). The Lead Designer has the final say in all matters related to language evolution. Additionally, incompatible changes to fully stable components have to be approved to by the [Language Committee](/foundation/kotlin-foundation.html#language-committee) designated under the [Kotlin Foundation](/foundation/kotlin-foundation.html) (currently comprised of Jeffrey van Gogh, William R. Cook and Andrey Breslav).
+[首席语言设计师](/foundation/kotlin-foundation.html#lead-designer)（现为 Andrey Breslav）负责监督 Kotlin 编程语言的所有更改。首席设计师在与语言发展有关的所有事务中拥有最终决定权。 此外，对完全稳定的组件进行不兼容的更改必须完全由[Kotlin 基金会](/foundation/kotlin-foundation.html)指定的[语言委员会](/foundation/kotlin-foundation.html#language-committee)（目前由 Jeffrey van Gogh，William R. Cook和Andrey Breslav组成）批准。
 
-The Language Committee makes final decisions on what incompatible changes will be made and what exact measures should be taken to make user updates comfortable. In doing so, it relies on a set of guidelines available [here](/foundation/language-committee-guidelines.html).
-
-
-## Feature Releases and Incremental Releases
-
-Stable releases with versions 1.2, 1.3, etc. are usually considered to be _feature releases_ bringing major changes in the language. Normally, we publish _incremental releases_, numbered 1.2.20, 1.2.30, etc, in between feature releases. 
-
-Incremental releases bring updates in the tooling (often including features), performance improvements and bug fixes. We try to keep such versions compatible with each other, so changes to the compiler are mostly optimizations and warning additions/removals. Experimental features may, of course, be added, removed or changed at any time.
-
-Feature releases often add new features and may remove or change previously deprecated ones. Feature graduation from experimental to stable also happens in feature releases.
+语言委员会对将进行哪些不兼容的更改以及应采取什么确切的措施使用户感到满意做出最终决定。为此，它依赖[此处](/foundation/language-committee-guidelines.html)提供的一组准则。
 
 
-### EAP Builds
+## 特性发布与增量发布
 
-Before releasing stable versions, we usually publish a number of preview builds dubbed EAP (for "Early Access Preview") that let us iterate faster and gather feedback from the community. EAPs of feature releases usually produce binaries that will be later rejected by the stable compiler to make sure that possible bugs in the binary format survive no longer than the preview period. Final Release Candidates normally do not bear this limitation.
+类似 1.2、1.3 等版本的稳定版本通常被认为是对语言进行重大更改的特性版本。通常，在特性发布之间会发布增量发布，编号为 1.2.20、1.2.30 等。
 
+增量版本带来了工具方面的更新（通常包括特性），性能改进和错误修复。我们试图使这些版本彼此兼容，因此对编译器的更改主要是优化和添加/删除警告。实验特性可以随时被添加、删除或更改。
 
-### Experimental features
-
-According to the Feedback Loop principle described above, we iterate on our designs in the open and release versions of the language where some features have the _experimental_ status and _are supposed to change_. Experimental features can be added, changed or removed at any point and without warning. We make sure that experimental features can't be used accidentally by an unsuspecting user. Such features usually require some sort of an explicit opt-in either in the code or in the project configuration.
-
-Experimental features usually graduate to the stable status after some iterations.
+特性发布通常会添加新特性，并且可能会删除或更改以前不推荐使用的特性。某项特性从试验版到稳定版的过渡也包含在特性版本的发布中。
 
 
-### Status of different components
+### 早期预览版本
 
-To check the stability status of different components of Kotlin (Kotlin/JVM, JS, Native, various libraries, etc), please consult [this link](components-stability.html).
+在发布稳定版本之前，我们通常会发布许多称为 EAP（“Early Access Preview”）的早期预览版本，这些版本使我们能够更快地进行迭代并从社区中收集反馈。特性版本的早期预览版本通常会生成二进制文件，这些二进制文件随后将被稳定的编译器拒绝，以确保二进制文件中可能存在的错误只在预览期出现。最终发布的二进制文件通常没有此限制。
+
+
+### 实验特性
+
+根据上述反馈环原则，我们在语言的开放和发行版本中对设计进行迭代，其中某些特性具有实验性并且可以更改。实验特性可以随时被添加、更改或删除，不会发出警告。我们确保实验特性不会被用户意外使用。此类特性通常需要在代码或项目配置中进行某种类型的显式选择。
+
+实验特性通常会在经过几次迭代后逐渐达到稳定状态。
+
+
+### 不同组件的状态
+
+要查看 Kotlin 的不同组件（Kotlin/JVM、JS、Native、各种库等）的稳定性状态，请查阅[链接](components-stability.html)。
 
 
 ## Libraries
