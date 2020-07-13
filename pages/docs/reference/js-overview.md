@@ -37,11 +37,26 @@ API 访问第三方框架，可以使用 [dukat](https://github.com/kotlin/dukat
 类型定义仓库转换为 Kotlin。或者，你可以使用<!--
 -->[动态类型](dynamic-type.html)访问任何框架，而无需强类型。
 
-JetBrains 特地为 React 社区开发并维护了几个工具：[React bindings](https://github.com/JetBrains/kotlin-wrappers) 以及 [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app)。后者可以帮你开始使用 Kotlin 构建 React 应用程序而无需构建配置。
-
 Kotlin 兼容 CommonJS、AMD 和 UMD，直截了当[与不同的模块系统交互](https://www.kotlincn.net/docs/tutorials/javascript/working-with-modules/working-with-modules.html)。
 
 
-## Kotlin 转 JavaScript 入门
+## Getting Started with Kotlin/JS
 
-要了解如何开始使用 JavaScript 平台的 Kotlin，请参考其[教程](https://www.kotlincn.net/docs/tutorials/javascript/kotlin-to-javascript/kotlin-to-javascript.html)。
+To find out how to start using Kotlin for JavaScript, please refer to the [Setting up a Kotlin/JS project](/docs/reference/js-project-setup.html).
+
+
+## Hands-on labs for Kotlin/JS
+
+Hands-on labs are long-form tutorials that help you get to know a technology by guiding you through a self-contained project related to a specific topic.
+
+They include sample projects, which can serve as jumping-off points for your own projects, and contain useful snippets and patterns.
+
+For Kotlin/JS, the following hands-on labs are currently available:
+
+* [Building Web Applications with React and Kotlin/JS](https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01_Introduction) guides you through the process of building a simple web application using the React framework, shows how a typesafe Kotlin DSL for HTML makes it convenient to build reactive DOM elements, and illustrates how to use third-party React components, and how to obtain information from APIs, while writing the whole application logic in pure Kotlin/JS.
+
+* [Building a Full Stack Web App with Kotlin Multiplatform](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction) teaches the concepts behind building an application that targets Kotlin/JVM and Kotlin/JS by building a client-server application that makes use of common code, serialization, and other multiplatform paradigms. It also provides a brief introduction into working with Ktor both as a server- and client-side framework.
+
+
+## Join Kotlin/JS community
+You can also join [#javascript](https://kotlinlang.slack.com/archives/C0B8L3U69) channel in the official [Kotlin Slack](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) and chat with the community and the team.

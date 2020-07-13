@@ -14,6 +14,9 @@ main:
     - url: /community/
       title: 社区
 
+    - url: /education/
+      title: 教学
+
     - url: https://play.kotlinlang.org
       title: 演练
 
@@ -49,6 +52,14 @@ subnav:
 
         - url: /community/talks.html
           title: 会谈与演讲者
+    - url: /education/
+      content:
+        - url: /education/
+          urlPattern: ^\/education\/$
+          title: 概述
+
+        - url: /education/why-teach-kotlin.html
+          title: 为什么讲授 Kotlin
 
 # Reference navigation
 # ====================
