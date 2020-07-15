@@ -40,9 +40,9 @@ API 访问第三方框架，可以使用 [dukat](https://github.com/kotlin/dukat
 Kotlin 兼容 CommonJS、AMD 和 UMD，直截了当[与不同的模块系统交互](https://www.kotlincn.net/docs/tutorials/javascript/working-with-modules/working-with-modules.html)。
 
 
-## Getting Started with Kotlin/JS
+## Kotlin/JS 入门
 
-To find out how to start using Kotlin for JavaScript, please refer to the [Setting up a Kotlin/JS project](/docs/reference/js-project-setup.html).
+要了解如何开始使用 Kotlin 用于 JavaScript 开发，请参阅[搭建 Kotlin/JS 项目](/docs/reference/js-project-setup.html)。
 
 
 ## Hands-on labs for Kotlin/JS
