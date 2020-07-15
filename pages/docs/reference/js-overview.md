@@ -40,23 +40,23 @@ API 访问第三方框架，可以使用 [dukat](https://github.com/kotlin/dukat
 Kotlin 兼容 CommonJS、AMD 和 UMD，直截了当[与不同的模块系统交互](https://www.kotlincn.net/docs/tutorials/javascript/working-with-modules/working-with-modules.html)。
 
 
-## Getting Started with Kotlin/JS
+## Kotlin/JS 入门
 
-To find out how to start using Kotlin for JavaScript, please refer to the [Setting up a Kotlin/JS project](/docs/reference/js-project-setup.html).
-
-
-## Hands-on labs for Kotlin/JS
-
-Hands-on labs are long-form tutorials that help you get to know a technology by guiding you through a self-contained project related to a specific topic.
-
-They include sample projects, which can serve as jumping-off points for your own projects, and contain useful snippets and patterns.
-
-For Kotlin/JS, the following hands-on labs are currently available:
-
-* [Building Web Applications with React and Kotlin/JS](https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01_Introduction) guides you through the process of building a simple web application using the React framework, shows how a typesafe Kotlin DSL for HTML makes it convenient to build reactive DOM elements, and illustrates how to use third-party React components, and how to obtain information from APIs, while writing the whole application logic in pure Kotlin/JS.
-
-* [Building a Full Stack Web App with Kotlin Multiplatform](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction) teaches the concepts behind building an application that targets Kotlin/JVM and Kotlin/JS by building a client-server application that makes use of common code, serialization, and other multiplatform paradigms. It also provides a brief introduction into working with Ktor both as a server- and client-side framework.
+要了解如何开始使用 Kotlin 用于 JavaScript 开发，请参阅[搭建 Kotlin/JS 项目](/docs/reference/js-project-setup.html)。
 
 
-## Join Kotlin/JS community
-You can also join [#javascript](https://kotlinlang.slack.com/archives/C0B8L3U69) channel in the official [Kotlin Slack](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) and chat with the community and the team.
+## Kotlin/JS 实践实验室
+
+实践实验室是一种长形式的教程，通过一个与特定主题相关的独立项目来帮助了解一种技术。
+
+它们包括示例项目，这些示例项目可用作自己的项目的起点，并包含有用的代码片段与模式。
+
+对于 Kotlin/JS，当前有以下实践实验：
+
+* [使用 React 与 Kotlin/JS 构建 Web 应用程序](https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/01_Introduction)将指导完成使用 React 框架构建简单 Web 应用程序的过程，展示用于 HTML 的类型安全的 Kotlin DSL 如何使构建响应式 DOM 元素更加方便，并说明了如何使用第三方 React 组件，以及如何从 API 获取信息，同时使用纯 Kotlin/JS 编写整个应用程序逻辑。
+
+* [使用 Kotlin Multiplatform 构建全栈 Web 应用](https://play.kotlinlang.org/hands-on/Full%20Stack%20Web%20App%20with%20Kotlin%20Multiplatform/01_Introduction)通过构建使用通用代码、序列化与其他多平台范式的客户端服务器应用程序，讲授了构建针对 Kotlin/JVM 与 Kotlin/JS 的应用程序的概念。它还简要介绍了如何将 Ktor 作为服务器与客户端框架使用。
+
+
+## 加入 Kotlin/JS 社区
+还可以在官方 [Kotlin Slack](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) 中加入 [#javascript](https://kotlinlang.slack.com/archives/C0B8L3U69) 频道，并与社区和团队聊天。
