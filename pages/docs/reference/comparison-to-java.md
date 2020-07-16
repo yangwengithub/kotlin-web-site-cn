@@ -21,10 +21,10 @@ Kotlin 通过以下措施修复了 Java 中一系列长期困扰我们的问题�
 ## Java 有而 Kotlin 没有的东西
 
 * [受检异常](exceptions.html)
-* 不是类的[原生类型](basic-types.html) - The byte-code uses primitives where possible, but they are not explicitly available.
-* [静态成员](classes.html) - replaced with [companion objects](object-declarations.html#companion-objects), [top-level functions](functions.html), [extension functions](extensions.html#extension-functions), or [@JvmStatic](java-to-kotlin-interop.html#static-methods).
-* [通配符类型](generics.html) - replaced with [declaration-site variance](generics.html#declaration-site-variance) and [type projections](generics.html#type-projections).
-* [三目操作符 `a ? b : c`](control-flow.html#if-表达式) - replaced with [if expression](control-flow.html#if-expression). 
+* 不是类的[原生类型](basic-types.html) —— 字节码会尽可能试用原生类型，但不是显式可用的。
+* [静态成员](classes.html) —— 以 [伴生对象](object-declarations.html#伴生对象)、 [顶层函数](functions.html)、 [扩展函数](extensions.html#extension-functions) 或者 [@JvmStatic](java-to-kotlin-interop.html#static-methods) 取代。
+* [通配符类型](generics.html) —— 以 [声明处协变](generics.html#declaration-site-variance) 与 [类型投影](generics.html#类型投影) 取代。
+* [三目操作符 `a ? b : c`](control-flow.html#if-表达式) —— 以 [if 表达式](control-flow.html#if-表达式)取代。 
 
 ## Kotlin 有而 Java 没有的东西
 
