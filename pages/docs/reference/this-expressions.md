@@ -53,8 +53,8 @@ class A { // 隐式标签 @A
 
 ## Implicit `this`
 
-When you call a member function on `this`, you can skip the `this.` part.
-If you have a non-member function with the same name, use this with caution, because in some cases it can be called instead:
+当对 `this` 调用成员函数时，可以省略 `this.` 部分。
+但是如果有一个同名的非成员函数时，请谨慎使用，因为在某些情况下会调用同名的非成员：
 
 <div class="sample" markdown="1" theme="idea" data-min-compiler-version="1.3">
 
