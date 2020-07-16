@@ -35,9 +35,9 @@ Kotlin 非常适合开发服务器端应用程序，可以让你编写简明且�
  * [kotlinx.html](https://github.com/kotlin/kotlinx.html) 是可在 Web 应用程序中用于构建 HTML 的 DSL。
 它可以作为传统模板系统（如JSP和FreeMarker）的替代品。
 
- * [Micronaut](https://micronaut.io/) 是基于 JVM 的现代全栈框架，用于构建模块化，易于测试的微服务和无服务器应用程序。它带有许多内置的便捷功能。
+ * [Micronaut](https://micronaut.io/) 是基于 JVM 的现代全栈框架，用于构建模块化、易于测试的微服务与无服务器应用程序。它带有许多内置的便捷功能。
  
- * [Javalin](https://javalin.io) 是用于 Kotlin 与 Java 的非常轻量级的 Web 框架，支持 WebSockets，HTTP2 与异步请求。
+ * [Javalin](https://javalin.io) 是用于 Kotlin 与 Java 的非常轻量级的 Web 框架，支持 WebSockets、HTTP2 与异步请求。
 
  * 通过相应 Java 驱动程序进行持久化的可用选项包括直接 JDBC 访问、JPA 以及使用 NoSQL 数据库。
 对于 JPA，[kotlin-jpa 编译器插件](compiler-plugins.html#jpa-支持)使
