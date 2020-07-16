@@ -15,6 +15,7 @@ Kotlin 可以使用 JavaEE 的 Http Servlet，就像使用其他的 Java 库或�
 The main dependency required for using HTTP servlets is the JavaEE API:
 
 <div class="sample" markdown="1" theme="idea" mode="groovy">
+
 ``` groovy
 dependencies {
     compile group: 'javax', name: 'javaee-api', version: '7.0'
@@ -26,6 +27,7 @@ dependencies {
 我们还需要 *war* 插件，帮助我们生成相应的构件运行和部署
 
 <div class="sample" markdown="1" theme="idea" mode="groovy">
+
 ``` groovy
 apply plugin: 'war'
 ```
@@ -39,6 +41,7 @@ apply plugin: 'war'
 一旦我们在构建脚本中定义了正确的依赖，现在就可以创建一个控制器
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
+
 ``` kotlin
 @WebServlet(name = "Hello", value = ["/hello"])
 class HomeController : HttpServlet() {
@@ -72,7 +75,38 @@ Note that application server support is only available in IntelliJ IDEA Ultimate
 
 ![Browser Run]({{ url_for('tutorial_img', filename='httpservlets/browser.png') }})
 
+We can also run the project from the command line, without using IntelliJ IDEA Ultimate, if we apply the gretty plugin.
+In order to do this, we need to make the following changes to build.gradle:
 
+<div class="sample" markdown="1" theme="idea" mode="groovy">
 
+``` groovy
+buildscript {
+    repositories {
+        maven {
+            url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/'
+        }
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.gretty:gretty:3.0.1'
+    }
+}
+...
+apply plugin: 'org.gretty'  // Add this line
+...
 
+gretty {   // Add these lines
+    contextPath = '/'
+    servletContainer = 'jetty9'
+}
+
+```
+</div>
+
+Once we do that, we can start the app by running the following command
+
+```bash
+gradle appStart
+```
 
