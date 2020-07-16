@@ -101,8 +101,8 @@ Kotlin 有一个广泛的标准库可用于应用程序。在 pom 文件中配�
 ## 同时编译 Kotlin 与 Java 源代码
 
 要编译混合代码应用程序，必须在 Java 编译器之前调用 Kotlin 编译器。
-In maven terms that means that `kotlin-maven-plugin` should run before `maven-compiler-plugin` using the following method.
-Make sure that the `kotlin` plugin comes before the `maven-compiler-plugin` in your `pom.xml` file:
+按照 maven 的方式，这意味着应该使用以下方法在 `maven-compiler-plugin` 之前运行  `kotlin-maven-plugin`。
+确保 `pom.xml` 文件中的 `kotlin` 插件位于 `maven-compiler-plugin` 之前：
 
 <div class="sample" markdown="1" mode="xml" auto-indent="false" theme="idea" data-highlight-only>
 
