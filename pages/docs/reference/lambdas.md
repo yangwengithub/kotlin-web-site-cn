@@ -400,8 +400,8 @@ fun(x: Int, y: Int): Int {
 
 </div>
 
-参数和返回类型的指定方式与常规函数相同，除了<!--
--->能够从上下文推断出的参数类型可以省略：
+除了<!--
+-->能够从上下文推断出的参数类型可以省略,返回类型的指定方式也与常规函数相同：
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 
